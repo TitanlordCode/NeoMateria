@@ -1,0 +1,4 @@
+FROM neo-materia-base:latest
+
+EXPOSE 3000
+CMD ["npm", "run", "storybook"]

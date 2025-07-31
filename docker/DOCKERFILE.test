@@ -1,0 +1,3 @@
+FROM neo-materia-base:latest
+
+CMD ["npm", "run", "test:unit"]
