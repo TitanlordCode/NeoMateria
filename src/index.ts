@@ -1,2 +1,2 @@
 // Atoms
-export { default as Button } from './components/01-atoms/Button.vue'
+export { default as Button } from './components/01-atoms/Button/Button.vue'

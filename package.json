@@ -15,7 +15,7 @@
   "author": "TitanlordCode",
   "license": "MIT",
   "scripts": {
-    "start": "docker-compose up storybook",
+    "start": "docker-compose up --build storybook",
     "docker:build": "docker-compose build",
     "build": "vite build",
     "prepublishOnly": "npm run build",
@@ -35,6 +35,7 @@
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.4",
+    "@storybook/addon-a11y": "^8.6.14",
     "@storybook/addon-essentials": "^8.5.3",
     "@storybook/addon-interactions": "^8.5.3",
     "@storybook/addon-onboarding": "^8.5.3",

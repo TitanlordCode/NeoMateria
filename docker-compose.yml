@@ -1,18 +1,8 @@
-version: '3.9'
-
 services:
-  base:
-    build:
-      context: .
-      dockerfile: docker/DOCKERFILE.base
-    image: neo-materia-base:latest
-
   storybook:
     build:
       context: .
       dockerfile: docker/DOCKERFILE.storybook
-    depends_on:
-      - base
     ports:
       - '3000:3000'
     volumes:
@@ -23,9 +13,7 @@ services:
   tests:
     build:
       context: .
-      dockerfile: docker/DOCKERFILE.tests
-    depends_on:
-      - base
+      dockerfile: docker/DOCKERFILE.test
     volumes:
       - .:/app
       - /app/node_modules
