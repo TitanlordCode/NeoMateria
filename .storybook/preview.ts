@@ -1,5 +1,7 @@
 import type { Preview } from '@storybook/vue3'
 
+import '../src/assets/styles/globals.css'
+
 const preview: Preview = {
   parameters: {
     controls: {
@@ -9,6 +11,7 @@ const preview: Preview = {
       },
     },
   },
+  tags: ['autodocs'],
 }
 
 export default preview

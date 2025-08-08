@@ -3,14 +3,17 @@ import type { Meta, StoryObj } from '@storybook/vue3'
 import { expect, fn, userEvent, waitFor, within } from '@storybook/test'
 
 import Button from './Button.vue'
+import { colors } from '@/assets/typescript/colors'
 
 const meta: Meta<typeof Button> = {
   title: 'Atoms/Button',
   component: Button,
+  tags: ['autodocs'],
   argTypes: {
     label: { control: 'text' },
     size: { control: 'select', options: ['small', 'medium', 'large'] },
     disabled: { control: 'boolean' },
+    color: { control: 'select', options: colors },
   },
   args: {
     label: 'Click me',

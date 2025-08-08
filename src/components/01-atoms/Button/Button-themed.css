@@ -1,0 +1,65 @@
+.Button {
+  &.Button--red {
+    --Button-color-background: var(--neo-color-red-500);
+  }
+  &.Button--pink {
+    --Button-color-background: var(--neo-color-pink-500);
+  }
+  &.Button--purple {
+    --Button-color-background: var(--neo-color-purple-500);
+  }
+  &.Button--deepPurple {
+    --Button-color-background: var(--neo-color-deepPurple-500);
+  }
+  &.Button--indigo {
+    --Button-color-background: var(--neo-color-indigo-500);
+  }
+  &.Button--blue {
+    --Button-color-background: var(--neo-color-blue-500);
+  }
+  &.Button--lightBlue {
+    --Button-color-background: var(--neo-color-lightBlue-500);
+  }
+  &.Button--cyan {
+    --Button-color-background: var(--neo-color-cyan-500);
+  }
+  &.Button--teal {
+    --Button-color-background: var(--neo-color-teal-500);
+  }
+  &.Button--green {
+    --Button-color-background: var(--neo-color-green-500);
+  }
+  &.Button--lightGreen {
+    --Button-color-background: var(--neo-color-lightGreen-500);
+  }
+  &.Button--lime {
+    --Button-color-background: var(--neo-color-lime-500);
+  }
+  &.Button--yellow {
+    --Button-color-background: var(--neo-color-yellow-500);
+  }
+  &.Button--amber {
+    --Button-color-background: var(--neo-color-amber-500);
+  }
+  &.Button--orange {
+    --Button-color-background: var(--neo-color-orange-500);
+  }
+  &.Button--deepOrange {
+    --Button-color-background: var(--neo-color-deepOrange-500);
+  }
+  &.Button--brown {
+    --Button-color-background: var(--neo-color-brown-500);
+  }
+  &.Button--grey {
+    --Button-color-background: var(--neo-color-grey500);
+  }
+  &.Button--blueGrey {
+    --Button-color-background: var(--neo-color-blueGrey500);
+  }
+  &.Button--white {
+    --Button-color-background: var(--neo-color-white);
+  }
+  &.Button--black {
+    --Button-color-background: var(--neo-color-black);
+  }
+}
