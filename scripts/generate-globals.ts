@@ -12,7 +12,7 @@ const files = readdirSync(assetsDir)
 const cssFiles = files.filter((f) => f.endsWith('.css') && f !== 'globals.css')
 
 // Generate import statements relative to globals.css
-const imports = cssFiles.map((file) => `@import './${file}';`).join('\n')
+const imports = cssFiles.map((file) => `@import url('./${file}');`).join('\n')
 
 writeFileSync(
   outputFile,

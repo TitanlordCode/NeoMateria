@@ -7,4 +7,12 @@ RUN npm ci
 
 COPY . .
 
+RUN npm run type-check
+
+RUN npm run lint:fix
+
+RUN npm run stylelint:css
+
+RUN npm run prettier:fix
+
 CMD ["npm", "run", "test:unit"]

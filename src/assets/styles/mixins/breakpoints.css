@@ -1,0 +1,23 @@
+@define-mixin bp-sm {
+	@media (width >= 640px) {
+		@mixin-content;
+	}
+}
+
+@define-mixin bp-md {
+	@media (width >= 768px) {
+		@mixin-content;
+	}
+}
+
+@define-mixin bp-lg {
+	@media (width >= 1024px) {
+		@mixin-content;
+	}
+}
+
+@define-mixin bp-xl {
+	@media (width >= 1280px) {
+		@mixin-content;
+	}
+}

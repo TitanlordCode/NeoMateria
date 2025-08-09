@@ -9,4 +9,4 @@
  * The script is automatically triggered by the pre-flight script
  * --------------------------------------------------------------------
  */
-@import './colors.css';
+@import url('./colors.css');
