@@ -3,7 +3,7 @@ import { mkdirSync, writeFileSync } from 'node:fs'
 import { runScript } from './utils/script-helper'
 import { toShortHex } from './utils/css-helper'
 import { dirname, join } from 'node:path'
-import { toPascalCase } from '../src/utils/helper'
+import { toPascalCase } from '../src/utils/stringManipulation'
 
 /**
  * Generate TS file

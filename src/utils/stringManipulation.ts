@@ -6,6 +6,8 @@ export function toCamelCase(str: string) {
 		.replace(/\s+/g, '')
 }
 
+export type PascalCase = `${Uppercase<string>}${string}`
+
 export function toPascalCase(str: string) {
 	return str
 		.replace(/(?:^\w|[A-Z]|\b\w)/g, function (word, index) {

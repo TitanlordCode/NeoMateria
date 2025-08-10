@@ -2,21 +2,23 @@
 import { writeFileSync, readdirSync } from 'node:fs'
 import { join } from 'node:path'
 
-const assetsDir = join(process.cwd(), './src/assets/styles')
-const outputFile = join(assetsDir, 'globals.css')
+const mixinsDir = join(process.cwd(), './src/assets/styles/mixins')
+const stylesDir = join(process.cwd(), './src/assets/styles')
+const outputFile = join(stylesDir, 'globals.css')
 
-// Read all files in src/assets
-const files = readdirSync(assetsDir)
+const mixins = readdirSync(mixinsDir)
+const cssMixinFiles = mixins.filter((f) => f.endsWith('.css'))
+let imports = cssMixinFiles.map((file) => `@import url('./mixins/${file}');`).join('\n')
 
-// Filter CSS files excluding globals.css itself
-const cssFiles = files.filter((f) => f.endsWith('.css') && f !== 'globals.css')
+const styles = readdirSync(stylesDir)
+const cssFiles = styles.filter((f) => f.endsWith('.css') && f !== 'globals.css')
 
 // Generate import statements relative to globals.css
-const imports = cssFiles.map((file) => `@import url('./${file}');`).join('\n')
+imports += `\n${cssFiles.map((file) => `@import url('./${file}');`).join('\n')}`
 
 writeFileSync(
-  outputFile,
-  `/**
+	outputFile,
+	`/**
  * --------------------------------------------------------------------
  * THIS FILE IS AUTO-GENERATED — DO NOT EDIT IT DIRECTLY!
  *

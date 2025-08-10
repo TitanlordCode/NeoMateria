@@ -18,8 +18,10 @@ const meta: Meta<typeof Button> = {
 	},
 	args: {
 		label: 'Click me',
-		size: 'medium',
+		size: 'small',
+		color: 'grey',
 		disabled: false,
+		rounded: false,
 		onClick: fn(),
 	},
 }
@@ -38,6 +40,22 @@ export const Disabled: Story = {
 	args: {
 		label: 'Disabled Button',
 		disabled: true,
+	},
+}
+
+export const Colored: Story = {
+	render: (args) => {
+		return (
+			<div style={{ display: 'flex', flexFlow: 'wrap', maxInlineSize: '100%' }}>
+				{colors.map((color, index) => {
+					return (
+						<div style={{ padding: '8px' }}>
+							<Button key={index} {...args} color={color} />
+						</div>
+					)
+				})}
+			</div>
+		)
 	},
 }
 

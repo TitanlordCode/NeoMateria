@@ -3,12 +3,14 @@
 import { computed, useAttrs } from 'vue'
 import type { ButtonSize } from './ButtonTypes'
 import type { Color } from '@/assets/typescript/colors'
+import { getClassNames } from '@/utils/classNames'
 
 export interface ButtonProps {
 	label: string
 	size: ButtonSize
 	color: Color
 	disabled?: boolean
+	rounded?: boolean
 }
 
 const props = defineProps<ButtonProps>()
@@ -26,16 +28,12 @@ const handleClick = (event: MouseEvent) => {
 	}
 }
 
-const classes = computed(() => {
-	const updatedClasses = ['Button']
-	const color: Color = props.color ?? 'grey'
-	const size: ButtonProps['size'] = props.size ?? 'small'
-
-	updatedClasses.push(`Button--${color}`)
-	updatedClasses.push(`Button--${size}`)
-
-	return updatedClasses.join(' ')
-})
+const classes = computed(() =>
+	getClassNames({
+		component: 'Button',
+		modifiers: [props.color ?? 'grey', props.size ?? 'small', props.rounded ? 'rounded' : ''],
+	}),
+)
 </script>
 
 <template>
@@ -55,7 +53,20 @@ const classes = computed(() => {
 .Button {
 	background-color: var(--Button-color-background);
 	border: none;
+	border-radius: var(--Button-sizing-border);
 	color: var(--Button-color-text);
+	font-size: var(--neo-fontSize-base);
 	font-weight: 600;
+	min-block-size: var(--Button-sizing-inline);
+	padding-block: var(--Button-sizing-padding);
+	padding-inline: var(--Button-sizing-padding);
+
+	&:hover {
+		cursor: pointer;
+	}
+
+	&:disabled {
+		opacity: 0.6;
+	}
 }
 </style>

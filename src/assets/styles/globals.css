@@ -9,4 +9,6 @@
  * The script is automatically triggered by the pre-flight script
  * --------------------------------------------------------------------
  */
+@import url('./mixins/breakpoints.css');
 @import url('./colors.css');
+@import url('./fontSizes.css');

@@ -1,0 +1,40 @@
+:root {
+	--neo-fontSize-xs: 12px;
+	--neo-fontSize-sm: 14px;
+	--neo-fontSize-md: 16px;
+	--neo-fontSize-lg: 18px;
+	--neo-fontSize-xl: 20px;
+	--neo-fontSize-base: var(--neo-fontSize-md);
+
+	@mixin bp-sm {
+		--neo-fontSize-xs: 14px;
+		--neo-fontSize-sm: 16px;
+		--neo-fontSize-md: 18px;
+		--neo-fontSize-lg: 20px;
+		--neo-fontSize-xl: 24px;
+	}
+
+	@mixin bp-md {
+		--neo-fontSize-xs: 14px;
+		--neo-fontSize-sm: 16px;
+		--neo-fontSize-md: 18px;
+		--neo-fontSize-lg: 24px;
+		--neo-fontSize-xl: 28px;
+	}
+
+	@mixin bp-lg {
+		--neo-fontSize-xs: 14px;
+		--neo-fontSize-sm: 16px;
+		--neo-fontSize-md: 18px;
+		--neo-fontSize-lg: 28px;
+		--neo-fontSize-xl: 32px;
+	}
+
+	@mixin bp-xl {
+		--neo-fontSize-xs: 16px;
+		--neo-fontSize-sm: 18px;
+		--neo-fontSize-md: 20px;
+		--neo-fontSize-lg: 32px;
+		--neo-fontSize-xl: 36px;
+	}
+}
