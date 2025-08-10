@@ -1,4 +1,19 @@
-FROM neo-materia-base:latest
+FROM node:20-alpine
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm ci
+
+COPY . .
+
+RUN npm run type-check
+
+RUN npm run lint:fix
+
+RUN npm run stylelint:css
+
+RUN npm run prettier:fix
 
 EXPOSE 3000
 CMD ["npm", "run", "storybook"]

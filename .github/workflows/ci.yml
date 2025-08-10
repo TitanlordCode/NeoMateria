@@ -34,11 +34,14 @@ jobs:
       - name: ✅ Type check
         run: npm run type-check
 
-      - name: 🧹 Lint
-        run: npm run lint
+      - name: 🧹 EsLint
+        run: npm run lint:fix
+
+      - name: 👔 StyleLint
+        run: npm run stylelint:css
 
       - name: 🎯 Format check
-        run: npx prettier --check src/
+        run: npm run prettier:check
 
       - name: 🧱 Build Storybook
         run: npm run build-storybook

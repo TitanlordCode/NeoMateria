@@ -12,6 +12,14 @@
 npm install
 ```
 
+### Update Storybook docs
+
+Don't forget to run the following command after updating the docs in docs folder:
+
+```sh
+generate:files
+```
+
 ### Compile and Hot-Reload for Development
 
 ```sh
