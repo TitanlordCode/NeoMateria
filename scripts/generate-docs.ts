@@ -2,24 +2,24 @@ import { readdirSync, writeFileSync, mkdirSync } from 'node:fs'
 import { join, extname, basename } from 'node:path'
 
 const docsDir = join(process.cwd(), 'docs') // your docs folder
-const outputDir = './src/components/00-foundations' // or specify another folder if you want
+const outputDir = './src/components/docs' // or specify another folder if you want
 
 mkdirSync(outputDir, { recursive: true })
 
 const files = readdirSync(docsDir)
 
 files.forEach((file) => {
-  if (basename(file, '.md') === 'colors') {
-    return
-  }
-  if (extname(file) === '.md') {
-    const name = basename(file, '.md')
-      .split('_')
-      .map((namePart) => namePart)
-      .join(' ')
+	if (basename(file, '.md') === 'colors') {
+		return
+	}
+	if (extname(file) === '.md') {
+		const name = basename(file, '.md')
+			.split('_')
+			.map((namePart) => namePart)
+			.join(' ')
 
-    // Basic MDX wrapper for Storybook
-    const mdxContent = `
+		// Basic MDX wrapper for Storybook
+		const mdxContent = `
 import { Meta, Title, Subtitle, Markdown } from '@storybook/blocks'
 
 import content from '../../../docs/${file}?raw'
@@ -41,8 +41,8 @@ import content from '../../../docs/${file}?raw'
 <Markdown>{content}</Markdown>
 `.trim()
 
-    const mdxFilename = basename(file, '.md') + '.mdx'
-    writeFileSync(join(outputDir, mdxFilename), mdxContent)
-    console.log(`✅ Generated ${mdxFilename} from ${file}`)
-  }
+		const mdxFilename = basename(file, '.md') + '.mdx'
+		writeFileSync(join(outputDir, mdxFilename), mdxContent)
+		console.log(`✅ Generated ${mdxFilename} from ${file}`)
+	}
 })
