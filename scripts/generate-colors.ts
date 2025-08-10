@@ -3,6 +3,7 @@ import { mkdirSync, writeFileSync } from 'node:fs'
 import { runScript } from './utils/script-helper'
 import { toShortHex } from './utils/css-helper'
 import { dirname, join } from 'node:path'
+import { toPascalCase } from '../src/utils/helper'
 
 /**
  * Generate TS file
@@ -140,10 +141,11 @@ const rows = lines.slice(2) // skip table header + --- separator
 
 type ColorName = (typeof colorNames)[number]
 
-const dataByColorName: Record<ColorName, string[]> = Object.fromEntries(
-	colorNames.map((c) => [c, []]),
+const dataByColorName: Record<ColorName | 'special', string[]> = Object.fromEntries(
+	[...colorNames, 'special'].map((c) => [c, []]),
 ) as Record<ColorName, string[]>
 
+const specialColors: ColorName[] = ['white', 'black']
 // Build MDX table rows
 rows.forEach((line) => {
 	const data = line
@@ -152,15 +154,26 @@ rows.forEach((line) => {
 		.filter((value) => value)
 
 	console.log(data)
-	const [name, shade, value] = data
+	let name = data[0]
+	const value = data[2]
+
+	if (specialColors.includes(name)) {
+		name = 'special'
+	}
 
 	dataByColorName[name].push(`
 			<tr>
-				<td>${name}, ${shade}, ${value}</td>
+				<td>${value}</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: \`var(${value.replace(/`/g, '')})\`,
 						border: '1px solid #ccc'
 					}}/>
@@ -169,11 +182,13 @@ rows.forEach((line) => {
 		`)
 })
 
-const tables = Object.entries(dataByColorName).map(
-	([color, tableData]) => `
-<div>
-	<h2>${color}</h2>
-	<table>
+const tables = Object.entries(dataByColorName)
+	.filter(([colorName, tableData]) => tableData.length && !specialColors.includes(colorName))
+	.map(
+		([color, tableData]) => `
+<div style={{inlineSize: '100%'}}>
+	<h2>${toPascalCase(color)}</h2>
+	<table style={{inlineSize: '100%'}}>
 		<thead>
 			<tr>
 				<th>Name</th>
@@ -186,7 +201,7 @@ const tables = Object.entries(dataByColorName).map(
 	</table>
 </div>
 `,
-)
+	)
 
 const mdxContent = `
 import { Meta, Title, Subtitle } from '@storybook/blocks'
@@ -207,7 +222,7 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
  * --------------------------------------------------------------------
  */}
 
-<div style={{display: 'grid'}}>
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)'}}>
 	${tables.join('').replace(/\<\/table\>\n,/g, '<\/table\>')}
 </div>
 `

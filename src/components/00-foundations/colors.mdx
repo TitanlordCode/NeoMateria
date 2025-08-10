@@ -17,11 +17,11 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
  * --------------------------------------------------------------------
  */}
 
-<div style={{display: 'grid'}}>
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)'}}>
 	
-<div>
-	<h2>red</h2>
-	<table>
+<div style={{inlineSize: '100%'}}>
+	<h2>Red</h2>
+	<table style={{inlineSize: '100%'}}>
 		<thead>
 			<tr>
 				<th>Name</th>
@@ -31,11 +31,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 		<tbody>
 			
 			<tr>
-				<td>red, 50, `--neo-color-red-50`</td>
+				<td>`--neo-color-red-50`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-red-50)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -43,11 +49,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>red, 100, `--neo-color-red-100`</td>
+				<td>`--neo-color-red-100`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-red-100)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -55,11 +67,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>red, 200, `--neo-color-red-200`</td>
+				<td>`--neo-color-red-200`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-red-200)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -67,11 +85,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>red, 300, `--neo-color-red-300`</td>
+				<td>`--neo-color-red-300`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-red-300)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -79,11 +103,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>red, 400, `--neo-color-red-400`</td>
+				<td>`--neo-color-red-400`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-red-400)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -91,11 +121,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>red, 500, `--neo-color-red-500`</td>
+				<td>`--neo-color-red-500`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-red-500)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -103,11 +139,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>red, 600, `--neo-color-red-600`</td>
+				<td>`--neo-color-red-600`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-red-600)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -115,11 +157,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>red, 700, `--neo-color-red-700`</td>
+				<td>`--neo-color-red-700`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-red-700)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -127,11 +175,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>red, 800, `--neo-color-red-800`</td>
+				<td>`--neo-color-red-800`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-red-800)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -139,11 +193,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>red, 900, `--neo-color-red-900`</td>
+				<td>`--neo-color-red-900`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-red-900)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -154,9 +214,9 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 	</table>
 </div>
 
-<div>
-	<h2>pink</h2>
-	<table>
+<div style={{inlineSize: '100%'}}>
+	<h2>Pink</h2>
+	<table style={{inlineSize: '100%'}}>
 		<thead>
 			<tr>
 				<th>Name</th>
@@ -166,11 +226,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 		<tbody>
 			
 			<tr>
-				<td>pink, 50, `--neo-color-pink-50`</td>
+				<td>`--neo-color-pink-50`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-pink-50)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -178,11 +244,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>pink, 100, `--neo-color-pink-100`</td>
+				<td>`--neo-color-pink-100`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-pink-100)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -190,11 +262,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>pink, 200, `--neo-color-pink-200`</td>
+				<td>`--neo-color-pink-200`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-pink-200)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -202,11 +280,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>pink, 300, `--neo-color-pink-300`</td>
+				<td>`--neo-color-pink-300`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-pink-300)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -214,11 +298,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>pink, 400, `--neo-color-pink-400`</td>
+				<td>`--neo-color-pink-400`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-pink-400)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -226,11 +316,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>pink, 500, `--neo-color-pink-500`</td>
+				<td>`--neo-color-pink-500`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-pink-500)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -238,11 +334,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>pink, 600, `--neo-color-pink-600`</td>
+				<td>`--neo-color-pink-600`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-pink-600)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -250,11 +352,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>pink, 700, `--neo-color-pink-700`</td>
+				<td>`--neo-color-pink-700`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-pink-700)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -262,11 +370,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>pink, 800, `--neo-color-pink-800`</td>
+				<td>`--neo-color-pink-800`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-pink-800)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -274,11 +388,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>pink, 900, `--neo-color-pink-900`</td>
+				<td>`--neo-color-pink-900`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-pink-900)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -289,9 +409,9 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 	</table>
 </div>
 
-<div>
-	<h2>purple</h2>
-	<table>
+<div style={{inlineSize: '100%'}}>
+	<h2>Purple</h2>
+	<table style={{inlineSize: '100%'}}>
 		<thead>
 			<tr>
 				<th>Name</th>
@@ -301,11 +421,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 		<tbody>
 			
 			<tr>
-				<td>purple, 50, `--neo-color-purple-50`</td>
+				<td>`--neo-color-purple-50`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-purple-50)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -313,11 +439,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>purple, 100, `--neo-color-purple-100`</td>
+				<td>`--neo-color-purple-100`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-purple-100)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -325,11 +457,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>purple, 200, `--neo-color-purple-200`</td>
+				<td>`--neo-color-purple-200`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-purple-200)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -337,11 +475,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>purple, 300, `--neo-color-purple-300`</td>
+				<td>`--neo-color-purple-300`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-purple-300)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -349,11 +493,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>purple, 400, `--neo-color-purple-400`</td>
+				<td>`--neo-color-purple-400`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-purple-400)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -361,11 +511,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>purple, 500, `--neo-color-purple-500`</td>
+				<td>`--neo-color-purple-500`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-purple-500)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -373,11 +529,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>purple, 600, `--neo-color-purple-600`</td>
+				<td>`--neo-color-purple-600`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-purple-600)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -385,11 +547,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>purple, 700, `--neo-color-purple-700`</td>
+				<td>`--neo-color-purple-700`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-purple-700)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -397,11 +565,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>purple, 800, `--neo-color-purple-800`</td>
+				<td>`--neo-color-purple-800`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-purple-800)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -409,11 +583,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>purple, 900, `--neo-color-purple-900`</td>
+				<td>`--neo-color-purple-900`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-purple-900)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -424,9 +604,9 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 	</table>
 </div>
 
-<div>
-	<h2>deepPurple</h2>
-	<table>
+<div style={{inlineSize: '100%'}}>
+	<h2>DeepPurple</h2>
+	<table style={{inlineSize: '100%'}}>
 		<thead>
 			<tr>
 				<th>Name</th>
@@ -436,11 +616,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 		<tbody>
 			
 			<tr>
-				<td>deepPurple, 50, `--neo-color-deepPurple-50`</td>
+				<td>`--neo-color-deepPurple-50`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-deepPurple-50)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -448,11 +634,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>deepPurple, 100, `--neo-color-deepPurple-100`</td>
+				<td>`--neo-color-deepPurple-100`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-deepPurple-100)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -460,11 +652,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>deepPurple, 200, `--neo-color-deepPurple-200`</td>
+				<td>`--neo-color-deepPurple-200`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-deepPurple-200)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -472,11 +670,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>deepPurple, 300, `--neo-color-deepPurple-300`</td>
+				<td>`--neo-color-deepPurple-300`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-deepPurple-300)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -484,11 +688,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>deepPurple, 400, `--neo-color-deepPurple-400`</td>
+				<td>`--neo-color-deepPurple-400`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-deepPurple-400)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -496,11 +706,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>deepPurple, 500, `--neo-color-deepPurple-500`</td>
+				<td>`--neo-color-deepPurple-500`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-deepPurple-500)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -508,11 +724,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>deepPurple, 600, `--neo-color-deepPurple-600`</td>
+				<td>`--neo-color-deepPurple-600`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-deepPurple-600)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -520,11 +742,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>deepPurple, 700, `--neo-color-deepPurple-700`</td>
+				<td>`--neo-color-deepPurple-700`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-deepPurple-700)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -532,11 +760,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>deepPurple, 800, `--neo-color-deepPurple-800`</td>
+				<td>`--neo-color-deepPurple-800`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-deepPurple-800)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -544,11 +778,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>deepPurple, 900, `--neo-color-deepPurple-900`</td>
+				<td>`--neo-color-deepPurple-900`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-deepPurple-900)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -559,9 +799,9 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 	</table>
 </div>
 
-<div>
-	<h2>indigo</h2>
-	<table>
+<div style={{inlineSize: '100%'}}>
+	<h2>Indigo</h2>
+	<table style={{inlineSize: '100%'}}>
 		<thead>
 			<tr>
 				<th>Name</th>
@@ -571,11 +811,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 		<tbody>
 			
 			<tr>
-				<td>indigo, 50, `--neo-color-indigo-50`</td>
+				<td>`--neo-color-indigo-50`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-indigo-50)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -583,11 +829,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>indigo, 100, `--neo-color-indigo-100`</td>
+				<td>`--neo-color-indigo-100`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-indigo-100)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -595,11 +847,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>indigo, 200, `--neo-color-indigo-200`</td>
+				<td>`--neo-color-indigo-200`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-indigo-200)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -607,11 +865,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>indigo, 300, `--neo-color-indigo-300`</td>
+				<td>`--neo-color-indigo-300`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-indigo-300)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -619,11 +883,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>indigo, 400, `--neo-color-indigo-400`</td>
+				<td>`--neo-color-indigo-400`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-indigo-400)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -631,11 +901,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>indigo, 500, `--neo-color-indigo-500`</td>
+				<td>`--neo-color-indigo-500`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-indigo-500)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -643,11 +919,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>indigo, 600, `--neo-color-indigo-600`</td>
+				<td>`--neo-color-indigo-600`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-indigo-600)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -655,11 +937,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>indigo, 700, `--neo-color-indigo-700`</td>
+				<td>`--neo-color-indigo-700`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-indigo-700)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -667,11 +955,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>indigo, 800, `--neo-color-indigo-800`</td>
+				<td>`--neo-color-indigo-800`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-indigo-800)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -679,11 +973,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>indigo, 900, `--neo-color-indigo-900`</td>
+				<td>`--neo-color-indigo-900`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-indigo-900)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -694,9 +994,9 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 	</table>
 </div>
 
-<div>
-	<h2>blue</h2>
-	<table>
+<div style={{inlineSize: '100%'}}>
+	<h2>Blue</h2>
+	<table style={{inlineSize: '100%'}}>
 		<thead>
 			<tr>
 				<th>Name</th>
@@ -706,11 +1006,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 		<tbody>
 			
 			<tr>
-				<td>blue, 50, `--neo-color-blue-50`</td>
+				<td>`--neo-color-blue-50`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-blue-50)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -718,11 +1024,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>blue, 100, `--neo-color-blue-100`</td>
+				<td>`--neo-color-blue-100`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-blue-100)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -730,11 +1042,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>blue, 200, `--neo-color-blue-200`</td>
+				<td>`--neo-color-blue-200`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-blue-200)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -742,11 +1060,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>blue, 300, `--neo-color-blue-300`</td>
+				<td>`--neo-color-blue-300`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-blue-300)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -754,11 +1078,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>blue, 400, `--neo-color-blue-400`</td>
+				<td>`--neo-color-blue-400`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-blue-400)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -766,11 +1096,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>blue, 500, `--neo-color-blue-500`</td>
+				<td>`--neo-color-blue-500`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-blue-500)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -778,11 +1114,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>blue, 600, `--neo-color-blue-600`</td>
+				<td>`--neo-color-blue-600`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-blue-600)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -790,11 +1132,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>blue, 700, `--neo-color-blue-700`</td>
+				<td>`--neo-color-blue-700`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-blue-700)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -802,11 +1150,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>blue, 800, `--neo-color-blue-800`</td>
+				<td>`--neo-color-blue-800`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-blue-800)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -814,11 +1168,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>blue, 900, `--neo-color-blue-900`</td>
+				<td>`--neo-color-blue-900`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-blue-900)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -829,9 +1189,9 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 	</table>
 </div>
 
-<div>
-	<h2>lightBlue</h2>
-	<table>
+<div style={{inlineSize: '100%'}}>
+	<h2>LightBlue</h2>
+	<table style={{inlineSize: '100%'}}>
 		<thead>
 			<tr>
 				<th>Name</th>
@@ -841,11 +1201,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 		<tbody>
 			
 			<tr>
-				<td>lightBlue, 50, `--neo-color-lightBlue-50`</td>
+				<td>`--neo-color-lightBlue-50`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-lightBlue-50)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -853,11 +1219,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>lightBlue, 100, `--neo-color-lightBlue-100`</td>
+				<td>`--neo-color-lightBlue-100`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-lightBlue-100)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -865,11 +1237,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>lightBlue, 200, `--neo-color-lightBlue-200`</td>
+				<td>`--neo-color-lightBlue-200`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-lightBlue-200)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -877,11 +1255,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>lightBlue, 300, `--neo-color-lightBlue-300`</td>
+				<td>`--neo-color-lightBlue-300`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-lightBlue-300)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -889,11 +1273,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>lightBlue, 400, `--neo-color-lightBlue-400`</td>
+				<td>`--neo-color-lightBlue-400`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-lightBlue-400)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -901,11 +1291,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>lightBlue, 500, `--neo-color-lightBlue-500`</td>
+				<td>`--neo-color-lightBlue-500`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-lightBlue-500)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -913,11 +1309,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>lightBlue, 600, `--neo-color-lightBlue-600`</td>
+				<td>`--neo-color-lightBlue-600`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-lightBlue-600)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -925,11 +1327,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>lightBlue, 700, `--neo-color-lightBlue-700`</td>
+				<td>`--neo-color-lightBlue-700`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-lightBlue-700)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -937,11 +1345,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>lightBlue, 800, `--neo-color-lightBlue-800`</td>
+				<td>`--neo-color-lightBlue-800`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-lightBlue-800)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -949,11 +1363,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>lightBlue, 900, `--neo-color-lightBlue-900`</td>
+				<td>`--neo-color-lightBlue-900`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-lightBlue-900)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -964,9 +1384,9 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 	</table>
 </div>
 
-<div>
-	<h2>cyan</h2>
-	<table>
+<div style={{inlineSize: '100%'}}>
+	<h2>Cyan</h2>
+	<table style={{inlineSize: '100%'}}>
 		<thead>
 			<tr>
 				<th>Name</th>
@@ -976,11 +1396,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 		<tbody>
 			
 			<tr>
-				<td>cyan, 50, `--neo-color-cyan-50`</td>
+				<td>`--neo-color-cyan-50`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-cyan-50)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -988,11 +1414,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>cyan, 100, `--neo-color-cyan-100`</td>
+				<td>`--neo-color-cyan-100`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-cyan-100)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1000,11 +1432,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>cyan, 200, `--neo-color-cyan-200`</td>
+				<td>`--neo-color-cyan-200`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-cyan-200)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1012,11 +1450,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>cyan, 300, `--neo-color-cyan-300`</td>
+				<td>`--neo-color-cyan-300`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-cyan-300)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1024,11 +1468,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>cyan, 400, `--neo-color-cyan-400`</td>
+				<td>`--neo-color-cyan-400`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-cyan-400)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1036,11 +1486,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>cyan, 500, `--neo-color-cyan-500`</td>
+				<td>`--neo-color-cyan-500`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-cyan-500)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1048,11 +1504,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>cyan, 600, `--neo-color-cyan-600`</td>
+				<td>`--neo-color-cyan-600`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-cyan-600)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1060,11 +1522,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>cyan, 700, `--neo-color-cyan-700`</td>
+				<td>`--neo-color-cyan-700`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-cyan-700)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1072,11 +1540,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>cyan, 800, `--neo-color-cyan-800`</td>
+				<td>`--neo-color-cyan-800`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-cyan-800)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1084,11 +1558,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>cyan, 900, `--neo-color-cyan-900`</td>
+				<td>`--neo-color-cyan-900`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-cyan-900)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1099,9 +1579,9 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 	</table>
 </div>
 
-<div>
-	<h2>teal</h2>
-	<table>
+<div style={{inlineSize: '100%'}}>
+	<h2>Teal</h2>
+	<table style={{inlineSize: '100%'}}>
 		<thead>
 			<tr>
 				<th>Name</th>
@@ -1111,11 +1591,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 		<tbody>
 			
 			<tr>
-				<td>teal, 50, `--neo-color-teal-50`</td>
+				<td>`--neo-color-teal-50`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-teal-50)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1123,11 +1609,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>teal, 100, `--neo-color-teal-100`</td>
+				<td>`--neo-color-teal-100`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-teal-100)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1135,11 +1627,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>teal, 200, `--neo-color-teal-200`</td>
+				<td>`--neo-color-teal-200`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-teal-200)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1147,11 +1645,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>teal, 300, `--neo-color-teal-300`</td>
+				<td>`--neo-color-teal-300`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-teal-300)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1159,11 +1663,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>teal, 400, `--neo-color-teal-400`</td>
+				<td>`--neo-color-teal-400`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-teal-400)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1171,11 +1681,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>teal, 500, `--neo-color-teal-500`</td>
+				<td>`--neo-color-teal-500`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-teal-500)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1183,11 +1699,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>teal, 600, `--neo-color-teal-600`</td>
+				<td>`--neo-color-teal-600`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-teal-600)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1195,11 +1717,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>teal, 700, `--neo-color-teal-700`</td>
+				<td>`--neo-color-teal-700`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-teal-700)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1207,11 +1735,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>teal, 800, `--neo-color-teal-800`</td>
+				<td>`--neo-color-teal-800`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-teal-800)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1219,11 +1753,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>teal, 900, `--neo-color-teal-900`</td>
+				<td>`--neo-color-teal-900`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-teal-900)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1234,9 +1774,9 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 	</table>
 </div>
 
-<div>
-	<h2>green</h2>
-	<table>
+<div style={{inlineSize: '100%'}}>
+	<h2>Green</h2>
+	<table style={{inlineSize: '100%'}}>
 		<thead>
 			<tr>
 				<th>Name</th>
@@ -1246,11 +1786,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 		<tbody>
 			
 			<tr>
-				<td>green, 50, `--neo-color-green-50`</td>
+				<td>`--neo-color-green-50`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-green-50)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1258,11 +1804,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>green, 100, `--neo-color-green-100`</td>
+				<td>`--neo-color-green-100`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-green-100)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1270,11 +1822,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>green, 200, `--neo-color-green-200`</td>
+				<td>`--neo-color-green-200`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-green-200)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1282,11 +1840,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>green, 300, `--neo-color-green-300`</td>
+				<td>`--neo-color-green-300`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-green-300)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1294,11 +1858,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>green, 400, `--neo-color-green-400`</td>
+				<td>`--neo-color-green-400`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-green-400)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1306,11 +1876,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>green, 500, `--neo-color-green-500`</td>
+				<td>`--neo-color-green-500`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-green-500)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1318,11 +1894,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>green, 600, `--neo-color-green-600`</td>
+				<td>`--neo-color-green-600`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-green-600)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1330,11 +1912,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>green, 700, `--neo-color-green-700`</td>
+				<td>`--neo-color-green-700`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-green-700)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1342,11 +1930,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>green, 800, `--neo-color-green-800`</td>
+				<td>`--neo-color-green-800`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-green-800)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1354,11 +1948,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>green, 900, `--neo-color-green-900`</td>
+				<td>`--neo-color-green-900`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-green-900)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1369,9 +1969,9 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 	</table>
 </div>
 
-<div>
-	<h2>lightGreen</h2>
-	<table>
+<div style={{inlineSize: '100%'}}>
+	<h2>LightGreen</h2>
+	<table style={{inlineSize: '100%'}}>
 		<thead>
 			<tr>
 				<th>Name</th>
@@ -1381,11 +1981,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 		<tbody>
 			
 			<tr>
-				<td>lightGreen, 50, `--neo-color-lightGreen-50`</td>
+				<td>`--neo-color-lightGreen-50`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-lightGreen-50)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1393,11 +1999,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>lightGreen, 100, `--neo-color-lightGreen-100`</td>
+				<td>`--neo-color-lightGreen-100`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-lightGreen-100)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1405,11 +2017,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>lightGreen, 200, `--neo-color-lightGreen-200`</td>
+				<td>`--neo-color-lightGreen-200`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-lightGreen-200)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1417,11 +2035,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>lightGreen, 300, `--neo-color-lightGreen-300`</td>
+				<td>`--neo-color-lightGreen-300`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-lightGreen-300)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1429,11 +2053,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>lightGreen, 400, `--neo-color-lightGreen-400`</td>
+				<td>`--neo-color-lightGreen-400`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-lightGreen-400)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1441,11 +2071,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>lightGreen, 500, `--neo-color-lightGreen-500`</td>
+				<td>`--neo-color-lightGreen-500`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-lightGreen-500)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1453,11 +2089,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>lightGreen, 600, `--neo-color-lightGreen-600`</td>
+				<td>`--neo-color-lightGreen-600`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-lightGreen-600)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1465,11 +2107,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>lightGreen, 700, `--neo-color-lightGreen-700`</td>
+				<td>`--neo-color-lightGreen-700`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-lightGreen-700)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1477,11 +2125,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>lightGreen, 800, `--neo-color-lightGreen-800`</td>
+				<td>`--neo-color-lightGreen-800`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-lightGreen-800)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1489,11 +2143,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>lightGreen, 900, `--neo-color-lightGreen-900`</td>
+				<td>`--neo-color-lightGreen-900`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-lightGreen-900)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1504,9 +2164,9 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 	</table>
 </div>
 
-<div>
-	<h2>lime</h2>
-	<table>
+<div style={{inlineSize: '100%'}}>
+	<h2>Lime</h2>
+	<table style={{inlineSize: '100%'}}>
 		<thead>
 			<tr>
 				<th>Name</th>
@@ -1516,11 +2176,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 		<tbody>
 			
 			<tr>
-				<td>lime, 50, `--neo-color-lime-50`</td>
+				<td>`--neo-color-lime-50`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-lime-50)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1528,11 +2194,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>lime, 100, `--neo-color-lime-100`</td>
+				<td>`--neo-color-lime-100`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-lime-100)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1540,11 +2212,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>lime, 200, `--neo-color-lime-200`</td>
+				<td>`--neo-color-lime-200`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-lime-200)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1552,11 +2230,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>lime, 300, `--neo-color-lime-300`</td>
+				<td>`--neo-color-lime-300`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-lime-300)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1564,11 +2248,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>lime, 400, `--neo-color-lime-400`</td>
+				<td>`--neo-color-lime-400`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-lime-400)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1576,11 +2266,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>lime, 500, `--neo-color-lime-500`</td>
+				<td>`--neo-color-lime-500`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-lime-500)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1588,11 +2284,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>lime, 600, `--neo-color-lime-600`</td>
+				<td>`--neo-color-lime-600`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-lime-600)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1600,11 +2302,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>lime, 700, `--neo-color-lime-700`</td>
+				<td>`--neo-color-lime-700`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-lime-700)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1612,11 +2320,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>lime, 800, `--neo-color-lime-800`</td>
+				<td>`--neo-color-lime-800`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-lime-800)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1624,11 +2338,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>lime, 900, `--neo-color-lime-900`</td>
+				<td>`--neo-color-lime-900`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-lime-900)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1639,9 +2359,9 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 	</table>
 </div>
 
-<div>
-	<h2>yellow</h2>
-	<table>
+<div style={{inlineSize: '100%'}}>
+	<h2>Yellow</h2>
+	<table style={{inlineSize: '100%'}}>
 		<thead>
 			<tr>
 				<th>Name</th>
@@ -1651,11 +2371,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 		<tbody>
 			
 			<tr>
-				<td>yellow, 50, `--neo-color-yellow-50`</td>
+				<td>`--neo-color-yellow-50`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-yellow-50)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1663,11 +2389,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>yellow, 100, `--neo-color-yellow-100`</td>
+				<td>`--neo-color-yellow-100`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-yellow-100)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1675,11 +2407,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>yellow, 200, `--neo-color-yellow-200`</td>
+				<td>`--neo-color-yellow-200`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-yellow-200)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1687,11 +2425,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>yellow, 300, `--neo-color-yellow-300`</td>
+				<td>`--neo-color-yellow-300`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-yellow-300)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1699,11 +2443,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>yellow, 400, `--neo-color-yellow-400`</td>
+				<td>`--neo-color-yellow-400`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-yellow-400)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1711,11 +2461,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>yellow, 500, `--neo-color-yellow-500`</td>
+				<td>`--neo-color-yellow-500`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-yellow-500)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1723,11 +2479,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>yellow, 600, `--neo-color-yellow-600`</td>
+				<td>`--neo-color-yellow-600`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-yellow-600)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1735,11 +2497,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>yellow, 700, `--neo-color-yellow-700`</td>
+				<td>`--neo-color-yellow-700`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-yellow-700)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1747,11 +2515,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>yellow, 800, `--neo-color-yellow-800`</td>
+				<td>`--neo-color-yellow-800`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-yellow-800)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1759,11 +2533,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>yellow, 900, `--neo-color-yellow-900`</td>
+				<td>`--neo-color-yellow-900`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-yellow-900)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1774,9 +2554,9 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 	</table>
 </div>
 
-<div>
-	<h2>amber</h2>
-	<table>
+<div style={{inlineSize: '100%'}}>
+	<h2>Amber</h2>
+	<table style={{inlineSize: '100%'}}>
 		<thead>
 			<tr>
 				<th>Name</th>
@@ -1786,11 +2566,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 		<tbody>
 			
 			<tr>
-				<td>amber, 50, `--neo-color-amber-50`</td>
+				<td>`--neo-color-amber-50`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-amber-50)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1798,11 +2584,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>amber, 100, `--neo-color-amber-100`</td>
+				<td>`--neo-color-amber-100`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-amber-100)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1810,11 +2602,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>amber, 200, `--neo-color-amber-200`</td>
+				<td>`--neo-color-amber-200`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-amber-200)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1822,11 +2620,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>amber, 300, `--neo-color-amber-300`</td>
+				<td>`--neo-color-amber-300`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-amber-300)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1834,11 +2638,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>amber, 400, `--neo-color-amber-400`</td>
+				<td>`--neo-color-amber-400`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-amber-400)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1846,11 +2656,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>amber, 500, `--neo-color-amber-500`</td>
+				<td>`--neo-color-amber-500`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-amber-500)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1858,11 +2674,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>amber, 600, `--neo-color-amber-600`</td>
+				<td>`--neo-color-amber-600`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-amber-600)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1870,11 +2692,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>amber, 700, `--neo-color-amber-700`</td>
+				<td>`--neo-color-amber-700`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-amber-700)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1882,11 +2710,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>amber, 800, `--neo-color-amber-800`</td>
+				<td>`--neo-color-amber-800`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-amber-800)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1894,11 +2728,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>amber, 900, `--neo-color-amber-900`</td>
+				<td>`--neo-color-amber-900`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-amber-900)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1909,9 +2749,9 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 	</table>
 </div>
 
-<div>
-	<h2>orange</h2>
-	<table>
+<div style={{inlineSize: '100%'}}>
+	<h2>Orange</h2>
+	<table style={{inlineSize: '100%'}}>
 		<thead>
 			<tr>
 				<th>Name</th>
@@ -1921,11 +2761,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 		<tbody>
 			
 			<tr>
-				<td>orange, 50, `--neo-color-orange-50`</td>
+				<td>`--neo-color-orange-50`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-orange-50)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1933,11 +2779,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>orange, 100, `--neo-color-orange-100`</td>
+				<td>`--neo-color-orange-100`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-orange-100)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1945,11 +2797,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>orange, 200, `--neo-color-orange-200`</td>
+				<td>`--neo-color-orange-200`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-orange-200)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1957,11 +2815,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>orange, 300, `--neo-color-orange-300`</td>
+				<td>`--neo-color-orange-300`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-orange-300)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1969,11 +2833,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>orange, 400, `--neo-color-orange-400`</td>
+				<td>`--neo-color-orange-400`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-orange-400)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1981,11 +2851,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>orange, 500, `--neo-color-orange-500`</td>
+				<td>`--neo-color-orange-500`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-orange-500)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -1993,11 +2869,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>orange, 600, `--neo-color-orange-600`</td>
+				<td>`--neo-color-orange-600`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-orange-600)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -2005,11 +2887,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>orange, 700, `--neo-color-orange-700`</td>
+				<td>`--neo-color-orange-700`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-orange-700)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -2017,11 +2905,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>orange, 800, `--neo-color-orange-800`</td>
+				<td>`--neo-color-orange-800`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-orange-800)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -2029,11 +2923,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>orange, 900, `--neo-color-orange-900`</td>
+				<td>`--neo-color-orange-900`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-orange-900)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -2044,9 +2944,9 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 	</table>
 </div>
 
-<div>
-	<h2>deepOrange</h2>
-	<table>
+<div style={{inlineSize: '100%'}}>
+	<h2>DeepOrange</h2>
+	<table style={{inlineSize: '100%'}}>
 		<thead>
 			<tr>
 				<th>Name</th>
@@ -2056,11 +2956,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 		<tbody>
 			
 			<tr>
-				<td>deepOrange, 50, `--neo-color-deepOrange-50`</td>
+				<td>`--neo-color-deepOrange-50`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-deepOrange-50)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -2068,11 +2974,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>deepOrange, 100, `--neo-color-deepOrange-100`</td>
+				<td>`--neo-color-deepOrange-100`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-deepOrange-100)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -2080,11 +2992,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>deepOrange, 200, `--neo-color-deepOrange-200`</td>
+				<td>`--neo-color-deepOrange-200`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-deepOrange-200)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -2092,11 +3010,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>deepOrange, 300, `--neo-color-deepOrange-300`</td>
+				<td>`--neo-color-deepOrange-300`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-deepOrange-300)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -2104,11 +3028,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>deepOrange, 400, `--neo-color-deepOrange-400`</td>
+				<td>`--neo-color-deepOrange-400`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-deepOrange-400)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -2116,11 +3046,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>deepOrange, 500, `--neo-color-deepOrange-500`</td>
+				<td>`--neo-color-deepOrange-500`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-deepOrange-500)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -2128,11 +3064,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>deepOrange, 600, `--neo-color-deepOrange-600`</td>
+				<td>`--neo-color-deepOrange-600`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-deepOrange-600)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -2140,11 +3082,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>deepOrange, 700, `--neo-color-deepOrange-700`</td>
+				<td>`--neo-color-deepOrange-700`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-deepOrange-700)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -2152,11 +3100,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>deepOrange, 800, `--neo-color-deepOrange-800`</td>
+				<td>`--neo-color-deepOrange-800`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-deepOrange-800)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -2164,11 +3118,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>deepOrange, 900, `--neo-color-deepOrange-900`</td>
+				<td>`--neo-color-deepOrange-900`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-deepOrange-900)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -2179,9 +3139,9 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 	</table>
 </div>
 
-<div>
-	<h2>brown</h2>
-	<table>
+<div style={{inlineSize: '100%'}}>
+	<h2>Brown</h2>
+	<table style={{inlineSize: '100%'}}>
 		<thead>
 			<tr>
 				<th>Name</th>
@@ -2191,11 +3151,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 		<tbody>
 			
 			<tr>
-				<td>brown, 50, `--neo-color-brown-50`</td>
+				<td>`--neo-color-brown-50`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-brown-50)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -2203,11 +3169,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>brown, 100, `--neo-color-brown-100`</td>
+				<td>`--neo-color-brown-100`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-brown-100)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -2215,11 +3187,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>brown, 200, `--neo-color-brown-200`</td>
+				<td>`--neo-color-brown-200`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-brown-200)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -2227,11 +3205,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>brown, 300, `--neo-color-brown-300`</td>
+				<td>`--neo-color-brown-300`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-brown-300)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -2239,11 +3223,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>brown, 400, `--neo-color-brown-400`</td>
+				<td>`--neo-color-brown-400`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-brown-400)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -2251,11 +3241,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>brown, 500, `--neo-color-brown-500`</td>
+				<td>`--neo-color-brown-500`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-brown-500)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -2263,11 +3259,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>brown, 600, `--neo-color-brown-600`</td>
+				<td>`--neo-color-brown-600`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-brown-600)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -2275,11 +3277,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>brown, 700, `--neo-color-brown-700`</td>
+				<td>`--neo-color-brown-700`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-brown-700)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -2287,11 +3295,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>brown, 800, `--neo-color-brown-800`</td>
+				<td>`--neo-color-brown-800`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-brown-800)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -2299,11 +3313,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>brown, 900, `--neo-color-brown-900`</td>
+				<td>`--neo-color-brown-900`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-brown-900)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -2314,9 +3334,9 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 	</table>
 </div>
 
-<div>
-	<h2>grey</h2>
-	<table>
+<div style={{inlineSize: '100%'}}>
+	<h2>Grey</h2>
+	<table style={{inlineSize: '100%'}}>
 		<thead>
 			<tr>
 				<th>Name</th>
@@ -2326,11 +3346,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 		<tbody>
 			
 			<tr>
-				<td>grey, 50, `--neo-color-grey-50`</td>
+				<td>`--neo-color-grey-50`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-grey-50)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -2338,11 +3364,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>grey, 100, `--neo-color-grey-100`</td>
+				<td>`--neo-color-grey-100`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-grey-100)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -2350,11 +3382,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>grey, 200, `--neo-color-grey-200`</td>
+				<td>`--neo-color-grey-200`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-grey-200)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -2362,11 +3400,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>grey, 300, `--neo-color-grey-300`</td>
+				<td>`--neo-color-grey-300`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-grey-300)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -2374,11 +3418,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>grey, 400, `--neo-color-grey-400`</td>
+				<td>`--neo-color-grey-400`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-grey-400)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -2386,11 +3436,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>grey, 500, `--neo-color-grey-500`</td>
+				<td>`--neo-color-grey-500`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-grey-500)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -2398,11 +3454,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>grey, 600, `--neo-color-grey-600`</td>
+				<td>`--neo-color-grey-600`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-grey-600)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -2410,11 +3472,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>grey, 700, `--neo-color-grey-700`</td>
+				<td>`--neo-color-grey-700`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-grey-700)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -2422,11 +3490,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>grey, 800, `--neo-color-grey-800`</td>
+				<td>`--neo-color-grey-800`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-grey-800)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -2434,11 +3508,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>grey, 900, `--neo-color-grey-900`</td>
+				<td>`--neo-color-grey-900`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-grey-900)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -2449,9 +3529,9 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 	</table>
 </div>
 
-<div>
-	<h2>blueGrey</h2>
-	<table>
+<div style={{inlineSize: '100%'}}>
+	<h2>BlueGrey</h2>
+	<table style={{inlineSize: '100%'}}>
 		<thead>
 			<tr>
 				<th>Name</th>
@@ -2461,11 +3541,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 		<tbody>
 			
 			<tr>
-				<td>blueGrey, 50, `--neo-color-blueGrey-50`</td>
+				<td>`--neo-color-blueGrey-50`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-blueGrey-50)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -2473,11 +3559,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>blueGrey, 100, `--neo-color-blueGrey-100`</td>
+				<td>`--neo-color-blueGrey-100`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-blueGrey-100)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -2485,11 +3577,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>blueGrey, 200, `--neo-color-blueGrey-200`</td>
+				<td>`--neo-color-blueGrey-200`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-blueGrey-200)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -2497,11 +3595,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>blueGrey, 300, `--neo-color-blueGrey-300`</td>
+				<td>`--neo-color-blueGrey-300`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-blueGrey-300)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -2509,11 +3613,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>blueGrey, 400, `--neo-color-blueGrey-400`</td>
+				<td>`--neo-color-blueGrey-400`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-blueGrey-400)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -2521,11 +3631,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>blueGrey, 500, `--neo-color-blueGrey-500`</td>
+				<td>`--neo-color-blueGrey-500`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-blueGrey-500)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -2533,11 +3649,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>blueGrey, 600, `--neo-color-blueGrey-600`</td>
+				<td>`--neo-color-blueGrey-600`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-blueGrey-600)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -2545,11 +3667,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>blueGrey, 700, `--neo-color-blueGrey-700`</td>
+				<td>`--neo-color-blueGrey-700`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-blueGrey-700)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -2557,11 +3685,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>blueGrey, 800, `--neo-color-blueGrey-800`</td>
+				<td>`--neo-color-blueGrey-800`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-blueGrey-800)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -2569,11 +3703,17 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 			</tr>
 		
 			<tr>
-				<td>blueGrey, 900, `--neo-color-blueGrey-900`</td>
+				<td>`--neo-color-blueGrey-900`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-blueGrey-900)`,
 						border: '1px solid #ccc'
 					}}/>
@@ -2584,9 +3724,9 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 	</table>
 </div>
 
-<div>
-	<h2>white</h2>
-	<table>
+<div style={{inlineSize: '100%'}}>
+	<h2>Special</h2>
+	<table style={{inlineSize: '100%'}}>
 		<thead>
 			<tr>
 				<th>Name</th>
@@ -2596,38 +3736,35 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 		<tbody>
 			
 			<tr>
-				<td>white, -, `--neo-color-white`</td>
+				<td>`--neo-color-white`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-white)`,
 						border: '1px solid #ccc'
 					}}/>
 				</td>
 			</tr>
 		
-		</tbody>
-	</table>
-</div>
-
-<div>
-	<h2>black</h2>
-	<table>
-		<thead>
 			<tr>
-				<th>Name</th>
-				<th>Preview</th>
-			</tr>
-		</thead>
-		<tbody>
-			
-			<tr>
-				<td>black, -, `--neo-color-black`</td>
+				<td>`--neo-color-black`</td>
 				<td>
 					<div style={{
-						width: '4rem',
-						height: '4rem',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+
+						inlineSize: '4rem',
+						blockSize: '4rem',
+						margin: 'auto',
+
 						backgroundColor: `var(--neo-color-black)`,
 						border: '1px solid #ccc'
 					}}/>
