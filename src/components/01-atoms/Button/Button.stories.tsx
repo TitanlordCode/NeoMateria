@@ -43,6 +43,13 @@ export const Disabled: Story = {
 	},
 }
 
+export const Rounded: Story = {
+	args: {
+		label: 'Rounded Button',
+		rounded: true,
+	},
+}
+
 export const Colored: Story = {
 	render: (args) => {
 		return (
@@ -67,7 +74,6 @@ export const interaction: Story = {
 			await userEvent.click(canvas.getByRole('button'))
 		})
 
-		// 👇 Now we can assert that the onSubmit arg was called
 		await waitFor(() => expect(args.onClick).toHaveBeenCalled())
 	},
 }

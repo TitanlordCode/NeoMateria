@@ -6,6 +6,7 @@ import type { Color } from '@/assets/typescript/colors'
 import { getClassNames } from '@/utils/classNames'
 
 export interface ButtonProps {
+	class: string
 	label: string
 	size: ButtonSize
 	color: Color
@@ -32,6 +33,7 @@ const classes = computed(() =>
 	getClassNames({
 		component: 'Button',
 		modifiers: [props.color ?? 'grey', props.size ?? 'small', props.rounded ? 'rounded' : ''],
+		additional: props.class,
 	}),
 )
 </script>
@@ -49,11 +51,12 @@ const classes = computed(() =>
 
 <style scoped>
 @import url('./Button-themed.css');
+@import url('./Button-layout.css');
 
 .Button {
 	background-color: var(--Button-color-background);
 	border: none;
-	border-radius: var(--Button-sizing-border);
+	border-radius: var(--Input-border-radius);
 	color: var(--Button-color-text);
 	font-size: var(--neo-fontSize-base);
 	font-weight: 600;

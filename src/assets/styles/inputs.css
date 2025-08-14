@@ -1,0 +1,14 @@
+:root {
+	/* Small */
+	--neo-sizing-inputPaddingSM: 8px;
+	--neo-sizing-inputBlockSM: 36px;
+	/* Medium */
+	--neo-sizing-inputPaddingMD: 14px;
+	--neo-sizing-inputBlockMD: 40px;
+	/* Large */
+	--neo-sizing-inputPaddingLG: 16px;
+	--neo-sizing-inputBlockLG: 44px;
+
+	/* Rounded */
+	--neo-border-inputRadius: 4px;
+}

@@ -18,7 +18,7 @@ module.exports = {
 		'order/order': ['custom-properties', 'declarations'],
 		'order/properties-alphabetical-order': true,
 		'custom-property-pattern':
-			'^(neo|[A-Z][a-zA-Z0-9]*)-(color|sizing|fontSize)-[a-zA-Z0-9]+(-[a-zA-Z0-9]+)?$',
+			'^(neo|[A-Z][a-zA-Z0-9]*)-(color|sizing|fontSize|border)-[a-zA-Z0-9]+(-[a-zA-Z0-9]+)?$',
 		'selector-class-pattern':
 			'^(is-[a-z]+|[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*(?:--[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*)?)$',
 	},

@@ -73,7 +73,6 @@
 		--Button-color-background: var(--neo-color-amber-500);
 	}
 
-	/* continue here */
 	&.Button--orange {
 		--Button-color-text: var(--neo-color-black);
 		--Button-color-background: var(--neo-color-orange-500);
@@ -107,24 +106,5 @@
 	&.Button--black {
 		--Button-color-text: var(--neo-color-white);
 		--Button-color-background: var(--neo-color-black);
-	}
-
-	&.Button--small {
-		--Button-sizing-padding: 8px;
-		--Button-sizing-inline: 36px;
-	}
-
-	&.Button--medium {
-		--Button-sizing-padding: 14px;
-		--Button-sizing-inline: 40px;
-	}
-
-	&.Button--large {
-		--Button-sizing-padding: 16px;
-		--Button-sizing-inline: 44px;
-	}
-
-	&.Button--rounded {
-		--Button-sizing-border: 16px;
 	}
 }
