@@ -1,4 +1,4 @@
-import{j as n,M as s,e as r}from"./index-BrKQwEFF.js";import{useMDXComponents as i}from"./index-B7W-1gWY.js";import"./iframe-Bdl8GQzi.js";import"./_commonjsHelpers-CqkleIqs.js";import"./index-Bx-go_-4.js";import"./index-DrFu-skq.js";const l=`# Project Setup
+import{j as n,M as s,e as r}from"./index-BsLZ_GyO.js";import{useMDXComponents as i}from"./index-NHbYoLqQ.js";import"./iframe-BQBbxnZw.js";import"./_commonjsHelpers-CqkleIqs.js";import"./index-Bx-go_-4.js";import"./index-DrFu-skq.js";const l=`# Project Setup
 
 ## Pre-requirements
 
