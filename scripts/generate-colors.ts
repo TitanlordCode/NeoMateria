@@ -4,6 +4,9 @@ import { runScript } from './utils/script-helper'
 import { toShortHex } from './utils/css-helper'
 import { dirname, join } from 'node:path'
 import { toPascalCase } from '../src/utils/stringManipulation'
+import { isAccessible } from '../src/utils/wcag'
+
+const specialColors: ColorName[] = ['white', 'black']
 
 /**
  * Generate TS file
@@ -25,17 +28,14 @@ Object.entries(colorsRaw).forEach(([colorName, shades]) => {
 	}
 })
 
-const colorNames: string[] = Object.keys(flatColors).reduce((result: string[], current) => {
-	const color = current.split('-')[0]
-
-	if (result.includes(color)) {
+const colorNames: string[] = Object.keys(flatColors)
+	.map((color) => color.split('-')[0])
+	.reduce((result: string[], current) => {
+		if (!result.includes(current)) {
+			result.push(current)
+		}
 		return result
-	}
-
-	result.push(color)
-
-	return result
-}, [])
+	}, [])
 
 const tsContent = `/**
  * --------------------------------------------------------------------
@@ -47,9 +47,23 @@ const tsContent = `/**
  */
 
 /**
- * colors array for all possible colors
+ * array for all possible colors names
 */
-export const colors = \n${JSON.stringify(colorNames, null, 2)}
+export const colorNames = \n${JSON.stringify(colorNames, null, 2)} as const
+
+/**
+ * array for all possible colors
+*/
+export const colors = \n${JSON.stringify(
+	Object.keys(flatColors)
+		.map((color) => color.replace('-', ''))
+		.filter(
+			(color) =>
+				!specialColors.includes(color) && colorNames.some((name) => color.startsWith(name)),
+		),
+	null,
+	2,
+)} as const
 
 /**
  * type that define all colors available for components
@@ -64,7 +78,7 @@ export const colorsFlat = ${JSON.stringify(flatColors, null, 2)}
 
 writeFileSync('src/assets/typescript/colors.ts', tsContent)
 
-console.log('✅ colors.ts generated with union type Color')
+console.log('✅ colors.ts generated')
 
 runScript('npx prettier --write src/assets/typescript/colors.ts')
 
@@ -72,13 +86,33 @@ runScript('npx prettier --write src/assets/typescript/colors.ts')
  * Generate CSS file
  */
 
+// CSS colors
 const cssVarsArr: string[] = []
 
 Object.entries(flatColors).forEach(([colorName, value]) => {
-	cssVarsArr.push(`\t--neo-color-${colorName}: ${toShortHex(value)};`)
+	cssVarsArr.push(`\t--neo-color-${colorName.replace('-', '')}: ${toShortHex(value)};`)
 })
 
 const cssVars = cssVarsArr.join('\n')
+
+// WCAG Accessibility backgrounds
+const accessibilityClasses: string[] = []
+
+Object.entries(flatColors).forEach(([colorName, value]) => {
+	const bg = toShortHex(value)
+
+	// Check against black & white only (most robust)
+	if (isAccessible(bg, '#000000')) {
+		accessibilityClasses.push(
+			`.Themed--${colorName.replace('-', '')} { --neo-theme-background: var(--neo-color-${colorName.replace('-', '')}); --neo-theme-color: var(--neo-color-black); }`,
+		)
+	}
+	if (isAccessible(bg, '#ffffff')) {
+		accessibilityClasses.push(
+			`.Themed--${colorName.replace('-', '')} { --neo-theme-background: var(--neo-color-${colorName.replace('-', '')}); --neo-theme-color: var(--neo-color-white); }`,
+		)
+	}
+})
 
 writeFileSync(
 	'./src/assets/styles/colors.css',
@@ -92,7 +126,13 @@ writeFileSync(
  * To update this file, run the appropriate generation script.
  * --------------------------------------------------------------------
  */
-\n:root {\n${cssVars}\n}\n`,
+\n:root {
+${cssVars}
+}
+
+/* Accessible background utilities */
+${accessibilityClasses.join('\n')}
+`,
 )
 
 console.log('✅ colors.css generated')
@@ -110,10 +150,10 @@ Object.entries(colorsRaw).forEach(([colorName, shades]) => {
 		Object.entries(shades as object)
 			.filter(([shade]) => !Number.isNaN(Number(shade)))
 			.forEach(([shade]) => {
-				mdRowsArr.push(`| ${colorName} | ${shade} | \`--neo-color-${colorName}-${shade}\` |`)
+				mdRowsArr.push(`| ${colorName} | ${shade} | \`--neo-color-${colorName}${shade}\` |`)
 			})
 	} else if (typeof shades === 'string') {
-		mdRowsArr.push(`| ${colorName} | - | \`--neo-color-${colorName}\` |`)
+		mdRowsArr.push(`| ${colorName} | - | \`--neo-color-${colorName.replace('-', '')}\` |`)
 	}
 })
 
@@ -145,7 +185,6 @@ const dataByColorName: Record<ColorName | 'special', string[]> = Object.fromEntr
 	[...colorNames, 'special'].map((c) => [c, []]),
 ) as Record<ColorName, string[]>
 
-const specialColors: ColorName[] = ['white', 'black']
 // Build MDX table rows
 rows.forEach((line) => {
 	const data = line
@@ -153,7 +192,6 @@ rows.forEach((line) => {
 		.map((c) => c.trim())
 		.filter((value) => value)
 
-	console.log(data)
 	let name = data[0]
 	const value = data[2]
 
@@ -229,4 +267,4 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 
 mkdirSync('./src/components/00-foundations', { recursive: true })
 writeFileSync(`./src/components/00-foundations/colors.mdx`, mdxContent)
-console.log(`✅ Generated Storybook MDX: ./src/components/00-foundations/colors.mdx`)
+console.log(`✅ Storybook MDX generated`)

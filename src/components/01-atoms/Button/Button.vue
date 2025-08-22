@@ -7,7 +7,7 @@ import { getClassNames } from '@/utils/classNames'
 
 export interface ButtonProps {
 	class: string
-	label: string
+	text: string
 	size: ButtonSize
 	color: Color
 	disabled?: boolean
@@ -29,13 +29,18 @@ const handleClick = (event: MouseEvent) => {
 	}
 }
 
-const classes = computed(() =>
-	getClassNames({
+const classes = computed(() => {
+	const buttonClasses = getClassNames({
 		component: 'Button',
-		modifiers: [props.color ?? 'grey', props.size ?? 'small', props.rounded ? 'rounded' : ''],
+		modifiers: [props.size ?? 'small', props.rounded ? 'rounded' : ''],
 		additional: props.class,
-	}),
-)
+	})
+	const themedClasses = getClassNames({
+		component: 'Themed',
+		modifiers: [props.color ?? 'grey500'],
+	})
+	return `${buttonClasses} ${themedClasses}`
+})
 </script>
 
 <template>
@@ -45,7 +50,7 @@ const classes = computed(() =>
 		:disabled="props.disabled ?? undefined"
 		@click="handleClick"
 	>
-		{{ props.label }}
+		{{ props.text }}
 	</button>
 </template>
 
@@ -56,7 +61,7 @@ const classes = computed(() =>
 .Button {
 	background-color: var(--Button-color-background);
 	border: none;
-	border-radius: var(--Input-border-radius);
+	border-radius: var(--Button-sizing-border);
 	color: var(--Button-color-text);
 	font-size: var(--neo-fontSize-base);
 	font-weight: 600;
@@ -69,6 +74,7 @@ const classes = computed(() =>
 	}
 
 	&:disabled {
+		cursor: not-allowed;
 		opacity: 0.6;
 	}
 }

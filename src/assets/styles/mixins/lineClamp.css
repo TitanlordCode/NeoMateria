@@ -1,4 +1,4 @@
-@mixin line-clamp($lines) {
+@define-mixin line-clamp($lines) {
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
 	align-self: stretch;
