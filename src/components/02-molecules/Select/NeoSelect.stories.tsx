@@ -2,25 +2,25 @@ import type { Meta, StoryObj } from '@storybook/vue3'
 
 // import { fn } from '@storybook/test'
 
-import Select from './Select.vue'
-import type { SelectProps } from './Select.vue'
+import NeoSelect from './NeoSelect.vue'
+import type { NeoSelectProps } from './NeoSelect.vue'
 // import { colors } from '@/assets/typescript/colors'
 
 const exampleOptions = [
 	{ value: 'apple', label: 'Apple' },
 	{ value: 'orange', label: 'Orange' },
 	{ value: 'banana', label: 'Banana' },
-] satisfies SelectProps['options']
+] satisfies NeoSelectProps['options']
 
-const meta: Meta<typeof Select> = {
-	title: 'Molecules/Select',
-	component: Select,
+const meta: Meta<typeof NeoSelect> = {
+	title: 'Molecules/NeoSelect',
+	component: NeoSelect,
 	tags: ['autodocs'],
 	argTypes: {},
 	args: {
 		name: 'fruit',
 		label: 'Choose a fruit',
-		selectProps: { placeholder: 'Select one...' },
+		selectProps: { placeholder: 'NeoSelect one...' },
 		options: exampleOptions,
 	},
 	parameters: {
@@ -38,6 +38,6 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
 	args: {
-		label: 'Default Button',
+		label: 'Default',
 	},
 }

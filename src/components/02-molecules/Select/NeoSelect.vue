@@ -1,9 +1,8 @@
-<!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
 import { ref, computed, nextTick, watch } from 'vue'
 import { generateUniqueId } from '@/utils/id'
 
-export interface SelectProps {
+export interface NeoSelectProps {
 	name: string
 	label: string
 	selectProps?: { placeholder?: string }
@@ -13,7 +12,7 @@ export interface SelectProps {
 	errorMessage?: string
 }
 
-const props = defineProps<SelectProps>()
+const props = defineProps<NeoSelectProps>()
 
 const emit = defineEmits<{
 	(e: 'update:value', value: string): void
@@ -111,15 +110,15 @@ watch(
 </script>
 
 <template>
-	<div v-bind="$attrs" class="Select">
-		<div class="Select-labelWrapper">
-			<label class="Select-label" :for="`${instanceId}-${props.name}`">{{ props.label }}</label>
+	<div v-bind="$attrs" class="NeoSelect">
+		<div class="NeoSelect-labelWrapper">
+			<label class="NeoSelect-label" :for="`${instanceId}-${props.name}`">{{ props.label }}</label>
 		</div>
 
-		<div class="Select-inputWrapper">
+		<div class="NeoSelect-inputWrapper">
 			<input
 				ref="inputRef"
-				class="Select-input"
+				class="NeoSelect-input"
 				:name="props.name"
 				:id="props.name"
 				type="text"
@@ -141,7 +140,7 @@ watch(
 			<ul
 				v-show="isOpen"
 				ref="listRef"
-				class="Select-options"
+				class="NeoSelect-options"
 				role="listbox"
 				:id="`${instanceId}-popup_listbox`"
 				:aria-labelledby="`${instanceId}-${props.name}`"
@@ -154,7 +153,7 @@ watch(
 					:aria-selected="option.value === internalValue"
 					:tabindex="focusedIndex === index ? 0 : -1"
 					:class="[
-						'Select-option',
+						'NeoSelect-option',
 						{ selected: option.value === internalValue, focused: focusedIndex === index },
 					]"
 					@click="selectOption(option)"
@@ -166,21 +165,21 @@ watch(
 			</ul>
 		</div>
 
-		<div v-if="props.helpText || props.errorMessage" class="Select-messageWrapper">
+		<div v-if="props.helpText || props.errorMessage" class="NeoSelect-messageWrapper">
 			<p
 				v-if="props.helpText && !props.errorMessage"
-				class="Select-helpText"
+				class="NeoSelect-helpText"
 				:id="`${instanceId}-helptext`"
 			>
 				{{ props.helpText }}
 			</p>
-			<p v-if="props.errorMessage" class="Select-errorMessage">{{ props.errorMessage }}</p>
+			<p v-if="props.errorMessage" class="NeoSelect-errorMessage">{{ props.errorMessage }}</p>
 		</div>
 	</div>
 </template>
 
 <style scoped>
-.Select-option {
+.NeoSelect-option {
 	background-color: white;
 
 	&.focused {

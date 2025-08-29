@@ -1,0 +1,28 @@
+.NeoButton--primary,
+.NeoButton--tertiary {
+	--NeoButton-sizing-borderRadius: unset;
+	--NeoButton-sizing-borderWidth: 0;
+}
+
+.NeoButton--secondary {
+	--NeoButton-sizing-borderWidth: 1px;
+}
+
+.NeoButton--small {
+	--NeoButton-sizing-padding: var(--neo-sizing-inputPaddingSM);
+	--NeoButton-sizing-inline: var(--neo-sizing-inputBlockSM);
+}
+
+.NeoButton--medium {
+	--NeoButton-sizing-padding: var(--neo-sizing-inputPaddingMD);
+	--NeoButton-sizing-inline: var(--neo-sizing-inputBlockMD);
+}
+
+.NeoButton--large {
+	--NeoButton-sizing-padding: var(--neo-sizing-inputPaddingLG);
+	--NeoButton-sizing-inline: var(--neo-sizing-inputBlockLG);
+}
+
+.NeoButton--rounded {
+	--NeoButton-sizing-borderRadius: var(--neo-border-inputRadius);
+}

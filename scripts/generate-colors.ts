@@ -104,12 +104,12 @@ Object.entries(flatColors).forEach(([colorName, value]) => {
 	// Check against black & white only (most robust)
 	if (isAccessible(bg, '#000000')) {
 		accessibilityClasses.push(
-			`.Themed--${colorName.replace('-', '')} { --neo-theme-background: var(--neo-color-${colorName.replace('-', '')}); --neo-theme-color: var(--neo-color-black); }`,
+			`.Themed--${colorName.replace('-', '')} { --neo-theme-color: var(--neo-color-${colorName.replace('-', '')}); --neo-theme-colorText: var(--neo-color-black); }`,
 		)
 	}
 	if (isAccessible(bg, '#ffffff')) {
 		accessibilityClasses.push(
-			`.Themed--${colorName.replace('-', '')} { --neo-theme-background: var(--neo-color-${colorName.replace('-', '')}); --neo-theme-color: var(--neo-color-white); }`,
+			`.Themed--${colorName.replace('-', '')} { --neo-theme-color: var(--neo-color-${colorName.replace('-', '')}); --neo-theme-colorText: var(--neo-color-white); }`,
 		)
 	}
 })
@@ -260,7 +260,7 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
  * --------------------------------------------------------------------
  */}
 
-<div style={{display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)'}}>
+<div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))'}}>
 	${tables.join('').replace(/\<\/table\>\n,/g, '<\/table\>')}
 </div>
 `

@@ -1,20 +1,9 @@
-<!-- eslint-disable vue/multi-word-component-names -->
 <script setup lang="ts">
 import { computed, useAttrs } from 'vue'
-import type { ButtonSize } from './ButtonTypes'
-import type { Color } from '@/assets/typescript/colors'
+import type { NeoButtonProps } from './NeoButtonTypes'
 import { getClassNames } from '@/utils/classNames'
 
-export interface ButtonProps {
-	class: string
-	text: string
-	size: ButtonSize
-	color: Color
-	disabled?: boolean
-	rounded?: boolean
-}
-
-const props = defineProps<ButtonProps>()
+const props = defineProps<NeoButtonProps>()
 
 const emit = defineEmits<{
 	/* Fires when clicking the button */
@@ -31,8 +20,8 @@ const handleClick = (event: MouseEvent) => {
 
 const classes = computed(() => {
 	const buttonClasses = getClassNames({
-		component: 'Button',
-		modifiers: [props.size ?? 'small', props.rounded ? 'rounded' : ''],
+		component: 'NeoButton',
+		modifiers: [props.size ?? 'small', props.variant ?? 'primary', props.rounded ? 'rounded' : ''],
 		additional: props.class,
 	})
 	const themedClasses = getClassNames({
@@ -55,19 +44,21 @@ const classes = computed(() => {
 </template>
 
 <style scoped>
-@import url('./Button-themed.css');
-@import url('./Button-layout.css');
+@import url('./NeoButton-themed.css');
+@import url('./NeoButton-layout.css');
 
-.Button {
-	background-color: var(--Button-color-background);
-	border: none;
-	border-radius: var(--Button-sizing-border);
-	color: var(--Button-color-text);
+.NeoButton {
+	background-color: var(--NeoButton-color-background);
+	border-color: var(--NeoButton-color-border);
+	border-radius: var(--NeoButton-sizing-borderRadius);
+	border-style: solid;
+	border-width: var(--NeoButton-sizing-borderWidth);
+	color: var(--NeoButton-color-text);
 	font-size: var(--neo-fontSize-base);
 	font-weight: 600;
-	min-block-size: var(--Button-sizing-inline);
-	padding-block: var(--Button-sizing-padding);
-	padding-inline: var(--Button-sizing-padding);
+	min-block-size: var(--NeoButton-sizing-inline);
+	padding-block: var(--NeoButton-sizing-padding);
+	padding-inline: var(--NeoButton-sizing-padding);
 
 	&:hover {
 		cursor: pointer;

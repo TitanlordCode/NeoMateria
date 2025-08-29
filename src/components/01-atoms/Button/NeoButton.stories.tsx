@@ -2,17 +2,18 @@ import type { Meta, StoryObj } from '@storybook/vue3'
 
 import { expect, fn, userEvent, waitFor, within } from '@storybook/test'
 
-import Button from './Button.vue'
+import NeoButton from '@/components/01-atoms/Button/NeoButton.vue'
 import { colors, colorNames } from '@/assets/typescript/colors'
-import { buttonSizes } from './ButtonTypes'
+import { buttonSizes, buttonVariants } from './NeoButtonTypes'
 
-const meta: Meta<typeof Button> = {
-	title: 'Atoms/Button',
-	component: Button,
+const meta: Meta<typeof NeoButton> = {
+	title: 'Atoms/NeoButton',
+	component: NeoButton,
 	tags: ['autodocs'],
 	argTypes: {
 		text: { control: 'text' },
 		size: { control: 'select', options: buttonSizes },
+		variant: { control: 'select', options: buttonVariants },
 		disabled: { control: 'boolean' },
 		color: { control: 'select', options: colors },
 	},
@@ -20,6 +21,7 @@ const meta: Meta<typeof Button> = {
 		text: 'Click me',
 		size: 'small',
 		color: 'grey500',
+		variant: 'primary',
 		disabled: false,
 		rounded: false,
 		onClick: fn(),
@@ -32,25 +34,25 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
 	args: {
-		text: 'Default Button',
+		text: 'Default NeoButton',
 	},
 }
 
 export const Disabled: Story = {
 	args: {
-		text: 'Disabled Button',
+		text: 'Disabled NeoButton',
 		disabled: true,
 	},
 }
 
 export const Rounded: Story = {
 	args: {
-		text: 'Rounded Button',
+		text: 'Rounded NeoButton',
 		rounded: true,
 	},
 }
 
-export const Colored: Story = {
+export const PrimaryColored: Story = {
 	render: (args) => {
 		return (
 			<div
@@ -67,7 +69,7 @@ export const Colored: Story = {
 							.map((color, index) => {
 								return (
 									<div style={{ padding: '8px' }}>
-										<Button key={index} {...args} color={color} text={color} />
+										<NeoButton key={index} {...args} color={color} text={color} />
 									</div>
 								)
 							})}
@@ -76,6 +78,20 @@ export const Colored: Story = {
 			</div>
 		)
 	},
+}
+
+export const SecondaryColored: Story = {
+	args: {
+		variant: 'secondary',
+	},
+	render: PrimaryColored.render,
+}
+
+export const TertiaryColored: Story = {
+	args: {
+		variant: 'tertiary',
+	},
+	render: PrimaryColored.render,
 }
 
 export const interaction: Story = {

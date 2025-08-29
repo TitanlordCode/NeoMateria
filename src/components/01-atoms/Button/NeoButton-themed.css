@@ -1,0 +1,19 @@
+.NeoButton--primary {
+	--NeoButton-color-text: var(--neo-theme-colorText);
+	--NeoButton-color-background: var(--neo-theme-color);
+	--NeoButton-color-border: unset;
+}
+
+.NeoButton--secondary,
+.NeoButton--tertiary {
+	--NeoButton-color-text: var(--neo-theme-color);
+	--NeoButton-color-background: transparent;
+}
+
+.NeoButton--secondary {
+	--NeoButton-color-border: var(--neo-theme-color);
+}
+
+.NeoButton--tertiary {
+	--NeoButton-color-border: unset;
+}
