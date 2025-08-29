@@ -13,7 +13,7 @@ npm i neo-materia
 
 In the following link you can find the Storybook with all components:
 
-[Storybook Documentation](https://titanlordcode.github.io/NeoMateria/?path=/story/atoms-button--default)
+[Storybook Documentation](https://titanlordcode.github.io/NeoMateria/?path=/story/atoms-neobutton--default)
 
 ## Code Base
 
