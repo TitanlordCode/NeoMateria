@@ -54,11 +54,15 @@ const classes = computed(() => {
 	border-style: solid;
 	border-width: var(--NeoButton-sizing-borderWidth);
 	color: var(--NeoButton-color-text);
-	font-size: var(--neo-fontSize-base);
+	font-size: var(--NeoButton-sizing-fontSize);
 	font-weight: 600;
 	min-block-size: var(--NeoButton-sizing-inline);
 	padding-block: var(--NeoButton-sizing-padding);
 	padding-inline: var(--NeoButton-sizing-padding);
+
+	&:focus-visible {
+		outline-color: var(--NeoButton-color-focus);
+	}
 
 	&:hover {
 		cursor: pointer;

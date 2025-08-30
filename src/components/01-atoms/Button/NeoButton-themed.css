@@ -1,7 +1,19 @@
+.NeoButton {
+	--NeoButton-color-focus: var(--neo-theme-color);
+}
+
 .NeoButton--primary {
 	--NeoButton-color-text: var(--neo-theme-colorText);
 	--NeoButton-color-background: var(--neo-theme-color);
 	--NeoButton-color-border: unset;
+
+	&:hover {
+		transform: scale(1.05);
+
+		&:disabled {
+			transform: none;
+		}
+	}
 }
 
 .NeoButton--secondary,
@@ -12,8 +24,21 @@
 
 .NeoButton--secondary {
 	--NeoButton-color-border: var(--neo-theme-color);
+
+	&:hover {
+		box-shadow: 0 0 0 2px var(--neo-theme-color);
+
+		&:disabled {
+			box-shadow: none;
+		}
+	}
 }
 
 .NeoButton--tertiary {
 	--NeoButton-color-border: unset;
+
+	&:hover {
+		text-decoration: 2px underline;
+		text-underline-offset: 4px;
+	}
 }

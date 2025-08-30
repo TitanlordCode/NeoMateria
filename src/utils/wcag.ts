@@ -1,5 +1,23 @@
+function normalizeHex(hex: string): string {
+	hex = hex.replace('#', '')
+
+	// Expand 3-digit hex (#abc → #aabbcc)
+	if (hex.length === 3) {
+		hex = hex
+			.split('')
+			.map((ch) => ch + ch)
+			.join('')
+	}
+
+	if (hex.length !== 6) {
+		throw new Error(`Invalid hex color: ${hex}`)
+	}
+
+	return hex
+}
+
 export function luminance(hex: string) {
-	const c = hex.replace('#', '')
+	const c = normalizeHex(hex)
 	const rgb = [
 		parseInt(c.substr(0, 2), 16) / 255,
 		parseInt(c.substr(2, 2), 16) / 255,

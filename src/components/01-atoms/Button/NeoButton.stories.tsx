@@ -4,7 +4,66 @@ import { expect, fn, userEvent, waitFor, within } from '@storybook/test'
 
 import NeoButton from '@/components/01-atoms/Button/NeoButton.vue'
 import { colors, colorNames } from '@/assets/typescript/colors'
-import { buttonSizes, buttonVariants } from './NeoButtonTypes'
+import { buttonSizes, buttonVariants, type NeoButtonProps } from './NeoButtonTypes'
+import { defineComponent, ref } from 'vue'
+
+const colorRender = (args: NeoButtonProps) => {
+	const accessibilityBackgrounds = ref(args.variant !== 'primary')
+
+	const toggleAccessibilityBackground = () =>
+		(accessibilityBackgrounds.value = !accessibilityBackgrounds.value)
+
+	return defineComponent({
+		name: 'ColorRender',
+		setup() {
+			return () => (
+				<>
+					{args.variant !== 'primary' && (
+						<div style={{ paddingBlock: '8px' }}>
+							<NeoButton
+								{...args}
+								variant="primary"
+								text={`Toggle accessibility background ${accessibilityBackgrounds.value ? '🟢' : '🔴'}`}
+								onClick={toggleAccessibilityBackground}
+							/>
+						</div>
+					)}
+					<div
+						style={{
+							display: 'grid',
+							gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
+							maxInlineSize: '100%',
+						}}
+					>
+						{colorNames.map((colorName: string) => (
+							<div class={`box-${colorName}`} style={{ inlineSize: '100%' }}>
+								{colors
+									.filter((color: string) => color.replace(/\d+$/, '') === colorName)
+									.map((color: string, index: number) => (
+										<div
+											class={accessibilityBackgrounds.value ? `Themed--${color}` : ''}
+											style={{
+												inlineSize: '100%',
+												padding: '8px',
+												backgroundColor: 'var(--neo-theme-colorText)',
+											}}
+										>
+											<NeoButton
+												key={index}
+												{...args}
+												color={color as NeoButtonProps['color']}
+												text={color}
+											/>
+										</div>
+									))}
+							</div>
+						))}
+					</div>
+				</>
+			)
+		},
+	})
+}
 
 const meta: Meta<typeof NeoButton> = {
 	title: 'Atoms/NeoButton',
@@ -53,31 +112,7 @@ export const Rounded: Story = {
 }
 
 export const PrimaryColored: Story = {
-	render: (args) => {
-		return (
-			<div
-				style={{
-					display: 'grid',
-					gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
-					maxInlineSize: '100%',
-				}}
-			>
-				{colorNames.map((colorName) => (
-					<div class={`box-${colorName}`} style={{ maxInlineSize: `fit-content` }}>
-						{colors
-							.filter((color) => color.replace(/\d+$/, '') === colorName)
-							.map((color, index) => {
-								return (
-									<div style={{ padding: '8px' }}>
-										<NeoButton key={index} {...args} color={color} text={color} />
-									</div>
-								)
-							})}
-					</div>
-				))}
-			</div>
-		)
-	},
+	render: colorRender,
 }
 
 export const SecondaryColored: Story = {

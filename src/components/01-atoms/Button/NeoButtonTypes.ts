@@ -7,7 +7,7 @@ export const buttonVariants = ['primary', 'secondary', 'tertiary'] as const
 export type NeoButtonSize = (typeof buttonSizes)[number]
 export type NeoButtonVariant = (typeof buttonVariants)[number]
 export interface NeoButtonProps {
-	class: string
+	class?: string
 	text: string
 	size: NeoButtonSize
 	color: Color

@@ -909,6 +909,10 @@
 	--neo-theme-color: var(--neo-color-grey100);
 	--neo-theme-colorText: var(--neo-color-black);
 }
+.Themed--grey200 {
+	--neo-theme-color: var(--neo-color-grey200);
+	--neo-theme-colorText: var(--neo-color-black);
+}
 .Themed--grey300 {
 	--neo-theme-color: var(--neo-color-grey300);
 	--neo-theme-colorText: var(--neo-color-black);
@@ -979,5 +983,13 @@
 }
 .Themed--blueGrey900 {
 	--neo-theme-color: var(--neo-color-blueGrey900);
+	--neo-theme-colorText: var(--neo-color-white);
+}
+.Themed--white {
+	--neo-theme-color: var(--neo-color-white);
+	--neo-theme-colorText: var(--neo-color-black);
+}
+.Themed--black {
+	--neo-theme-color: var(--neo-color-black);
 	--neo-theme-colorText: var(--neo-color-white);
 }

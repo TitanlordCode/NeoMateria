@@ -1,0 +1,9 @@
+@define-mixin setOnDark() {
+	container: on-dark / inline-size;
+}
+
+@define-mixin onDark() {
+	@container on-dark (min-width: 0) {
+		@content;
+	}
+}
