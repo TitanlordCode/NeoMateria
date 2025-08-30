@@ -20,7 +20,7 @@ const meta: Meta<typeof NeoSelect> = {
 	args: {
 		name: 'fruit',
 		label: 'Choose a fruit',
-		selectProps: { placeholder: 'NeoSelect one...' },
+		selectProps: { placeholder: 'Select one...' },
 		options: exampleOptions,
 	},
 	parameters: {

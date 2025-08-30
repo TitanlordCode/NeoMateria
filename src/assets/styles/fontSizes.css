@@ -4,7 +4,7 @@
 	--neo-fontSize-md: 16px;
 	--neo-fontSize-lg: 18px;
 	--neo-fontSize-xl: 20px;
-	--neo-fontSize-base: var(--neo-fontSize-md);
+	--neo-fontSize-base: var(--neo-fontSize-sm);
 
 	@mixin bp-sm {
 		--neo-fontSize-xs: 14px;
