@@ -6,8 +6,6 @@ async function main() {
 	// other css generation scripts
 	runScript('ts-node scripts/generate-globals.ts')
 
-	runScript('ts-node scripts/generate-icons.ts')
-
 	// MDX generation
 	runScript('ts-node scripts/generate-docs.ts')
 }
