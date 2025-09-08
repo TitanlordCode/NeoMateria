@@ -24,7 +24,7 @@
 		scrollbar-color: var(--neo-color-grey-600) rgba(0 0 0 / 5%);
 		scrollbar-width: thin;
 	}
-	/*
+
 	@include onDark() {
 		&::-webkit-scrollbar-track {
 			background-color: rgba(0 255 255 / 5%);
@@ -37,5 +37,4 @@
 			scrollbar-width: thin;
 		}
 	}
-	*/
 }

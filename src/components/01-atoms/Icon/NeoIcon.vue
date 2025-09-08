@@ -26,6 +26,8 @@ const classes = computed(() => {
 </template>
 
 <style scoped>
+@import url('@/assets/styles/globals.css');
+
 .NeoIcon {
 	align-items: center;
 	color: var(--neo-theme-color);

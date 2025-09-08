@@ -44,6 +44,7 @@ const classes = computed(() => {
 </template>
 
 <style scoped>
+@import url('@/assets/styles/globals.css');
 @import url('./NeoButton-themed.css');
 @import url('./NeoButton-layout.css');
 

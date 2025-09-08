@@ -23,7 +23,7 @@
 .NeoButton--large {
 	--NeoButton-sizing-padding: var(--neo-sizing-inputPaddingLG);
 	--NeoButton-sizing-inline: var(--neo-sizing-inputBlockLG);
-	--NeoButton-sizing-fontSize: var(--neo-fontSize-md);
+	--NeoButton-sizing-fontSize: var(--neo-fontSize-base);
 }
 
 .NeoButton--rounded {
