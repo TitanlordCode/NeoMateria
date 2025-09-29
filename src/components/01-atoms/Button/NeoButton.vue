@@ -2,6 +2,7 @@
 import { computed, useAttrs } from 'vue'
 import type { NeoButtonProps } from './NeoButtonTypes'
 import { getClassNames } from '@/utils/classNames'
+import NeoIcon from '../Icon/NeoIcon.vue'
 
 const props = defineProps<NeoButtonProps>()
 
@@ -39,7 +40,13 @@ const classes = computed(() => {
 		:disabled="props.disabled ?? undefined"
 		@click="handleClick"
 	>
+		<NeoIcon v-show="$slots.iconStart" color-variant="text" :color="props.color" :size="props.size">
+			<slot name="iconStart" />
+		</NeoIcon>
 		{{ props.text }}
+		<NeoIcon v-show="$slots.iconEnd" color-variant="text" :color="props.color" :size="props.size">
+			<slot name="iconEnd" />
+		</NeoIcon>
 	</button>
 </template>
 
@@ -48,14 +55,17 @@ const classes = computed(() => {
 @import url('./NeoButton-layout.css');
 
 .NeoButton {
+	align-items: center;
 	background-color: var(--NeoButton-color-background);
 	border-color: var(--NeoButton-color-border);
 	border-radius: var(--NeoButton-sizing-borderRadius);
 	border-style: solid;
 	border-width: var(--NeoButton-sizing-borderWidth);
 	color: var(--NeoButton-color-text);
+	display: flex;
 	font-size: var(--NeoButton-sizing-fontSize);
 	font-weight: 600;
+	gap: 4px;
 	min-block-size: var(--NeoButton-sizing-inline);
 	padding-block: var(--NeoButton-sizing-padding);
 	padding-inline: var(--NeoButton-sizing-padding);

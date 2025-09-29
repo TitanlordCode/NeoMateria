@@ -1,0 +1,8 @@
+.NeoIcon,
+.NeoIcon--theme {
+	--NeoIcon-color-icon: var(--neo-theme-color);
+}
+
+.NeoIcon--text {
+	--NeoIcon-color-icon: var(--neo-text-colorText);
+}

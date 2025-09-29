@@ -6,6 +6,7 @@ import NeoButton from '@/components/01-atoms/Button/NeoButton.vue'
 import { colors, colorNames } from '@/assets/typescript/colors'
 import { buttonSizes, buttonVariants, type NeoButtonProps } from './NeoButtonTypes'
 import { defineComponent, ref } from 'vue'
+import { addIcon, deleteIcon } from '../Icon/exampleIcons'
 
 const colorRender = (args: NeoButtonProps) => {
 	const accessibilityBackgrounds = ref(args.variant !== 'primary')
@@ -119,14 +120,36 @@ export const SecondaryColored: Story = {
 	args: {
 		variant: 'secondary',
 	},
-	render: PrimaryColored.render,
+	render: colorRender,
 }
 
 export const TertiaryColored: Story = {
 	args: {
 		variant: 'tertiary',
 	},
-	render: PrimaryColored.render,
+	render: colorRender,
+}
+
+export const WithIconStart: Story = {
+	args: {
+		text: 'With Icon Start',
+		iconStart: () => addIcon,
+	},
+}
+
+export const WithIconEnd: Story = {
+	args: {
+		text: 'With Icon End',
+		iconEnd: () => deleteIcon,
+	},
+}
+
+export const WithIconStartAndEnd: Story = {
+	args: {
+		...WithIconStart.args,
+		...WithIconEnd.args,
+		text: 'With Both Icon',
+	},
 }
 
 export const interaction: Story = {
