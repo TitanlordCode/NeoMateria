@@ -26,7 +26,6 @@ const classes = computed(() => {
 </template>
 
 <style scoped>
-@import url('@/assets/styles/globals.css');
 @import url('./NeoIcon-themed.css');
 
 .NeoIcon {
