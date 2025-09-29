@@ -1,6 +1,6 @@
 {
 	"name": "neo-materia",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "A Vue 3 component library based on Atomic Design and Material Design colors.",
 	"main": "dist/neo-materia.es.js",
 	"module": "dist/neo-materia.es.js",
