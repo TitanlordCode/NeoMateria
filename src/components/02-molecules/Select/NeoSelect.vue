@@ -179,6 +179,8 @@ watch(
 </template>
 
 <style scoped>
+@import url('@/assets/styles/globals.css');
+
 .NeoSelect-option {
 	background-color: white;
 

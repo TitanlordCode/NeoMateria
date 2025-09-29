@@ -1,40 +1,73 @@
 :root {
-	--neo-fontSize-xs: 12px;
-	--neo-fontSize-sm: 14px;
-	--neo-fontSize-md: 16px;
-	--neo-fontSize-lg: 18px;
-	--neo-fontSize-xl: 20px;
-	--neo-fontSize-base: var(--neo-fontSize-sm);
+	--neo-fontSize-textXs: 13px;
+	--neo-fontSize-textSm: 14px;
+	--neo-fontSize-textMd: 16px;
+	--neo-fontSize-textLg: 18px;
+	--neo-fontSize-textXl: 20px;
+	--neo-fontSize-textXxl: 22px;
+	--neo-fontSize-headlineXs: 24px;
+	--neo-fontSize-headlineSm: 26px;
+	--neo-fontSize-headlineMd: 28px;
+	--neo-fontSize-headlineLg: 32px;
+	--neo-fontSize-headlineXl: 48px;
+	--neo-fontSize-headlineXxl: 64px;
 
-	@mixin bp-sm {
-		--neo-fontSize-xs: 14px;
-		--neo-fontSize-sm: 16px;
-		--neo-fontSize-md: 18px;
-		--neo-fontSize-lg: 20px;
-		--neo-fontSize-xl: 24px;
+	--neo-fontSize-base: var(--neo-fontSize-textMd);
+
+	@include bp-sm {
+		--neo-fontSize-textXs: 13px;
+		--neo-fontSize-textSm: 16px;
+		--neo-fontSize-textMd: 18px;
+		--neo-fontSize-textLg: 20px;
+		--neo-fontSize-textXl: 22px;
+		--neo-fontSize-textXxl: 24px;
+		--neo-fontSize-headlineXs: 26px;
+		--neo-fontSize-headlineSm: 28px;
+		--neo-fontSize-headlineMd: 32px;
+		--neo-fontSize-headlineLg: 40px;
+		--neo-fontSize-headlineXl: 64px;
+		--neo-fontSize-headlineXxl: 80px;
 	}
-
-	@mixin bp-md {
-		--neo-fontSize-xs: 14px;
-		--neo-fontSize-sm: 16px;
-		--neo-fontSize-md: 18px;
-		--neo-fontSize-lg: 24px;
-		--neo-fontSize-xl: 28px;
+	@include bp-md {
+		--neo-fontSize-textXs: 13px;
+		--neo-fontSize-textSm: 16px;
+		--neo-fontSize-textMd: 18px;
+		--neo-fontSize-textLg: 20px;
+		--neo-fontSize-textXl: 24px;
+		--neo-fontSize-textXxl: 26px;
+		--neo-fontSize-headlineXs: 28px;
+		--neo-fontSize-headlineSm: 32px;
+		--neo-fontSize-headlineMd: 36px;
+		--neo-fontSize-headlineLg: 48px;
+		--neo-fontSize-headlineXl: 72px;
+		--neo-fontSize-headlineXxl: 96px;
 	}
-
-	@mixin bp-lg {
-		--neo-fontSize-xs: 14px;
-		--neo-fontSize-sm: 16px;
-		--neo-fontSize-md: 18px;
-		--neo-fontSize-lg: 28px;
-		--neo-fontSize-xl: 32px;
+	@include bp-lg {
+		--neo-fontSize-textXs: 13px;
+		--neo-fontSize-textSm: 16px;
+		--neo-fontSize-textMd: 18px;
+		--neo-fontSize-textLg: 20px;
+		--neo-fontSize-textXl: 24px;
+		--neo-fontSize-textXxl: 28px;
+		--neo-fontSize-headlineXs: 32px;
+		--neo-fontSize-headlineSm: 36px;
+		--neo-fontSize-headlineMd: 40px;
+		--neo-fontSize-headlineLg: 56px;
+		--neo-fontSize-headlineXl: 80px;
+		--neo-fontSize-headlineXxl: 120px;
 	}
-
-	@mixin bp-xl {
-		--neo-fontSize-xs: 16px;
-		--neo-fontSize-sm: 18px;
-		--neo-fontSize-md: 20px;
-		--neo-fontSize-lg: 32px;
-		--neo-fontSize-xl: 36px;
+	@include bp-xl {
+		--neo-fontSize-textXs: 13px;
+		--neo-fontSize-textSm: 18px;
+		--neo-fontSize-textMd: 20px;
+		--neo-fontSize-textLg: 24px;
+		--neo-fontSize-textXl: 28px;
+		--neo-fontSize-textXxl: 30px;
+		--neo-fontSize-headlineXs: 36px;
+		--neo-fontSize-headlineSm: 40px;
+		--neo-fontSize-headlineMd: 44px;
+		--neo-fontSize-headlineLg: 64px;
+		--neo-fontSize-headlineXl: 80px;
+		--neo-fontSize-headlineXxl: 120px;
 	}
 }
