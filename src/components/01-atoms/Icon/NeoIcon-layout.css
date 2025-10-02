@@ -1,0 +1,10 @@
+.NeoIcon--small {
+	--NeoIcon-color-size: 0.75lh;
+}
+
+.NeoIcon--medium {
+	--NeoIcon-color-size: 1lh;
+}
+.NeoIcon--large {
+	--NeoIcon-color-size: 1.25lh;
+}

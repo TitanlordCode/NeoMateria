@@ -1,16 +1,8 @@
 <script setup lang="ts">
 import { ref, computed, nextTick, watch } from 'vue'
 import { generateUniqueId } from '@/utils/id'
-
-export interface NeoSelectProps {
-	name: string
-	label: string
-	selectProps?: { placeholder?: string }
-	options: { value: string; label: string }[]
-	selectValue?: string
-	helpText?: string
-	errorMessage?: string
-}
+import type { NeoSelectProps } from './NeoSelectTypes'
+import { getClassNames } from '@/utils/classNames'
 
 const props = defineProps<NeoSelectProps>()
 
@@ -107,10 +99,22 @@ watch(
 		if (focusedIndex.value >= props.options.length) focusedIndex.value = props.options.length - 1
 	},
 )
+const classes = computed(() => {
+	const selectClasses = getClassNames({
+		component: 'NeoSelect',
+		modifiers: [props.size ?? 'medium', props.variant ?? 'primary', props.rounded ? 'rounded' : ''],
+		additional: props.class,
+	})
+	const themedClasses = getClassNames({
+		component: 'Themed',
+		modifiers: [props.color ?? 'grey500'],
+	})
+	return `${selectClasses} ${themedClasses}`
+})
 </script>
 
 <template>
-	<div v-bind="$attrs" class="NeoSelect">
+	<div v-bind="$attrs" :class="classes">
 		<div class="NeoSelect-labelWrapper">
 			<label class="NeoSelect-label" :for="`${instanceId}-${props.name}`">{{ props.label }}</label>
 		</div>
@@ -179,6 +183,14 @@ watch(
 </template>
 
 <style scoped>
+@import url('./NeoSelect-layout.css');
+
+.NeoSelect {
+	& .NeoSelect-input {
+		padding: var(--NeoSelect-sizing-padding);
+	}
+}
+
 .NeoSelect-option {
 	background-color: white;
 

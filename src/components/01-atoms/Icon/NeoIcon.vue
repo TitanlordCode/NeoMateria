@@ -8,7 +8,7 @@ const props = defineProps<NeoIconProps>()
 const classes = computed(() => {
 	const buttonClasses = getClassNames({
 		component: 'NeoIcon',
-		modifiers: [props.size ?? 'small', props.colorVariant ?? 'theme'],
+		modifiers: [props.size ?? 'medium', props.colorVariant ?? 'theme'],
 		additional: props.class,
 	})
 	const themedClasses = getClassNames({
@@ -26,6 +26,7 @@ const classes = computed(() => {
 </template>
 
 <style scoped>
+@import url('./NeoIcon-layout.css');
 @import url('./NeoIcon-themed.css');
 
 .NeoIcon {
@@ -35,8 +36,8 @@ const classes = computed(() => {
 	justify-content: center;
 
 	& > * {
-		block-size: 1lh;
-		inline-size: 1lh;
+		block-size: var(--NeoIcon-color-size);
+		inline-size: var(--NeoIcon-color-size);
 	}
 }
 </style>
