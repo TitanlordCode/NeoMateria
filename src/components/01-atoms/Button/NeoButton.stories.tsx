@@ -79,7 +79,7 @@ const meta: Meta<typeof NeoButton> = {
 	},
 	args: {
 		text: 'Click me',
-		size: 'small',
+		size: 'medium',
 		color: 'grey500',
 		variant: 'primary',
 		disabled: false,
@@ -92,9 +92,15 @@ export default meta
 
 type Story = StoryObj<typeof meta>
 
-export const Default: Story = {
+export const Default: Story = {}
+export const Small: Story = {
 	args: {
-		text: 'Default NeoButton',
+		size: 'small',
+	},
+}
+export const large: Story = {
+	args: {
+		size: 'large',
 	},
 }
 

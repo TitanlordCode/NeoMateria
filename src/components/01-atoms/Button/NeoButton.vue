@@ -22,7 +22,7 @@ const handleClick = (event: MouseEvent) => {
 const classes = computed(() => {
 	const buttonClasses = getClassNames({
 		component: 'NeoButton',
-		modifiers: [props.size ?? 'small', props.variant ?? 'primary', props.rounded ? 'rounded' : ''],
+		modifiers: [props.size ?? 'medium', props.variant ?? 'primary', props.rounded ? 'rounded' : ''],
 		additional: props.class,
 	})
 	const themedClasses = getClassNames({
@@ -40,11 +40,11 @@ const classes = computed(() => {
 		:disabled="props.disabled ?? undefined"
 		@click="handleClick"
 	>
-		<NeoIcon v-show="$slots.iconStart" color-variant="text" :color="props.color" :size="props.size">
+		<NeoIcon v-show="$slots.iconStart" color-variant="text" :color="props.color" size="medium">
 			<slot name="iconStart" />
 		</NeoIcon>
 		{{ props.text }}
-		<NeoIcon v-show="$slots.iconEnd" color-variant="text" :color="props.color" :size="props.size">
+		<NeoIcon v-show="$slots.iconEnd" color-variant="text" :color="props.color" size="medium">
 			<slot name="iconEnd" />
 		</NeoIcon>
 	</button>
