@@ -1,0 +1,6 @@
+.NeoSelect {
+	--NeoSelect-color-input: rgba(var(--neo-color-white), 0.3);
+	--NeoSelect-color-inputText: var(--neo-color-grey900);
+	--NeoSelect-color-backgroundSelected: var(--neo-theme-color);
+	--NeoSelect-color-textSelected: var(--neo-theme-colorText);
+}

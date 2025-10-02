@@ -3,8 +3,8 @@ import type { Meta, StoryObj } from '@storybook/vue3'
 // import { fn } from '@storybook/test'
 
 import NeoSelect from './NeoSelect.vue'
-import type { NeoSelectProps } from './NeoSelect.vue'
-// import { colors } from '@/assets/typescript/colors'
+import type { NeoSelectProps } from './NeoSelectTypes'
+import { colors } from '@/assets/typescript/colors'
 
 const exampleOptions = [
 	{ value: 'apple', label: 'Apple' },
@@ -16,11 +16,14 @@ const meta: Meta<typeof NeoSelect> = {
 	title: 'Molecules/NeoSelect',
 	component: NeoSelect,
 	tags: ['autodocs'],
-	argTypes: {},
+	argTypes: {
+		color: { control: 'select', options: colors },
+	},
 	args: {
 		name: 'fruit',
 		label: 'Choose a fruit',
 		selectProps: { placeholder: 'Select one...' },
+		color: 'grey500',
 		options: exampleOptions,
 	},
 	parameters: {

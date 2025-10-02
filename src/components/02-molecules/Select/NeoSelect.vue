@@ -184,18 +184,20 @@ const classes = computed(() => {
 
 <style scoped>
 @import url('./NeoSelect-layout.css');
+@import url('./NeoSelect-themed.css');
 
 .NeoSelect {
 	& .NeoSelect-input {
+		background: var(--NeoSelect-color-input);
+		color: var(--NeoSelect-color-inputText);
 		padding: var(--NeoSelect-sizing-padding);
 	}
 }
 
 .NeoSelect-option {
-	background-color: white;
-
 	&.focused {
-		background-color: blueviolet;
+		background-color: var(--NeoSelect-color-backgroundSelected);
+		color: var(--NeoSelect-color-textSelected);
 	}
 }
 </style>
