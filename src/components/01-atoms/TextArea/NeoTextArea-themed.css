@@ -1,0 +1,27 @@
+.NeoTextArea {
+	--NeoTextArea-color-focus: var(--neo-theme-color);
+	--NeoTextArea-color-label: var(--neo-theme-color);
+	--NeoTextArea-color-placeholder: var(--neo-theme-color);
+	--NeoTextArea-color-helpText: var(--neo-color-grey600);
+	--NeoTextArea-color-readonlyBackground: var(--neo-color-grey100);
+}
+
+.NeoTextArea--primary {
+	--NeoTextArea-color-background: var(--neo-theme-color);
+	--NeoTextArea-color-text: var(--neo-theme-colorText);
+	--NeoTextArea-color-border: unset;
+}
+
+.NeoTextArea--secondary,
+.NeoTextArea--tertiary {
+	--NeoTextArea-color-background: transparent;
+	--NeoTextArea-color-text: var(--neo-theme-color);
+}
+
+.NeoTextArea--secondary {
+	--NeoTextArea-color-border: var(--neo-theme-color);
+}
+
+.NeoTextArea--tertiary {
+	--NeoTextArea-color-border: unset;
+}

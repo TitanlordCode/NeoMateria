@@ -1,0 +1,37 @@
+.NeoBadge--small {
+	--NeoBadge-sizing-fontSize: var(--neo-fontSize-xs);
+	--NeoBadge-sizing-padding: 2px 6px;
+	--NeoBadge-sizing-borderRadius: 4px;
+	--NeoBadge-sizing-dotSize: 8px;
+}
+
+.NeoBadge--medium {
+	--NeoBadge-sizing-fontSize: var(--neo-fontSize-sm);
+	--NeoBadge-sizing-padding: 4px 8px;
+	--NeoBadge-sizing-borderRadius: 6px;
+	--NeoBadge-sizing-dotSize: 10px;
+}
+
+.NeoBadge--large {
+	--NeoBadge-sizing-fontSize: var(--neo-fontSize-base);
+	--NeoBadge-sizing-padding: 6px 12px;
+	--NeoBadge-sizing-borderRadius: 8px;
+	--NeoBadge-sizing-dotSize: 12px;
+}
+
+.NeoBadge--solid {
+	--NeoBadge-sizing-borderWidth: 0;
+}
+
+.NeoBadge--outlined {
+	--NeoBadge-sizing-borderWidth: 1px;
+}
+
+.NeoBadge--dot {
+	--NeoBadge-sizing-borderWidth: 0;
+	--NeoBadge-sizing-borderRadius: 50%;
+}
+
+.NeoBadge--rounded {
+	--NeoBadge-sizing-borderRadius: 999px;
+}

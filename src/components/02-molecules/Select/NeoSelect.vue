@@ -189,8 +189,18 @@ const classes = computed(() => {
 .NeoSelect {
 	& .NeoSelect-input {
 		background: var(--NeoSelect-color-input);
+		border-color: var(--NeoSelect-color-border);
+		border-radius: var(--NeoSelect-sizing-borderRadius);
+		border-style: solid;
+		border-width: var(--NeoSelect-sizing-borderWidth);
 		color: var(--NeoSelect-color-inputText);
+		font-size: var(--NeoSelect-sizing-fontSize);
+		min-block-size: var(--NeoSelect-sizing-inline);
 		padding: var(--NeoSelect-sizing-padding);
+
+		&:focus-visible {
+			outline-color: var(--NeoSelect-color-focus);
+		}
 	}
 }
 

@@ -1,0 +1,17 @@
+.NeoBadge--solid {
+	--NeoBadge-color-background: var(--neo-theme-color);
+	--NeoBadge-color-text: var(--neo-theme-colorText);
+	--NeoBadge-color-border: unset;
+}
+
+.NeoBadge--outlined {
+	--NeoBadge-color-background: transparent;
+	--NeoBadge-color-text: var(--neo-theme-color);
+	--NeoBadge-color-border: var(--neo-theme-color);
+}
+
+.NeoBadge--dot {
+	--NeoBadge-color-background: var(--neo-theme-color);
+	--NeoBadge-color-text: transparent;
+	--NeoBadge-color-border: unset;
+}

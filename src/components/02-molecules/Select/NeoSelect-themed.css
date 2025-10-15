@@ -1,6 +1,25 @@
 .NeoSelect {
-	--NeoSelect-color-input: rgba(var(--neo-color-white), 0.3);
-	--NeoSelect-color-inputText: var(--neo-color-grey900);
+	--NeoSelect-color-focus: var(--neo-theme-color);
 	--NeoSelect-color-backgroundSelected: var(--neo-theme-color);
 	--NeoSelect-color-textSelected: var(--neo-theme-colorText);
+}
+
+.NeoSelect--primary {
+	--NeoSelect-color-input: var(--neo-theme-color);
+	--NeoSelect-color-inputText: var(--neo-theme-colorText);
+	--NeoSelect-color-border: unset;
+}
+
+.NeoSelect--secondary,
+.NeoSelect--tertiary {
+	--NeoSelect-color-input: transparent;
+	--NeoSelect-color-inputText: var(--neo-theme-color);
+}
+
+.NeoSelect--secondary {
+	--NeoSelect-color-border: var(--neo-theme-color);
+}
+
+.NeoSelect--tertiary {
+	--NeoSelect-color-border: unset;
 }

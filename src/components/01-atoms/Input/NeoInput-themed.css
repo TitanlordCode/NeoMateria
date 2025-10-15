@@ -1,0 +1,27 @@
+.NeoInput {
+	--NeoInput-color-focus: var(--neo-theme-color);
+	--NeoInput-color-label: var(--neo-theme-color);
+	--NeoInput-color-placeholder: var(--neo-theme-color);
+	--NeoInput-color-helpText: var(--neo-color-grey600);
+	--NeoInput-color-readonlyBackground: var(--neo-color-grey100);
+}
+
+.NeoInput--primary {
+	--NeoInput-color-background: var(--neo-theme-color);
+	--NeoInput-color-text: var(--neo-theme-colorText);
+	--NeoInput-color-border: unset;
+}
+
+.NeoInput--secondary,
+.NeoInput--tertiary {
+	--NeoInput-color-background: transparent;
+	--NeoInput-color-text: var(--neo-theme-color);
+}
+
+.NeoInput--secondary {
+	--NeoInput-color-border: var(--neo-theme-color);
+}
+
+.NeoInput--tertiary {
+	--NeoInput-color-border: unset;
+}

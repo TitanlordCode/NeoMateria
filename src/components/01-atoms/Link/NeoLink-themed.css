@@ -1,0 +1,15 @@
+.NeoLink {
+	--NeoLink-color-text: var(--neo-theme-color);
+	--NeoLink-color-textHover: var(--neo-theme-colorDark, var(--neo-theme-color));
+	--NeoLink-color-focus: var(--neo-theme-color);
+	--NeoLink-color-buttonBackground: var(--neo-theme-color);
+	--NeoLink-color-buttonBackgroundHover: var(--neo-theme-colorDark, var(--neo-theme-color));
+}
+
+.NeoLink--button {
+	--NeoLink-color-text: var(--neo-theme-colorText);
+
+	&:hover {
+		--NeoLink-color-textHover: var(--neo-theme-colorText);
+	}
+}

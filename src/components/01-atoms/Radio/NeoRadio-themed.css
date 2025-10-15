@@ -1,0 +1,5 @@
+.NeoRadio {
+	--NeoRadio-color-accent: var(--neo-theme-color);
+	--NeoRadio-color-focus: var(--neo-theme-color);
+	--NeoRadio-color-label: var(--neo-theme-color);
+}

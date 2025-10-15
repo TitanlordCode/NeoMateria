@@ -1,0 +1,17 @@
+.NeoSpinner--small {
+	--NeoSpinner-sizing-size: 24px;
+	--NeoSpinner-sizing-borderWidth: 2px;
+	--NeoSpinner-sizing-labelFontSize: var(--neo-fontSize-xs);
+}
+
+.NeoSpinner--medium {
+	--NeoSpinner-sizing-size: 32px;
+	--NeoSpinner-sizing-borderWidth: 3px;
+	--NeoSpinner-sizing-labelFontSize: var(--neo-fontSize-base);
+}
+
+.NeoSpinner--large {
+	--NeoSpinner-sizing-size: 48px;
+	--NeoSpinner-sizing-borderWidth: 4px;
+	--NeoSpinner-sizing-labelFontSize: var(--neo-fontSize-lg);
+}

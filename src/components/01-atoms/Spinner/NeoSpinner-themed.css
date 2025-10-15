@@ -1,0 +1,5 @@
+.NeoSpinner {
+	--NeoSpinner-color-border: var(--neo-color-grey300);
+	--NeoSpinner-color-active: var(--neo-theme-color);
+	--NeoSpinner-color-label: var(--neo-theme-color);
+}
