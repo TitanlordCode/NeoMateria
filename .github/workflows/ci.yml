@@ -73,3 +73,67 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: storybook-static
+
+  publish-npm:
+    needs: build-test
+    runs-on: ubuntu-latest
+
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🧱 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: 📦 Install dependencies
+        run: npm ci
+
+      - name: 🔍 Check version changed
+        id: version-check
+        run: |
+          CURRENT_VERSION=$(node -p "require('./package.json').version")
+          echo "current_version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
+
+          # Try to get the latest published version from npm
+          PUBLISHED_VERSION=$(npm view neo-materia version 2>/dev/null || echo "0.0.0")
+          echo "published_version=$PUBLISHED_VERSION" >> $GITHUB_OUTPUT
+
+          if [ "$CURRENT_VERSION" != "$PUBLISHED_VERSION" ]; then
+            echo "version_changed=true" >> $GITHUB_OUTPUT
+            echo "Version changed from $PUBLISHED_VERSION to $CURRENT_VERSION"
+          else
+            echo "version_changed=false" >> $GITHUB_OUTPUT
+            echo "Version unchanged: $CURRENT_VERSION"
+          fi
+
+      - name: 🧱 Build package
+        if: steps.version-check.outputs.version_changed == 'true'
+        run: npm run build
+
+      - name: 🚀 Publish to npm (stable)
+        if: steps.version-check.outputs.version_changed == 'true'
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: 🧱 Build package (dev)
+        if: steps.version-check.outputs.version_changed == 'false'
+        run: npm run build
+
+      - name: 🚀 Publish to npm (dev)
+        if: steps.version-check.outputs.version_changed == 'false'
+        run: |
+          # Create a dev version with commit SHA
+          DEV_VERSION="${{ steps.version-check.outputs.current_version }}-dev.$(git rev-parse --short HEAD)"
+          npm version $DEV_VERSION --no-git-tag-version
+          npm publish --tag dev
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

@@ -1,0 +1,41 @@
+# Source files (only dist should be published)
+src/
+scripts/
+docs/
+
+# Development files
+.storybook/
+storybook-static/
+.vscode/
+.github/
+docker/
+docker-compose.yml
+
+# Config files
+*.config.ts
+*.config.js
+tsconfig*.json
+.editorconfig
+.prettierrc.json
+.prettierignore
+.gitignore
+.gitattributes
+
+# Test files
+**/__tests__/
+**/*.test.ts
+**/*.spec.ts
+*.stories.ts
+vitest.config.ts
+
+# Build artifacts
+*.tsbuildinfo
+.DS_Store
+
+# Logs
+*.log
+
+# Documentation (README should be included)
+# Uncomment if you don't want docs in npm package
+# *.md
+# !README.md

@@ -11,6 +11,7 @@ node_modules
 .DS_Store
 dist
 dist-ssr
+storybook-static
 coverage
 *.local
 
@@ -30,3 +31,6 @@ coverage
 *.tsbuildinfo
 
 *storybook.log
+
+# Claude Code CLI settings
+.claude/
