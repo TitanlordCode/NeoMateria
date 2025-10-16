@@ -1,3 +1,4 @@
+import { colors } from '@/assets/typescript/colors'
 import type { Meta, StoryObj } from '@storybook/vue3'
 import NeoTextArea from './NeoTextArea.vue'
 
@@ -20,7 +21,7 @@ const meta = {
 		},
 		color: {
 			control: 'select',
-			options: ['grey500', 'blue500', 'red500', 'green500', 'yellow500', 'purple500'],
+			options: colors,
 		},
 	},
 	args: {
@@ -29,7 +30,7 @@ const meta = {
 		placeholder: 'Enter your text here...',
 		size: 'medium',
 		variant: 'primary',
-		color: 'blue500',
+		color: 'blue',
 	},
 } satisfies Meta<typeof NeoTextArea>
 

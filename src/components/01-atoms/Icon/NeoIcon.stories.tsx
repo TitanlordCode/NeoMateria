@@ -9,7 +9,7 @@ const meta = {
 	component: NeoIcon,
 	tags: ['autodocs'],
 	args: {
-		color: 'grey500',
+		color: 'grey',
 		colorVariant: 'theme',
 		size: 'medium',
 		default: () => deleteIcon,
@@ -73,13 +73,13 @@ export const BigFonts: Story = {
 }
 export const AddExample: Story = {
 	args: {
-		color: 'green500',
+		color: 'green',
 		default: () => addIcon,
 	},
 }
 export const DeleteExample: Story = {
 	args: {
-		color: 'red500',
+		color: 'red',
 		default: () => deleteIcon,
 	},
 }

@@ -10,6 +10,7 @@
  * --------------------------------------------------------------------
  */
 @import url('./mixins/breakpoints.css');
+@import url('./mixins/colors.css');
 @import url('./mixins/lineClamp.css');
 @import url('./mixins/scrollbar.css');
 @import url('./mixins/theming.css');

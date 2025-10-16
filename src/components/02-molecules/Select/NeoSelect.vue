@@ -3,6 +3,7 @@ import { ref, computed, nextTick, watch } from 'vue'
 import { generateUniqueId } from '@/utils/id'
 import type { NeoSelectProps } from './NeoSelectTypes'
 import { getClassNames } from '@/utils/classNames'
+import { getColorShade } from '@/utils/colorMapper'
 
 const props = defineProps<NeoSelectProps>()
 
@@ -99,6 +100,7 @@ watch(
 		if (focusedIndex.value >= props.options.length) focusedIndex.value = props.options.length - 1
 	},
 )
+
 const classes = computed(() => {
 	const selectClasses = getClassNames({
 		component: 'NeoSelect',
@@ -107,7 +109,7 @@ const classes = computed(() => {
 	})
 	const themedClasses = getClassNames({
 		component: 'Themed',
-		modifiers: [props.color ?? 'grey500'],
+		modifiers: [getColorShade(props.color, props.variant, 'grey500')],
 	})
 	return `${selectClasses} ${themedClasses}`
 })

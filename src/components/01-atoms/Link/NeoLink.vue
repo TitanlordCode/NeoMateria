@@ -2,6 +2,7 @@
 import { computed } from 'vue'
 import type { NeoLinkProps } from './NeoLinkTypes'
 import { getClassNames } from '@/utils/classNames'
+import { getColorShade } from '@/utils/colorMapper'
 
 const props = defineProps<NeoLinkProps>()
 
@@ -37,7 +38,7 @@ const classes = computed(() => {
 	})
 	const themedClasses = getClassNames({
 		component: 'Themed',
-		modifiers: [props.color ?? 'grey500'],
+		modifiers: [getColorShade(props.color, props.variant, 'grey500')],
 	})
 	return `${linkClasses} ${themedClasses}`
 })

@@ -5,6 +5,22 @@ import { toShortHex } from './utils/css-helper'
 import { dirname, join } from 'node:path'
 import { toPascalCase } from '../src/utils/stringManipulation'
 import { isAccessible } from '../src/utils/wcag'
+import { shouldSkipGeneration, updateCache } from './utils/cache-helper'
+
+const SCRIPT_NAME = 'generate-colors'
+const SOURCE_FILES = ['scripts/generate-colors.ts', 'node_modules/material-colors/dist/colors.json']
+const OUTPUT_FILES = [
+	'src/assets/typescript/colors.ts',
+	'src/assets/styles/colors.css',
+	'src/assets/styles/mixins/colors.css',
+	'docs/colors.md',
+	'src/components/00-foundations/colors.mdx',
+]
+
+// Check if we can skip generation
+if (shouldSkipGeneration(SCRIPT_NAME, SOURCE_FILES, OUTPUT_FILES)) {
+	process.exit(0)
+}
 
 const specialColors: ColorName[] = ['white', 'black']
 
@@ -37,6 +53,9 @@ const colorNames: string[] = Object.keys(flatColors)
 		return result
 	}, [])
 
+// Generate color family names (without shade numbers) - excluding special colors
+const colorFamilies = colorNames.filter((name) => !specialColors.includes(name))
+
 const tsContent = `/**
  * --------------------------------------------------------------------
  * THIS FILE IS AUTO-GENERATED — DO NOT EDIT IT DIRECTLY!
@@ -47,31 +66,25 @@ const tsContent = `/**
  */
 
 /**
- * array for all possible colors names
+ * array for all possible colors names (including special colors)
 */
 export const colorNames = \n${JSON.stringify(colorNames, null, 2)} as const
 
 /**
- * array for all possible colors
+ * array for color families (without shade numbers)
+ * Users specify these, and CSS handles the specific shade (500 by default)
 */
-export const colors = \n${JSON.stringify(
-	Object.keys(flatColors)
-		.map((color) => color.replace('-', ''))
-		.filter(
-			(color) =>
-				!specialColors.includes(color) && colorNames.some((name) => color.startsWith(name)),
-		),
-	null,
-	2,
-)} as const
+export const colors = \n${JSON.stringify(colorFamilies, null, 2)} as const
 
 /**
  * type that define all colors available for components
+ * Only color families are exposed (e.g., "blue", "green", not "blue500")
 */
 export type Color = typeof colors[number]
 
 /**
- * object of all possible color values
+ * object of all possible color values with shades
+ * Internal use only - for CSS generation
 */
 export const colorsFlat = ${JSON.stringify(flatColors, null, 2)}
 `
@@ -95,25 +108,71 @@ Object.entries(flatColors).forEach(([colorName, value]) => {
 
 const cssVars = cssVarsArr.join('\n')
 
-// WCAG Accessibility backgrounds
-const accessibilityClasses: string[] = []
+// Generate themed CSS mixins for all color shades
+const themedMixins: string[] = []
 
 Object.entries(flatColors).forEach(([colorName, value]) => {
 	const bg = toShortHex(value)
+	let textColor = 'white'
 
-	// Check against black & white only (most robust)
 	if (isAccessible(bg, '#000000')) {
-		accessibilityClasses.push(
-			`.Themed--${colorName.replace('-', '')} { --neo-theme-color: var(--neo-color-${colorName.replace('-', '')}); --neo-theme-colorText: var(--neo-color-black); }`,
-		)
+		textColor = 'black'
+	} else if (isAccessible(bg, '#ffffff')) {
+		textColor = 'white'
 	}
-	if (isAccessible(bg, '#ffffff')) {
-		accessibilityClasses.push(
-			`.Themed--${colorName.replace('-', '')} { --neo-theme-color: var(--neo-color-${colorName.replace('-', '')}); --neo-theme-colorText: var(--neo-color-white); }`,
-		)
+
+	const mixinName = colorName.replace('-', '')
+	const [family, shade] = colorName.split('-')
+	const shadeNum = parseInt(shade || '0')
+
+	// Determine accent shade (lighter version, typically 200)
+	let accentShade = '200'
+	if (shadeNum <= 200) {
+		accentShade = '100'
+	} else if (shadeNum <= 400) {
+		accentShade = '200'
+	} else {
+		accentShade = '300'
 	}
+
+	// Determine onDark shade
+	let onDarkShade = '200'
+	if (shadeNum <= 200) {
+		onDarkShade = '100'
+	} else if (shadeNum <= 400) {
+		onDarkShade = '200'
+	} else {
+		onDarkShade = '300'
+	}
+
+	const accentShadeKey = `${family}-${accentShade}`
+	const accentColor = flatColors[accentShadeKey]
+
+	const lightShadeKey = `${family}-${onDarkShade}`
+	const lightColor = flatColors[lightShadeKey]
+
+	// Get accent text color
+	let accentTextColor = 'white'
+	if (accentColor) {
+		const accentBg = toShortHex(accentColor)
+		if (isAccessible(accentBg, '#000000')) {
+			accentTextColor = 'black'
+		} else if (isAccessible(accentBg, '#ffffff')) {
+			accentTextColor = 'white'
+		}
+	}
+
+	// Generate the basic mixin
+	themedMixins.push(
+		`@define-mixin Themed--${mixinName} {
+	--neo-theme-color: var(--neo-color-${mixinName});
+	--neo-theme-colorText: var(--neo-color-${textColor});
+	--neo-theme-colorAccent: var(--neo-color-${family}${accentShade});
+}`,
+	)
 })
 
+// Write CSS variables
 writeFileSync(
 	'./src/assets/styles/colors.css',
 	`/**
@@ -126,18 +185,48 @@ writeFileSync(
  * To update this file, run the appropriate generation script.
  * --------------------------------------------------------------------
  */
-\n:root {
+
+:root {
 ${cssVars}
 }
-
-/* Accessible background utilities */
-${accessibilityClasses.join('\n')}
 `,
 )
 
 console.log('✅ colors.css generated')
 
+// Write color mixins to mixins directory
+mkdirSync('./src/assets/styles/mixins', { recursive: true })
+writeFileSync(
+	'./src/assets/styles/mixins/colors.css',
+	`/**
+ * --------------------------------------------------------------------
+ * THIS FILE IS AUTO-GENERATED — DO NOT EDIT IT DIRECTLY!
+ *
+ * This file was generated by the generate-colors script.
+ * Any manual changes will be overwritten.
+ *
+ * To update this file, run the appropriate generation script.
+ * --------------------------------------------------------------------
+ */
+
+/* Themed color mixins */
+/* Components use these mixins in their themed CSS files to get color variables */
+/* Usage in component CSS: @mixin Themed--blue500; */
+/* Variables provided: */
+/*   --neo-theme-color: Main color (e.g., shade 500) */
+/*   --neo-theme-colorText: Accessible text color (black/white based on WCAG) */
+/*   --neo-theme-colorAccent: Lighter accent color (e.g., shade 200) */
+/*  */
+/* For dark mode support, manually use the existing onDark mixin from theming.css: */
+/* Example: .MyComponent--blue { @mixin Themed--blue500; @mixin onDark { ... } } */
+${themedMixins.join('\n\n')}
+`,
+)
+
+console.log('✅ colors mixin file generated')
+
 runScript('npx prettier --write src/assets/styles/colors.css')
+runScript('npx prettier --write src/assets/styles/mixins/colors.css')
 
 /**
  * Generate MD documentation
@@ -268,3 +357,6 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 mkdirSync('./src/components/00-foundations', { recursive: true })
 writeFileSync(`./src/components/00-foundations/colors.mdx`, mdxContent)
 console.log(`✅ Storybook MDX generated`)
+
+// Update cache after successful generation
+updateCache(SCRIPT_NAME, SOURCE_FILES)

@@ -20,16 +20,16 @@ const handleClick = (event: MouseEvent) => {
 }
 
 const classes = computed(() => {
-	const buttonClasses = getClassNames({
+	return getClassNames({
 		component: 'NeoButton',
-		modifiers: [props.size ?? 'medium', props.variant ?? 'primary', props.rounded ? 'rounded' : ''],
+		modifiers: [
+			props.size ?? 'medium',
+			props.variant ?? 'primary',
+			props.color ?? 'grey',
+			props.rounded ? 'rounded' : '',
+		],
 		additional: props.class,
 	})
-	const themedClasses = getClassNames({
-		component: 'Themed',
-		modifiers: [props.color ?? 'grey500'],
-	})
-	return `${buttonClasses} ${themedClasses}`
 })
 </script>
 
