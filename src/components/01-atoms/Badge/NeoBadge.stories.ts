@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import NeoBadge from './NeoBadge.vue'
+import { colors } from '@/assets/typescript/colors'
 
 const meta = {
 	title: 'Atoms/NeoBadge',
@@ -16,14 +17,14 @@ const meta = {
 		},
 		color: {
 			control: 'select',
-			options: ['grey500', 'blue500', 'red500', 'green500', 'yellow500', 'purple500'],
+			options: colors,
 		},
 	},
 	args: {
 		text: 'Badge',
 		size: 'medium',
 		variant: 'solid',
-		color: 'blue500',
+		color: 'blue',
 	},
 } satisfies Meta<typeof NeoBadge>
 

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import NeoCheckbox from './NeoCheckbox.vue'
+import { colors } from '@/assets/typescript/colors'
 
 const meta = {
 	title: 'Atoms/NeoCheckbox',
@@ -12,14 +13,14 @@ const meta = {
 		},
 		color: {
 			control: 'select',
-			options: ['grey500', 'blue500', 'red500', 'green500', 'yellow500', 'purple500'],
+			options: colors,
 		},
 	},
 	args: {
 		name: 'example-checkbox',
 		label: 'Accept terms and conditions',
 		size: 'medium',
-		color: 'blue500',
+		color: 'blue',
 	},
 } satisfies Meta<typeof NeoCheckbox>
 

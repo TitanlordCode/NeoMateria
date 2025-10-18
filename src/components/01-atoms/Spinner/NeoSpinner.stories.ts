@@ -1,3 +1,4 @@
+import { colors } from '@/assets/typescript/colors'
 import type { Meta, StoryObj } from '@storybook/vue3'
 import NeoSpinner from './NeoSpinner.vue'
 
@@ -12,12 +13,12 @@ const meta = {
 		},
 		color: {
 			control: 'select',
-			options: ['grey500', 'blue500', 'red500', 'green500', 'yellow500', 'purple500'],
+			options: colors,
 		},
 	},
 	args: {
 		size: 'medium',
-		color: 'blue500',
+		color: 'blue',
 	},
 } satisfies Meta<typeof NeoSpinner>
 
@@ -66,6 +67,6 @@ export const InButton: Story = {
 		`,
 	}),
 	args: {
-		color: 'grey100',
+		color: 'grey',
 	},
 }

@@ -1,3 +1,4 @@
+import { colors } from '@/assets/typescript/colors'
 import type { Meta, StoryObj } from '@storybook/vue3'
 import NeoLink from './NeoLink.vue'
 
@@ -20,7 +21,7 @@ const meta = {
 		},
 		color: {
 			control: 'select',
-			options: ['grey500', 'blue500', 'red500', 'green500', 'yellow500', 'purple500'],
+			options: colors,
 		},
 	},
 	args: {
@@ -28,7 +29,7 @@ const meta = {
 		text: 'Click me',
 		size: 'medium',
 		variant: 'default',
-		color: 'blue500',
+		color: 'blue',
 	},
 } satisfies Meta<typeof NeoLink>
 

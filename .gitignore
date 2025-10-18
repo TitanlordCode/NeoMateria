@@ -32,5 +32,8 @@ coverage
 
 *storybook.log
 
+# Generation script cache
+.cache/
+
 # Claude Code CLI settings
 .claude/
