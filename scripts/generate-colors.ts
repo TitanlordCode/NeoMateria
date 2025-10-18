@@ -122,45 +122,11 @@ Object.entries(flatColors).forEach(([colorName, value]) => {
 	}
 
 	const mixinName = colorName.replace('-', '')
-	const [family, shade] = colorName.split('-')
-	const shadeNum = parseInt(shade || '0')
+	const [family] = colorName.split('-')
+	// const shadeNum = parseInt(shade || '0')
 
 	// Determine accent shade (lighter version, typically 200)
-	let accentShade = '200'
-	if (shadeNum <= 200) {
-		accentShade = '100'
-	} else if (shadeNum <= 400) {
-		accentShade = '200'
-	} else {
-		accentShade = '300'
-	}
-
-	// Determine onDark shade
-	let onDarkShade = '200'
-	if (shadeNum <= 200) {
-		onDarkShade = '100'
-	} else if (shadeNum <= 400) {
-		onDarkShade = '200'
-	} else {
-		onDarkShade = '300'
-	}
-
-	const accentShadeKey = `${family}-${accentShade}`
-	const accentColor = flatColors[accentShadeKey]
-
-	const lightShadeKey = `${family}-${onDarkShade}`
-	const lightColor = flatColors[lightShadeKey]
-
-	// Get accent text color
-	let accentTextColor = 'white'
-	if (accentColor) {
-		const accentBg = toShortHex(accentColor)
-		if (isAccessible(accentBg, '#000000')) {
-			accentTextColor = 'black'
-		} else if (isAccessible(accentBg, '#ffffff')) {
-			accentTextColor = 'white'
-		}
-	}
+	const accentShade = '200'
 
 	// Generate the basic mixin
 	themedMixins.push(
