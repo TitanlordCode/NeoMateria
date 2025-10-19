@@ -29,7 +29,7 @@ const meta = {
 		label: 'Label',
 		placeholder: 'Enter your text here...',
 		size: 'medium',
-		variant: 'primary',
+		variant: 'secondary',
 		color: 'blue',
 	},
 } satisfies Meta<typeof NeoTextArea>
@@ -37,9 +37,7 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Default: Story = {
-	args: {},
-}
+export const Default: Story = {}
 
 export const WithHelpText: Story = {
 	args: {
@@ -111,7 +109,7 @@ export const NoResize: Story = {
 
 export const WithMaxLength: Story = {
 	args: {
-		maxlength: 200,
+		maxLength: 200,
 		helpText: 'Maximum 200 characters',
 	},
 }

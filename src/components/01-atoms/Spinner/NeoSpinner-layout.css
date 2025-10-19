@@ -1,7 +1,7 @@
 .NeoSpinner--small {
 	--NeoSpinner-sizing-size: 24px;
 	--NeoSpinner-sizing-borderWidth: 2px;
-	--NeoSpinner-sizing-labelFontSize: var(--neo-fontSize-xs);
+	--NeoSpinner-sizing-labelFontSize: var(--neo-fontSize-textSm);
 }
 
 .NeoSpinner--medium {
@@ -13,5 +13,5 @@
 .NeoSpinner--large {
 	--NeoSpinner-sizing-size: 48px;
 	--NeoSpinner-sizing-borderWidth: 4px;
-	--NeoSpinner-sizing-labelFontSize: var(--neo-fontSize-lg);
+	--NeoSpinner-sizing-labelFontSize: var(--neo-fontSize-textLg);
 }

@@ -23,6 +23,7 @@ const meta: Meta<typeof NeoSelect> = {
 		name: 'fruit',
 		label: 'Choose a fruit',
 		selectProps: { placeholder: 'Select one...' },
+		variant: 'primary',
 		color: 'grey',
 		options: exampleOptions,
 	},

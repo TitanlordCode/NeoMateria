@@ -1,6 +1,8 @@
 import { colors } from '@/assets/typescript/colors'
 import type { Meta, StoryObj } from '@storybook/vue3'
 import NeoSpinner from './NeoSpinner.vue'
+import { defineComponent } from 'vue'
+import type { NeoSpinnerProps } from './NeoSpinnerTypes'
 
 const meta = {
 	title: 'Atoms/NeoSpinner',
@@ -25,9 +27,7 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Default: Story = {
-	args: {},
-}
+export const Default: Story = {}
 
 export const Small: Story = {
 	args: {
@@ -54,18 +54,31 @@ export const WithoutLabel: Story = {
 }
 
 export const InButton: Story = {
-	render: (args) => ({
-		components: { NeoSpinner },
-		setup() {
-			return { args }
-		},
-		template: `
-			<button style="padding: 12px 24px; background: #3b82f6; color: white; border: none; border-radius: 4px; cursor: pointer; display: flex; align-items: center; gap: 8px;">
-				<NeoSpinner v-bind="args" size="small" label="" />
-				Loading...
-			</button>
-		`,
-	}),
+	render: (args: NeoSpinnerProps) => {
+		return defineComponent({
+			name: 'InButtonRender',
+			setup() {
+				return () => (
+					<button
+						style={{
+							padding: '12px 24px',
+							background: 'var(--neo-color-blue500)',
+							color: 'var(--neo-color-white)',
+							border: 'none',
+							borderRadius: '4px',
+							cursor: 'pointer',
+							display: 'flex',
+							alignItems: 'center',
+							gap: '8px',
+						}}
+					>
+						<NeoSpinner {...args} size="small" label="" />
+						Loading...
+					</button>
+				)
+			},
+		})
+	},
 	args: {
 		color: 'grey',
 	},
