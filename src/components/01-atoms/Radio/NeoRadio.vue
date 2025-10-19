@@ -3,7 +3,6 @@ import { computed } from 'vue'
 import { generateUniqueId } from '@/utils/id'
 import type { NeoRadioProps } from './NeoRadioTypes'
 import { getClassNames } from '@/utils/classNames'
-import { getColorShade } from '@/utils/colorMapper'
 
 const props = defineProps<NeoRadioProps>()
 
@@ -28,7 +27,7 @@ const classes = computed(() => {
 	})
 	const themedClasses = getClassNames({
 		component: 'Themed',
-		modifiers: [getColorShade(props.color, undefined, 'grey500')],
+		modifiers: [props.color ?? 'grey'],
 	})
 	return `${radioClasses} ${themedClasses}`
 })
@@ -65,6 +64,7 @@ const classes = computed(() => {
 .NeoRadio {
 	align-items: center;
 	display: flex;
+	font-family: inherit;
 	gap: 8px;
 }
 
@@ -94,7 +94,7 @@ const classes = computed(() => {
 }
 
 .NeoRadio-required {
-	color: var(--neo-color-red500);
+	color: var(--NeoRadio-color-required);
 	margin-left: 4px;
 }
 

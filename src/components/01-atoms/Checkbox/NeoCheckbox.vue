@@ -3,7 +3,6 @@ import { computed, ref, watch } from 'vue'
 import { generateUniqueId } from '@/utils/id'
 import type { NeoCheckboxProps } from './NeoCheckboxTypes'
 import { getClassNames } from '@/utils/classNames'
-import { getColorShade } from '@/utils/colorMapper'
 
 const props = defineProps<NeoCheckboxProps>()
 
@@ -37,7 +36,7 @@ const classes = computed(() => {
 	})
 	const themedClasses = getClassNames({
 		component: 'Themed',
-		modifiers: [getColorShade(props.color, undefined, 'grey500')],
+		modifiers: [props.color ?? 'grey'],
 	})
 	return `${checkboxClasses} ${themedClasses}`
 })
@@ -72,6 +71,7 @@ const classes = computed(() => {
 .NeoCheckbox {
 	align-items: center;
 	display: flex;
+	font-family: inherit;
 	gap: 8px;
 }
 
@@ -101,7 +101,7 @@ const classes = computed(() => {
 }
 
 .NeoCheckbox-required {
-	color: var(--neo-color-red500);
+	color: var(--NeoCheckbox-color-required);
 	margin-left: 4px;
 }
 

@@ -2,7 +2,6 @@
 import { computed } from 'vue'
 import type { NeoSpinnerProps } from './NeoSpinnerTypes'
 import { getClassNames } from '@/utils/classNames'
-import { getColorShade } from '@/utils/colorMapper'
 
 const props = defineProps<NeoSpinnerProps>()
 
@@ -14,7 +13,7 @@ const classes = computed(() => {
 	})
 	const themedClasses = getClassNames({
 		component: 'Themed',
-		modifiers: [getColorShade(props.color, undefined, 'grey500')],
+		modifiers: [props.color ?? 'grey'],
 	})
 	return `${spinnerClasses} ${themedClasses}`
 })
@@ -35,6 +34,7 @@ const classes = computed(() => {
 	align-items: center;
 	display: inline-flex;
 	flex-direction: column;
+	font-family: inherit;
 	gap: 8px;
 }
 

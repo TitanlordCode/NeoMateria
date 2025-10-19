@@ -20,16 +20,16 @@ const handleClick = (event: MouseEvent) => {
 }
 
 const classes = computed(() => {
-	return getClassNames({
+	const buttonClasses = getClassNames({
 		component: 'NeoButton',
-		modifiers: [
-			props.size ?? 'medium',
-			props.variant ?? 'primary',
-			props.color ?? 'grey',
-			props.rounded ? 'rounded' : '',
-		],
+		modifiers: [props.size ?? 'medium', props.variant ?? 'primary', props.rounded ? 'rounded' : ''],
 		additional: props.class,
 	})
+	const themedClasses = getClassNames({
+		component: 'Themed',
+		modifiers: [props.color ?? 'grey'],
+	})
+	return `${buttonClasses} ${themedClasses}`
 })
 </script>
 
@@ -40,11 +40,11 @@ const classes = computed(() => {
 		:disabled="props.disabled ?? undefined"
 		@click="handleClick"
 	>
-		<NeoIcon v-show="$slots.iconStart" color-variant="text" :color="props.color" size="medium">
+		<NeoIcon v-if="$slots.iconStart" color-variant="text" :color="props.color" size="medium">
 			<slot name="iconStart" />
 		</NeoIcon>
 		{{ props.text }}
-		<NeoIcon v-show="$slots.iconEnd" color-variant="text" :color="props.color" size="medium">
+		<NeoIcon v-if="$slots.iconEnd" color-variant="text" :color="props.color" size="medium">
 			<slot name="iconEnd" />
 		</NeoIcon>
 	</button>
@@ -63,12 +63,13 @@ const classes = computed(() => {
 	border-width: var(--NeoButton-sizing-borderWidth);
 	color: var(--NeoButton-color-text);
 	display: flex;
+	font-family: inherit;
 	font-size: var(--NeoButton-sizing-fontSize);
 	font-weight: 600;
 	gap: 4px;
+	justify-content: center;
 	min-block-size: var(--NeoButton-sizing-inline);
-	padding-block: var(--NeoButton-sizing-padding);
-	padding-inline: var(--NeoButton-sizing-padding);
+	padding: var(--NeoButton-sizing-padding);
 
 	&:focus-visible {
 		outline-color: var(--NeoButton-color-focus);

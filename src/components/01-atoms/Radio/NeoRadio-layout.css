@@ -1,6 +1,6 @@
 .NeoRadio--small {
 	--NeoRadio-sizing-size: 16px;
-	--NeoRadio-sizing-labelFontSize: var(--neo-fontSize-xs);
+	--NeoRadio-sizing-labelFontSize: var(--neo-fontSize-textSm);
 }
 
 .NeoRadio--medium {
@@ -10,5 +10,5 @@
 
 .NeoRadio--large {
 	--NeoRadio-sizing-size: 24px;
-	--NeoRadio-sizing-labelFontSize: var(--neo-fontSize-lg);
+	--NeoRadio-sizing-labelFontSize: var(--neo-fontSize-textLg);
 }

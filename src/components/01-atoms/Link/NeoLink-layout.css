@@ -1,5 +1,5 @@
 .NeoLink--small {
-	--NeoLink-sizing-fontSize: var(--neo-fontSize-xs);
+	--NeoLink-sizing-fontSize: var(--neo-fontSize-textSm);
 	--NeoLink-sizing-buttonPadding: 4px 8px;
 }
 
@@ -9,6 +9,6 @@
 }
 
 .NeoLink--large {
-	--NeoLink-sizing-fontSize: var(--neo-fontSize-lg);
+	--NeoLink-sizing-fontSize: var(--neo-fontSize-textLg);
 	--NeoLink-sizing-buttonPadding: 12px 24px;
 }

@@ -9,6 +9,7 @@
  * --------------------------------------------------------------------
  */
 
+/* Color CSS Variables */
 :root {
 	--neo-color-red50: #ffebee;
 	--neo-color-red100: #ffcdd2;
@@ -202,4 +203,137 @@
 	--neo-color-blueGrey900: #263238;
 	--neo-color-white: #fff;
 	--neo-color-black: #000;
+}
+
+/* Themed Color Classes */
+/* Each color family has ONE class that automatically uses shade 500 and 200 */
+/* Usage in components: class="Themed--blue" */
+/* Variables provided: */
+/*   --neo-theme-color: Main color (automatically shade 500) */
+/*   --neo-theme-colorText: Accessible text color (black/white based on WCAG) */
+/*   --neo-theme-colorAccent: Lighter accent color (automatically shade 200) */
+.Themed--red {
+	--neo-theme-color: var(--neo-color-red500);
+	--neo-theme-colorText: var(--neo-color-black);
+	--neo-theme-colorAccent: var(--neo-color-red200);
+}
+
+.Themed--pink {
+	--neo-theme-color: var(--neo-color-pink500);
+	--neo-theme-colorText: var(--neo-color-black);
+	--neo-theme-colorAccent: var(--neo-color-pink200);
+}
+
+.Themed--purple {
+	--neo-theme-color: var(--neo-color-purple500);
+	--neo-theme-colorText: var(--neo-color-white);
+	--neo-theme-colorAccent: var(--neo-color-purple200);
+}
+
+.Themed--deepPurple {
+	--neo-theme-color: var(--neo-color-deepPurple500);
+	--neo-theme-colorText: var(--neo-color-white);
+	--neo-theme-colorAccent: var(--neo-color-deepPurple200);
+}
+
+.Themed--indigo {
+	--neo-theme-color: var(--neo-color-indigo500);
+	--neo-theme-colorText: var(--neo-color-white);
+	--neo-theme-colorAccent: var(--neo-color-indigo200);
+}
+
+.Themed--blue {
+	--neo-theme-color: var(--neo-color-blue500);
+	--neo-theme-colorText: var(--neo-color-black);
+	--neo-theme-colorAccent: var(--neo-color-blue200);
+}
+
+.Themed--lightBlue {
+	--neo-theme-color: var(--neo-color-lightBlue500);
+	--neo-theme-colorText: var(--neo-color-black);
+	--neo-theme-colorAccent: var(--neo-color-lightBlue200);
+}
+
+.Themed--cyan {
+	--neo-theme-color: var(--neo-color-cyan500);
+	--neo-theme-colorText: var(--neo-color-black);
+	--neo-theme-colorAccent: var(--neo-color-cyan200);
+}
+
+.Themed--teal {
+	--neo-theme-color: var(--neo-color-teal500);
+	--neo-theme-colorText: var(--neo-color-black);
+	--neo-theme-colorAccent: var(--neo-color-teal200);
+}
+
+.Themed--green {
+	--neo-theme-color: var(--neo-color-green500);
+	--neo-theme-colorText: var(--neo-color-black);
+	--neo-theme-colorAccent: var(--neo-color-green200);
+}
+
+.Themed--lightGreen {
+	--neo-theme-color: var(--neo-color-lightGreen500);
+	--neo-theme-colorText: var(--neo-color-black);
+	--neo-theme-colorAccent: var(--neo-color-lightGreen200);
+}
+
+.Themed--lime {
+	--neo-theme-color: var(--neo-color-lime500);
+	--neo-theme-colorText: var(--neo-color-black);
+	--neo-theme-colorAccent: var(--neo-color-lime200);
+}
+
+.Themed--yellow {
+	--neo-theme-color: var(--neo-color-yellow500);
+	--neo-theme-colorText: var(--neo-color-black);
+	--neo-theme-colorAccent: var(--neo-color-yellow200);
+}
+
+.Themed--amber {
+	--neo-theme-color: var(--neo-color-amber500);
+	--neo-theme-colorText: var(--neo-color-black);
+	--neo-theme-colorAccent: var(--neo-color-amber200);
+}
+
+.Themed--orange {
+	--neo-theme-color: var(--neo-color-orange500);
+	--neo-theme-colorText: var(--neo-color-black);
+	--neo-theme-colorAccent: var(--neo-color-orange200);
+}
+
+.Themed--deepOrange {
+	--neo-theme-color: var(--neo-color-deepOrange500);
+	--neo-theme-colorText: var(--neo-color-black);
+	--neo-theme-colorAccent: var(--neo-color-deepOrange200);
+}
+
+.Themed--brown {
+	--neo-theme-color: var(--neo-color-brown500);
+	--neo-theme-colorText: var(--neo-color-white);
+	--neo-theme-colorAccent: var(--neo-color-brown200);
+}
+
+.Themed--grey {
+	--neo-theme-color: var(--neo-color-grey500);
+	--neo-theme-colorText: var(--neo-color-black);
+	--neo-theme-colorAccent: var(--neo-color-grey200);
+}
+
+.Themed--blueGrey {
+	--neo-theme-color: var(--neo-color-blueGrey500);
+	--neo-theme-colorText: var(--neo-color-black);
+	--neo-theme-colorAccent: var(--neo-color-blueGrey200);
+}
+
+.Themed--white {
+	--neo-theme-color: var(--neo-color-white);
+	--neo-theme-colorText: var(--neo-color-black);
+	--neo-theme-colorAccent: var(--neo-color-white);
+}
+
+.Themed--black {
+	--neo-theme-color: var(--neo-color-black);
+	--neo-theme-colorText: var(--neo-color-white);
+	--neo-theme-colorAccent: var(--neo-color-black);
 }
