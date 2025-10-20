@@ -1,3 +1,4 @@
+import { colors } from '@/assets/typescript/colors'
 import type { Meta, StoryObj } from '@storybook/vue3'
 import NeoTextArea from './NeoTextArea.vue'
 
@@ -20,7 +21,7 @@ const meta = {
 		},
 		color: {
 			control: 'select',
-			options: ['grey500', 'blue500', 'red500', 'green500', 'yellow500', 'purple500'],
+			options: colors,
 		},
 	},
 	args: {
@@ -28,17 +29,15 @@ const meta = {
 		label: 'Label',
 		placeholder: 'Enter your text here...',
 		size: 'medium',
-		variant: 'primary',
-		color: 'blue500',
+		variant: 'secondary',
+		color: 'blue',
 	},
 } satisfies Meta<typeof NeoTextArea>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Default: Story = {
-	args: {},
-}
+export const Default: Story = {}
 
 export const WithHelpText: Story = {
 	args: {
@@ -110,7 +109,7 @@ export const NoResize: Story = {
 
 export const WithMaxLength: Story = {
 	args: {
-		maxlength: 200,
+		maxLength: 200,
 		helpText: 'Maximum 200 characters',
 	},
 }

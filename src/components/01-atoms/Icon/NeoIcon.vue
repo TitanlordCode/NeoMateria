@@ -13,7 +13,7 @@ const classes = computed(() => {
 	})
 	const themedClasses = getClassNames({
 		component: 'Themed',
-		modifiers: [props.color ?? 'grey500'],
+		modifiers: [props.color ?? 'grey'],
 	})
 	return `${buttonClasses} ${themedClasses}`
 })
@@ -33,6 +33,7 @@ const classes = computed(() => {
 	align-items: center;
 	color: var(--NeoIcon-color-icon);
 	display: inline-flex;
+	font-family: inherit;
 	justify-content: center;
 
 	& > * {

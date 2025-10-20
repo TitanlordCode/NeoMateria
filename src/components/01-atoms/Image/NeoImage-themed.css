@@ -1,0 +1,7 @@
+.NeoImage {
+	--NeoImage-color-placeholder: var(--neo-color-grey200);
+	--NeoImage-color-loaderBorder: var(--neo-color-grey300);
+	--NeoImage-color-loaderAccent: var(--neo-color-grey600);
+	--NeoImage-color-errorBackground: var(--neo-color-grey200);
+	--NeoImage-color-errorText: var(--neo-color-grey700);
+}

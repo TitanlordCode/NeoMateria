@@ -43,7 +43,7 @@ const classes = computed(() => {
 	})
 	const themedClasses = getClassNames({
 		component: 'Themed',
-		modifiers: [props.color ?? 'grey500'],
+		modifiers: [props.color ?? 'grey'],
 	})
 	return `${inputClasses} ${themedClasses}`
 })
@@ -109,6 +109,7 @@ const classes = computed(() => {
 .NeoInput {
 	display: flex;
 	flex-direction: column;
+	font-family: inherit;
 	gap: 4px;
 }
 
@@ -119,7 +120,7 @@ const classes = computed(() => {
 }
 
 .NeoInput-required {
-	color: var(--neo-color-red500);
+	color: var(--NeoInput-color-required);
 	margin-left: 4px;
 }
 
@@ -159,10 +160,10 @@ const classes = computed(() => {
 
 .NeoInput--error {
 	& .NeoInput-field {
-		border-color: var(--neo-color-red500);
+		border-color: var(--NeoInput-color-error);
 
 		&:focus-visible {
-			outline-color: var(--neo-color-red500);
+			outline-color: var(--NeoInput-color-error);
 		}
 	}
 }
@@ -174,7 +175,7 @@ const classes = computed(() => {
 }
 
 .NeoInput-errorMessage {
-	color: var(--neo-color-red500);
+	color: var(--NeoInput-color-error);
 	font-size: 0.875rem;
 	font-weight: 500;
 	margin: 0;
