@@ -99,6 +99,7 @@ watch(
 		if (focusedIndex.value >= props.options.length) focusedIndex.value = props.options.length - 1
 	},
 )
+
 const classes = computed(() => {
 	const selectClasses = getClassNames({
 		component: 'NeoSelect',
@@ -107,7 +108,7 @@ const classes = computed(() => {
 	})
 	const themedClasses = getClassNames({
 		component: 'Themed',
-		modifiers: [props.color ?? 'grey500'],
+		modifiers: [props.color ?? 'grey'],
 	})
 	return `${selectClasses} ${themedClasses}`
 })
@@ -187,6 +188,9 @@ const classes = computed(() => {
 @import url('./NeoSelect-themed.css');
 
 .NeoSelect {
+	font-family: inherit;
+	position: relative;
+
 	& .NeoSelect-input {
 		background: var(--NeoSelect-color-input);
 		border-color: var(--NeoSelect-color-border);
@@ -197,17 +201,49 @@ const classes = computed(() => {
 		font-size: var(--NeoSelect-sizing-fontSize);
 		min-block-size: var(--NeoSelect-sizing-inline);
 		padding: var(--NeoSelect-sizing-padding);
+		width: 100%;
 
 		&:focus-visible {
 			outline-color: var(--NeoSelect-color-focus);
 		}
 	}
-}
 
-.NeoSelect-option {
-	&.focused {
-		background-color: var(--NeoSelect-color-backgroundSelected);
-		color: var(--NeoSelect-color-textSelected);
+	& .NeoSelect-inputWrapper {
+		position: relative;
+	}
+
+	& .NeoSelect-options {
+		background: var(--NeoSelect-color-input);
+		border: 1px solid var(--NeoSelect-color-border);
+		border-radius: var(--NeoSelect-sizing-borderRadius, 4px);
+		box-shadow: 0 4px 12px rgb(0 0 0 / 15%);
+		left: 0;
+		list-style: none;
+		margin: 4px 0 0;
+		max-height: 240px;
+		overflow-y: auto;
+		padding: 4px 0;
+		position: absolute;
+		right: 0;
+		top: 100%;
+		z-index: 1000;
+	}
+
+	& .NeoSelect-option {
+		color: var(--NeoSelect-color-inputText);
+		cursor: pointer;
+		font-size: var(--NeoSelect-sizing-fontSize);
+		padding: 8px 12px;
+
+		&:hover,
+		&.focused {
+			background-color: var(--NeoSelect-color-backgroundSelected);
+			color: var(--NeoSelect-color-textSelected);
+		}
+
+		&.selected {
+			font-weight: 600;
+		}
 	}
 }
 </style>

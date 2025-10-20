@@ -3,13 +3,20 @@ import NeoIcon from './NeoIcon.vue'
 import { addIcon, deleteIcon } from './exampleIcons.tsx'
 import type { NeoIconProps } from './NeoIconTypes.ts'
 import { defineComponent } from 'vue'
+import { colors } from '@/assets/typescript/colors'
 
 const meta = {
 	title: 'Atoms/NeoIcon',
 	component: NeoIcon,
 	tags: ['autodocs'],
+	argTypes: {
+		color: {
+			control: 'select',
+			options: colors,
+		},
+	},
 	args: {
-		color: 'grey500',
+		color: 'grey',
 		colorVariant: 'theme',
 		size: 'medium',
 		default: () => deleteIcon,
@@ -73,13 +80,13 @@ export const BigFonts: Story = {
 }
 export const AddExample: Story = {
 	args: {
-		color: 'green500',
+		color: 'green',
 		default: () => addIcon,
 	},
 }
 export const DeleteExample: Story = {
 	args: {
-		color: 'red500',
+		color: 'red',
 		default: () => deleteIcon,
 	},
 }

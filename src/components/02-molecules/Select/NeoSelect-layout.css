@@ -11,7 +11,7 @@
 .NeoSelect--small {
 	--NeoSelect-sizing-padding: var(--neo-sizing-inputPaddingSM);
 	--NeoSelect-sizing-inline: var(--neo-sizing-inputBlockSM);
-	--NeoSelect-sizing-fontSize: var(--neo-fontSize-xs);
+	--NeoSelect-sizing-fontSize: var(--neo-fontSize-textSm);
 }
 
 .NeoSelect--medium {
@@ -23,7 +23,7 @@
 .NeoSelect--large {
 	--NeoSelect-sizing-padding: var(--neo-sizing-inputPaddingLG);
 	--NeoSelect-sizing-inline: var(--neo-sizing-inputBlockLG);
-	--NeoSelect-sizing-fontSize: var(--neo-fontSize-base);
+	--NeoSelect-sizing-fontSize: var(--neo-fontSize-textLg);
 }
 
 .NeoSelect--rounded {

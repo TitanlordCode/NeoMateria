@@ -80,7 +80,7 @@ const meta: Meta<typeof NeoButton> = {
 	args: {
 		text: 'Click me',
 		size: 'medium',
-		color: 'grey500',
+		color: 'grey',
 		variant: 'primary',
 		disabled: false,
 		rounded: false,

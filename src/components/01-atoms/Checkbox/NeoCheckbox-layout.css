@@ -1,6 +1,6 @@
 .NeoCheckbox--small {
 	--NeoCheckbox-sizing-size: 16px;
-	--NeoCheckbox-sizing-labelFontSize: var(--neo-fontSize-xs);
+	--NeoCheckbox-sizing-labelFontSize: var(--neo-fontSize-textSm);
 }
 
 .NeoCheckbox--medium {
@@ -10,5 +10,5 @@
 
 .NeoCheckbox--large {
 	--NeoCheckbox-sizing-size: 24px;
-	--NeoCheckbox-sizing-labelFontSize: var(--neo-fontSize-lg);
+	--NeoCheckbox-sizing-labelFontSize: var(--neo-fontSize-textLg);
 }

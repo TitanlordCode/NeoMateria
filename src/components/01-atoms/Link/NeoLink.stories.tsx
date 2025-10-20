@@ -1,5 +1,8 @@
+import { colors } from '@/assets/typescript/colors'
 import type { Meta, StoryObj } from '@storybook/vue3'
 import NeoLink from './NeoLink.vue'
+import { defineComponent } from 'vue'
+import type { NeoLinkProps } from './NeoLinkTypes'
 
 const meta = {
 	title: 'Atoms/NeoLink',
@@ -20,7 +23,7 @@ const meta = {
 		},
 		color: {
 			control: 'select',
-			options: ['grey500', 'blue500', 'red500', 'green500', 'yellow500', 'purple500'],
+			options: colors,
 		},
 	},
 	args: {
@@ -28,16 +31,14 @@ const meta = {
 		text: 'Click me',
 		size: 'medium',
 		variant: 'default',
-		color: 'blue500',
+		color: 'blue',
 	},
 } satisfies Meta<typeof NeoLink>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Default: Story = {
-	args: {},
-}
+export const Default: Story = {}
 
 export const Underline: Story = {
 	args: {
@@ -78,15 +79,16 @@ export const Large: Story = {
 }
 
 export const WithSlot: Story = {
-	render: (args) => ({
-		components: { NeoLink },
-		setup() {
-			return { args }
-		},
-		template: `
-			<NeoLink v-bind="args">
-				<strong>Custom content</strong> with <em>formatting</em>
-			</NeoLink>
-		`,
-	}),
+	render: (args: NeoLinkProps) => {
+		return defineComponent({
+			name: 'WithSlotRender',
+			setup() {
+				return () => (
+					<NeoLink {...args}>
+						<strong>Custom content</strong> with <em>formatting</em>
+					</NeoLink>
+				)
+			},
+		})
+	},
 }

@@ -1,27 +1,33 @@
+/* Default neutral input styling - looks like standard inputs */
 .NeoInput {
 	--NeoInput-color-focus: var(--neo-theme-color);
-	--NeoInput-color-label: var(--neo-theme-color);
-	--NeoInput-color-placeholder: var(--neo-theme-color);
+	--NeoInput-color-label: var(--neo-color-grey700);
+	--NeoInput-color-placeholder: var(--neo-color-grey500);
 	--NeoInput-color-helpText: var(--neo-color-grey600);
 	--NeoInput-color-readonlyBackground: var(--neo-color-grey100);
+	--NeoInput-color-background: var(--neo-color-white);
+	--NeoInput-color-text: var(--neo-color-grey900);
+	--NeoInput-color-border: var(--neo-color-grey300);
+	--NeoInput-color-error: var(--neo-color-red500);
+	--NeoInput-color-required: var(--neo-color-red500);
 }
 
+/* Primary variant - filled with theme color (like old style) */
 .NeoInput--primary {
 	--NeoInput-color-background: var(--neo-theme-color);
 	--NeoInput-color-text: var(--neo-theme-colorText);
-	--NeoInput-color-border: unset;
+	--NeoInput-color-border: var(--neo-theme-color);
+	--NeoInput-color-label: var(--neo-theme-color);
 }
 
-.NeoInput--secondary,
-.NeoInput--tertiary {
-	--NeoInput-color-background: transparent;
-	--NeoInput-color-text: var(--neo-theme-color);
-}
-
+/* Secondary variant - outlined with theme color border */
 .NeoInput--secondary {
 	--NeoInput-color-border: var(--neo-theme-color);
+	--NeoInput-color-label: var(--neo-theme-color);
 }
 
+/* Tertiary variant - minimal, no border, just underline effect */
 .NeoInput--tertiary {
-	--NeoInput-color-border: unset;
+	--NeoInput-color-border: transparent;
+	--NeoInput-color-label: var(--neo-theme-color);
 }
