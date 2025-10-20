@@ -23,7 +23,7 @@ export interface NeoTextAreaProps {
 	rounded?: boolean
 	variant?: NeoTextAreaVariant
 	rows?: number
-	maxLength?: number
-	minLength?: number
+	maxlength?: number
+	minlength?: number
 	resize?: 'none' | 'vertical' | 'horizontal' | 'both'
 }

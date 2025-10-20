@@ -27,7 +27,7 @@ const classes = computed(() => {
 	})
 	const themedClasses = getClassNames({
 		component: 'Themed',
-		modifiers: [props.color ?? 'grey'],
+		modifiers: [props.color ?? 'grey500'],
 	})
 	return `${buttonClasses} ${themedClasses}`
 })
@@ -40,11 +40,11 @@ const classes = computed(() => {
 		:disabled="props.disabled ?? undefined"
 		@click="handleClick"
 	>
-		<NeoIcon v-if="$slots.iconStart" color-variant="text" :color="props.color" size="medium">
+		<NeoIcon v-show="$slots.iconStart" color-variant="text" :color="props.color" size="medium">
 			<slot name="iconStart" />
 		</NeoIcon>
 		{{ props.text }}
-		<NeoIcon v-if="$slots.iconEnd" color-variant="text" :color="props.color" size="medium">
+		<NeoIcon v-show="$slots.iconEnd" color-variant="text" :color="props.color" size="medium">
 			<slot name="iconEnd" />
 		</NeoIcon>
 	</button>
@@ -63,13 +63,12 @@ const classes = computed(() => {
 	border-width: var(--NeoButton-sizing-borderWidth);
 	color: var(--NeoButton-color-text);
 	display: flex;
-	font-family: inherit;
 	font-size: var(--NeoButton-sizing-fontSize);
 	font-weight: 600;
 	gap: 4px;
-	justify-content: center;
 	min-block-size: var(--NeoButton-sizing-inline);
-	padding: var(--NeoButton-sizing-padding);
+	padding-block: var(--NeoButton-sizing-padding);
+	padding-inline: var(--NeoButton-sizing-padding);
 
 	&:focus-visible {
 		outline-color: var(--NeoButton-color-focus);

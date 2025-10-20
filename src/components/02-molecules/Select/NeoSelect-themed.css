@@ -1,26 +1,25 @@
-/* Default neutral select styling - looks like standard selects */
 .NeoSelect {
-	--NeoSelect-color-focus: var(--neo-theme-colorAccent);
+	--NeoSelect-color-focus: var(--neo-theme-color);
 	--NeoSelect-color-backgroundSelected: var(--neo-theme-color);
 	--NeoSelect-color-textSelected: var(--neo-theme-colorText);
-	--NeoSelect-color-input: var(--neo-color-white);
-	--NeoSelect-color-inputText: var(--neo-color-grey900);
-	--NeoSelect-color-border: var(--neo-color-grey300);
 }
 
-/* Primary variant - filled with theme color (like old style) */
 .NeoSelect--primary {
 	--NeoSelect-color-input: var(--neo-theme-color);
 	--NeoSelect-color-inputText: var(--neo-theme-colorText);
-	--NeoSelect-color-border: var(--neo-theme-color);
+	--NeoSelect-color-border: unset;
 }
 
-/* Secondary variant - outlined with theme color border */
+.NeoSelect--secondary,
+.NeoSelect--tertiary {
+	--NeoSelect-color-input: transparent;
+	--NeoSelect-color-inputText: var(--neo-theme-color);
+}
+
 .NeoSelect--secondary {
 	--NeoSelect-color-border: var(--neo-theme-color);
 }
 
-/* Tertiary variant - minimal, no border */
 .NeoSelect--tertiary {
-	--NeoSelect-color-border: transparent;
+	--NeoSelect-color-border: unset;
 }

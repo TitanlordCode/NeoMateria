@@ -5,21 +5,6 @@ import { toShortHex } from './utils/css-helper'
 import { dirname, join } from 'node:path'
 import { toPascalCase } from '../src/utils/stringManipulation'
 import { isAccessible } from '../src/utils/wcag'
-import { shouldSkipGeneration, updateCache } from './utils/cache-helper'
-
-const SCRIPT_NAME = 'generate-colors'
-const SOURCE_FILES = ['scripts/generate-colors.ts', 'node_modules/material-colors/dist/colors.json']
-const OUTPUT_FILES = [
-	'src/assets/typescript/colors.ts',
-	'src/assets/styles/colors.css',
-	'docs/colors.md',
-	'src/components/00-foundations/colors.mdx',
-]
-
-// Check if we can skip generation
-if (shouldSkipGeneration(SCRIPT_NAME, SOURCE_FILES, OUTPUT_FILES)) {
-	process.exit(0)
-}
 
 const specialColors: ColorName[] = ['white', 'black']
 
@@ -52,9 +37,6 @@ const colorNames: string[] = Object.keys(flatColors)
 		return result
 	}, [])
 
-// Generate color family names (without shade numbers) - excluding special colors
-const colorFamilies = colorNames.filter((name) => !specialColors.includes(name))
-
 const tsContent = `/**
  * --------------------------------------------------------------------
  * THIS FILE IS AUTO-GENERATED — DO NOT EDIT IT DIRECTLY!
@@ -65,25 +47,31 @@ const tsContent = `/**
  */
 
 /**
- * array for all possible colors names (including special colors)
+ * array for all possible colors names
 */
 export const colorNames = \n${JSON.stringify(colorNames, null, 2)} as const
 
 /**
- * array for color families (without shade numbers)
- * Users specify these, and CSS handles the specific shade (500 by default)
+ * array for all possible colors
 */
-export const colors = \n${JSON.stringify(colorFamilies, null, 2)} as const
+export const colors = \n${JSON.stringify(
+	Object.keys(flatColors)
+		.map((color) => color.replace('-', ''))
+		.filter(
+			(color) =>
+				!specialColors.includes(color) && colorNames.some((name) => color.startsWith(name)),
+		),
+	null,
+	2,
+)} as const
 
 /**
  * type that define all colors available for components
- * Only color families are exposed (e.g., "blue", "green", not "blue500")
 */
 export type Color = typeof colors[number]
 
 /**
- * object of all possible color values with shades
- * Internal use only - for CSS generation
+ * object of all possible color values
 */
 export const colorsFlat = ${JSON.stringify(flatColors, null, 2)}
 `
@@ -107,56 +95,25 @@ Object.entries(flatColors).forEach(([colorName, value]) => {
 
 const cssVars = cssVarsArr.join('\n')
 
-// Generate themed CSS classes for color families only (not individual shades)
-// Strategy: Each color family gets ONE CSS class (e.g., .Themed--blue)
-// The class automatically uses shade 500 as main color, shade 200 as accent
-const themedClasses: string[] = []
-const processedFamilies = new Set<string>()
+// WCAG Accessibility backgrounds
+const accessibilityClasses: string[] = []
 
 Object.entries(flatColors).forEach(([colorName, value]) => {
-	const [family, shade] = colorName.split('-')
-
-	// Only process shade 500 for regular colors (or no shade for special colors like white/black)
-	if (shade !== '500' && shade !== undefined) {
-		return
-	}
-
-	// Skip if we've already processed this family
-	if (processedFamilies.has(family)) {
-		return
-	}
-	processedFamilies.add(family)
-
-	// Calculate text color based on the 500 shade (WCAG accessible)
 	const bg = toShortHex(value)
-	let textColor = 'white'
-	if (isAccessible(bg, '#ffffff')) {
-		textColor = 'white'
-	} else if (isAccessible(bg, '#000000')) {
-		textColor = 'black'
+
+	// Check against black & white only (most robust)
+	if (isAccessible(bg, '#000000')) {
+		accessibilityClasses.push(
+			`.Themed--${colorName.replace('-', '')} { --neo-theme-color: var(--neo-color-${colorName.replace('-', '')}); --neo-theme-colorText: var(--neo-color-black); }`,
+		)
 	}
-
-	// Determine the accent shade (200) for this color family
-	const accentShade = '200'
-	const accentColorKey = `${family}-${accentShade}`
-	const hasAccent = flatColors[accentColorKey] !== undefined
-
-	// Generate class using just the family name (no shade number)
-	const className = family // e.g., "blue" not "blue500"
-	const mainColorVar = shade ? `${family}500` : family // e.g., "blue500" or "white"
-	const accentColorVar = hasAccent ? `${family}${accentShade}` : mainColorVar // e.g., "blue200"
-
-	// Generate the CSS class
-	themedClasses.push(
-		`.Themed--${className} {
-	--neo-theme-color: var(--neo-color-${mainColorVar});
-	--neo-theme-colorText: var(--neo-color-${textColor});
-	--neo-theme-colorAccent: var(--neo-color-${accentColorVar});
-}`,
-	)
+	if (isAccessible(bg, '#ffffff')) {
+		accessibilityClasses.push(
+			`.Themed--${colorName.replace('-', '')} { --neo-theme-color: var(--neo-color-${colorName.replace('-', '')}); --neo-theme-colorText: var(--neo-color-white); }`,
+		)
+	}
 })
 
-// Write CSS variables and themed classes
 writeFileSync(
 	'./src/assets/styles/colors.css',
 	`/**
@@ -169,20 +126,12 @@ writeFileSync(
  * To update this file, run the appropriate generation script.
  * --------------------------------------------------------------------
  */
-
-/* Color CSS Variables */
-:root {
+\n:root {
 ${cssVars}
 }
 
-/* Themed Color Classes */
-/* Each color family has ONE class that automatically uses shade 500 and 200 */
-/* Usage in components: class="Themed--blue" */
-/* Variables provided: */
-/*   --neo-theme-color: Main color (automatically shade 500) */
-/*   --neo-theme-colorText: Accessible text color (black/white based on WCAG) */
-/*   --neo-theme-colorAccent: Lighter accent color (automatically shade 200) */
-${themedClasses.join('\n\n')}
+/* Accessible background utilities */
+${accessibilityClasses.join('\n')}
 `,
 )
 
@@ -319,6 +268,3 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
 mkdirSync('./src/components/00-foundations', { recursive: true })
 writeFileSync(`./src/components/00-foundations/colors.mdx`, mdxContent)
 console.log(`✅ Storybook MDX generated`)
-
-// Update cache after successful generation
-updateCache(SCRIPT_NAME, SOURCE_FILES)

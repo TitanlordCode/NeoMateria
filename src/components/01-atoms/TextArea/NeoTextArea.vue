@@ -42,7 +42,7 @@ const classes = computed(() => {
 	})
 	const themedClasses = getClassNames({
 		component: 'Themed',
-		modifiers: [props.color ?? 'grey'],
+		modifiers: [props.color ?? 'grey500'],
 	})
 	return `${textareaClasses} ${themedClasses}`
 })
@@ -65,8 +65,8 @@ const classes = computed(() => {
 			:readonly="props.readonly"
 			:required="props.required"
 			:rows="props.rows ?? 4"
-			:maxlength="props.maxLength"
-			:minlength="props.minLength"
+			:maxlength="props.maxlength"
+			:minlength="props.minlength"
 			:style="{ resize: props.resize ?? 'vertical' }"
 			:aria-describedby="
 				props.helpText || props.errorMessage ? `${instanceId}-${props.name}-description` : undefined
@@ -104,7 +104,6 @@ const classes = computed(() => {
 .NeoTextArea {
 	display: flex;
 	flex-direction: column;
-	font-family: inherit;
 	gap: 4px;
 }
 
@@ -115,7 +114,7 @@ const classes = computed(() => {
 }
 
 .NeoTextArea-required {
-	color: var(--NeoTextArea-color-required);
+	color: var(--neo-color-red500);
 	margin-left: 4px;
 }
 
@@ -157,10 +156,10 @@ const classes = computed(() => {
 
 .NeoTextArea--error {
 	& .NeoTextArea-field {
-		border-color: var(--NeoTextArea-color-error);
+		border-color: var(--neo-color-red500);
 
 		&:focus-visible {
-			outline-color: var(--NeoTextArea-color-error);
+			outline-color: var(--neo-color-red500);
 		}
 	}
 }
@@ -172,7 +171,7 @@ const classes = computed(() => {
 }
 
 .NeoTextArea-errorMessage {
-	color: var(--NeoTextArea-color-error);
+	color: var(--neo-color-red500);
 	font-size: 0.875rem;
 	font-weight: 500;
 	margin: 0;

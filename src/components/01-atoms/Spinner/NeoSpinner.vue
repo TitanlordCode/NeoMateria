@@ -13,7 +13,7 @@ const classes = computed(() => {
 	})
 	const themedClasses = getClassNames({
 		component: 'Themed',
-		modifiers: [props.color ?? 'grey'],
+		modifiers: [props.color ?? 'grey500'],
 	})
 	return `${spinnerClasses} ${themedClasses}`
 })
@@ -34,7 +34,6 @@ const classes = computed(() => {
 	align-items: center;
 	display: inline-flex;
 	flex-direction: column;
-	font-family: inherit;
 	gap: 8px;
 }
 

@@ -2,7 +2,6 @@
 import { computed, ref } from 'vue'
 import type { NeoImageProps } from './NeoImageTypes'
 import { getClassNames } from '@/utils/classNames'
-import './NeoImage-themed.css'
 
 const props = defineProps<NeoImageProps>()
 
@@ -67,7 +66,6 @@ const imageStyle = computed(() => ({
 <style scoped>
 .NeoImage {
 	display: inline-block;
-	font-family: inherit;
 	overflow: hidden;
 	position: relative;
 }
@@ -119,7 +117,7 @@ const imageStyle = computed(() => ({
 
 .NeoImage-placeholder {
 	align-items: center;
-	background: var(--NeoImage-color-placeholder);
+	background: var(--neo-color-grey200);
 	block-size: 100%;
 	display: flex;
 	inline-size: 100%;
@@ -132,9 +130,9 @@ const imageStyle = computed(() => ({
 .NeoImage-loader {
 	animation: spin 1s linear infinite;
 	block-size: 32px;
-	border: 3px solid var(--NeoImage-color-loaderBorder);
+	border: 3px solid var(--neo-color-grey300);
 	border-radius: 50%;
-	border-top-color: var(--NeoImage-color-loaderAccent);
+	border-top-color: var(--neo-color-grey600);
 	inline-size: 32px;
 }
 
@@ -144,9 +142,9 @@ const imageStyle = computed(() => ({
 
 .NeoImage-errorState {
 	align-items: center;
-	background: var(--NeoImage-color-errorBackground);
+	background: var(--neo-color-grey200);
 	block-size: 100%;
-	color: var(--NeoImage-color-errorText);
+	color: var(--neo-color-grey700);
 	display: flex;
 	font-size: 0.875rem;
 	inline-size: 100%;

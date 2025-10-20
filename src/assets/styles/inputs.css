@@ -1,13 +1,13 @@
 :root {
 	/* Small */
-	--neo-sizing-inputPaddingSM: 4px 8px;
-	--neo-sizing-inputBlockSM: 32px;
+	--neo-sizing-inputPaddingSM: 8px;
+	--neo-sizing-inputBlockSM: 36px;
 	/* Medium */
-	--neo-sizing-inputPaddingMD: 6px 12px;
-	--neo-sizing-inputBlockMD: 36px;
+	--neo-sizing-inputPaddingMD: 14px;
+	--neo-sizing-inputBlockMD: 40px;
 	/* Large */
-	--neo-sizing-inputPaddingLG: 8px 16px;
-	--neo-sizing-inputBlockLG: 40px;
+	--neo-sizing-inputPaddingLG: 16px;
+	--neo-sizing-inputBlockLG: 44px;
 
 	/* Rounded */
 	--neo-border-inputRadius: 4px;

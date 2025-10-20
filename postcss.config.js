@@ -1,7 +1,7 @@
 module.exports = {
 	plugins: {
 		'postcss-mixins': {
-			mixinsDir: 'src/assets/styles/mixins',
+			mixinsDir: 'src/styles/mixins',
 		},
 		'postcss-pxtorem': {
 			rootValue: 16,

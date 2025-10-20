@@ -11,21 +11,21 @@
 .NeoInput--small {
 	--NeoInput-sizing-padding: var(--neo-sizing-inputPaddingSM);
 	--NeoInput-sizing-minHeight: var(--neo-sizing-inputBlockSM);
-	--NeoInput-sizing-fontSize: var(--neo-fontSize-textSm);
-	--NeoInput-sizing-labelFontSize: var(--neo-fontSize-textSm);
+	--NeoInput-sizing-fontSize: var(--neo-fontSize-xs);
+	--NeoInput-sizing-labelFontSize: var(--neo-fontSize-xs);
 }
 
 .NeoInput--medium {
 	--NeoInput-sizing-padding: var(--neo-sizing-inputPaddingMD);
 	--NeoInput-sizing-minHeight: var(--neo-sizing-inputBlockMD);
 	--NeoInput-sizing-fontSize: var(--neo-fontSize-base);
-	--NeoInput-sizing-labelFontSize: var(--neo-fontSize-textSm);
+	--NeoInput-sizing-labelFontSize: var(--neo-fontSize-sm);
 }
 
 .NeoInput--large {
 	--NeoInput-sizing-padding: var(--neo-sizing-inputPaddingLG);
 	--NeoInput-sizing-minHeight: var(--neo-sizing-inputBlockLG);
-	--NeoInput-sizing-fontSize: var(--neo-fontSize-textLg);
+	--NeoInput-sizing-fontSize: var(--neo-fontSize-base);
 	--NeoInput-sizing-labelFontSize: var(--neo-fontSize-base);
 }
 
