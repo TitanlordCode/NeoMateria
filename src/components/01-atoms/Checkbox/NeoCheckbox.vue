@@ -36,7 +36,7 @@ const classes = computed(() => {
 	})
 	const themedClasses = getClassNames({
 		component: 'Themed',
-		modifiers: [props.color ?? 'grey'],
+		modifiers: [props.color ?? 'grey500'],
 	})
 	return `${checkboxClasses} ${themedClasses}`
 })
@@ -71,7 +71,6 @@ const classes = computed(() => {
 .NeoCheckbox {
 	align-items: center;
 	display: flex;
-	font-family: inherit;
 	gap: 8px;
 }
 
@@ -101,7 +100,7 @@ const classes = computed(() => {
 }
 
 .NeoCheckbox-required {
-	color: var(--NeoCheckbox-color-required);
+	color: var(--neo-color-red500);
 	margin-left: 4px;
 }
 

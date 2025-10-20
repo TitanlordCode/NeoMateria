@@ -13,7 +13,7 @@ const classes = computed(() => {
 	})
 	const themedClasses = getClassNames({
 		component: 'Themed',
-		modifiers: [props.color ?? 'grey'],
+		modifiers: [props.color ?? 'grey500'],
 	})
 	return `${badgeClasses} ${themedClasses}`
 })
@@ -38,7 +38,6 @@ const classes = computed(() => {
 	border-width: var(--NeoBadge-sizing-borderWidth);
 	color: var(--NeoBadge-color-text);
 	display: inline-flex;
-	font-family: inherit;
 	font-size: var(--NeoBadge-sizing-fontSize);
 	font-weight: 600;
 	justify-content: center;

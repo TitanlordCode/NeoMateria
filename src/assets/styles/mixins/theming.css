@@ -7,15 +7,3 @@
 		@content;
 	}
 }
-
-@define-mixin prefersDark() {
-	@media (prefers-color-scheme: dark) {
-		@content;
-	}
-}
-
-@define-mixin prefersLight() {
-	@media (prefers-color-scheme: light) {
-		@content;
-	}
-}

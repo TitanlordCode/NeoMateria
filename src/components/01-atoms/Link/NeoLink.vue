@@ -37,7 +37,7 @@ const classes = computed(() => {
 	})
 	const themedClasses = getClassNames({
 		component: 'Themed',
-		modifiers: [props.color ?? 'grey'],
+		modifiers: [props.color ?? 'grey500'],
 	})
 	return `${linkClasses} ${themedClasses}`
 })
@@ -63,7 +63,6 @@ const classes = computed(() => {
 .NeoLink {
 	color: var(--NeoLink-color-text);
 	cursor: pointer;
-	font-family: inherit;
 	font-size: var(--NeoLink-sizing-fontSize);
 	font-weight: 500;
 	text-decoration: none;

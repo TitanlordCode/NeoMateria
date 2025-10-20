@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import NeoInput from './NeoInput.vue'
-import { colors } from '@/assets/typescript/colors'
 
 const meta = {
 	title: 'Atoms/NeoInput',
@@ -21,7 +20,7 @@ const meta = {
 		},
 		color: {
 			control: 'select',
-			options: colors,
+			options: ['grey500', 'blue500', 'red500', 'green500', 'yellow500', 'purple500'],
 		},
 	},
 	args: {
@@ -30,7 +29,7 @@ const meta = {
 		placeholder: 'Enter text...',
 		size: 'medium',
 		variant: 'primary',
-		color: 'blue',
+		color: 'blue500',
 		type: 'text',
 	},
 } satisfies Meta<typeof NeoInput>

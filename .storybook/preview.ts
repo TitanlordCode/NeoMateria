@@ -1,7 +1,6 @@
 import type { Decorator, Preview } from '@storybook/vue3'
 
 import '../src/assets/styles/globals.css'
-import './preview.css'
 
 const backgrounds = [
 	// ✅ must be an array
