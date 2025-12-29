@@ -104,6 +104,7 @@ const classes = computed(() => {
 .NeoTextArea {
 	display: flex;
 	flex-direction: column;
+	font-family: inherit;
 	gap: 4px;
 }
 

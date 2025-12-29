@@ -22,11 +22,7 @@ const handleClick = (event: MouseEvent) => {
 const classes = computed(() => {
 	const buttonClasses = getClassNames({
 		component: 'NeoButton',
-		modifiers: [
-			props.size ?? 'medium',
-			props.variant ?? 'primary',
-			props.rounded ? 'rounded' : '',
-		],
+		modifiers: [props.size ?? 'medium', props.variant ?? 'primary', props.rounded ? 'rounded' : ''],
 		additional: props.class,
 	})
 	const themedClasses = getClassNames({
@@ -67,6 +63,7 @@ const classes = computed(() => {
 	border-width: var(--NeoButton-sizing-borderWidth);
 	color: var(--NeoButton-color-text);
 	display: flex;
+	font-family: inherit;
 	font-size: var(--NeoButton-sizing-fontSize);
 	font-weight: 600;
 	gap: 4px;

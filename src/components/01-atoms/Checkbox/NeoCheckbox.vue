@@ -71,6 +71,7 @@ const classes = computed(() => {
 .NeoCheckbox {
 	align-items: center;
 	display: flex;
+	font-family: inherit;
 	gap: 8px;
 }
 

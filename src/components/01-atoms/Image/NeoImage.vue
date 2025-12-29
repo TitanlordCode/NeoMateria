@@ -67,6 +67,7 @@ const imageStyle = computed(() => ({
 <style scoped>
 .NeoImage {
 	display: inline-block;
+	font-family: inherit;
 	overflow: hidden;
 	position: relative;
 }

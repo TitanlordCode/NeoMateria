@@ -188,6 +188,7 @@ const classes = computed(() => {
 @import url('./NeoSelect-themed.css');
 
 .NeoSelect {
+	font-family: inherit;
 	position: relative;
 
 	& .NeoSelect-input {

@@ -109,6 +109,7 @@ const classes = computed(() => {
 .NeoInput {
 	display: flex;
 	flex-direction: column;
+	font-family: inherit;
 	gap: 4px;
 }
 

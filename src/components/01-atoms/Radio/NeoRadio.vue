@@ -64,6 +64,7 @@ const classes = computed(() => {
 .NeoRadio {
 	align-items: center;
 	display: flex;
+	font-family: inherit;
 	gap: 8px;
 }
 

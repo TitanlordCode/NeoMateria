@@ -34,6 +34,7 @@ const classes = computed(() => {
 	align-items: center;
 	display: inline-flex;
 	flex-direction: column;
+	font-family: inherit;
 	gap: 8px;
 }
 

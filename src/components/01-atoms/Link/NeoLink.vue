@@ -63,6 +63,7 @@ const classes = computed(() => {
 .NeoLink {
 	color: var(--NeoLink-color-text);
 	cursor: pointer;
+	font-family: inherit;
 	font-size: var(--NeoLink-sizing-fontSize);
 	font-weight: 500;
 	text-decoration: none;
