@@ -11,6 +11,7 @@ export interface NeoTextAreaProps {
 	class?: string
 	name: string
 	label?: string
+	ariaLabel?: string
 	placeholder?: string
 	value?: string
 	helpText?: string

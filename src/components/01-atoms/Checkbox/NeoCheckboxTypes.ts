@@ -8,6 +8,7 @@ export interface NeoCheckboxProps {
 	class?: string
 	name: string
 	label?: string
+	ariaLabel?: string
 	checked?: boolean
 	value?: string
 	disabled?: boolean

@@ -123,10 +123,9 @@ const imageStyle = computed(() => ({
 	block-size: 100%;
 	display: flex;
 	inline-size: 100%;
+	inset: 0;
 	justify-content: center;
-	left: 0;
 	position: absolute;
-	top: 0;
 }
 
 .NeoImage-loader {
@@ -150,12 +149,11 @@ const imageStyle = computed(() => ({
 	display: flex;
 	font-size: 0.875rem;
 	inline-size: 100%;
+	inset: 0;
 	justify-content: center;
-	left: 0;
 	padding: 16px;
 	position: absolute;
 	text-align: center;
-	top: 0;
 }
 
 @keyframes spin {

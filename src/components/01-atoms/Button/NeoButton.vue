@@ -40,11 +40,23 @@ const classes = computed(() => {
 		:disabled="props.disabled ?? undefined"
 		@click="handleClick"
 	>
-		<NeoIcon v-if="$slots.iconStart" color-variant="text" :color="props.color" size="medium">
+		<NeoIcon
+			v-if="$slots.iconStart"
+			color-variant="text"
+			:color="props.color"
+			size="medium"
+			aria-hidden
+		>
 			<slot name="iconStart" />
 		</NeoIcon>
 		{{ props.text }}
-		<NeoIcon v-if="$slots.iconEnd" color-variant="text" :color="props.color" size="medium">
+		<NeoIcon
+			v-if="$slots.iconEnd"
+			color-variant="text"
+			:color="props.color"
+			size="medium"
+			aria-hidden
+		>
 			<slot name="iconEnd" />
 		</NeoIcon>
 	</button>

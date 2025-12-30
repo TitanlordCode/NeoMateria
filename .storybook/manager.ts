@@ -5,7 +5,7 @@ const theme = create({
 	base: 'light',
 	brandTitle: 'NeoMateria',
 	brandUrl: 'https://github.com/TitanlordCode/NeoMateria',
-	brandImage: '/favicon.ico',
+	brandImage: './favicon.ico',
 	brandTarget: '_blank',
 
 	// Typography

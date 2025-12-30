@@ -2,4 +2,10 @@
 	--NeoSpinner-color-border: var(--neo-color-grey300);
 	--NeoSpinner-color-active: var(--neo-theme-color);
 	--NeoSpinner-color-label: var(--neo-theme-color);
+
+	@mixin onDark {
+		--NeoSpinner-color-border: var(--neo-color-grey600);
+		--NeoSpinner-color-active: var(--neo-theme-color);
+		--NeoSpinner-color-label: var(--neo-theme-color);
+	}
 }

@@ -3,10 +3,15 @@ import type { Meta, StoryObj } from '@storybook/vue3'
 import { expect, fn, userEvent, waitFor, within } from '@storybook/test'
 
 import NeoButton from '@/components/01-atoms/Button/NeoButton.vue'
-import { colors, colorNames } from '@/assets/typescript/colors'
+import { colors, colorNames, type Color } from '@/assets/typescript/colors'
 import { buttonSizes, buttonVariants, type NeoButtonProps } from './NeoButtonTypes'
 import { defineComponent, ref } from 'vue'
 import { addIcon, deleteIcon } from '../Icon/exampleIcons'
+import {
+	needsLightBackground,
+	getBackgroundColor,
+	createSimpleColorShowcase,
+} from '../../../../.storybook/utils/colorShowcase'
 
 const colorRender = (args: NeoButtonProps) => {
 	const accessibilityBackgrounds = ref(args.variant !== 'primary')
@@ -39,24 +44,43 @@ const colorRender = (args: NeoButtonProps) => {
 						{colorNames.map((colorName: string) => (
 							<div class={`box-${colorName}`} style={{ inlineSize: '100%' }}>
 								{colors
-									.filter((color: string) => color.replace(/\d+$/, '') === colorName)
-									.map((color: string, index: number) => (
-										<div
-											class={accessibilityBackgrounds.value ? `Themed--${color}` : ''}
-											style={{
-												inlineSize: '100%',
-												padding: '8px',
-												backgroundColor: 'var(--neo-theme-colorText)',
-											}}
-										>
-											<NeoButton
-												key={index}
-												{...args}
-												color={color as NeoButtonProps['color']}
-												text={color}
-											/>
-										</div>
-									))}
+									.filter((color: Color) => color.replace(/\d+$/, '') === colorName)
+									.map((color: Color, index: number) => {
+										const needsWrapper = needsLightBackground(
+											color,
+											accessibilityBackgrounds.value,
+											args.variant === 'primary',
+										)
+
+										return (
+											<div
+												class={accessibilityBackgrounds.value ? `Themed--${color}` : ''}
+												style={{
+													inlineSize: '100%',
+													padding: '8px',
+													backgroundColor: getBackgroundColor(
+														color,
+														accessibilityBackgrounds.value,
+														args.variant === 'primary',
+													),
+													border: needsWrapper ? '1px dashed #e0e0e0' : 'none',
+													borderRadius: needsWrapper ? '4px' : '0',
+												}}
+												title={
+													needsWrapper
+														? 'Uses black text - optimized for light backgrounds'
+														: undefined
+												}
+											>
+												<NeoButton
+													key={index}
+													{...args}
+													color={color as NeoButtonProps['color']}
+													text={color}
+												/>
+											</div>
+										)
+									})}
 							</div>
 						))}
 					</div>
@@ -168,4 +192,32 @@ export const interaction: Story = {
 
 		await waitFor(() => expect(args.onClick).toHaveBeenCalled())
 	},
+}
+
+export const OnDark: Story = {
+	globals: {
+		backgrounds: { value: '#000' },
+	},
+}
+
+export const RTL: Story = {
+	globals: {
+		direction: 'rtl',
+	},
+	args: {
+		text: 'انقر هنا',
+	},
+}
+
+export const AllColors: Story = {
+	render: createSimpleColorShowcase(NeoButton, ['primary', 'secondary', 'tertiary']),
+}
+
+export const AllColorsOnDark: Story = {
+	globals: {
+		backgrounds: { value: '#000' },
+	},
+	render: createSimpleColorShowcase(NeoButton, ['primary', 'secondary', 'tertiary'], {
+		dark: true,
+	}),
 }

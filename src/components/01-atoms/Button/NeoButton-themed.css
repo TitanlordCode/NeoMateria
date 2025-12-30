@@ -1,6 +1,10 @@
 /* Variant styling */
 .NeoButton {
 	--NeoButton-color-focus: var(--neo-theme-color);
+
+	@mixin onDark {
+		--NeoButton-color-focus: var(--neo-theme-color);
+	}
 }
 
 .NeoButton--primary {
@@ -21,6 +25,10 @@
 .NeoButton--tertiary {
 	--NeoButton-color-text: var(--neo-theme-color);
 	--NeoButton-color-background: transparent;
+
+	@mixin onDark {
+		--NeoButton-color-text: var(--neo-theme-color);
+	}
 }
 
 .NeoButton--secondary {

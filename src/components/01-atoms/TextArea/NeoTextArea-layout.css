@@ -1,34 +1,34 @@
 .NeoTextArea--primary,
+.NeoTextArea--secondary {
+	--NeoTextArea-sizing-borderWidth: 1px;
+}
+
 .NeoTextArea--tertiary {
 	--NeoTextArea-sizing-borderRadius: unset;
 	--NeoTextArea-sizing-borderWidth: 0;
 }
 
-.NeoTextArea--secondary {
-	--NeoTextArea-sizing-borderWidth: 1px;
-}
-
 .NeoTextArea--small {
-	--NeoTextArea-sizing-padding: var(--neo-sizing-inputPaddingSM);
+	--NeoTextArea-sizing-padding: var(--neo-sizing-input-padding-sm);
 	--NeoTextArea-sizing-minHeight: 80px;
 	--NeoTextArea-sizing-fontSize: var(--neo-fontSize-textSm);
 	--NeoTextArea-sizing-labelFontSize: var(--neo-fontSize-textSm);
 }
 
 .NeoTextArea--medium {
-	--NeoTextArea-sizing-padding: var(--neo-sizing-inputPaddingMD);
+	--NeoTextArea-sizing-padding: var(--neo-sizing-input-padding-md);
 	--NeoTextArea-sizing-minHeight: 100px;
 	--NeoTextArea-sizing-fontSize: var(--neo-fontSize-base);
 	--NeoTextArea-sizing-labelFontSize: var(--neo-fontSize-textSm);
 }
 
 .NeoTextArea--large {
-	--NeoTextArea-sizing-padding: var(--neo-sizing-inputPaddingLG);
+	--NeoTextArea-sizing-padding: var(--neo-sizing-input-padding-lg);
 	--NeoTextArea-sizing-minHeight: 120px;
 	--NeoTextArea-sizing-fontSize: var(--neo-fontSize-textLg);
 	--NeoTextArea-sizing-labelFontSize: var(--neo-fontSize-base);
 }
 
 .NeoTextArea--rounded {
-	--NeoTextArea-sizing-borderRadius: var(--neo-border-inputRadius);
+	--NeoTextArea-sizing-borderRadius: var(--neo-border-input-radius);
 }

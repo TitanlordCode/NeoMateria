@@ -5,4 +5,6 @@ export type NeoIconProps = {
 	color?: Color
 	colorVariant?: 'theme' | 'text'
 	class?: string
+	ariaLabel?: string
+	ariaHidden?: boolean
 }

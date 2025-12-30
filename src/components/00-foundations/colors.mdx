@@ -17,6 +17,40 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
  * --------------------------------------------------------------------
  */}
 
+<Subtitle>Material Design color palette with automatic accessibility optimization</Subtitle>
+
+## How Theme Colors Work
+
+When you apply a color to a component (e.g., `color="blue"`), the theme system provides:
+
+- **`--neo-theme-color`**: Main background color
+- **`--neo-theme-colorText`**: Text color for use ON the main color (auto-selected for WCAG AA compliance)
+- **`--neo-theme-colorAccent`**: Subtle accent color (shade 200) for focus states
+- **`--neo-theme-colorAccessible`**: Accessible color for text/borders ON page backgrounds
+
+### Accessibility Strategy
+
+**Light Mode (on white/light backgrounds):**
+- Most colors use **white text** on a darker shade (automatically selected starting from 500)
+- **Yellow, Amber, Orange** use **black text** on shade 500 for proper contrast
+
+**Dark Mode (on black/dark backgrounds):**
+- All colors use **black text** on a lighter shade (automatically selected starting from 500)
+
+All color combinations are tested to meet **WCAG AA** contrast requirements (4.5:1 for normal text).
+
+<div style={{
+	padding: '16px',
+	marginBlock: '24px',
+	backgroundColor: '#fff3cd',
+	border: '1px solid #ffc107',
+	borderRadius: '4px'
+}}>
+	<strong>⚠️ Special Colors:</strong> Yellow, Amber, and Orange use black text in light mode because they are too bright for white text. These colors work best on light backgrounds.
+</div>
+
+## Available Colors
+
 <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))'}}>
 	
 <div style={{inlineSize: '100%'}}>

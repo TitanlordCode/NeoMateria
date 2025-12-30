@@ -6,12 +6,21 @@
 
 .NeoBadge--outlined {
 	--NeoBadge-color-background: transparent;
-	--NeoBadge-color-text: var(--neo-theme-color);
-	--NeoBadge-color-border: var(--neo-theme-color);
+	--NeoBadge-color-text: var(--neo-theme-colorAccessible);
+	--NeoBadge-color-border: var(--neo-theme-colorAccessible);
+
+	@mixin onDark {
+		--NeoBadge-color-text: var(--neo-theme-colorAccessible);
+		--NeoBadge-color-border: var(--neo-theme-colorAccessible);
+	}
 }
 
 .NeoBadge--dot {
 	--NeoBadge-color-background: var(--neo-theme-color);
 	--NeoBadge-color-text: transparent;
 	--NeoBadge-color-border: unset;
+
+	@mixin onDark {
+		--NeoBadge-color-background: var(--neo-theme-color);
+	}
 }

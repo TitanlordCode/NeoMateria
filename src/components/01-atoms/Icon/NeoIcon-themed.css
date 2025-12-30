@@ -1,8 +1,16 @@
 .NeoIcon,
 .NeoIcon--theme {
 	--NeoIcon-color-icon: var(--neo-theme-color);
+
+	@mixin onDark {
+		--NeoIcon-color-icon: var(--neo-theme-color);
+	}
 }
 
 .NeoIcon--text {
-	--NeoIcon-color-icon: var(--neo-text-colorText);
+	--NeoIcon-color-icon: var(--neo-color-black);
+
+	@mixin onDark {
+		--NeoIcon-color-icon: var(--neo-color-white);
+	}
 }

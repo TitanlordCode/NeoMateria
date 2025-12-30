@@ -1,6 +1,9 @@
 /* Storybook-only font import - NOT included in the distributed package */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
+/* Import color showcase utilities */
+@import url('./utils/colorShowcase.css');
+
 /* Apply Inter font only in Storybook preview */
 #storybook-root,
 #storybook-docs [id^='story'] {
@@ -15,4 +18,9 @@
 		sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+}
+
+/* Dark mode container setup */
+.u-onDark {
+	@mixin setOnDark;
 }

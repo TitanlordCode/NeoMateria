@@ -68,6 +68,7 @@ const classes = computed(() => {
 			:maxlength="props.maxLength"
 			:minlength="props.minLength"
 			:style="{ resize: props.resize ?? 'vertical' }"
+			:aria-label="props.ariaLabel"
 			:aria-describedby="
 				props.helpText || props.errorMessage ? `${instanceId}-${props.name}-description` : undefined
 			"
@@ -105,7 +106,7 @@ const classes = computed(() => {
 	display: flex;
 	flex-direction: column;
 	font-family: inherit;
-	gap: 4px;
+	gap: var(--neo-gap-xs);
 }
 
 .NeoTextArea-label {
@@ -116,7 +117,7 @@ const classes = computed(() => {
 
 .NeoTextArea-required {
 	color: var(--NeoTextArea-color-required);
-	margin-left: 4px;
+	margin-inline-start: var(--neo-spacing-core-xs);
 }
 
 .NeoTextArea-field {
@@ -128,11 +129,11 @@ const classes = computed(() => {
 	color: var(--NeoTextArea-color-text);
 	font-family: inherit;
 	font-size: var(--NeoTextArea-sizing-fontSize);
+	inline-size: 100%;
 	line-height: 1.5;
 	min-block-size: var(--NeoTextArea-sizing-minHeight);
 	padding: var(--NeoTextArea-sizing-padding);
 	transition: border-color 0.2s;
-	width: 100%;
 
 	&::placeholder {
 		color: var(--NeoTextArea-color-placeholder);

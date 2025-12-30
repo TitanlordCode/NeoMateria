@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/vue3'
 import NeoLink from './NeoLink.vue'
 import { defineComponent } from 'vue'
 import type { NeoLinkProps } from './NeoLinkTypes'
+import { createSimpleColorShowcase } from '../../../../.storybook/utils/colorShowcase'
 
 const meta = {
 	title: 'Atoms/NeoLink',
@@ -91,4 +92,39 @@ export const WithSlot: Story = {
 			},
 		})
 	},
+}
+
+export const OnDark: Story = {
+	globals: {
+		backgrounds: { value: '#000' },
+	},
+}
+
+export const RTL: Story = {
+	globals: {
+		direction: 'rtl',
+	},
+	args: {
+		text: 'انقر هنا',
+	},
+}
+
+export const AllColors: Story = {
+	render: createSimpleColorShowcase(NeoLink, ['default', 'underline', 'button'], {
+		defaultProps: {
+			href: '#',
+		},
+	}),
+}
+
+export const AllColorsOnDark: Story = {
+	globals: {
+		backgrounds: { value: '#000' },
+	},
+	render: createSimpleColorShowcase(NeoLink, ['default', 'underline', 'button'], {
+		defaultProps: {
+			href: '#',
+		},
+		dark: true,
+	}),
 }

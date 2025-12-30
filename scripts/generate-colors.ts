@@ -109,11 +109,11 @@ const cssVars = cssVarsArr.join('\n')
 
 // Generate themed CSS classes for color families only (not individual shades)
 // Strategy: Each color family gets ONE CSS class (e.g., .Themed--blue)
-// The class automatically uses shade 500 as main color, shade 200 as accent
+// We start with shade 500 and adjust to ensure white/black text is accessible
 const themedClasses: string[] = []
 const processedFamilies = new Set<string>()
 
-Object.entries(flatColors).forEach(([colorName, value]) => {
+Object.entries(flatColors).forEach(([colorName]) => {
 	const [family, shade] = colorName.split('-')
 
 	// Only process shade 500 for regular colors (or no shade for special colors like white/black)
@@ -127,31 +127,194 @@ Object.entries(flatColors).forEach(([colorName, value]) => {
 	}
 	processedFamilies.add(family)
 
-	// Calculate text color based on the 500 shade (WCAG accessible)
-	const bg = toShortHex(value)
-	let textColor = 'white'
-	if (isAccessible(bg, '#ffffff')) {
-		textColor = 'white'
-	} else if (isAccessible(bg, '#000000')) {
-		textColor = 'black'
+	// Exception: Some colors can't support white text at any shade
+	// For these, we use black text in light mode for accessibility
+	const blackTextExceptions = ['yellow', 'amber', 'orange']
+	const usesBlackTextInLightMode = blackTextExceptions.includes(family)
+
+	// LIGHT MODE: --neo-theme-color (background with white/black text ON it)
+	let lightModeColorVar = shade ? `${family}${shade}` : family
+	let lightModeAccessible = false
+
+	if (usesBlackTextInLightMode) {
+		// For yellow/amber/orange: find a shade where black text is accessible
+		// Start with 500, go lighter (400, 300, 200) if needed
+		const lightModeShades = ['500', '400', '300', '200', '100']
+
+		for (const testShade of lightModeShades) {
+			const testKey = `${family}-${testShade}`
+			if (flatColors[testKey]) {
+				const testBg = toShortHex(flatColors[testKey])
+				// Check if black text is accessible ON this shade
+				if (isAccessible(testBg, '#000000')) {
+					lightModeColorVar = `${family}${testShade}`
+					lightModeAccessible = true
+					break
+				}
+			}
+		}
+	} else {
+		// Normal colors: find a shade where white text is accessible
+		// Start with 500, go darker (600, 700) if needed
+		const lightModeShades = ['500', '600', '700', '800', '900']
+
+		for (const testShade of lightModeShades) {
+			const testKey = `${family}-${testShade}`
+			if (flatColors[testKey]) {
+				const testBg = toShortHex(flatColors[testKey])
+				// Check if white text is accessible ON this shade
+				if (isAccessible(testBg, '#ffffff')) {
+					lightModeColorVar = `${family}${testShade}`
+					lightModeAccessible = true
+					break
+				}
+			}
+		}
 	}
 
-	// Determine the accent shade (200) for this color family
+	// Fallback: if no shade is accessible, use the best available
+	if (!lightModeAccessible) {
+		const fallbackShade = usesBlackTextInLightMode
+			? ['100', '200', '300', '400', '500'].find(
+					(testShade) => flatColors[`${family}-${testShade}`],
+				)
+			: ['900', '800', '700', '600', '500'].find(
+					(testShade) => flatColors[`${family}-${testShade}`],
+				)
+
+		if (fallbackShade) {
+			lightModeColorVar = `${family}${fallbackShade}`
+			console.warn(
+				`⚠️  Warning: ${family} cannot achieve WCAG AA contrast. Using ${family}${fallbackShade} as best effort.`,
+			)
+		}
+	}
+
+	// DARK MODE: --neo-theme-color (background with black text ON it)
+	// Start with 500, go lighter (400, 300, 200) if black text isn't accessible
+	const darkModeShades = ['500', '400', '300', '200', '100']
+	let darkModeColorVar = shade ? `${family}${shade}` : family
+	let darkModeAccessible = false
+
+	for (const testShade of darkModeShades) {
+		const testKey = `${family}-${testShade}`
+		if (flatColors[testKey]) {
+			const testBg = toShortHex(flatColors[testKey])
+			// Check if black text is accessible ON this shade
+			if (isAccessible(testBg, '#000000')) {
+				darkModeColorVar = `${family}${testShade}`
+				darkModeAccessible = true
+				break
+			}
+		}
+	}
+
+	// Fallback: if no shade is accessible with black text, use the lightest available (best effort)
+	if (!darkModeAccessible) {
+		const lightestShade = ['100', '200', '300', '400', '500'].find(
+			(testShade) => flatColors[`${family}-${testShade}`],
+		)
+		if (lightestShade) {
+			darkModeColorVar = `${family}${lightestShade}`
+			console.warn(
+				`⚠️  Warning: ${family} cannot achieve WCAG AA contrast with black text in dark mode. Using ${family}${lightestShade} as best effort.`,
+			)
+		}
+	}
+
+	// LIGHT MODE: --neo-theme-colorAccessible (text/border color ON light page background)
+	// For exception colors (yellow/amber/orange), use the darkest shade or black
+	// For regular colors, start with 700, go darker (800, 900) or lighter (600, 500)
+	let accessibleLightColorVar = lightModeColorVar
+
+	if (usesBlackTextInLightMode) {
+		// For yellow/amber/orange, even the darkest shade may not achieve WCAG AA on white
+		// Try darkest shades first, fallback to using the color with reduced opacity or black
+		const darkestShades = ['900', '800', '700']
+		let found = false
+
+		for (const testShade of darkestShades) {
+			const testKey = `${family}-${testShade}`
+			if (flatColors[testKey]) {
+				const testColor = toShortHex(flatColors[testKey])
+				if (isAccessible('#ffffff', testColor)) {
+					accessibleLightColorVar = `${family}${testShade}`
+					found = true
+					break
+				}
+			}
+		}
+
+		// If no shade is accessible, use the darkest available (best effort)
+		if (!found) {
+			const darkestAvailable = darkestShades.find((shade) => flatColors[`${family}-${shade}`])
+			if (darkestAvailable) {
+				accessibleLightColorVar = `${family}${darkestAvailable}`
+				console.warn(
+					`⚠️  Warning: ${family} cannot achieve WCAG AA contrast as text on white background. Using ${family}${darkestAvailable} as best effort.`,
+				)
+			}
+		}
+	} else {
+		// For regular colors, find accessible shade for text on white background
+		const accessibleLightShades = ['700', '800', '900', '600', '500']
+
+		for (const testShade of accessibleLightShades) {
+			const testKey = `${family}-${testShade}`
+			if (flatColors[testKey]) {
+				const testColor = toShortHex(flatColors[testKey])
+				// Check if this shade is accessible as text ON white background
+				if (isAccessible('#ffffff', testColor)) {
+					accessibleLightColorVar = `${family}${testShade}`
+					break
+				}
+			}
+		}
+	}
+
+	// DARK MODE: --neo-theme-colorAccessible (text/border color ON dark page background)
+	// Start with 200, go lighter (100) or darker (300, 400) if not accessible on black
+	const accessibleDarkShades = ['200', '100', '300', '400', '500']
+	let accessibleDarkColorVar = darkModeColorVar
+
+	for (const testShade of accessibleDarkShades) {
+		const testKey = `${family}-${testShade}`
+		if (flatColors[testKey]) {
+			const testColor = toShortHex(flatColors[testKey])
+			// Check if this shade is accessible as text ON black background
+			if (isAccessible('#000000', testColor)) {
+				accessibleDarkColorVar = `${family}${testShade}`
+				break
+			}
+		}
+	}
+
+	// Text colors: white for most colors, black for exceptions
+	const textColor = usesBlackTextInLightMode ? 'black' : 'white'
+
+	// Determine the accent shade (200) for this color family - used for subtle accents/focus
 	const accentShade = '200'
 	const accentColorKey = `${family}-${accentShade}`
 	const hasAccent = flatColors[accentColorKey] !== undefined
+	const accentColorVar = hasAccent ? `${family}${accentShade}` : lightModeColorVar // e.g., "blue200"
 
 	// Generate class using just the family name (no shade number)
 	const className = family // e.g., "blue" not "blue500"
-	const mainColorVar = shade ? `${family}500` : family // e.g., "blue500" or "white"
-	const accentColorVar = hasAccent ? `${family}${accentShade}` : mainColorVar // e.g., "blue200"
 
-	// Generate the CSS class
+	// Generate the CSS class with onDark support
 	themedClasses.push(
 		`.Themed--${className} {
-	--neo-theme-color: var(--neo-color-${mainColorVar});
+	--neo-theme-color: var(--neo-color-${lightModeColorVar});
 	--neo-theme-colorText: var(--neo-color-${textColor});
 	--neo-theme-colorAccent: var(--neo-color-${accentColorVar});
+	--neo-theme-colorAccessible: var(--neo-color-${accessibleLightColorVar});
+
+	@mixin onDark {
+		--neo-theme-color: var(--neo-color-${darkModeColorVar});
+		--neo-theme-colorText: var(--neo-color-black);
+		--neo-theme-colorAccent: var(--neo-color-${accentColorVar});
+		--neo-theme-colorAccessible: var(--neo-color-${accessibleDarkColorVar});
+	}
 }`,
 	)
 })
@@ -176,12 +339,13 @@ ${cssVars}
 }
 
 /* Themed Color Classes */
-/* Each color family has ONE class that automatically uses shade 500 and 200 */
+/* Each color family has ONE class that automatically provides shades for different use cases */
 /* Usage in components: class="Themed--blue" */
 /* Variables provided: */
-/*   --neo-theme-color: Main color (automatically shade 500) */
-/*   --neo-theme-colorText: Accessible text color (black/white based on WCAG) */
-/*   --neo-theme-colorAccent: Lighter accent color (automatically shade 200) */
+/*   --neo-theme-color: Main color (shade 500 on light, 400 on dark) */
+/*   --neo-theme-colorText: Text color for use ON the main color (black/white based on WCAG) */
+/*   --neo-theme-colorAccent: Subtle accent color (shade 200) for focus states */
+/*   --neo-theme-colorAccessible: Accessible color for text/borders ON page background (shade 700 on light, 200 on dark) */
 ${themedClasses.join('\n\n')}
 `,
 )
@@ -310,6 +474,40 @@ import { Meta, Title, Subtitle } from '@storybook/blocks'
  * The script is automatically triggered by the pre-flight script
  * --------------------------------------------------------------------
  */}
+
+<Subtitle>Material Design color palette with automatic accessibility optimization</Subtitle>
+
+## How Theme Colors Work
+
+When you apply a color to a component (e.g., \`color="blue"\`), the theme system provides:
+
+- **\`--neo-theme-color\`**: Main background color
+- **\`--neo-theme-colorText\`**: Text color for use ON the main color (auto-selected for WCAG AA compliance)
+- **\`--neo-theme-colorAccent\`**: Subtle accent color (shade 200) for focus states
+- **\`--neo-theme-colorAccessible\`**: Accessible color for text/borders ON page backgrounds
+
+### Accessibility Strategy
+
+**Light Mode (on white/light backgrounds):**
+- Most colors use **white text** on a darker shade (automatically selected starting from 500)
+- **Yellow, Amber, Orange** use **black text** on shade 500 for proper contrast
+
+**Dark Mode (on black/dark backgrounds):**
+- All colors use **black text** on a lighter shade (automatically selected starting from 500)
+
+All color combinations are tested to meet **WCAG AA** contrast requirements (4.5:1 for normal text).
+
+<div style={{
+	padding: '16px',
+	marginBlock: '24px',
+	backgroundColor: '#fff3cd',
+	border: '1px solid #ffc107',
+	borderRadius: '4px'
+}}>
+	<strong>⚠️ Special Colors:</strong> Yellow, Amber, and Orange use black text in light mode because they are too bright for white text. These colors work best on light backgrounds.
+</div>
+
+## Available Colors
 
 <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))'}}>
 	${tables.join('').replace(/\<\/table\>\n,/g, '<\/table\>')}

@@ -1,6 +1,7 @@
 import { colors } from '@/assets/typescript/colors'
 import type { Meta, StoryObj } from '@storybook/vue3'
 import NeoTextArea from './NeoTextArea.vue'
+import { createSimpleColorShowcase } from '../../../../.storybook/utils/colorShowcase'
 
 const meta = {
 	title: 'Atoms/NeoTextArea',
@@ -112,4 +113,70 @@ export const WithMaxLength: Story = {
 		maxLength: 200,
 		helpText: 'Maximum 200 characters',
 	},
+}
+
+export const AllColors: Story = {
+	render: createSimpleColorShowcase(
+		NeoTextArea,
+		[
+			{
+				variant: 'primary',
+				render: (color, _, args) => (
+					<NeoTextArea {...args} color={color} label={color} size="medium" />
+				),
+			},
+			{
+				variant: 'secondary',
+				render: (color, _, args) => (
+					<NeoTextArea {...args} color={color} label={color} size="medium" />
+				),
+			},
+			{
+				variant: 'tertiary',
+				render: (color, _, args) => (
+					<NeoTextArea {...args} color={color} label={color} size="medium" />
+				),
+			},
+		],
+		{
+			defaultProps: {
+				name: 'color-textarea',
+			},
+		},
+	),
+}
+
+export const AllColorsOnDark: Story = {
+	globals: {
+		backgrounds: { value: '#000' },
+	},
+	render: createSimpleColorShowcase(
+		NeoTextArea,
+		[
+			{
+				variant: 'primary',
+				render: (color, _, args) => (
+					<NeoTextArea {...args} color={color} label={color} size="medium" />
+				),
+			},
+			{
+				variant: 'secondary',
+				render: (color, _, args) => (
+					<NeoTextArea {...args} color={color} label={color} size="medium" />
+				),
+			},
+			{
+				variant: 'tertiary',
+				render: (color, _, args) => (
+					<NeoTextArea {...args} color={color} label={color} size="medium" />
+				),
+			},
+		],
+		{
+			defaultProps: {
+				name: 'color-textarea',
+			},
+			dark: true,
+		},
+	),
 }

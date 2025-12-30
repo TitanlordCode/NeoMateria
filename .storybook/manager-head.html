@@ -1,11 +1,13 @@
-<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="icon" type="image/x-icon" href="./favicon.ico" />
 <title>NeoMateria - Component Library</title>
 <script>
-  // Add dev banner if on /dev/ path
-  window.addEventListener('DOMContentLoaded', () => {
-    if (window.location.pathname.includes('/dev/')) {
-      const banner = document.createElement('div');
-      banner.style.cssText = `
+	// Add dev banner if on /dev/ path
+	window.addEventListener('DOMContentLoaded', () => {
+		const isDevEnvironment = window.location.pathname.includes('/dev/')
+		const isLocalhost = window.location.hostname === 'localhost'
+		if (isDevEnvironment || isLocalhost) {
+			const banner = document.createElement('div')
+			banner.style.cssText = `
         position: fixed;
         top: 0;
         left: 0;
@@ -19,20 +21,22 @@
         font-weight: 600;
         z-index: 999999;
         box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-      `;
-      banner.innerHTML = '⚠️ DEVELOPMENT VERSION - This is not the stable release';
-      document.body.prepend(banner);
+      `
+			banner.innerHTML = isDevEnvironment
+				? '⚠️ DEVELOPMENT VERSION - This is not the stable release'
+				: '⚠️ LOCAL VERSION - This is under development'
+			document.body.prepend(banner)
 
-      // Adjust Storybook layout to account for banner
-      const style = document.createElement('style');
-      style.textContent = `
-        body { padding-top: 40px !important; }
-        #storybook-root { top: 40px !important; }
-      `;
-      document.head.appendChild(style);
+			// Adjust Storybook layout to account for banner
+			const style = document.createElement('style')
+			style.textContent = `
+        body { padding-top: 30px !important; }
+        #storybook-root { top: 30px !important; }
+      `
+			document.head.appendChild(style)
 
-      // Update page title
-      document.title = '🔧 DEV - ' + document.title;
-    }
-  });
+			// Update page title
+			document.title = '🔧 DEV - ' + document.title
+		}
+	})
 </script>

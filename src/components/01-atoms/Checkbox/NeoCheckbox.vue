@@ -54,6 +54,7 @@ const classes = computed(() => {
 			:checked="props.checked"
 			:disabled="props.disabled"
 			:required="props.required"
+			:aria-label="props.ariaLabel"
 			:aria-checked="props.indeterminate ? 'mixed' : props.checked"
 			@change="handleChange"
 		/>
@@ -72,7 +73,7 @@ const classes = computed(() => {
 	align-items: center;
 	display: flex;
 	font-family: inherit;
-	gap: 8px;
+	gap: var(--neo-gap-sm);
 }
 
 .NeoCheckbox-input {
@@ -102,7 +103,7 @@ const classes = computed(() => {
 
 .NeoCheckbox-required {
 	color: var(--NeoCheckbox-color-required);
-	margin-left: 4px;
+	margin-inline-start: var(--neo-spacing-core-xs);
 }
 
 .NeoCheckbox-input:disabled + .NeoCheckbox-label {

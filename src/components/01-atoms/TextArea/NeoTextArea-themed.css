@@ -10,24 +10,46 @@
 	--NeoTextArea-color-border: var(--neo-color-grey300);
 	--NeoTextArea-color-error: var(--neo-color-red500);
 	--NeoTextArea-color-required: var(--neo-color-red500);
+
+	@mixin onDark {
+		--NeoTextArea-color-focus: var(--neo-theme-color);
+		--NeoTextArea-color-label: var(--neo-color-grey300);
+		--NeoTextArea-color-placeholder: var(--neo-color-grey400);
+		--NeoTextArea-color-helpText: var(--neo-color-grey400);
+		--NeoTextArea-color-readonlyBackground: var(--neo-color-grey800);
+		--NeoTextArea-color-background: var(--neo-color-grey800);
+		--NeoTextArea-color-text: var(--neo-color-white);
+		--NeoTextArea-color-border: var(--neo-color-grey600);
+		--NeoTextArea-color-error: var(--neo-color-red400);
+		--NeoTextArea-color-required: var(--neo-color-red400);
+	}
 }
 
-/* Primary variant - filled with theme color (like old style) */
+/* Primary variant - outlined with theme color border */
 .NeoTextArea--primary {
-	--NeoTextArea-color-background: var(--neo-theme-color);
-	--NeoTextArea-color-text: var(--neo-theme-colorText);
+	--NeoTextArea-color-background: var(--neo-color-white);
 	--NeoTextArea-color-border: var(--neo-theme-color);
-	--NeoTextArea-color-label: var(--neo-theme-color);
+
+	@mixin onDark {
+		--NeoTextArea-color-background: var(--neo-color-grey800);
+		--NeoTextArea-color-border: var(--neo-theme-color);
+	}
 }
 
 /* Secondary variant - outlined with theme color border */
 .NeoTextArea--secondary {
 	--NeoTextArea-color-border: var(--neo-theme-color);
-	--NeoTextArea-color-label: var(--neo-theme-color);
+
+	@mixin onDark {
+		--NeoTextArea-color-border: var(--neo-theme-color);
+	}
 }
 
 /* Tertiary variant - minimal, no border, just underline effect */
 .NeoTextArea--tertiary {
 	--NeoTextArea-color-border: transparent;
-	--NeoTextArea-color-label: var(--neo-theme-color);
+
+	@mixin onDark {
+		--NeoTextArea-color-border: transparent;
+	}
 }

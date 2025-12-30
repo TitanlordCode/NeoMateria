@@ -4,4 +4,12 @@
 	--NeoImage-color-loaderAccent: var(--neo-color-grey600);
 	--NeoImage-color-errorBackground: var(--neo-color-grey200);
 	--NeoImage-color-errorText: var(--neo-color-grey700);
+
+	@mixin onDark {
+		--NeoImage-color-placeholder: var(--neo-color-grey700);
+		--NeoImage-color-loaderBorder: var(--neo-color-grey600);
+		--NeoImage-color-loaderAccent: var(--neo-color-grey400);
+		--NeoImage-color-errorBackground: var(--neo-color-grey700);
+		--NeoImage-color-errorText: var(--neo-color-grey300);
+	}
 }

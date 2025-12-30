@@ -73,6 +73,7 @@ const classes = computed(() => {
 			:max="props.max"
 			:step="props.step"
 			:pattern="props.pattern"
+			:aria-label="props.ariaLabel"
 			:aria-describedby="
 				props.helpText || props.errorMessage ? `${instanceId}-${props.name}-description` : undefined
 			"
@@ -110,7 +111,8 @@ const classes = computed(() => {
 	display: flex;
 	flex-direction: column;
 	font-family: inherit;
-	gap: 4px;
+	gap: var(--neo-gap-xs);
+	inline-size: 100%;
 }
 
 .NeoInput-label {
@@ -121,7 +123,7 @@ const classes = computed(() => {
 
 .NeoInput-required {
 	color: var(--NeoInput-color-required);
-	margin-left: 4px;
+	margin-inline-start: var(--neo-spacing-core-xs);
 }
 
 .NeoInput-field {
@@ -135,7 +137,6 @@ const classes = computed(() => {
 	min-block-size: var(--NeoInput-sizing-minHeight);
 	padding: var(--NeoInput-sizing-padding);
 	transition: border-color 0.2s;
-	width: 100%;
 
 	&::placeholder {
 		color: var(--NeoInput-color-placeholder);
