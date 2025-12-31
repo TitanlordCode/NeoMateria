@@ -298,6 +298,18 @@ Object.entries(flatColors).forEach(([colorName]) => {
 	const hasAccent = flatColors[accentColorKey] !== undefined
 	const accentColorVar = hasAccent ? `${family}${accentShade}` : lightModeColorVar // e.g., "blue200"
 
+	// Determine shade 100 for filled variant backgrounds in light mode
+	const fillLightShade = '100'
+	const fillLightColorKey = `${family}-${fillLightShade}`
+	const hasFillLight = flatColors[fillLightColorKey] !== undefined
+	const fillLightColorVar = hasFillLight ? `${family}${fillLightShade}` : accentColorVar // e.g., "blue100", fallback to accent
+
+	// Determine shade 900 for filled variant backgrounds in dark mode
+	const fillDarkShade = '900'
+	const fillDarkColorKey = `${family}-${fillDarkShade}`
+	const hasFillDark = flatColors[fillDarkColorKey] !== undefined
+	const fillDarkColorVar = hasFillDark ? `${family}${fillDarkShade}` : lightModeColorVar // e.g., "blue900"
+
 	// Generate class using just the family name (no shade number)
 	const className = family // e.g., "blue" not "blue500"
 
@@ -308,12 +320,16 @@ Object.entries(flatColors).forEach(([colorName]) => {
 	--neo-theme-colorText: var(--neo-color-${textColor});
 	--neo-theme-colorAccent: var(--neo-color-${accentColorVar});
 	--neo-theme-colorAccessible: var(--neo-color-${accessibleLightColorVar});
+	--neo-theme-colorFilledBg: var(--neo-color-${fillLightColorVar});
+	--neo-theme-colorFilledBgDark: var(--neo-color-${fillDarkColorVar});
 
 	@mixin onDark {
 		--neo-theme-color: var(--neo-color-${darkModeColorVar});
 		--neo-theme-colorText: var(--neo-color-black);
 		--neo-theme-colorAccent: var(--neo-color-${accentColorVar});
 		--neo-theme-colorAccessible: var(--neo-color-${accessibleDarkColorVar});
+		--neo-theme-colorFilledBg: var(--neo-color-${fillLightColorVar});
+		--neo-theme-colorFilledBgDark: var(--neo-color-${fillDarkColorVar});
 	}
 }`,
 	)
@@ -346,6 +362,8 @@ ${cssVars}
 /*   --neo-theme-colorText: Text color for use ON the main color (black/white based on WCAG) */
 /*   --neo-theme-colorAccent: Subtle accent color (shade 200) for focus states */
 /*   --neo-theme-colorAccessible: Accessible color for text/borders ON page background (shade 700 on light, 200 on dark) */
+/*   --neo-theme-colorFilledBg: Subtle filled background color (shade 100) for filled/primary variant components */
+/*   --neo-theme-colorFilledBgDark: Dark filled background color (shade 900) for filled/primary variant in dark mode */
 ${themedClasses.join('\n\n')}
 `,
 )

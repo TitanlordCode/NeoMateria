@@ -2,13 +2,13 @@
 .color-showcase__light-bg-wrapper {
 	padding: var(--neo-spacing-core-xs) var(--neo-spacing-core-sm);
 	border-radius: var(--neo-radius-md);
-	background-color: transparent;
+	background-color: var(--neo-color-white);
 	border: 1px dashed var(--neo-color-grey400);
 
 	@mixin onDark {
-		background-color: transparent;
+		background-color: var(--neo-color-grey800);
 		color: var(--neo-color-white);
-		border-color: var(--neo-color-white);
+		border-color: var(--neo-color-grey600);
 	}
 }
 

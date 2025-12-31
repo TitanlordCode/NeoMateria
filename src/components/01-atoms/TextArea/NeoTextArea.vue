@@ -107,6 +107,7 @@ const classes = computed(() => {
 	flex-direction: column;
 	font-family: inherit;
 	gap: var(--neo-gap-xs);
+	inline-size: 100%;
 }
 
 .NeoTextArea-label {
@@ -129,7 +130,6 @@ const classes = computed(() => {
 	color: var(--NeoTextArea-color-text);
 	font-family: inherit;
 	font-size: var(--NeoTextArea-sizing-fontSize);
-	inline-size: 100%;
 	line-height: 1.5;
 	min-block-size: var(--NeoTextArea-sizing-minHeight);
 	padding: var(--NeoTextArea-sizing-padding);

@@ -122,19 +122,19 @@ export const AllColors: Story = {
 			{
 				variant: 'primary',
 				render: (color, _, args) => (
-					<NeoTextArea {...args} color={color} label={color} size="medium" />
+					<NeoTextArea {...args} color={color} label={color} size="medium" variant="primary" />
 				),
 			},
 			{
 				variant: 'secondary',
 				render: (color, _, args) => (
-					<NeoTextArea {...args} color={color} label={color} size="medium" />
+					<NeoTextArea {...args} color={color} label={color} size="medium" variant="secondary" />
 				),
 			},
 			{
 				variant: 'tertiary',
 				render: (color, _, args) => (
-					<NeoTextArea {...args} color={color} label={color} size="medium" />
+					<NeoTextArea {...args} color={color} label={color} size="medium" variant="tertiary" />
 				),
 			},
 		],
@@ -156,19 +156,19 @@ export const AllColorsOnDark: Story = {
 			{
 				variant: 'primary',
 				render: (color, _, args) => (
-					<NeoTextArea {...args} color={color} label={color} size="medium" />
+					<NeoTextArea {...args} color={color} label={color} size="medium" variant="primary" />
 				),
 			},
 			{
 				variant: 'secondary',
 				render: (color, _, args) => (
-					<NeoTextArea {...args} color={color} label={color} size="medium" />
+					<NeoTextArea {...args} color={color} label={color} size="medium" variant="secondary" />
 				),
 			},
 			{
 				variant: 'tertiary',
 				render: (color, _, args) => (
-					<NeoTextArea {...args} color={color} label={color} size="medium" />
+					<NeoTextArea {...args} color={color} label={color} size="medium" variant="tertiary" />
 				),
 			},
 		],

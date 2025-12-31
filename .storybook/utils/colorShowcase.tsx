@@ -16,16 +16,6 @@ const NonWCAGCompliantEntries: NonWCAGCompliantEntry[] = [
 		themes: ['light'],
 	},
 	{
-		component: 'NeoInput',
-		variants: ['secondary', 'tertiary'],
-		themes: ['light'],
-	},
-	{
-		component: 'NeoTextArea',
-		variants: ['secondary', 'tertiary'],
-		themes: ['light'],
-	},
-	{
 		component: 'NeoLink',
 		variants: ['default', 'underline'],
 		themes: ['light'],
@@ -68,6 +58,11 @@ export const getColorWrapper = (
 	variant?: string,
 	dark?: boolean,
 ): VNode => {
+	// Input and TextArea components are now WCAG compliant, always return unwrapped
+	if (componentName === 'NeoInput' || componentName === 'NeoTextArea') {
+		return children
+	}
+
 	if (!blackTextColors.includes(color)) {
 		return children
 	}

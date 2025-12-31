@@ -154,19 +154,19 @@ export const AllColors: Story = {
 			{
 				variant: 'primary',
 				render: (color, _, args) => (
-					<NeoInput {...args} color={color} label={color} size="medium" />
+					<NeoInput {...args} color={color} label={color} size="medium" variant="primary" />
 				),
 			},
 			{
 				variant: 'secondary',
 				render: (color, _, args) => (
-					<NeoInput {...args} color={color} label={color} size="medium" />
+					<NeoInput {...args} color={color} label={color} size="medium" variant="secondary" />
 				),
 			},
 			{
 				variant: 'tertiary',
 				render: (color, _, args) => (
-					<NeoInput {...args} color={color} label={color} size="medium" />
+					<NeoInput {...args} color={color} label={color} size="medium" variant="tertiary" />
 				),
 			},
 		],
@@ -188,19 +188,19 @@ export const AllColorsOnDark: Story = {
 			{
 				variant: 'primary',
 				render: (color, _, args) => (
-					<NeoInput {...args} color={color} label={color} size="medium" />
+					<NeoInput {...args} color={color} label={color} size="medium" variant="primary" />
 				),
 			},
 			{
 				variant: 'secondary',
 				render: (color, _, args) => (
-					<NeoInput {...args} color={color} label={color} size="medium" />
+					<NeoInput {...args} color={color} label={color} size="medium" variant="secondary" />
 				),
 			},
 			{
 				variant: 'tertiary',
 				render: (color, _, args) => (
-					<NeoInput {...args} color={color} label={color} size="medium" />
+					<NeoInput {...args} color={color} label={color} size="medium" variant="tertiary" />
 				),
 			},
 		],

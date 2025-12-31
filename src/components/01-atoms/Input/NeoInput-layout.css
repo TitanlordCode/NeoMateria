@@ -1,11 +1,23 @@
-.NeoInput--primary,
-.NeoInput--secondary {
+.NeoInput {
+	--NeoInput-sizing-borderRadius: unset;
+	--NeoInput-sizing-borderWidth: 1px;
+	--NeoInput-sizing-padding: var(--neo-sizing-input-padding-md);
+	--NeoInput-sizing-minHeight: var(--neo-sizing-input-height-md);
+	--NeoInput-sizing-fontSize: var(--neo-fontSize-base);
+	--NeoInput-sizing-labelFontSize: var(--neo-fontSize-textSm);
+}
+
+.NeoInput--primary {
 	--NeoInput-sizing-borderWidth: 1px;
 }
 
+.NeoInput--secondary {
+	--NeoInput-sizing-borderRadius: 0;
+	--NeoInput-sizing-borderWidth: 0 0 2px 0;
+}
+
 .NeoInput--tertiary {
-	--NeoInput-sizing-borderRadius: unset;
-	--NeoInput-sizing-borderWidth: 0;
+	--NeoInput-sizing-borderWidth: 1px;
 }
 
 .NeoInput--small {

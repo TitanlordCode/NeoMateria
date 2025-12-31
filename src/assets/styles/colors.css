@@ -213,17 +213,23 @@
 /*   --neo-theme-colorText: Text color for use ON the main color (black/white based on WCAG) */
 /*   --neo-theme-colorAccent: Subtle accent color (shade 200) for focus states */
 /*   --neo-theme-colorAccessible: Accessible color for text/borders ON page background (shade 700 on light, 200 on dark) */
+/*   --neo-theme-colorFilledBg: Subtle filled background color (shade 100) for filled/primary variant components */
+/*   --neo-theme-colorFilledBgDark: Dark filled background color (shade 900) for filled/primary variant in dark mode */
 .Themed--red {
 	--neo-theme-color: var(--neo-color-red700);
 	--neo-theme-colorText: var(--neo-color-white);
 	--neo-theme-colorAccent: var(--neo-color-red200);
 	--neo-theme-colorAccessible: var(--neo-color-red700);
+	--neo-theme-colorFilledBg: var(--neo-color-red100);
+	--neo-theme-colorFilledBgDark: var(--neo-color-red900);
 
 	@mixin onDark {
 		--neo-theme-color: var(--neo-color-red500);
 		--neo-theme-colorText: var(--neo-color-black);
 		--neo-theme-colorAccent: var(--neo-color-red200);
 		--neo-theme-colorAccessible: var(--neo-color-red200);
+		--neo-theme-colorFilledBg: var(--neo-color-red100);
+		--neo-theme-colorFilledBgDark: var(--neo-color-red900);
 	}
 }
 
@@ -232,12 +238,16 @@
 	--neo-theme-colorText: var(--neo-color-white);
 	--neo-theme-colorAccent: var(--neo-color-pink200);
 	--neo-theme-colorAccessible: var(--neo-color-pink700);
+	--neo-theme-colorFilledBg: var(--neo-color-pink100);
+	--neo-theme-colorFilledBgDark: var(--neo-color-pink900);
 
 	@mixin onDark {
 		--neo-theme-color: var(--neo-color-pink500);
 		--neo-theme-colorText: var(--neo-color-black);
 		--neo-theme-colorAccent: var(--neo-color-pink200);
 		--neo-theme-colorAccessible: var(--neo-color-pink200);
+		--neo-theme-colorFilledBg: var(--neo-color-pink100);
+		--neo-theme-colorFilledBgDark: var(--neo-color-pink900);
 	}
 }
 
@@ -246,12 +256,16 @@
 	--neo-theme-colorText: var(--neo-color-white);
 	--neo-theme-colorAccent: var(--neo-color-purple200);
 	--neo-theme-colorAccessible: var(--neo-color-purple700);
+	--neo-theme-colorFilledBg: var(--neo-color-purple100);
+	--neo-theme-colorFilledBgDark: var(--neo-color-purple900);
 
 	@mixin onDark {
 		--neo-theme-color: var(--neo-color-purple300);
 		--neo-theme-colorText: var(--neo-color-black);
 		--neo-theme-colorAccent: var(--neo-color-purple200);
 		--neo-theme-colorAccessible: var(--neo-color-purple200);
+		--neo-theme-colorFilledBg: var(--neo-color-purple100);
+		--neo-theme-colorFilledBgDark: var(--neo-color-purple900);
 	}
 }
 
@@ -260,12 +274,16 @@
 	--neo-theme-colorText: var(--neo-color-white);
 	--neo-theme-colorAccent: var(--neo-color-deepPurple200);
 	--neo-theme-colorAccessible: var(--neo-color-deepPurple700);
+	--neo-theme-colorFilledBg: var(--neo-color-deepPurple100);
+	--neo-theme-colorFilledBgDark: var(--neo-color-deepPurple900);
 
 	@mixin onDark {
 		--neo-theme-color: var(--neo-color-deepPurple300);
 		--neo-theme-colorText: var(--neo-color-black);
 		--neo-theme-colorAccent: var(--neo-color-deepPurple200);
 		--neo-theme-colorAccessible: var(--neo-color-deepPurple200);
+		--neo-theme-colorFilledBg: var(--neo-color-deepPurple100);
+		--neo-theme-colorFilledBgDark: var(--neo-color-deepPurple900);
 	}
 }
 
@@ -274,12 +292,16 @@
 	--neo-theme-colorText: var(--neo-color-white);
 	--neo-theme-colorAccent: var(--neo-color-indigo200);
 	--neo-theme-colorAccessible: var(--neo-color-indigo700);
+	--neo-theme-colorFilledBg: var(--neo-color-indigo100);
+	--neo-theme-colorFilledBgDark: var(--neo-color-indigo900);
 
 	@mixin onDark {
 		--neo-theme-color: var(--neo-color-indigo300);
 		--neo-theme-colorText: var(--neo-color-black);
 		--neo-theme-colorAccent: var(--neo-color-indigo200);
 		--neo-theme-colorAccessible: var(--neo-color-indigo200);
+		--neo-theme-colorFilledBg: var(--neo-color-indigo100);
+		--neo-theme-colorFilledBgDark: var(--neo-color-indigo900);
 	}
 }
 
@@ -288,12 +310,16 @@
 	--neo-theme-colorText: var(--neo-color-white);
 	--neo-theme-colorAccent: var(--neo-color-blue200);
 	--neo-theme-colorAccessible: var(--neo-color-blue700);
+	--neo-theme-colorFilledBg: var(--neo-color-blue100);
+	--neo-theme-colorFilledBgDark: var(--neo-color-blue900);
 
 	@mixin onDark {
 		--neo-theme-color: var(--neo-color-blue500);
 		--neo-theme-colorText: var(--neo-color-black);
 		--neo-theme-colorAccent: var(--neo-color-blue200);
 		--neo-theme-colorAccessible: var(--neo-color-blue200);
+		--neo-theme-colorFilledBg: var(--neo-color-blue100);
+		--neo-theme-colorFilledBgDark: var(--neo-color-blue900);
 	}
 }
 
@@ -302,12 +328,16 @@
 	--neo-theme-colorText: var(--neo-color-white);
 	--neo-theme-colorAccent: var(--neo-color-lightBlue200);
 	--neo-theme-colorAccessible: var(--neo-color-lightBlue800);
+	--neo-theme-colorFilledBg: var(--neo-color-lightBlue100);
+	--neo-theme-colorFilledBgDark: var(--neo-color-lightBlue900);
 
 	@mixin onDark {
 		--neo-theme-color: var(--neo-color-lightBlue500);
 		--neo-theme-colorText: var(--neo-color-black);
 		--neo-theme-colorAccent: var(--neo-color-lightBlue200);
 		--neo-theme-colorAccessible: var(--neo-color-lightBlue200);
+		--neo-theme-colorFilledBg: var(--neo-color-lightBlue100);
+		--neo-theme-colorFilledBgDark: var(--neo-color-lightBlue900);
 	}
 }
 
@@ -316,12 +346,16 @@
 	--neo-theme-colorText: var(--neo-color-white);
 	--neo-theme-colorAccent: var(--neo-color-cyan200);
 	--neo-theme-colorAccessible: var(--neo-color-cyan800);
+	--neo-theme-colorFilledBg: var(--neo-color-cyan100);
+	--neo-theme-colorFilledBgDark: var(--neo-color-cyan900);
 
 	@mixin onDark {
 		--neo-theme-color: var(--neo-color-cyan500);
 		--neo-theme-colorText: var(--neo-color-black);
 		--neo-theme-colorAccent: var(--neo-color-cyan200);
 		--neo-theme-colorAccessible: var(--neo-color-cyan200);
+		--neo-theme-colorFilledBg: var(--neo-color-cyan100);
+		--neo-theme-colorFilledBgDark: var(--neo-color-cyan900);
 	}
 }
 
@@ -330,12 +364,16 @@
 	--neo-theme-colorText: var(--neo-color-white);
 	--neo-theme-colorAccent: var(--neo-color-teal200);
 	--neo-theme-colorAccessible: var(--neo-color-teal700);
+	--neo-theme-colorFilledBg: var(--neo-color-teal100);
+	--neo-theme-colorFilledBgDark: var(--neo-color-teal900);
 
 	@mixin onDark {
 		--neo-theme-color: var(--neo-color-teal500);
 		--neo-theme-colorText: var(--neo-color-black);
 		--neo-theme-colorAccent: var(--neo-color-teal200);
 		--neo-theme-colorAccessible: var(--neo-color-teal200);
+		--neo-theme-colorFilledBg: var(--neo-color-teal100);
+		--neo-theme-colorFilledBgDark: var(--neo-color-teal900);
 	}
 }
 
@@ -344,12 +382,16 @@
 	--neo-theme-colorText: var(--neo-color-white);
 	--neo-theme-colorAccent: var(--neo-color-green200);
 	--neo-theme-colorAccessible: var(--neo-color-green800);
+	--neo-theme-colorFilledBg: var(--neo-color-green100);
+	--neo-theme-colorFilledBgDark: var(--neo-color-green900);
 
 	@mixin onDark {
 		--neo-theme-color: var(--neo-color-green500);
 		--neo-theme-colorText: var(--neo-color-black);
 		--neo-theme-colorAccent: var(--neo-color-green200);
 		--neo-theme-colorAccessible: var(--neo-color-green200);
+		--neo-theme-colorFilledBg: var(--neo-color-green100);
+		--neo-theme-colorFilledBgDark: var(--neo-color-green900);
 	}
 }
 
@@ -358,12 +400,16 @@
 	--neo-theme-colorText: var(--neo-color-white);
 	--neo-theme-colorAccent: var(--neo-color-lightGreen200);
 	--neo-theme-colorAccessible: var(--neo-color-lightGreen900);
+	--neo-theme-colorFilledBg: var(--neo-color-lightGreen100);
+	--neo-theme-colorFilledBgDark: var(--neo-color-lightGreen900);
 
 	@mixin onDark {
 		--neo-theme-color: var(--neo-color-lightGreen500);
 		--neo-theme-colorText: var(--neo-color-black);
 		--neo-theme-colorAccent: var(--neo-color-lightGreen200);
 		--neo-theme-colorAccessible: var(--neo-color-lightGreen200);
+		--neo-theme-colorFilledBg: var(--neo-color-lightGreen100);
+		--neo-theme-colorFilledBgDark: var(--neo-color-lightGreen900);
 	}
 }
 
@@ -372,12 +418,16 @@
 	--neo-theme-colorText: var(--neo-color-white);
 	--neo-theme-colorAccent: var(--neo-color-lime200);
 	--neo-theme-colorAccessible: var(--neo-color-lime900);
+	--neo-theme-colorFilledBg: var(--neo-color-lime100);
+	--neo-theme-colorFilledBgDark: var(--neo-color-lime900);
 
 	@mixin onDark {
 		--neo-theme-color: var(--neo-color-lime500);
 		--neo-theme-colorText: var(--neo-color-black);
 		--neo-theme-colorAccent: var(--neo-color-lime200);
 		--neo-theme-colorAccessible: var(--neo-color-lime200);
+		--neo-theme-colorFilledBg: var(--neo-color-lime100);
+		--neo-theme-colorFilledBgDark: var(--neo-color-lime900);
 	}
 }
 
@@ -386,12 +436,16 @@
 	--neo-theme-colorText: var(--neo-color-black);
 	--neo-theme-colorAccent: var(--neo-color-yellow200);
 	--neo-theme-colorAccessible: var(--neo-color-yellow900);
+	--neo-theme-colorFilledBg: var(--neo-color-yellow100);
+	--neo-theme-colorFilledBgDark: var(--neo-color-yellow900);
 
 	@mixin onDark {
 		--neo-theme-color: var(--neo-color-yellow500);
 		--neo-theme-colorText: var(--neo-color-black);
 		--neo-theme-colorAccent: var(--neo-color-yellow200);
 		--neo-theme-colorAccessible: var(--neo-color-yellow200);
+		--neo-theme-colorFilledBg: var(--neo-color-yellow100);
+		--neo-theme-colorFilledBgDark: var(--neo-color-yellow900);
 	}
 }
 
@@ -400,12 +454,16 @@
 	--neo-theme-colorText: var(--neo-color-black);
 	--neo-theme-colorAccent: var(--neo-color-amber200);
 	--neo-theme-colorAccessible: var(--neo-color-amber900);
+	--neo-theme-colorFilledBg: var(--neo-color-amber100);
+	--neo-theme-colorFilledBgDark: var(--neo-color-amber900);
 
 	@mixin onDark {
 		--neo-theme-color: var(--neo-color-amber500);
 		--neo-theme-colorText: var(--neo-color-black);
 		--neo-theme-colorAccent: var(--neo-color-amber200);
 		--neo-theme-colorAccessible: var(--neo-color-amber200);
+		--neo-theme-colorFilledBg: var(--neo-color-amber100);
+		--neo-theme-colorFilledBgDark: var(--neo-color-amber900);
 	}
 }
 
@@ -414,12 +472,16 @@
 	--neo-theme-colorText: var(--neo-color-black);
 	--neo-theme-colorAccent: var(--neo-color-orange200);
 	--neo-theme-colorAccessible: var(--neo-color-orange900);
+	--neo-theme-colorFilledBg: var(--neo-color-orange100);
+	--neo-theme-colorFilledBgDark: var(--neo-color-orange900);
 
 	@mixin onDark {
 		--neo-theme-color: var(--neo-color-orange500);
 		--neo-theme-colorText: var(--neo-color-black);
 		--neo-theme-colorAccent: var(--neo-color-orange200);
 		--neo-theme-colorAccessible: var(--neo-color-orange200);
+		--neo-theme-colorFilledBg: var(--neo-color-orange100);
+		--neo-theme-colorFilledBgDark: var(--neo-color-orange900);
 	}
 }
 
@@ -428,12 +490,16 @@
 	--neo-theme-colorText: var(--neo-color-white);
 	--neo-theme-colorAccent: var(--neo-color-deepOrange200);
 	--neo-theme-colorAccessible: var(--neo-color-deepOrange900);
+	--neo-theme-colorFilledBg: var(--neo-color-deepOrange100);
+	--neo-theme-colorFilledBgDark: var(--neo-color-deepOrange900);
 
 	@mixin onDark {
 		--neo-theme-color: var(--neo-color-deepOrange500);
 		--neo-theme-colorText: var(--neo-color-black);
 		--neo-theme-colorAccent: var(--neo-color-deepOrange200);
 		--neo-theme-colorAccessible: var(--neo-color-deepOrange200);
+		--neo-theme-colorFilledBg: var(--neo-color-deepOrange100);
+		--neo-theme-colorFilledBgDark: var(--neo-color-deepOrange900);
 	}
 }
 
@@ -442,12 +508,16 @@
 	--neo-theme-colorText: var(--neo-color-white);
 	--neo-theme-colorAccent: var(--neo-color-brown200);
 	--neo-theme-colorAccessible: var(--neo-color-brown700);
+	--neo-theme-colorFilledBg: var(--neo-color-brown100);
+	--neo-theme-colorFilledBgDark: var(--neo-color-brown900);
 
 	@mixin onDark {
 		--neo-theme-color: var(--neo-color-brown400);
 		--neo-theme-colorText: var(--neo-color-black);
 		--neo-theme-colorAccent: var(--neo-color-brown200);
 		--neo-theme-colorAccessible: var(--neo-color-brown200);
+		--neo-theme-colorFilledBg: var(--neo-color-brown100);
+		--neo-theme-colorFilledBgDark: var(--neo-color-brown900);
 	}
 }
 
@@ -456,12 +526,16 @@
 	--neo-theme-colorText: var(--neo-color-white);
 	--neo-theme-colorAccent: var(--neo-color-grey200);
 	--neo-theme-colorAccessible: var(--neo-color-grey700);
+	--neo-theme-colorFilledBg: var(--neo-color-grey100);
+	--neo-theme-colorFilledBgDark: var(--neo-color-grey900);
 
 	@mixin onDark {
 		--neo-theme-color: var(--neo-color-grey500);
 		--neo-theme-colorText: var(--neo-color-black);
 		--neo-theme-colorAccent: var(--neo-color-grey200);
 		--neo-theme-colorAccessible: var(--neo-color-grey200);
+		--neo-theme-colorFilledBg: var(--neo-color-grey100);
+		--neo-theme-colorFilledBgDark: var(--neo-color-grey900);
 	}
 }
 
@@ -470,12 +544,16 @@
 	--neo-theme-colorText: var(--neo-color-white);
 	--neo-theme-colorAccent: var(--neo-color-blueGrey200);
 	--neo-theme-colorAccessible: var(--neo-color-blueGrey700);
+	--neo-theme-colorFilledBg: var(--neo-color-blueGrey100);
+	--neo-theme-colorFilledBgDark: var(--neo-color-blueGrey900);
 
 	@mixin onDark {
 		--neo-theme-color: var(--neo-color-blueGrey500);
 		--neo-theme-colorText: var(--neo-color-black);
 		--neo-theme-colorAccent: var(--neo-color-blueGrey200);
 		--neo-theme-colorAccessible: var(--neo-color-blueGrey200);
+		--neo-theme-colorFilledBg: var(--neo-color-blueGrey100);
+		--neo-theme-colorFilledBgDark: var(--neo-color-blueGrey900);
 	}
 }
 
@@ -484,12 +562,16 @@
 	--neo-theme-colorText: var(--neo-color-white);
 	--neo-theme-colorAccent: var(--neo-color-white);
 	--neo-theme-colorAccessible: var(--neo-color-white);
+	--neo-theme-colorFilledBg: var(--neo-color-white);
+	--neo-theme-colorFilledBgDark: var(--neo-color-white);
 
 	@mixin onDark {
 		--neo-theme-color: var(--neo-color-white);
 		--neo-theme-colorText: var(--neo-color-black);
 		--neo-theme-colorAccent: var(--neo-color-white);
 		--neo-theme-colorAccessible: var(--neo-color-white);
+		--neo-theme-colorFilledBg: var(--neo-color-white);
+		--neo-theme-colorFilledBgDark: var(--neo-color-white);
 	}
 }
 
@@ -498,11 +580,15 @@
 	--neo-theme-colorText: var(--neo-color-white);
 	--neo-theme-colorAccent: var(--neo-color-black);
 	--neo-theme-colorAccessible: var(--neo-color-black);
+	--neo-theme-colorFilledBg: var(--neo-color-black);
+	--neo-theme-colorFilledBgDark: var(--neo-color-black);
 
 	@mixin onDark {
 		--neo-theme-color: var(--neo-color-black);
 		--neo-theme-colorText: var(--neo-color-black);
 		--neo-theme-colorAccent: var(--neo-color-black);
 		--neo-theme-colorAccessible: var(--neo-color-black);
+		--neo-theme-colorFilledBg: var(--neo-color-black);
+		--neo-theme-colorFilledBgDark: var(--neo-color-black);
 	}
 }

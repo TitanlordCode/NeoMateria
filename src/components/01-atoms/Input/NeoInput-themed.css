@@ -25,32 +25,50 @@
 	}
 }
 
-/* Primary variant - outlined with theme color border */
+/* Primary variant - outlined with theme color border (standard) */
 .NeoInput--primary {
 	--NeoInput-color-background: var(--neo-color-white);
-	--NeoInput-color-text: var(--neo-color-grey700);
+	--NeoInput-color-text: var(--neo-color-black);
 	--NeoInput-color-border: var(--neo-theme-color);
 
 	@mixin onDark {
 		--NeoInput-color-background: var(--neo-color-grey800);
+		--NeoInput-color-text: var(--neo-color-white);
 		--NeoInput-color-border: var(--neo-theme-color);
 	}
 }
 
-/* Secondary variant - outlined with theme color border */
+/* Secondary variant - minimal with bottom border only (underline/flushed) */
 .NeoInput--secondary {
+	--NeoInput-color-background: var(--neo-color-white);
+	--NeoInput-color-text: var(--neo-color-black);
 	--NeoInput-color-border: var(--neo-theme-color);
 
 	@mixin onDark {
+		--NeoInput-color-background: var(--neo-color-grey800);
+		--NeoInput-color-text: var(--neo-color-white);
 		--NeoInput-color-border: var(--neo-theme-color);
 	}
 }
 
-/* Tertiary variant - minimal, no border, just underline effect */
+/* Tertiary variant - filled with subtle theme background and theme border */
 .NeoInput--tertiary {
-	--NeoInput-color-border: transparent;
+	--NeoInput-color-background: var(--neo-theme-colorFilledBg);
+	--NeoInput-color-text: var(--neo-color-black);
+	--NeoInput-color-border: var(--neo-theme-color);
 
 	@mixin onDark {
-		--NeoInput-color-border: transparent;
+		--NeoInput-color-background: var(--neo-theme-colorFilledBgDark);
+		--NeoInput-color-text: var(--neo-color-white);
+		--NeoInput-color-border: var(--neo-theme-color);
+	}
+}
+
+/* Special handling for yellow, amber, orange - they use black text even in dark mode */
+.Themed--yellow.NeoInput--tertiary,
+.Themed--amber.NeoInput--tertiary,
+.Themed--orange.NeoInput--tertiary {
+	@mixin onDark {
+		--NeoInput-color-text: var(--neo-color-black);
 	}
 }
