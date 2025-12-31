@@ -74,7 +74,7 @@ export const getColorWrapper = (
 	const nonWCAGEntry = NonWCAGCompliantEntries.find((entry) => entry.component === componentName)
 	const isNonWCAGVariant =
 		nonWCAGEntry &&
-		nonWCAGEntry.variants.includes(variant) &&
+		(nonWCAGEntry.variants.includes(variant) || nonWCAGEntry?.variants.length === 0) &&
 		nonWCAGEntry.themes.includes(dark ? 'dark' : 'light')
 
 	// Solid/Primary variants: light background (visual helper for a11y checker only)

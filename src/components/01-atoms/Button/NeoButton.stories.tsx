@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/vue3'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
-import { expect, fn, userEvent, waitFor, within } from '@storybook/test'
+import { expect, fn, userEvent, waitFor, within } from 'storybook/test'
 
 import NeoButton from '@/components/01-atoms/Button/NeoButton.vue'
 import { colors } from '@/assets/typescript/colors'
@@ -96,7 +96,7 @@ export const interaction: Story = {
 
 export const OnDark: Story = {
 	globals: {
-		backgrounds: { value: '#000' },
+		backgrounds: '#000',
 	},
 }
 
@@ -115,7 +115,7 @@ export const AllColors: Story = {
 
 export const AllColorsOnDark: Story = {
 	globals: {
-		backgrounds: { value: '#000' },
+		backgrounds: '#000',
 	},
 	render: createSimpleColorShowcase(NeoButton, ['primary', 'secondary', 'tertiary'], {
 		dark: true,

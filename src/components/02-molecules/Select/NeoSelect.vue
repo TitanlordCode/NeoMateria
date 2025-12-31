@@ -293,7 +293,7 @@ const classes = computed(() => {
 		border-width: var(--NeoSelect-sizing-borderWidth);
 		color: var(--NeoSelect-color-inputText);
 		font-size: var(--NeoSelect-sizing-fontSize);
-		inline-size: 100%;
+		inline-size: calc(100% - (var(--NeoSelect-sizing-padding) * 2));
 		min-block-size: var(--NeoSelect-sizing-inline);
 		padding: var(--NeoSelect-sizing-padding);
 

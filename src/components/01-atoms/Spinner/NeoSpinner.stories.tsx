@@ -1,5 +1,5 @@
 import { colors } from '@/assets/typescript/colors'
-import type { Meta, StoryObj } from '@storybook/vue3'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import NeoSpinner from './NeoSpinner.vue'
 import { defineComponent } from 'vue'
 import type { NeoSpinnerProps } from './NeoSpinnerTypes'
@@ -87,7 +87,7 @@ export const InButton: Story = {
 
 export const OnDark: Story = {
 	globals: {
-		backgrounds: { value: '#000' },
+		backgrounds: '#000',
 	},
 }
 
@@ -112,7 +112,7 @@ export const AllColors: Story = {
 
 export const AllColorsOnDark: Story = {
 	globals: {
-		backgrounds: { value: '#000' },
+		backgrounds: '#000',
 	},
 	render: createSimpleColorShowcase(
 		NeoSpinner,

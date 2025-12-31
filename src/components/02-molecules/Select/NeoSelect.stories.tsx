@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from '@storybook/vue3'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
-// import { fn } from '@storybook/test'
+// import { fn } from 'storybook/test'
 
 import NeoSelect from './NeoSelect.vue'
 import type { NeoSelectProps } from './NeoSelectTypes'
@@ -94,7 +94,7 @@ export const SingleSelectWithSearch: Story = {
 
 export const OnDark: Story = {
 	globals: {
-		backgrounds: { value: '#000' },
+		backgrounds: '#000',
 	},
 }
 
@@ -124,7 +124,7 @@ export const AllColors: Story = {
 
 export const AllColorsOnDark: Story = {
 	globals: {
-		backgrounds: { value: '#000' },
+		backgrounds: '#000',
 	},
 	render: createSimpleColorShowcase(NeoSelect, ['primary', 'secondary', 'tertiary'], {
 		defaultProps: {

@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/vue3'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import NeoCheckbox from './NeoCheckbox.vue'
 import { colors } from '@/assets/typescript/colors'
 import { createSimpleColorShowcase } from '../../../../.storybook/utils/colorShowcase'
@@ -83,7 +83,7 @@ export const WithoutLabel: Story = {
 
 export const OnDark: Story = {
 	globals: {
-		backgrounds: { value: '#000' },
+		backgrounds: '#000',
 	},
 }
 
@@ -110,7 +110,7 @@ export const AllColors: Story = {
 
 export const AllColorsOnDark: Story = {
 	globals: {
-		backgrounds: { value: '#000' },
+		backgrounds: '#000',
 	},
 	render: createSimpleColorShowcase(
 		NeoCheckbox,

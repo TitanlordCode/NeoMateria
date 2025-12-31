@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/vue3'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import NeoBadge from './NeoBadge.vue'
 import type { NeoBadgeProps } from './NeoBadgeTypes'
 import { defineComponent } from 'vue'
@@ -170,7 +170,7 @@ export const DismissibleTags: Story = {
 
 export const OnDark: Story = {
 	globals: {
-		backgrounds: { value: '#000' },
+		backgrounds: '#000',
 	},
 }
 
@@ -202,7 +202,7 @@ export const AllColors: Story = {
 
 export const AllColorsOnDark: Story = {
 	globals: {
-		backgrounds: { value: '#000' },
+		backgrounds: '#000',
 	},
 	render: createSimpleColorShowcase(
 		NeoBadge,

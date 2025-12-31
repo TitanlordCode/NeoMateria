@@ -37,6 +37,7 @@ const classes = computed(() => {
 			props.variant ?? 'primary',
 			props.rounded ? 'rounded' : '',
 			props.errorMessage ? 'error' : '',
+			props.resize ? `resize-${props.resize}` : 'resize-vertical',
 		],
 		additional: props.class,
 	})
@@ -67,7 +68,6 @@ const classes = computed(() => {
 			:rows="props.rows ?? 4"
 			:maxlength="props.maxLength"
 			:minlength="props.minLength"
-			:style="{ resize: props.resize ?? 'vertical' }"
 			:aria-label="props.ariaLabel"
 			:aria-describedby="
 				props.helpText || props.errorMessage ? `${instanceId}-${props.name}-description` : undefined
@@ -133,6 +133,7 @@ const classes = computed(() => {
 	line-height: 1.5;
 	min-block-size: var(--NeoTextArea-sizing-minHeight);
 	padding: var(--NeoTextArea-sizing-padding);
+	resize: var(--NeoTextArea-sizing-resize);
 	transition: border-color 0.2s;
 
 	&::placeholder {

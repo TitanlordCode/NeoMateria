@@ -1,5 +1,5 @@
 import { colors } from '@/assets/typescript/colors'
-import type { Meta, StoryObj } from '@storybook/vue3'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import NeoTextArea from './NeoTextArea.vue'
 import { createSimpleColorShowcase } from '../../../../.storybook/utils/colorShowcase'
 
@@ -30,7 +30,7 @@ const meta = {
 		label: 'Label',
 		placeholder: 'Enter your text here...',
 		size: 'medium',
-		variant: 'secondary',
+		variant: 'primary',
 		color: 'blue',
 	},
 } satisfies Meta<typeof NeoTextArea>
@@ -148,7 +148,7 @@ export const AllColors: Story = {
 
 export const AllColorsOnDark: Story = {
 	globals: {
-		backgrounds: { value: '#000' },
+		backgrounds: '#000',
 	},
 	render: createSimpleColorShowcase(
 		NeoTextArea,

@@ -5,6 +5,7 @@
 	--NeoTextArea-sizing-fontSize: var(--neo-fontSize-base);
 	--NeoTextArea-sizing-labelFontSize: var(--neo-fontSize-textSm);
 	--NeoTextArea-sizing-minHeight: 100px;
+	--NeoTextArea-sizing-resize: vertical;
 }
 .NeoTextArea--primary {
 	--NeoTextArea-sizing-borderWidth: 1px;
@@ -42,4 +43,20 @@
 
 .NeoTextArea--rounded {
 	--NeoTextArea-sizing-borderRadius: var(--neo-border-input-radius);
+}
+
+.NeoTextArea--resize-none {
+	--NeoTextArea-sizing-resize: none;
+}
+
+.NeoTextArea--resize-vertical {
+	--NeoTextArea-sizing-resize: vertical;
+}
+
+.NeoTextArea--resize-horizontal {
+	--NeoTextArea-sizing-resize: horizontal;
+}
+
+.NeoTextArea--resize-both {
+	--NeoTextArea-sizing-resize: both;
 }
