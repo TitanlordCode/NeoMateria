@@ -35,7 +35,11 @@ vitest.config.ts
 # Logs
 *.log
 
-# Documentation (README should be included)
-# Uncomment if you don't want docs in npm package
-# *.md
-# !README.md
+# Documentation
+# Exclude GitHub README, but include README-npm.md for npm package
+README.md
+!README-npm.md
+!dist/README.md
+*.md
+!README-npm.md
+!dist/README.md

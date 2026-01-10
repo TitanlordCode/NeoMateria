@@ -139,14 +139,11 @@ const selectOption = (option: { value: string; label: string }) => {
 		emit('update:value', option.value)
 		closeOptions()
 	} else {
-		// Multi-select mode
 		if (isSelected(option.value)) {
-			// Deselect
 			const newValues = selectedValues.value.filter((value) => value !== option.value)
 			selectedValues.value = newValues
 			emit('update:value', newValues)
 		} else {
-			// Select
 			const newValues = [...selectedValues.value, option.value]
 			selectedValues.value = newValues
 			emit('update:value', newValues)

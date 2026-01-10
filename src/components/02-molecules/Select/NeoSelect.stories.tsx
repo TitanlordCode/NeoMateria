@@ -1,7 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
-// import { fn } from 'storybook/test'
-
 import NeoSelect from './NeoSelect.vue'
 import type { NeoSelectProps } from './NeoSelectTypes'
 import { colors } from '@/assets/typescript/colors'
@@ -31,7 +29,9 @@ const meta: Meta<typeof NeoSelect> = {
 	parameters: {
 		a11y: {
 			config: {
-				rules: [{ id: 'aria-valid-attr-value', enabled: false }], // Bug that doesn't recognize the value
+				// Disable 'aria-valid-attr-value' check due to Storybook a11y addon false positive
+				// The addon incorrectly flags valid aria-activedescendant values during dynamic option focus
+				rules: [{ id: 'aria-valid-attr-value', enabled: false }],
 			},
 		},
 	},
