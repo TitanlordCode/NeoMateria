@@ -3,24 +3,66 @@
 	--NeoSelect-color-focus: var(--neo-theme-colorAccent);
 	--NeoSelect-color-backgroundSelected: var(--neo-theme-color);
 	--NeoSelect-color-textSelected: var(--neo-theme-colorText);
+	--NeoSelect-color-label: var(--neo-color-grey900);
 	--NeoSelect-color-input: var(--neo-color-white);
 	--NeoSelect-color-inputText: var(--neo-color-grey900);
 	--NeoSelect-color-border: var(--neo-color-grey300);
+
+	@mixin onDark {
+		--NeoSelect-color-focus: var(--neo-theme-colorAccent);
+		--NeoSelect-color-backgroundSelected: var(--neo-theme-color);
+		--NeoSelect-color-textSelected: var(--neo-theme-colorText);
+		--NeoSelect-color-label: var(--neo-color-white);
+		--NeoSelect-color-input: var(--neo-color-grey800);
+		--NeoSelect-color-inputText: var(--neo-color-white);
+		--NeoSelect-color-border: var(--neo-color-grey600);
+	}
 }
 
-/* Primary variant - filled with theme color (like old style) */
+/* Primary variant - outlined with theme color border (standard) */
 .NeoSelect--primary {
-	--NeoSelect-color-input: var(--neo-theme-color);
-	--NeoSelect-color-inputText: var(--neo-theme-colorText);
+	--NeoSelect-color-input: var(--neo-color-white);
+	--NeoSelect-color-inputText: var(--neo-color-black);
 	--NeoSelect-color-border: var(--neo-theme-color);
+
+	@mixin onDark {
+		--NeoSelect-color-input: var(--neo-color-grey800);
+		--NeoSelect-color-inputText: var(--neo-color-white);
+		--NeoSelect-color-border: var(--neo-theme-color);
+	}
 }
 
-/* Secondary variant - outlined with theme color border */
+/* Secondary variant - minimal with bottom border only (underline/flushed) */
 .NeoSelect--secondary {
+	--NeoSelect-color-input: var(--neo-color-white);
+	--NeoSelect-color-inputText: var(--neo-color-black);
 	--NeoSelect-color-border: var(--neo-theme-color);
+
+	@mixin onDark {
+		--NeoSelect-color-input: var(--neo-color-grey800);
+		--NeoSelect-color-inputText: var(--neo-color-white);
+		--NeoSelect-color-border: var(--neo-theme-color);
+	}
 }
 
-/* Tertiary variant - minimal, no border */
+/* Tertiary variant - filled with subtle theme background and theme border */
 .NeoSelect--tertiary {
-	--NeoSelect-color-border: transparent;
+	--NeoSelect-color-input: var(--neo-theme-colorFilledBg);
+	--NeoSelect-color-inputText: var(--neo-color-black);
+	--NeoSelect-color-border: var(--neo-theme-color);
+
+	@mixin onDark {
+		--NeoSelect-color-input: var(--neo-theme-colorFilledBgDark);
+		--NeoSelect-color-inputText: var(--neo-color-white);
+		--NeoSelect-color-border: var(--neo-theme-color);
+	}
+}
+
+/* Special handling for yellow, amber, orange - they use black text even in dark mode */
+.Themed--yellow.NeoSelect--tertiary,
+.Themed--amber.NeoSelect--tertiary,
+.Themed--orange.NeoSelect--tertiary {
+	@mixin onDark {
+		--NeoSelect-color-inputText: var(--neo-color-black);
+	}
 }

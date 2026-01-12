@@ -1,9 +1,17 @@
 .NeoLink {
-	--NeoLink-color-text: var(--neo-theme-color);
-	--NeoLink-color-textHover: var(--neo-theme-colorDark, var(--neo-theme-color));
-	--NeoLink-color-focus: var(--neo-theme-color);
+	--NeoLink-color-text: var(--neo-theme-colorAccessible);
+	--NeoLink-color-textHover: var(--neo-theme-color);
+	--NeoLink-color-focus: var(--neo-theme-colorAccessible);
 	--NeoLink-color-buttonBackground: var(--neo-theme-color);
-	--NeoLink-color-buttonBackgroundHover: var(--neo-theme-colorDark, var(--neo-theme-color));
+	--NeoLink-color-buttonBackgroundHover: var(--neo-theme-colorAccessible);
+
+	@mixin onDark {
+		--NeoLink-color-text: var(--neo-theme-colorAccessible);
+		--NeoLink-color-textHover: var(--neo-theme-color);
+		--NeoLink-color-focus: var(--neo-theme-colorAccessible);
+		--NeoLink-color-buttonBackground: var(--neo-theme-color);
+		--NeoLink-color-buttonBackgroundHover: var(--neo-theme-colorAccessible);
+	}
 }
 
 .NeoLink--button {

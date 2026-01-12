@@ -14,4 +14,5 @@ export interface NeoBadgeProps {
 	color: Color
 	variant?: NeoBadgeVariant
 	rounded?: boolean
+	dismissible?: boolean
 }

@@ -4,15 +4,19 @@ export const selectSizes = ['small', 'medium', 'large'] as const
 
 export const selectVariants = ['primary', 'secondary', 'tertiary'] as const
 
+export const selectModes = ['single', 'multi'] as const
+
 export type NeoSelectSize = (typeof selectSizes)[number]
 export type NeoSelectVariant = (typeof selectVariants)[number]
+export type NeoSelectMode = (typeof selectModes)[number]
+
 export interface NeoSelectProps {
 	class?: string
 	name: string
 	label: string
 	selectProps?: { placeholder?: string }
 	options: { value: string; label: string }[]
-	selectValue?: string
+	selectValue?: string | string[]
 	helpText?: string
 	errorMessage?: string
 	size: NeoSelectSize
@@ -20,4 +24,5 @@ export interface NeoSelectProps {
 	disabled?: boolean
 	rounded?: boolean
 	variant?: NeoSelectVariant
+	mode?: NeoSelectMode
 }

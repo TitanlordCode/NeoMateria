@@ -1,20 +1,155 @@
 # NeoMateria
 
-This is a component library with responsive components.
-Written in Vue.js (v3) and deployed in Storybook
+A modern Vue 3 component library built with Atomic Design principles and Material Design colors, featuring automatic WCAG AA accessibility compliance.
 
-## How to install
+[![npm version](https://img.shields.io/npm/v/neo-materia.svg)](https://www.npmjs.com/package/neo-materia)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+> **For npm users**: Looking for installation instructions? See [README-npm.md](./README-npm.md) or visit the [npm package page](https://www.npmjs.com/package/neo-materia).
+
+## For Developers
+
+This README is for developers working on the NeoMateria library itself. For usage documentation, see the [Storybook Documentation](https://titanlordcode.github.io/NeoMateria/).
+
+## Features
+
+- **Accessible by Default**: Automatic WCAG AA compliance with intelligent color contrast
+- **Atomic Design**: Components organized by atoms and molecules for better composition
+- **Material Colors**: Full Material Design color palette with light/dark mode support
+- **TypeScript Support**: Fully typed components and props
+- **Responsive**: Mobile-first responsive components
+- **Customizable**: CSS custom properties for easy theming
+- **Vue 3**: Built with the latest Vue 3 Composition API
+
+## Tech Stack
+
+- **Vue 3.5** with Composition API
+- **TypeScript** for type safety
+- **Vite** for build tooling
+- **Vitest** for unit testing
+- **Storybook 10** for component documentation
+- **Material Colors** for color palette
+- **Docker** for containerized development
+
+## Getting Started
+
+For complete development setup instructions, available commands, and workflows, see:
+
+**[Getting Started Guide](./docs/getting_started.md)**
+
+### Quick Setup
 
 ```sh
-npm i neo-materia
+npm install
+npm run start  # Start Storybook in Docker
 ```
+
+## Project Structure
+
+```
+src/
+├── assets/
+│   ├── icons/              # SVG icons
+│   ├── styles/             # Global CSS, colors, mixins
+│   │   ├── colors.css      # Auto-generated color variables
+│   │   ├── globals.css     # Auto-generated global styles
+│   │   └── mixins/         # CSS mixins (breakpoints, theming, etc.)
+│   └── typescript/
+│       └── colors.ts       # Auto-generated TypeScript color types
+├── components/
+│   ├── 00-foundations/     # Design system foundations
+│   ├── 01-atoms/           # Atomic components
+│   ├── 02-molecules/       # Molecular components
+│   └── docs/               # Auto-generated Storybook docs
+├── utils/                  # Utility functions
+│   ├── classNames.ts       # BEM class name generation
+│   ├── id.ts               # Unique ID generation
+│   ├── stringManipulation.ts
+│   └── wcag.ts             # WCAG color contrast utilities
+└── index.ts                # Library entry point
+
+scripts/
+├── generate-colors.ts      # Generates color CSS/TS with WCAG validation
+├── generate-globals.ts     # Generates global CSS variables
+├── generate-docs.ts        # Generates Storybook MDX from markdown
+└── pre-flight.ts           # Orchestrates all generation scripts
+
+docs/
+├── getting_started.md      # Development guide
+├── color-accessibility.md  # Color system documentation
+└── colors.md               # Auto-generated color reference
+```
+
+## Architecture
+
+### Component Structure
+
+Each component follows this structure:
+
+```
+ComponentName/
+├── NeoComponentName.vue            # Main component
+├── NeoComponentNameTypes.ts        # TypeScript interfaces
+├── NeoComponentName.stories.tsx    # Storybook stories
+├── NeoComponentName-layout.css     # Layout/sizing styles
+└── NeoComponentName-themed.css     # Color theme styles
+```
+
+### Naming Conventions
+
+- **Components**: PascalCase with "Neo" prefix (e.g., `NeoButton`)
+- **CSS Classes**: BEM methodology (e.g., `NeoButton--primary`)
+- **Files**: Match component names exactly
+- **CSS Variables**: Kebab-case with component prefix (e.g., `--NeoButton-color-background`)
+
+### Auto-Generated Files
+
+The following files are auto-generated and should **NOT** be edited manually:
+
+- `src/assets/typescript/colors.ts`
+- `src/assets/styles/colors.css`
+- `src/assets/styles/globals.css`
+- `docs/colors.md`
+- `src/components/00-foundations/colors.mdx`
+- `src/components/docs/*.mdx`
+
+To regenerate these files after changes:
+
+```sh
+npm run generate:files
+```
+
+## Color System
+
+The color system automatically selects optimal shades to meet WCAG AA standards (4.5:1 contrast ratio):
+
+- **Light Mode**: Finds darkest shade that works with white text (or black for yellow/amber/orange)
+- **Dark Mode**: Finds lightest shade that works with black text
+- **Validation**: All combinations validated at build time
+
+See [docs/color-accessibility.md](./docs/color-accessibility.md) for details.
+
+## Development Guidelines
+
+- Follow existing code style and conventions
+- Use TypeScript for type safety
+- Write Storybook stories for all component variants
+- Ensure WCAG AA accessibility compliance
+- Test in both light and dark modes
+- Run `npm run test` before committing
+- Use BEM naming for CSS classes
+- Add JSDoc comments to utility functions
 
 ## Documentation
 
-In the following link you can find the Storybook with all components:
+- **User Documentation**: [Storybook](https://titanlordcode.github.io/NeoMateria/)
+- **Color Strategy**: [docs/color-accessibility.md](./docs/color-accessibility.md)
+- **Development Guide**: [docs/getting_started.md](./docs/getting_started.md)
 
-[Storybook Documentation](https://titanlordcode.github.io/NeoMateria/?path=/story/atoms-neobutton--default)
+## License
 
-## Code Base
+MIT License - see [LICENSE](./LICENSE) for details.
 
-Code can be found on [Github](https://github.com/TitanlordCode/NeoMateria). Feel free tro reach out for any requests.
+## Author
+
+Created by [TitanlordCode](https://github.com/TitanlordCode)

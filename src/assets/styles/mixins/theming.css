@@ -1,21 +1,21 @@
-@define-mixin setOnDark() {
+@define-mixin setOnDark {
 	container: on-dark / inline-size;
 }
 
-@define-mixin onDark() {
+@define-mixin onDark {
 	@container on-dark (min-width: 0) {
-		@content;
+		@mixin-content;
 	}
 }
 
-@define-mixin prefersDark() {
+@define-mixin prefersDark {
 	@media (prefers-color-scheme: dark) {
-		@content;
+		@mixin-content;
 	}
 }
 
-@define-mixin prefersLight() {
+@define-mixin prefersLight {
 	@media (prefers-color-scheme: light) {
-		@content;
+		@mixin-content;
 	}
 }

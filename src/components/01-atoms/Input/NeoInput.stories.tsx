@@ -1,6 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/vue3'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import NeoInput from './NeoInput.vue'
 import { colors } from '@/assets/typescript/colors'
+import { createSimpleColorShowcase } from '../../../../.storybook/utils/colorShowcase'
 
 const meta = {
 	title: 'Atoms/NeoInput',
@@ -128,4 +129,86 @@ export const Rounded: Story = {
 	args: {
 		rounded: true,
 	},
+}
+
+export const OnDark: Story = {
+	globals: {
+		backgrounds: '#000',
+	},
+}
+
+export const RTL: Story = {
+	globals: {
+		direction: 'rtl',
+	},
+	args: {
+		label: 'الاسم الكامل',
+		placeholder: 'أدخل اسمك...',
+	},
+}
+
+export const AllColors: Story = {
+	render: createSimpleColorShowcase(
+		NeoInput,
+		[
+			{
+				variant: 'primary',
+				render: (color, _, args) => (
+					<NeoInput {...args} color={color} label={color} size="medium" variant="primary" />
+				),
+			},
+			{
+				variant: 'secondary',
+				render: (color, _, args) => (
+					<NeoInput {...args} color={color} label={color} size="medium" variant="secondary" />
+				),
+			},
+			{
+				variant: 'tertiary',
+				render: (color, _, args) => (
+					<NeoInput {...args} color={color} label={color} size="medium" variant="tertiary" />
+				),
+			},
+		],
+		{
+			defaultProps: {
+				name: 'color-input',
+			},
+		},
+	),
+}
+
+export const AllColorsOnDark: Story = {
+	globals: {
+		backgrounds: '#000',
+	},
+	render: createSimpleColorShowcase(
+		NeoInput,
+		[
+			{
+				variant: 'primary',
+				render: (color, _, args) => (
+					<NeoInput {...args} color={color} label={color} size="medium" variant="primary" />
+				),
+			},
+			{
+				variant: 'secondary',
+				render: (color, _, args) => (
+					<NeoInput {...args} color={color} label={color} size="medium" variant="secondary" />
+				),
+			},
+			{
+				variant: 'tertiary',
+				render: (color, _, args) => (
+					<NeoInput {...args} color={color} label={color} size="medium" variant="tertiary" />
+				),
+			},
+		],
+		{
+			defaultProps: {
+				name: 'color-input',
+			},
+			dark: true,
+		},
+	),
 }

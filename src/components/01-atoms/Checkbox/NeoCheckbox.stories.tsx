@@ -1,6 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/vue3'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import NeoCheckbox from './NeoCheckbox.vue'
 import { colors } from '@/assets/typescript/colors'
+import { createSimpleColorShowcase } from '../../../../.storybook/utils/colorShowcase'
 
 const meta = {
 	title: 'Atoms/NeoCheckbox',
@@ -78,4 +79,52 @@ export const WithoutLabel: Story = {
 	args: {
 		label: undefined,
 	},
+}
+
+export const OnDark: Story = {
+	globals: {
+		backgrounds: '#000',
+	},
+}
+
+export const RTL: Story = {
+	globals: {
+		direction: 'rtl',
+	},
+	args: {
+		label: 'قبول الشروط والأحكام',
+	},
+}
+
+export const AllColors: Story = {
+	render: createSimpleColorShowcase(NeoCheckbox, [
+		{
+			variant: 'default',
+			label: 'Checkbox',
+			render: (color, _, args) => (
+				<NeoCheckbox {...args} color={color} label={color} name="color-checkbox" checked={true} />
+			),
+		},
+	]),
+}
+
+export const AllColorsOnDark: Story = {
+	globals: {
+		backgrounds: '#000',
+	},
+	render: createSimpleColorShowcase(
+		NeoCheckbox,
+		[
+			{
+				variant: 'default',
+				label: 'Checkbox',
+				render: (color, _, args) => (
+					<NeoCheckbox {...args} color={color} label={color} name="color-checkbox" checked={true} />
+				),
+			},
+		],
+		{
+			dark: true,
+		},
+	),
 }

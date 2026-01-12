@@ -20,7 +20,7 @@ files.forEach((file) => {
 
 		// Basic MDX wrapper for Storybook
 		const mdxContent = `
-import { Meta, Title, Subtitle, Markdown } from '@storybook/blocks'
+import { Meta, Title, Subtitle, Markdown } from '@storybook/addon-docs/blocks'
 
 import content from '../../../docs/${file}?raw'
 

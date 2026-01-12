@@ -1,5 +1,14 @@
 let counter = 0
 
+/**
+ * Generates a unique ID string suitable for HTML element IDs
+ * Combines timestamp, counter, and random value for guaranteed uniqueness
+ * @param prefix - Optional prefix for the ID (default: 'id')
+ * @returns Unique ID string in format: prefix-timestamp-counter-random
+ * @example
+ * generateUniqueId('button') // 'button-lw3xk9-1-abc123'
+ * generateUniqueId() // 'id-lw3xk9-2-def456'
+ */
 export function generateUniqueId(prefix = 'id') {
 	counter++
 	// Use crypto for better randomness (works in browser & Node)

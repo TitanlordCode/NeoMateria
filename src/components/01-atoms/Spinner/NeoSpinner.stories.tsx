@@ -1,8 +1,9 @@
 import { colors } from '@/assets/typescript/colors'
-import type { Meta, StoryObj } from '@storybook/vue3'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import NeoSpinner from './NeoSpinner.vue'
 import { defineComponent } from 'vue'
 import type { NeoSpinnerProps } from './NeoSpinnerTypes'
+import { createSimpleColorShowcase } from '../../../../.storybook/utils/colorShowcase'
 
 const meta = {
 	title: 'Atoms/NeoSpinner',
@@ -82,4 +83,48 @@ export const InButton: Story = {
 	args: {
 		color: 'grey',
 	},
+}
+
+export const OnDark: Story = {
+	globals: {
+		backgrounds: '#000',
+	},
+}
+
+export const RTL: Story = {
+	globals: {
+		direction: 'rtl',
+	},
+	args: {
+		label: 'جاري التحميل...',
+	},
+}
+
+export const AllColors: Story = {
+	render: createSimpleColorShowcase(NeoSpinner, [
+		{
+			variant: 'default',
+			label: 'Spinner',
+			render: (color, _, args) => <NeoSpinner {...args} color={color} label={color} />,
+		},
+	]),
+}
+
+export const AllColorsOnDark: Story = {
+	globals: {
+		backgrounds: '#000',
+	},
+	render: createSimpleColorShowcase(
+		NeoSpinner,
+		[
+			{
+				variant: 'default',
+				label: 'Spinner',
+				render: (color, _, args) => <NeoSpinner {...args} color={color} label={color} />,
+			},
+		],
+		{
+			dark: true,
+		},
+	),
 }

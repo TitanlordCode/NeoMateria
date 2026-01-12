@@ -24,6 +24,7 @@ export interface NeoInputProps {
 	class?: string
 	name: string
 	label?: string
+	ariaLabel?: string
 	type?: NeoInputType
 	placeholder?: string
 	value?: string | number

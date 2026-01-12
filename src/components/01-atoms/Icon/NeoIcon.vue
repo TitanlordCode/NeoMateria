@@ -20,7 +20,11 @@ const classes = computed(() => {
 </script>
 
 <template>
-	<span :class="classes">
+	<span
+		:class="classes"
+		:aria-label="props.ariaLabel"
+		:aria-hidden="props.ariaHidden ? 'true' : undefined"
+	>
 		<slot />
 	</span>
 </template>

@@ -1,0 +1,31 @@
+/* Light background wrapper - purely visual for a11y checker (no dark mode container) */
+.color-showcase__light-bg-wrapper {
+	padding: var(--neo-spacing-core-xs) var(--neo-spacing-core-sm);
+	border-radius: var(--neo-radius-md);
+	background-color: var(--neo-color-white);
+	border: 1px dashed var(--neo-color-grey400);
+
+	@mixin onDark {
+		background-color: var(--neo-color-grey800);
+		color: var(--neo-color-white);
+		border-color: var(--neo-color-grey600);
+	}
+}
+
+.color-showcase__variant-title {
+	margin-bottom: 12px;
+
+	color: var(--neo-color-black);
+
+	@mixin onDark {
+		color: var(--neo-color-white);
+	}
+}
+
+.NeoBadge__dot-label {
+	color: var(--neo-color-black);
+
+	@mixin onDark {
+		color: var(--neo-color-white);
+	}
+}

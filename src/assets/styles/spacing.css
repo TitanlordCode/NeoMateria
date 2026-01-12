@@ -1,0 +1,47 @@
+:root {
+	/* ========================================
+	   COMPONENT SPACING (for UI elements)
+	   ======================================== */
+
+	--neo-spacing-core-xs: 4px;
+	--neo-spacing-core-sm: 8px;
+	--neo-spacing-core-md: 12px;
+	--neo-spacing-core-lg: 16px;
+
+	--neo-spacing-input-sm: 32px;
+	--neo-spacing-input-md: 36px;
+	--neo-spacing-input-lg: 40px;
+
+	/* ========================================
+	   LAYOUT SPACING (for page layouts)
+	   ======================================== */
+
+	--neo-spacing-layout-sm: 48px;
+	--neo-spacing-layout-md: 64px;
+	--neo-spacing-layout-lg: 80px;
+	--neo-spacing-layout-xl: 96px;
+
+	/* ========================================
+	   SEMANTIC TOKENS (preferred in components)
+	   ======================================== */
+
+	--neo-spacing-xs: var(--neo-spacing-core-xs);
+	--neo-spacing-sm: var(--neo-spacing-core-sm);
+	--neo-spacing-md: var(--neo-spacing-core-md);
+	--neo-spacing-lg: var(--neo-spacing-core-lg);
+
+	--neo-gap-xs: var(--neo-spacing-core-xs);
+	--neo-gap-sm: var(--neo-spacing-core-sm);
+	--neo-gap-md: var(--neo-spacing-core-md);
+	--neo-gap-lg: var(--neo-spacing-core-lg);
+
+	/* Border radius tokens */
+	--neo-radius-none: 0px;
+	--neo-radius-sm: 2px;
+	--neo-radius-md: 4px;
+	--neo-radius-lg: 6px;
+	--neo-radius-xl: 8px;
+	--neo-radius-2xl: 12px;
+	--neo-radius-3xl: 16px;
+	--neo-radius-full: 9999px;
+}

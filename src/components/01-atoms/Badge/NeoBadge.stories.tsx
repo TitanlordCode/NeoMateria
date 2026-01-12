@@ -1,8 +1,8 @@
-import type { Meta, StoryObj } from '@storybook/vue3'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import NeoBadge from './NeoBadge.vue'
-import { colors } from '@/assets/typescript/colors'
-import { defineComponent } from 'vue'
 import type { NeoBadgeProps } from './NeoBadgeTypes'
+import { defineComponent } from 'vue'
+import { createSimpleColorShowcase } from '../../../../.storybook/utils/colorShowcase'
 
 const meta = {
 	title: 'Atoms/NeoBadge',
@@ -18,8 +18,9 @@ const meta = {
 			options: ['solid', 'outlined', 'dot'],
 		},
 		color: {
-			control: 'select',
-			options: colors,
+			table: {
+				defaultValue: { summary: 'blue' },
+			},
 		},
 	},
 	args: {
@@ -132,4 +133,95 @@ export const DotIndicator: Story = {
 			},
 		})
 	},
+}
+
+export const Dismissible: Story = {
+	args: {
+		dismissible: true,
+		text: 'Dismissible Badge',
+		rounded: true,
+	},
+}
+
+export const DismissibleTags: Story = {
+	render: (args: NeoBadgeProps) => {
+		return defineComponent({
+			name: 'DismissibleTagsRender',
+			setup() {
+				const tags = ['TypeScript', 'Vue', 'React', 'Angular']
+				return () => (
+					<div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+						{tags.map((tag) => (
+							<NeoBadge
+								{...args}
+								key={tag}
+								text={tag}
+								dismissible
+								rounded
+								onDismiss={() => console.log(`Dismissed: ${tag}`)}
+							/>
+						))}
+					</div>
+				)
+			},
+		})
+	},
+}
+
+export const OnDark: Story = {
+	globals: {
+		backgrounds: '#000',
+	},
+}
+
+export const RTL: Story = {
+	globals: {
+		direction: 'rtl',
+	},
+	args: {
+		text: 'نشاط',
+	},
+}
+
+export const AllColors: Story = {
+	render: createSimpleColorShowcase(NeoBadge, [
+		'solid',
+		'outlined',
+		{
+			variant: 'dot',
+			label: 'Dot Variant',
+			render: (color, _, args) => (
+				<div key={color} style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+					<NeoBadge {...args} variant="dot" color={color} />
+					<span>{color}</span>
+				</div>
+			),
+		},
+	]),
+}
+
+export const AllColorsOnDark: Story = {
+	globals: {
+		backgrounds: '#000',
+	},
+	render: createSimpleColorShowcase(
+		NeoBadge,
+		[
+			'solid',
+			'outlined',
+			{
+				variant: 'dot',
+				label: 'Dot Variant',
+				render: (color, _, args) => (
+					<div key={color} style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+						<NeoBadge {...args} variant="dot" color={color} />
+						<span class="NeoBadge__dot-label">{color}</span>
+					</div>
+				),
+			},
+		],
+		{
+			dark: true,
+		},
+	),
 }

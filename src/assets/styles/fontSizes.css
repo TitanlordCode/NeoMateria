@@ -14,7 +14,7 @@
 
 	--neo-fontSize-base: var(--neo-fontSize-textMd);
 
-	@include bp-sm {
+	@mixin bp-sm {
 		--neo-fontSize-textXs: 13px;
 		--neo-fontSize-textSm: 16px;
 		--neo-fontSize-textMd: 18px;
@@ -28,7 +28,7 @@
 		--neo-fontSize-headlineXl: 64px;
 		--neo-fontSize-headlineXxl: 80px;
 	}
-	@include bp-md {
+	@mixin bp-md {
 		--neo-fontSize-textXs: 13px;
 		--neo-fontSize-textSm: 16px;
 		--neo-fontSize-textMd: 18px;
@@ -42,7 +42,7 @@
 		--neo-fontSize-headlineXl: 72px;
 		--neo-fontSize-headlineXxl: 96px;
 	}
-	@include bp-lg {
+	@mixin bp-lg {
 		--neo-fontSize-textXs: 13px;
 		--neo-fontSize-textSm: 16px;
 		--neo-fontSize-textMd: 18px;
@@ -56,7 +56,7 @@
 		--neo-fontSize-headlineXl: 80px;
 		--neo-fontSize-headlineXxl: 120px;
 	}
-	@include bp-xl {
+	@mixin bp-xl {
 		--neo-fontSize-textXs: 13px;
 		--neo-fontSize-textSm: 18px;
 		--neo-fontSize-textMd: 20px;

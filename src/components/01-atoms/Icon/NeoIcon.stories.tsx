@@ -1,9 +1,10 @@
-import type { Meta, StoryObj } from '@storybook/vue3'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import NeoIcon from './NeoIcon.vue'
 import { addIcon, deleteIcon } from './exampleIcons.tsx'
 import type { NeoIconProps } from './NeoIconTypes.ts'
 import { defineComponent } from 'vue'
 import { colors } from '@/assets/typescript/colors'
+import { createSimpleColorShowcase } from '../../../../.storybook/utils/colorShowcase'
 
 const meta = {
 	title: 'Atoms/NeoIcon',
@@ -89,4 +90,71 @@ export const DeleteExample: Story = {
 		color: 'red',
 		default: () => deleteIcon,
 	},
+}
+
+export const OnDark: Story = {
+	globals: {
+		backgrounds: '#000',
+	},
+}
+
+export const RTL: Story = {
+	globals: {
+		direction: 'rtl',
+	},
+}
+
+export const AllColors: Story = {
+	render: createSimpleColorShowcase(NeoIcon, [
+		{
+			variant: 'theme',
+			label: 'Theme Color Variant',
+			render: (color, _, args) => (
+				<NeoIcon {...args} color={color} colorVariant="theme">
+					{deleteIcon}
+				</NeoIcon>
+			),
+		},
+		{
+			variant: 'text',
+			label: 'Text Color Variant',
+			render: (color, _, args) => (
+				<NeoIcon {...args} color={color} colorVariant="text">
+					{deleteIcon}
+				</NeoIcon>
+			),
+		},
+	]),
+}
+
+export const AllColorsOnDark: Story = {
+	globals: {
+		backgrounds: '#000',
+	},
+	render: createSimpleColorShowcase(
+		NeoIcon,
+		[
+			{
+				variant: 'theme',
+				label: 'Theme Color Variant',
+				render: (color, _, args) => (
+					<NeoIcon {...args} color={color} colorVariant="theme">
+						{deleteIcon}
+					</NeoIcon>
+				),
+			},
+			{
+				variant: 'text',
+				label: 'Text Color Variant',
+				render: (color, _, args) => (
+					<NeoIcon {...args} color={color} colorVariant="text">
+						{deleteIcon}
+					</NeoIcon>
+				),
+			},
+		],
+		{
+			dark: true,
+		},
+	),
 }

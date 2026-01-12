@@ -1,8 +1,9 @@
 import { colors } from '@/assets/typescript/colors'
-import type { Meta, StoryObj } from '@storybook/vue3'
+import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import { defineComponent, ref } from 'vue'
 import NeoRadio from './NeoRadio.vue'
 import type { NeoRadioProps } from './NeoRadioTypes'
+import { createSimpleColorShowcase } from '../../../../.storybook/utils/colorShowcase'
 
 const meta = {
 	title: 'Atoms/NeoRadio',
@@ -101,4 +102,66 @@ export const RadioGroup: Story = {
 			},
 		})
 	},
+}
+
+export const OnDark: Story = {
+	globals: {
+		backgrounds: '#000',
+	},
+}
+
+export const RTL: Story = {
+	globals: {
+		direction: 'rtl',
+	},
+	args: {
+		label: 'الخيار الأول',
+	},
+}
+
+export const AllColors: Story = {
+	render: createSimpleColorShowcase(NeoRadio, [
+		{
+			variant: 'default',
+			label: 'Radio',
+			render: (color, _, args) => (
+				<NeoRadio
+					{...args}
+					color={color}
+					label={color}
+					name="color-radio"
+					value={color}
+					checked={true}
+				/>
+			),
+		},
+	]),
+}
+
+export const AllColorsOnDark: Story = {
+	globals: {
+		backgrounds: '#000',
+	},
+	render: createSimpleColorShowcase(
+		NeoRadio,
+		[
+			{
+				variant: 'default',
+				label: 'Radio',
+				render: (color, _, args) => (
+					<NeoRadio
+						{...args}
+						color={color}
+						label={color}
+						name="color-radio"
+						value={color}
+						checked={true}
+					/>
+				),
+			},
+		],
+		{
+			dark: true,
+		},
+	),
 }

@@ -8,6 +8,7 @@ export interface NeoRadioProps {
 	class?: string
 	name: string
 	label?: string
+	ariaLabel?: string
 	value: string
 	checked?: boolean
 	disabled?: boolean

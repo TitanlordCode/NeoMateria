@@ -1,11 +1,11 @@
-import { addons } from '@storybook/manager-api'
-import { create } from '@storybook/theming'
+import { addons } from 'storybook/manager-api'
+import { create } from 'storybook/theming'
 
 const theme = create({
 	base: 'light',
 	brandTitle: 'NeoMateria',
 	brandUrl: 'https://github.com/TitanlordCode/NeoMateria',
-	brandImage: '/favicon.ico',
+	brandImage: './favicon.ico',
 	brandTarget: '_blank',
 
 	// Typography

@@ -1,6 +1,13 @@
 .NeoRadio {
 	--NeoRadio-color-accent: var(--neo-theme-color);
 	--NeoRadio-color-focus: var(--neo-theme-color);
-	--NeoRadio-color-label: var(--neo-theme-color);
+	--NeoRadio-color-label: var(--neo-color-grey900);
 	--NeoRadio-color-required: var(--neo-color-red500);
+
+	@mixin onDark {
+		--NeoRadio-color-accent: var(--neo-theme-color);
+		--NeoRadio-color-focus: var(--neo-theme-color);
+		--NeoRadio-color-label: var(--neo-color-white);
+		--NeoRadio-color-required: var(--neo-color-red400);
+	}
 }

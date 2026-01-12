@@ -44,6 +44,7 @@ const classes = computed(() => {
 			:checked="props.checked"
 			:disabled="props.disabled"
 			:required="props.required"
+			:aria-label="props.ariaLabel"
 			@change="handleChange"
 		/>
 		<label
@@ -65,7 +66,7 @@ const classes = computed(() => {
 	align-items: center;
 	display: flex;
 	font-family: inherit;
-	gap: 8px;
+	gap: var(--neo-gap-sm);
 }
 
 .NeoRadio-input {
@@ -95,7 +96,7 @@ const classes = computed(() => {
 
 .NeoRadio-required {
 	color: var(--NeoRadio-color-required);
-	margin-left: 4px;
+	margin-inline-start: var(--neo-spacing-core-xs);
 }
 
 .NeoRadio-input:disabled + .NeoRadio-label {
