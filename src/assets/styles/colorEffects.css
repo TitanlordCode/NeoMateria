@@ -1,0 +1,14 @@
+:root {
+	/* Shadow color tokens (semi-transparent overlays used in box-shadow and backdrops) */
+	--neo-color-shadow-2xs: rgb(0 0 0 / 5%);
+	--neo-color-shadow-xs: rgb(0 0 0 / 10%);
+	--neo-color-shadow-sm: rgb(0 0 0 / 15%);
+	--neo-color-shadow-md: rgb(0 0 0 / 30%);
+	--neo-color-shadow-lg: rgb(0 0 0 / 40%);
+	--neo-color-shadow-overlay: rgb(0 0 0 / 50%);
+	--neo-color-shadow-overlayDark: rgb(0 0 0 / 70%);
+	--neo-color-shadow-whiteSubtle: rgb(255 255 255 / 20%);
+
+	/* Scrollbar color tokens */
+	--neo-color-scrollbar-trackDark: rgb(0 255 255 / 5%);
+}

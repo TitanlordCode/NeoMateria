@@ -1,0 +1,26 @@
+/**
+ * Establishes a dark mode context. Components inside will render in dark mode.
+ * Can alternate with u-unsetDark to nest dark → light → dark indefinitely.
+ */
+.u-onDark {
+	@mixin setOnDark;
+}
+
+/**
+ * Resets dark mode context — use on elements with a light background that are nested inside
+ * an onDark container. Can alternate with u-onDark to nest dark → light → dark indefinitely.
+ */
+.u-unsetDark {
+	@mixin unsetOnDark;
+}
+
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
+}

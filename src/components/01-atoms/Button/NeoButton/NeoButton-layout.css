@@ -1,11 +1,12 @@
 .NeoButton--primary,
-.NeoButton--tertiary {
+.NeoButton--tertiary,
+.NeoButton--ghost {
 	--NeoButton-sizing-borderRadius: unset;
 	--NeoButton-sizing-borderWidth: 0;
 }
 
 .NeoButton--secondary {
-	--NeoButton-sizing-borderWidth: 1px;
+	--NeoButton-sizing-borderWidth: var(--neo-border-width);
 }
 
 .NeoButton--small {
@@ -28,4 +29,8 @@
 
 .NeoButton--rounded {
 	--NeoButton-sizing-borderRadius: var(--neo-border-input-radius);
+}
+
+.NeoButton--ghost {
+	--NeoButton-sizing-padding: 0;
 }

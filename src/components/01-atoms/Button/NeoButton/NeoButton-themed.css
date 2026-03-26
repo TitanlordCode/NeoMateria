@@ -1,0 +1,71 @@
+.NeoButton {
+	--NeoButton-color-focus: var(--neo-theme-color);
+
+	@mixin onDark {
+		--NeoButton-color-focus: var(--neo-theme-color);
+	}
+}
+
+/* Pressed state — toggle buttons that are currently active */
+.NeoButton--ghost.NeoButton--pressed {
+	--NeoButton-color-text: var(--neo-theme-color);
+
+	@mixin onDark {
+		--NeoButton-color-text: var(--neo-theme-color);
+	}
+}
+
+.NeoButton--primary {
+	--NeoButton-color-text: var(--neo-theme-colorText);
+	--NeoButton-color-background: var(--neo-theme-color);
+	--NeoButton-color-border: unset;
+}
+
+/* Dark-background colors (white colorText) establish an on-dark context for nested components.
+   Yellow, amber, orange use black colorText (light backgrounds) and are excluded. */
+.NeoButton--primary:not(.Themed--yellow, .Themed--amber, .Themed--orange, .Themed--white) {
+	@mixin setOnDark;
+}
+
+/* Black flips to white in dark mode — reset the on-dark context so children are not affected */
+.NeoButton--primary.Themed--black {
+	@mixin onDark {
+		--neo-is-dark: 0;
+	}
+}
+
+.NeoButton--secondary,
+.NeoButton--tertiary {
+	--NeoButton-color-text: var(--neo-theme-color);
+	--NeoButton-color-background: transparent;
+
+	@mixin onDark {
+		--NeoButton-color-text: var(--neo-theme-color);
+	}
+}
+
+.NeoButton--secondary {
+	--NeoButton-color-border: var(--neo-theme-color);
+}
+
+.NeoButton--tertiary {
+	--NeoButton-color-border: unset;
+}
+
+.NeoButton--ghost {
+	--NeoButton-color-text: currentColor;
+	--NeoButton-color-background: transparent;
+	--NeoButton-color-border: unset;
+
+	&:hover {
+		--NeoButton-color-text: var(--neo-theme-color);
+	}
+
+	@mixin onDark {
+		--NeoButton-color-text: currentColor;
+
+		&:hover {
+			--NeoButton-color-text: var(--neo-theme-color);
+		}
+	}
+}

@@ -1,9 +1,15 @@
 @define-mixin setOnDark {
-	container: on-dark / inline-size;
+	--neo-is-dark: 1;
+	container: on-dark / normal;
+}
+
+@define-mixin unsetOnDark {
+	--neo-is-dark: 0;
+	container: on-dark / normal;
 }
 
 @define-mixin onDark {
-	@container on-dark (min-width: 0) {
+	@container on-dark style(--neo-is-dark: 1) {
 		@mixin-content;
 	}
 }

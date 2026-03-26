@@ -1,15 +1,16 @@
 <script setup lang="ts">
 import { getClassNames } from '@/utils/classNames'
 import { computed } from 'vue'
-import type { NeoIconProps } from './NeoIconTypes'
+import type { NeoIconProps, NeoIconSlots } from './NeoIconTypes'
 
 const props = defineProps<NeoIconProps>()
+
+defineSlots<NeoIconSlots>()
 
 const classes = computed(() => {
 	const buttonClasses = getClassNames({
 		component: 'NeoIcon',
 		modifiers: [props.size ?? 'medium', props.colorVariant ?? 'theme'],
-		additional: props.class,
 	})
 	const themedClasses = getClassNames({
 		component: 'Themed',

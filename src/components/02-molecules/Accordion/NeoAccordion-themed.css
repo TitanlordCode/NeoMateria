@@ -1,0 +1,13 @@
+.NeoAccordion {
+	--NeoAccordion-color-trigger: var(--neo-color-grey800);
+	--NeoAccordion-color-content: var(--neo-color-grey700);
+	--NeoAccordion-color-border: var(--neo-color-grey300);
+	--NeoAccordion-color-background: var(--neo-color-grey100);
+
+	@mixin onDark {
+		--NeoAccordion-color-trigger: var(--neo-color-grey100);
+		--NeoAccordion-color-content: var(--neo-color-grey300);
+		--NeoAccordion-color-border: var(--neo-color-grey700);
+		--NeoAccordion-color-background: var(--neo-color-grey800);
+	}
+}

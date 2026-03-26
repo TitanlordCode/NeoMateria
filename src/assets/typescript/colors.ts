@@ -58,6 +58,8 @@ export const colors = [
 	'brown',
 	'grey',
 	'blueGrey',
+	'white',
+	'black',
 ] as const
 
 /**

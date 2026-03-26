@@ -1,0 +1,43 @@
+.NeoNavigation {
+	--NeoNavigation-sizing-height: 64px;
+	--NeoNavigation-sizing-paddingInline: var(--neo-spacing-core-lg);
+	--NeoNavigation-sizing-gap: var(--neo-gap-lg);
+	--NeoNavigation-sizing-linkGap: var(--neo-gap-md);
+	--NeoNavigation-sizing-fontSize: var(--neo-fontSize-textMd);
+	--NeoNavigation-sizing-mobilePanelPadding: var(--neo-spacing-core-lg);
+
+	@mixin bp-md {
+		--NeoNavigation-sizing-height: 72px;
+		--NeoNavigation-sizing-paddingInline: var(--neo-spacing-layout-sm);
+	}
+
+	@mixin bp-lg {
+		--NeoNavigation-sizing-paddingInline: var(--neo-spacing-layout-md);
+	}
+}
+
+/* collapseActions=mobile: dropdown visible on mobile, expanded actions visible on desktop */
+.NeoNavigation--collapseActions-mobile {
+	& .NeoNavigation-actionsDropdown {
+		@mixin bp-md {
+			display: none;
+		}
+	}
+
+	& .NeoNavigation-actionsExpanded {
+		display: none;
+
+		@mixin bp-md {
+			align-items: center;
+			display: flex;
+			gap: var(--neo-gap-sm);
+		}
+	}
+}
+
+/* collapseActions=always: dropdown always visible */
+.NeoNavigation--collapseActions-always {
+	& .NeoNavigation-actionsDropdown {
+		display: inline-flex;
+	}
+}

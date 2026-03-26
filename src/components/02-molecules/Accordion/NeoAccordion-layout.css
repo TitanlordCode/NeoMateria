@@ -1,0 +1,17 @@
+.NeoAccordion--small {
+	--NeoAccordion-sizing-fontSize: var(--neo-fontSize-textSm);
+	--NeoAccordion-sizing-contentFontSize: var(--neo-fontSize-textSm);
+	--NeoAccordion-sizing-contentPadding: var(--neo-spacing-core-xs);
+}
+
+.NeoAccordion--medium {
+	--NeoAccordion-sizing-fontSize: var(--neo-fontSize-base);
+	--NeoAccordion-sizing-contentFontSize: var(--neo-fontSize-base);
+	--NeoAccordion-sizing-contentPadding: var(--neo-spacing-core-sm);
+}
+
+.NeoAccordion--large {
+	--NeoAccordion-sizing-fontSize: var(--neo-fontSize-textLg);
+	--NeoAccordion-sizing-contentFontSize: var(--neo-fontSize-base);
+	--NeoAccordion-sizing-contentPadding: var(--neo-spacing-core-md);
+}

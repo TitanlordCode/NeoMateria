@@ -37,3 +37,4 @@ coverage
 
 # Claude Code CLI settings
 .claude/
+CLAUDE.md

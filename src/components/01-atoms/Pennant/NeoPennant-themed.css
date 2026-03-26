@@ -1,0 +1,4 @@
+.NeoPennant {
+	--NeoPennant-color-background: var(--neo-theme-color);
+	--NeoPennant-color-content: var(--neo-theme-colorText);
+}

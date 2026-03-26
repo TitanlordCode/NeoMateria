@@ -20,7 +20,3 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
-/* Dark mode container setup */
-.u-onDark {
-	@mixin setOnDark;
-}

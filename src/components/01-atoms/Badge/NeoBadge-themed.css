@@ -4,6 +4,12 @@
 	--NeoBadge-color-border: unset;
 }
 
+/* Dark-background colors establish an on-dark context for nested components.
+   Yellow, amber, orange use black colorText (light backgrounds) and are excluded. */
+.NeoBadge--solid:not(.Themed--yellow, .Themed--amber, .Themed--orange, .Themed--white) {
+	@mixin setOnDark;
+}
+
 .NeoBadge--outlined {
 	--NeoBadge-color-background: transparent;
 	--NeoBadge-color-text: var(--neo-theme-colorAccessible);

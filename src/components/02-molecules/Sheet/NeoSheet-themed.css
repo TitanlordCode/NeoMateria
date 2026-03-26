@@ -1,0 +1,38 @@
+.NeoSheet {
+	--NeoSheet-color-background: var(--neo-color-white);
+	--NeoSheet-color-overlay: var(--neo-color-shadow-overlay);
+	--NeoSheet-color-shadow: -4px 0 24px var(--neo-color-shadow-sm);
+
+	@mixin onDark {
+		--NeoSheet-color-background: var(--neo-color-grey900);
+		--NeoSheet-color-overlay: var(--neo-color-shadow-overlayDark);
+		--NeoSheet-color-shadow: -4px 0 24px var(--neo-color-shadow-lg);
+	}
+}
+
+/* Filled variant: sheet background uses the theme color */
+.NeoSheet--filled {
+	--NeoSheet-color-background: var(--neo-theme-color);
+}
+
+/* Dark-background colors establish an on-dark context for nested components.
+   Yellow, amber, orange, white use black colorText (light backgrounds) and are excluded. */
+.NeoSheet--filled:not(.Themed--yellow, .Themed--amber, .Themed--orange, .Themed--white) {
+	@mixin setOnDark;
+}
+
+.NeoSheet--left {
+	--NeoSheet-color-shadow: 4px 0 24px var(--neo-color-shadow-sm);
+
+	@mixin onDark {
+		--NeoSheet-color-shadow: 4px 0 24px var(--neo-color-shadow-lg);
+	}
+}
+
+.NeoSheet--bottom {
+	--NeoSheet-color-shadow: 0 -4px 24px var(--neo-color-shadow-sm);
+
+	@mixin onDark {
+		--NeoSheet-color-shadow: 0 -4px 24px var(--neo-color-shadow-lg);
+	}
+}

@@ -9,7 +9,8 @@ import NeoBadge from '@/components/01-atoms/Badge/NeoBadge.vue'
 const props = defineProps<NeoSelectProps>()
 
 const emit = defineEmits<{
-	(e: 'update:value', value: string | string[]): void
+	/** Emitted when the selected value changes. Receives a `string` in single mode or `string[]` in multi mode. */
+	'update:value': [value: string | string[]]
 }>()
 
 const instanceId = generateUniqueId('select')
@@ -46,9 +47,13 @@ const displayValue = computed(() => {
 
 watch(
 	() => props.selectValue,
-	(val) => {
-		if (val !== undefined) {
-			selectedValues.value = Array.isArray(val) ? val : val ? [val] : []
+	(newSelectValue) => {
+		if (newSelectValue !== undefined) {
+			selectedValues.value = Array.isArray(newSelectValue)
+				? newSelectValue
+				: newSelectValue
+					? [newSelectValue]
+					: []
 		}
 	},
 )
@@ -165,11 +170,10 @@ const classes = computed(() => {
 	const selectClasses = getClassNames({
 		component: 'NeoSelect',
 		modifiers: [props.size ?? 'medium', props.variant ?? 'primary', props.rounded ? 'rounded' : ''],
-		additional: props.class,
 	})
 	const themedClasses = getClassNames({
 		component: 'Themed',
-		modifiers: [props.color ?? 'grey'],
+		modifiers: [props.color ?? 'blue'],
 	})
 	return `${selectClasses} ${themedClasses}`
 })
@@ -178,7 +182,13 @@ const classes = computed(() => {
 <template>
 	<div v-bind="$attrs" :class="classes">
 		<div class="NeoSelect-labelWrapper">
-			<label class="NeoSelect-label" :for="`${instanceId}-${props.name}`">{{ props.label }}</label>
+			<label v-if="props.label" class="NeoSelect-label" :for="`${instanceId}-${props.name}`">
+				{{ props.label }}
+				<span v-if="props.required" class="NeoSelect-required" aria-hidden="true">*</span>
+				<span v-if="props.required" class="NeoSelect-requiredText sr-only">
+					({{ props.requiredText }})
+				</span>
+			</label>
 		</div>
 
 		<div class="NeoSelect-inputWrapper">
@@ -199,7 +209,7 @@ const classes = computed(() => {
 				ref="inputRef"
 				class="NeoSelect-input"
 				:name="props.name"
-				:id="props.name"
+				:id="`${instanceId}-${props.name}`"
 				type="text"
 				role="combobox"
 				:placeholder="
@@ -210,6 +220,7 @@ const classes = computed(() => {
 							: props.selectProps?.placeholder
 				"
 				:value="isOpen ? searchQuery : mode === 'single' ? displayValue : ''"
+				:aria-label="props.ariaLabel"
 				aria-autocomplete="list"
 				aria-haspopup="listbox"
 				:aria-expanded="isOpen"
@@ -252,11 +263,12 @@ const classes = computed(() => {
 						:value="option.value"
 						:checked="isSelected(option.value)"
 						:color="props.color"
+						:ariaLabel="option.label"
 						size="small"
 						class="NeoSelect-checkbox"
 						@click.stop
 					/>
-					{{ option.label }}
+					<span aria-hidden="true">{{ option.label }}</span>
 				</li>
 			</ul>
 		</div>

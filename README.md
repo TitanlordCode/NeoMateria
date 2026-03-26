@@ -60,6 +60,7 @@ src/
 │   ├── 00-foundations/     # Design system foundations
 │   ├── 01-atoms/           # Atomic components
 │   ├── 02-molecules/       # Molecular components
+│   ├── 03-organisms/       # Organism components
 │   └── docs/               # Auto-generated Storybook docs
 ├── utils/                  # Utility functions
 │   ├── classNames.ts       # BEM class name generation

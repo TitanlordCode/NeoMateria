@@ -21,7 +21,7 @@ if (shouldSkipGeneration(SCRIPT_NAME, SOURCE_FILES, OUTPUT_FILES)) {
 	process.exit(0)
 }
 
-const specialColors: ColorName[] = ['white', 'black']
+const specialColors: ColorName[] = []
 
 /**
  * Generate TS file
@@ -129,7 +129,7 @@ Object.entries(flatColors).forEach(([colorName]) => {
 
 	// Exception: Some colors can't support white text at any shade
 	// For these, we use black text in light mode for accessibility
-	const blackTextExceptions = ['yellow', 'amber', 'orange']
+	const blackTextExceptions = ['yellow', 'amber', 'orange', 'white']
 	const usesBlackTextInLightMode = blackTextExceptions.includes(family)
 
 	// LIGHT MODE: --neo-theme-color (background with white/black text ON it)
@@ -287,6 +287,13 @@ Object.entries(flatColors).forEach(([colorName]) => {
 				break
 			}
 		}
+	}
+
+	// Special case: black inverts in dark mode (black background → white background)
+	// This allows black-colored components to gracefully flip to white when inside a dark context
+	if (family === 'black') {
+		darkModeColorVar = 'white'
+		accessibleDarkColorVar = 'white'
 	}
 
 	// Text colors: white for most colors, black for exceptions
@@ -475,7 +482,7 @@ const tables = Object.entries(dataByColorName)
 	)
 
 const mdxContent = `
-import { Meta, Title, Subtitle } from '@storybook/blocks'
+import { Meta, Title, Subtitle } from '@storybook/addon-docs/blocks'
 
 <Meta title="Foundation/Colors" />
 
@@ -522,7 +529,7 @@ All color combinations are tested to meet **WCAG AA** contrast requirements (4.5
 	border: '1px solid #ffc107',
 	borderRadius: '4px'
 }}>
-	<strong>⚠️ Special Colors:</strong> Yellow, Amber, and Orange use black text in light mode because they are too bright for white text. These colors work best on light backgrounds.
+	<strong>⚠️ Special Colors:</strong> Yellow, Amber, and Orange use black text on their colored surface (buttons, badges) because they are too bright for white text. Avoid using them as text or link colors on light page backgrounds — they do not meet WCAG AA contrast against white.
 </div>
 
 ## Available Colors

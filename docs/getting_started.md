@@ -143,7 +143,9 @@ src/
 │   ├── 00-foundations/     # Design system foundations
 │   ├── 01-atoms/           # Atomic components
 │   ├── 02-molecules/       # Molecular components
+│   ├── 03-organisms/       # Organism components
 │   └── docs/               # Auto-generated Storybook docs
+├── pages/                  # Full-page Storybook examples (not exported)
 ├── utils/                  # Utility functions
 └── index.ts                # Library entry point
 

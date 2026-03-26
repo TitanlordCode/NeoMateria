@@ -1,26 +1,20 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import NeoIcon from './NeoIcon.vue'
-import { addIcon, deleteIcon } from './exampleIcons.tsx'
+import { AddIcon, DeleteIcon } from './defaultIcons'
 import type { NeoIconProps } from './NeoIconTypes.ts'
 import { defineComponent } from 'vue'
-import { colors } from '@/assets/typescript/colors'
 import { createSimpleColorShowcase } from '../../../../.storybook/utils/colorShowcase'
 
 const meta = {
 	title: 'Atoms/NeoIcon',
 	component: NeoIcon,
 	tags: ['autodocs'],
-	argTypes: {
-		color: {
-			control: 'select',
-			options: colors,
-		},
-	},
+	argTypes: {},
 	args: {
 		color: 'grey',
 		colorVariant: 'theme',
 		size: 'medium',
-		default: () => deleteIcon,
+		default: () => DeleteIcon,
 	},
 	parameters: {
 		docs: {
@@ -58,6 +52,19 @@ export const colorVariantText: Story = {
 }
 
 export const BigFonts: Story = {
+	parameters: {
+		docs: {
+			source: {
+				code: `<!-- NeoIcon scales with the surrounding font-size -->
+<div style="font-size: 32px;">
+  <span>With Font size 32px</span>
+  <NeoIcon color="grey" size="medium">
+    <!-- your SVG icon here -->
+  </NeoIcon>
+</div>`,
+			},
+		},
+	},
 	render: (args: NeoIconProps) => {
 		return defineComponent({
 			name: 'ColorRender',
@@ -72,7 +79,7 @@ export const BigFonts: Story = {
 						}}
 					>
 						<span>With Font size 32px</span>
-						<NeoIcon {...args}>{deleteIcon}</NeoIcon>
+						<NeoIcon {...args}>{DeleteIcon}</NeoIcon>
 					</div>
 				)
 			},
@@ -82,13 +89,13 @@ export const BigFonts: Story = {
 export const AddExample: Story = {
 	args: {
 		color: 'green',
-		default: () => addIcon,
+		default: () => AddIcon,
 	},
 }
 export const DeleteExample: Story = {
 	args: {
 		color: 'red',
-		default: () => deleteIcon,
+		default: () => DeleteIcon,
 	},
 }
 
@@ -111,7 +118,7 @@ export const AllColors: Story = {
 			label: 'Theme Color Variant',
 			render: (color, _, args) => (
 				<NeoIcon {...args} color={color} colorVariant="theme">
-					{deleteIcon}
+					{DeleteIcon}
 				</NeoIcon>
 			),
 		},
@@ -120,7 +127,7 @@ export const AllColors: Story = {
 			label: 'Text Color Variant',
 			render: (color, _, args) => (
 				<NeoIcon {...args} color={color} colorVariant="text">
-					{deleteIcon}
+					{DeleteIcon}
 				</NeoIcon>
 			),
 		},
@@ -139,7 +146,7 @@ export const AllColorsOnDark: Story = {
 				label: 'Theme Color Variant',
 				render: (color, _, args) => (
 					<NeoIcon {...args} color={color} colorVariant="theme">
-						{deleteIcon}
+						{DeleteIcon}
 					</NeoIcon>
 				),
 			},
@@ -148,7 +155,7 @@ export const AllColorsOnDark: Story = {
 				label: 'Text Color Variant',
 				render: (color, _, args) => (
 					<NeoIcon {...args} color={color} colorVariant="text">
-						{deleteIcon}
+						{DeleteIcon}
 					</NeoIcon>
 				),
 			},

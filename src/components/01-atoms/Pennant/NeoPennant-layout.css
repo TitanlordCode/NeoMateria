@@ -1,0 +1,7 @@
+.NeoPennant {
+	--NeoPennant-sizing-heightRatio: 76 / 56;
+	--NeoPennant-sizing-width: 56px;
+	--NeoPennant-sizing-height: calc(var(--NeoPennant-sizing-width) * var(--NeoPennant-sizing-heightRatio));
+	--NeoPennant-sizing-aspectRatio: 56 / 76;
+	--NeoPennant-sizing-padding: var(--neo-spacing-core-xs);
+}

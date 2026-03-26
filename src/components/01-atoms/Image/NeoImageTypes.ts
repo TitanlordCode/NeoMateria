@@ -3,7 +3,6 @@ export const imageObjectFits = ['contain', 'cover', 'fill', 'none', 'scale-down'
 export type NeoImageObjectFit = (typeof imageObjectFits)[number]
 
 export interface NeoImageProps {
-	class?: string
 	src: string
 	alt: string
 	width?: number | string

@@ -1,0 +1,17 @@
+.NeoFooter {
+	--NeoFooter-color-background: var(--neo-color-white);
+	--NeoFooter-color-border: var(--neo-color-grey300);
+	--NeoFooter-color-sectionTitle: var(--neo-color-grey900);
+	--NeoFooter-color-link: var(--neo-color-grey700);
+	--NeoFooter-color-linkHover: var(--neo-theme-color);
+	--NeoFooter-color-copyright: var(--neo-color-grey700);
+
+	@mixin onDark {
+		--NeoFooter-color-background: var(--neo-color-grey900);
+		--NeoFooter-color-border: var(--neo-color-grey700);
+		--NeoFooter-color-sectionTitle: var(--neo-color-white);
+		--NeoFooter-color-link: var(--neo-color-grey300);
+		--NeoFooter-color-linkHover: var(--neo-theme-color);
+		--NeoFooter-color-copyright: var(--neo-color-grey400);
+	}
+}

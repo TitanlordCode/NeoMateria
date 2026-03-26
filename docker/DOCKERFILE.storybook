@@ -15,5 +15,8 @@ RUN npm run stylelint:css
 
 RUN npm run prettier:fix
 
+RUN mkdir -p /root/.storybook && \
+    echo '{"version":1,"checklist":{"widget":{"disable":true}}}' > /root/.storybook/settings.json
+
 EXPOSE 3000
 CMD ["npm", "run", "storybook"]

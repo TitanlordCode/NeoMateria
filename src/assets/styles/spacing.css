@@ -7,6 +7,7 @@
 	--neo-spacing-core-sm: 8px;
 	--neo-spacing-core-md: 12px;
 	--neo-spacing-core-lg: 16px;
+	--neo-spacing-core-xl: 20px;
 
 	--neo-spacing-input-sm: 32px;
 	--neo-spacing-input-md: 36px;
@@ -44,4 +45,12 @@
 	--neo-radius-2xl: 12px;
 	--neo-radius-3xl: 16px;
 	--neo-radius-full: 9999px;
+
+	/* Border width */
+	--neo-border-width: 1px;
+
+	/* Toggle control sizes (shared by Checkbox and Radio) */
+	--neo-sizing-control-sm: 16px;
+	--neo-sizing-control-md: 20px;
+	--neo-sizing-control-lg: 24px;
 }

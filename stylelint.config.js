@@ -8,10 +8,11 @@ module.exports = {
 		},
 	],
 	rules: {
+		'declaration-block-no-redundant-longhand-properties': null,
 		'at-rule-no-unknown': [
 			true,
 			{
-				ignoreAtRules: ['define-mixin'],
+				ignoreAtRules: ['define-mixin', 'mixin'],
 			},
 		],
 		'length-zero-no-unit': true,

@@ -1,6 +1,11 @@
 import { defineComponent, h } from 'vue'
 import { colors, type Color } from '../../src/assets/typescript/colors'
+import type { SurfaceColor } from '../../src/assets/typescript/colorTypes'
 import type { VNode, Component as VueComponent } from 'vue'
+
+// White is excluded from surface-color showcases — it is invisible on the default white canvas.
+// Components accepting only SurfaceColor will never receive white.
+const surfaceColors = colors.filter((color): color is SurfaceColor => color !== 'white')
 
 import './colorShowcase.css'
 type NonWCAGCompliantEntry = { component: string; variants: string[]; themes: ('light' | 'dark')[] }
@@ -16,6 +21,16 @@ const NonWCAGCompliantEntries: NonWCAGCompliantEntry[] = [
 		themes: ['light'],
 	},
 	{
+		component: 'NeoIconButton',
+		variants: ['secondary', 'tertiary'],
+		themes: ['light'],
+	},
+	{
+		component: 'NeoLinkButton',
+		variants: ['secondary', 'tertiary'],
+		themes: ['light'],
+	},
+	{
 		component: 'NeoLink',
 		variants: ['default', 'underline'],
 		themes: ['light'],
@@ -25,18 +40,29 @@ const NonWCAGCompliantEntries: NonWCAGCompliantEntry[] = [
 		variants: [],
 		themes: ['light'],
 	},
+	{
+		component: 'NeoLinkGroup',
+		variants: ['vertical', 'horizontal'],
+		themes: ['light'],
+	},
+	{
+		component: 'NeoNavigation',
+		variants: ['default'],
+		themes: ['light'],
+	},
+	{
+		component: 'NeoCard',
+		variants: ['default', 'compact', 'featured'],
+		themes: ['light'],
+	},
+	{
+		component: 'NeoProgressPanel',
+		variants: ['default'],
+		themes: ['light'],
+	},
 ]
 
-/**
- * Shared utilities for color showcase stories
- * These helpers provide consistent visual treatment for special colors
- * (yellow, amber, orange) that use black text in light mode
- */
-
-/**
- * Colors that use black text in light mode for accessibility
- */
-export const blackTextColors: Color[] = ['yellow', 'amber', 'orange'] as const
+export const blackTextColors: Color[] = ['yellow', 'amber', 'orange', 'white'] as const
 
 /**
  * Wraps a component in a light background container if it's a special color
@@ -53,16 +79,11 @@ export const blackTextColors: Color[] = ['yellow', 'amber', 'orange'] as const
  */
 export const getColorWrapper = (
 	componentName: string,
-	color: Color,
+	color: SurfaceColor,
 	children: VNode,
 	variant?: string,
 	dark?: boolean,
 ): VNode => {
-	// Input and TextArea components are now WCAG compliant, always return unwrapped
-	if (componentName === 'NeoInput' || componentName === 'NeoTextArea') {
-		return children
-	}
-
 	if (!blackTextColors.includes(color)) {
 		return children
 	}
@@ -154,7 +175,7 @@ export interface VariantConfig<TComponent, TArgs = Record<string, unknown>> {
 	/** The variant value (e.g., 'solid', 'primary', 'outlined') */
 	variant: string
 	/** Function that renders a component with the given color */
-	renderComponent: (color: Color, Component: TComponent, args: TArgs) => VNode
+	renderComponent: (color: SurfaceColor, Component: TComponent, args: TArgs) => VNode
 }
 
 /**
@@ -182,7 +203,7 @@ export const createAllColorsRender = <TComponent, TArgs = Record<string, unknown
 								<div
 									style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', alignItems: 'center' }}
 								>
-									{colors.map((color) =>
+									{surfaceColors.map((color) =>
 										getColorWrapper(
 											//@ts-expect-error __name is an internal property
 											Component.__name,
@@ -213,7 +234,7 @@ export interface SimpleVariantConfig<TArgs = Record<string, unknown>> {
 	/** Custom props to pass to the component for this variant */
 	props?: Partial<TArgs>
 	/** Custom render function for this specific variant */
-	render?: (color: Color, variant: string, args: TArgs) => VNode
+	render?: (color: SurfaceColor, variant: string, args: TArgs) => VNode
 }
 
 /**

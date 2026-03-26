@@ -1,0 +1,49 @@
+/* Default size: medium */
+.NeoCard {
+	--NeoCard-sizing-imageHeight: 220px;
+	--NeoCard-sizing-padding: var(--neo-spacing-core-md);
+	--NeoCard-sizing-gap: var(--neo-gap-md);
+	--NeoCard-sizing-titleFont: var(--neo-fontSize-textLg);
+	--NeoCard-sizing-titleClamp: 2;
+	--NeoCard-sizing-descriptionFont: var(--neo-fontSize-base);
+	--NeoCard-sizing-descriptionClamp: 3;
+	--NeoCard-sizing-borderRadius: var(--neo-radius-md);
+	--NeoCard-sizing-borderWidth: 1px;
+	--NeoCard-sizing-tagGap: var(--neo-gap-xs);
+}
+
+.NeoCard--small {
+	--NeoCard-sizing-imageHeight: 160px;
+	--NeoCard-sizing-padding: var(--neo-spacing-core-sm);
+	--NeoCard-sizing-gap: var(--neo-gap-sm);
+	--NeoCard-sizing-titleFont: var(--neo-fontSize-textMd);
+	--NeoCard-sizing-descriptionFont: var(--neo-fontSize-textSm);
+}
+
+.NeoCard--large {
+	--NeoCard-sizing-imageHeight: 280px;
+	--NeoCard-sizing-padding: var(--neo-spacing-core-lg);
+	--NeoCard-sizing-gap: var(--neo-gap-lg);
+	--NeoCard-sizing-titleFont: var(--neo-fontSize-textXl);
+	--NeoCard-sizing-descriptionFont: var(--neo-fontSize-textMd);
+}
+
+.NeoCard--rounded {
+	--NeoCard-sizing-borderRadius: var(--neo-radius-lg);
+}
+
+/* Compact variant: horizontal layout on medium+ screens */
+.NeoCard--compact {
+	@mixin bp-md {
+		--NeoCard-sizing-imageHeight: 140px;
+	}
+}
+
+/* Featured variant: larger image */
+.NeoCard--featured {
+	--NeoCard-sizing-imageHeight: 320px;
+
+	@mixin bp-md {
+		--NeoCard-sizing-imageHeight: 380px;
+	}
+}

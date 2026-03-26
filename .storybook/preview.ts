@@ -85,9 +85,9 @@ const preview: Preview = {
 	parameters: {
 		controls: {
 			matchers: {
-				color: /(background|color)$/i,
 				date: /Date$/i,
 			},
+			exclude: /^on[A-Z].*/,
 		},
 		a11y: {
 			// Exclude certain elements from the accessibility checks
@@ -96,6 +96,7 @@ const preview: Preview = {
 	},
 
 	argTypes: {
+		$slots: { table: { disable: true } },
 		color: {
 			control: 'select',
 			options: colors,

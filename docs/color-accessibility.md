@@ -42,14 +42,14 @@ When you apply a color to a component (e.g., `color="blue"`), the theme system p
 
 ### ✅ Good Usage
 
-- **Yellow, Amber, Orange on light backgrounds** - These work perfectly with black text
-- **All other colors on any background** - Automatically optimized for accessibility
-- **Switching between light and dark modes** - All colors adapt automatically
+- **Yellow, Amber, Orange as component backgrounds** — buttons, badges, and other filled surfaces use black text on the colored background and meet WCAG AA
+- **All other colors on any background** — automatically optimized for accessibility
+- **Switching between light and dark modes** — all colors adapt automatically
 
-### ⚠️ Be Aware
+### ⚠️ Not Recommended
 
-- **Yellow, Amber, Orange** are optimized for light backgrounds
-- In dark mode, they use lighter shades which may look different from their traditional appearance
+- **Yellow, Amber, Orange as text or link colors on light page backgrounds** — `--neo-theme-colorAccessible` for these colors does not meet WCAG AA contrast against white. Avoid using them for `NeoLink`, `NeoNavItem`, or any component where the color resolves to text on a white background
+- In dark mode, yellow/amber/orange use lighter shades which may look different from their traditional appearance
 - For brand-critical yellow/amber/orange in dark mode, consider using custom shades
 
 ## Technical Details

@@ -67,20 +67,11 @@ const handleClick = () => {
 
 ## Available Components
 
-### Atoms
-- **NeoButton** - Versatile button component with multiple variants
-- **NeoInput** - Accessible text input with validation support
-- **NeoCheckbox** - Checkbox with keyboard navigation
-- **NeoRadio** - Radio button component
-- **NeoTextArea** - Multi-line text input
-- **NeoImage** - Responsive image component
-- **NeoLink** - Accessible link component
-- **NeoSpinner** - Loading spinner
-- **NeoBadge** - Badge and tag component
-- **NeoIcon** - SVG icon component
+All components use the `Neo` prefix (e.g. `NeoButton`, `NeoCard`, `NeoNavigation`) and are directly importable from `neo-materia`.
 
-### Molecules
-- **NeoSelect** - Accessible select dropdown with search and multi-select support
+NeoMateria covers **atoms** (Button, Input, Checkbox, Icon, NavItem…), **molecules** (Card, Select, Accordion, Sheet…) and **organisms** (Navigation, Footer).
+
+**[View full component library →](https://titanlordcode.github.io/NeoMateria/)**
 
 ## Component Props
 
@@ -145,36 +136,17 @@ All components are built with accessibility in mind:
 
 ## Documentation
 
-Explore the full component library with interactive examples:
-
-**[View Storybook Documentation](https://titanlordcode.github.io/NeoMateria/)**
-
-The Storybook includes:
-- Live component previews
-- Interactive props controls
-- Accessibility checks
-- Dark mode toggle
-- RTL (Right-to-Left) support examples
+| Channel | Storybook | npm |
+|---------|-----------|-----|
+| Stable (`main`) | [titanlordcode.github.io/NeoMateria](https://titanlordcode.github.io/NeoMateria/) | `npm install neo-materia` |
+| Dev (`develop`) | [titanlordcode.github.io/NeoMateria/dev](https://titanlordcode.github.io/NeoMateria/dev) | `npm install neo-materia@dev` |
 
 ## TypeScript
 
 NeoMateria is written in TypeScript and provides full type definitions:
 
 ```typescript
-import type {
-  NeoButtonProps,
-  NeoInputProps,
-  NeoCheckboxProps,
-  NeoRadioProps,
-  NeoTextAreaProps,
-  NeoSelectProps,
-  NeoImageProps,
-  NeoLinkProps,
-  NeoSpinnerProps,
-  NeoBadgeProps,
-  NeoIconProps,
-  Color
-} from 'neo-materia'
+import type { NeoButtonProps, NeoCardProps, /* ... */ Color } from 'neo-materia'
 ```
 
 ## Browser Support

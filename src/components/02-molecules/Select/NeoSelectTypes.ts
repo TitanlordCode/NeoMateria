@@ -1,4 +1,4 @@
-import type { Color } from '@/assets/typescript/colors'
+import type { SurfaceColor } from '@/assets/typescript/colorTypes'
 
 export const selectSizes = ['small', 'medium', 'large'] as const
 
@@ -10,19 +10,27 @@ export type NeoSelectSize = (typeof selectSizes)[number]
 export type NeoSelectVariant = (typeof selectVariants)[number]
 export type NeoSelectMode = (typeof selectModes)[number]
 
-export interface NeoSelectProps {
-	class?: string
+type NeoSelectBase = {
 	name: string
-	label: string
 	selectProps?: { placeholder?: string }
 	options: { value: string; label: string }[]
-	selectValue?: string | string[]
 	helpText?: string
 	errorMessage?: string
 	size: NeoSelectSize
-	color: Color
+	color: SurfaceColor
 	disabled?: boolean
 	rounded?: boolean
 	variant?: NeoSelectVariant
-	mode?: NeoSelectMode
 }
+
+type NeoSelectSingle = { mode?: 'single'; selectValue?: string }
+type NeoSelectMulti = { mode: 'multi'; selectValue?: string[] }
+type NeoSelectWithLabel = { label: string; ariaLabel?: never }
+type NeoSelectWithAriaLabel = { label?: never; ariaLabel: string }
+type NeoSelectRequired = { required: true; requiredText: string }
+type NeoSelectOptional = { required?: never; requiredText?: never }
+
+export type NeoSelectProps = NeoSelectBase &
+	(NeoSelectSingle | NeoSelectMulti) &
+	(NeoSelectWithLabel | NeoSelectWithAriaLabel) &
+	(NeoSelectRequired | NeoSelectOptional)

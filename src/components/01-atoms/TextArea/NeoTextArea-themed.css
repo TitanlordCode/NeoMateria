@@ -8,8 +8,8 @@
 	--NeoTextArea-color-background: var(--neo-color-white);
 	--NeoTextArea-color-text: var(--neo-color-grey900);
 	--NeoTextArea-color-border: var(--neo-color-grey300);
-	--NeoTextArea-color-error: var(--neo-color-red500);
-	--NeoTextArea-color-required: var(--neo-color-red500);
+	--NeoTextArea-color-error: var(--neo-color-red700);
+	--NeoTextArea-color-required: var(--neo-color-red700);
 
 	@mixin onDark {
 		--NeoTextArea-color-focus: var(--neo-theme-color);

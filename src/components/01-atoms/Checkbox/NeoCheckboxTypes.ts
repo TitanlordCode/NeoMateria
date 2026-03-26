@@ -1,19 +1,24 @@
-import type { Color } from '@/assets/typescript/colors'
+import type { SurfaceColor } from '@/assets/typescript/colorTypes'
 
 export const checkboxSizes = ['small', 'medium', 'large'] as const
 
 export type NeoCheckboxSize = (typeof checkboxSizes)[number]
 
-export interface NeoCheckboxProps {
-	class?: string
+type NeoCheckboxBase = {
 	name: string
-	label?: string
-	ariaLabel?: string
 	checked?: boolean
 	value?: string
 	disabled?: boolean
-	required?: boolean
 	size: NeoCheckboxSize
-	color: Color
+	color: SurfaceColor
 	indeterminate?: boolean
 }
+
+type NeoCheckboxWithLabel = { label: string; ariaLabel?: never }
+type NeoCheckboxWithAriaLabel = { label?: never; ariaLabel: string }
+type NeoCheckboxRequired = { required: true; requiredText: string }
+type NeoCheckboxOptional = { required?: never; requiredText?: never }
+
+export type NeoCheckboxProps = NeoCheckboxBase &
+	(NeoCheckboxWithLabel | NeoCheckboxWithAriaLabel) &
+	(NeoCheckboxRequired | NeoCheckboxOptional)

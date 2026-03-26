@@ -1,0 +1,35 @@
+.NeoNavItem--small {
+	--NeoNavItem-sizing-fontSize: var(--neo-fontSize-textSm);
+	--NeoNavItem-sizing-fontSizeLevel1: var(--neo-fontSize-textSm);
+	--NeoNavItem-sizing-fontSizeLevel2: var(--neo-fontSize-textXs);
+	--NeoNavItem-sizing-fontSizeLevel3: var(--neo-fontSize-textXs);
+	--NeoNavItem-sizing-paddingBlock: var(--neo-spacing-core-xs);
+	--NeoNavItem-sizing-paddingInline: var(--neo-spacing-core-sm);
+	--NeoNavItem-sizing-gap: var(--neo-gap-xs);
+	--NeoNavItem-sizing-indent: var(--neo-spacing-core-md);
+	--NeoNavItem-sizing-connectorOffset: var(--neo-spacing-core-sm);
+}
+
+.NeoNavItem--medium {
+	--NeoNavItem-sizing-fontSize: var(--neo-fontSize-base);
+	--NeoNavItem-sizing-fontSizeLevel1: var(--neo-fontSize-textSm);
+	--NeoNavItem-sizing-fontSizeLevel2: var(--neo-fontSize-textSm);
+	--NeoNavItem-sizing-fontSizeLevel3: var(--neo-fontSize-textXs);
+	--NeoNavItem-sizing-paddingBlock: var(--neo-spacing-core-sm);
+	--NeoNavItem-sizing-paddingInline: var(--neo-spacing-core-md);
+	--NeoNavItem-sizing-gap: var(--neo-gap-sm);
+	--NeoNavItem-sizing-indent: var(--neo-spacing-core-lg);
+	--NeoNavItem-sizing-connectorOffset: var(--neo-spacing-core-md);
+}
+
+.NeoNavItem--large {
+	--NeoNavItem-sizing-fontSize: var(--neo-fontSize-textLg);
+	--NeoNavItem-sizing-fontSizeLevel1: var(--neo-fontSize-base);
+	--NeoNavItem-sizing-fontSizeLevel2: var(--neo-fontSize-textSm);
+	--NeoNavItem-sizing-fontSizeLevel3: var(--neo-fontSize-textSm);
+	--NeoNavItem-sizing-paddingBlock: var(--neo-spacing-core-md);
+	--NeoNavItem-sizing-paddingInline: var(--neo-spacing-core-lg);
+	--NeoNavItem-sizing-gap: var(--neo-gap-md);
+	--NeoNavItem-sizing-indent: var(--neo-spacing-core-xl);
+	--NeoNavItem-sizing-connectorOffset: var(--neo-spacing-core-lg);
+}

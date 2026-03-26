@@ -1,0 +1,272 @@
+
+import { Meta, Title } from '@storybook/addon-docs/blocks'
+
+<Meta title="Foundation/Typography" />
+
+<Title>Typography</Title>
+
+NeoMateria uses a three-strategy system for handling text that exceeds its container. Every text element applies **at least one strategy** depending on whether the element is UI chrome (navigation, labels) or content (cards, panels).
+
+---
+
+## Strategy 1 — Single-line truncation
+
+**When to use:** UI chrome elements where wrapping would break layout — navigation labels, table cells, compact list items.
+
+```css
+.Element-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+```
+
+**Applied to:** `NeoNavItem` labels.
+
+<div style={{ padding: '16px' }}>
+	<div
+		style={{
+			border: '1px solid var(--neo-color-grey200)',
+			borderRadius: '8px',
+			display: 'flex',
+			flexDirection: 'column',
+			gap: '4px',
+			inlineSize: '220px',
+			padding: '8px',
+		}}
+	>
+		{[
+			'Short label',
+			'A slightly longer navigation label',
+			'An extremely long navigation label that would normally wrap onto a second line',
+		].map((label) => (
+			<div
+				key={label}
+				style={{
+					borderRadius: '6px',
+					color: 'var(--neo-color-grey700)',
+					fontSize: '0.875rem',
+					overflow: 'hidden',
+					padding: '6px 10px',
+					textOverflow: 'ellipsis',
+					whiteSpace: 'nowrap',
+				}}
+			>
+				{label}
+			</div>
+		))}
+	</div>
+</div>
+
+---
+
+## Strategy 2 — Line clamp
+
+**When to use:** Content previews where the element has a fixed role — card titles, card descriptions, panel titles.
+
+```css
+.Element-title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: var(--Element-sizing-titleClamp);
+  line-clamp: var(--Element-sizing-titleClamp);
+  overflow: hidden;
+}
+```
+
+The clamp count is exposed as a CSS variable so consumers can override it without a prop:
+
+```css
+.my-context .NeoCard {
+  --NeoCard-sizing-titleClamp: 1;
+  --NeoCard-sizing-descriptionClamp: 2;
+}
+```
+
+**Applied to:** `NeoCard` title (2 lines), `NeoCard` description (3 lines), `NeoProgressPanel` title (2 lines).
+
+<div
+	style={{
+		display: 'grid',
+		gap: '24px',
+		gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))',
+		padding: '16px',
+	}}
+>
+	{[
+		{
+			label: 'Short title — no clamp',
+			title: 'A Normal Card Title',
+			clamp: 2,
+		},
+		{
+			label: 'Long title — clamped at 2 lines',
+			title: 'An Extraordinarily Long Title That Will Be Clamped After Two Lines Because It Just Keeps Going',
+			clamp: 2,
+		},
+		{
+			label: 'Long description — clamped at 3 lines',
+			title: 'Normal Title',
+			description: 'This is a very long description that goes well beyond three lines of text. It demonstrates how the line-clamp strategy cuts off content cleanly with an ellipsis after the configured number of lines, keeping the card height consistent regardless of how much text is provided by the consumer.',
+			clamp: 3,
+		},
+	].map((card) => (
+		<div key={card.label} style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+			<p style={{ color: 'var(--neo-color-grey600)', fontSize: '0.75rem', margin: '0' }}>
+				{card.label}
+			</p>
+			<div
+				style={{
+					border: '1px solid var(--neo-color-grey200)',
+					borderRadius: '8px',
+					overflow: 'hidden',
+				}}
+			>
+				<div style={{ background: 'var(--neo-color-blue100)', blockSize: '120px' }} />
+				<div style={{ padding: '12px' }}>
+					<p
+						style={{
+							WebkitBoxOrient: 'vertical',
+							WebkitLineClamp: 2,
+							display: '-webkit-box',
+							fontWeight: '600',
+							lineHeight: '1.3',
+							margin: '0 0 6px',
+							overflow: 'hidden',
+						}}
+					>
+						{card.title}
+					</p>
+					{card.description && (
+						<p
+							style={{
+								WebkitBoxOrient: 'vertical',
+								WebkitLineClamp: card.clamp,
+								color: 'var(--neo-color-grey600)',
+								display: '-webkit-box',
+								fontSize: '0.875rem',
+								lineHeight: '1.5',
+								margin: '0',
+								overflow: 'hidden',
+							}}
+						>
+							{card.description}
+						</p>
+					)}
+				</div>
+			</div>
+		</div>
+	))}
+</div>
+
+---
+
+## Strategy 3 — Overflow wrap + hyphenation
+
+**When to use:** All multi-line text as a baseline safety net. Prevents a single long word or URL from causing horizontal overflow without restricting line count.
+
+```css
+.Element {
+  hyphens: auto;
+  overflow-wrap: break-word;
+}
+```
+
+**`hyphens: auto` requires a `lang` attribute** on the element or an ancestor — typically `<html lang="de">`. Without it the property has no effect and `overflow-wrap` acts as a fallback. This is by design: the component sets the capability, the app provides the language context.
+
+```html
+<!-- app root — enables hyphenation for all components -->
+<html lang="de">
+
+<!-- or per-section -->
+<section lang="de">
+  <NeoCard title="Donaudampfschifffahrtsgesellschaft" ... />
+</section>
+```
+
+**Applied to:** `NeoButton`, `NeoCard`, `NeoProgressPanel`, and all other multi-line text elements as a baseline.
+
+### Hyphenation demo
+
+Both boxes use `overflow-wrap: break-word` and `hyphens: auto`. Only the one with `lang="de"` produces proper German hyphenation.
+
+> **In your app:** set `lang="de"` on `<html>` or the nearest relevant ancestor. NeoMateria components declare `hyphens: auto` — the browser does the rest.
+
+<div style={{ display: 'grid', gap: '24px', gridTemplateColumns: '1fr 1fr', padding: '16px' }}>
+	<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+		<p style={{ color: 'var(--neo-color-grey600)', fontSize: '0.75rem', fontWeight: '600', margin: '0' }}>
+			Without <code>lang</code> — arbitrary break
+		</p>
+		{['Donaudampfschifffahrtsgesellschaft', 'Kraftfahrzeughaftpflichtversicherung und Rechtsschutzversicherungsbedingungen'].map((word) => (
+			<div key={word} style={{ inlineSize: '140px' }}>
+				<p style={{ background: 'var(--neo-color-grey50)', border: '1px solid var(--neo-color-grey200)', borderRadius: '8px', fontFamily: 'inherit', fontSize: '0.875rem', lineHeight: '1.5', margin: '0', overflowWrap: 'break-word', padding: '12px' }}>
+					{word}
+				</p>
+			</div>
+		))}
+	</div>
+	<div lang="de" style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+		<p style={{ color: 'var(--neo-color-grey600)', fontSize: '0.75rem', fontWeight: '600', margin: '0' }}>
+			With <code>lang="de"</code> — syllable break
+		</p>
+		{['Donaudampfschifffahrtsgesellschaft', 'Kraftfahrzeughaftpflichtversicherung und Rechtsschutzversicherungsbedingungen'].map((word) => (
+			<div key={word} style={{ inlineSize: '140px' }}>
+				<p style={{ background: 'var(--neo-color-grey50)', border: '1px solid var(--neo-color-grey200)', borderRadius: '8px', fontFamily: 'inherit', fontSize: '0.875rem', hyphens: 'auto', lineHeight: '1.5', margin: '0', overflowWrap: 'break-word', padding: '12px' }}>
+					{word}
+				</p>
+			</div>
+		))}
+	</div>
+</div>
+
+### Overflow wrap demo
+
+`overflow-wrap: break-word` is applied as a baseline to all text elements. It prevents a single long token — a URL, a compound identifier, or an untranslated key — from causing horizontal overflow.
+
+<div style={{ display: 'grid', gap: '24px', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', padding: '16px' }}>
+	{[
+		{
+			label: 'Long URL in title — wraps without overflow',
+			title: 'https://very-long-url-example.com/path/to/some/deeply/nested/resource?with=query&params=here',
+			description: 'Description stays readable below.',
+		},
+		{
+			label: 'Long translation key — breaks at word boundary',
+			title: 'TRANSLATION_KEY_COMPONENT_SECTION_SUBSECTION_ELEMENT_STATE_VARIANT',
+			description: 'Useful when keys are shown in development or error states.',
+		},
+	].map((card) => (
+		<div key={card.label} style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+			<p style={{ color: 'var(--neo-color-grey600)', fontSize: '0.75rem', margin: '0' }}>
+				{card.label}
+			</p>
+			<div style={{ border: '1px solid var(--neo-color-grey200)', borderRadius: '8px', overflow: 'hidden' }}>
+				<div style={{ background: 'var(--neo-color-blue100)', blockSize: '80px' }} />
+				<div style={{ padding: '12px' }}>
+					<p style={{ fontWeight: '600', lineHeight: '1.3', margin: '0 0 6px', overflowWrap: 'break-word' }}>
+						{card.title}
+					</p>
+					<p style={{ color: 'var(--neo-color-grey600)', fontSize: '0.875rem', lineHeight: '1.5', margin: '0' }}>
+						{card.description}
+					</p>
+				</div>
+			</div>
+		</div>
+	))}
+</div>
+
+---
+
+## Combining strategies
+
+Strategies are not mutually exclusive. `NeoProgressPanel` subtitle uses all three: clamped to 1 line, truncated with ellipsis, and wrapped on long words:
+
+```css
+.NeoProgressPanel-subtitle {
+  hyphens: auto;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+```
