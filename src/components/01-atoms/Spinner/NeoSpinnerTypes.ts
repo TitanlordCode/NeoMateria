@@ -14,4 +14,5 @@ type NeoSpinnerWithLabel = { label: string; ariaLabel?: never; ariaHidden?: neve
 type NeoSpinnerWithAriaLabel = { label?: never; ariaLabel: string; ariaHidden?: never }
 type NeoSpinnerHidden = { label?: never; ariaLabel?: never; ariaHidden: true }
 
-export type NeoSpinnerProps = NeoSpinnerBase & (NeoSpinnerWithLabel | NeoSpinnerWithAriaLabel | NeoSpinnerHidden)
+export type NeoSpinnerProps = NeoSpinnerBase &
+	(NeoSpinnerWithLabel | NeoSpinnerWithAriaLabel | NeoSpinnerHidden)

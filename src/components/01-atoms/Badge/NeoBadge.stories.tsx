@@ -206,7 +206,7 @@ export const DismissibleTags: Story = {
 			source: {
 				code: `<script setup>
 const tags = ref(['TypeScript', 'Vue', 'React', 'Angular'])
-const dismiss = (tag) => tags.value = tags.value.filter(t => t !== tag)
+const dismiss = (tag) => tags.value = tags.value.filter(existingTag => existingTag !== tag)
 </script>
 
 <template>

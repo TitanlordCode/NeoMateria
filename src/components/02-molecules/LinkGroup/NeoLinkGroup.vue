@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import type { NeoLinkGroupProps, NeoLinkGroupSlots } from './NeoLinkGroupTypes'
 import { getClassNames } from '@/utils/classNames'
 import NeoLink from '../../01-atoms/Link/NeoLink.vue'
+import NeoHeadlineQuaternary from '../../01-atoms/Headline/NeoHeadlineQuaternary/NeoHeadlineQuaternary.vue'
 
 const props = defineProps<NeoLinkGroupProps>()
 
@@ -24,7 +25,12 @@ const classes = computed(() => {
 <template>
 	<div :class="classes">
 		<slot name="title">
-			<h4 v-if="props.title" class="NeoLinkGroup-title">{{ props.title }}</h4>
+			<NeoHeadlineQuaternary
+				v-if="props.title"
+				:tag="props.headingTag ?? 'h4'"
+				class="NeoLinkGroup-title"
+				>{{ props.title }}</NeoHeadlineQuaternary
+			>
 		</slot>
 		<nav class="NeoLinkGroup-links" :aria-label="props.ariaLabel ?? props.title">
 			<slot>

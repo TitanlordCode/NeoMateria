@@ -88,7 +88,9 @@ export const Default: Story = {
 		docs: {
 			source: {
 				code: `<NeoPennant color="blue">
-  <!-- SVG icon here -->
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+  </svg>
 </NeoPennant>`,
 			},
 		},
@@ -117,7 +119,9 @@ export const Link: Story = {
 			source: {
 				code: `<!-- Provide href to render an <a> wrapper around the pennant -->
 <NeoPennant color="blue" href="#platform" aria-label="View platform details">
-  <!-- SVG icon here -->
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+  </svg>
 </NeoPennant>`,
 			},
 		},
@@ -156,11 +160,14 @@ export const Colors: Story = {
 	parameters: {
 		docs: {
 			source: {
-				code: `<!-- NeoPennant supports all theme colors -->
-<NeoPennant color="blue"><!-- icon --></NeoPennant>
-<NeoPennant color="green"><!-- icon --></NeoPennant>
-<NeoPennant color="red"><!-- icon --></NeoPennant>
-<!-- ... all colors available -->`,
+				code: `<!-- NeoPennant supports all theme colors. Pass any SVG as the default slot. -->
+<template v-for="color in colors" :key="color">
+  <NeoPennant :color="color">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+    </svg>
+  </NeoPennant>
+</template>`,
 			},
 		},
 	},
@@ -175,9 +182,13 @@ export const ColorsOnDark: Story = {
 		docs: {
 			source: {
 				code: `<div class="u-onDark">
-  <NeoPennant color="blue"><!-- icon --></NeoPennant>
-  <NeoPennant color="green"><!-- icon --></NeoPennant>
-  <!-- ... all colors available -->
+  <template v-for="color in colors" :key="color">
+    <NeoPennant :color="color">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+      </svg>
+    </NeoPennant>
+  </template>
 </div>`,
 			},
 		},
@@ -197,10 +208,14 @@ export const PlatformLogoExample: Story = {
 				code: `<!-- Pass any SVG as the default slot — NeoPennant clips and scales it automatically.
      An <img> works too: <img src="/assets/steam-logo.png" alt="" /> -->
 <NeoPennant color="blueGrey" href="#steam" aria-label="Steam">
-  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><!-- Steam path --></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M11.979 0C5.678 0 .511 4.86.022 11.037l6.432 2.658c.545-.371 1.203-.59 1.912-.59.063 0 .125.004.188.006l2.861-4.142V8.91c0-2.495 2.028-4.524 4.524-4.524 2.494 0 4.524 2.031 4.524 4.527s-2.03 4.525-4.524 4.525h-.105l-4.076 2.911c0 .052.004.105.004.159 0 1.875-1.515 3.396-3.39 3.396-1.635 0-3.016-1.173-3.331-2.727L.436 15.27C1.862 20.307 6.486 24 11.979 24c6.627 0 11.999-5.373 11.999-12S18.605 0 11.979 0z" />
+  </svg>
 </NeoPennant>
 <NeoPennant color="blue" href="#playstation" aria-label="PlayStation">
-  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><!-- PS path --></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M8.984 2.596v17.547l3.915 1.261V6.688c0-.69.304-1.151.794-.991.636.18.76.814.76 1.505v5.875c2.441 1.193 4.362-.002 4.362-3.152 0-3.237-1.126-4.675-4.438-5.827-1.307-.448-3.728-1.186-5.39-1.502z" />
+  </svg>
 </NeoPennant>`,
 			},
 		},

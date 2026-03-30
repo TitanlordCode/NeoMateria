@@ -10,6 +10,7 @@ import NeoProgressPanel from '@/components/02-molecules/ProgressPanel/NeoProgres
 import NeoPennant from '@/components/01-atoms/Pennant/NeoPennant.vue'
 import NeoLink from '@/components/01-atoms/Link/NeoLink.vue'
 import NeoButton from '@/components/01-atoms/Button/NeoButton/NeoButton.vue'
+import NeoHero from '@/components/03-organisms/Hero/NeoHero/NeoHero.vue'
 import type { SurfaceColor } from '@/assets/typescript/colorTypes'
 import type { Color } from '@/assets/typescript/colors'
 
@@ -175,6 +176,14 @@ const MediaPageComponent = defineComponent({
 					}}
 				</NeoNavigation>
 
+				<NeoHero
+					title="Your Streaming Library"
+					subtitle="Discover top-rated titles, browse by genre, and manage your personal list."
+					color={props.color}
+					variant="centered"
+					size="sm"
+				/>
+
 				<section
 					id="top-rated"
 					style={{
@@ -215,11 +224,7 @@ const MediaPageComponent = defineComponent({
 									rounded
 								>
 									{{
-										pennant: () => (
-											<NeoPennant color={item.color}>
-												{item.rank}
-											</NeoPennant>
-										),
+										pennant: () => <NeoPennant color={item.color}>{item.rank}</NeoPennant>,
 									}}
 								</NeoProgressPanel>
 							))}
@@ -279,18 +284,7 @@ const MediaPageComponent = defineComponent({
 	},
 })
 
-const mediaPageSourceCode = (color: string) =>
-	`<script setup lang="ts">
-import NeoNavigation from 'neo-materia/NeoNavigation'
-import NeoFooter from 'neo-materia/NeoFooter'
-import NeoCoverPanelGrid from 'neo-materia/NeoCoverPanelGrid'
-import NeoCoverPanel from 'neo-materia/NeoCoverPanel'
-import NeoProgressPanel from 'neo-materia/NeoProgressPanel'
-import NeoPennant from 'neo-materia/NeoPennant'
-import NeoLink from 'neo-materia/NeoLink'
-import NeoButton from 'neo-materia/NeoButton'
-
-const navLinks = [
+const mediaNavLinksCode = `const navLinks = [
   { text: 'Browse', href: '#browse', active: true },
   { text: 'Top Rated', href: '#top-rated' },
   {
@@ -303,17 +297,67 @@ const navLinks = [
     ],
   },
   { text: 'New Releases', href: '#new' },
-]
+]`
 
-const topRated = [
+const mediaTopRatedCode = `const topRated = [
   { color: 'blue', title: 'The Last Expedition', subtitle: 'Adventure · Drama · 2024', value: 84, rank: '1' },
   { color: 'grey', title: 'Echoes of Tomorrow', subtitle: 'Science Fiction · 2023', value: 71, rank: '2' },
   { color: 'red', title: 'A Quiet Street', subtitle: 'Drama · Comedy · 2024', value: 63, rank: '3' },
-]
+]`
 
-const libraryItems = [ /* { imageSrc, imageAlt, title } */ ]
+const mediaLibraryItemsCode = `const libraryItems = [
+  { imageSrc: 'https://placehold.co/300x450', imageAlt: 'Library item 1', title: 'Title 1' },
+  { imageSrc: 'https://placehold.co/300x450', imageAlt: 'Library item 2', title: 'Title 2' },
+  { imageSrc: 'https://placehold.co/300x450', imageAlt: 'Library item 3', title: 'Title 3' },
+  { imageSrc: 'https://placehold.co/300x450', imageAlt: 'Library item 4', title: 'Title 4' },
+]`
 
-const footerSections = [ /* { title, links: [{ text, href }] } */ ]
+const mediaFooterSectionsCode = `const footerSections = [
+  {
+    title: 'Browse',
+    links: [
+      { text: 'All Titles', href: '#all' },
+      { text: 'New Releases', href: '#new' },
+      { text: 'Top Rated', href: '#top' },
+    ],
+  },
+  {
+    title: 'Genres',
+    links: [
+      { text: 'Drama', href: '#drama' },
+      { text: 'Action', href: '#action' },
+      { text: 'Science Fiction', href: '#sci-fi' },
+    ],
+  },
+  {
+    title: 'Account',
+    links: [
+      { text: 'My List', href: '#list' },
+      { text: 'History', href: '#history' },
+      { text: 'Settings', href: '#settings' },
+    ],
+  },
+]`
+
+const mediaPageSourceCode = (color: string) =>
+	`<script setup lang="ts">
+import NeoNavigation from 'neo-materia/NeoNavigation'
+import NeoFooter from 'neo-materia/NeoFooter'
+import NeoCoverPanelGrid from 'neo-materia/NeoCoverPanelGrid'
+import NeoCoverPanel from 'neo-materia/NeoCoverPanel'
+import NeoProgressPanel from 'neo-materia/NeoProgressPanel'
+import NeoPennant from 'neo-materia/NeoPennant'
+import NeoLink from 'neo-materia/NeoLink'
+import NeoButton from 'neo-materia/NeoButton'
+import NeoHero from 'neo-materia/NeoHero'
+
+${mediaNavLinksCode}
+
+${mediaTopRatedCode}
+
+${mediaLibraryItemsCode}
+
+${mediaFooterSectionsCode}
 <` +
 	`/script>
 
@@ -328,6 +372,14 @@ const footerSections = [ /* { title, links: [{ text, href }] } */ ]
       <NeoButton text="My List" color="${color}" variant="secondary" rounded />
     </template>
   </NeoNavigation>
+
+  <NeoHero
+    title="Your Streaming Library"
+    subtitle="Discover top-rated titles, browse by genre, and manage your personal list."
+    color="${color}"
+    variant="centered"
+    size="sm"
+  />
 
   <section id="top-rated">
     <h2>Top Rated This Season</h2>
@@ -383,11 +435,15 @@ import NeoProgressPanel from 'neo-materia/NeoProgressPanel'
 import NeoPennant from 'neo-materia/NeoPennant'
 import NeoLink from 'neo-materia/NeoLink'
 import NeoButton from 'neo-materia/NeoButton'
+import NeoHero from 'neo-materia/NeoHero'
 
-const navLinks = [ /* same as light mode */ ]
-const topRated = [ /* same as light mode */ ]
-const libraryItems = [ /* same as light mode */ ]
-const footerSections = [ /* same as light mode */ ]
+${mediaNavLinksCode}
+
+${mediaTopRatedCode}
+
+${mediaLibraryItemsCode}
+
+${mediaFooterSectionsCode}
 <` +
 	`/script>
 
@@ -405,10 +461,18 @@ const footerSections = [ /* same as light mode */ ]
       </template>
     </NeoNavigation>
 
+    <NeoHero
+      title="Your Streaming Library"
+      subtitle="Discover top-rated titles, browse by genre, and manage your personal list."
+      color="blue"
+      variant="centered"
+      size="sm"
+    />
+
     <section id="top-rated" style="background: var(--neo-color-grey900);">
       <h2>Top Rated This Season</h2>
       <NeoProgressPanel v-for="item in topRated" :key="item.rank" :color="item.color" :title="item.title" :subtitle="item.subtitle" :value="item.value" value-label="of all votes" href="#" rounded>
-        <template #pennants>
+        <template #pennant>
           <NeoPennant :color="item.color">{{ item.rank }}</NeoPennant>
         </template>
       </NeoProgressPanel>

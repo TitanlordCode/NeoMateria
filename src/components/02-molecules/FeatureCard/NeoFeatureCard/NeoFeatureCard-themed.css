@@ -1,0 +1,15 @@
+.NeoFeatureCard--clickable {
+	--NeoFeatureCard-color-focus: var(--neo-theme-colorAccessible);
+}
+
+.NeoFeatureCard-category {
+	--NeoFeatureCard-color-category: var(--neo-theme-colorAccessible, currentColor);
+}
+
+.NeoFeatureCard-excerpt {
+	--NeoFeatureCard-color-excerpt: currentColor;
+
+	@mixin onDark {
+		--NeoFeatureCard-color-excerpt: currentColor;
+	}
+}

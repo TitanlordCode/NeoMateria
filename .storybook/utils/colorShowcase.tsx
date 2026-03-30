@@ -60,6 +60,41 @@ const NonWCAGCompliantEntries: NonWCAGCompliantEntry[] = [
 		variants: ['default'],
 		themes: ['light'],
 	},
+	{
+		component: 'NeoText',
+		variants: [],
+		themes: ['light'],
+	},
+	{
+		component: 'NeoHeadlinePrimary',
+		variants: [],
+		themes: ['light'],
+	},
+	{
+		component: 'NeoHeadlineSecondary',
+		variants: [],
+		themes: ['light'],
+	},
+	{
+		component: 'NeoHeadlineTertiary',
+		variants: [],
+		themes: ['light'],
+	},
+	{
+		component: 'NeoHeadlineQuaternary',
+		variants: [],
+		themes: ['light'],
+	},
+	{
+		component: 'NeoCallout',
+		variants: ['bordered'],
+		themes: ['light'],
+	},
+	{
+		component: 'NeoHero',
+		variants: ['centered', 'split'],
+		themes: ['light'],
+	},
 ]
 
 export const blackTextColors: Color[] = ['yellow', 'amber', 'orange', 'white'] as const

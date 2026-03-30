@@ -1,0 +1,7 @@
+.NeoHero-subtitle {
+	--NeoHero-color-subtitle: currentColor;
+
+	@mixin onDark {
+		--NeoHero-color-subtitle: currentColor;
+	}
+}

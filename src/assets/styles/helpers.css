@@ -14,6 +14,22 @@
 	@mixin unsetOnDark;
 }
 
+/**
+ * Applies a custom styled scrollbar to the element.
+ * Pair with `.u-scrollbar--rounded` to add pill-shaped corners on the track and thumb.
+ */
+.u-scrollbar {
+	@mixin addScrollbar;
+}
+
+/**
+ * Rounds the scrollbar track and thumb corners.
+ * Must be used together with `.u-scrollbar`.
+ */
+.u-scrollbar--rounded {
+	--neo-scrollbar-radius: 9999px;
+}
+
 .sr-only {
 	position: absolute;
 	width: 1px;

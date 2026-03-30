@@ -24,14 +24,6 @@ const handleInput = (event: Event) => {
 	emit('update:value', target.value)
 }
 
-const handleBlur = (event: FocusEvent) => {
-	emit('blur', event)
-}
-
-const handleFocus = (event: FocusEvent) => {
-	emit('focus', event)
-}
-
 const classes = computed(() => {
 	const textareaClasses = getClassNames({
 		component: 'NeoTextArea',
@@ -79,8 +71,8 @@ const classes = computed(() => {
 			"
 			:aria-invalid="props.errorMessage ? 'true' : undefined"
 			@input="handleInput"
-			@blur="handleBlur"
-			@focus="handleFocus"
+			@blur="emit('blur', $event)"
+			@focus="emit('focus', $event)"
 		></textarea>
 
 		<div v-if="props.helpText || props.errorMessage" class="NeoTextArea-messageWrapper">

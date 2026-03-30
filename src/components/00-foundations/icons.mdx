@@ -1,0 +1,30 @@
+
+import { Meta, Title, Story, Canvas } from '@storybook/addon-docs/blocks'
+import * as IconStories from './icons.stories'
+
+<Meta of={IconStories}/>
+
+<Title>Default Icons</Title>
+
+NeoMateria ships a small set of ready-to-use icons. They are plain SVG VNodes — pass them directly into the default slot of `NeoIcon` or any icon slot.
+
+```ts
+import { InfoIcon, ChevronDownIcon, CloseIcon } from 'neomateria'
+```
+
+```vue
+<!-- Inside NeoIcon for sizing and color control -->
+<NeoIcon color="blue">{{ InfoIcon }}</NeoIcon>
+
+<!-- Directly into a component icon slot -->
+<NeoCallout color="blue">
+  <template #icon>{{ InfoIcon }}</template>
+  Message text.
+</NeoCallout>
+```
+
+---
+
+<Canvas of={IconStories.AllIcons} withToolbar={false} />
+
+All icons render with `currentColor`, so they automatically adapt to their context — including dark mode and colored backgrounds.

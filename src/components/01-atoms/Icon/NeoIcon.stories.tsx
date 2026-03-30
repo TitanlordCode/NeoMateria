@@ -59,7 +59,7 @@ export const BigFonts: Story = {
 <div style="font-size: 32px;">
   <span>With Font size 32px</span>
   <NeoIcon color="grey" size="medium">
-    <!-- your SVG icon here -->
+    <DeleteIcon />
   </NeoIcon>
 </div>`,
 			},

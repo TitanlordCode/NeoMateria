@@ -300,15 +300,9 @@ export const WithPennants: Story = {
 							v-slots={{
 								pennants: () => (
 									<>
-										<NeoPennant color="yellow">
-											{StarPennant}
-										</NeoPennant>
-										<NeoPennant color="blue">
-											{StarPennant}
-										</NeoPennant>
-										<NeoPennant color="red">
-											{StarPennant}
-										</NeoPennant>
+										<NeoPennant color="yellow">{StarPennant}</NeoPennant>
+										<NeoPennant color="blue">{StarPennant}</NeoPennant>
+										<NeoPennant color="red">{StarPennant}</NeoPennant>
 									</>
 								),
 								'action-icon': ({ active }: { active: boolean }) =>
@@ -363,21 +357,11 @@ export const WithManyPennants: Story = {
 							v-slots={{
 								pennants: () => (
 									<>
-										<NeoPennant color="yellow">
-											{StarPennant}
-										</NeoPennant>
-										<NeoPennant color="blue">
-											{StarPennant}
-										</NeoPennant>
-										<NeoPennant color="green">
-											{StarPennant}
-										</NeoPennant>
-										<NeoPennant color="purple">
-											{StarPennant}
-										</NeoPennant>
-										<NeoPennant color="red">
-											{StarPennant}
-										</NeoPennant>
+										<NeoPennant color="yellow">{StarPennant}</NeoPennant>
+										<NeoPennant color="blue">{StarPennant}</NeoPennant>
+										<NeoPennant color="green">{StarPennant}</NeoPennant>
+										<NeoPennant color="purple">{StarPennant}</NeoPennant>
+										<NeoPennant color="red">{StarPennant}</NeoPennant>
 									</>
 								),
 							}}

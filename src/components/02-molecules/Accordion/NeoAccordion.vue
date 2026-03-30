@@ -23,13 +23,7 @@ const classes = computed(() => {
 		modifiers: [props.size ?? 'medium', props.variant ?? 'default'],
 		states: [isExpanded.value ? 'expanded' : ''],
 	})
-	/*
-	const themedClasses = getClassNames({
-		component: 'Themed',
-		modifiers: [props.color ?? 'grey'],
-	})
-	*/
-	return `${accordionClasses}` // ${themedClasses}
+	return accordionClasses
 })
 
 const toggle = () => {
@@ -131,14 +125,12 @@ const handleKeydown = (event: KeyboardEvent) => {
 	padding-block-start: var(--NeoAccordion-sizing-contentPadding);
 }
 
-/* Variant: bordered */
 .NeoAccordion--bordered {
 	border: 1px solid var(--NeoAccordion-color-border);
 	border-radius: var(--neo-radius-md);
 	padding: var(--neo-spacing-core-md);
 }
 
-/* Variant: filled */
 .NeoAccordion--filled {
 	background-color: var(--NeoAccordion-color-background);
 	border-radius: var(--neo-radius-md);

@@ -36,4 +36,5 @@ type NeoButtonWithText = { text: string; ariaLabel?: never }
 type NeoButtonWithAriaLabel = { text?: never; ariaLabel: string }
 type NeoButtonWithSlot = { text?: never; ariaLabel?: never }
 
-export type NeoButtonProps = NeoButtonBase & (NeoButtonWithText | NeoButtonWithAriaLabel | NeoButtonWithSlot)
+export type NeoButtonProps = NeoButtonBase &
+	(NeoButtonWithText | NeoButtonWithAriaLabel | NeoButtonWithSlot)

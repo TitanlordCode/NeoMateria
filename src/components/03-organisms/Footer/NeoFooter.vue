@@ -32,7 +32,7 @@ const classes = computed(() => {
 				<slot name="sections">
 					<NeoLinkGroup
 						v-for="(section, index) in props.sections"
-						:key="index"
+						:key="section.title + '-' + index"
 						:title="section.title"
 						:links="section.links"
 						:color="props.color"
@@ -134,7 +134,6 @@ const classes = computed(() => {
 	padding-block-start: var(--neo-spacing-core-lg);
 }
 
-/* Simple layout: single column */
 .NeoFooter--simple {
 	& .NeoFooter-sections {
 		display: flex;
@@ -143,7 +142,6 @@ const classes = computed(() => {
 	}
 }
 
-/* Multi-column layout */
 .NeoFooter--multi-column {
 	& .NeoFooter-sections {
 		display: grid;
@@ -164,7 +162,6 @@ const classes = computed(() => {
 	}
 }
 
-/* Centered layout */
 .NeoFooter--centered {
 	& .NeoFooter-content {
 		align-items: center;

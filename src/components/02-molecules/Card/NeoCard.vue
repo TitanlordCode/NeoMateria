@@ -6,6 +6,7 @@ import NeoImage from '../../01-atoms/Image/NeoImage.vue'
 import NeoBadge from '../../01-atoms/Badge/NeoBadge.vue'
 import NeoButton from '../../01-atoms/Button/NeoButton/NeoButton.vue'
 import NeoLink from '../../01-atoms/Link/NeoLink.vue'
+import NeoHeadlineTertiary from '../../01-atoms/Headline/NeoHeadlineTertiary/NeoHeadlineTertiary.vue'
 
 const props = defineProps<NeoCardProps>()
 
@@ -36,18 +37,6 @@ const classes = computed(() => {
 	})
 	return `${cardClasses} ${themedClasses}`
 })
-
-const handleActionClick = (event: MouseEvent) => {
-	emit('action-click', event)
-}
-
-const handleSecondaryActionClick = (event: MouseEvent) => {
-	emit('secondary-action-click', event)
-}
-
-const handleCardClick = (event: MouseEvent) => {
-	emit('card-click', event)
-}
 </script>
 
 <template>
@@ -57,7 +46,7 @@ const handleCardClick = (event: MouseEvent) => {
 		:href="isClickable ? props.href : undefined"
 		:target="isClickable && props.external ? '_blank' : undefined"
 		:rel="isClickable && props.external ? 'noopener noreferrer' : undefined"
-		@click="isClickable ? handleCardClick($event) : undefined"
+		@click="isClickable ? emit('card-click', $event) : undefined"
 	>
 		<div class="NeoCard-imageWrapper">
 			<NeoImage
@@ -70,8 +59,8 @@ const handleCardClick = (event: MouseEvent) => {
 		<div class="NeoCard-content">
 			<div v-if="props.tags && props.tags.length > 0" class="NeoCard-tags">
 				<NeoBadge
-					v-for="(tag, index) in props.tags"
-					:key="index"
+					v-for="tag in props.tags"
+					:key="tag.text"
 					:text="tag.text"
 					:color="tag.color ?? props.color"
 					size="small"
@@ -79,7 +68,9 @@ const handleCardClick = (event: MouseEvent) => {
 					rounded
 				/>
 			</div>
-			<h3 class="NeoCard-title">{{ props.title }}</h3>
+			<NeoHeadlineTertiary :tag="props.headingTag ?? 'h3'" class="NeoCard-title">{{
+				props.title
+			}}</NeoHeadlineTertiary>
 			<p v-if="props.description" class="NeoCard-description">
 				{{ props.description }}
 			</p>
@@ -94,7 +85,7 @@ const handleCardClick = (event: MouseEvent) => {
 					size="medium"
 					variant="primary"
 					rounded
-					@click="handleActionClick"
+					@click="emit('action-click', $event)"
 				/>
 				<NeoLink
 					v-if="props.secondaryActionText && props.secondaryActionHref"
@@ -102,7 +93,7 @@ const handleCardClick = (event: MouseEvent) => {
 					:color="props.color"
 					size="medium"
 					variant="default"
-					@click="handleSecondaryActionClick"
+					@click="emit('secondary-action-click', $event)"
 				>
 					{{ props.secondaryActionText }}
 				</NeoLink>
@@ -194,7 +185,6 @@ const handleCardClick = (event: MouseEvent) => {
 	margin-block-start: auto;
 }
 
-/* Compact variant: horizontal layout on medium+ screens */
 .NeoCard--compact {
 	@mixin bp-md {
 		flex-direction: row;
@@ -210,7 +200,6 @@ const handleCardClick = (event: MouseEvent) => {
 	}
 }
 
-/* Featured variant styling */
 .NeoCard--featured {
 	& .NeoCard-title {
 		font-size: var(--neo-fontSize-headlineSm);
@@ -218,7 +207,6 @@ const handleCardClick = (event: MouseEvent) => {
 	}
 }
 
-/* Clickable card styling */
 .NeoCard--clickable {
 	cursor: pointer;
 	text-decoration: none;

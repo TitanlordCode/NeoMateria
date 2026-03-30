@@ -25,4 +25,19 @@ const gridStyle = computed(() => ({
 
 <style scoped>
 @import url('./NeoCoverPanelGrid-layout.css');
+
+.NeoCoverPanelGrid {
+	display: grid;
+	gap: var(--NeoCoverPanelGrid-sizing-gap);
+	grid-template-columns: repeat(
+		auto-fill,
+		minmax(
+			max(
+				var(--NeoCoverPanelGrid-sizing-columnMinWidth),
+				calc(100% / var(--NeoCoverPanelGrid-sizing-columns) - var(--NeoCoverPanelGrid-sizing-gap))
+			),
+			1fr
+		)
+	);
+}
 </style>

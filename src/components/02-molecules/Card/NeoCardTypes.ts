@@ -1,5 +1,6 @@
 import type { Color } from '@/assets/typescript/colors'
 import type { SurfaceColor } from '@/assets/typescript/colorTypes'
+import type { NeoHeadlineTag } from '@/components/01-atoms/Headline/NeoHeadlineTypes'
 
 export const cardSizes = ['small', 'medium', 'large'] as const
 export const cardVariants = ['default', 'compact', 'featured'] as const
@@ -21,6 +22,7 @@ type NeoCardBase = {
 	imageAlt: string
 	imageObjectFit?: 'contain' | 'cover' | 'fill' | 'none' | 'scale-down'
 	title: string
+	headingTag?: NeoHeadlineTag
 	description?: string
 	tags?: NeoCardTag[]
 }

@@ -1,0 +1,25 @@
+.NeoHero {
+	--NeoHero-sizing-paddingBlock: var(--neo-spacing-layout-lg);
+	--NeoHero-sizing-paddingInline: var(--neo-spacing-layout-sm);
+
+	@mixin bp-md {
+		--NeoHero-sizing-paddingInline: var(--neo-spacing-layout-md);
+	}
+
+	@mixin bp-lg {
+		--NeoHero-sizing-paddingBlock: var(--neo-spacing-layout-xl, 80px);
+		--NeoHero-sizing-paddingInline: var(--neo-spacing-layout-lg);
+	}
+}
+
+.NeoHero--sm {
+	--NeoHero-sizing-paddingBlock: var(--neo-spacing-layout-md);
+}
+
+.NeoHero--lg {
+	--NeoHero-sizing-paddingBlock: var(--neo-spacing-layout-xl, 80px);
+
+	@mixin bp-lg {
+		--NeoHero-sizing-paddingBlock: 120px;
+	}
+}

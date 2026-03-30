@@ -3,7 +3,7 @@
 A modern Vue 3 component library built with Atomic Design principles and Material Design colors, featuring automatic WCAG AA accessibility compliance.
 
 [![npm version](https://img.shields.io/npm/v/neo-materia.svg)](https://www.npmjs.com/package/neo-materia)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: Proprietary](https://img.shields.io/badge/License-Proprietary-red.svg)](./LICENSE)
 
 > **For npm users**: Looking for installation instructions? See [README-npm.md](./README-npm.md) or visit the [npm package page](https://www.npmjs.com/package/neo-materia).
 
@@ -149,7 +149,7 @@ See [docs/color-accessibility.md](./docs/color-accessibility.md) for details.
 
 ## License
 
-MIT License - see [LICENSE](./LICENSE) for details.
+Proprietary — free to use, no modification or redistribution. See [LICENSE](./LICENSE) for details.
 
 ## Author
 

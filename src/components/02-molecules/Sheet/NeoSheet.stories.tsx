@@ -207,9 +207,18 @@ export const PositionLeft: Story = {
 	parameters: {
 		docs: {
 			source: {
-				code: `<NeoSheet color="blue" position="left" v-model:open="isOpen">
-  <!-- content -->
-</NeoSheet>`,
+				code: `<script setup>
+const isOpen = ref(false)
+</script>
+
+<template>
+  <NeoButton text="Open Sheet" color="blue" variant="primary" @click="isOpen = true" />
+  <NeoSheet color="blue" position="left" v-model:open="isOpen">
+    <h2>Sheet Title</h2>
+    <p>This is a basic sheet. Click outside or press Escape to close.</p>
+    <NeoButton text="Close" color="blue" variant="secondary" @click="isOpen = false" />
+  </NeoSheet>
+</template>`,
 			},
 		},
 	},
@@ -223,9 +232,18 @@ export const PositionBottom: Story = {
 	parameters: {
 		docs: {
 			source: {
-				code: `<NeoSheet color="blue" position="bottom" v-model:open="isOpen">
-  <!-- content -->
-</NeoSheet>`,
+				code: `<script setup>
+const isOpen = ref(false)
+</script>
+
+<template>
+  <NeoButton text="Open Sheet" color="blue" variant="primary" @click="isOpen = true" />
+  <NeoSheet color="blue" position="bottom" v-model:open="isOpen">
+    <h2>Sheet Title</h2>
+    <p>This is a basic sheet. Click outside or press Escape to close.</p>
+    <NeoButton text="Close" color="blue" variant="secondary" @click="isOpen = false" />
+  </NeoSheet>
+</template>`,
 			},
 		},
 	},
@@ -239,9 +257,18 @@ export const SizeSmall: Story = {
 	parameters: {
 		docs: {
 			source: {
-				code: `<NeoSheet color="blue" position="right" size="small" v-model:open="isOpen">
-  <!-- content -->
-</NeoSheet>`,
+				code: `<script setup>
+const isOpen = ref(false)
+</script>
+
+<template>
+  <NeoButton text="Open Sheet" color="blue" variant="primary" @click="isOpen = true" />
+  <NeoSheet color="blue" position="right" size="small" v-model:open="isOpen">
+    <h2>Sheet Title</h2>
+    <p>This is a basic sheet. Click outside or press Escape to close.</p>
+    <NeoButton text="Close" color="blue" variant="secondary" @click="isOpen = false" />
+  </NeoSheet>
+</template>`,
 			},
 		},
 	},
@@ -255,9 +282,18 @@ export const SizeLarge: Story = {
 	parameters: {
 		docs: {
 			source: {
-				code: `<NeoSheet color="blue" position="right" size="large" v-model:open="isOpen">
-  <!-- content -->
-</NeoSheet>`,
+				code: `<script setup>
+const isOpen = ref(false)
+</script>
+
+<template>
+  <NeoButton text="Open Sheet" color="blue" variant="primary" @click="isOpen = true" />
+  <NeoSheet color="blue" position="right" size="large" v-model:open="isOpen">
+    <h2>Sheet Title</h2>
+    <p>This is a basic sheet. Click outside or press Escape to close.</p>
+    <NeoButton text="Close" color="blue" variant="secondary" @click="isOpen = false" />
+  </NeoSheet>
+</template>`,
 			},
 		},
 	},
@@ -271,9 +307,18 @@ export const SizeFull: Story = {
 	parameters: {
 		docs: {
 			source: {
-				code: `<NeoSheet color="blue" position="right" size="full" v-model:open="isOpen">
-  <!-- content -->
-</NeoSheet>`,
+				code: `<script setup>
+const isOpen = ref(false)
+</script>
+
+<template>
+  <NeoButton text="Open Sheet" color="blue" variant="primary" @click="isOpen = true" />
+  <NeoSheet color="blue" position="right" size="full" v-model:open="isOpen">
+    <h2>Sheet Title</h2>
+    <p>This is a basic sheet. Click outside or press Escape to close.</p>
+    <NeoButton text="Close" color="blue" variant="secondary" @click="isOpen = false" />
+  </NeoSheet>
+</template>`,
 			},
 		},
 	},
@@ -572,13 +617,19 @@ const bottomOpen = ref(false)
   <NeoButton text="Open Bottom" color="purple" variant="primary" @click="bottomOpen = true" />
 
   <NeoSheet position="left" color="blue" v-model:open="leftOpen">
-    <!-- left content -->
+    <h2>Left Sheet</h2>
+    <p>This is the left sheet.</p>
+    <NeoButton text="Close" color="blue" variant="secondary" @click="leftOpen = false" />
   </NeoSheet>
   <NeoSheet position="right" color="green" v-model:open="rightOpen">
-    <!-- right content -->
+    <h2>Right Sheet</h2>
+    <p>This is the right sheet.</p>
+    <NeoButton text="Close" color="green" variant="secondary" @click="rightOpen = false" />
   </NeoSheet>
   <NeoSheet position="bottom" color="purple" v-model:open="bottomOpen">
-    <!-- bottom content -->
+    <h2>Bottom Sheet</h2>
+    <p>This is the bottom sheet.</p>
+    <NeoButton text="Close" color="purple" variant="secondary" @click="bottomOpen = false" />
   </NeoSheet>
 </template>`,
 			},
@@ -841,10 +892,14 @@ export const StackedLeft: Story = {
 			source: {
 				code: `<!-- Left and right stacks are fully independent of each other -->
 <NeoSheet position="left" size="large" color="blue" :modal="false" v-model:open="open1">
-  <!-- content -->
+  <h2>Sheet 1 — large</h2>
+  <p>Open multiple left sheets to see the stacking peek effect.</p>
+  <NeoButton text="Close" color="blue" variant="secondary" @click="open1 = false" />
 </NeoSheet>
 <NeoSheet position="left" size="medium" color="blue" :modal="false" v-model:open="open2">
-  <!-- content -->
+  <h2>Sheet 2 — medium</h2>
+  <p>Left and right sheets are fully independent stacks.</p>
+  <NeoButton text="Close" color="blue" variant="secondary" @click="open2 = false" />
 </NeoSheet>`,
 			},
 		},
@@ -970,10 +1025,14 @@ export const StackedBottom: Story = {
 			source: {
 				code: `<!-- Bottom sheets stack independently from left/right sheets -->
 <NeoSheet position="bottom" size="large" color="blue" :modal="false" v-model:open="open1">
-  <!-- content -->
+  <h2>Sheet 1 — large</h2>
+  <p>Bottom sheets stack the same way — background sheets peek upward.</p>
+  <NeoButton text="Close" color="blue" variant="secondary" @click="open1 = false" />
 </NeoSheet>
 <NeoSheet position="bottom" size="medium" color="blue" :modal="false" v-model:open="open2">
-  <!-- content -->
+  <h2>Sheet 2 — medium</h2>
+  <p>Open all three to see the vertical offset.</p>
+  <NeoButton text="Close" color="blue" variant="secondary" @click="open2 = false" />
 </NeoSheet>`,
 			},
 		},
@@ -1383,11 +1442,20 @@ export const OnDark: Story = {
 	parameters: {
 		docs: {
 			source: {
-				code: `<div class="u-onDark">
-  <NeoSheet color="blue" position="right" v-model:open="isOpen">
-    <!-- content -->
-  </NeoSheet>
-</div>`,
+				code: `<script setup>
+const isOpen = ref(false)
+</script>
+
+<template>
+  <div class="u-onDark">
+    <NeoButton text="Open Sheet" color="blue" variant="primary" @click="isOpen = true" />
+    <NeoSheet color="blue" position="right" v-model:open="isOpen">
+      <h2>Sheet Title</h2>
+      <p>This is a basic sheet. Click outside or press Escape to close.</p>
+      <NeoButton text="Close" color="blue" variant="secondary" @click="isOpen = false" />
+    </NeoSheet>
+  </div>
+</template>`,
 			},
 		},
 	},

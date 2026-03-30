@@ -15,7 +15,7 @@
 		"url": "git+https://github.com/TitanlordCode/NeoMateria.git"
 	},
 	"author": "TitanlordCode",
-	"license": "MIT",
+	"license": "SEE LICENSE IN LICENSE",
 	"scripts": {
 		"start": "npm run generate:files && docker-compose up --build storybook",
 		"docker:build": "docker-compose build",

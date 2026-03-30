@@ -1,5 +1,6 @@
 import type { VNodeChild } from 'vue'
 import type { SurfaceColor } from '@/assets/typescript/colorTypes'
+import type { NeoHeadlineTag } from '@/components/01-atoms/Headline/NeoHeadlineTypes'
 
 export const linkGroupSizes = ['small', 'medium', 'large'] as const
 export const linkGroupVariants = ['vertical', 'horizontal'] as const
@@ -19,12 +20,14 @@ type NeoLinkGroupBase = {
 	size?: NeoLinkGroupSize
 	variant?: NeoLinkGroupVariant
 	links: NeoLinkGroupLink[]
+	headingTag?: NeoHeadlineTag
 }
 
 type NeoLinkGroupWithTitle = { title: string; ariaLabel?: string }
 type NeoLinkGroupWithAriaLabel = { title?: never; ariaLabel: string }
 
-export type NeoLinkGroupProps = NeoLinkGroupBase & (NeoLinkGroupWithTitle | NeoLinkGroupWithAriaLabel)
+export type NeoLinkGroupProps = NeoLinkGroupBase &
+	(NeoLinkGroupWithTitle | NeoLinkGroupWithAriaLabel)
 
 export type NeoLinkGroupSlots = {
 	/** Custom title element, replacing the auto-rendered heading from the `title` prop. */

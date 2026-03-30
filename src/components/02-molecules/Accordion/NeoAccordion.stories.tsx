@@ -12,6 +12,9 @@ const meta = {
 	title: 'Molecules/NeoAccordion',
 	component: NeoAccordion,
 	tags: ['autodocs'],
+	parameters: {
+		controls: { exclude: ['color'] },
+	},
 	argTypes: {
 		...ariaLabelArgType,
 		...disabledArgType,

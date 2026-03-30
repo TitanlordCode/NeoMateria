@@ -32,13 +32,23 @@ Nesting is arbitrary: \`u-onDark → u-unsetDark → u-onDark → …\` works at
 
 ---
 
+### Accessibility utility (HTML / JSX)
+
+| Class | Effect |
+|---|---|
+| \`sr-only\` | Visually hides the element while keeping it in the accessibility tree — for screen-reader-only labels, descriptions, and announcements. |
+
+---
+
 ### CSS mixins (component styles only)
 
 | Mixin | When to use |
 |---|---|
-| \`@mixin setOnDark\` | A component that **establishes its own dark background** regardless of context — e.g. \`.NeoButton--primary\` with a saturated color. Apply so that children (icons, spinners) know they are on a dark surface. |
-| \`@mixin unsetOnDark\` | A surface that must **always appear light** regardless of context — e.g. \`.NeoDropdown-panel\`. Resets the context so nested components use light-mode styles. |
+| \`@mixin setOnDark\` | A component that **establishes its own dark background** regardless of context — e.g. \`.NeoButton--primary\`. Apply so children (icons, spinners) know they are on a dark surface. |
+| \`@mixin unsetOnDark\` | A surface that must **always appear light** regardless of context — e.g. \`.NeoDropdown-panel\`. Resets context so nested components use light-mode styles. |
 | \`@mixin onDark\` | Respond to the nearest dark context ancestor. Used inside component-themed CSS to override CSS variables when dark mode is active. |
+| \`@mixin prefersDark\` | Wraps styles in \`@media (prefers-color-scheme: dark)\`. Use when you need to respond to the OS dark mode preference **independently** of the container-based dark context. |
+| \`@mixin prefersLight\` | Wraps styles in \`@media (prefers-color-scheme: light)\`. Mirror of \`prefersDark\`. |
 
 > **Rule:** only apply \`setOnDark\` to components where \`--neo-theme-colorText\` resolves to white (dark/saturated surfaces). Light-surface colors like yellow, amber, orange, and white are excluded via \`:not(.Themed--yellow, …)\`.
 				`,
@@ -87,6 +97,7 @@ const darkLayer = {
 // ─── Stories ─────────────────────────────────────────────────────────────────
 
 export const DarkModeNesting: Story = {
+	tags: ['!dev'], // TODO: check if this is fine and tests are still picked up by vitest
 	globals: { backgrounds: '#fff' },
 	parameters: {
 		docs: {

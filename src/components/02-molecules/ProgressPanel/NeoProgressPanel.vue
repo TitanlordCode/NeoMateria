@@ -4,6 +4,7 @@ import type { NeoProgressPanelProps, NeoProgressPanelSlots } from './NeoProgress
 import { getClassNames } from '@/utils/classNames'
 import NeoImage from '@/components/01-atoms/Image/NeoImage.vue'
 import NeoProgressBar from '@/components/01-atoms/ProgressBar/NeoProgressBar.vue'
+import NeoHeadlineTertiary from '@/components/01-atoms/Headline/NeoHeadlineTertiary/NeoHeadlineTertiary.vue'
 
 const props = defineProps<NeoProgressPanelProps>()
 
@@ -62,7 +63,9 @@ const handleImageError = () => {
 
 		<div class="NeoProgressPanel-content">
 			<div class="NeoProgressPanel-header">
-				<h3 class="NeoProgressPanel-title">{{ props.title }}</h3>
+				<NeoHeadlineTertiary :tag="props.headingTag ?? 'h3'" class="NeoProgressPanel-title">{{
+					props.title
+				}}</NeoHeadlineTertiary>
 				<p v-if="props.subtitle" class="NeoProgressPanel-subtitle">{{ props.subtitle }}</p>
 			</div>
 			<div class="NeoProgressPanel-footer">

@@ -1,0 +1,7 @@
+.NeoHeadlineSecondary {
+	--NeoHeadlineSecondary-color-text: currentColor;
+
+@mixin onDark {
+		--NeoHeadlineSecondary-color-text: currentColor;
+	}
+}

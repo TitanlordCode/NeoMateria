@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, useSlots, onMounted } from 'vue'
+import { computed, ref, useSlots } from 'vue'
 import type { NeoCoverPanelProps, NeoCoverPanelSlots } from './NeoCoverPanelTypes'
 import { getClassNames } from '@/utils/classNames'
 import NeoImage from '@/components/01-atoms/Image/NeoImage.vue'
@@ -84,28 +84,9 @@ const handleImageClick = () => {
 	}
 }
 
-const handleActionClick = () => {
-	emit('action-click')
-}
-
 const handleImageError = () => {
 	imageLoadError.value = true
 }
-
-onMounted(() => {
-	const hasAriaLabel = Boolean(props.actionAriaLabel)
-	const hasSlot = Boolean(slots['action-icon'])
-	if (hasAriaLabel && !hasSlot) {
-		console.warn(
-			'[NeoCoverPanel] actionAriaLabel is provided but the action-icon slot is empty. The action button will not render.',
-		)
-	}
-	if (!hasAriaLabel && hasSlot) {
-		console.warn(
-			'[NeoCoverPanel] action-icon slot is filled but actionAriaLabel is missing. The action button will not render.',
-		)
-	}
-})
 </script>
 
 <template>
@@ -138,7 +119,7 @@ onMounted(() => {
 			:aria-pressed="
 				'actionActive' in props && props.actionActive !== undefined ? props.actionActive : undefined
 			"
-			@click="handleActionClick"
+			@click="emit('action-click')"
 		>
 			<slot name="action-icon" :active="actionIsActive" />
 		</button>

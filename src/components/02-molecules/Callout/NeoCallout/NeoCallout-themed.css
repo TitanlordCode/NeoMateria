@@ -1,0 +1,19 @@
+.NeoCallout--bordered {
+	--NeoCallout-color-background: transparent;
+	--NeoCallout-color-border: var(--neo-theme-colorAccessible);
+	--NeoCallout-color-text: var(--neo-theme-colorAccessible);
+
+	@mixin onDark {
+		--NeoCallout-color-border: var(--neo-theme-colorAccessible);
+		--NeoCallout-color-text: var(--neo-theme-colorAccessible);
+	}
+}
+
+.NeoCallout--filled {
+	--NeoCallout-color-background: var(--neo-theme-color);
+	--NeoCallout-color-text: var(--neo-theme-colorText);
+}
+
+.NeoCallout--filled:not(.Themed--yellow, .Themed--amber, .Themed--orange, .Themed--white) {
+	@mixin setOnDark;
+}

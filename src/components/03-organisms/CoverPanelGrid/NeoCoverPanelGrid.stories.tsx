@@ -26,6 +26,7 @@ Set \`minColumnWidth\` based on the minimum readable size of your content. Lower
 				`,
 			},
 		},
+		controls: { exclude: ['color'] },
 	},
 	argTypes: {
 		columns: {
@@ -298,9 +299,7 @@ export const WithPennants: Story = {
 												<NeoPennant color={pennantConfigs[index].platform}>
 													{StarPennant}
 												</NeoPennant>
-												<NeoPennant color={pennantConfigs[index].rank}>
-													{index + 1}
-												</NeoPennant>
+												<NeoPennant color={pennantConfigs[index].rank}>{index + 1}</NeoPennant>
 											</>
 										),
 									}}
@@ -333,7 +332,7 @@ export const WithPennants: Story = {
     </template>
   </NeoCoverPanel>
 </NeoCoverPanelGrid>`,
-		},
+			},
 		},
 	},
 }
@@ -588,7 +587,7 @@ export const MixedContent: Story = {
     </template>
   </NeoCoverPanel>
 </NeoCoverPanelGrid>`,
-		},
+			},
 		},
 	},
 }

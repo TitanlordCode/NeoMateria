@@ -6,8 +6,10 @@ const isLocalhost = window.location.hostname === 'localhost'
 
 const envLabel = isDevEnvironment ? 'DEV' : isLocalhost ? 'LOC' : null
 
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+
 const baseConfig = {
-	base: 'light' as const,
+	base: (prefersDark ? 'dark' : 'light') as const,
 	brandTitle: envLabel ? `NeoMateria — ⚠ ${envLabel}` : 'NeoMateria',
 	brandUrl: 'https://github.com/TitanlordCode/NeoMateria',
 	brandTarget: '_blank',

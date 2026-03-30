@@ -6,7 +6,12 @@ import NeoFooter from '@/components/03-organisms/Footer/NeoFooter.vue'
 import NeoCard from '@/components/02-molecules/Card/NeoCard.vue'
 import NeoAccordion from '@/components/02-molecules/Accordion/NeoAccordion.vue'
 import NeoButton from '@/components/01-atoms/Button/NeoButton/NeoButton.vue'
+import NeoLinkButton from '@/components/01-atoms/Button/NeoLinkButton/NeoLinkButton.vue'
 import NeoLink from '@/components/01-atoms/Link/NeoLink.vue'
+import NeoHero from '@/components/03-organisms/Hero/NeoHero/NeoHero.vue'
+import NeoHeadingGroup from '@/components/02-molecules/HeadingGroup/NeoHeadingGroup/NeoHeadingGroup.vue'
+import NeoStat from '@/components/02-molecules/Stat/NeoStat/NeoStat.vue'
+import NeoCallout from '@/components/02-molecules/Callout/NeoCallout/NeoCallout.vue'
 import type { SurfaceColor } from '@/assets/typescript/colorTypes'
 
 interface LandingPageStoryArgs {
@@ -130,10 +135,10 @@ const LandingPageComponent = defineComponent({
 			<div
 				class={props.dark ? 'u-onDark' : undefined}
 				style={{
-					fontFamily: 'inherit',
-					minBlockSize: '100vh',
 					display: 'flex',
 					flexDirection: 'column',
+					fontFamily: 'inherit',
+					minBlockSize: '100vh',
 					...(props.dark ? { color: 'var(--neo-color-grey100)', background: '#111' } : {}),
 				}}
 			>
@@ -156,44 +161,27 @@ const LandingPageComponent = defineComponent({
 					}}
 				</NeoNavigation>
 
-				<section
-					style={{
-						paddingBlock: '80px',
-						paddingInline: '24px',
-						textAlign: 'center',
-						flex: '1',
-					}}
+				<NeoHero
+					title="A Vue 3 Component Library Built for Scale"
+					subtitle="NeoMateria provides accessible, theme-ready components following atomic design principles. Drop them into your Vue 3 project and ship faster."
+					color={props.color}
+					variant="centered"
+					size="lg"
 				>
-					<div style={{ maxInlineSize: '720px', margin: '0 auto' }}>
-						<h1
-							style={{
-								fontSize: '2.5rem',
-								fontWeight: '700',
-								marginBlockEnd: '16px',
-								lineHeight: '1.2',
-							}}
-						>
-							A Vue 3 Component Library Built for Scale
-						</h1>
-						<p
-							style={{
-								fontSize: '1.125rem',
-								color: props.dark ? 'var(--neo-color-grey400)' : 'var(--neo-color-grey600)',
-								marginBlockEnd: '32px',
-								lineHeight: '1.6',
-							}}
-						>
-							NeoMateria provides accessible, theme-ready components following atomic design
-							principles. Drop them into your Vue 3 project and ship faster.
-						</p>
-						<div
-							style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}
-						>
-							<NeoButton text="Get Started" color={props.color} variant="primary" />
-							<NeoButton text="View Components" color={props.color} variant="secondary" />
-						</div>
-					</div>
-				</section>
+					{{
+						actions: () => (
+							<>
+								<NeoButton text="Get Started" color={props.color} variant="primary" />
+								<NeoLinkButton
+									href="#components"
+									text="View Components"
+									color={props.color}
+									variant="secondary"
+								/>
+							</>
+						),
+					}}
+				</NeoHero>
 
 				<section
 					id="components"
@@ -204,16 +192,14 @@ const LandingPageComponent = defineComponent({
 					}}
 				>
 					<div style={{ maxInlineSize: '1100px', margin: '0 auto' }}>
-						<h2
-							style={{
-								fontSize: '1.75rem',
-								fontWeight: '700',
-								textAlign: 'center',
-								marginBlockEnd: '40px',
-							}}
-						>
-							Why NeoMateria?
-						</h2>
+						<NeoHeadingGroup
+							title="Why NeoMateria?"
+							subtitle="Everything you need to build a consistent, accessible, and themeable Vue 3 application."
+							variant="secondary"
+							align="center"
+							color={props.color}
+							style={{ marginBlockEnd: '40px' }}
+						/>
 						<div
 							style={{
 								display: 'grid',
@@ -237,17 +223,41 @@ const LandingPageComponent = defineComponent({
 				</section>
 
 				<section style={{ paddingBlock: '64px', paddingInline: '24px' }}>
+					<div
+						style={{
+							maxInlineSize: '800px',
+							margin: '0 auto',
+							display: 'flex',
+							gap: '32px',
+							justifyContent: 'center',
+							flexWrap: 'wrap',
+						}}
+					>
+						<NeoStat value="40+" label="Components" color={props.color} size="lg" />
+						<NeoStat value="100%" label="TypeScript" color={props.color} size="lg" />
+						<NeoStat value="WCAG 2.1" label="Accessible" color={props.color} size="lg" />
+						<NeoStat value="0" label="Dependencies" color={props.color} size="lg" />
+					</div>
+				</section>
+
+				<section
+					style={{
+						paddingBlock: '64px',
+						paddingInline: '24px',
+						backgroundColor: props.dark ? 'var(--neo-color-grey800)' : 'var(--neo-color-grey50)',
+					}}
+				>
 					<div style={{ maxInlineSize: '720px', margin: '0 auto' }}>
-						<h2
-							style={{
-								fontSize: '1.75rem',
-								fontWeight: '700',
-								textAlign: 'center',
-								marginBlockEnd: '40px',
-							}}
-						>
-							Frequently Asked Questions
-						</h2>
+						<NeoCallout color={props.color} variant="filled" style={{ marginBlockEnd: '32px' }}>
+							NeoMateria is free to use in your projects. Contributions are welcome!
+						</NeoCallout>
+						<NeoHeadingGroup
+							title="Frequently Asked Questions"
+							variant="secondary"
+							align="center"
+							color={props.color}
+							style={{ marginBlockEnd: '40px' }}
+						/>
 						<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
 							{faqItems.map((item) => (
 								<NeoAccordion key={item.title} title={item.title} variant="bordered">
@@ -262,23 +272,14 @@ const LandingPageComponent = defineComponent({
 					color={props.color}
 					layout="multi-column"
 					sections={footerSections}
-					copyrightText="© 2025 NeoMateria. Open source under the MIT license."
+					copyrightText="© 2025 NeoMateria by TitanlordCode. All rights reserved."
 				/>
 			</div>
 		)
 	},
 })
 
-const landingPageSourceCode = (color: string) =>
-	`<script setup lang="ts">
-import NeoNavigation from 'neo-materia/NeoNavigation'
-import NeoFooter from 'neo-materia/NeoFooter'
-import NeoCard from 'neo-materia/NeoCard'
-import NeoAccordion from 'neo-materia/NeoAccordion'
-import NeoButton from 'neo-materia/NeoButton'
-import NeoLink from 'neo-materia/NeoLink'
-
-const navLinks = [
+const landingNavLinksCode = `const navLinks = [
   { text: 'Components', href: '#components', active: true },
   {
     text: 'Docs',
@@ -289,31 +290,98 @@ const navLinks = [
     ],
   },
   { text: 'GitHub', href: 'https://github.com/titanlordcode/NeoMateria', external: true },
-]
+]`
 
-const features = [
+const landingFeaturesCode = `const features = [
   {
     title: 'Atomic Design',
     description: 'Built on atomic design principles — atoms, molecules, and organisms compose naturally into any layout.',
-    imageSrc: '...',
+    imageSrc: 'https://placehold.co/600x340',
     imageAlt: 'Diagram showing atomic design layers',
     tags: [{ text: 'Design System' }],
   },
-  /* ... */
-]
+  {
+    title: 'Theme-Ready',
+    description: 'Every component adapts to your brand color. Light and dark mode support is built in with CSS custom properties.',
+    imageSrc: 'https://placehold.co/600x340',
+    imageAlt: 'Color palette showing theme customization',
+    tags: [{ text: 'CSS Variables' }],
+  },
+  {
+    title: 'Accessible by Default',
+    description: 'ARIA attributes, keyboard navigation, and focus management are included out of the box in every component.',
+    imageSrc: 'https://placehold.co/600x340',
+    imageAlt: 'Accessibility icon with keyboard',
+    tags: [{ text: 'WCAG 2.1' }],
+  },
+]`
 
-const faqItems = [
-  { title: 'How do I install NeoMateria?', content: 'Install via npm: npm install neo-materia...' },
-  /* ... */
-]
+const landingFaqItemsCode = `const faqItems = [
+  {
+    title: 'How do I install NeoMateria?',
+    content: 'Install via npm: npm install neo-materia. Then import the CSS and register the components globally or locally in your Vue 3 project.',
+  },
+  {
+    title: 'Does it support dark mode?',
+    content: 'Yes. All components include dark mode styles via CSS custom properties. Wrap your app in a dark-mode context and the components adapt automatically.',
+  },
+  {
+    title: 'Can I use only specific components?',
+    content: 'Absolutely. NeoMateria is fully tree-shakeable. Import only the components you need and your bundle will only include those.',
+  },
+  {
+    title: 'Is it TypeScript-friendly?',
+    content: 'Yes. Every component ships with TypeScript types for props, emits, and slots. Use them directly with vue-tsc for full type safety.',
+  },
+]`
 
-const footerSections = [
+const landingFooterSectionsCode = `const footerSections = [
   {
     title: 'Components',
-    links: [{ text: 'Atoms', href: '#atoms' }, /* ... */],
+    links: [
+      { text: 'Atoms', href: '#atoms' },
+      { text: 'Molecules', href: '#molecules' },
+      { text: 'Organisms', href: '#organisms' },
+    ],
   },
-  /* ... */
-]
+  {
+    title: 'Resources',
+    links: [
+      { text: 'Getting Started', href: '#getting-started' },
+      { text: 'Storybook', href: '#storybook' },
+      { text: 'Changelog', href: '#changelog' },
+    ],
+  },
+  {
+    title: 'Community',
+    links: [
+      { text: 'GitHub', href: 'https://github.com/titanlordcode/NeoMateria', external: true },
+      { text: 'npm', href: 'https://npmjs.com/package/neo-materia', external: true },
+    ],
+  },
+]`
+
+const landingPageSourceCode = (color: string) =>
+	`<script setup lang="ts">
+import NeoNavigation from 'neo-materia/NeoNavigation'
+import NeoFooter from 'neo-materia/NeoFooter'
+import NeoCard from 'neo-materia/NeoCard'
+import NeoAccordion from 'neo-materia/NeoAccordion'
+import NeoButton from 'neo-materia/NeoButton'
+import NeoLinkButton from 'neo-materia/NeoLinkButton'
+import NeoLink from 'neo-materia/NeoLink'
+import NeoHero from 'neo-materia/NeoHero'
+import NeoHeadingGroup from 'neo-materia/NeoHeadingGroup'
+import NeoStat from 'neo-materia/NeoStat'
+import NeoCallout from 'neo-materia/NeoCallout'
+
+${landingNavLinksCode}
+
+${landingFeaturesCode}
+
+${landingFaqItemsCode}
+
+${landingFooterSectionsCode}
 <` +
 	`/script>
 
@@ -329,17 +397,28 @@ const footerSections = [
     </template>
   </NeoNavigation>
 
-  <!-- Hero -->
-  <section>
-    <h1>A Vue 3 Component Library Built for Scale</h1>
-    <p>NeoMateria provides accessible, theme-ready components following atomic design principles.</p>
-    <NeoButton text="Get Started" color="${color}" variant="primary" />
-    <NeoButton text="View Components" color="${color}" variant="secondary" />
-  </section>
+  <NeoHero
+    title="A Vue 3 Component Library Built for Scale"
+    subtitle="NeoMateria provides accessible, theme-ready components following atomic design principles."
+    color="${color}"
+    variant="centered"
+    size="lg"
+  >
+    <template #actions>
+      <NeoButton text="Get Started" color="${color}" variant="primary" />
+      <NeoLinkButton href="#components" text="View Components" color="${color}" variant="secondary" />
+    </template>
+  </NeoHero>
 
   <!-- Features -->
-  <section>
-    <h2>Why NeoMateria?</h2>
+  <section id="components">
+    <NeoHeadingGroup
+      title="Why NeoMateria?"
+      subtitle="Everything you need to build a consistent, accessible, and themeable Vue 3 application."
+      variant="secondary"
+      align="center"
+      color="${color}"
+    />
     <NeoCard
       v-for="feature in features"
       :key="feature.title"
@@ -352,13 +431,28 @@ const footerSections = [
     />
   </section>
 
+  <!-- Stats -->
+  <section>
+    <NeoStat value="40+" label="Components" color="${color}" size="lg" />
+    <NeoStat value="100%" label="TypeScript" color="${color}" size="lg" />
+    <NeoStat value="WCAG 2.1" label="Accessible" color="${color}" size="lg" />
+    <NeoStat value="0" label="Dependencies" color="${color}" size="lg" />
+  </section>
+
   <!-- FAQ -->
   <section>
-    <h2>Frequently Asked Questions</h2>
+    <NeoCallout color="${color}" variant="filled">
+      NeoMateria is free to use in your projects. Contributions are welcome!
+    </NeoCallout>
+    <NeoHeadingGroup
+      title="Frequently Asked Questions"
+      variant="secondary"
+      align="center"
+      color="${color}"
+    />
     <NeoAccordion
       v-for="item in faqItems"
       :key="item.title"
-      color="${color}"
       :title="item.title"
       variant="bordered"
     >
@@ -370,7 +464,7 @@ const footerSections = [
     color="${color}"
     layout="multi-column"
     :sections="footerSections"
-    copyright-text="© 2025 NeoMateria. Open source under the MIT license."
+    copyright-text="© 2025 NeoMateria by TitanlordCode. All rights reserved."
   />
 </template>`
 
@@ -381,12 +475,20 @@ import NeoFooter from 'neo-materia/NeoFooter'
 import NeoCard from 'neo-materia/NeoCard'
 import NeoAccordion from 'neo-materia/NeoAccordion'
 import NeoButton from 'neo-materia/NeoButton'
+import NeoLinkButton from 'neo-materia/NeoLinkButton'
 import NeoLink from 'neo-materia/NeoLink'
+import NeoHero from 'neo-materia/NeoHero'
+import NeoHeadingGroup from 'neo-materia/NeoHeadingGroup'
+import NeoStat from 'neo-materia/NeoStat'
+import NeoCallout from 'neo-materia/NeoCallout'
 
-const navLinks = [ /* same as light mode */ ]
-const features = [ /* same as light mode */ ]
-const faqItems = [ /* same as light mode */ ]
-const footerSections = [ /* same as light mode */ ]
+${landingNavLinksCode}
+
+${landingFeaturesCode}
+
+${landingFaqItemsCode}
+
+${landingFooterSectionsCode}
 <` +
 	`/script>
 
@@ -404,17 +506,28 @@ const footerSections = [ /* same as light mode */ ]
       </template>
     </NeoNavigation>
 
-    <!-- Hero -->
-    <section>
-      <h1>A Vue 3 Component Library Built for Scale</h1>
-      <p>NeoMateria provides accessible, theme-ready components following atomic design principles.</p>
-      <NeoButton text="Get Started" color="blue" variant="primary" />
-      <NeoButton text="View Components" color="blue" variant="secondary" />
-    </section>
+    <NeoHero
+      title="A Vue 3 Component Library Built for Scale"
+      subtitle="NeoMateria provides accessible, theme-ready components following atomic design principles."
+      color="blue"
+      variant="centered"
+      size="lg"
+    >
+      <template #actions>
+        <NeoButton text="Get Started" color="blue" variant="primary" />
+        <NeoLinkButton href="#components" text="View Components" color="blue" variant="secondary" />
+      </template>
+    </NeoHero>
 
     <!-- Features -->
-    <section>
-      <h2>Why NeoMateria?</h2>
+    <section id="components">
+      <NeoHeadingGroup
+        title="Why NeoMateria?"
+        subtitle="Everything you need to build a consistent, accessible, and themeable Vue 3 application."
+        variant="secondary"
+        align="center"
+        color="blue"
+      />
       <NeoCard
         v-for="feature in features"
         :key="feature.title"
@@ -427,13 +540,28 @@ const footerSections = [ /* same as light mode */ ]
       />
     </section>
 
+    <!-- Stats -->
+    <section>
+      <NeoStat value="40+" label="Components" color="blue" size="lg" />
+      <NeoStat value="100%" label="TypeScript" color="blue" size="lg" />
+      <NeoStat value="WCAG 2.1" label="Accessible" color="blue" size="lg" />
+      <NeoStat value="0" label="Dependencies" color="blue" size="lg" />
+    </section>
+
     <!-- FAQ -->
     <section>
-      <h2>Frequently Asked Questions</h2>
+      <NeoCallout color="blue" variant="filled">
+        NeoMateria is free to use in your projects. Contributions are welcome!
+      </NeoCallout>
+      <NeoHeadingGroup
+        title="Frequently Asked Questions"
+        variant="secondary"
+        align="center"
+        color="blue"
+      />
       <NeoAccordion
         v-for="item in faqItems"
         :key="item.title"
-        color="blue"
         :title="item.title"
         variant="bordered"
       >
@@ -445,7 +573,7 @@ const footerSections = [ /* same as light mode */ ]
       color="blue"
       layout="multi-column"
       :sections="footerSections"
-      copyright-text="© 2025 NeoMateria. Open source under the MIT license."
+      copyright-text="© 2025 NeoMateria by TitanlordCode. All rights reserved."
     />
   </div>
 </template>`

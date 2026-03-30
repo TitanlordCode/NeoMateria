@@ -27,7 +27,8 @@ const meta = {
 		},
 		valueLabel: {
 			control: 'text',
-			description: "Text displayed below the progress bar (e.g. `'completed'`, `'of total'`, `'pts'`).",
+			description:
+				"Text displayed below the progress bar (e.g. `'completed'`, `'of total'`, `'pts'`).",
 			table: { category: 'Content' },
 		},
 		subtitle: {
@@ -42,12 +43,14 @@ const meta = {
 		},
 		href: {
 			control: 'text',
-			description: 'Makes the entire panel a link. When set, the image and title become a single anchor.',
+			description:
+				'Makes the entire panel a link. When set, the image and title become a single anchor.',
 			table: { category: 'Behavior' },
 		},
 		external: {
 			control: 'boolean',
-			description: 'Opens the link in a new tab and adds `rel="noopener noreferrer"`. Requires `href`.',
+			description:
+				'Opens the link in a new tab and adds `rel="noopener noreferrer"`. Requires `href`.',
 			table: { category: 'Behavior' },
 		},
 		imageSrc: {
@@ -62,7 +65,8 @@ const meta = {
 		},
 		title: {
 			control: 'text',
-			description: 'Primary label for the item. Clamped to 2 lines — override via `--NeoProgressPanel-sizing-titleClamp`.',
+			description:
+				'Primary label for the item. Clamped to 2 lines — override via `--NeoProgressPanel-sizing-titleClamp`.',
 			table: { category: 'Content' },
 		},
 	},

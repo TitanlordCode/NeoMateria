@@ -28,10 +28,6 @@ const classes = computed(() => {
 	})
 	return `${badgeClasses} ${themedClasses}`
 })
-
-const handleDismiss = () => {
-	emit('dismiss')
-}
 </script>
 
 <template>
@@ -42,7 +38,7 @@ const handleDismiss = () => {
 			type="button"
 			class="NeoBadge-dismiss"
 			aria-label="Dismiss"
-			@click="handleDismiss"
+			@click="emit('dismiss')"
 		>
 			×
 		</button>

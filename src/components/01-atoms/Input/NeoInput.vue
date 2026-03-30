@@ -25,14 +25,6 @@ const handleInput = (event: Event) => {
 	emit('update:value', value)
 }
 
-const handleBlur = (event: FocusEvent) => {
-	emit('blur', event)
-}
-
-const handleFocus = (event: FocusEvent) => {
-	emit('focus', event)
-}
-
 const classes = computed(() => {
 	const inputClasses = getClassNames({
 		component: 'NeoInput',
@@ -84,8 +76,8 @@ const classes = computed(() => {
 			"
 			:aria-invalid="props.errorMessage ? 'true' : undefined"
 			@input="handleInput"
-			@blur="handleBlur"
-			@focus="handleFocus"
+			@blur="emit('blur', $event)"
+			@focus="emit('focus', $event)"
 		/>
 
 		<div v-if="props.helpText || props.errorMessage" class="NeoInput-messageWrapper">

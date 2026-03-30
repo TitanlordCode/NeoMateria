@@ -1,88 +1,70 @@
 import type { Decorator, Preview } from '@storybook/vue3-vite'
+import { computed, defineComponent, onUnmounted, ref } from 'vue'
+import { addons } from 'storybook/preview-api'
+import { create } from 'storybook/theming'
 import { colors } from '../src/assets/typescript/colors'
 
 import '../src/assets/styles/globals.css'
 import './preview.css'
 
-// Helper to safely access Storybook's addons channel
-const getStorybookChannel = () => {
-	// @ts-expect-error __STORYBOOK_ADDONS_CHANNEL__ exists
-	return window.__STORYBOOK_ADDONS_CHANNEL__ || null
+const prefersDark =
+	typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches
+
+const docsTheme = create({
+	base: prefersDark ? 'dark' : 'light',
+	colorPrimary: '#3b82f6',
+	colorSecondary: '#3b82f6',
+	fontBase: '"Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", sans-serif',
+	fontCode: 'monospace',
+})
+
+function resolveColor(value: unknown, fallback: string): string {
+	return typeof value === 'string' && value.startsWith('#') ? value : fallback
 }
 
+// context.globals holds the current active globals (including URL-persisted values from this
+// session). Reading it on mount ensures docs story remounts (each in its own iframe) pick up
+// the currently active toggle state instead of always resetting to white.
 const withTheme: Decorator = (story, context) => {
-	return {
+	return defineComponent({
+		name: 'WithThemeDecorator',
 		components: { story },
-		template: `<div v-bind="isDark ? { class: 'u-onDark' } : {}" :dir="direction" :style="{ backgroundColor: currentBg }"><story /></div>`,
-		data() {
-			return {
-				isDark: false,
-				currentBg: '#fff',
-				direction: 'ltr',
-			}
-		},
-		mounted() {
-			this.updateTheme()
+		setup() {
+			const bg = ref(resolveColor(context.globals?.backgrounds, '#fff'))
+			const isDark = computed(() => bg.value === '#000')
+			const direction = ref(resolveColor(context.globals?.direction, 'ltr'))
 
-			// Listen for Storybook global updates
-			const addonsChannel = getStorybookChannel()
-			if (addonsChannel) {
-				addonsChannel.on('globalsUpdated', this.handleGlobalsUpdate)
-			}
-		},
-		beforeUnmount() {
-			const addonsChannel = getStorybookChannel()
-			if (addonsChannel) {
-				addonsChannel.off('globalsUpdated', this.handleGlobalsUpdate)
-			}
-		},
-		methods: {
-			updateTheme() {
-				// In Storybook v10, backgrounds is a direct string value (not an object)
-				let bgValue = context.globals?.backgrounds || '#fff'
-				let dirValue = context.globals?.direction || 'ltr'
-
-				// If not available, try to get from URL parameters
-				if (bgValue === '#fff' || dirValue === 'ltr') {
-					const urlParams = new URLSearchParams(window.location.search)
-					const globalsParam = urlParams.get('globals')
-					if (globalsParam) {
-						try {
-							const globals = JSON.parse(decodeURIComponent(globalsParam))
-							bgValue = globals.backgrounds || '#fff'
-							dirValue = globals.direction || 'ltr'
-						} catch (e) {
-							// Keep default
-							console.warn(e)
-						}
-					}
+			const channel = addons.getChannel()
+			const handleGlobalsUpdate = (event: { globals?: Record<string, unknown> }) => {
+				if (event?.globals && 'backgrounds' in event.globals) {
+					bg.value = resolveColor(event.globals.backgrounds, '#fff')
 				}
-
-				this.currentBg = bgValue
-				this.isDark = bgValue === '#000'
-				this.direction = dirValue
-			},
-			handleGlobalsUpdate(data) {
-				// Update when globals change
-				if (data && data.globals) {
-					if (data.globals.backgrounds !== undefined) {
-						this.currentBg = data.globals.backgrounds || '#fff'
-						this.isDark = this.currentBg === '#000'
-					}
-					if (data.globals.direction !== undefined) {
-						this.direction = data.globals.direction || 'ltr'
-					}
-				} else {
-					// Fallback to re-reading everything
-					this.updateTheme()
+				if (event?.globals && 'direction' in event.globals) {
+					direction.value = resolveColor(event.globals.direction, 'ltr')
 				}
-			},
+			}
+			channel.on('globalsUpdated', handleGlobalsUpdate)
+
+			onUnmounted(() => {
+				channel.off('globalsUpdated', handleGlobalsUpdate)
+			})
+
+			return { bg, isDark, direction }
 		},
-	}
+		template: `<div :class="isDark ? 'u-onDark' : 'u-onLight'" :dir="direction" :style="{ backgroundColor: bg }"><story /></div>`,
+	})
 }
 
 const preview: Preview = {
 	parameters: {
+		docs: {
+			theme: docsTheme,
+		},
+		options: {
+			storySort: {
+				order: ['Documentation', 'Foundation', 'Atoms', 'Molecules', 'Organisms', 'Pages'],
+			},
+		},
 		controls: {
 			matchers: {
 				date: /Date$/i,

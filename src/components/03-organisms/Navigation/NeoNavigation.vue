@@ -223,7 +223,7 @@ onUnmounted(() => {
 
 				<div v-if="props.links && props.links.length > 0" class="NeoNavigation-desktopLinks">
 					<slot name="links">
-						<template v-for="(link, index) in props.links" :key="index">
+						<template v-for="(link, index) in props.links" :key="link.text + index">
 							<div v-if="hasChildren(link)" class="NeoNavigation-dropdown">
 								<NeoButton
 									:id="`nav-trigger-${index}`"
@@ -399,7 +399,7 @@ onUnmounted(() => {
 			<slot name="mobileMenu">
 				<div class="NeoNavigation-mobilePanelContent">
 					<nav class="NeoNavigation-mobileMenuNav" aria-label="Mobile navigation">
-						<template v-for="(link, index) in props.links" :key="index">
+						<template v-for="(link, index) in props.links" :key="link.text">
 							<div v-if="hasChildren(link)">
 								<NeoNavItem
 									:label="link.text"
@@ -609,6 +609,32 @@ onUnmounted(() => {
 .NeoNavigation-mobileMenuActions {
 	border-block-start: 1px solid var(--NeoNavigation-color-border);
 	padding-block-start: var(--neo-spacing-core-lg);
+}
+
+/* collapseActions=mobile: dropdown visible on mobile, expanded actions visible on desktop */
+.NeoNavigation--collapseActions-mobile {
+	& .NeoNavigation-actionsDropdown {
+		@mixin bp-md {
+			display: none;
+		}
+	}
+
+	& .NeoNavigation-actionsExpanded {
+		display: none;
+
+		@mixin bp-md {
+			align-items: center;
+			display: flex;
+			gap: var(--neo-gap-sm);
+		}
+	}
+}
+
+/* collapseActions=always: dropdown always visible */
+.NeoNavigation--collapseActions-always {
+	& .NeoNavigation-actionsDropdown {
+		display: inline-flex;
+	}
 }
 
 /* Compact variant: mobile toggle always visible, desktop links always hidden */

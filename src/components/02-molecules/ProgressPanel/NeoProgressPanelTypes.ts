@@ -1,4 +1,5 @@
 import type { Color } from '@/assets/typescript/colors'
+import type { NeoHeadlineTag } from '@/components/01-atoms/Headline/NeoHeadlineTypes'
 
 export interface NeoProgressPanelSlots {
 	/**
@@ -14,6 +15,7 @@ export interface NeoProgressPanelProps {
 	imageSrc: string
 	imageAlt: string
 	title: string
+	headingTag?: NeoHeadlineTag
 	subtitle?: string
 	value: number
 	valueLabel?: string

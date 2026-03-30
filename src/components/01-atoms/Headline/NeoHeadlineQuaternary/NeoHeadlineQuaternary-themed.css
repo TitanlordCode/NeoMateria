@@ -1,0 +1,7 @@
+.NeoHeadlineQuaternary {
+	--NeoHeadlineQuaternary-color-text: currentColor;
+
+@mixin onDark {
+		--NeoHeadlineQuaternary-color-text: currentColor;
+	}
+}

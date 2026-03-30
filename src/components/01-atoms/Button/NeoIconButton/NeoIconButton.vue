@@ -11,10 +11,6 @@ const emit = defineEmits<{
 	/** Emitted when the button is clicked. Not fired when `disabled` is `true`. */
 	click: [event: MouseEvent]
 }>()
-
-const handleClick = (event: MouseEvent) => {
-	emit('click', event)
-}
 </script>
 
 <template>
@@ -26,7 +22,7 @@ const handleClick = (event: MouseEvent) => {
 		:rounded="props.rounded"
 		:size="props.size"
 		:variant="props.variant"
-		@click="handleClick"
+		@click="emit('click', $event)"
 	>
 		<NeoIcon size="medium" aria-hidden>
 			<slot />
