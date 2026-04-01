@@ -35,11 +35,11 @@
 		"prettier:fix": "npx prettier --write src/",
 		"storybook": "storybook dev -p 3000 --no-open",
 		"build-storybook": "storybook build --output-dir storybook-static",
-		"generate:files": "npx ts-node scripts/pre-flight.ts"
+		"generate:files": "npx ts-node scripts/pre-flight.ts",
+		"prepare": "husky"
 	},
 	"dependencies": {
 		"material-colors": "^1.2.6",
-		"pinia": "^2.3.1",
 		"vue": "^3.5.13"
 	},
 	"devDependencies": {
@@ -61,9 +61,9 @@
 		"eslint": "^9.18.0",
 		"eslint-plugin-storybook": "^10.3.3",
 		"eslint-plugin-vue": "^9.32.0",
-		"jiti": "^2.4.2",
+		"husky": "^9.1.7",
 		"jsdom": "^26.0.0",
-		"npm-run-all2": "^7.0.2",
+		"lint-staged": "^16.4.0",
 		"postcss-mixins": "^12.1.2",
 		"postcss-pxtorem": "^6.1.0",
 		"prettier": "^3.4.2",
@@ -88,5 +88,9 @@
 	},
 	"publishConfig": {
 		"access": "public"
+	},
+	"lint-staged": {
+		"*.{ts,tsx,vue}": ["eslint --fix", "prettier --write"],
+		"*.{css,vue}": ["stylelint --fix"]
 	}
 }

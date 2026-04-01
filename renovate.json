@@ -1,0 +1,70 @@
+{
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "extends": ["config:recommended"],
+    "baseBranches": ["develop"],
+    "schedule": ["before 6am on Monday"],
+    "vulnerabilityAlerts": {
+        "labels": ["security"],
+        "schedule": ["at any time"]
+    },
+    "packageRules": [
+        {
+            "groupName": "Storybook",
+            "matchPackageNames": ["storybook", "@storybook/**"],
+            "matchUpdateTypes": ["minor", "patch"]
+        },
+        {
+            "groupName": "Vue ecosystem",
+            "matchPackageNames": [
+                "vue",
+                "vue-tsc",
+                "@vue/**",
+                "@vitejs/plugin-vue",
+                "@vitejs/plugin-vue-jsx",
+                "vite-plugin-vue-devtools"
+            ],
+            "matchUpdateTypes": ["minor", "patch"]
+        },
+        {
+            "groupName": "Vite",
+            "matchPackageNames": ["vite", "vite-plugin-dts"],
+            "matchUpdateTypes": ["minor", "patch"]
+        },
+        {
+            "groupName": "ESLint",
+            "matchPackageNames": [
+                "eslint",
+                "eslint-plugin-vue",
+                "eslint-plugin-storybook",
+                "@vitest/eslint-plugin"
+            ],
+            "matchUpdateTypes": ["minor", "patch"]
+        },
+        {
+            "groupName": "TypeScript",
+            "matchPackageNames": ["typescript", "@tsconfig/node22", "@types/node", "@types/jsdom"],
+            "matchUpdateTypes": ["minor", "patch"]
+        },
+        {
+            "groupName": "Stylelint",
+            "matchPackageNames": ["stylelint", "stylelint-**"],
+            "matchUpdateTypes": ["minor", "patch"]
+        },
+        {
+            "groupName": "PostCSS",
+            "matchPackageNames": ["postcss-**"],
+            "matchUpdateTypes": ["minor", "patch"]
+        },
+        {
+            "groupName": "Testing",
+            "matchPackageNames": ["vitest", "jsdom", "@vue/test-utils", "@storybook/test-runner"],
+            "matchUpdateTypes": ["minor", "patch"]
+        },
+        {
+            "automerge": true,
+            "automergeType": "pr",
+            "matchUpdateTypes": ["patch"],
+            "matchCurrentVersion": "!/^0/"
+        }
+    ]
+}
