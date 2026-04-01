@@ -1,0 +1,18 @@
+#!/bin/sh
+branch=$(git rev-parse --abbrev-ref HEAD)
+pattern="^(feat|fix|chore|ci|docs|refactor|test|style|perf|build|revert)\/[a-z0-9][a-z0-9-]+$"
+exempt="^(main|master|develop)$"
+
+if ! echo "$branch" | grep -qE "$exempt"; then
+    if ! echo "$branch" | grep -qE "$pattern"; then
+        echo ""
+        echo "❌ Invalid branch name: $branch"
+        echo "   Expected: type/description (or type/ticket-description)"
+        echo "   Example:  feat/add-button, fix/NM-123-dropdown-close"
+        echo "   Types: feat|fix|chore|ci|docs|refactor|test|style|perf|build|revert"
+        echo ""
+        exit 1
+    fi
+fi
+
+npm run type-check
