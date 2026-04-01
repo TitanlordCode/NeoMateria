@@ -7,9 +7,6 @@
  * --------------------------------------------------------------------
  */
 
-/**
- * array for all possible colors names (including special colors)
- */
 export const colorNames = [
 	'red',
 	'pink',
@@ -35,8 +32,8 @@ export const colorNames = [
 ] as const
 
 /**
- * array for color families (without shade numbers)
- * Users specify these, and CSS handles the specific shade (500 by default)
+ * All color family names (without shade numbers).
+ * Users specify these; CSS resolves the specific shade (500 by default).
  */
 export const colors = [
 	'red',

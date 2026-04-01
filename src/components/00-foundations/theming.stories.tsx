@@ -97,7 +97,7 @@ const darkLayer = {
 // ─── Stories ─────────────────────────────────────────────────────────────────
 
 export const DarkModeNesting: Story = {
-	tags: ['!dev'], // TODO: check if this is fine and tests are still picked up by vitest
+	tags: ['!dev'],
 	globals: { backgrounds: '#fff' },
 	parameters: {
 		docs: {

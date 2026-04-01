@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
-import { defineComponent } from 'vue'
+import { defineComponent, h } from 'vue'
 import { colors } from '@/assets/typescript/colors'
+import { createAllColorsRender } from '../../../../../.storybook/utils/colorShowcase'
 import NeoText from './NeoText.vue'
 import type { NeoTextProps } from './NeoTextTypes'
 import { textSizes, textTags, textWeights } from './NeoTextTypes'
@@ -123,40 +124,26 @@ export const Colored: Story = {
 }
 
 export const AllColors: Story = {
-	render: () => {
-		return defineComponent({
-			name: 'AllColorsRender',
-			setup() {
-				return () => (
-					<div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-						{colors.map((color) => (
-							<NeoText key={color} color={color}>
-								{color}
-							</NeoText>
-						))}
-					</div>
-				)
-			},
-		})
-	},
+	render: createAllColorsRender<typeof NeoText>(NeoText, [
+		{
+			name: 'Default',
+			variant: 'default',
+			renderComponent: (color, Component) => h(Component, { color }, { default: () => color }),
+		},
+	]),
 }
 
 export const AllColorsOnDark: Story = {
 	globals: { backgrounds: '#000' },
-	render: () => {
-		return defineComponent({
-			name: 'AllColorsOnDarkRender',
-			setup() {
-				return () => (
-					<div class="u-onDark" style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-						{colors.map((color) => (
-							<NeoText key={color} color={color}>
-								{color}
-							</NeoText>
-						))}
-					</div>
-				)
+	render: createAllColorsRender<typeof NeoText>(
+		NeoText,
+		[
+			{
+				name: 'Default',
+				variant: 'default',
+				renderComponent: (color, Component) => h(Component, { color }, { default: () => color }),
 			},
-		})
-	},
+		],
+		true,
+	),
 }

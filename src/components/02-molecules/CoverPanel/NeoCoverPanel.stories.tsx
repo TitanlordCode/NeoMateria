@@ -9,6 +9,7 @@ import { coverPanelClickBehaviors } from './NeoCoverPanelTypes'
 import NeoPennant from '@/components/01-atoms/Pennant/NeoPennant.vue'
 import { HeartIcon, HeartFilledIcon } from '@/components/01-atoms/Icon/defaultIcons'
 import { placeholder } from '../../../../.storybook/utils/placeholder'
+import { starIconSvg } from '../../../../.storybook/utils/iconSnippets'
 
 const coverPlaceholder = placeholder(300, 450)
 
@@ -270,9 +271,9 @@ export const WithPennants: Story = {
   action-aria-label="Add to favorites"
 >
   <template #pennants>
-    <NeoPennant color="yellow"><!-- icon --></NeoPennant>
-    <NeoPennant color="blue"><!-- icon --></NeoPennant>
-    <NeoPennant color="red"><!-- icon --></NeoPennant>
+    <NeoPennant color="yellow">${starIconSvg}</NeoPennant>
+    <NeoPennant color="blue">${starIconSvg}</NeoPennant>
+    <NeoPennant color="red">${starIconSvg}</NeoPennant>
   </template>
   <template #action-icon="{ active }">
     <HeartFilledIcon v-if="active" />
@@ -331,11 +332,9 @@ export const WithManyPennants: Story = {
   click-behavior="none"
 >
   <template #pennants>
-    <NeoPennant color="yellow"><!-- icon --></NeoPennant>
-    <NeoPennant color="blue"><!-- icon --></NeoPennant>
-    <NeoPennant color="green"><!-- icon --></NeoPennant>
-    <NeoPennant color="purple"><!-- icon --></NeoPennant>
-    <NeoPennant color="red"><!-- icon --></NeoPennant>
+    <template v-for="color in ['yellow', 'blue', 'green', 'purple', 'red']" :key="color">
+      <NeoPennant :color="color">${starIconSvg}</NeoPennant>
+    </template>
   </template>
 </NeoCoverPanel>`,
 			},

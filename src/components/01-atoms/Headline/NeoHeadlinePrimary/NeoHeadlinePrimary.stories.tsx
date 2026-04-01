@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
-import { defineComponent } from 'vue'
+import { defineComponent, h } from 'vue'
 import { colors } from '@/assets/typescript/colors'
+import { createAllColorsRender } from '../../../../../.storybook/utils/colorShowcase'
 import NeoHeadlinePrimary from './NeoHeadlinePrimary.vue'
 import type { NeoHeadlineProps } from '../NeoHeadlineTypes'
 import { headlineTags, headlineAligns } from '../NeoHeadlineTypes'
@@ -128,40 +129,26 @@ export const Truncated: Story = {
 }
 
 export const AllColors: Story = {
-	render: () => {
-		return defineComponent({
-			name: 'AllColorsRender',
-			setup() {
-				return () => (
-					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-						{colors.map((color) => (
-							<NeoHeadlinePrimary key={color} color={color}>
-								{color}
-							</NeoHeadlinePrimary>
-						))}
-					</div>
-				)
-			},
-		})
-	},
+	render: createAllColorsRender<typeof NeoHeadlinePrimary>(NeoHeadlinePrimary, [
+		{
+			name: 'Default',
+			variant: 'default',
+			renderComponent: (color, Component) => h(Component, { color }, { default: () => color }),
+		},
+	]),
 }
 
 export const AllColorsOnDark: Story = {
 	globals: { backgrounds: '#000' },
-	render: () => {
-		return defineComponent({
-			name: 'AllColorsOnDarkRender',
-			setup() {
-				return () => (
-					<div class="u-onDark" style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-						{colors.map((color) => (
-							<NeoHeadlinePrimary key={color} color={color}>
-								{color}
-							</NeoHeadlinePrimary>
-						))}
-					</div>
-				)
+	render: createAllColorsRender<typeof NeoHeadlinePrimary>(
+		NeoHeadlinePrimary,
+		[
+			{
+				name: 'Default',
+				variant: 'default',
+				renderComponent: (color, Component) => h(Component, { color }, { default: () => color }),
 			},
-		})
-	},
+		],
+		true,
+	),
 }

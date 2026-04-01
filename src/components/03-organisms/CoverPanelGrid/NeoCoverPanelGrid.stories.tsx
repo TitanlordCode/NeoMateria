@@ -218,7 +218,14 @@ export const TwoColumns: Story = {
 		docs: {
 			source: {
 				code: `<NeoCoverPanelGrid :columns="2" gap="medium">
-  <!-- NeoCoverPanel items -->
+  <NeoCoverPanel
+    v-for="item in items"
+    :key="item.id"
+    :color="item.color"
+    :image-src="item.imageSrc"
+    :image-alt="item.imageAlt"
+    :title="item.title"
+  />
 </NeoCoverPanelGrid>`,
 			},
 		},
@@ -254,7 +261,15 @@ export const SixColumns: Story = {
 		docs: {
 			source: {
 				code: `<NeoCoverPanelGrid :columns="6" :min-column-width="120" gap="medium">
-  <!-- NeoCoverPanel items -->
+  <NeoCoverPanel
+    v-for="item in items"
+    :key="item.id"
+    :color="item.color"
+    :image-src="item.imageSrc"
+    :image-alt="item.imageAlt"
+    :title="item.title"
+    rounded
+  />
 </NeoCoverPanelGrid>`,
 			},
 		},
@@ -620,7 +635,14 @@ export const LargeGap: Story = {
 		docs: {
 			source: {
 				code: `<NeoCoverPanelGrid :columns="4" gap="large">
-  <!-- NeoCoverPanel items -->
+  <NeoCoverPanel
+    v-for="item in items"
+    :key="item.id"
+    :color="item.color"
+    :image-src="item.imageSrc"
+    :image-alt="item.imageAlt"
+    :title="item.title"
+  />
 </NeoCoverPanelGrid>`,
 			},
 		},
@@ -657,7 +679,15 @@ export const OnDark: Story = {
 			source: {
 				code: `<div class="u-onDark">
   <NeoCoverPanelGrid :columns="4" gap="medium">
-    <!-- NeoCoverPanel items -->
+    <NeoCoverPanel
+      v-for="item in items"
+      :key="item.id"
+      :color="item.color"
+      :image-src="item.imageSrc"
+      :image-alt="item.imageAlt"
+      :title="item.title"
+      rounded
+    />
   </NeoCoverPanelGrid>
 </div>`,
 			},

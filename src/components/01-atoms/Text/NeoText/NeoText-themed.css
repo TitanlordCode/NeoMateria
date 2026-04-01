@@ -1,7 +1,7 @@
 .NeoText {
 	--NeoText-color-text: currentColor;
 
-@mixin onDark {
+	@mixin onDark {
 		--NeoText-color-text: currentColor;
 	}
 }

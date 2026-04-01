@@ -1,11 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
-import { defineComponent } from 'vue'
+import { defineComponent, h } from 'vue'
 import type { SurfaceColor } from '@/assets/typescript/colorTypes'
 import { colors } from '@/assets/typescript/colors'
+import { createAllColorsRender } from '../../../../../.storybook/utils/colorShowcase'
 import NeoCallout from './NeoCallout.vue'
 import type { NeoCalloutProps } from './NeoCalloutTypes'
 import { calloutVariants } from './NeoCalloutTypes'
 import { InfoIcon } from '@/components/01-atoms/Icon/defaultIcons'
+import { infoIconSvg } from '../../../../../.storybook/utils/iconSnippets'
 
 const surfaceColors = colors.filter((color): color is SurfaceColor => color !== 'white')
 
@@ -78,7 +80,7 @@ export const WithIcon: Story = {
 		docs: {
 			source: {
 				code: `<NeoCallout color="blue" variant="bordered">
-  <template #icon><!-- your icon --></template>
+  <template #icon>${infoIconSvg}</template>
   This feature is currently in beta. Behaviour may change in future releases.
 </NeoCallout>`,
 			},
@@ -104,7 +106,7 @@ export const Filled: Story = {
 		docs: {
 			source: {
 				code: `<NeoCallout color="blue" variant="filled">
-  <template #icon><!-- your icon --></template>
+  <template #icon>${infoIconSvg}</template>
   Your session will expire in 5 minutes.
 </NeoCallout>`,
 			},
@@ -113,24 +115,18 @@ export const Filled: Story = {
 }
 
 export const AllColors: Story = {
-	render: () => {
-		return defineComponent({
-			name: 'AllColorsRender',
-			setup() {
-				return () => (
-					<div
-						style={{ display: 'flex', flexDirection: 'column', gap: '8px', maxInlineSize: '480px' }}
-					>
-						{surfaceColors.map((color) => (
-							<NeoCallout key={color} color={color} v-slots={{ icon: () => InfoIcon }}>
-								{color} — bordered callout
-							</NeoCallout>
-						))}
-					</div>
-				)
-			},
-		})
-	},
+	render: createAllColorsRender<typeof NeoCallout>(NeoCallout, [
+		{
+			name: 'Bordered',
+			variant: 'bordered',
+			renderComponent: (color, Component) =>
+				h(
+					Component,
+					{ color, variant: 'bordered' },
+					{ default: () => `${color} — bordered callout`, icon: () => InfoIcon },
+				),
+		},
+	]),
 }
 
 export const AllColorsFilled: Story = {

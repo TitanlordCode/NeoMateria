@@ -21,8 +21,6 @@ if (shouldSkipGeneration(SCRIPT_NAME, SOURCE_FILES, OUTPUT_FILES)) {
 	process.exit(0)
 }
 
-const specialColors: ColorName[] = []
-
 /**
  * Generate TS file
  */
@@ -52,8 +50,7 @@ const colorNames: string[] = Object.keys(flatColors)
 		return result
 	}, [])
 
-// Generate color family names (without shade numbers) - excluding special colors
-const colorFamilies = colorNames.filter((name) => !specialColors.includes(name))
+const colorFamilies = colorNames
 
 const tsContent = `/**
  * --------------------------------------------------------------------
@@ -64,14 +61,11 @@ const tsContent = `/**
  * --------------------------------------------------------------------
  */
 
-/**
- * array for all possible colors names (including special colors)
-*/
 export const colorNames = \n${JSON.stringify(colorNames, null, 2)} as const
 
 /**
- * array for color families (without shade numbers)
- * Users specify these, and CSS handles the specific shade (500 by default)
+ * All color family names (without shade numbers).
+ * Users specify these; CSS resolves the specific shade (500 by default).
 */
 export const colors = \n${JSON.stringify(colorFamilies, null, 2)} as const
 
@@ -421,9 +415,9 @@ const rows = lines.slice(2) // skip table header + --- separator
 
 type ColorName = (typeof colorNames)[number]
 
-const dataByColorName: Record<ColorName | 'special', string[]> = Object.fromEntries(
-	[...colorNames, 'special'].map((c) => [c, []]),
-) as Record<ColorName, string[]>
+const dataByColorName: Record<ColorName, string[]> = Object.fromEntries(
+	colorNames.map((c) => [c, []]),
+)
 
 // Build MDX table rows
 rows.forEach((line) => {
@@ -432,12 +426,8 @@ rows.forEach((line) => {
 		.map((c) => c.trim())
 		.filter((value) => value)
 
-	let name = data[0]
+	const name = data[0]
 	const value = data[2]
-
-	if (specialColors.includes(name)) {
-		name = 'special'
-	}
 
 	dataByColorName[name].push(`
 			<tr>
@@ -461,7 +451,7 @@ rows.forEach((line) => {
 })
 
 const tables = Object.entries(dataByColorName)
-	.filter(([colorName, tableData]) => tableData.length && !specialColors.includes(colorName))
+	.filter(([, tableData]) => tableData.length)
 	.map(
 		([color, tableData]) => `
 <div style={{inlineSize: '100%'}}>

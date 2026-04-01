@@ -1,8 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
-import { defineComponent } from 'vue'
+import { defineComponent, h } from 'vue'
 import { colors } from '@/assets/typescript/colors'
 import type { SurfaceColor } from '@/assets/typescript/colorTypes'
 import { placeholder } from '../../../../../.storybook/utils/placeholder'
+import { createAllColorsRender } from '../../../../../.storybook/utils/colorShowcase'
 import NeoHero from './NeoHero.vue'
 import type { NeoHeroProps } from './NeoHeroTypes'
 import { heroVariants, heroSizes } from './NeoHeroTypes'
@@ -202,25 +203,18 @@ export const OnDark: Story = {
 }
 
 export const AllColors: Story = {
-	render: () => {
-		return defineComponent({
-			name: 'AllColorsRender',
-			setup() {
-				return () => (
-					<div style={{ display: 'flex', flexDirection: 'column', gap: '48px' }}>
-						{surfaceColors.map((color) => (
-							<NeoHero
-								key={color}
-								title={`${color} — Build beautiful interfaces`}
-								subtitle="A complete Vue 3 design system."
-								color={color}
-								size="sm"
-								variant="centered"
-							/>
-						))}
-					</div>
-				)
-			},
-		})
-	},
+	render: createAllColorsRender<typeof NeoHero>(NeoHero, [
+		{
+			name: 'Centered',
+			variant: 'centered',
+			renderComponent: (color, Component) =>
+				h(Component, {
+					color,
+					variant: 'centered',
+					title: `${color} — Build beautiful interfaces`,
+					subtitle: 'A complete Vue 3 design system.',
+					size: 'sm',
+				}),
+		},
+	]),
 }

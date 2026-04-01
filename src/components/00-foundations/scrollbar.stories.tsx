@@ -99,13 +99,13 @@ export const Default: Story = {
 	render: () => scrollItems,
 	decorators: [
 		() => ({
-			template: `<div class="u-scrollbar" style="block-size: 240px; border: 1px solid var(--neo-color-grey200); border-radius: 8px; padding: 16px;"><story /></div>`,
+			template: `<div class="u-scrollbar" tabindex="0" style="block-size: 240px; border: 1px solid var(--neo-color-grey200); border-radius: 8px; padding: 16px;"><story /></div>`,
 		}),
 	],
 	parameters: {
 		docs: {
 			source: {
-				code: `<div class="u-scrollbar" style="block-size: 240px;">
+				code: `<div class="u-scrollbar" tabindex="0" style="block-size: 240px;">
   <div v-for="item in items" :key="item" style="padding: 8px 12px; background: var(--neo-color-grey100); border-radius: 4px; font-size: 14px;">
     {{ item }}
   </div>
@@ -119,13 +119,13 @@ export const Rounded: Story = {
 	render: () => scrollItems,
 	decorators: [
 		() => ({
-			template: `<div class="u-scrollbar u-scrollbar--rounded" style="block-size: 240px; border: 1px solid var(--neo-color-grey200); border-radius: 8px; padding: 16px;"><story /></div>`,
+			template: `<div class="u-scrollbar u-scrollbar--rounded" tabindex="0" style="block-size: 240px; border: 1px solid var(--neo-color-grey200); border-radius: 8px; padding: 16px;"><story /></div>`,
 		}),
 	],
 	parameters: {
 		docs: {
 			source: {
-				code: `<div class="u-scrollbar u-scrollbar--rounded" style="block-size: 240px;">
+				code: `<div class="u-scrollbar u-scrollbar--rounded" tabindex="0" style="block-size: 240px;">
   <div v-for="item in items" :key="item" style="padding: 8px 12px; background: var(--neo-color-grey100); border-radius: 4px; font-size: 14px;">
     {{ item }}
   </div>
@@ -140,13 +140,13 @@ export const OnDark: Story = {
 	render: () => darkScrollItems,
 	decorators: [
 		() => ({
-			template: `<div class="u-onDark u-scrollbar u-scrollbar--rounded" style="block-size: 240px; background: #111; border: 1px solid var(--neo-color-grey700); border-radius: 8px; padding: 16px;"><story /></div>`,
+			template: `<div class="u-onDark u-scrollbar u-scrollbar--rounded" tabindex="0" style="block-size: 240px; background: #111; border: 1px solid var(--neo-color-grey700); border-radius: 8px; padding: 16px;"><story /></div>`,
 		}),
 	],
 	parameters: {
 		docs: {
 			source: {
-				code: `<div class="u-onDark u-scrollbar u-scrollbar--rounded" style="block-size: 240px; background: #111;">
+				code: `<div class="u-onDark u-scrollbar u-scrollbar--rounded" tabindex="0" style="block-size: 240px; background: #111;">
   <div v-for="item in items" :key="item" style="padding: 8px 12px; background: var(--neo-color-grey800); border-radius: 4px; color: var(--neo-color-grey100); font-size: 14px;">
     {{ item }}
   </div>

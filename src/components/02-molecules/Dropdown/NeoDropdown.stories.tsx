@@ -9,6 +9,7 @@ import NeoNavItem from '@/components/01-atoms/NavItem/NeoNavItem.vue'
 import type { NeoDropdownProps } from './NeoDropdownTypes'
 import { dropdownPlacements } from './NeoDropdownTypes'
 import { MoreHorizontalIcon } from '../../01-atoms/Icon/defaultIcons'
+import { moreHorizontalIconSvg } from '../../../../.storybook/utils/iconSnippets'
 
 const meta = {
 	title: 'Molecules/NeoDropdown',
@@ -305,7 +306,11 @@ export const PlacementBottomEnd: Story = {
   <template #trigger="{ isOpen, toggle }">
     <NeoButton color="blue" variant="secondary" text="Options" :aria-expanded="isOpen" @click="toggle" />
   </template>
-  <!-- Panel content -->
+  <NeoNavItem color="grey" size="small" label="Profile" href="#" />
+  <NeoNavItem color="grey" size="small" label="Settings" href="#" />
+  <NeoNavItem color="grey" size="small" label="Help" href="#" />
+  <hr />
+  <NeoNavItem color="red" size="small" label="Sign out" href="#" />
 </NeoDropdown>`,
 			},
 		},
@@ -374,10 +379,14 @@ export const WithIconTrigger: Story = {
       :aria-expanded="isOpen"
       @click="toggle"
     >
-      <!-- MoreHorizontalIcon -->
+      ${moreHorizontalIconSvg}
     </NeoIconButton>
   </template>
-  <!-- Panel content -->
+  <NeoNavItem color="grey" size="small" label="Profile" href="#" />
+  <NeoNavItem color="grey" size="small" label="Settings" href="#" />
+  <NeoNavItem color="grey" size="small" label="Help" href="#" />
+  <hr />
+  <NeoNavItem color="red" size="small" label="Sign out" href="#" />
 </NeoDropdown>`,
 			},
 		},
@@ -437,7 +446,11 @@ const isOpen = ref(false)
     <template #trigger="{ isOpen, toggle }">
       <NeoButton color="blue" variant="secondary" text="Options" :aria-expanded="isOpen" @click="toggle" />
     </template>
-    <!-- Panel content -->
+    <NeoNavItem color="grey" size="small" label="Profile" href="#" />
+    <NeoNavItem color="grey" size="small" label="Settings" href="#" />
+    <NeoNavItem color="grey" size="small" label="Help" href="#" />
+    <hr />
+    <NeoNavItem color="red" size="small" label="Sign out" href="#" />
   </NeoDropdown>
 </template>`,
 			},
@@ -494,9 +507,13 @@ export const PersistentDropdown: Story = {
 				code: `<!-- Panel stays open until manually toggled — useful for persistent filter panels -->
 <NeoDropdown :close-on-escape="false" :close-on-click-outside="false">
   <template #trigger="{ isOpen, toggle }">
-    <NeoButton color="blue" variant="secondary" text="Filters" :aria-expanded="isOpen" @click="toggle" />
+    <NeoButton color="blue" variant="secondary" text="Options" :aria-expanded="isOpen" @click="toggle" />
   </template>
-  <!-- Panel content -->
+  <NeoNavItem color="grey" size="small" label="Profile" href="#" />
+  <NeoNavItem color="grey" size="small" label="Settings" href="#" />
+  <NeoNavItem color="grey" size="small" label="Help" href="#" />
+  <hr />
+  <NeoNavItem color="red" size="small" label="Sign out" href="#" />
 </NeoDropdown>`,
 			},
 		},

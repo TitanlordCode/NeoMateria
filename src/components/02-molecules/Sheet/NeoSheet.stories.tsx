@@ -436,20 +436,50 @@ export const NavigationWithSearch: Story = {
 				code: `<script setup>
 const isOpen = ref(false)
 const searchQuery = ref('')
+const expanded = ref({ products: false, settings: false })
 </script>
 
 <template>
   <NeoButton text="Open Navigation" color="blue" variant="primary" @click="isOpen = true" />
   <NeoSheet color="blue" position="left" aria-label="Main navigation" v-model:open="isOpen">
-    <div style="display: flex; flex-direction: column; gap: 16px; height: 100%;">
-      <h2>Navigation</h2>
-      <NeoInput name="search" aria-label="Search" color="blue" placeholder="Search..."
+    <div style="display: flex; flex-direction: column; gap: 16px; block-size: 100%;">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h2 style="margin: 0; font-size: 18px;">Navigation</h2>
+        <NeoButton text="Close" color="blue" size="small" variant="ghost" @click="isOpen = false" />
+      </div>
+      <NeoInput name="nav-search" aria-label="Search" color="blue" placeholder="Search..."
         v-model:value="searchQuery" />
-      <nav style="display: flex; flex-direction: column; gap: 4px;">
+      <nav style="display: flex; flex-direction: column; gap: 4px; flex: 1;">
         <NeoNavItem label="Home" href="/" color="blue">
           <template #iconStart><span>🏠</span></template>
         </NeoNavItem>
-        <!-- more items... -->
+        <NeoNavItem label="Dashboard" href="/dashboard" color="blue">
+          <template #iconStart><span>📊</span></template>
+        </NeoNavItem>
+        <NeoNavItem label="Products" color="blue" has-children
+          :expanded="expanded.products" @toggle="expanded.products = !expanded.products">
+          <template #iconStart><span>📦</span></template>
+        </NeoNavItem>
+        <template v-if="expanded.products">
+          <NeoNavItem label="All Products" href="/products" color="blue" :level="1" />
+          <NeoNavItem label="Categories" href="/products/categories" color="blue" :level="1" />
+          <NeoNavItem label="Inventory" href="/products/inventory" color="blue" :level="1" />
+        </template>
+        <NeoNavItem label="Orders" href="/orders" color="blue" active>
+          <template #iconStart><span>🛒</span></template>
+        </NeoNavItem>
+        <NeoNavItem label="Customers" href="/customers" color="blue">
+          <template #iconStart><span>👥</span></template>
+        </NeoNavItem>
+        <NeoNavItem label="Settings" color="blue" has-children
+          :expanded="expanded.settings" @toggle="expanded.settings = !expanded.settings">
+          <template #iconStart><span>⚙️</span></template>
+        </NeoNavItem>
+        <template v-if="expanded.settings">
+          <NeoNavItem label="General" href="/settings/general" color="blue" :level="1" />
+          <NeoNavItem label="Security" href="/settings/security" color="blue" :level="1" />
+          <NeoNavItem label="Notifications" href="/settings/notifications" color="blue" :level="1" />
+        </template>
       </nav>
     </div>
   </NeoSheet>

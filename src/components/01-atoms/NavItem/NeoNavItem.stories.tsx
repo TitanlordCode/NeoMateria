@@ -223,7 +223,10 @@ export const NestedLevels: Story = {
 <NeoNavItem label="Level 0 - Root item" color="blue" :level="0" />
 <NeoNavItem label="Level 1 - First child" color="blue" :level="1" />
 <NeoNavItem label="Level 2 - Nested deeper" color="blue" :level="2" />
-<NeoNavItem label="Level 3 - Deep nesting" color="blue" :level="3" />`,
+<NeoNavItem label="Level 3 - Deep nesting" color="blue" :level="3" />
+<NeoNavItem label="Level 3 - Sibling item" color="blue" :level="3" />
+<NeoNavItem label="Level 4+ - Same as level 3" color="blue" :level="4" />
+<NeoNavItem label="Level 5 - Visual cap reached" color="blue" :level="5" />`,
 			},
 		},
 	},
@@ -265,7 +268,8 @@ export const WithConnectors: Story = {
 <NeoNavItem label="Parent Item" color="blue" :level="0" />
 <NeoNavItem label="Child with connector" color="blue" :level="1" show-connector />
 <NeoNavItem label="Another child" color="blue" :level="1" show-connector />
-<NeoNavItem label="Nested child" color="blue" :level="2" show-connector />`,
+<NeoNavItem label="Nested child" color="blue" :level="2" show-connector />
+<NeoNavItem label="Deep nested" color="blue" :level="3" show-connector />`,
 			},
 		},
 	},
@@ -651,10 +655,16 @@ export const AllSizesWithLevels: Story = {
 				code: `<!-- size and level are orthogonal — combine freely -->
 <NeoNavItem label="Level 0" color="blue" size="small" :level="0" />
 <NeoNavItem label="Level 1" color="blue" size="small" :level="1" />
+<NeoNavItem label="Level 2" color="blue" size="small" :level="2" />
+<NeoNavItem label="Level 3" color="blue" size="small" :level="3" />
 <NeoNavItem label="Level 0" color="blue" size="medium" :level="0" />
 <NeoNavItem label="Level 1" color="blue" size="medium" :level="1" />
+<NeoNavItem label="Level 2" color="blue" size="medium" :level="2" />
+<NeoNavItem label="Level 3" color="blue" size="medium" :level="3" />
 <NeoNavItem label="Level 0" color="blue" size="large" :level="0" />
-<NeoNavItem label="Level 1" color="blue" size="large" :level="1" />`,
+<NeoNavItem label="Level 1" color="blue" size="large" :level="1" />
+<NeoNavItem label="Level 2" color="blue" size="large" :level="2" />
+<NeoNavItem label="Level 3" color="blue" size="large" :level="3" />`,
 			},
 		},
 	},

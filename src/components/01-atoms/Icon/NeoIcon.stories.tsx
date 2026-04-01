@@ -4,6 +4,7 @@ import { AddIcon, DeleteIcon } from './defaultIcons'
 import type { NeoIconProps } from './NeoIconTypes.ts'
 import { defineComponent } from 'vue'
 import { createSimpleColorShowcase } from '../../../../.storybook/utils/colorShowcase'
+import { deleteIconSvg, addIconSvg } from '../../../../.storybook/utils/iconSnippets'
 
 const meta = {
 	title: 'Atoms/NeoIcon',
@@ -28,15 +29,43 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof NeoIcon>
 
-export const Default: Story = {}
+export const Default: Story = {
+	parameters: {
+		docs: {
+			source: {
+				code: `<NeoIcon color="grey" size="medium">
+  ${deleteIconSvg}
+</NeoIcon>`,
+			},
+		},
+	},
+}
 export const Small: Story = {
 	args: {
 		size: 'small',
+	},
+	parameters: {
+		docs: {
+			source: {
+				code: `<NeoIcon color="grey" size="small">
+  ${deleteIconSvg}
+</NeoIcon>`,
+			},
+		},
 	},
 }
 export const Large: Story = {
 	args: {
 		size: 'large',
+	},
+	parameters: {
+		docs: {
+			source: {
+				code: `<NeoIcon color="grey" size="large">
+  ${deleteIconSvg}
+</NeoIcon>`,
+			},
+		},
 	},
 }
 
@@ -44,10 +73,30 @@ export const colorVariantTheme: Story = {
 	args: {
 		colorVariant: 'theme',
 	},
+	parameters: {
+		docs: {
+			source: {
+				code: `<!-- color-variant="theme" uses the 500 shade of the color token -->
+<NeoIcon color="grey" color-variant="theme">
+  ${deleteIconSvg}
+</NeoIcon>`,
+			},
+		},
+	},
 }
 export const colorVariantText: Story = {
 	args: {
 		colorVariant: 'text',
+	},
+	parameters: {
+		docs: {
+			source: {
+				code: `<!-- color-variant="text" uses the accessible (darker) text shade -->
+<NeoIcon color="grey" color-variant="text">
+  ${deleteIconSvg}
+</NeoIcon>`,
+			},
+		},
 	},
 }
 
@@ -56,10 +105,10 @@ export const BigFonts: Story = {
 		docs: {
 			source: {
 				code: `<!-- NeoIcon scales with the surrounding font-size -->
-<div style="font-size: 32px;">
+<div style="display: flex; flex-direction: column; font-size: 32px; inline-size: fit-content;">
   <span>With Font size 32px</span>
   <NeoIcon color="grey" size="medium">
-    <DeleteIcon />
+    ${deleteIconSvg}
   </NeoIcon>
 </div>`,
 			},
@@ -91,11 +140,29 @@ export const AddExample: Story = {
 		color: 'green',
 		default: () => AddIcon,
 	},
+	parameters: {
+		docs: {
+			source: {
+				code: `<NeoIcon color="green" size="medium">
+  ${addIconSvg}
+</NeoIcon>`,
+			},
+		},
+	},
 }
 export const DeleteExample: Story = {
 	args: {
 		color: 'red',
 		default: () => DeleteIcon,
+	},
+	parameters: {
+		docs: {
+			source: {
+				code: `<NeoIcon color="red" size="medium">
+  ${deleteIconSvg}
+</NeoIcon>`,
+			},
+		},
 	},
 }
 
