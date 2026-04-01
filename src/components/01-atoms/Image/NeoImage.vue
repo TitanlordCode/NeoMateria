@@ -7,8 +7,10 @@ import './NeoImage-themed.css'
 const props = defineProps<NeoImageProps>()
 
 const emit = defineEmits<{
-	(e: 'load', event: Event): void
-	(e: 'error', event: Event): void
+	/** Emitted when the image has successfully loaded. */
+	load: [event: Event]
+	/** Emitted when the image fails to load. */
+	error: [event: Event]
 }>()
 
 const isLoaded = ref(false)
@@ -34,7 +36,6 @@ const classes = computed(() => {
 			isLoaded.value ? 'loaded' : '',
 			hasError.value ? 'error' : '',
 		],
-		additional: props.class,
 	})
 })
 

@@ -1,0 +1,17 @@
+.NeoCard {
+	--NeoCard-color-background: var(--neo-color-white);
+	--NeoCard-color-border: var(--neo-color-grey300);
+	--NeoCard-color-shadow: var(--neo-color-shadow-xs);
+	--NeoCard-color-hoverShadow: var(--neo-color-shadow-sm);
+	--NeoCard-color-title: var(--neo-color-grey900);
+	--NeoCard-color-description: var(--neo-color-grey700);
+
+	@mixin onDark {
+		--NeoCard-color-background: var(--neo-color-grey900);
+		--NeoCard-color-border: var(--neo-color-grey700);
+		--NeoCard-color-shadow: var(--neo-color-shadow-md);
+		--NeoCard-color-hoverShadow: var(--neo-color-shadow-lg);
+		--NeoCard-color-title: var(--neo-color-white);
+		--NeoCard-color-description: var(--neo-color-grey300);
+	}
+}

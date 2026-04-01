@@ -1,0 +1,27 @@
+.NeoHeadline--align-center {
+	text-align: center;
+}
+
+.NeoHeadline--align-end {
+	text-align: end;
+}
+
+.NeoHeadline--align-start {
+	text-align: start;
+}
+
+.NeoHeadline--truncate {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.NeoHeadline--clamped {
+	align-self: stretch;
+	-webkit-box-orient: vertical;
+	display: -webkit-box;
+	-webkit-line-clamp: var(--NeoHeadline-sizing-clamp);
+	line-clamp: var(--NeoHeadline-sizing-clamp);
+	overflow: hidden;
+	text-overflow: ellipsis;
+}

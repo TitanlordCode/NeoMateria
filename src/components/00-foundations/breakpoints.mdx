@@ -1,0 +1,97 @@
+
+import { Meta, Title } from '@storybook/addon-docs/blocks'
+
+<Meta title="Foundation/Breakpoints" parameters={{ backgrounds: { disable: true }, direction: { disable: true } }} />
+
+<Title>Breakpoints</Title>
+
+NeoMateria's responsive system is built on four mobile-first breakpoints. Use standard `@media` queries in your own projects — the PostCSS mixins are for contributors building components inside the library.
+
+---
+
+## Breakpoint values
+
+<table>
+  <thead>
+    <tr>
+      <th>Mixin</th>
+      <th>Breakpoint</th>
+      <th>Min-width</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>@mixin bp-sm</code></td>
+      <td>Small</td>
+      <td>640px</td>
+    </tr>
+    <tr>
+      <td><code>@mixin bp-md</code></td>
+      <td>Medium</td>
+      <td>768px</td>
+    </tr>
+    <tr>
+      <td><code>@mixin bp-lg</code></td>
+      <td>Large</td>
+      <td>1024px</td>
+    </tr>
+    <tr>
+      <td><code>@mixin bp-xl</code></td>
+      <td>Extra large</td>
+      <td>1280px</td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+## JavaScript / TypeScript
+
+The breakpoint values and media query strings are exported from the library for use in `matchMedia`, resize logic, or dynamic styles.
+
+```ts
+import { breakpoints, mediaQueries } from 'neo-materia'
+
+// Pixel values
+breakpoints.md // 768
+
+// Ready-to-use media query strings
+const isDesktop = window.matchMedia(mediaQueries.lg).matches
+
+// With a ResizeObserver or reactive ref
+const mediaQueryList = window.matchMedia(mediaQueries.md)
+```
+
+---
+
+## CSS mixin — for library contributors only
+
+```css
+.MyComponent {
+  flex-direction: column;
+
+  @mixin bp-md {
+    flex-direction: row;
+  }
+
+  @mixin bp-lg {
+    gap: 48px;
+  }
+}
+```
+
+Each mixin expands to a `@media (width >= Npx)` rule. Mobile-first: styles outside a mixin apply to all viewport sizes, and each mixin overrides upward from its threshold.
+
+This requires PostCSS with `postcss-mixins` configured to load NeoMateria's mixin files. It is **not** available to library consumers unless they replicate that PostCSS setup. Use standard `@media` queries instead:
+
+```css
+.MyElement {
+  flex-direction: column;
+}
+
+@media (width >= 768px) {
+  .MyElement {
+    flex-direction: row;
+  }
+}
+```

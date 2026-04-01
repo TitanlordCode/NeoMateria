@@ -8,21 +8,25 @@ const props = defineProps<NeoSpinnerProps>()
 const classes = computed(() => {
 	const spinnerClasses = getClassNames({
 		component: 'NeoSpinner',
-		modifiers: [props.size ?? 'medium'],
-		additional: props.class,
+		modifiers: [props.size ?? 'medium', props.dir ?? 'column'],
 	})
 	const themedClasses = getClassNames({
 		component: 'Themed',
-		modifiers: [props.color ?? 'grey'],
+		modifiers: [props.color ?? 'blue'],
 	})
 	return `${spinnerClasses} ${themedClasses}`
 })
 </script>
 
 <template>
-	<div :class="classes" role="status" :aria-label="props.label ?? 'Loading'">
+	<div
+		:class="classes"
+		:role="props.ariaHidden ? undefined : 'status'"
+		:aria-label="props.label ? undefined : props.ariaLabel"
+		:aria-hidden="props.ariaHidden ? 'true' : undefined"
+	>
 		<div class="NeoSpinner-circle"></div>
-		<span class="NeoSpinner-label">{{ props.label ?? 'Loading...' }}</span>
+		<span v-if="props.label" class="NeoSpinner-label">{{ props.label }}</span>
 	</div>
 </template>
 
@@ -36,6 +40,10 @@ const classes = computed(() => {
 	flex-direction: column;
 	font-family: inherit;
 	gap: 8px;
+}
+
+.NeoSpinner--row {
+	flex-direction: row;
 }
 
 .NeoSpinner-circle {

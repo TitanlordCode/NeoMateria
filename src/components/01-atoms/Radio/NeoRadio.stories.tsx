@@ -1,8 +1,9 @@
-import { colors } from '@/assets/typescript/colors'
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import { defineComponent, ref } from 'vue'
 import NeoRadio from './NeoRadio.vue'
 import type { NeoRadioProps } from './NeoRadioTypes'
+import { radioSizes } from './NeoRadioTypes'
+import { ariaLabelArgType, disabledArgType } from '../../../../.storybook/utils/argTypes'
 import { createSimpleColorShowcase } from '../../../../.storybook/utils/colorShowcase'
 
 const meta = {
@@ -10,14 +11,20 @@ const meta = {
 	component: NeoRadio,
 	tags: ['autodocs'],
 	argTypes: {
+		...ariaLabelArgType,
+		...disabledArgType,
+		name: { control: 'text', table: { category: 'Content' } },
+		label: { control: 'text', table: { category: 'Content' } },
+		value: { control: 'text', table: { category: 'Content' } },
+		color: { description: 'Theme color for the radio fill and focus ring.' },
 		size: {
 			control: 'select',
-			options: ['small', 'medium', 'large'],
+			options: radioSizes,
+			table: { category: 'Appearance' },
+			description: 'Controls the radio button size and label font size.',
 		},
-		color: {
-			control: 'select',
-			options: colors,
-		},
+		checked: { control: 'boolean', table: { category: 'State' } },
+		required: { control: 'boolean', table: { category: 'State' } },
 	},
 	args: {
 		name: 'example-radio',
@@ -32,6 +39,13 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {}
+
+export const WithoutLabel: Story = {
+	args: {
+		label: undefined,
+		ariaLabel: 'Option A',
+	},
+}
 
 export const Checked: Story = {
 	args: {
@@ -65,6 +79,44 @@ export const Large: Story = {
 }
 
 export const RadioGroup: Story = {
+	parameters: {
+		docs: {
+			source: {
+				code: `<script setup>
+const selected = ref('option1')
+</script>
+
+<template>
+  <div style="display: flex; flex-direction: column; gap: 12px;">
+    <NeoRadio
+      name="group"
+      value="option1"
+      label="Option 1"
+      color="blue"
+      :checked="selected === 'option1'"
+      @update:checked="selected = 'option1'"
+    />
+    <NeoRadio
+      name="group"
+      value="option2"
+      label="Option 2"
+      color="blue"
+      :checked="selected === 'option2'"
+      @update:checked="selected = 'option2'"
+    />
+    <NeoRadio
+      name="group"
+      value="option3"
+      label="Option 3"
+      color="blue"
+      :checked="selected === 'option3'"
+      @update:checked="selected = 'option3'"
+    />
+  </div>
+</template>`,
+			},
+		},
+	},
 	render: (args: NeoRadioProps) => {
 		return defineComponent({
 			name: 'RadioGroupRender',
@@ -77,6 +129,7 @@ export const RadioGroup: Story = {
 							name="group"
 							value="option1"
 							label="Option 1"
+							ariaLabel={undefined}
 							checked={selectedValue.value === 'option1'}
 							onUpdate:checked={() => (selectedValue.value = 'option1')}
 						/>
@@ -85,6 +138,7 @@ export const RadioGroup: Story = {
 							name="group"
 							value="option2"
 							label="Option 2"
+							ariaLabel={undefined}
 							checked={selectedValue.value === 'option2'}
 							onUpdate:checked={() => (selectedValue.value = 'option2')}
 						/>
@@ -93,6 +147,7 @@ export const RadioGroup: Story = {
 							name="group"
 							value="option3"
 							label="Option 3"
+							ariaLabel={undefined}
 							checked={selectedValue.value === 'option3'}
 							onUpdate:checked={() => (selectedValue.value = 'option3')}
 						/>
@@ -124,16 +179,19 @@ export const AllColors: Story = {
 		{
 			variant: 'default',
 			label: 'Radio',
-			render: (color, _, args) => (
-				<NeoRadio
-					{...args}
-					color={color}
-					label={color}
-					name="color-radio"
-					value={color}
-					checked={true}
-				/>
-			),
+			render: (color, _variant, args) => {
+				return (
+					<NeoRadio
+						{...args}
+						ariaLabel={undefined}
+						color={color}
+						label={color}
+						name="color-radio"
+						value={color}
+						checked={true}
+					/>
+				)
+			},
 		},
 	]),
 }
@@ -148,16 +206,19 @@ export const AllColorsOnDark: Story = {
 			{
 				variant: 'default',
 				label: 'Radio',
-				render: (color, _, args) => (
-					<NeoRadio
-						{...args}
-						color={color}
-						label={color}
-						name="color-radio"
-						value={color}
-						checked={true}
-					/>
-				),
+				render: (color, _, args) => {
+					return (
+						<NeoRadio
+							{...args}
+							ariaLabel={undefined}
+							color={color}
+							label={color}
+							name="color-radio"
+							value={color}
+							checked={true}
+						/>
+					)
+				},
 			},
 		],
 		{

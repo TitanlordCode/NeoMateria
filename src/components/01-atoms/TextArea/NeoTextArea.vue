@@ -7,9 +7,12 @@ import { getClassNames } from '@/utils/classNames'
 const props = defineProps<NeoTextAreaProps>()
 
 const emit = defineEmits<{
-	(e: 'update:value', value: string): void
-	(e: 'blur', event: FocusEvent): void
-	(e: 'focus', event: FocusEvent): void
+	/** Emitted on every input change. Receives the current textarea value. */
+	'update:value': [value: string]
+	/** Emitted when the textarea loses focus. */
+	blur: [event: FocusEvent]
+	/** Emitted when the textarea gains focus. */
+	focus: [event: FocusEvent]
 }>()
 
 const instanceId = generateUniqueId('textarea')
@@ -19,14 +22,6 @@ const handleInput = (event: Event) => {
 	const target = event.target as HTMLTextAreaElement
 	internalValue.value = target.value
 	emit('update:value', target.value)
-}
-
-const handleBlur = (event: FocusEvent) => {
-	emit('blur', event)
-}
-
-const handleFocus = (event: FocusEvent) => {
-	emit('focus', event)
 }
 
 const classes = computed(() => {
@@ -39,11 +34,10 @@ const classes = computed(() => {
 			props.errorMessage ? 'error' : '',
 			props.resize ? `resize-${props.resize}` : 'resize-vertical',
 		],
-		additional: props.class,
 	})
 	const themedClasses = getClassNames({
 		component: 'Themed',
-		modifiers: [props.color ?? 'grey'],
+		modifiers: [props.color ?? 'blue'],
 	})
 	return `${textareaClasses} ${themedClasses}`
 })
@@ -53,7 +47,10 @@ const classes = computed(() => {
 	<div :class="classes">
 		<label v-if="props.label" class="NeoTextArea-label" :for="`${instanceId}-${props.name}`">
 			{{ props.label }}
-			<span v-if="props.required" class="NeoTextArea-required" aria-label="required">*</span>
+			<span v-if="props.required" class="NeoTextArea-required" aria-hidden="true">*</span>
+			<span v-if="props.required" class="NeoTextArea-requiredText sr-only">
+				({{ props.requiredText }})
+			</span>
 		</label>
 
 		<textarea
@@ -74,8 +71,8 @@ const classes = computed(() => {
 			"
 			:aria-invalid="props.errorMessage ? 'true' : undefined"
 			@input="handleInput"
-			@blur="handleBlur"
-			@focus="handleFocus"
+			@blur="emit('blur', $event)"
+			@focus="emit('focus', $event)"
 		></textarea>
 
 		<div v-if="props.helpText || props.errorMessage" class="NeoTextArea-messageWrapper">

@@ -13,7 +13,10 @@
 @import url('./mixins/lineClamp.css');
 @import url('./mixins/scrollbar.css');
 @import url('./mixins/theming.css');
+@import url('./colorEffects.css');
 @import url('./colors.css');
 @import url('./fontSizes.css');
+@import url('./helpers.css');
 @import url('./inputs.css');
 @import url('./spacing.css');
+@import url('./typography.css');

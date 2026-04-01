@@ -1,0 +1,4 @@
+.NeoFeatureCard {
+	--NeoFeatureCard-sizing-borderRadius: 12px;
+	--NeoFeatureCard-sizing-gap: var(--neo-gap-md);
+}

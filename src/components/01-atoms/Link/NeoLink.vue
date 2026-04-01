@@ -6,7 +6,8 @@ import { getClassNames } from '@/utils/classNames'
 const props = defineProps<NeoLinkProps>()
 
 const emit = defineEmits<{
-	(e: 'click', event: MouseEvent): void
+	/** Emitted when the link is clicked. Not fired when `disabled` is `true`. */
+	click: [event: MouseEvent]
 }>()
 
 const handleClick = (event: MouseEvent) => {
@@ -33,11 +34,10 @@ const classes = computed(() => {
 			props.variant ?? 'default',
 			props.disabled ? 'disabled' : '',
 		],
-		additional: props.class,
 	})
 	const themedClasses = getClassNames({
 		component: 'Themed',
-		modifiers: [props.color ?? 'grey'],
+		modifiers: [props.color ?? 'blue'],
 	})
 	return `${linkClasses} ${themedClasses}`
 })
@@ -78,6 +78,13 @@ const classes = computed(() => {
 	&:focus-visible {
 		outline: 2px solid var(--NeoLink-color-focus);
 		outline-offset: 2px;
+	}
+}
+
+.NeoLink--default {
+	&:hover {
+		text-decoration: underline;
+		text-underline-offset: 3px;
 	}
 }
 

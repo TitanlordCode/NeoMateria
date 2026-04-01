@@ -1,18 +1,23 @@
-import type { Color } from '@/assets/typescript/colors'
+import type { SurfaceColor } from '@/assets/typescript/colorTypes'
 
 export const radioSizes = ['small', 'medium', 'large'] as const
 
 export type NeoRadioSize = (typeof radioSizes)[number]
 
-export interface NeoRadioProps {
-	class?: string
+type NeoRadioBase = {
 	name: string
-	label?: string
-	ariaLabel?: string
 	value: string
 	checked?: boolean
 	disabled?: boolean
-	required?: boolean
 	size: NeoRadioSize
-	color: Color
+	color: SurfaceColor
 }
+
+type NeoRadioWithLabel = { label: string; ariaLabel?: never }
+type NeoRadioWithAriaLabel = { label?: never; ariaLabel: string }
+type NeoRadioRequired = { required: true; requiredText: string }
+type NeoRadioOptional = { required?: never; requiredText?: never }
+
+export type NeoRadioProps = NeoRadioBase &
+	(NeoRadioWithLabel | NeoRadioWithAriaLabel) &
+	(NeoRadioRequired | NeoRadioOptional)

@@ -1,0 +1,6 @@
+.NeoCallout {
+	--NeoCallout-sizing-borderRadius: 8px;
+	--NeoCallout-sizing-borderWidth: 2px;
+	--NeoCallout-sizing-gap: var(--neo-gap-md);
+	--NeoCallout-sizing-padding: var(--neo-spacing-core-lg);
+}

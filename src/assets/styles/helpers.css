@@ -1,0 +1,42 @@
+/**
+ * Establishes a dark mode context. Components inside will render in dark mode.
+ * Can alternate with u-unsetDark to nest dark → light → dark indefinitely.
+ */
+.u-onDark {
+	@mixin setOnDark;
+}
+
+/**
+ * Resets dark mode context — use on elements with a light background that are nested inside
+ * an onDark container. Can alternate with u-onDark to nest dark → light → dark indefinitely.
+ */
+.u-unsetDark {
+	@mixin unsetOnDark;
+}
+
+/**
+ * Applies a custom styled scrollbar to the element.
+ * Pair with `.u-scrollbar--rounded` to add pill-shaped corners on the track and thumb.
+ */
+.u-scrollbar {
+	@mixin addScrollbar;
+}
+
+/**
+ * Rounds the scrollbar track and thumb corners.
+ * Must be used together with `.u-scrollbar`.
+ */
+.u-scrollbar--rounded {
+	--neo-scrollbar-radius: 9999px;
+}
+
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
+}

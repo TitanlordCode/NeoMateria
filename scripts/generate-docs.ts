@@ -14,8 +14,8 @@ files.forEach((file) => {
 	}
 	if (extname(file) === '.md') {
 		const name = basename(file, '.md')
-			.split('_')
-			.map((namePart) => namePart)
+			.split(/[-_]/)
+			.map((part) => part.charAt(0).toUpperCase() + part.slice(1))
 			.join(' ')
 
 		// Basic MDX wrapper for Storybook

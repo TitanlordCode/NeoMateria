@@ -7,7 +7,8 @@ import { getClassNames } from '@/utils/classNames'
 const props = defineProps<NeoCheckboxProps>()
 
 const emit = defineEmits<{
-	(e: 'update:checked', value: boolean): void
+	/** Emitted when the checkbox state changes. Receives the new checked value. */
+	'update:checked': [value: boolean]
 }>()
 
 const instanceId = generateUniqueId('checkbox')
@@ -15,9 +16,9 @@ const inputRef = ref<HTMLInputElement | null>(null)
 
 watch(
 	() => props.indeterminate,
-	(val) => {
+	(isIndeterminate) => {
 		if (inputRef.value) {
-			inputRef.value.indeterminate = val ?? false
+			inputRef.value.indeterminate = isIndeterminate ?? false
 		}
 	},
 	{ immediate: true },
@@ -32,11 +33,10 @@ const classes = computed(() => {
 	const checkboxClasses = getClassNames({
 		component: 'NeoCheckbox',
 		modifiers: [props.size ?? 'medium'],
-		additional: props.class,
 	})
 	const themedClasses = getClassNames({
 		component: 'Themed',
-		modifiers: [props.color ?? 'grey'],
+		modifiers: [props.color ?? 'blue'],
 	})
 	return `${checkboxClasses} ${themedClasses}`
 })
@@ -55,12 +55,12 @@ const classes = computed(() => {
 			:disabled="props.disabled"
 			:required="props.required"
 			:aria-label="props.ariaLabel"
-			:aria-checked="props.indeterminate ? 'mixed' : props.checked"
 			@change="handleChange"
 		/>
 		<label v-if="props.label" class="NeoCheckbox-label" :for="`${instanceId}-${props.name}`">
 			{{ props.label }}
-			<span v-if="props.required" class="NeoCheckbox-required" aria-label="required">*</span>
+			<span v-if="props.required" class="NeoCheckbox-required" aria-hidden="true">*</span>
+			<span v-if="props.required" class="NeoCheckbox-required sr-only">{props.requiredText}</span>
 		</label>
 	</div>
 </template>

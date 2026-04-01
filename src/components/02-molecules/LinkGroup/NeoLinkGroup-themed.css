@@ -1,0 +1,13 @@
+.NeoLinkGroup {
+	--NeoLinkGroup-color-title: var(--neo-color-grey900);
+	--NeoLinkGroup-color-link: var(--neo-color-grey700);
+	--NeoLinkGroup-color-linkHover: var(--neo-theme-colorAccessible);
+	--NeoLinkGroup-color-linkActive: var(--neo-theme-colorAccessible);
+
+	@mixin onDark {
+		--NeoLinkGroup-color-title: var(--neo-color-grey100);
+		--NeoLinkGroup-color-link: var(--neo-color-grey300);
+		--NeoLinkGroup-color-linkHover: var(--neo-theme-colorAccessible);
+		--NeoLinkGroup-color-linkActive: var(--neo-theme-colorAccessible);
+	}
+}

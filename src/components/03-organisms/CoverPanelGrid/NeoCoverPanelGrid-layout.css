@@ -1,0 +1,5 @@
+.NeoCoverPanelGrid {
+	--NeoCoverPanelGrid-sizing-columnMinWidth: 160px;
+	--NeoCoverPanelGrid-sizing-columns: 4;
+	--NeoCoverPanelGrid-sizing-gap: var(--neo-gap-md);
+}

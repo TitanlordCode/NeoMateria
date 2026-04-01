@@ -1,12 +1,15 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import type { NeoBadgeProps } from './NeoBadgeTypes'
+import type { NeoBadgeProps, NeoBadgeSlots } from './NeoBadgeTypes'
 import { getClassNames } from '@/utils/classNames'
 
 const props = defineProps<NeoBadgeProps>()
 
+defineSlots<NeoBadgeSlots>()
+
 const emit = defineEmits<{
-	(e: 'dismiss'): void
+	/** Emitted when the dismiss button is clicked. Only fired when `dismissible` is `true`. */
+	dismiss: []
 }>()
 
 const classes = computed(() => {
@@ -18,18 +21,13 @@ const classes = computed(() => {
 			props.rounded ? 'rounded' : '',
 			props.dismissible ? 'dismissible' : '',
 		],
-		additional: props.class,
 	})
 	const themedClasses = getClassNames({
 		component: 'Themed',
-		modifiers: [props.color ?? 'grey'],
+		modifiers: [props.color ?? 'blue'],
 	})
 	return `${badgeClasses} ${themedClasses}`
 })
-
-const handleDismiss = () => {
-	emit('dismiss')
-}
 </script>
 
 <template>
@@ -40,7 +38,7 @@ const handleDismiss = () => {
 			type="button"
 			class="NeoBadge-dismiss"
 			aria-label="Dismiss"
-			@click="handleDismiss"
+			@click="emit('dismiss')"
 		>
 			×
 		</button>
@@ -78,18 +76,20 @@ const handleDismiss = () => {
 
 .NeoBadge--dismissible {
 	gap: var(--neo-gap-sm);
-	padding-inline-end: var(--neo-spacing-core-xs);
+	padding-inline-end: var(--neo-spacing-core-sm);
 }
 
 .NeoBadge-dismiss {
 	align-items: center;
 	background: transparent;
+	block-size: 1em;
 	border: none;
 	color: inherit;
 	cursor: pointer;
 	display: inline-flex;
 	font-size: 1.3em;
-	line-height: 1;
+	justify-content: center;
+	line-height: 0;
 	padding: 0;
 	transition: opacity 0.2s;
 

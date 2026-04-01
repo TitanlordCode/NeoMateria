@@ -1,0 +1,22 @@
+.NeoDropdown {
+	--NeoDropdown-color-panelBackground: var(--neo-color-white);
+	--NeoDropdown-color-panelBorder: var(--neo-color-grey300);
+	--NeoDropdown-color-panelShadow: var(--neo-color-shadow-md);
+	--NeoDropdown-color-panelText: var(--neo-color-grey900);
+
+	@mixin onDark {
+		--NeoDropdown-color-panelBackground: var(--neo-color-grey900);
+		--NeoDropdown-color-panelBorder: var(--neo-color-grey700);
+		--NeoDropdown-color-panelShadow: var(--neo-color-shadow-lg);
+		--NeoDropdown-color-panelText: var(--neo-color-grey100);
+	}
+}
+
+/* Panel always establishes its own dark-mode context based on its background color */
+.NeoDropdown-panel {
+	@mixin unsetOnDark; /* light panel: reset to light context by default */
+
+	@mixin onDark {
+		@mixin setOnDark; /* dark panel: re-establish dark context */
+	}
+}

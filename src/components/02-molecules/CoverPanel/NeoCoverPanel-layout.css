@@ -1,0 +1,10 @@
+/* Default sizing */
+.NeoCoverPanel {
+	--NeoCoverPanel-sizing-borderRadius: var(--neo-radius-md);
+	--NeoCoverPanel-sizing-actionSize: var(--neo-sizing-input-height-lg);
+	--NeoCoverPanel-sizing-actionIconSize: 20px;
+}
+
+.NeoCoverPanel--rounded {
+	--NeoCoverPanel-sizing-borderRadius: var(--neo-radius-2xl);
+}

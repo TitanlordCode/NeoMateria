@@ -1,0 +1,13 @@
+.NeoProgressPanel {
+	--NeoProgressPanel-color-background: var(--neo-color-white);
+	--NeoProgressPanel-color-title: var(--neo-color-grey900);
+	--NeoProgressPanel-color-subtitle: var(--neo-color-grey700);
+	--NeoProgressPanel-color-valueLabel: var(--neo-color-grey700);
+
+	@mixin onDark {
+		--NeoProgressPanel-color-background: var(--neo-color-grey900);
+		--NeoProgressPanel-color-title: var(--neo-color-white);
+		--NeoProgressPanel-color-subtitle: var(--neo-color-grey400);
+		--NeoProgressPanel-color-valueLabel: var(--neo-color-grey400);
+	}
+}

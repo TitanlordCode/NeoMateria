@@ -24,7 +24,7 @@
 }
 
 .NeoBadge--outlined {
-	--NeoBadge-sizing-borderWidth: 1px;
+	--NeoBadge-sizing-borderWidth: var(--neo-border-width);
 }
 
 .NeoBadge--dot {

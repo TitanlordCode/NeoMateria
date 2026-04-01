@@ -46,6 +46,13 @@ jobs:
       - name: 🧱 Build Storybook
         run: npm run build-storybook
 
+      - name: ♿ A11y tests
+        run: |
+          npx playwright install --with-deps chromium
+          npx vite preview --outDir storybook-static --port 6006 &
+          sleep 5
+          npm run test:storybook -- --url http://localhost:6006
+
   deploy-storybook:
     needs: build-test
     runs-on: ubuntu-latest
@@ -160,6 +167,28 @@ jobs:
       - name: 🧱 Build package (dev)
         if: steps.version-check.outputs.version_changed == 'false'
         run: npm run build
+
+      - name: 🧹 Deprecate old dev versions
+        if: steps.version-check.outputs.version_changed == 'false'
+        run: |
+          CURRENT_VERSION="${{ steps.version-check.outputs.current_version }}"
+          VERSIONS=$(node -e "
+            const { execSync } = require('child_process');
+            try {
+              const all = JSON.parse(execSync('npm view neo-materia versions --json').toString());
+              const devVersions = all.filter(v => v.startsWith(process.env.CURRENT_VERSION + '-dev.'));
+              console.log(devVersions.join('\n'));
+            } catch(e) { process.exit(0); }
+          ")
+          while IFS= read -r version; do
+            if [ -n "$version" ]; then
+              echo "Deprecating neo-materia@$version"
+              npm deprecate "neo-materia@$version" "Outdated dev build. Use neo-materia@dev for the latest development version." || true
+            fi
+          done <<< "$VERSIONS"
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          CURRENT_VERSION: ${{ steps.version-check.outputs.current_version }}
 
       - name: 🚀 Publish to npm (dev)
         if: steps.version-check.outputs.version_changed == 'false'

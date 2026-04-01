@@ -7,9 +7,12 @@ import { getClassNames } from '@/utils/classNames'
 const props = defineProps<NeoInputProps>()
 
 const emit = defineEmits<{
-	(e: 'update:value', value: string | number): void
-	(e: 'blur', event: FocusEvent): void
-	(e: 'focus', event: FocusEvent): void
+	/** Emitted on every keystroke. Receives the current input value. */
+	'update:value': [value: string | number]
+	/** Emitted when the input loses focus. */
+	blur: [event: FocusEvent]
+	/** Emitted when the input gains focus. */
+	focus: [event: FocusEvent]
 }>()
 
 const instanceId = generateUniqueId('input')
@@ -22,14 +25,6 @@ const handleInput = (event: Event) => {
 	emit('update:value', value)
 }
 
-const handleBlur = (event: FocusEvent) => {
-	emit('blur', event)
-}
-
-const handleFocus = (event: FocusEvent) => {
-	emit('focus', event)
-}
-
 const classes = computed(() => {
 	const inputClasses = getClassNames({
 		component: 'NeoInput',
@@ -39,11 +34,10 @@ const classes = computed(() => {
 			props.rounded ? 'rounded' : '',
 			props.errorMessage ? 'error' : '',
 		],
-		additional: props.class,
 	})
 	const themedClasses = getClassNames({
 		component: 'Themed',
-		modifiers: [props.color ?? 'grey'],
+		modifiers: [props.color ?? 'blue'],
 	})
 	return `${inputClasses} ${themedClasses}`
 })
@@ -53,7 +47,10 @@ const classes = computed(() => {
 	<div :class="classes">
 		<label v-if="props.label" class="NeoInput-label" :for="`${instanceId}-${props.name}`">
 			{{ props.label }}
-			<span v-if="props.required" class="NeoInput-required" aria-label="required">*</span>
+			<span v-if="props.required" class="NeoInput-required" aria-hidden="true">*</span>
+			<span v-if="props.required" class="NeoInput-requiredText sr-only">
+				({{ props.requiredText }})
+			</span>
 		</label>
 
 		<input
@@ -79,8 +76,8 @@ const classes = computed(() => {
 			"
 			:aria-invalid="props.errorMessage ? 'true' : undefined"
 			@input="handleInput"
-			@blur="handleBlur"
-			@focus="handleFocus"
+			@blur="emit('blur', $event)"
+			@focus="emit('focus', $event)"
 		/>
 
 		<div v-if="props.helpText || props.errorMessage" class="NeoInput-messageWrapper">

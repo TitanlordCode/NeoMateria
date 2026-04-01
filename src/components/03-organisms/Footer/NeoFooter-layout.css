@@ -1,0 +1,16 @@
+.NeoFooter {
+	--NeoFooter-sizing-padding: var(--neo-spacing-layout-md) var(--neo-spacing-layout-sm);
+	--NeoFooter-sizing-gap: var(--neo-spacing-layout-sm);
+	--NeoFooter-sizing-sectionGap: var(--neo-spacing-core-lg);
+	--NeoFooter-sizing-sectionTitleFont: var(--neo-fontSize-textMd);
+	--NeoFooter-sizing-linkFont: var(--neo-fontSize-textSm);
+	--NeoFooter-sizing-copyrightFont: var(--neo-fontSize-textSm);
+
+	@mixin bp-md {
+		--NeoFooter-sizing-padding: var(--neo-spacing-layout-lg) var(--neo-spacing-layout-md);
+	}
+
+	@mixin bp-lg {
+		--NeoFooter-sizing-padding: var(--neo-spacing-layout-lg) var(--neo-spacing-layout-lg);
+	}
+}

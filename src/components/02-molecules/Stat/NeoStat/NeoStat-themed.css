@@ -1,0 +1,11 @@
+.NeoStat-value {
+	--NeoStat-color-value: currentColor;
+}
+
+.NeoStat-label {
+	--NeoStat-color-label: currentColor;
+
+	@mixin onDark {
+		--NeoStat-color-label: currentColor;
+	}
+}

@@ -1,14 +1,14 @@
 .NeoCheckbox--small {
-	--NeoCheckbox-sizing-size: 16px;
+	--NeoCheckbox-sizing-size: var(--neo-sizing-control-sm);
 	--NeoCheckbox-sizing-labelFontSize: var(--neo-fontSize-textSm);
 }
 
 .NeoCheckbox--medium {
-	--NeoCheckbox-sizing-size: 20px;
+	--NeoCheckbox-sizing-size: var(--neo-sizing-control-md);
 	--NeoCheckbox-sizing-labelFontSize: var(--neo-fontSize-base);
 }
 
 .NeoCheckbox--large {
-	--NeoCheckbox-sizing-size: 24px;
+	--NeoCheckbox-sizing-size: var(--neo-sizing-control-lg);
 	--NeoCheckbox-sizing-labelFontSize: var(--neo-fontSize-textLg);
 }

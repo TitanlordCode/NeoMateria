@@ -1,0 +1,23 @@
+.NeoNavigation {
+	--NeoNavigation-color-background: var(--neo-color-white);
+	--NeoNavigation-color-border: var(--neo-color-grey300);
+	--NeoNavigation-color-link: var(--neo-color-grey700);
+	--NeoNavigation-color-linkHover: var(--neo-theme-colorAccessible);
+	--NeoNavigation-color-linkActive: var(--neo-theme-colorAccessible);
+	--NeoNavigation-color-mobileMenuBackground: var(--neo-color-white);
+	--NeoNavigation-color-mobileMenuBorder: var(--neo-color-grey300);
+	--NeoNavigation-color-dropdownHover: var(--neo-color-grey100);
+	--NeoNavigation-color-dropdownShadow: var(--neo-color-shadow-xs);
+
+	@mixin onDark {
+		--NeoNavigation-color-background: var(--neo-color-grey900);
+		--NeoNavigation-color-border: var(--neo-color-grey700);
+		--NeoNavigation-color-link: var(--neo-color-grey300);
+		--NeoNavigation-color-linkHover: var(--neo-theme-colorAccessible);
+		--NeoNavigation-color-linkActive: var(--neo-theme-colorAccessible);
+		--NeoNavigation-color-mobileMenuBackground: var(--neo-color-grey800);
+		--NeoNavigation-color-mobileMenuBorder: var(--neo-color-grey700);
+		--NeoNavigation-color-dropdownHover: var(--neo-color-grey700);
+		--NeoNavigation-color-dropdownShadow: var(--neo-color-shadow-md);
+	}
+}

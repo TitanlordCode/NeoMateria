@@ -1,0 +1,8 @@
+.NeoProgressBar {
+	--NeoProgressBar-color-fill: var(--neo-theme-color);
+	--NeoProgressBar-color-track: var(--neo-color-grey200);
+
+	@mixin onDark {
+		--NeoProgressBar-color-track: var(--neo-color-grey700);
+	}
+}

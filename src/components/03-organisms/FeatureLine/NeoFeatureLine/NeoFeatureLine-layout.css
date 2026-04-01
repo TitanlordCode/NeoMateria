@@ -1,0 +1,12 @@
+.NeoFeatureLine {
+	--NeoFeatureLine-sizing-gap: var(--neo-spacing-layout-md);
+	--NeoFeatureLine-sizing-imageRatio: 4 / 3;
+}
+
+.NeoFeatureLine--ratio-16-9 {
+	--NeoFeatureLine-sizing-imageRatio: 16 / 9;
+}
+
+.NeoFeatureLine--ratio-1-1 {
+	--NeoFeatureLine-sizing-imageRatio: 1 / 1;
+}

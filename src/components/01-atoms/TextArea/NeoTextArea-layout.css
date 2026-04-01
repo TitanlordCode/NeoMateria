@@ -1,6 +1,6 @@
 .NeoTextArea {
 	--NeoTextArea-sizing-borderRadius: unset;
-	--NeoTextArea-sizing-borderWidth: 1px;
+	--NeoTextArea-sizing-borderWidth: var(--neo-border-width);
 	--NeoTextArea-sizing-padding: var(--neo-sizing-input-padding-md);
 	--NeoTextArea-sizing-fontSize: var(--neo-fontSize-base);
 	--NeoTextArea-sizing-labelFontSize: var(--neo-fontSize-textSm);
@@ -8,7 +8,7 @@
 	--NeoTextArea-sizing-resize: vertical;
 }
 .NeoTextArea--primary {
-	--NeoTextArea-sizing-borderWidth: 1px;
+	--NeoTextArea-sizing-borderWidth: var(--neo-border-width);
 }
 
 .NeoTextArea--secondary {
@@ -17,7 +17,7 @@
 }
 
 .NeoTextArea--tertiary {
-	--NeoTextArea-sizing-borderWidth: 1px;
+	--NeoTextArea-sizing-borderWidth: var(--neo-border-width);
 }
 
 .NeoTextArea--small {

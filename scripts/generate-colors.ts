@@ -21,8 +21,6 @@ if (shouldSkipGeneration(SCRIPT_NAME, SOURCE_FILES, OUTPUT_FILES)) {
 	process.exit(0)
 }
 
-const specialColors: ColorName[] = ['white', 'black']
-
 /**
  * Generate TS file
  */
@@ -52,8 +50,7 @@ const colorNames: string[] = Object.keys(flatColors)
 		return result
 	}, [])
 
-// Generate color family names (without shade numbers) - excluding special colors
-const colorFamilies = colorNames.filter((name) => !specialColors.includes(name))
+const colorFamilies = colorNames
 
 const tsContent = `/**
  * --------------------------------------------------------------------
@@ -64,14 +61,11 @@ const tsContent = `/**
  * --------------------------------------------------------------------
  */
 
-/**
- * array for all possible colors names (including special colors)
-*/
 export const colorNames = \n${JSON.stringify(colorNames, null, 2)} as const
 
 /**
- * array for color families (without shade numbers)
- * Users specify these, and CSS handles the specific shade (500 by default)
+ * All color family names (without shade numbers).
+ * Users specify these; CSS resolves the specific shade (500 by default).
 */
 export const colors = \n${JSON.stringify(colorFamilies, null, 2)} as const
 
@@ -129,7 +123,7 @@ Object.entries(flatColors).forEach(([colorName]) => {
 
 	// Exception: Some colors can't support white text at any shade
 	// For these, we use black text in light mode for accessibility
-	const blackTextExceptions = ['yellow', 'amber', 'orange']
+	const blackTextExceptions = ['yellow', 'amber', 'orange', 'white']
 	const usesBlackTextInLightMode = blackTextExceptions.includes(family)
 
 	// LIGHT MODE: --neo-theme-color (background with white/black text ON it)
@@ -289,6 +283,13 @@ Object.entries(flatColors).forEach(([colorName]) => {
 		}
 	}
 
+	// Special case: black inverts in dark mode (black background → white background)
+	// This allows black-colored components to gracefully flip to white when inside a dark context
+	if (family === 'black') {
+		darkModeColorVar = 'white'
+		accessibleDarkColorVar = 'white'
+	}
+
 	// Text colors: white for most colors, black for exceptions
 	const textColor = usesBlackTextInLightMode ? 'black' : 'white'
 
@@ -414,9 +415,9 @@ const rows = lines.slice(2) // skip table header + --- separator
 
 type ColorName = (typeof colorNames)[number]
 
-const dataByColorName: Record<ColorName | 'special', string[]> = Object.fromEntries(
-	[...colorNames, 'special'].map((c) => [c, []]),
-) as Record<ColorName, string[]>
+const dataByColorName: Record<ColorName, string[]> = Object.fromEntries(
+	colorNames.map((c) => [c, []]),
+)
 
 // Build MDX table rows
 rows.forEach((line) => {
@@ -425,12 +426,8 @@ rows.forEach((line) => {
 		.map((c) => c.trim())
 		.filter((value) => value)
 
-	let name = data[0]
+	const name = data[0]
 	const value = data[2]
-
-	if (specialColors.includes(name)) {
-		name = 'special'
-	}
 
 	dataByColorName[name].push(`
 			<tr>
@@ -446,7 +443,7 @@ rows.forEach((line) => {
 						margin: 'auto',
 
 						backgroundColor: \`var(${value.replace(/`/g, '')})\`,
-						border: '1px solid #ccc'
+						border: '1px solid var(--docs-color-border)'
 					}}/>
 				</td>
 			</tr>
@@ -454,7 +451,7 @@ rows.forEach((line) => {
 })
 
 const tables = Object.entries(dataByColorName)
-	.filter(([colorName, tableData]) => tableData.length && !specialColors.includes(colorName))
+	.filter(([, tableData]) => tableData.length)
 	.map(
 		([color, tableData]) => `
 <div style={{inlineSize: '100%'}}>
@@ -475,7 +472,7 @@ const tables = Object.entries(dataByColorName)
 	)
 
 const mdxContent = `
-import { Meta, Title, Subtitle } from '@storybook/blocks'
+import { Meta, Title, Subtitle } from '@storybook/addon-docs/blocks'
 
 <Meta title="Foundation/Colors" />
 
@@ -518,11 +515,11 @@ All color combinations are tested to meet **WCAG AA** contrast requirements (4.5
 <div style={{
 	padding: '16px',
 	marginBlock: '24px',
-	backgroundColor: '#fff3cd',
-	border: '1px solid #ffc107',
+	backgroundColor: 'var(--docs-color-bg-warning)',
+	border: '1px solid var(--docs-color-border-warning)',
 	borderRadius: '4px'
 }}>
-	<strong>⚠️ Special Colors:</strong> Yellow, Amber, and Orange use black text in light mode because they are too bright for white text. These colors work best on light backgrounds.
+	<strong>⚠️ Special Colors:</strong> Yellow, Amber, and Orange use black text on their colored surface (buttons, badges) because they are too bright for white text. Avoid using them as text or link colors on light page backgrounds — they do not meet WCAG AA contrast against white.
 </div>
 
 ## Available Colors

@@ -8,8 +8,8 @@
 	--NeoInput-color-background: var(--neo-color-white);
 	--NeoInput-color-text: var(--neo-color-grey900);
 	--NeoInput-color-border: var(--neo-color-grey300);
-	--NeoInput-color-error: var(--neo-color-red500);
-	--NeoInput-color-required: var(--neo-color-red500);
+	--NeoInput-color-error: var(--neo-color-red700);
+	--NeoInput-color-required: var(--neo-color-red700);
 
 	@mixin onDark {
 		--NeoInput-color-focus: var(--neo-theme-color);

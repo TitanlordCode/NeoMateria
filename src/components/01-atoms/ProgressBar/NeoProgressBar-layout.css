@@ -1,0 +1,20 @@
+.NeoProgressBar {
+	--NeoProgressBar-sizing-height: 4px;
+	--NeoProgressBar-sizing-borderRadius: 0;
+}
+
+.NeoProgressBar--xs {
+	--NeoProgressBar-sizing-height: 2px;
+}
+
+.NeoProgressBar--small {
+	--NeoProgressBar-sizing-height: 4px;
+}
+
+.NeoProgressBar--medium {
+	--NeoProgressBar-sizing-height: 8px;
+}
+
+.NeoProgressBar--rounded {
+	--NeoProgressBar-sizing-borderRadius: var(--neo-radius-full);
+}

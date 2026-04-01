@@ -1,0 +1,11 @@
+.NeoHeadingGroup-overline {
+	--NeoHeadingGroup-color-overline: var(--neo-theme-colorAccessible, currentColor);
+}
+
+.NeoHeadingGroup-subtitle {
+	--NeoHeadingGroup-color-subtitle: currentColor;
+
+	@mixin onDark {
+		--NeoHeadingGroup-color-subtitle: currentColor;
+	}
+}

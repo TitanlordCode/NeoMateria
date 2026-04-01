@@ -7,7 +7,8 @@ import { getClassNames } from '@/utils/classNames'
 const props = defineProps<NeoRadioProps>()
 
 const emit = defineEmits<{
-	(e: 'update:checked', value: string): void
+	/** Emitted when this radio option is selected. Receives the option's `value` prop. */
+	'update:checked': [value: string]
 }>()
 
 const instanceId = generateUniqueId('radio')
@@ -23,11 +24,10 @@ const classes = computed(() => {
 	const radioClasses = getClassNames({
 		component: 'NeoRadio',
 		modifiers: [props.size ?? 'medium'],
-		additional: props.class,
 	})
 	const themedClasses = getClassNames({
 		component: 'Themed',
-		modifiers: [props.color ?? 'grey'],
+		modifiers: [props.color ?? 'blue'],
 	})
 	return `${radioClasses} ${themedClasses}`
 })
@@ -53,7 +53,10 @@ const classes = computed(() => {
 			:for="`${instanceId}-${props.name}-${props.value}`"
 		>
 			{{ props.label }}
-			<span v-if="props.required" class="NeoRadio-required" aria-label="required">*</span>
+			<span v-if="props.required" class="NeoRadio-required" aria-hidden="true">*</span>
+			<span v-if="props.required" class="NeoRadio-requiredText sr-only">
+				({{ props.requiredText }})
+			</span>
 		</label>
 	</div>
 </template>

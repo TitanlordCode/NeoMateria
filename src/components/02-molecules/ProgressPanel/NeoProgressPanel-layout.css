@@ -1,0 +1,10 @@
+.NeoProgressPanel {
+	--NeoProgressPanel-sizing-imageWidth: 100px;
+	--NeoProgressPanel-sizing-padding: var(--neo-spacing-core-md);
+	--NeoProgressPanel-sizing-borderRadius: var(--neo-radius-xl);
+	--NeoProgressPanel-sizing-titleClamp: 2;
+}
+
+.NeoProgressPanel--rounded {
+	--NeoProgressPanel-sizing-borderRadius: var(--neo-radius-2xl);
+}

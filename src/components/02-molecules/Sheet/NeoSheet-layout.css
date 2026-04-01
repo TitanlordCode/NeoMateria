@@ -1,0 +1,32 @@
+/* Size: Small */
+.NeoSheet--small {
+	--NeoSheet-sizing-width: 280px;
+	--NeoSheet-sizing-height: 300px;
+	--NeoSheet-sizing-padding: var(--neo-spacing-core-md);
+}
+
+/* Size: Medium */
+.NeoSheet--medium {
+	--NeoSheet-sizing-width: 380px;
+	--NeoSheet-sizing-height: 400px;
+	--NeoSheet-sizing-padding: var(--neo-spacing-core-lg);
+}
+
+/* Size: Large */
+.NeoSheet--large {
+	--NeoSheet-sizing-width: 500px;
+	--NeoSheet-sizing-height: 500px;
+	--NeoSheet-sizing-padding: var(--neo-spacing-core-lg);
+}
+
+/* Size: Full */
+.NeoSheet--full.NeoSheet--left,
+.NeoSheet--full.NeoSheet--right {
+	--NeoSheet-sizing-width: 100vw;
+	--NeoSheet-sizing-padding: var(--neo-spacing-core-lg);
+}
+
+.NeoSheet--full.NeoSheet--bottom {
+	--NeoSheet-sizing-height: 100vh;
+	--NeoSheet-sizing-padding: var(--neo-spacing-core-lg);
+}

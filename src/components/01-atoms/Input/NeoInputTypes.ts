@@ -1,4 +1,4 @@
-import type { Color } from '@/assets/typescript/colors'
+import type { SurfaceColor } from '@/assets/typescript/colorTypes'
 
 export const inputSizes = ['small', 'medium', 'large'] as const
 
@@ -20,21 +20,17 @@ export type NeoInputSize = (typeof inputSizes)[number]
 export type NeoInputVariant = (typeof inputVariants)[number]
 export type NeoInputType = (typeof inputTypes)[number]
 
-export interface NeoInputProps {
-	class?: string
+type NeoInputBase = {
 	name: string
-	label?: string
-	ariaLabel?: string
 	type?: NeoInputType
 	placeholder?: string
 	value?: string | number
 	helpText?: string
 	errorMessage?: string
-	size: NeoInputSize
-	color: Color
+	size?: NeoInputSize
+	color: SurfaceColor
 	disabled?: boolean
 	readonly?: boolean
-	required?: boolean
 	rounded?: boolean
 	variant?: NeoInputVariant
 	autocomplete?: string
@@ -45,3 +41,12 @@ export interface NeoInputProps {
 	step?: number
 	pattern?: string
 }
+
+type NeoInputWithLabel = { label: string; ariaLabel?: never }
+type NeoInputWithAriaLabel = { label?: never; ariaLabel: string }
+type NeoInputRequired = { required: true; requiredText: string }
+type NeoInputOptional = { required?: never; requiredText?: never }
+
+export type NeoInputProps = NeoInputBase &
+	(NeoInputWithLabel | NeoInputWithAriaLabel) &
+	(NeoInputRequired | NeoInputOptional)

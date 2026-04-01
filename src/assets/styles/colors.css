@@ -559,7 +559,7 @@
 
 .Themed--white {
 	--neo-theme-color: var(--neo-color-white);
-	--neo-theme-colorText: var(--neo-color-white);
+	--neo-theme-colorText: var(--neo-color-black);
 	--neo-theme-colorAccent: var(--neo-color-white);
 	--neo-theme-colorAccessible: var(--neo-color-white);
 	--neo-theme-colorFilledBg: var(--neo-color-white);
@@ -584,10 +584,10 @@
 	--neo-theme-colorFilledBgDark: var(--neo-color-black);
 
 	@mixin onDark {
-		--neo-theme-color: var(--neo-color-black);
+		--neo-theme-color: var(--neo-color-white);
 		--neo-theme-colorText: var(--neo-color-black);
 		--neo-theme-colorAccent: var(--neo-color-black);
-		--neo-theme-colorAccessible: var(--neo-color-black);
+		--neo-theme-colorAccessible: var(--neo-color-white);
 		--neo-theme-colorFilledBg: var(--neo-color-black);
 		--neo-theme-colorFilledBgDark: var(--neo-color-black);
 	}

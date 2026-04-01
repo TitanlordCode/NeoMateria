@@ -1,6 +1,7 @@
-import { colors } from '@/assets/typescript/colors'
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import NeoTextArea from './NeoTextArea.vue'
+import { textareaSizes, textareaVariants } from './NeoTextAreaTypes'
+import { ariaLabelArgType, disabledArgType } from '../../../../.storybook/utils/argTypes'
 import { createSimpleColorShowcase } from '../../../../.storybook/utils/colorShowcase'
 
 const meta = {
@@ -8,26 +9,69 @@ const meta = {
 	component: NeoTextArea,
 	tags: ['autodocs'],
 	argTypes: {
+		...ariaLabelArgType,
+		...disabledArgType,
+		name: { control: 'text', table: { category: 'Content' } },
+		label: { control: 'text', table: { category: 'Content' } },
+		placeholder: { control: 'text', table: { category: 'Content' } },
+		value: { control: 'text', table: { category: 'Content' } },
+		color: { description: 'Theme color for focus ring, labels, and accents.' },
 		size: {
 			control: 'select',
-			options: ['small', 'medium', 'large'],
+			options: textareaSizes,
+			table: { category: 'Appearance' },
+			description: 'Controls padding and font size.',
 		},
 		variant: {
 			control: 'select',
-			options: ['primary', 'secondary', 'tertiary'],
+			options: textareaVariants,
+			table: { category: 'Appearance' },
+			description: '`default`: standard outlined. `filled`: solid background.',
+		},
+		rows: {
+			control: 'number',
+			table: { category: 'Appearance' },
+			description:
+				'Initial visible line count. The user can resize beyond this unless `resize` is `none`.',
 		},
 		resize: {
 			control: 'select',
 			options: ['none', 'vertical', 'horizontal', 'both'],
+			table: { category: 'Appearance' },
+			description:
+				'Controls which directions the user can resize the textarea. `none` disables resizing entirely.',
 		},
-		color: {
-			control: 'select',
-			options: colors,
+		rounded: {
+			control: 'boolean',
+			table: { category: 'Appearance' },
+			description: 'Applies fully rounded corners.',
 		},
+		readonly: {
+			control: 'boolean',
+			table: { category: 'State' },
+			description: 'Non-editable but focusable. Value is still submitted.',
+		},
+		required: { control: 'boolean', table: { category: 'State' } },
+		helpText: {
+			control: 'text',
+			table: { category: 'Validation' },
+			description: 'Descriptive text below the field. Used for hints.',
+		},
+		errorMessage: {
+			control: 'text',
+			table: { category: 'Validation' },
+			description: 'Replaces `helpText` and applies error styling.',
+		},
+		maxLength: {
+			control: 'number',
+			table: { category: 'Validation' },
+			description: 'Hard character limit. A character counter is shown below the field.',
+		},
+		minLength: { control: 'number', table: { category: 'Validation' } },
 	},
 	args: {
 		name: 'example-textarea',
-		label: 'Label',
+		ariaLabel: 'Label',
 		placeholder: 'Enter your text here...',
 		size: 'medium',
 		variant: 'primary',
@@ -39,6 +83,13 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {}
+
+export const WithLabel: Story = {
+	args: {
+		label: 'Description',
+		ariaLabel: undefined,
+	},
+}
 
 export const WithHelpText: Story = {
 	args: {
@@ -54,7 +105,10 @@ export const WithError: Story = {
 
 export const Required: Story = {
 	args: {
+		label: 'Textarea Field',
+		ariaLabel: undefined,
 		required: true,
+		requiredText: 'This field is required',
 	},
 }
 

@@ -1,7 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import NeoBadge from './NeoBadge.vue'
 import type { NeoBadgeProps } from './NeoBadgeTypes'
+import { badgeSizes, badgeVariants } from './NeoBadgeTypes'
 import { defineComponent } from 'vue'
+import { fn } from 'storybook/test'
 import { createSimpleColorShowcase } from '../../../../.storybook/utils/colorShowcase'
 
 const meta = {
@@ -9,18 +11,34 @@ const meta = {
 	component: NeoBadge,
 	tags: ['autodocs'],
 	argTypes: {
+		text: { control: 'text', table: { category: 'Content' } },
+		color: {
+			description: 'Theme color for the badge.',
+			table: { category: 'Appearance' },
+		},
 		size: {
 			control: 'select',
-			options: ['small', 'medium', 'large'],
+			options: badgeSizes,
+			description: 'Controls padding and font size.',
+			table: { category: 'Appearance' },
 		},
 		variant: {
 			control: 'select',
-			options: ['solid', 'outlined', 'dot'],
+			options: badgeVariants,
+			description:
+				'`solid`: filled background. `outlined`: border only with transparent background. `dot`: shows only a small colored dot, no text.',
+			table: { category: 'Appearance' },
 		},
-		color: {
-			table: {
-				defaultValue: { summary: 'blue' },
-			},
+		rounded: {
+			control: 'boolean',
+			description: 'Applies fully rounded corners for a pill shape.',
+			table: { category: 'Appearance' },
+		},
+		dismissible: {
+			control: 'boolean',
+			description:
+				'Shows a close button that emits `dismiss` when clicked. Useful for removable filter tags.',
+			table: { category: 'Behavior' },
 		},
 	},
 	args: {
@@ -28,6 +46,7 @@ const meta = {
 		size: 'medium',
 		variant: 'solid',
 		color: 'blue',
+		onDismiss: fn(),
 	},
 } satisfies Meta<typeof NeoBadge>
 
@@ -68,6 +87,18 @@ export const Rounded: Story = {
 }
 
 export const StatusBadges: Story = {
+	parameters: {
+		docs: {
+			source: {
+				code: `<div style="display: flex; gap: 12px; flex-wrap: wrap;">
+  <NeoBadge color="green" text="Active" />
+  <NeoBadge color="yellow" text="Pending" />
+  <NeoBadge color="red" text="Error" />
+  <NeoBadge color="grey" text="Inactive" />
+</div>`,
+			},
+		},
+	},
 	render: (args: NeoBadgeProps) => {
 		return defineComponent({
 			name: 'StatusBadgesRender',
@@ -86,6 +117,22 @@ export const StatusBadges: Story = {
 }
 
 export const WithNotification: Story = {
+	parameters: {
+		docs: {
+			source: {
+				code: `<div style="position: relative; display: inline-block;">
+  <button>Notifications</button>
+  <NeoBadge
+    variant="solid"
+    size="small"
+    color="red"
+    text="5"
+    style="position: absolute; top: -8px; right: -8px;"
+  />
+</div>`,
+			},
+		},
+	},
 	render: (args: NeoBadgeProps) => {
 		return defineComponent({
 			name: 'WithNotificationRender',
@@ -95,7 +142,7 @@ export const WithNotification: Story = {
 						<button
 							style={{
 								padding: '12px 24px',
-								background: 'var(--neo-color-blue500)',
+								background: 'var(--neo-color-blue700)',
 								color: 'var(--neo-color-white)',
 								border: 'none',
 								borderRadius: '4px',
@@ -120,6 +167,16 @@ export const WithNotification: Story = {
 }
 
 export const DotIndicator: Story = {
+	parameters: {
+		docs: {
+			source: {
+				code: `<div style="display: flex; align-items: center; gap: 8px;">
+  <NeoBadge variant="dot" color="green" />
+  <span>Online</span>
+</div>`,
+			},
+		},
+	},
 	render: (args: NeoBadgeProps) => {
 		return defineComponent({
 			name: 'DotIndicatorRender',
@@ -144,6 +201,30 @@ export const Dismissible: Story = {
 }
 
 export const DismissibleTags: Story = {
+	parameters: {
+		docs: {
+			source: {
+				code: `<script setup>
+const tags = ref(['TypeScript', 'Vue', 'React', 'Angular'])
+const dismiss = (tag) => tags.value = tags.value.filter(existingTag => existingTag !== tag)
+</script>
+
+<template>
+  <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+    <NeoBadge
+      v-for="tag in tags"
+      :key="tag"
+      :text="tag"
+      color="blue"
+      dismissible
+      rounded
+      @dismiss="dismiss(tag)"
+    />
+  </div>
+</template>`,
+			},
+		},
+	},
 	render: (args: NeoBadgeProps) => {
 		return defineComponent({
 			name: 'DismissibleTagsRender',

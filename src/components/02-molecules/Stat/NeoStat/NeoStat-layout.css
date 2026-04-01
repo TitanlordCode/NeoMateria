@@ -1,0 +1,15 @@
+.NeoStat {
+	--NeoStat-sizing-gap: var(--neo-gap-xs);
+	--NeoStat-sizing-labelSize: var(--neo-fontSize-textSm);
+	--NeoStat-sizing-valueSize: var(--neo-fontSize-headlineSm);
+}
+
+.NeoStat--sm {
+	--NeoStat-sizing-labelSize: var(--neo-fontSize-textXs);
+	--NeoStat-sizing-valueSize: var(--neo-fontSize-headlineXs);
+}
+
+.NeoStat--lg {
+	--NeoStat-sizing-labelSize: var(--neo-fontSize-textMd);
+	--NeoStat-sizing-valueSize: var(--neo-fontSize-headlineMd);
+}

@@ -1,13 +1,13 @@
 .NeoSelect {
 	--NeoSelect-sizing-borderRadius: unset;
-	--NeoSelect-sizing-borderWidth: 1px;
+	--NeoSelect-sizing-borderWidth: var(--neo-border-width);
 	--NeoSelect-sizing-padding: var(--neo-sizing-input-padding-md);
 	--NeoSelect-sizing-inline: var(--neo-sizing-input-height-md);
 	--NeoSelect-sizing-fontSize: var(--neo-fontSize-base);
 }
 
 .NeoSelect--primary {
-	--NeoSelect-sizing-borderWidth: 1px;
+	--NeoSelect-sizing-borderWidth: var(--neo-border-width);
 }
 
 .NeoSelect--secondary {
@@ -16,7 +16,7 @@
 }
 
 .NeoSelect--tertiary {
-	--NeoSelect-sizing-borderWidth: 1px;
+	--NeoSelect-sizing-borderWidth: var(--neo-border-width);
 }
 
 .NeoSelect--small {

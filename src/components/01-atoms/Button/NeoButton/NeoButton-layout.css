@@ -1,0 +1,36 @@
+.NeoButton--primary,
+.NeoButton--tertiary,
+.NeoButton--ghost {
+	--NeoButton-sizing-borderRadius: unset;
+	--NeoButton-sizing-borderWidth: 0;
+}
+
+.NeoButton--secondary {
+	--NeoButton-sizing-borderWidth: var(--neo-border-width);
+}
+
+.NeoButton--small {
+	--NeoButton-sizing-padding: var(--neo-sizing-input-padding-sm);
+	--NeoButton-sizing-inline: var(--neo-sizing-input-height-sm);
+	--NeoButton-sizing-fontSize: var(--neo-fontSize-textSm);
+}
+
+.NeoButton--medium {
+	--NeoButton-sizing-padding: var(--neo-sizing-input-padding-md);
+	--NeoButton-sizing-inline: var(--neo-sizing-input-height-md);
+	--NeoButton-sizing-fontSize: var(--neo-fontSize-base);
+}
+
+.NeoButton--large {
+	--NeoButton-sizing-padding: var(--neo-sizing-input-padding-lg);
+	--NeoButton-sizing-inline: var(--neo-sizing-input-height-lg);
+	--NeoButton-sizing-fontSize: var(--neo-fontSize-textLg);
+}
+
+.NeoButton--rounded {
+	--NeoButton-sizing-borderRadius: var(--neo-border-input-radius);
+}
+
+.NeoButton--ghost {
+	--NeoButton-sizing-padding: 0;
+}

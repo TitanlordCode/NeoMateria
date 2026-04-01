@@ -6,19 +6,28 @@ module.exports = {
 			files: ['**/*.vue', '**/*.html', '**/*.css'],
 			customSyntax: 'postcss-html',
 		},
+		{
+			// Layout and themed CSS files must only contain CSS custom property declarations.
+			// Actual CSS rules belong in the component's .vue <style scoped> block.
+			files: ['**/*-layout.css', '**/*-themed.css'],
+			rules: {
+				'property-allowed-list': [],
+			},
+		},
 	],
 	rules: {
+		'declaration-block-no-redundant-longhand-properties': null,
 		'at-rule-no-unknown': [
 			true,
 			{
-				ignoreAtRules: ['define-mixin'],
+				ignoreAtRules: ['define-mixin', 'mixin'],
 			},
 		],
 		'length-zero-no-unit': true,
 		'order/order': ['custom-properties', 'declarations'],
 		'order/properties-alphabetical-order': true,
 		'custom-property-pattern':
-			'^(neo|[A-Z][a-zA-Z0-9]*)-(color|sizing|fontSize|border|theme|spacing|gap|radius)(-[a-zA-Z0-9]+)+$',
+			'^(neo|[A-Z][a-zA-Z0-9]*)-(color|sizing|fontSize|fontWeight|lineHeight|border|theme|spacing|gap|radius)(-[a-zA-Z0-9]+)+$',
 		'selector-class-pattern':
 			'^(is-[a-z]+|[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*(?:--[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*)?)$',
 		'property-disallowed-list': [

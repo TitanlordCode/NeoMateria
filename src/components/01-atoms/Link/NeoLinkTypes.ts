@@ -8,7 +8,6 @@ export type NeoLinkSize = (typeof linkSizes)[number]
 export type NeoLinkVariant = (typeof linkVariants)[number]
 
 export interface NeoLinkProps {
-	class?: string
 	href: string
 	text?: string
 	size: NeoLinkSize

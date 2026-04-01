@@ -1,8 +1,10 @@
-import { colors } from '@/assets/typescript/colors'
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import NeoSpinner from './NeoSpinner.vue'
+import NeoButton from '../Button/NeoButton/NeoButton.vue'
 import { defineComponent } from 'vue'
 import type { NeoSpinnerProps } from './NeoSpinnerTypes'
+import type { SurfaceColor } from '@/assets/typescript/colorTypes'
+import { spinnerSizes } from './NeoSpinnerTypes'
 import { createSimpleColorShowcase } from '../../../../.storybook/utils/colorShowcase'
 
 const meta = {
@@ -10,18 +12,29 @@ const meta = {
 	component: NeoSpinner,
 	tags: ['autodocs'],
 	argTypes: {
+		color: { description: 'Theme color of the spinning indicator.' },
 		size: {
 			control: 'select',
-			options: ['small', 'medium', 'large'],
+			options: spinnerSizes,
+			table: { category: 'Appearance' },
+			description: 'Controls the spinner diameter.',
 		},
-		color: {
-			control: 'select',
-			options: colors,
+		label: {
+			control: 'text',
+			table: { category: 'Accessibility' },
+			description: 'Visible text label rendered alongside the spinner.',
+		},
+		ariaLabel: {
+			control: 'text',
+			table: { category: 'Accessibility' },
+			description:
+				"Screen-reader label when no visible label is shown. Defaults to 'Loading' if omitted.",
 		},
 	},
 	args: {
 		size: 'medium',
 		color: 'blue',
+		ariaLabel: 'Loading',
 	},
 } satisfies Meta<typeof NeoSpinner>
 
@@ -42,46 +55,48 @@ export const Large: Story = {
 	},
 }
 
+export const LabelRow: Story = {
+	args: {
+		label: 'Please wait...',
+		dir: 'row',
+	},
+}
 export const CustomLabel: Story = {
 	args: {
 		label: 'Please wait...',
 	},
 }
 
-export const WithoutLabel: Story = {
-	args: {
-		label: '',
-	},
-}
+export const WithoutLabel: Story = {}
 
 export const InButton: Story = {
+	parameters: {
+		docs: {
+			source: {
+				code: `<NeoButton text="Loading..." color="blue" variant="primary">
+  <template #prefix>
+    <NeoSpinner size="small" color="blue" :aria-hidden="true" />
+  </template>
+</NeoButton>`,
+			},
+		},
+	},
 	render: (args: NeoSpinnerProps) => {
 		return defineComponent({
 			name: 'InButtonRender',
 			setup() {
 				return () => (
-					<button
-						style={{
-							padding: '12px 24px',
-							background: 'var(--neo-color-blue500)',
-							color: 'var(--neo-color-white)',
-							border: 'none',
-							borderRadius: '4px',
-							cursor: 'pointer',
-							display: 'flex',
-							alignItems: 'center',
-							gap: '8px',
+					<NeoButton
+						color={args.color as SurfaceColor}
+						variant="primary"
+						text="Loading..."
+						v-slots={{
+							prefix: () => <NeoSpinner size="small" color={args.color} ariaHidden={true} />,
 						}}
-					>
-						<NeoSpinner {...args} size="small" label="" />
-						Loading...
-					</button>
+					/>
 				)
 			},
 		})
-	},
-	args: {
-		color: 'grey',
 	},
 }
 
@@ -105,7 +120,17 @@ export const AllColors: Story = {
 		{
 			variant: 'default',
 			label: 'Spinner',
-			render: (color, _, args) => <NeoSpinner {...args} color={color} label={color} />,
+			render: (color, _, args) => {
+				return (
+					<NeoSpinner
+						{...args}
+						ariaLabel={undefined}
+						ariaHidden={undefined}
+						color={color}
+						label={color}
+					/>
+				)
+			},
 		},
 	]),
 }
@@ -120,7 +145,17 @@ export const AllColorsOnDark: Story = {
 			{
 				variant: 'default',
 				label: 'Spinner',
-				render: (color, _, args) => <NeoSpinner {...args} color={color} label={color} />,
+				render: (color, _, args) => {
+					return (
+						<NeoSpinner
+							{...args}
+							ariaLabel={undefined}
+							ariaHidden={undefined}
+							color={color}
+							label={color}
+						/>
+					)
+				},
 			},
 		],
 		{

@@ -1,8 +1,9 @@
-import { colors } from '@/assets/typescript/colors'
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import NeoLink from './NeoLink.vue'
 import { defineComponent } from 'vue'
 import type { NeoLinkProps } from './NeoLinkTypes'
+import { linkSizes, linkVariants } from './NeoLinkTypes'
+import { disabledArgType } from '../../../../.storybook/utils/argTypes'
 import { createSimpleColorShowcase } from '../../../../.storybook/utils/colorShowcase'
 
 const meta = {
@@ -10,22 +11,33 @@ const meta = {
 	component: NeoLink,
 	tags: ['autodocs'],
 	argTypes: {
+		...disabledArgType,
+		href: { control: 'text', table: { category: 'Content' } },
+		text: { control: 'text', table: { category: 'Content' } },
+		color: {
+			description: 'Theme color applied to the link text and underline.',
+			table: { category: 'Appearance' },
+		},
 		size: {
 			control: 'select',
-			options: ['small', 'medium', 'large'],
+			options: linkSizes,
+			description: 'Controls font size.',
+			table: { category: 'Appearance' },
 		},
 		variant: {
 			control: 'select',
-			options: ['default', 'underline', 'button'],
+			options: linkVariants,
+			description:
+				'`default`: colored text, no underline at rest. `underline`: always underlined. `button`: renders the link styled as a button for call-to-action usage.',
+			table: { category: 'Appearance' },
 		},
+		external: { control: 'boolean', table: { category: 'Behavior' } },
 		target: {
 			control: 'select',
 			options: ['_blank', '_self', '_parent', '_top'],
+			table: { category: 'Behavior' },
 		},
-		color: {
-			control: 'select',
-			options: colors,
-		},
+		rel: { control: 'text', table: { category: 'Behavior' } },
 	},
 	args: {
 		href: 'https://example.com',
@@ -80,6 +92,16 @@ export const Large: Story = {
 }
 
 export const WithSlot: Story = {
+	parameters: {
+		docs: {
+			source: {
+				code: `<!-- Use the default slot for rich link content instead of the text prop -->
+<NeoLink href="https://example.com" color="blue">
+  <strong>Custom content</strong> with <em>formatting</em>
+</NeoLink>`,
+			},
+		},
+	},
 	render: (args: NeoLinkProps) => {
 		return defineComponent({
 			name: 'WithSlotRender',

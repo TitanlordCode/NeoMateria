@@ -1,0 +1,20 @@
+.NeoLinkGroup--small {
+	--NeoLinkGroup-sizing-gap: var(--neo-gap-xs);
+	--NeoLinkGroup-sizing-linkGap: var(--neo-gap-xs);
+	--NeoLinkGroup-sizing-titleFontSize: var(--neo-fontSize-textSm);
+	--NeoLinkGroup-sizing-linkFontSize: var(--neo-fontSize-textSm);
+}
+
+.NeoLinkGroup--medium {
+	--NeoLinkGroup-sizing-gap: var(--neo-gap-sm);
+	--NeoLinkGroup-sizing-linkGap: var(--neo-gap-xs);
+	--NeoLinkGroup-sizing-titleFontSize: var(--neo-fontSize-base);
+	--NeoLinkGroup-sizing-linkFontSize: var(--neo-fontSize-base);
+}
+
+.NeoLinkGroup--large {
+	--NeoLinkGroup-sizing-gap: var(--neo-gap-md);
+	--NeoLinkGroup-sizing-linkGap: var(--neo-gap-sm);
+	--NeoLinkGroup-sizing-titleFontSize: var(--neo-fontSize-textLg);
+	--NeoLinkGroup-sizing-linkFontSize: var(--neo-fontSize-base);
+}

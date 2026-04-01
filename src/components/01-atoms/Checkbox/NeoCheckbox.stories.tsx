@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import NeoCheckbox from './NeoCheckbox.vue'
-import { colors } from '@/assets/typescript/colors'
+import { checkboxSizes } from './NeoCheckboxTypes'
+import { ariaLabelArgType, disabledArgType } from '../../../../.storybook/utils/argTypes'
 import { createSimpleColorShowcase } from '../../../../.storybook/utils/colorShowcase'
 
 const meta = {
@@ -8,13 +9,25 @@ const meta = {
 	component: NeoCheckbox,
 	tags: ['autodocs'],
 	argTypes: {
+		...ariaLabelArgType,
+		...disabledArgType,
+		name: { control: 'text', table: { category: 'Content' } },
+		label: { control: 'text', table: { category: 'Content' } },
+		value: { control: 'text', table: { category: 'Content' } },
+		color: { description: 'Theme color for the checkbox fill and focus ring.' },
 		size: {
 			control: 'select',
-			options: ['small', 'medium', 'large'],
+			options: checkboxSizes,
+			table: { category: 'Appearance' },
+			description: 'Controls the checkbox size and label font size.',
 		},
-		color: {
-			control: 'select',
-			options: colors,
+		checked: { control: 'boolean', table: { category: 'State' } },
+		required: { control: 'boolean', table: { category: 'State' } },
+		indeterminate: {
+			control: 'boolean',
+			table: { category: 'State' },
+			description:
+				'Puts the checkbox into a third, partially-checked state. Commonly used for a \'select all\' control when only some children are selected. Sets `aria-checked="mixed"`.',
 		},
 	},
 	args: {
@@ -47,6 +60,7 @@ export const Indeterminate: Story = {
 export const Required: Story = {
 	args: {
 		required: true,
+		requiredText: 'This field is required',
 	},
 }
 
@@ -78,6 +92,7 @@ export const Large: Story = {
 export const WithoutLabel: Story = {
 	args: {
 		label: undefined,
+		ariaLabel: 'Accept terms and conditions',
 	},
 }
 
@@ -101,9 +116,18 @@ export const AllColors: Story = {
 		{
 			variant: 'default',
 			label: 'Checkbox',
-			render: (color, _, args) => (
-				<NeoCheckbox {...args} color={color} label={color} name="color-checkbox" checked={true} />
-			),
+			render: (color, _variant, args) => {
+				return (
+					<NeoCheckbox
+						{...args}
+						ariaLabel={undefined}
+						color={color}
+						label={color}
+						name="color-checkbox"
+						checked={true}
+					/>
+				)
+			},
 		},
 	]),
 }
@@ -118,9 +142,18 @@ export const AllColorsOnDark: Story = {
 			{
 				variant: 'default',
 				label: 'Checkbox',
-				render: (color, _, args) => (
-					<NeoCheckbox {...args} color={color} label={color} name="color-checkbox" checked={true} />
-				),
+				render: (color, _, args) => {
+					return (
+						<NeoCheckbox
+							{...args}
+							ariaLabel={undefined}
+							color={color}
+							label={color}
+							name="color-checkbox"
+							checked={true}
+						/>
+					)
+				},
 			},
 		],
 		{
