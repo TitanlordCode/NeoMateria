@@ -1,5 +1,6 @@
 import './assets/styles/globals.css'
 
+export { type Color } from '@/assets/typescript/colors'
 export { type SurfaceColor } from '@/assets/typescript/colorTypes'
 export { breakpoints, mediaQueries, type BreakpointKey } from '@/assets/typescript/breakpoints'
 
@@ -45,6 +46,21 @@ export { type NeoLinkProps } from '@/components/01-atoms/Link/NeoLinkTypes'
 
 export { default as NeoSpinner } from '@/components/01-atoms/Spinner/NeoSpinner.vue'
 export { type NeoSpinnerProps } from '@/components/01-atoms/Spinner/NeoSpinnerTypes'
+
+export { default as NeoSwitch } from '@/components/01-atoms/Switch/NeoSwitch.vue'
+export {
+	type NeoSwitchProps,
+	type NeoSwitchSize,
+	switchSizes,
+} from '@/components/01-atoms/Switch/NeoSwitchTypes'
+
+export { default as NeoTooltip } from '@/components/01-atoms/Tooltip/NeoTooltip.vue'
+export {
+	type NeoTooltipProps,
+	type NeoTooltipPlacement,
+	type NeoTooltipSlots,
+	tooltipPlacements,
+} from '@/components/01-atoms/Tooltip/NeoTooltipTypes'
 
 export { default as NeoBadge } from '@/components/01-atoms/Badge/NeoBadge.vue'
 export { type NeoBadgeProps, type NeoBadgeSlots } from '@/components/01-atoms/Badge/NeoBadgeTypes'

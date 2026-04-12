@@ -14,6 +14,8 @@ import { ariaLabelArgType } from '../../../../.storybook/utils/argTypes'
 import { createSimpleColorShowcase } from '../../../../.storybook/utils/colorShowcase'
 import { createA11yPlay } from '../../../../.storybook/utils/createA11yPlay'
 
+const faviconUrl = new URL('../../../../public/favicon.svg', import.meta.url).href
+
 const exampleLinks: NeoNavigationProps['links'] = [
 	{ text: 'Home', href: '/', active: true },
 	{ text: 'Games', href: '/games' },
@@ -46,7 +48,7 @@ const nestedLinks: NeoNavigationProps['links'] = [
 
 const renderBrandLogo = (text: string = 'NeoMateria') => (
 	<div style={{ alignItems: 'center', display: 'flex', gap: '8px' }}>
-		<NeoImage src="/favicon.svg" alt="" width={24} height={24} objectFit="contain" />
+		<NeoImage src={faviconUrl} alt="" width={24} height={24} objectFit="contain" />
 		<span style={{ color: 'var(--neo-theme-color)', fontSize: '18px', fontWeight: 'bold' }}>
 			{text}
 		</span>

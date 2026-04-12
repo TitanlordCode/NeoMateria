@@ -1,6 +1,3 @@
-/* Storybook-only font import - NOT included in the distributed package */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
 /* Import color showcase utilities */
 @import url('./utils/colorShowcase.css');
 
@@ -24,25 +21,6 @@
 		--docs-color-bg-warning: rgba(255, 193, 7, 0.12);
 		--docs-color-border-warning: var(--neo-color-amber400);
 	}
-}
-
-/* Override --neo-fontFamily-base with Inter for Storybook preview.
-   This demonstrates exactly how consumers set a custom font — override the
-   variable on a container element and re-apply font-family to pick it up. */
-#storybook-root,
-#storybook-docs [id^='story'] {
-	--neo-fontFamily-base:
-		'Inter',
-		-apple-system,
-		BlinkMacSystemFont,
-		'Segoe UI',
-		Roboto,
-		'Helvetica Neue',
-		Arial,
-		sans-serif;
-	font-family: var(--neo-fontFamily-base);
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
 }
 
 /* Set background colors for story containers in docs */

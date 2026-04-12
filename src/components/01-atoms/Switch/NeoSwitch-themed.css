@@ -1,0 +1,17 @@
+.NeoSwitch {
+	--NeoSwitch-color-trackOff: var(--neo-color-grey300);
+	--NeoSwitch-color-thumb: var(--neo-color-white);
+	--NeoSwitch-color-thumbShadow: rgb(0 0 0 / 25%);
+	--NeoSwitch-color-trackOn: var(--neo-theme-color);
+	--NeoSwitch-color-focus: var(--neo-theme-color);
+	--NeoSwitch-color-label: var(--neo-color-grey900);
+
+	@mixin onDark {
+		--NeoSwitch-color-trackOff: var(--neo-color-grey600);
+		--NeoSwitch-color-thumb: var(--neo-color-white);
+		--NeoSwitch-color-thumbShadow: rgb(0 0 0 / 40%);
+		--NeoSwitch-color-trackOn: var(--neo-theme-color);
+		--NeoSwitch-color-focus: var(--neo-theme-color);
+		--NeoSwitch-color-label: var(--neo-color-white);
+	}
+}

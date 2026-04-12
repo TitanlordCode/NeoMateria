@@ -170,8 +170,7 @@ const prepareForSnapshot = async (context: unknown) => {
         'html { scrollbar-width: none !important; } ' +
         '::-webkit-scrollbar { display: none !important; } ' +
         '*, *::before, *::after { ' +
-        'animation-duration: 0.001ms !important; ' +
-        'animation-delay: 0ms !important; ' +
+        'animation: none !important; ' +
         'transition-duration: 0ms !important; ' +
         'transition-delay: 0ms !important; }'
       document.head.appendChild(style)
@@ -272,6 +271,8 @@ export default defineConfig({
         },
         test: {
           name: 'storybook-snapshots',
+          // Each afterEach takes 3 viewport screenshots; allow extra time under load.
+          hookTimeout: 90_000,
           browser: {
             enabled: true,
             headless: true,

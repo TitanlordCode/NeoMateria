@@ -20,3 +20,12 @@ services:
       - .:/app
       - /app/node_modules
     container_name: neo-materia-tests
+
+  snapshots:
+    build:
+      context: .
+      dockerfile: docker/DOCKERFILE.snapshots
+    volumes:
+      - .:/app
+      - /app/node_modules
+    container_name: neo-materia-snapshots

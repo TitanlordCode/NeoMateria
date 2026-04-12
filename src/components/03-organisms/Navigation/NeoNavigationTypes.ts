@@ -46,8 +46,8 @@ export type NeoNavigationSlots = {
 	dropdownIcon?: (props: { isOpen: boolean }) => VNodeChild
 	/** Action buttons displayed in the navigation bar (e.g. login, search). */
 	actions?: () => VNodeChild
-	/** Custom trigger button for the collapsed actions dropdown. Receives `isOpen`. */
-	actionsMenuTrigger?: (props: { isOpen: boolean }) => VNodeChild
+	/** Custom trigger button for the collapsed actions dropdown. Receives `isOpen` and `toggle`. */
+	actionsMenuTrigger?: (props: { isOpen: boolean; toggle: () => void }) => VNodeChild
 	/** Custom icon for the mobile hamburger menu button. */
 	menuIcon?: () => VNodeChild
 	/** Custom content for the mobile menu panel, replacing auto-generated links. */
