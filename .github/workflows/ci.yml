@@ -54,7 +54,7 @@ jobs:
           npm run test:storybook -- --url http://localhost:6006
 
   deploy-storybook:
-    needs: build-test
+    needs: [build-test, publish-npm]
     runs-on: ubuntu-latest
 
     if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
@@ -74,31 +74,11 @@ jobs:
       - name: 📦 Install dependencies
         run: npm ci
 
-      - name: 🔍 Check version changed (main only)
-        if: github.ref == 'refs/heads/main'
-        id: version-check
-        run: |
-          CURRENT_VERSION=$(node -p "require('./package.json').version")
-          echo "current_version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
-
-          # Try to get the latest published version from npm
-          PUBLISHED_VERSION=$(npm view neo-materia version 2>/dev/null || echo "0.0.0")
-          echo "published_version=$PUBLISHED_VERSION" >> $GITHUB_OUTPUT
-
-          if [ "$CURRENT_VERSION" != "$PUBLISHED_VERSION" ]; then
-            echo "version_changed=true" >> $GITHUB_OUTPUT
-            echo "✅ Version changed from $PUBLISHED_VERSION to $CURRENT_VERSION - will deploy Storybook"
-          else
-            echo "version_changed=false" >> $GITHUB_OUTPUT
-            echo "⏭️  Version unchanged: $CURRENT_VERSION - skipping Storybook deployment"
-          fi
-
       - name: 🧱 Build Storybook
-        if: github.ref == 'refs/heads/develop' || (github.ref == 'refs/heads/main' && steps.version-check.outputs.version_changed == 'true')
         run: npm run build-storybook
 
       - name: 🚀 Deploy to GitHub Pages (Release)
-        if: github.ref == 'refs/heads/main' && steps.version-check.outputs.version_changed == 'true'
+        if: github.ref == 'refs/heads/main'
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -118,7 +98,7 @@ jobs:
     needs: build-test
     runs-on: ubuntu-latest
 
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
 
     steps:
       - name: ⬇️ Checkout repo
@@ -136,47 +116,43 @@ jobs:
       - name: 📦 Install dependencies
         run: npm ci
 
-      - name: 🔍 Check version changed
+      - name: 🔍 Check version changed (main only)
+        if: github.ref == 'refs/heads/main'
         id: version-check
         run: |
           CURRENT_VERSION=$(node -p "require('./package.json').version")
           echo "current_version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
 
-          # Try to get the latest published version from npm
           PUBLISHED_VERSION=$(npm view neo-materia version 2>/dev/null || echo "0.0.0")
           echo "published_version=$PUBLISHED_VERSION" >> $GITHUB_OUTPUT
 
           if [ "$CURRENT_VERSION" != "$PUBLISHED_VERSION" ]; then
             echo "version_changed=true" >> $GITHUB_OUTPUT
-            echo "Version changed from $PUBLISHED_VERSION to $CURRENT_VERSION"
+            echo "✅ Version changed from $PUBLISHED_VERSION to $CURRENT_VERSION"
           else
             echo "version_changed=false" >> $GITHUB_OUTPUT
-            echo "Version unchanged: $CURRENT_VERSION"
+            echo "❌ Version unchanged on main ($CURRENT_VERSION) — bump the version before merging to main"
+            exit 1
           fi
 
       - name: 🧱 Build package
-        if: steps.version-check.outputs.version_changed == 'true'
         run: npm run build
 
       - name: 🚀 Publish to npm (stable)
-        if: steps.version-check.outputs.version_changed == 'true'
+        if: github.ref == 'refs/heads/main'
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: 🧱 Build package (dev)
-        if: steps.version-check.outputs.version_changed == 'false'
-        run: npm run build
-
       - name: 🧹 Deprecate old dev versions
-        if: steps.version-check.outputs.version_changed == 'false'
+        if: github.ref == 'refs/heads/develop'
         run: |
-          CURRENT_VERSION="${{ steps.version-check.outputs.current_version }}"
           VERSIONS=$(node -e "
             const { execSync } = require('child_process');
+            const currentVersion = require('./package.json').version;
             try {
               const all = JSON.parse(execSync('npm view neo-materia versions --json').toString());
-              const devVersions = all.filter(v => v.startsWith(process.env.CURRENT_VERSION + '-dev.'));
+              const devVersions = all.filter(v => v.startsWith(currentVersion + '-dev.'));
               console.log(devVersions.join('\n'));
             } catch(e) { process.exit(0); }
           ")
@@ -188,13 +164,12 @@ jobs:
           done <<< "$VERSIONS"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          CURRENT_VERSION: ${{ steps.version-check.outputs.current_version }}
 
       - name: 🚀 Publish to npm (dev)
-        if: steps.version-check.outputs.version_changed == 'false'
+        if: github.ref == 'refs/heads/develop'
         run: |
-          # Create a dev version with commit SHA
-          DEV_VERSION="${{ steps.version-check.outputs.current_version }}-dev.$(git rev-parse --short HEAD)"
+          CURRENT_VERSION=$(node -p "require('./package.json').version")
+          DEV_VERSION="${CURRENT_VERSION}-dev.$(git rev-parse --short HEAD)"
           npm version $DEV_VERSION --no-git-tag-version
           npm publish --tag dev
         env:
