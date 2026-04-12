@@ -3,6 +3,7 @@ import { defineComponent } from 'vue'
 import { colors } from '@/assets/typescript/colors'
 import type { SurfaceColor } from '@/assets/typescript/colorTypes'
 import { getColorWrapper } from '../../../../.storybook/utils/colorShowcase'
+import { createA11yPlay } from '../../../../.storybook/utils/createA11yPlay'
 
 const surfaceColors = colors.filter((color): color is SurfaceColor => color !== 'white')
 
@@ -54,6 +55,7 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
+	tags: ['snapshot'],
 	render: (args: NeoProgressBarProps) => {
 		return defineComponent({
 			name: 'DefaultRender',
@@ -81,6 +83,7 @@ export const Default: Story = {
 }
 
 export const Sizes: Story = {
+	tags: ['snapshot'],
 	render: (args: NeoProgressBarProps) => {
 		return defineComponent({
 			name: 'SizesRender',
@@ -121,6 +124,7 @@ export const Sizes: Story = {
 }
 
 export const Rounded: Story = {
+	tags: ['snapshot'],
 	args: { rounded: true, size: 'medium' },
 	render: (args: NeoProgressBarProps) => {
 		return defineComponent({
@@ -143,7 +147,15 @@ export const Rounded: Story = {
 	},
 }
 
+export const RTL: Story = {
+	tags: ['snapshot'],
+	globals: {
+		direction: 'rtl',
+	},
+}
+
 export const AllColors: Story = {
+	tags: ['snapshot'],
 	render: (args: NeoProgressBarProps) => {
 		return defineComponent({
 			name: 'AllColorsRender',
@@ -180,6 +192,7 @@ export const AllColors: Story = {
 }
 
 export const AllColorsOnDark: Story = {
+	tags: ['snapshot'],
 	globals: { backgrounds: '#000' },
 	render: (args: NeoProgressBarProps) => {
 		return defineComponent({
@@ -215,4 +228,16 @@ export const AllColorsOnDark: Story = {
 			},
 		})
 	},
+}
+
+export const AllColorsA11y: Story = {
+	...AllColors,
+	tags: ['!dev', 'test-only'],
+	play: createA11yPlay(),
+}
+
+export const AllColorsOnDarkA11y: Story = {
+	...AllColorsOnDark,
+	tags: ['!dev', 'test-only'],
+	play: createA11yPlay(),
 }

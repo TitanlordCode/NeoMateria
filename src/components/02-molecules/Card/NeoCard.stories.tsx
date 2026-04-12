@@ -6,6 +6,7 @@ import NeoCard from '@/components/02-molecules/Card/NeoCard.vue'
 import type { NeoCardProps } from './NeoCardTypes'
 import { cardSizes, cardVariants } from './NeoCardTypes'
 import { createSimpleColorShowcase } from '../../../../.storybook/utils/colorShowcase'
+import { createA11yPlay } from '../../../../.storybook/utils/createA11yPlay'
 import { placeholder } from '../../../../.storybook/utils/placeholder'
 
 const meta = {
@@ -107,30 +108,35 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
+	tags: ['snapshot'],
 	args: {
 		imageSrc: 'https://picsum.photos/seed/content1/400/300',
 	},
 }
 
 export const Small: Story = {
+	tags: ['snapshot'],
 	args: {
 		size: 'small',
 	},
 }
 
 export const Large: Story = {
+	tags: ['snapshot'],
 	args: {
 		size: 'large',
 	},
 }
 
 export const Compact: Story = {
+	tags: ['snapshot'],
 	args: {
 		variant: 'compact',
 	},
 }
 
 export const Featured: Story = {
+	tags: ['snapshot'],
 	args: {
 		variant: 'featured',
 		title: 'Featured Content',
@@ -140,24 +146,28 @@ export const Featured: Story = {
 }
 
 export const Rounded: Story = {
+	tags: ['snapshot'],
 	args: {
 		rounded: true,
 	},
 }
 
 export const WithoutDescription: Story = {
+	tags: ['snapshot'],
 	args: {
 		description: undefined,
 	},
 }
 
 export const WithoutTags: Story = {
+	tags: ['snapshot'],
 	args: {
 		tags: [],
 	},
 }
 
 export const WithoutActions: Story = {
+	tags: ['snapshot'],
 	args: {
 		actionText: undefined,
 		secondaryActionText: undefined,
@@ -165,6 +175,7 @@ export const WithoutActions: Story = {
 }
 
 export const Minimal: Story = {
+	tags: ['snapshot'],
 	args: {
 		description: undefined,
 		tags: [],
@@ -174,6 +185,7 @@ export const Minimal: Story = {
 }
 
 export const Clickable: Story = {
+	tags: ['snapshot'],
 	args: {
 		href: '/products/featured-item',
 		actionText: undefined,
@@ -182,6 +194,7 @@ export const Clickable: Story = {
 }
 
 export const ClickableExternal: Story = {
+	tags: ['snapshot'],
 	args: {
 		href: 'https://example.com',
 		external: true,
@@ -191,6 +204,7 @@ export const ClickableExternal: Story = {
 }
 
 export const ClickableGrid: Story = {
+	tags: ['no-test'],
 	parameters: {
 		docs: {
 			source: {
@@ -276,6 +290,7 @@ export const ClickableGrid: Story = {
 }
 
 export const GridLayout: Story = {
+	tags: ['snapshot'],
 	parameters: {
 		docs: {
 			source: {
@@ -372,18 +387,34 @@ export const Interaction: Story = {
 }
 
 export const OnDark: Story = {
+	tags: ['snapshot'],
 	globals: {
 		backgrounds: '#000',
 	},
 }
 
+export const RTL: Story = {
+	tags: ['snapshot'],
+	globals: {
+		direction: 'rtl',
+	},
+	args: {
+		title: 'عنوان المحتوى المميز',
+		description: 'هذا وصف قصير للبطاقة يوضح المحتوى المعروض.',
+		actionText: 'عرض المزيد',
+		secondaryActionText: 'تعرف على المزيد',
+	},
+}
+
 export const AllColors: Story = {
+	tags: ['snapshot'],
 	render: createSimpleColorShowcase(NeoCard, ['default', 'compact', 'featured'], {
 		defaultProps: { imageSrc: placeholder(400, 300) },
 	}),
 }
 
 export const AllColorsOnDark: Story = {
+	tags: ['snapshot'],
 	globals: {
 		backgrounds: '#000',
 	},
@@ -391,4 +422,16 @@ export const AllColorsOnDark: Story = {
 		dark: true,
 		defaultProps: { imageSrc: placeholder(400, 300) },
 	}),
+}
+
+export const AllColorsA11y: Story = {
+	...AllColors,
+	tags: ['!dev', 'test-only'],
+	play: createA11yPlay(),
+}
+
+export const AllColorsOnDarkA11y: Story = {
+	...AllColorsOnDark,
+	tags: ['!dev', 'test-only'],
+	play: createA11yPlay(),
 }

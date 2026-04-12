@@ -579,6 +579,7 @@ ${landingFooterSectionsCode}
 </template>`
 
 export const Default: Story = {
+	tags: ['no-test'],
 	args: {
 		color: 'blue',
 	},
@@ -597,6 +598,7 @@ export const Default: Story = {
 }
 
 export const Green: Story = {
+	tags: ['no-test'],
 	args: {
 		color: 'green',
 	},
@@ -615,6 +617,7 @@ export const Green: Story = {
 }
 
 export const Purple: Story = {
+	tags: ['no-test'],
 	args: {
 		color: 'purple',
 	},
@@ -633,6 +636,7 @@ export const Purple: Story = {
 }
 
 export const DarkMode: Story = {
+	tags: ['no-test'],
 	args: {
 		color: 'blue',
 	},

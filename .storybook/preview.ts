@@ -62,7 +62,15 @@ const preview: Preview = {
 		},
 		options: {
 			storySort: {
-				order: ['Documentation', 'Foundation', 'Atoms', 'Molecules', 'Organisms', 'Pages'],
+				order: [
+					'Documentation',
+					'Foundation',
+					'Atoms',
+					'Molecules',
+					'Organisms',
+					'Pages',
+					'Contributing',
+				],
 			},
 		},
 		controls: {

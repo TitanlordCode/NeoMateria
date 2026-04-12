@@ -294,6 +294,7 @@ export const Default: Story = {
 }
 
 export const PlacementBottomEnd: Story = {
+	tags: ['snapshot'],
 	args: {
 		placement: 'bottom-end',
 		defaultOpen: true,
@@ -363,6 +364,7 @@ export const PlacementBottomEnd: Story = {
 }
 
 export const WithIconTrigger: Story = {
+	tags: ['snapshot'],
 	args: {
 		defaultOpen: true,
 	},
@@ -434,6 +436,7 @@ export const WithIconTrigger: Story = {
 }
 
 export const Controlled: Story = {
+	tags: ['no-test'],
 	parameters: {
 		docs: {
 			source: {
@@ -496,6 +499,7 @@ const isOpen = ref(false)
 }
 
 export const PersistentDropdown: Story = {
+	tags: ['no-test'],
 	args: {
 		closeOnEscape: false,
 		closeOnClickOutside: false,
@@ -522,6 +526,7 @@ export const PersistentDropdown: Story = {
 }
 
 export const OnDark: Story = {
+	tags: ['snapshot'],
 	globals: {
 		backgrounds: '#000',
 	},

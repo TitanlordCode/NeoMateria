@@ -62,7 +62,7 @@
 	}
 
 	@mixin onDark {
-		--NeoButton-color-text: currentColor;
+		--NeoButton-color-text: var(--neo-color-white);
 
 		&:hover {
 			--NeoButton-color-text: var(--neo-theme-color);

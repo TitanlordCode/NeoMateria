@@ -6,6 +6,7 @@ import NeoLink from '@/components/01-atoms/Link/NeoLink.vue'
 import { footerLayouts, type NeoFooterProps } from './NeoFooterTypes'
 import { ariaLabelArgType } from '../../../../.storybook/utils/argTypes'
 import { createSimpleColorShowcase } from '../../../../.storybook/utils/colorShowcase'
+import { createA11yPlay } from '../../../../.storybook/utils/createA11yPlay'
 
 const exampleSections = [
 	{
@@ -73,6 +74,21 @@ const meta = {
 				'`multi-column`: sections displayed in a responsive grid. `simple`: single-row layout with sections collapsed. `centered`: all content centred horizontally.',
 			table: { category: 'Appearance' },
 		},
+		logo: {
+			control: false,
+			description: 'Brand logo displayed in the footer header area.',
+			table: { category: 'Slots' },
+		},
+		social: {
+			control: false,
+			description: 'Social media icons or links.',
+			table: { category: 'Slots' },
+		},
+		legal: {
+			control: false,
+			description: 'Legal links or text rendered at the bottom of the footer.',
+			table: { category: 'Slots' },
+		},
 	},
 	args: {
 		color: 'blue',
@@ -87,21 +103,26 @@ export default meta
 
 type Story = StoryObj<typeof meta>
 
-export const Default: Story = {}
+export const Default: Story = {
+	tags: ['snapshot'],
+}
 
 export const Simple: Story = {
+	tags: ['snapshot'],
 	args: {
 		layout: 'simple',
 	},
 }
 
 export const Centered: Story = {
+	tags: ['snapshot'],
 	args: {
 		layout: 'centered',
 	},
 }
 
 export const WithLogo: Story = {
+	tags: ['snapshot'],
 	parameters: {
 		docs: {
 			source: {
@@ -139,6 +160,7 @@ export const WithLogo: Story = {
 }
 
 export const WithSocialLinks: Story = {
+	tags: ['snapshot'],
 	parameters: {
 		docs: {
 			source: {
@@ -182,6 +204,7 @@ export const WithSocialLinks: Story = {
 }
 
 export const WithLegalLinks: Story = {
+	tags: ['snapshot'],
 	parameters: {
 		docs: {
 			source: {
@@ -225,6 +248,7 @@ export const WithLegalLinks: Story = {
 }
 
 export const Complete: Story = {
+	tags: ['snapshot'],
 	parameters: {
 		docs: {
 			source: {
@@ -302,6 +326,7 @@ export const Complete: Story = {
 }
 
 export const MinimalWithCopyright: Story = {
+	tags: ['snapshot'],
 	args: {
 		sections: [],
 		layout: 'centered',
@@ -309,12 +334,24 @@ export const MinimalWithCopyright: Story = {
 }
 
 export const OnDark: Story = {
+	tags: ['snapshot'],
 	globals: {
 		backgrounds: '#000',
 	},
 }
 
+export const RTL: Story = {
+	tags: ['snapshot'],
+	globals: {
+		direction: 'rtl',
+	},
+	args: {
+		copyrightText: '© 2026 نيوماتيريا. جميع الحقوق محفوظة.',
+	},
+}
+
 export const AllColors: Story = {
+	tags: ['snapshot'],
 	parameters: {
 		a11y: {
 			config: {
@@ -329,6 +366,7 @@ export const AllColors: Story = {
 }
 
 export const AllColorsOnDark: Story = {
+	tags: ['snapshot'],
 	globals: {
 		backgrounds: '#000',
 	},
@@ -345,4 +383,16 @@ export const AllColorsOnDark: Story = {
 	render: createSimpleColorShowcase(NeoFooter, ['multi-column'], {
 		dark: true,
 	}),
+}
+
+export const AllColorsA11y: Story = {
+	...AllColors,
+	tags: ['!dev', 'test-only'],
+	play: createA11yPlay(),
+}
+
+export const AllColorsOnDarkA11y: Story = {
+	...AllColorsOnDark,
+	tags: ['!dev', 'test-only'],
+	play: createA11yPlay(),
 }

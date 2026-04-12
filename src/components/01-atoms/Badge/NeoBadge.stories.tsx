@@ -5,6 +5,7 @@ import { badgeSizes, badgeVariants } from './NeoBadgeTypes'
 import { defineComponent } from 'vue'
 import { fn } from 'storybook/test'
 import { createSimpleColorShowcase } from '../../../../.storybook/utils/colorShowcase'
+import { createA11yPlay } from '../../../../.storybook/utils/createA11yPlay'
 
 const meta = {
 	title: 'Atoms/NeoBadge',
@@ -40,6 +41,11 @@ const meta = {
 				'Shows a close button that emits `dismiss` when clicked. Useful for removable filter tags.',
 			table: { category: 'Behavior' },
 		},
+		default: {
+			control: false,
+			description: 'Badge label content. Falls back to the `text` prop if empty.',
+			table: { category: 'Slots' },
+		},
 	},
 	args: {
 		text: 'Badge',
@@ -53,33 +59,40 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Default: Story = {}
+export const Default: Story = {
+	tags: ['snapshot'],
+}
 
 export const Outlined: Story = {
+	tags: ['snapshot'],
 	args: {
 		variant: 'outlined',
 	},
 }
 
 export const Dot: Story = {
+	tags: ['snapshot'],
 	args: {
 		variant: 'dot',
 	},
 }
 
 export const Small: Story = {
+	tags: ['snapshot'],
 	args: {
 		size: 'small',
 	},
 }
 
 export const Large: Story = {
+	tags: ['snapshot'],
 	args: {
 		size: 'large',
 	},
 }
 
 export const Rounded: Story = {
+	tags: ['snapshot'],
 	args: {
 		rounded: true,
 		text: 'Rounded Badge',
@@ -87,6 +100,7 @@ export const Rounded: Story = {
 }
 
 export const StatusBadges: Story = {
+	tags: ['snapshot'],
 	parameters: {
 		docs: {
 			source: {
@@ -117,6 +131,7 @@ export const StatusBadges: Story = {
 }
 
 export const WithNotification: Story = {
+	tags: ['snapshot'],
 	parameters: {
 		docs: {
 			source: {
@@ -167,6 +182,7 @@ export const WithNotification: Story = {
 }
 
 export const DotIndicator: Story = {
+	tags: ['snapshot'],
 	parameters: {
 		docs: {
 			source: {
@@ -193,6 +209,7 @@ export const DotIndicator: Story = {
 }
 
 export const Dismissible: Story = {
+	tags: ['snapshot'],
 	args: {
 		dismissible: true,
 		text: 'Dismissible Badge',
@@ -201,6 +218,7 @@ export const Dismissible: Story = {
 }
 
 export const DismissibleTags: Story = {
+	tags: ['snapshot'],
 	parameters: {
 		docs: {
 			source: {
@@ -250,12 +268,14 @@ const dismiss = (tag) => tags.value = tags.value.filter(existingTag => existingT
 }
 
 export const OnDark: Story = {
+	tags: ['snapshot'],
 	globals: {
 		backgrounds: '#000',
 	},
 }
 
 export const RTL: Story = {
+	tags: ['snapshot'],
 	globals: {
 		direction: 'rtl',
 	},
@@ -265,6 +285,7 @@ export const RTL: Story = {
 }
 
 export const AllColors: Story = {
+	tags: ['snapshot'],
 	render: createSimpleColorShowcase(NeoBadge, [
 		'solid',
 		'outlined',
@@ -282,6 +303,7 @@ export const AllColors: Story = {
 }
 
 export const AllColorsOnDark: Story = {
+	tags: ['snapshot'],
 	globals: {
 		backgrounds: '#000',
 	},
@@ -305,4 +327,16 @@ export const AllColorsOnDark: Story = {
 			dark: true,
 		},
 	),
+}
+
+export const AllColorsA11y: Story = {
+	...AllColors,
+	tags: ['!dev', 'test-only'],
+	play: createA11yPlay(),
+}
+
+export const AllColorsOnDarkA11y: Story = {
+	...AllColorsOnDark,
+	tags: ['!dev', 'test-only'],
+	play: createA11yPlay(),
 }

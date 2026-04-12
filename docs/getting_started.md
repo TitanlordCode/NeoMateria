@@ -19,7 +19,7 @@ npm install
 To start Storybook with hot-reload in Docker:
 
 ```sh
-npm run start
+npm run dev
 ```
 
 This command will:

@@ -17,14 +17,17 @@
 	"author": "TitanlordCode",
 	"license": "SEE LICENSE IN LICENSE",
 	"scripts": {
-		"start": "npm run generate:files && docker-compose up --build storybook",
+		"dev": "npm run generate:files && docker-compose up --build storybook",
 		"docker:build": "docker-compose build",
 		"build": "npm run generate:files && vite build",
 		"prepublishOnly": "npm run build",
 		"preview": "vite preview",
-		"test": "npm run type-check && npm run lint:check && npm run stylelint:css && npm run prettier:check",
-		"test:unit": "vitest",
-		"test:storybook": "test-storybook",
+		"test": "npm run type-check && npm run lint:check && npm run stylelint:css && npm run prettier:check && vitest run",
+		"test:unit": "vitest --project=unit",
+		"test:storybook": "vitest run --project=storybook",
+		"test:storybook:snapshots": "vitest run --project=storybook-snapshots",
+		"test:storybook:a11y": "vitest run --project=storybook",
+		"test:storybook:update": "vitest run --project=storybook-snapshots --update",
 		"build-only": "npm run generate:files && vite build",
 		"type-check": "vue-tsc --build",
 		"lint:check": "eslint .",
@@ -36,16 +39,17 @@
 		"storybook": "storybook dev -p 3000 --no-open",
 		"build-storybook": "storybook build --output-dir storybook-static",
 		"generate:files": "npx ts-node scripts/pre-flight.ts",
-		"prepare": "husky"
+		"prepare": "husky || true"
 	},
 	"dependencies": {
 		"material-colors": "^1.2.6",
 		"vue": "^3.5.13"
 	},
 	"devDependencies": {
+		"@playwright/test": "^1.59.1",
 		"@storybook/addon-a11y": "^10.3.3",
 		"@storybook/addon-docs": "^10.3.3",
-		"@storybook/test-runner": "^0.24.2",
+		"@storybook/addon-vitest": "^10.3.5",
 		"@storybook/vue3": "^10.3.3",
 		"@storybook/vue3-vite": "^10.3.3",
 		"@tsconfig/node22": "^22.0.0",
@@ -53,6 +57,7 @@
 		"@types/node": "^22.13.1",
 		"@vitejs/plugin-vue": "^5.2.1",
 		"@vitejs/plugin-vue-jsx": "^4.2.0",
+		"@vitest/browser": "^3.2.4",
 		"@vitest/eslint-plugin": "1.1.25",
 		"@vue/eslint-config-prettier": "^10.1.0",
 		"@vue/eslint-config-typescript": "^14.3.0",
@@ -90,7 +95,12 @@
 		"access": "public"
 	},
 	"lint-staged": {
-		"*.{ts,tsx,vue}": ["eslint --fix", "prettier --write"],
-		"*.{css,vue}": ["stylelint --fix"]
+		"*.{ts,tsx,vue}": [
+			"eslint --fix",
+			"prettier --write"
+		],
+		"*.{css,vue}": [
+			"stylelint --fix"
+		]
 	}
 }

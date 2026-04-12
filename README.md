@@ -41,7 +41,7 @@ For complete development setup instructions, available commands, and workflows, 
 
 ```sh
 npm install
-npm run start  # Start Storybook in Docker
+npm run dev  # Start Storybook in Docker
 ```
 
 ## Project Structure

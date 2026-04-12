@@ -1,0 +1,191 @@
+
+import { Meta, Title } from '@storybook/addon-docs/blocks'
+
+<Meta title="Contributing/Testing" parameters={{ backgrounds: { disable: true }, direction: { disable: true } }} />
+
+<Title>Testing</Title>
+
+NeoMateria uses three automated test layers: **visual snapshot tests** to catch unintended rendering regressions across multiple viewports, **a11y tests** to enforce WCAG 2.1 AA compliance across all color combinations, and **unit tests** for composable logic.
+
+All tests run via Vitest in Playwright's Chromium browser — no Storybook server required.
+
+---
+
+## Running tests locally
+
+```bash
+npm run test                        # full suite: type-check + lint + all tests
+npm run test:storybook              # a11y tests only
+npm run test:storybook:snapshots    # visual snapshot tests only
+npm run test:unit                   # unit tests only
+```
+
+First time setup — install the Playwright browser:
+```bash
+npx playwright install --with-deps chromium
+```
+
+All commands are also available in VS Code via **Run & Debug** (`F5`).
+
+---
+
+## Visual snapshot tests
+
+Snapshot tests capture a Playwright screenshot of each story at three viewport sizes and compare them pixel-by-pixel to committed PNG baselines using SSIM + pixelmatch (via playwright-core's built-in comparator). Any pixel change is a hard failure.
+
+Stories opt in via the `snapshot` tag:
+
+```ts
+export const Default: Story = {
+  tags: ['snapshot'],
+}
+```
+
+### Viewports
+
+Each snapshot story is captured at three sizes:
+
+| Name | Width | Height |
+|------|-------|--------|
+| mobile | 375 px | 667 px |
+| tablet | 768 px | 1 024 px |
+| desktop | 1280 px | 800 px |
+
+`page.viewport()` resizes the Storybook preview iframe before each capture, so breakpoint mixins (`@mixin bp-md`, etc.) fire exactly as they would in a real browser.
+
+### File layout
+
+```
+__snapshots__/                          ← committed to git (baselines)
+├── atoms-button-neobutton--default--mobile.png
+├── atoms-button-neobutton--default--tablet.png
+├── atoms-button-neobutton--default--desktop.png
+└── …
+
+__snapshots_modified__/                 ← gitignored, written on failure
+├── atoms-button-neobutton--default--desktop.png   ← what the component looks like NOW
+└── …
+
+__snapshots_diff__/                     ← gitignored, written on failure
+├── atoms-button-neobutton--default--desktop--diff.png  ← pixel diff (red = changed)
+└── …
+```
+
+Both `__snapshots_modified__/` and `__snapshots_diff__/` are **cleared at the start of every run**, so they only ever contain failures from the most recent run.
+
+**Commit everything in `__snapshots__/`** — these are the baselines future runs compare against.
+
+### Generating baselines for the first time
+
+On first run (or after adding new snapshot stories), Vitest creates the baseline PNGs in `__snapshots__/` automatically:
+
+```bash
+npm run test:storybook:snapshots
+```
+
+### Handling snapshot failures
+
+A failure means a story rendered differently. Both artifact directories are cleared before every run, so they only contain the current batch of failures.
+
+```bash
+npm run test:storybook:snapshots    # see which stories fail
+```
+
+After the run:
+
+- `__snapshots_modified__/` — what each failing story looks like **now** (same filename as the baseline)
+- `__snapshots_diff__/` — pixel diff with changed pixels highlighted in red
+
+Decide whether each change is intentional:
+
+**Unintentional** — a regression. Fix the component, re-run until green.
+
+**Intentional** — drag the PNG from `__snapshots_modified__/` into `__snapshots__/` to accept it as the new baseline. Or use one of the update commands below.
+
+#### Update all snapshots at once
+
+```bash
+npm run test:storybook:update
+```
+
+#### Update one component's snapshots
+
+Pass the story file path as a Vitest filter:
+
+```bash
+npm run test:storybook:update -- src/components/01-atoms/Button/NeoButton/NeoButton.stories.tsx
+```
+
+Multiple files work too:
+
+```bash
+npm run test:storybook:update -- src/components/01-atoms/Badge/NeoBadge.stories.tsx src/components/01-atoms/Button/NeoButton/NeoButton.stories.tsx
+```
+
+#### Selective review after a bulk update
+
+Update everything, then restore the baselines you didn't intend to change:
+
+```bash
+npm run test:storybook:update
+git diff __snapshots__/
+git checkout -- __snapshots__/atoms-button-neobutton--default--desktop.png
+```
+
+---
+
+## A11y tests
+
+A11y tests run axe-core (WCAG 2A + 2AA) against every color variant of every component. They live as hidden stories tagged `!dev` so they don't appear in the sidebar during development:
+
+```ts
+export const AllColorsA11y: Story = {
+  ...AllColors,
+  tags: ['!dev', 'test-only'],
+  play: createA11yPlay(),
+}
+```
+
+`createA11yPlay` (`.storybook/utils/createA11yPlay.ts`) runs axe directly against the canvas element and fails if there are any violations.
+
+To run only a11y tests:
+```bash
+npm run test:storybook
+```
+
+### Non-WCAG compliant combinations
+
+Some color/variant combinations are inherently non-compliant on light backgrounds (e.g. yellow outlined buttons). These are documented in `.storybook/utils/colorShowcase.tsx` in the `NonWCAGCompliantEntries` array rather than suppressed via story-level `parameters.a11y`. The showcase renders a `"not WCAG compliant"` label in place of the component for those combinations.
+
+---
+
+## Unit tests
+
+Composable logic is tested with Vitest + jsdom, independently of Storybook:
+
+```bash
+npm run test:unit              # run once
+npm run test:unit -- --watch   # watch mode
+```
+
+Unit test files live co-located with the source file: `useButton.test.ts` next to `useButton.ts`.
+
+Current coverage: `useButton.ts` and `useSheetStack.ts`.
+
+---
+
+## CI pipeline
+
+All three test layers run in CI on every push via `npm run test`:
+
+```bash
+npm run type-check      # vue-tsc --build
+npm run lint:check      # eslint
+npm run stylelint:css   # stylelint
+npm run prettier:check  # prettier
+vitest run              # all three Vitest projects (unit + storybook + storybook-snapshots)
+```
+
+In CI (`process.env.CI` set) the snapshot command refuses to create or update baselines — missing or changed PNGs are hard failures, not silent writes. Locally, missing baselines are created automatically on first run.
+
+No Storybook build or server step is needed — Vitest renders stories directly in Playwright.
