@@ -27,10 +27,6 @@ jobs:
       - name: 📦 Install dependencies
         run: npm ci
 
-      # currently no tests to run
-      #- name: 🧪 Run unit tests
-      #  run: npm run test:unit
-
       - name: ✅ Type check
         run: npm run type-check
 
@@ -46,12 +42,17 @@ jobs:
       - name: 🧱 Build Storybook
         run: npm run build-storybook
 
+      - name: 🎭 Install Playwright
+        run: npx playwright install --with-deps chromium
+
+      - name: 🧪 Unit tests
+        run: npm run test:unit
+
       - name: ♿ A11y tests
-        run: |
-          npx playwright install --with-deps chromium
-          npx vite preview --outDir storybook-static --port 6006 &
-          sleep 5
-          npm run test:storybook -- --url http://localhost:6006
+        run: npm run test:storybook
+
+      - name: 📸 Snapshot tests
+        run: npm run test:storybook:snapshots
 
   deploy-storybook:
     needs: [build-test, publish-npm]

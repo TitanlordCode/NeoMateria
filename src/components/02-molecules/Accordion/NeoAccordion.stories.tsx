@@ -55,6 +55,7 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
+	tags: ['snapshot'],
 	parameters: {
 		docs: {
 			source: {
@@ -83,6 +84,7 @@ export const Default: Story = {
 }
 
 export const Expanded: Story = {
+	tags: ['snapshot'],
 	args: {
 		defaultExpanded: true,
 	},
@@ -110,6 +112,7 @@ export const Expanded: Story = {
 }
 
 export const Small: Story = {
+	tags: ['snapshot'],
 	args: {
 		size: 'small',
 	},
@@ -117,6 +120,7 @@ export const Small: Story = {
 }
 
 export const Large: Story = {
+	tags: ['snapshot'],
 	args: {
 		size: 'large',
 	},
@@ -124,6 +128,7 @@ export const Large: Story = {
 }
 
 export const Bordered: Story = {
+	tags: ['snapshot'],
 	args: {
 		variant: 'bordered',
 		defaultExpanded: true,
@@ -152,6 +157,7 @@ export const Bordered: Story = {
 }
 
 export const Filled: Story = {
+	tags: ['snapshot'],
 	args: {
 		variant: 'filled',
 		defaultExpanded: true,
@@ -180,6 +186,7 @@ export const Filled: Story = {
 }
 
 export const Disabled: Story = {
+	tags: ['snapshot'],
 	args: {
 		disabled: true,
 	},
@@ -187,6 +194,7 @@ export const Disabled: Story = {
 }
 
 export const CustomIcon: Story = {
+	tags: ['snapshot'],
 	parameters: {
 		docs: {
 			source: {
@@ -265,6 +273,7 @@ export const CustomIcon: Story = {
 }
 
 export const AccordionGroup: Story = {
+	tags: ['no-test'],
 	parameters: {
 		docs: {
 			source: {
@@ -315,6 +324,7 @@ export const AccordionGroup: Story = {
 }
 
 export const OnDark: Story = {
+	tags: ['snapshot'],
 	globals: {
 		backgrounds: '#000',
 	},

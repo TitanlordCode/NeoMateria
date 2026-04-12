@@ -96,7 +96,25 @@ export default meta
 
 type Story = StoryObj<typeof meta>
 
+const renderOpenSheet = (args: NeoSheetProps) =>
+	defineComponent({
+		name: 'OpenSheetRender',
+		setup() {
+			return () => (
+				<NeoSheet {...args}>
+					<h2 style={{ margin: '0 0 16px 0' }}>Sheet Title</h2>
+					<p style={{ margin: '0 0 24px 0' }}>
+						This sheet starts open for accessibility testing. All interactive content inside is
+						visible and testable without user interaction.
+					</p>
+					<NeoButton text="Action" color={args.color ?? 'blue'} variant="primary" />
+				</NeoSheet>
+			)
+		},
+	})
+
 export const Default: Story = {
+	tags: ['snapshot'],
 	parameters: {
 		docs: {
 			source: {
@@ -201,8 +219,11 @@ export const DefaultInteraction: Story = {
 }
 
 export const PositionLeft: Story = {
+	tags: ['snapshot'],
 	args: {
 		position: 'left',
+		open: true,
+		closeAriaLabel: 'Close',
 	},
 	parameters: {
 		docs: {
@@ -222,12 +243,15 @@ const isOpen = ref(false)
 			},
 		},
 	},
-	render: Default.render,
+	render: renderOpenSheet,
 }
 
 export const PositionBottom: Story = {
+	tags: ['snapshot'],
 	args: {
 		position: 'bottom',
+		open: true,
+		closeAriaLabel: 'Close',
 	},
 	parameters: {
 		docs: {
@@ -247,12 +271,15 @@ const isOpen = ref(false)
 			},
 		},
 	},
-	render: Default.render,
+	render: renderOpenSheet,
 }
 
 export const SizeSmall: Story = {
+	tags: ['snapshot'],
 	args: {
 		size: 'small',
+		open: true,
+		closeAriaLabel: 'Close',
 	},
 	parameters: {
 		docs: {
@@ -272,12 +299,15 @@ const isOpen = ref(false)
 			},
 		},
 	},
-	render: Default.render,
+	render: renderOpenSheet,
 }
 
 export const SizeLarge: Story = {
+	tags: ['snapshot'],
 	args: {
 		size: 'large',
+		open: true,
+		closeAriaLabel: 'Close',
 	},
 	parameters: {
 		docs: {
@@ -297,12 +327,15 @@ const isOpen = ref(false)
 			},
 		},
 	},
-	render: Default.render,
+	render: renderOpenSheet,
 }
 
 export const SizeFull: Story = {
+	tags: ['snapshot'],
 	args: {
 		size: 'full',
+		open: true,
+		closeAriaLabel: 'Close',
 	},
 	parameters: {
 		docs: {
@@ -322,10 +355,11 @@ const isOpen = ref(false)
 			},
 		},
 	},
-	render: Default.render,
+	render: renderOpenSheet,
 }
 
 export const PersistentSheet: Story = {
+	tags: ['no-test'],
 	args: {
 		closeOnOverlayClick: false,
 		closeOnEscape: false,
@@ -430,6 +464,7 @@ export const PersistentSheetInteraction: Story = {
 }
 
 export const NavigationWithSearch: Story = {
+	tags: ['no-test'],
 	parameters: {
 		docs: {
 			source: {
@@ -632,6 +667,7 @@ const expanded = ref({ products: false, settings: false })
 }
 
 export const MultipleSheets: Story = {
+	tags: ['no-test'],
 	parameters: {
 		docs: {
 			source: {
@@ -773,6 +809,7 @@ const bottomOpen = ref(false)
 }
 
 export const StackedRight: Story = {
+	tags: ['snapshot'],
 	parameters: {
 		docs: {
 			source: {
@@ -803,9 +840,9 @@ const open2 = ref(false)
 		return defineComponent({
 			name: 'StackedRightRender',
 			setup() {
-				const open1 = ref(false)
-				const open2 = ref(false)
-				const open3 = ref(false)
+				const open1 = ref(true)
+				const open2 = ref(true)
+				const open3 = ref(true)
 
 				return () => (
 					<div style={{ display: 'flex', gap: '12px' }}>
@@ -917,6 +954,7 @@ const open2 = ref(false)
 }
 
 export const StackedLeft: Story = {
+	tags: ['snapshot'],
 	parameters: {
 		docs: {
 			source: {
@@ -938,9 +976,9 @@ export const StackedLeft: Story = {
 		return defineComponent({
 			name: 'StackedLeftRender',
 			setup() {
-				const open1 = ref(false)
-				const open2 = ref(false)
-				const open3 = ref(false)
+				const open1 = ref(true)
+				const open2 = ref(true)
+				const open3 = ref(true)
 
 				return () => (
 					<div style={{ display: 'flex', gap: '12px' }}>
@@ -1050,6 +1088,7 @@ export const StackedLeft: Story = {
 }
 
 export const StackedBottom: Story = {
+	tags: ['snapshot'],
 	parameters: {
 		docs: {
 			source: {
@@ -1071,9 +1110,9 @@ export const StackedBottom: Story = {
 		return defineComponent({
 			name: 'StackedBottomRender',
 			setup() {
-				const open1 = ref(false)
-				const open2 = ref(false)
-				const open3 = ref(false)
+				const open1 = ref(true)
+				const open2 = ref(true)
+				const open3 = ref(true)
 
 				return () => (
 					<div style={{ display: 'flex', gap: '12px' }}>
@@ -1183,6 +1222,7 @@ export const StackedBottom: Story = {
 }
 
 export const StackedNested: Story = {
+	tags: ['snapshot'],
 	parameters: {
 		docs: {
 			source: {
@@ -1216,9 +1256,9 @@ const open2 = ref(false)
 		return defineComponent({
 			name: 'StackedNestedRender',
 			setup() {
-				const open1 = ref(false)
-				const open2 = ref(false)
-				const open3 = ref(false)
+				const open1 = ref(true)
+				const open2 = ref(true)
+				const open3 = ref(true)
 
 				return () => (
 					<div>
@@ -1243,9 +1283,7 @@ const open2 = ref(false)
 						>
 							<h2 style={{ margin: '0 0 16px 0' }}>Sheet 1 — large</h2>
 							<p style={{ margin: '0 0 24px 0', fontSize: '14px' }}>
-								Opened from the page. Modal with <code>closeOnOverlayClick={false}</code> — the
-								blurred overlay blocks the background and shows a not-allowed cursor. Open Sheet 2
-								from here to verify nested stacking.
+								Opened from the page. Open Sheet 2 to verify stacking.
 							</p>
 							<div style={{ display: 'flex', gap: '12px' }}>
 								<NeoButton
@@ -1279,8 +1317,7 @@ const open2 = ref(false)
 						>
 							<h2 style={{ margin: '0 0 16px 0' }}>Sheet 2 — medium</h2>
 							<p style={{ margin: '0 0 24px 0', fontSize: '14px' }}>
-								Opened from inside Sheet 1. Sheet 1 should be indented behind this one. Stacking is
-								automatic — no parent/child wiring needed. Open Sheet 3 to add another level.
+								Opened from inside Sheet 1. Open Sheet 3 for another level.
 							</p>
 							<div style={{ display: 'flex', gap: '12px' }}>
 								<NeoButton
@@ -1314,8 +1351,7 @@ const open2 = ref(false)
 						>
 							<h2 style={{ margin: '0 0 16px 0' }}>Sheet 3 — small</h2>
 							<p style={{ margin: '0 0 24px 0', fontSize: '14px' }}>
-								Three sheets deep. Close in reverse order — each sheet removes itself from the stack
-								and the remaining ones re-offset automatically.
+								Three sheets deep. Close in reverse order.
 							</p>
 							<NeoButton
 								text="Close"
@@ -1334,6 +1370,7 @@ const open2 = ref(false)
 }
 
 export const FormExample: Story = {
+	tags: ['no-test'],
 	parameters: {
 		docs: {
 			source: {
@@ -1466,8 +1503,13 @@ const email = ref('')
 }
 
 export const OnDark: Story = {
+	tags: ['snapshot'],
 	globals: {
 		backgrounds: '#000',
+	},
+	args: {
+		open: true,
+		closeAriaLabel: 'Close',
 	},
 	parameters: {
 		docs: {
@@ -1489,10 +1531,11 @@ const isOpen = ref(false)
 			},
 		},
 	},
-	render: Default.render,
+	render: renderOpenSheet,
 }
 
 export const DefaultOpen: Story = {
+	tags: ['snapshot'],
 	args: {
 		open: true,
 		closeAriaLabel: 'Close',
@@ -1509,26 +1552,11 @@ export const DefaultOpen: Story = {
 			},
 		},
 	},
-	render: (args: NeoSheetProps) => {
-		return defineComponent({
-			name: 'DefaultOpenRender',
-			setup() {
-				return () => (
-					<NeoSheet {...args}>
-						<h2 style={{ margin: '0 0 16px 0' }}>Sheet Title</h2>
-						<p style={{ margin: '0 0 24px 0' }}>
-							This sheet starts open for accessibility testing. All interactive content inside is
-							visible and testable without user interaction.
-						</p>
-						<NeoButton text="Action" color={args.color ?? 'blue'} variant="primary" />
-					</NeoSheet>
-				)
-			},
-		})
-	},
+	render: renderOpenSheet,
 }
 
 export const Filled: Story = {
+	tags: ['snapshot'],
 	parameters: {
 		docs: {
 			source: {
@@ -1600,6 +1628,7 @@ export const Filled: Story = {
 }
 
 export const FilledOpen: Story = {
+	tags: ['snapshot'],
 	args: {
 		variant: 'filled',
 		open: true,
@@ -1624,9 +1653,7 @@ export const FilledOpen: Story = {
 					<NeoSheet {...args}>
 						<h2 style={{ margin: '0 0 16px 0' }}>Filled Sheet</h2>
 						<p style={{ margin: '0 0 24px 0' }}>
-							Buttons use <code>color="black"</code>. The <code>setOnDark</code> cascade set by the
-							filled sheet automatically renders them white — accessible and visually clear against
-							the colored background.
+							Buttons inside a filled sheet flip to white via setOnDark.
 						</p>
 						<div style={{ display: 'flex', gap: '12px' }}>
 							<NeoButton text="Primary Action" color="black" variant="primary" />

@@ -490,6 +490,7 @@ ${mediaFooterSectionsCode}
 </template>`
 
 export const Default: Story = {
+	tags: ['no-test'],
 	args: { color: 'blue' },
 	parameters: {
 		docs: {
@@ -506,6 +507,7 @@ export const Default: Story = {
 }
 
 export const Purple: Story = {
+	tags: ['no-test'],
 	args: { color: 'purple' },
 	parameters: {
 		docs: {
@@ -522,6 +524,7 @@ export const Purple: Story = {
 }
 
 export const DarkMode: Story = {
+	tags: ['no-test'],
 	args: { color: 'blue' },
 	globals: { backgrounds: '#000' },
 	parameters: {

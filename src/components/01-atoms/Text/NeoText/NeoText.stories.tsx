@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import { defineComponent, h } from 'vue'
 import { colors } from '@/assets/typescript/colors'
 import { createAllColorsRender } from '../../../../../.storybook/utils/colorShowcase'
+import { createA11yPlay } from '../../../../../.storybook/utils/createA11yPlay'
 import NeoText from './NeoText.vue'
 import type { NeoTextProps } from './NeoTextTypes'
 import { textSizes, textTags, textWeights } from './NeoTextTypes'
@@ -46,6 +47,7 @@ const meta = {
 			description: 'Clamps text to the given number of lines with an ellipsis.',
 			table: { category: 'Appearance' },
 		},
+		default: { control: false, description: 'The text content.', table: { category: 'Slots' } },
 	},
 	args: {
 		size: 'base',
@@ -59,6 +61,7 @@ const sampleText =
 	'The quick brown fox jumps over the lazy dog. Pack my box with five dozen liquor jugs.'
 
 export const Default: Story = {
+	tags: ['snapshot'],
 	render: (args: NeoTextProps) => {
 		return defineComponent({
 			name: 'DefaultRender',
@@ -77,6 +80,7 @@ export const Default: Story = {
 }
 
 export const AllSizes: Story = {
+	tags: ['snapshot'],
 	render: () => {
 		return defineComponent({
 			name: 'AllSizesRender',
@@ -105,6 +109,7 @@ export const AllSizes: Story = {
 }
 
 export const Colored: Story = {
+	tags: ['snapshot'],
 	args: { color: 'blue' },
 	render: (args: NeoTextProps) => {
 		return defineComponent({
@@ -123,7 +128,23 @@ export const Colored: Story = {
 	},
 }
 
+export const RTL: Story = {
+	tags: ['snapshot'],
+	globals: {
+		direction: 'rtl',
+	},
+	render: (args: NeoTextProps) => {
+		return defineComponent({
+			name: 'RTLRender',
+			setup() {
+				return () => <NeoText {...args}>الثعلب البني السريع يقفز فوق الكلب الكسول</NeoText>
+			},
+		})
+	},
+}
+
 export const AllColors: Story = {
+	tags: ['snapshot'],
 	render: createAllColorsRender<typeof NeoText>(NeoText, [
 		{
 			name: 'Default',
@@ -134,6 +155,7 @@ export const AllColors: Story = {
 }
 
 export const AllColorsOnDark: Story = {
+	tags: ['snapshot'],
 	globals: { backgrounds: '#000' },
 	render: createAllColorsRender<typeof NeoText>(
 		NeoText,
@@ -146,4 +168,16 @@ export const AllColorsOnDark: Story = {
 		],
 		true,
 	),
+}
+
+export const AllColorsA11y: Story = {
+	...AllColors,
+	tags: ['!dev', 'test-only'],
+	play: createA11yPlay(),
+}
+
+export const AllColorsOnDarkA11y: Story = {
+	...AllColorsOnDark,
+	tags: ['!dev', 'test-only'],
+	play: createA11yPlay(),
 }

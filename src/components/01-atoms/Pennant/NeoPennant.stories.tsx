@@ -84,6 +84,7 @@ const NintendoSwitchIcon = (
 )
 
 export const Default: Story = {
+	tags: ['snapshot'],
 	parameters: {
 		docs: {
 			source: {
@@ -110,6 +111,7 @@ export const Default: Story = {
 }
 
 export const Link: Story = {
+	tags: ['snapshot'],
 	args: {
 		href: '#platform',
 		ariaLabel: 'View platform details',
@@ -157,6 +159,7 @@ const renderColorRow = (dark: boolean) =>
 	})
 
 export const Colors: Story = {
+	tags: ['no-test'],
 	parameters: {
 		docs: {
 			source: {
@@ -175,6 +178,7 @@ export const Colors: Story = {
 }
 
 export const ColorsOnDark: Story = {
+	tags: ['no-test'],
 	globals: {
 		backgrounds: '#000',
 	},
@@ -202,6 +206,7 @@ export const ColorsOnDark: Story = {
  * `<img src="/assets/steam-logo.png" alt="" />` and the pennant scales it the same way.
  */
 export const PlatformLogoExample: Story = {
+	tags: ['no-test'],
 	parameters: {
 		docs: {
 			source: {

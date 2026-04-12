@@ -9,6 +9,7 @@ import { coverPanelClickBehaviors } from './NeoCoverPanelTypes'
 import NeoPennant from '@/components/01-atoms/Pennant/NeoPennant.vue'
 import { HeartIcon, HeartFilledIcon } from '@/components/01-atoms/Icon/defaultIcons'
 import { placeholder } from '../../../../.storybook/utils/placeholder'
+import { createA11yPlay } from '../../../../.storybook/utils/createA11yPlay'
 import { starIconSvg } from '../../../../.storybook/utils/iconSnippets'
 
 const coverPlaceholder = placeholder(300, 450)
@@ -54,6 +55,18 @@ const meta = {
 				"Marks the action button as toggled on (e.g. a 'favored' state). Sets `aria-pressed`.",
 			table: { category: 'Behavior' },
 		},
+		pennants: {
+			control: false,
+			description:
+				'Pennant badges displayed at the top of the panel, anchored to the end edge. Up to 5 small-sized pennants fit on a panel of ~240px wide.',
+			table: { category: 'Slots' },
+		},
+		'action-icon': {
+			control: false,
+			description:
+				'Custom icon for the action overlay button. Receives `active` (current pressed state).',
+			table: { category: 'Slots' },
+		},
 	},
 	args: {
 		color: 'blue',
@@ -92,6 +105,7 @@ const StarPennant = (
 )
 
 export const Default: Story = {
+	tags: ['snapshot'],
 	parameters: {
 		docs: {
 			source: {
@@ -126,6 +140,7 @@ export const Default: Story = {
  * Both are demonstrated here with separate visible state.
  */
 export const ImageClickAndActionButton: Story = {
+	tags: ['snapshot'],
 	parameters: {
 		docs: {
 			source: {
@@ -199,7 +214,7 @@ const isFavored = ref(false)
 								flexDirection: 'column',
 								gap: '8px',
 								fontSize: '14px',
-								fontFamily: 'monospace',
+								fontFamily: 'sans-serif',
 								paddingBlockStart: '8px',
 							}}
 						>
@@ -224,6 +239,7 @@ const isFavored = ref(false)
 }
 
 export const LinkMode: Story = {
+	tags: ['snapshot'],
 	parameters: {
 		docs: {
 			source: {
@@ -260,6 +276,7 @@ export const LinkMode: Story = {
 }
 
 export const WithPennants: Story = {
+	tags: ['snapshot'],
 	parameters: {
 		docs: {
 			source: {
@@ -322,6 +339,7 @@ export const WithPennants: Story = {
  * Pennants are absolutely positioned and do not affect panel dimensions.
  */
 export const WithManyPennants: Story = {
+	tags: ['no-test'],
 	parameters: {
 		docs: {
 			source: {
@@ -373,6 +391,7 @@ export const WithManyPennants: Story = {
 }
 
 export const ActionActive: Story = {
+	tags: ['snapshot'],
 	parameters: {
 		docs: {
 			source: {
@@ -422,6 +441,7 @@ export const ActionActive: Story = {
 }
 
 export const WithActionCount: Story = {
+	tags: ['snapshot'],
 	parameters: {
 		docs: {
 			source: {
@@ -509,7 +529,18 @@ const handleActionClick = () => {
 	},
 }
 
+export const RTL: Story = {
+	tags: ['snapshot'],
+	globals: {
+		direction: 'rtl',
+	},
+	args: {
+		title: 'عنوان لوحة الغلاف',
+	},
+}
+
 export const AllColors: Story = {
+	tags: ['snapshot'],
 	render: (args: NeoCoverPanelProps) => {
 		return defineComponent({
 			name: 'AllColorsRender',
@@ -540,6 +571,7 @@ export const AllColors: Story = {
 }
 
 export const AllColorsOnDark: Story = {
+	tags: ['snapshot'],
 	globals: {
 		backgrounds: '#000',
 	},
@@ -573,4 +605,16 @@ export const AllColorsOnDark: Story = {
 			},
 		})
 	},
+}
+
+export const AllColorsA11y: Story = {
+	...AllColors,
+	tags: ['!dev', 'test-only'],
+	play: createA11yPlay(),
+}
+
+export const AllColorsOnDarkA11y: Story = {
+	...AllColorsOnDark,
+	tags: ['!dev', 'test-only'],
+	play: createA11yPlay(),
 }

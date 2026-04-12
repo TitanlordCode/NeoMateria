@@ -231,7 +231,15 @@ export const createAllColorsRender = <TComponent, TArgs = Record<string, unknown
 			name: 'AllColorsRender',
 			setup() {
 				return () => (
-					<div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+					<div
+						class={dark ? 'u-onDark' : undefined}
+						style={{
+							display: 'flex',
+							flexDirection: 'column',
+							gap: '24px',
+							...(dark && { background: '#000' }),
+						}}
+					>
 						{variants.map((variantConfig) => (
 							<div key={variantConfig.name}>
 								<h3 class="color-showcase__variant-title">{variantConfig.name}</h3>

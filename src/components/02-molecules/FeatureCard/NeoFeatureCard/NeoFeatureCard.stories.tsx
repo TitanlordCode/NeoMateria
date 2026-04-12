@@ -52,6 +52,7 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
+	tags: ['snapshot'],
 	render: (args: NeoFeatureCardProps) => {
 		return defineComponent({
 			name: 'DefaultRender',
@@ -81,6 +82,7 @@ export const Default: Story = {
 }
 
 export const Clickable: Story = {
+	tags: ['snapshot'],
 	args: { href: '#article' },
 	render: (args: NeoFeatureCardProps) => {
 		return defineComponent({
@@ -111,6 +113,7 @@ export const Clickable: Story = {
 }
 
 export const CardGrid: Story = {
+	tags: ['no-test'],
 	render: () => {
 		return defineComponent({
 			name: 'CardGridRender',

@@ -26,10 +26,12 @@
 	}
 }
 
-/* Apply Inter font only in Storybook preview */
+/* Override --neo-fontFamily-base with Inter for Storybook preview.
+   This demonstrates exactly how consumers set a custom font — override the
+   variable on a container element and re-apply font-family to pick it up. */
 #storybook-root,
 #storybook-docs [id^='story'] {
-	font-family:
+	--neo-fontFamily-base:
 		'Inter',
 		-apple-system,
 		BlinkMacSystemFont,
@@ -38,6 +40,7 @@
 		'Helvetica Neue',
 		Arial,
 		sans-serif;
+	font-family: var(--neo-fontFamily-base);
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }

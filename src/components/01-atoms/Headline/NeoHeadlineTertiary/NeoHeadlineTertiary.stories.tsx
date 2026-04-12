@@ -6,6 +6,7 @@ import NeoHeadlineTertiary from './NeoHeadlineTertiary.vue'
 import type { NeoHeadlineProps } from '../NeoHeadlineTypes'
 import { headlineTags, headlineAligns } from '../NeoHeadlineTypes'
 import { getColorWrapper } from '../../../../../.storybook/utils/colorShowcase'
+import { createA11yPlay } from '../../../../../.storybook/utils/createA11yPlay'
 
 const meta = {
 	title: 'Atoms/Headline/NeoHeadlineTertiary',
@@ -40,6 +41,11 @@ const meta = {
 			description: 'Clamps text to the given number of lines with an ellipsis.',
 			table: { category: 'Appearance' },
 		},
+		default: {
+			control: false,
+			description: 'Headline text or rich content.',
+			table: { category: 'Slots' },
+		},
 	},
 	args: {
 		tag: 'h3',
@@ -50,6 +56,7 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
+	tags: ['snapshot'],
 	render: (args: NeoHeadlineProps) => {
 		return defineComponent({
 			name: 'DefaultRender',
@@ -68,6 +75,7 @@ export const Default: Story = {
 }
 
 export const Colored: Story = {
+	tags: ['snapshot'],
 	args: { color: 'blue' },
 	render: (args: NeoHeadlineProps) => {
 		return defineComponent({
@@ -86,7 +94,23 @@ export const Colored: Story = {
 	},
 }
 
+export const RTL: Story = {
+	tags: ['snapshot'],
+	globals: {
+		direction: 'rtl',
+	},
+	render: (args: NeoHeadlineProps) => {
+		return defineComponent({
+			name: 'RTLRender',
+			setup() {
+				return () => <NeoHeadlineTertiary {...args}>الثعلب البني السريع</NeoHeadlineTertiary>
+			},
+		})
+	},
+}
+
 export const AllColors: Story = {
+	tags: ['snapshot'],
 	render: () => {
 		return defineComponent({
 			name: 'AllColorsRender',
@@ -112,6 +136,7 @@ export const AllColors: Story = {
 }
 
 export const AllColorsOnDark: Story = {
+	tags: ['snapshot'],
 	globals: { backgrounds: '#000' },
 	render: () => {
 		return defineComponent({
@@ -129,4 +154,16 @@ export const AllColorsOnDark: Story = {
 			},
 		})
 	},
+}
+
+export const AllColorsA11y: Story = {
+	...AllColors,
+	tags: ['!dev', 'test-only'],
+	play: createA11yPlay(),
+}
+
+export const AllColorsOnDarkA11y: Story = {
+	...AllColorsOnDark,
+	tags: ['!dev', 'test-only'],
+	play: createA11yPlay(),
 }

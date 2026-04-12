@@ -5,6 +5,7 @@ import type { NeoRadioProps } from './NeoRadioTypes'
 import { radioSizes } from './NeoRadioTypes'
 import { ariaLabelArgType, disabledArgType } from '../../../../.storybook/utils/argTypes'
 import { createSimpleColorShowcase } from '../../../../.storybook/utils/colorShowcase'
+import { createA11yPlay } from '../../../../.storybook/utils/createA11yPlay'
 
 const meta = {
 	title: 'Atoms/NeoRadio',
@@ -38,9 +39,12 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Default: Story = {}
+export const Default: Story = {
+	tags: ['snapshot'],
+}
 
 export const WithoutLabel: Story = {
+	tags: ['snapshot'],
 	args: {
 		label: undefined,
 		ariaLabel: 'Option A',
@@ -48,18 +52,21 @@ export const WithoutLabel: Story = {
 }
 
 export const Checked: Story = {
+	tags: ['snapshot'],
 	args: {
 		checked: true,
 	},
 }
 
 export const Disabled: Story = {
+	tags: ['snapshot'],
 	args: {
 		disabled: true,
 	},
 }
 
 export const DisabledChecked: Story = {
+	tags: ['snapshot'],
 	args: {
 		disabled: true,
 		checked: true,
@@ -67,18 +74,21 @@ export const DisabledChecked: Story = {
 }
 
 export const Small: Story = {
+	tags: ['snapshot'],
 	args: {
 		size: 'small',
 	},
 }
 
 export const Large: Story = {
+	tags: ['snapshot'],
 	args: {
 		size: 'large',
 	},
 }
 
 export const RadioGroup: Story = {
+	tags: ['snapshot'],
 	parameters: {
 		docs: {
 			source: {
@@ -160,12 +170,14 @@ const selected = ref('option1')
 }
 
 export const OnDark: Story = {
+	tags: ['snapshot'],
 	globals: {
 		backgrounds: '#000',
 	},
 }
 
 export const RTL: Story = {
+	tags: ['snapshot'],
 	globals: {
 		direction: 'rtl',
 	},
@@ -175,6 +187,7 @@ export const RTL: Story = {
 }
 
 export const AllColors: Story = {
+	tags: ['snapshot'],
 	render: createSimpleColorShowcase(NeoRadio, [
 		{
 			variant: 'default',
@@ -197,6 +210,7 @@ export const AllColors: Story = {
 }
 
 export const AllColorsOnDark: Story = {
+	tags: ['snapshot'],
 	globals: {
 		backgrounds: '#000',
 	},
@@ -225,4 +239,16 @@ export const AllColorsOnDark: Story = {
 			dark: true,
 		},
 	),
+}
+
+export const AllColorsA11y: Story = {
+	...AllColors,
+	tags: ['!dev', 'test-only'],
+	play: createA11yPlay(),
+}
+
+export const AllColorsOnDarkA11y: Story = {
+	...AllColorsOnDark,
+	tags: ['!dev', 'test-only'],
+	play: createA11yPlay(),
 }

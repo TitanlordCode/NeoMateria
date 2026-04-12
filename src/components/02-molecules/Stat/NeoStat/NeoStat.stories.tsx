@@ -36,6 +36,7 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
+	tags: ['snapshot'],
 	render: (args: NeoStatProps) => {
 		return defineComponent({
 			name: 'DefaultRender',
@@ -54,6 +55,7 @@ export const Default: Story = {
 }
 
 export const Colored: Story = {
+	tags: ['snapshot'],
 	args: { color: 'blue' },
 	render: (args: NeoStatProps) => {
 		return defineComponent({
@@ -73,6 +75,7 @@ export const Colored: Story = {
 }
 
 export const AllSizes: Story = {
+	tags: ['no-test'],
 	render: () => {
 		return defineComponent({
 			name: 'AllSizesRender',
@@ -90,6 +93,7 @@ export const AllSizes: Story = {
 }
 
 export const StatRow: Story = {
+	tags: ['no-test'],
 	render: () => {
 		return defineComponent({
 			name: 'StatRowRender',

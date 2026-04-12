@@ -35,6 +35,10 @@ coverage
 # Generation script cache
 .cache/
 
+# Snapshot failure artifacts (generated on test failure, not committed)
+__snapshots_diff__/
+__snapshots_modified__/
+
 # Claude Code CLI settings
 .claude/
 CLAUDE.md

@@ -4,6 +4,7 @@ import { colors } from '@/assets/typescript/colors'
 import type { SurfaceColor } from '@/assets/typescript/colorTypes'
 import { placeholder } from '../../../../../.storybook/utils/placeholder'
 import { createAllColorsRender } from '../../../../../.storybook/utils/colorShowcase'
+import { createA11yPlay } from '../../../../../.storybook/utils/createA11yPlay'
 import NeoHero from './NeoHero.vue'
 import type { NeoHeroProps } from './NeoHeroTypes'
 import { heroVariants, heroSizes } from './NeoHeroTypes'
@@ -46,6 +47,16 @@ const meta = {
 			description: 'Accent color applied to the title.',
 			table: { category: 'Appearance' },
 		},
+		actions: {
+			control: false,
+			description: 'CTA buttons or interactive elements rendered below the headline and body copy.',
+			table: { category: 'Slots' },
+		},
+		media: {
+			control: false,
+			description: 'Media content (image, video) displayed beside the text in `split` variant.',
+			table: { category: 'Slots' },
+		},
 	},
 	args: {
 		title: 'Build beautiful interfaces',
@@ -60,6 +71,7 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Centered: Story = {
+	tags: ['snapshot'],
 	render: (args: NeoHeroProps) => {
 		return defineComponent({
 			name: 'CenteredRender',
@@ -103,6 +115,7 @@ export const Centered: Story = {
 }
 
 export const Split: Story = {
+	tags: ['snapshot'],
 	args: { variant: 'split' },
 	render: (args: NeoHeroProps) => {
 		return defineComponent({
@@ -153,6 +166,7 @@ export const Split: Story = {
 }
 
 export const Small: Story = {
+	tags: ['snapshot'],
 	args: { size: 'sm', variant: 'centered' },
 	render: (args: NeoHeroProps) => {
 		return defineComponent({
@@ -172,6 +186,7 @@ export const Small: Story = {
 }
 
 export const OnDark: Story = {
+	tags: ['snapshot'],
 	globals: { backgrounds: '#000' },
 	args: { variant: 'centered', color: 'blue' },
 	render: (args: NeoHeroProps) => {
@@ -202,7 +217,19 @@ export const OnDark: Story = {
 	},
 }
 
+export const RTL: Story = {
+	tags: ['snapshot'],
+	globals: {
+		direction: 'rtl',
+	},
+	args: {
+		title: 'ابنِ واجهات جميلة',
+		subtitle: 'نظام تصميم Vue 3 متكامل — سهل الوصول، قابل للتخصيص، وجاهز للإنتاج.',
+	},
+}
+
 export const AllColors: Story = {
+	tags: ['snapshot'],
 	render: createAllColorsRender<typeof NeoHero>(NeoHero, [
 		{
 			name: 'Centered',
@@ -217,4 +244,10 @@ export const AllColors: Story = {
 				}),
 		},
 	]),
+}
+
+export const AllColorsA11y: Story = {
+	...AllColors,
+	tags: ['!dev', 'test-only'],
+	play: createA11yPlay(),
 }

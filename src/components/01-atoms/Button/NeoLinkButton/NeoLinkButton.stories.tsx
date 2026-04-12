@@ -5,6 +5,7 @@ import { buttonSizes, buttonVariants } from '../NeoButton/NeoButtonTypes'
 import { ariaLabelArgType } from '../../../../../.storybook/utils/argTypes'
 import { AddIcon, DeleteIcon } from '../../Icon/defaultIcons'
 import { createSimpleColorShowcase } from '../../../../../.storybook/utils/colorShowcase'
+import { createA11yPlay } from '../../../../../.storybook/utils/createA11yPlay'
 
 const meta = {
 	title: 'Atoms/Button/NeoLinkButton',
@@ -43,6 +44,29 @@ const meta = {
 			description: "Stretches the link button to fill its container's full inline size.",
 			table: { category: 'Appearance' },
 		},
+		default: {
+			control: false,
+			description:
+				'Default slot content rendered inside the link. Falls back to the `text` prop if empty.',
+			table: { category: 'Slots' },
+		},
+		prefix: {
+			control: false,
+			description: 'Content rendered before the label and start icon (e.g. a decorative icon).',
+			table: { category: 'Slots' },
+		},
+		iconStart: {
+			control: false,
+			description:
+				'Icon rendered at the leading edge of the link. Pass a raw SVG element or a Vue component.',
+			table: { category: 'Slots' },
+		},
+		iconEnd: {
+			control: false,
+			description:
+				'Icon rendered at the trailing edge of the link. Pass a raw SVG element or a Vue component.',
+			table: { category: 'Slots' },
+		},
 	},
 	args: {
 		text: 'Go to page',
@@ -60,33 +84,42 @@ export default meta
 
 type Story = StoryObj<typeof meta>
 
-export const Default: Story = {}
+export const Default: Story = {
+	tags: ['snapshot'],
+}
 
 export const Small: Story = {
+	tags: ['snapshot'],
 	args: { size: 'small' },
 }
 
 export const Large: Story = {
+	tags: ['snapshot'],
 	args: { size: 'large' },
 }
 
 export const Rounded: Story = {
+	tags: ['snapshot'],
 	args: { rounded: true },
 }
 
 export const Secondary: Story = {
+	tags: ['snapshot'],
 	args: { variant: 'secondary' },
 }
 
 export const Tertiary: Story = {
+	tags: ['snapshot'],
 	args: { variant: 'tertiary' },
 }
 
 export const Ghost: Story = {
+	tags: ['snapshot'],
 	args: { variant: 'ghost', text: 'Ghost Link' },
 }
 
 export const External: Story = {
+	tags: ['snapshot'],
 	args: {
 		text: 'Open in new tab',
 		href: 'https://example.com',
@@ -95,6 +128,7 @@ export const External: Story = {
 }
 
 export const WithIconStart: Story = {
+	tags: ['snapshot'],
 	args: {
 		text: 'With Icon Start',
 		iconStart: () => AddIcon,
@@ -102,6 +136,7 @@ export const WithIconStart: Story = {
 }
 
 export const WithIconEnd: Story = {
+	tags: ['snapshot'],
 	args: {
 		text: 'With Icon End',
 		iconEnd: () => DeleteIcon,
@@ -109,6 +144,7 @@ export const WithIconEnd: Story = {
 }
 
 export const FullWidth: Story = {
+	tags: ['snapshot'],
 	args: {
 		variant: 'ghost',
 		text: 'Full Width Link',
@@ -118,12 +154,14 @@ export const FullWidth: Story = {
 }
 
 export const OnDark: Story = {
+	tags: ['snapshot'],
 	globals: {
 		backgrounds: '#000',
 	},
 }
 
 export const RTL: Story = {
+	tags: ['snapshot'],
 	globals: {
 		direction: 'rtl',
 	},
@@ -133,14 +171,28 @@ export const RTL: Story = {
 }
 
 export const AllColors: Story = {
+	tags: ['snapshot'],
 	render: createSimpleColorShowcase(NeoLinkButton, ['primary', 'secondary', 'tertiary', 'ghost']),
 }
 
 export const AllColorsOnDark: Story = {
+	tags: ['snapshot'],
 	globals: {
 		backgrounds: '#000',
 	},
 	render: createSimpleColorShowcase(NeoLinkButton, ['primary', 'secondary', 'tertiary', 'ghost'], {
 		dark: true,
 	}),
+}
+
+export const AllColorsA11y: Story = {
+	...AllColors,
+	tags: ['!dev', 'test-only'],
+	play: createA11yPlay(),
+}
+
+export const AllColorsOnDarkA11y: Story = {
+	...AllColorsOnDark,
+	tags: ['!dev', 'test-only'],
+	play: createA11yPlay(),
 }

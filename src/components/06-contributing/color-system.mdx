@@ -1,0 +1,171 @@
+
+import { Meta, Title } from '@storybook/addon-docs/blocks'
+
+<Meta title="Contributing/Color System" parameters={{ backgrounds: { disable: true }, direction: { disable: true } }} />
+
+<Title>Color System</Title>
+
+How colors are sourced, generated, and exposed to components — from the `material-colors` package through to the CSS custom properties used in themed classes.
+
+---
+
+## Overview
+
+The color system is fully code-generated. The source of truth is the `material-colors` npm package (Google's Material Design palette). A generation script reads it, runs WCAG accessibility checks, and writes four output files. Contributors never edit the outputs directly.
+
+```
+material-colors (npm)
+        ↓
+scripts/generate-colors.ts
+        ↓
+┌───────────────────────────────────────────┐
+│  src/assets/typescript/colors.ts          │  TypeScript types + color arrays
+│  src/assets/styles/colors.css             │  CSS variables + .Themed--* classes
+│  src/components/00-foundations/colors.mdx │  Storybook color reference page
+│  docs/colors.md                           │  Markdown color reference
+└───────────────────────────────────────────┘
+```
+
+Run generation manually:
+```bash
+npm run generate:files
+```
+
+This runs automatically before `npm run build` and `npm run dev` via the pre-flight script.
+
+---
+
+## What gets generated
+
+### `colors.ts`
+
+Exports three things used throughout the codebase:
+
+```ts
+export const colorNames   // all shade keys: ['red-50', 'red-100', ..., 'blue-500', ...]
+export const colors       // family names only: ['red', 'pink', 'purple', ..., 'white', 'black']
+export type Color         // 'red' | 'pink' | 'purple' | ... (derived from colors array)
+export const colorsFlat   // { 'red-500': '#f44336', ... } — internal, CSS generation only
+```
+
+### `colors.css`
+
+Two sections:
+
+**1. Raw CSS variables** — one per shade, on `:root`:
+```css
+:root {
+    --neo-color-red50: #ffebee;
+    --neo-color-red100: #ffcdd2;
+    --neo-color-red500: #f44336;
+    /* ... */
+}
+```
+
+**2. Themed classes** — one per color family, with six semantic variables:
+```css
+.Themed--blue {
+    --neo-theme-color:          var(--neo-color-blue500);
+    --neo-theme-colorText:      var(--neo-color-white);
+    --neo-theme-colorAccent:    var(--neo-color-blue200);
+    --neo-theme-colorAccessible: var(--neo-color-blue700);
+    --neo-theme-colorFilledBg:  var(--neo-color-blue100);
+    --neo-theme-colorFilledBgDark: var(--neo-color-blue900);
+
+    @mixin onDark {
+        --neo-theme-color:          var(--neo-color-blue400);
+        --neo-theme-colorText:      var(--neo-color-black);
+        --neo-theme-colorAccessible: var(--neo-color-blue200);
+        /* ... */
+    }
+}
+```
+
+---
+
+## Shade selection algorithm
+
+The generator doesn't hardcode shades — it walks the palette to find the first shade that meets WCAG AA (4.5:1 contrast ratio).
+
+### Light mode `--neo-theme-color` (background use)
+
+For most colors, white text must be readable on the background:
+- Tries shades `500 → 600 → 700 → 800 → 900`
+- Uses the first shade where `contrast(shade, white) ≥ 4.5`
+
+For **yellow, amber, orange** (`blackTextExceptions`), black text is used instead:
+- Tries shades `500 → 400 → 300 → 200 → 100`
+- Uses the first shade where `contrast(shade, black) ≥ 4.5`
+
+### Dark mode `--neo-theme-color` (background use)
+
+All colors use black text in dark mode (lighter shades on dark backgrounds):
+- Tries shades `500 → 400 → 300 → 200 → 100`
+- Uses the first shade where `contrast(shade, black) ≥ 4.5`
+
+### `--neo-theme-colorAccessible` (text/border on page background)
+
+Light mode — color used as text on white:
+- Regular colors: tries `700 → 800 → 900 → 600 → 500`
+- Exception colors: tries `900 → 800 → 700` (darkest available for black text on white)
+
+Dark mode — color used as text on black:
+- Tries `200 → 100 → 300 → 400 → 500`
+
+### Special cases
+
+- **`black`**: flips to white in dark mode (`darkModeColorVar = 'white'`) so black-colored components gracefully invert inside dark surfaces
+- **`white`**: excluded from `SurfaceColor` — invisible on the default white canvas; use `black` + `u-onDark` instead
+
+---
+
+## `SurfaceColor` type
+
+Most component `color` props use `SurfaceColor` rather than `Color`:
+
+```ts
+// src/assets/typescript/colorTypes.ts
+export type SurfaceColor = Exclude<Color, 'white'>
+```
+
+White is excluded because it is invisible against the white canvas, and interactive states (`hover`, `active`) use `--neo-theme-colorAccessible` which resolves to white-on-white inside a `u-onDark` context. Components that legitimately accept white (badges, icons used as decorative overlays) keep the full `Color` type.
+
+---
+
+## Cache system
+
+The generator checks file hashes before running to avoid unnecessary rebuilds:
+
+```ts
+// scripts/utils/cache-helper.ts
+if (shouldSkipGeneration(SCRIPT_NAME, SOURCE_FILES, OUTPUT_FILES)) {
+    process.exit(0)
+}
+```
+
+If neither `scripts/generate-colors.ts` nor `node_modules/material-colors/dist/colors.json` has changed since the last run, generation is skipped. The cache is stored alongside the scripts and committed to git.
+
+---
+
+## Adding a new color
+
+The `material-colors` package is the sole color source. Colors cannot be added without either:
+
+1. **Updating the package** — if Material Design adds a new family in a future release, bumping `material-colors` and re-running `npm run generate:files` is sufficient. The generator picks up all families automatically.
+
+2. **Adding a custom color** — requires modifying `generate-colors.ts` to inject additional entries into `flatColors` before the CSS generation loop. The WCAG shade-selection algorithm will run automatically for any injected family.
+
+There is no manual way to add a color — editing `colors.ts` or `colors.css` directly will be overwritten on the next `generate:files` run.
+
+---
+
+## WCAG utility
+
+Contrast checking uses `src/utils/wcag.ts`, which is also exported from `src/index.ts` for library consumers:
+
+```ts
+import { isAccessible, contrast, luminance } from 'neo-materia'
+
+isAccessible('#1976d2', '#ffffff')  // true  (blue500 + white = 4.6:1)
+contrast('#f44336', '#ffffff')      // 3.99  (red500 + white — below AA)
+```

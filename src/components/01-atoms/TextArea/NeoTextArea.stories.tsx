@@ -3,6 +3,7 @@ import NeoTextArea from './NeoTextArea.vue'
 import { textareaSizes, textareaVariants } from './NeoTextAreaTypes'
 import { ariaLabelArgType, disabledArgType } from '../../../../.storybook/utils/argTypes'
 import { createSimpleColorShowcase } from '../../../../.storybook/utils/colorShowcase'
+import { createA11yPlay } from '../../../../.storybook/utils/createA11yPlay'
 
 const meta = {
 	title: 'Atoms/NeoTextArea',
@@ -82,9 +83,12 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Default: Story = {}
+export const Default: Story = {
+	tags: ['snapshot'],
+}
 
 export const WithLabel: Story = {
+	tags: ['snapshot'],
 	args: {
 		label: 'Description',
 		ariaLabel: undefined,
@@ -92,18 +96,21 @@ export const WithLabel: Story = {
 }
 
 export const WithHelpText: Story = {
+	tags: ['snapshot'],
 	args: {
 		helpText: 'Please provide detailed information',
 	},
 }
 
 export const WithError: Story = {
+	tags: ['snapshot'],
 	args: {
 		errorMessage: 'This field is required',
 	},
 }
 
 export const Required: Story = {
+	tags: ['snapshot'],
 	args: {
 		label: 'Textarea Field',
 		ariaLabel: undefined,
@@ -113,6 +120,7 @@ export const Required: Story = {
 }
 
 export const Disabled: Story = {
+	tags: ['snapshot'],
 	args: {
 		disabled: true,
 		value: 'This textarea is disabled',
@@ -120,6 +128,7 @@ export const Disabled: Story = {
 }
 
 export const Readonly: Story = {
+	tags: ['snapshot'],
 	args: {
 		readonly: true,
 		value: 'This textarea is readonly',
@@ -127,49 +136,68 @@ export const Readonly: Story = {
 }
 
 export const Small: Story = {
+	tags: ['snapshot'],
 	args: {
 		size: 'small',
 	},
 }
 
 export const Large: Story = {
+	tags: ['snapshot'],
 	args: {
 		size: 'large',
 	},
 }
 
 export const Secondary: Story = {
+	tags: ['snapshot'],
 	args: {
 		variant: 'secondary',
 	},
 }
 
 export const Tertiary: Story = {
+	tags: ['snapshot'],
 	args: {
 		variant: 'tertiary',
 	},
 }
 
 export const Rounded: Story = {
+	tags: ['snapshot'],
 	args: {
 		rounded: true,
 	},
 }
 
 export const NoResize: Story = {
+	tags: ['snapshot'],
 	args: {
 		resize: 'none',
 	},
 }
 
 export const WithMaxLength: Story = {
+	tags: ['snapshot'],
 	args: {
 		maxLength: 200,
 		helpText: 'Maximum 200 characters',
 	},
 }
 
+export const RTL: Story = {
+	tags: ['snapshot'],
+	globals: {
+		direction: 'rtl',
+	},
+	args: {
+		ariaLabel: 'تسمية',
+		placeholder: 'أدخل النص هنا...',
+	},
+}
+
 export const AllColors: Story = {
+	tags: ['snapshot'],
 	render: createSimpleColorShowcase(
 		NeoTextArea,
 		[
@@ -201,6 +229,7 @@ export const AllColors: Story = {
 }
 
 export const AllColorsOnDark: Story = {
+	tags: ['snapshot'],
 	globals: {
 		backgrounds: '#000',
 	},
@@ -233,4 +262,16 @@ export const AllColorsOnDark: Story = {
 			dark: true,
 		},
 	),
+}
+
+export const AllColorsA11y: Story = {
+	...AllColors,
+	tags: ['!dev', 'test-only'],
+	play: createA11yPlay(),
+}
+
+export const AllColorsOnDarkA11y: Story = {
+	...AllColorsOnDark,
+	tags: ['!dev', 'test-only'],
+	play: createA11yPlay(),
 }

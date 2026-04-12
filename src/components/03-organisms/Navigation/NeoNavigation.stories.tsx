@@ -12,6 +12,7 @@ import {
 } from './NeoNavigationTypes'
 import { ariaLabelArgType } from '../../../../.storybook/utils/argTypes'
 import { createSimpleColorShowcase } from '../../../../.storybook/utils/colorShowcase'
+import { createA11yPlay } from '../../../../.storybook/utils/createA11yPlay'
 
 const exampleLinks: NeoNavigationProps['links'] = [
 	{ text: 'Home', href: '/', active: true },
@@ -45,7 +46,7 @@ const nestedLinks: NeoNavigationProps['links'] = [
 
 const renderBrandLogo = (text: string = 'NeoMateria') => (
 	<div style={{ alignItems: 'center', display: 'flex', gap: '8px' }}>
-		<NeoImage src="/favicon.ico" alt="" width={24} height={24} objectFit="contain" />
+		<NeoImage src="/favicon.svg" alt="" width={24} height={24} objectFit="contain" />
 		<span style={{ color: 'var(--neo-theme-color)', fontSize: '18px', fontWeight: 'bold' }}>
 			{text}
 		</span>
@@ -119,6 +120,47 @@ const meta = {
 				'Viewport breakpoint at which the navigation switches from the mobile hamburger layout to the full desktop layout.',
 			table: { category: 'Behavior' },
 		},
+		logo: {
+			control: false,
+			description: 'Brand logo displayed in the navigation bar.',
+			table: { category: 'Slots' },
+		},
+		dropdownIcon: {
+			control: false,
+			description:
+				'Custom dropdown chevron icon. Receives `isOpen` to allow rotation or icon swap.',
+			table: { category: 'Slots' },
+		},
+		actions: {
+			control: false,
+			description: 'Action buttons displayed in the navigation bar (e.g. login, search).',
+			table: { category: 'Slots' },
+		},
+		actionsMenuTrigger: {
+			control: false,
+			description: 'Custom trigger button for the collapsed actions dropdown. Receives `isOpen`.',
+			table: { category: 'Slots' },
+		},
+		menuIcon: {
+			control: false,
+			description: 'Custom icon for the mobile hamburger menu button.',
+			table: { category: 'Slots' },
+		},
+		mobileMenu: {
+			control: false,
+			description: 'Custom content for the mobile menu panel, replacing auto-generated links.',
+			table: { category: 'Slots' },
+		},
+		mobileLogo: {
+			control: false,
+			description: 'Brand logo displayed inside the mobile menu panel.',
+			table: { category: 'Slots' },
+		},
+		mobileActions: {
+			control: false,
+			description: 'Action buttons displayed inside the mobile menu panel.',
+			table: { category: 'Slots' },
+		},
 	},
 	args: {
 		color: 'blue',
@@ -136,9 +178,12 @@ export default meta
 
 type Story = StoryObj<typeof meta>
 
-export const Default: Story = {}
+export const Default: Story = {
+	tags: ['snapshot'],
+}
 
 export const Compact: Story = {
+	tags: ['snapshot'],
 	args: {
 		variant: 'compact',
 	},
@@ -149,7 +194,7 @@ export const Compact: Story = {
 <NeoNavigation color="blue" variant="compact" :links="links" aria-label="Main navigation">
   <template #logo>
     <div style="display: flex; align-items: center; gap: 8px;">
-      <NeoImage src="/favicon.ico" alt="" :width="24" :height="24" object-fit="contain" />
+      <NeoImage src="/favicon.svg" alt="" :width="24" :height="24" object-fit="contain" />
       <span style="font-size: 18px; font-weight: bold; color: var(--neo-theme-color);">NeoMateria</span>
     </div>
   </template>
@@ -191,6 +236,7 @@ export const Compact: Story = {
 }
 
 export const Flyout: Story = {
+	tags: ['snapshot'],
 	args: {
 		variant: 'flyout',
 		// @ts-expect-error - Vue slot inference conflict with prop type
@@ -203,7 +249,7 @@ export const Flyout: Story = {
 <NeoNavigation color="blue" variant="flyout" :links="links" aria-label="Main navigation">
   <template #logo>
     <div style="display: flex; align-items: center; gap: 8px;">
-      <NeoImage src="/favicon.ico" alt="" :width="24" :height="24" object-fit="contain" />
+      <NeoImage src="/favicon.svg" alt="" :width="24" :height="24" object-fit="contain" />
       <span style="font-size: 18px; font-weight: bold; color: var(--neo-theme-color);">NeoMateria</span>
     </div>
   </template>
@@ -245,13 +291,14 @@ export const Flyout: Story = {
 }
 
 export const WithLogo: Story = {
+	tags: ['snapshot'],
 	parameters: {
 		docs: {
 			source: {
 				code: `<NeoNavigation color="blue" :links="links" aria-label="Main navigation">
   <template #logo>
     <div style="display: flex; align-items: center; gap: 8px;">
-      <NeoImage src="/favicon.ico" alt="" :width="24" :height="24" object-fit="contain" />
+      <NeoImage src="/favicon.svg" alt="" :width="24" :height="24" object-fit="contain" />
       <span style="font-size: 18px; font-weight: bold; color: var(--neo-theme-color);">NeoMateria</span>
     </div>
   </template>
@@ -277,6 +324,7 @@ export const WithLogo: Story = {
 }
 
 export const WithActions: Story = {
+	tags: ['snapshot'],
 	parameters: {
 		docs: {
 			source: {
@@ -318,13 +366,14 @@ export const WithActions: Story = {
 }
 
 export const Complete: Story = {
+	tags: ['snapshot'],
 	parameters: {
 		docs: {
 			source: {
 				code: `<NeoNavigation color="blue" :links="links" aria-label="Main navigation">
   <template #logo>
     <div style="display: flex; align-items: center; gap: 8px;">
-      <NeoImage src="/favicon.ico" alt="" :width="24" :height="24" object-fit="contain" />
+      <NeoImage src="/favicon.svg" alt="" :width="24" :height="24" object-fit="contain" />
       <span style="font-size: 18px; font-weight: bold; color: var(--neo-theme-color);">Titanlord</span>
     </div>
   </template>
@@ -366,6 +415,7 @@ export const Complete: Story = {
 }
 
 export const WithRichActions: Story = {
+	tags: ['snapshot'],
 	parameters: {
 		docs: {
 			source: {
@@ -379,7 +429,7 @@ const language = ref('EN')
   <NeoNavigation color="blue" :links="links" aria-label="Main navigation" menuLabel="Menu" closeLabel="Close">
     <template #logo>
       <div style="display: flex; align-items: center; gap: 8px;">
-        <NeoImage src="/favicon.ico" alt="" :width="24" :height="24" object-fit="contain" />
+        <NeoImage src="/favicon.svg" alt="" :width="24" :height="24" object-fit="contain" />
         <span style="font-size: 18px; font-weight: bold; color: var(--neo-theme-color);">Titanlord</span>
       </div>
     </template>
@@ -460,6 +510,7 @@ const language = ref('EN')
 }
 
 export const CollapseActionsMobile: Story = {
+	tags: ['snapshot'],
 	args: {
 		collapseActions: 'mobile',
 	},
@@ -471,7 +522,7 @@ export const CollapseActionsMobile: Story = {
 <NeoNavigation color="blue" :links="links" collapse-actions="mobile" aria-label="Main navigation">
   <template #logo>
     <div style="display: flex; align-items: center; gap: 8px;">
-      <NeoImage src="/favicon.ico" alt="" :width="24" :height="24" object-fit="contain" />
+      <NeoImage src="/favicon.svg" alt="" :width="24" :height="24" object-fit="contain" />
       <span style="font-size: 18px; font-weight: bold; color: var(--neo-theme-color);">NeoMateria</span>
     </div>
   </template>
@@ -513,6 +564,7 @@ export const CollapseActionsMobile: Story = {
 }
 
 export const CollapseActionsAlways: Story = {
+	tags: ['snapshot'],
 	args: {
 		collapseActions: 'always',
 	},
@@ -523,7 +575,7 @@ export const CollapseActionsAlways: Story = {
 <NeoNavigation color="blue" :links="links" collapse-actions="always" aria-label="Main navigation">
   <template #logo>
     <div style="display: flex; align-items: center; gap: 8px;">
-      <NeoImage src="/favicon.ico" alt="" :width="24" :height="24" object-fit="contain" />
+      <NeoImage src="/favicon.svg" alt="" :width="24" :height="24" object-fit="contain" />
       <span style="font-size: 18px; font-weight: bold; color: var(--neo-theme-color);">NeoMateria</span>
     </div>
   </template>
@@ -561,6 +613,7 @@ export const CollapseActionsAlways: Story = {
 }
 
 export const WithDropdowns: Story = {
+	tags: ['snapshot'],
 	args: {
 		// @ts-expect-error - Vue slot inference conflict with prop type
 		links: nestedLinks,
@@ -586,7 +639,7 @@ export const WithDropdowns: Story = {
 >
   <template #logo>
     <div style="display: flex; align-items: center; gap: 8px;">
-      <NeoImage src="/favicon.ico" alt="" :width="24" :height="24" object-fit="contain" />
+      <NeoImage src="/favicon.svg" alt="" :width="24" :height="24" object-fit="contain" />
       <span style="font-size: 18px; font-weight: bold; color: var(--neo-theme-color);">NeoMateria</span>
     </div>
   </template>
@@ -618,6 +671,7 @@ export const WithDropdowns: Story = {
 }
 
 export const MinimalWithoutLinks: Story = {
+	tags: ['snapshot'],
 	args: {
 		links: [],
 	},
@@ -628,7 +682,7 @@ export const MinimalWithoutLinks: Story = {
 <NeoNavigation color="blue" :links="[]" aria-label="Main navigation">
   <template #logo>
     <div style="display: flex; align-items: center; gap: 8px;">
-      <NeoImage src="/favicon.ico" alt="" :width="24" :height="24" object-fit="contain" />
+      <NeoImage src="/favicon.svg" alt="" :width="24" :height="24" object-fit="contain" />
       <span style="font-size: 18px; font-weight: bold; color: var(--neo-theme-color);">Brand</span>
     </div>
   </template>
@@ -660,6 +714,7 @@ export const MinimalWithoutLinks: Story = {
 }
 
 export const MobileMenu: Story = {
+	tags: ['snapshot'],
 	parameters: {
 		viewport: { defaultViewport: 'mobile1' },
 		docs: {
@@ -668,7 +723,7 @@ export const MobileMenu: Story = {
 <NeoNavigation color="blue" :links="links" aria-label="Main navigation" menuLabel="Menu" closeLabel="Close">
   <template #logo>
     <div style="display: flex; align-items: center; gap: 8px;">
-      <NeoImage src="/favicon.ico" alt="" :width="24" :height="24" object-fit="contain" />
+      <NeoImage src="/favicon.svg" alt="" :width="24" :height="24" object-fit="contain" />
       <span style="font-size: 18px; font-weight: bold; color: var(--neo-theme-color);">NeoMateria</span>
     </div>
   </template>
@@ -730,6 +785,7 @@ export const MobileMenuInteraction: Story = {
 }
 
 export const OnDark: Story = {
+	tags: ['snapshot'],
 	globals: {
 		backgrounds: '#000',
 	},
@@ -741,7 +797,7 @@ export const OnDark: Story = {
   <NeoNavigation color="blue" :links="links" aria-label="Main navigation">
     <template #logo>
       <div style="display: flex; align-items: center; gap: 8px;">
-        <NeoImage src="/favicon.ico" alt="" :width="24" :height="24" object-fit="contain" />
+        <NeoImage src="/favicon.svg" alt="" :width="24" :height="24" object-fit="contain" />
         <span style="font-size: 18px; font-weight: bold; color: var(--neo-theme-color);">NeoMateria</span>
       </div>
     </template>
@@ -773,7 +829,20 @@ export const OnDark: Story = {
 	},
 }
 
+export const RTL: Story = {
+	tags: ['snapshot'],
+	globals: {
+		direction: 'rtl',
+	},
+	args: {
+		ariaLabel: 'التنقل الرئيسي',
+		menuLabel: 'القائمة',
+		closeLabel: 'إغلاق',
+	},
+}
+
 export const AllColors: Story = {
+	tags: ['snapshot'],
 	parameters: {
 		a11y: { config: { rules: [{ id: 'landmark-unique', enabled: false }] } },
 	},
@@ -781,6 +850,7 @@ export const AllColors: Story = {
 }
 
 export const AllColorsOnDark: Story = {
+	tags: ['snapshot'],
 	globals: {
 		backgrounds: '#000',
 	},
@@ -790,4 +860,16 @@ export const AllColorsOnDark: Story = {
 	render: createSimpleColorShowcase(NeoNavigation, ['default'], {
 		dark: true,
 	}),
+}
+
+export const AllColorsA11y: Story = {
+	...AllColors,
+	tags: ['!dev', 'test-only'],
+	play: createA11yPlay(),
+}
+
+export const AllColorsOnDarkA11y: Story = {
+	...AllColorsOnDark,
+	tags: ['!dev', 'test-only'],
+	play: createA11yPlay(),
 }

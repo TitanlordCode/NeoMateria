@@ -5,8 +5,8 @@
     "vitest.config.*",
     "cypress.config.*",
     "nightwatch.conf.*",
-    "playwright.config.*",
-    "eslint.config.*"
+    "eslint.config.*",
+    ".storybook/vitest.setup.ts"
   ],
   "compilerOptions": {
     "noEmit": true,

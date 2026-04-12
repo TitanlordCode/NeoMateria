@@ -1,9 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
+import { userEvent, within } from 'storybook/test'
 
 import NeoSelect from './NeoSelect.vue'
 import type { NeoSelectProps } from './NeoSelectTypes'
 import { selectSizes, selectVariants, selectModes } from './NeoSelectTypes'
 import { createSimpleColorShowcase } from '../../../../.storybook/utils/colorShowcase'
+import { createA11yPlay } from '../../../../.storybook/utils/createA11yPlay'
+
+const openSelectPlay = async ({ canvasElement }: { canvasElement: HTMLElement }) => {
+	const canvas = within(canvasElement)
+	await userEvent.click(canvas.getByRole('combobox'))
+}
 
 const exampleOptions = [
 	{ value: 'apple', label: 'Apple' },
@@ -113,8 +120,29 @@ export default meta
 
 type Story = StoryObj<typeof meta>
 
-export const Default: Story = {}
+export const Default: Story = {
+	tags: ['snapshot'],
+}
+
+export const Open: Story = {
+	tags: ['snapshot'],
+	play: openSelectPlay,
+}
+
+export const MultiSelectOpen: Story = {
+	tags: ['snapshot'],
+	args: {
+		label: 'Choose fruits',
+		ariaLabel: undefined,
+		mode: 'multi',
+		selectProps: { placeholder: 'Select multiple...' },
+		selectValue: ['apple'],
+	},
+	play: openSelectPlay,
+}
+
 export const WithLabel: Story = {
+	tags: ['snapshot'],
 	args: {
 		label: 'Default',
 		ariaLabel: undefined,
@@ -122,6 +150,7 @@ export const WithLabel: Story = {
 }
 
 export const MultiSelect: Story = {
+	tags: ['snapshot'],
 	args: {
 		label: 'Choose fruits',
 		ariaLabel: undefined,
@@ -132,6 +161,7 @@ export const MultiSelect: Story = {
 }
 
 export const MultiSelectEmpty: Story = {
+	tags: ['snapshot'],
 	args: {
 		label: 'Choose your favorite programming languages',
 		ariaLabel: undefined,
@@ -151,6 +181,7 @@ export const MultiSelectEmpty: Story = {
 }
 
 export const SingleSelectWithSearch: Story = {
+	tags: ['snapshot'],
 	args: {
 		label: 'Choose your country',
 		ariaLabel: undefined,
@@ -170,12 +201,14 @@ export const SingleSelectWithSearch: Story = {
 }
 
 export const OnDark: Story = {
+	tags: ['snapshot'],
 	globals: {
 		backgrounds: '#000',
 	},
 }
 
 export const RTL: Story = {
+	tags: ['snapshot'],
 	globals: {
 		direction: 'rtl',
 	},
@@ -192,6 +225,7 @@ export const RTL: Story = {
 }
 
 export const AllColors: Story = {
+	tags: ['snapshot'],
 	render: createSimpleColorShowcase(NeoSelect, ['primary', 'secondary', 'tertiary'], {
 		defaultProps: {
 			name: 'color-select',
@@ -201,6 +235,7 @@ export const AllColors: Story = {
 }
 
 export const AllColorsOnDark: Story = {
+	tags: ['snapshot'],
 	globals: {
 		backgrounds: '#000',
 	},
@@ -211,4 +246,16 @@ export const AllColorsOnDark: Story = {
 		},
 		dark: true,
 	}),
+}
+
+export const AllColorsA11y: Story = {
+	...AllColors,
+	tags: ['!dev', 'test-only'],
+	play: createA11yPlay(),
+}
+
+export const AllColorsOnDarkA11y: Story = {
+	...AllColorsOnDark,
+	tags: ['!dev', 'test-only'],
+	play: createA11yPlay(),
 }

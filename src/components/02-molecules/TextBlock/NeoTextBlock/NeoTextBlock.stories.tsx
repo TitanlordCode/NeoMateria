@@ -57,6 +57,7 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
+	tags: ['snapshot'],
 	render: (args: NeoTextBlockProps) => {
 		return defineComponent({
 			name: 'DefaultRender',
@@ -82,6 +83,7 @@ export const Default: Story = {
 }
 
 export const WithCTA: Story = {
+	tags: ['snapshot'],
 	args: {
 		color: 'blue',
 		ctaText: 'Get started',
@@ -115,6 +117,7 @@ export const WithCTA: Story = {
 }
 
 export const Centered: Story = {
+	tags: ['snapshot'],
 	args: {
 		align: 'center',
 		color: 'purple',
