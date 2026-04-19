@@ -3,6 +3,7 @@
   "include": [
     "vite.config.*",
     "vitest.config.*",
+    "vitest.snapshot-commands.*",
     "cypress.config.*",
     "nightwatch.conf.*",
     "eslint.config.*",
@@ -14,6 +15,6 @@
 
     "module": "ESNext",
     "moduleResolution": "Bundler",
-    "types": ["node"]
+    "types": ["node", "@vitest/browser/providers/playwright"]
   }
 }

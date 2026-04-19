@@ -17,7 +17,13 @@ type SnapshotStatus =
 
 // Cast to include the custom commands defined in vitest.config.mts.
 const snapshotCommands = commands as typeof commands & {
-	prepareForSnapshot: () => Promise<void>
+	// Returns the story's true content height (measured after freezing animations).
+	prepareForSnapshot: () => Promise<number>
+	captureStoryScreenshot: (
+		viewportWidth: number,
+		viewportHeight: number,
+		contentHeight: number,
+	) => Promise<string>
 	compareSnapshot: (
 		storyId: string,
 		viewportName: string,
@@ -36,12 +42,37 @@ afterEach(async (context) => {
 		// Resize the preview iframe so responsive breakpoints fire correctly.
 		await page.viewport(viewport.width, viewport.height)
 
-		// Freeze animations and wait for any images that lazy-loaded after the
-		// viewport resize. The animation CSS injection is idempotent.
-		await snapshotCommands.prepareForSnapshot()
+		// Freeze animations, wait for images, and get the story's true content
+		// height — all in one server-side round trip.
+		const contentHeight = await snapshotCommands.prepareForSnapshot()
 
-		// Capture the story as raw base64 (not saved to disk) for comparison.
-		const base64 = await page.screenshot({ save: false })
+		// If the story is taller than the current viewport, expand the iframe
+		// so Chrome renders and paints all off-screen content before we screenshot.
+		// page.viewport() is the only API that actually changes window.innerHeight
+		// inside the frame — ctx.page.setViewportSize() (server-side) only resizes
+		// the outer Playwright page and does NOT affect the iframe's internal viewport.
+		const effectiveHeight = Math.ceil(Math.max(viewport.height, contentHeight))
+		if (effectiveHeight > viewport.height) {
+			await page.viewport(viewport.width, effectiveHeight)
+			// Two rAF cycles: first lets layout complete, second lets paint flush.
+			await new Promise<void>((resolve) =>
+				requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
+			)
+		}
+
+		// Server-side: screenshot the iframe body and crop whitespace below
+		// short stories (those shorter than the original viewport height).
+		const base64 = await snapshotCommands.captureStoryScreenshot(
+			viewport.width,
+			viewport.height,
+			contentHeight,
+		)
+
+		// Reset viewport to the canonical test height for the next iteration
+		// so story-to-story bleed-over doesn't affect content measurements.
+		if (effectiveHeight > viewport.height) {
+			await page.viewport(viewport.width, viewport.height)
+		}
 
 		const result = await snapshotCommands.compareSnapshot(storyId, viewport.name, base64)
 

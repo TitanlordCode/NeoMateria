@@ -87,6 +87,19 @@ const meta = {
 		fullWidth: false,
 		onClick: fn(),
 	},
+	render: (args) =>
+		defineComponent({
+			name: 'NeoButtonRender',
+			render: () => (
+				<NeoButton
+					{...args}
+					v-slots={{
+						...(args.iconStart ? { iconStart: () => args.iconStart } : {}),
+						...(args.iconEnd ? { iconEnd: () => args.iconEnd } : {}),
+					}}
+				/>
+			),
+		}),
 } satisfies Meta<typeof NeoButton>
 
 export default meta
@@ -152,7 +165,7 @@ export const GhostWithIcon: Story = {
 	args: {
 		variant: 'ghost',
 		text: 'Expand',
-		iconEnd: () => AddIcon,
+		iconEnd: AddIcon,
 	},
 }
 
@@ -162,7 +175,7 @@ export const FullWidth: Story = {
 		variant: 'ghost',
 		text: 'Full Width Button',
 		fullWidth: true,
-		iconEnd: () => AddIcon,
+		iconEnd: AddIcon,
 	},
 }
 
@@ -170,7 +183,7 @@ export const WithIconStart: Story = {
 	tags: ['snapshot'],
 	args: {
 		text: 'With Icon Start',
-		iconStart: () => AddIcon,
+		iconStart: AddIcon,
 	},
 }
 
@@ -178,7 +191,7 @@ export const WithIconEnd: Story = {
 	tags: ['snapshot'],
 	args: {
 		text: 'With Icon End',
-		iconEnd: () => DeleteIcon,
+		iconEnd: DeleteIcon,
 	},
 }
 
@@ -186,8 +199,8 @@ export const WithIconStartAndEnd: Story = {
 	tags: ['snapshot'],
 	args: {
 		text: 'With Both Icon',
-		iconStart: () => AddIcon,
-		iconEnd: () => DeleteIcon,
+		iconStart: AddIcon,
+		iconEnd: DeleteIcon,
 	},
 }
 

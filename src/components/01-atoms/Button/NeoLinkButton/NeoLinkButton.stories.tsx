@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 
+import { defineComponent } from 'vue'
+
 import NeoLinkButton from '@/components/01-atoms/Button/NeoLinkButton/NeoLinkButton.vue'
 import { buttonSizes, buttonVariants } from '../NeoButton/NeoButtonTypes'
 import { ariaLabelArgType } from '../../../../../.storybook/utils/argTypes'
@@ -78,6 +80,19 @@ const meta = {
 		fullWidth: false,
 		external: false,
 	},
+	render: (args) =>
+		defineComponent({
+			name: 'NeoLinkButtonRender',
+			render: () => (
+				<NeoLinkButton
+					{...args}
+					v-slots={{
+						...(args.iconStart ? { iconStart: () => args.iconStart } : {}),
+						...(args.iconEnd ? { iconEnd: () => args.iconEnd } : {}),
+					}}
+				/>
+			),
+		}),
 } satisfies Meta<typeof NeoLinkButton>
 
 export default meta
@@ -131,7 +146,7 @@ export const WithIconStart: Story = {
 	tags: ['snapshot'],
 	args: {
 		text: 'With Icon Start',
-		iconStart: () => AddIcon,
+		iconStart: AddIcon,
 	},
 }
 
@@ -139,7 +154,7 @@ export const WithIconEnd: Story = {
 	tags: ['snapshot'],
 	args: {
 		text: 'With Icon End',
-		iconEnd: () => DeleteIcon,
+		iconEnd: DeleteIcon,
 	},
 }
 
@@ -149,7 +164,7 @@ export const FullWidth: Story = {
 		variant: 'ghost',
 		text: 'Full Width Link',
 		fullWidth: true,
-		iconEnd: () => AddIcon,
+		iconEnd: AddIcon,
 	},
 }
 

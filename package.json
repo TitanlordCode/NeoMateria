@@ -22,7 +22,7 @@
 		"build": "npm run generate:files && vite build",
 		"prepublishOnly": "npm run build",
 		"preview": "vite preview",
-		"test": "npm run type-check && npm run lint:check && npm run stylelint:css && npm run prettier:check && vitest run --project=unit --project=storybook && npm run test:storybook:snapshots",
+		"test": "npm run type-check && npm run lint:check && npm run stylelint:css && npm run prettier:check && vitest run --project=unit --project=snapshot-utils --project=storybook && npm run test:storybook:snapshots",
 		"test:unit": "vitest --project=unit",
 		"test:storybook": "vitest run --project=storybook",
 		"test:storybook:snapshots": "node docker/run-snapshots.mjs",

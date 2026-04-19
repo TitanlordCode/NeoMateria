@@ -477,6 +477,11 @@ onUnmounted(() => {
 	display: flex;
 	gap: var(--NeoNavigation-sizing-gap);
 	justify-content: space-between;
+	overflow: hidden;
+
+	@mixin bp-md {
+		overflow: visible;
+	}
 }
 
 .NeoNavigation-start {

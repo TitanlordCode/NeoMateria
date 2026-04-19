@@ -106,7 +106,7 @@ const meta = {
 			control: 'select',
 			options: [undefined, ...navigationCollapseActions],
 			description:
-				'`mobile`: action slot buttons are visible inline on desktop, collapsed into a dropdown on mobile. `always`: action buttons are always collapsed into a dropdown regardless of viewport.',
+				'`mobile`: action buttons render inline on desktop, collapsed into a `•••` dropdown on mobile. Use this whenever you combine a `logo` slot with multiple action buttons — without it the bar overflows on narrow screens. `always`: always collapsed regardless of viewport.',
 			table: { category: 'Behavior' },
 		},
 		actionsMenuAriaLabel: {
@@ -188,12 +188,13 @@ export const Compact: Story = {
 	tags: ['snapshot'],
 	args: {
 		variant: 'compact',
+		collapseActions: 'mobile',
 	},
 	parameters: {
 		docs: {
 			source: {
-				code: `<!-- Compact: always shows mobile menu toggle, actions still visible on desktop -->
-<NeoNavigation color="blue" variant="compact" :links="links" aria-label="Main navigation">
+				code: `<!-- Compact: always shows mobile menu toggle, actions visible on desktop and collapsed on mobile -->
+<NeoNavigation color="blue" variant="compact" collapse-actions="mobile" :links="links" aria-label="Main navigation">
   <template #logo>
     <div style="display: flex; align-items: center; gap: 8px;">
       <NeoImage src="/favicon.svg" alt="" :width="24" :height="24" object-fit="contain" />
@@ -241,6 +242,7 @@ export const Flyout: Story = {
 	tags: ['snapshot'],
 	args: {
 		variant: 'flyout',
+		collapseActions: 'mobile',
 		// @ts-expect-error - Vue slot inference conflict with prop type
 		links: nestedLinks,
 	},
@@ -248,7 +250,7 @@ export const Flyout: Story = {
 		docs: {
 			source: {
 				code: `<!-- Flyout: parent links open a full-width panel below the nav bar instead of inline dropdowns -->
-<NeoNavigation color="blue" variant="flyout" :links="links" aria-label="Main navigation">
+<NeoNavigation color="blue" variant="flyout" collapse-actions="mobile" :links="links" aria-label="Main navigation">
   <template #logo>
     <div style="display: flex; align-items: center; gap: 8px;">
       <NeoImage src="/favicon.svg" alt="" :width="24" :height="24" object-fit="contain" />
@@ -289,6 +291,23 @@ export const Flyout: Story = {
 				)
 			},
 		})
+	},
+}
+
+export const FlyoutOpen: Story = {
+	...Flyout,
+	tags: ['snapshot'],
+	args: {
+		...Flyout.args,
+		collapseActions: 'always',
+	},
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement)
+		const productsButton = canvas.getByText('Products')
+		await userEvent.click(productsButton)
+		await waitFor(() =>
+			expect(canvasElement.querySelector('.NeoNavigation-flyoutPanel')).not.toBeNull(),
+		)
 	},
 }
 
@@ -369,14 +388,17 @@ export const WithActions: Story = {
 
 export const Complete: Story = {
 	tags: ['snapshot'],
+	args: {
+		collapseActions: 'mobile',
+	},
 	parameters: {
 		docs: {
 			source: {
-				code: `<NeoNavigation color="blue" :links="links" aria-label="Main navigation">
+				code: `<NeoNavigation color="blue" collapse-actions="mobile" :links="links" aria-label="Main navigation">
   <template #logo>
     <div style="display: flex; align-items: center; gap: 8px;">
       <NeoImage src="/favicon.svg" alt="" :width="24" :height="24" object-fit="contain" />
-      <span style="font-size: 18px; font-weight: bold; color: var(--neo-theme-color);">Titanlord</span>
+      <span style="font-size: 18px; font-weight: bold; color: var(--neo-theme-color);">NeoMateria</span>
     </div>
   </template>
   <template #actions>
@@ -395,7 +417,7 @@ export const Complete: Story = {
 					<NeoNavigation
 						{...args}
 						v-slots={{
-							logo: () => renderBrandLogo('Titanlord'),
+							logo: () => renderBrandLogo('NeoMateria'),
 							actions: () => (
 								<>
 									<NeoButton text="Sign In" color={args.color} size="medium" variant="tertiary" />
@@ -418,6 +440,9 @@ export const Complete: Story = {
 
 export const WithRichActions: Story = {
 	tags: ['snapshot'],
+	args: {
+		collapseActions: 'mobile',
+	},
 	parameters: {
 		docs: {
 			source: {
@@ -428,11 +453,11 @@ const language = ref('EN')
 </script>
 
 <template>
-  <NeoNavigation color="blue" :links="links" aria-label="Main navigation" menuLabel="Menu" closeLabel="Close">
+  <NeoNavigation color="blue" collapse-actions="mobile" :links="links" aria-label="Main navigation" menuLabel="Menu" closeLabel="Close">
     <template #logo>
       <div style="display: flex; align-items: center; gap: 8px;">
         <NeoImage src="/favicon.svg" alt="" :width="24" :height="24" object-fit="contain" />
-        <span style="font-size: 18px; font-weight: bold; color: var(--neo-theme-color);">Titanlord</span>
+        <span style="font-size: 18px; font-weight: bold; color: var(--neo-theme-color);">NeoMateria</span>
       </div>
     </template>
     <template #actions>
@@ -472,7 +497,7 @@ const language = ref('EN')
 					<NeoNavigation
 						{...args}
 						v-slots={{
-							logo: () => renderBrandLogo('Titanlord'),
+							logo: () => renderBrandLogo('NeoMateria'),
 							actions: () => (
 								<>
 									<NeoButton
