@@ -58,8 +58,13 @@ const meta = {
 		rounded: false,
 		ariaLabel: 'Add item',
 		onClick: fn(),
-		default: () => AddIcon,
+		default: AddIcon,
 	},
+	render: (args) =>
+		defineComponent({
+			name: 'NeoIconButtonRender',
+			render: () => <NeoIconButton {...args}>{args.default}</NeoIconButton>,
+		}),
 } satisfies Meta<typeof NeoIconButton>
 
 export default meta
@@ -109,7 +114,7 @@ export const Delete: Story = {
 	tags: ['snapshot'],
 	args: {
 		ariaLabel: 'Delete item',
-		default: () => DeleteIcon,
+		default: DeleteIcon,
 	},
 }
 
@@ -118,7 +123,7 @@ export const Favourite: Story = {
 	args: {
 		color: 'pink',
 		ariaLabel: 'Add to favourites',
-		default: () => HeartIcon,
+		default: HeartIcon,
 	},
 }
 
@@ -127,7 +132,7 @@ export const FavouriteActive: Story = {
 	args: {
 		color: 'pink',
 		ariaLabel: 'Remove from favourites',
-		default: () => HeartFilledIcon,
+		default: HeartFilledIcon,
 	},
 }
 
@@ -136,7 +141,7 @@ export const Pressed: Story = {
 	args: {
 		pressed: true,
 		ariaLabel: 'Favourite (active)',
-		default: () => HeartFilledIcon,
+		default: HeartFilledIcon,
 		color: 'pink',
 	},
 }

@@ -22,8 +22,13 @@ const meta = {
 		color: 'grey',
 		colorVariant: 'theme',
 		size: 'medium',
-		default: () => DeleteIcon,
+		default: DeleteIcon,
 	},
+	render: (args) =>
+		defineComponent({
+			name: 'NeoIconRender',
+			render: () => <NeoIcon {...args}>{args.default}</NeoIcon>,
+		}),
 	parameters: {
 		docs: {
 			description: {
@@ -152,7 +157,7 @@ export const AddExample: Story = {
 	tags: ['no-test'],
 	args: {
 		color: 'green',
-		default: () => AddIcon,
+		default: AddIcon,
 	},
 	parameters: {
 		docs: {
@@ -168,7 +173,7 @@ export const DeleteExample: Story = {
 	tags: ['no-test'],
 	args: {
 		color: 'red',
-		default: () => DeleteIcon,
+		default: DeleteIcon,
 	},
 	parameters: {
 		docs: {
