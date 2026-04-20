@@ -1,0 +1,1 @@
+const h=(t,e,s="#94a3b8")=>{const g=[`<svg xmlns="http://www.w3.org/2000/svg" width="${t}" height="${e}">`,`<rect width="100%" height="100%" fill="${s}"/>`,"</svg>"].join("");return`data:image/svg+xml;charset=utf-8,${encodeURIComponent(g)}`};export{h as p};
