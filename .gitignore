@@ -42,3 +42,4 @@ __snapshots_modified__/
 # Claude Code CLI settings
 .claude/
 CLAUDE.md
+.agents
