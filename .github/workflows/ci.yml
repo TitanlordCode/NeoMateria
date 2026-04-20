@@ -11,7 +11,7 @@ permissions:
   id-token: write
 
 jobs:
-  build-test:
+  lint:
     runs-on: ubuntu-latest
 
     steps:
@@ -27,10 +27,6 @@ jobs:
       - name: 📦 Install dependencies
         run: npm ci
 
-      # currently no tests to run
-      #- name: 🧪 Run unit tests
-      #  run: npm run test:unit
-
       - name: ✅ Type check
         run: npm run type-check
 
@@ -43,27 +39,12 @@ jobs:
       - name: 🎯 Format check
         run: npm run prettier:check
 
-      - name: 🧱 Build Storybook
-        run: npm run build-storybook
-
-      - name: ♿ A11y tests
-        run: |
-          npx playwright install --with-deps chromium
-          npx vite preview --outDir storybook-static --port 6006 &
-          sleep 5
-          npm run test:storybook -- --url http://localhost:6006
-
-  deploy-storybook:
-    needs: [build-test, publish-npm]
+  build-storybook:
     runs-on: ubuntu-latest
 
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
-
     steps:
-      - name: ⬇️ Checkout repo
+      - name: ⬇️ Checkout code
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: 🧱 Setup Node.js
         uses: actions/setup-node@v4
@@ -76,6 +57,83 @@ jobs:
 
       - name: 🧱 Build Storybook
         run: npm run build-storybook
+
+      - name: 📤 Upload Storybook artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: storybook-static
+          path: storybook-static
+
+  build-library:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ⬇️ Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🧱 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: 📦 Install dependencies
+        run: npm ci
+
+      - name: 🧱 Build library
+        run: npm run build
+
+      - name: 📤 Upload library artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist
+
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ⬇️ Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🧱 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: 📦 Install dependencies
+        run: npm ci
+
+      - name: 🎭 Install Playwright
+        run: npx playwright install --with-deps chromium
+
+      - name: 🧪 Unit tests
+        run: npx vitest run --project=unit --project=snapshot-utils
+
+      - name: ♿ A11y tests
+        run: npm run test:storybook
+
+      - name: 📸 Snapshot tests
+        run: npm run test:storybook:snapshots
+
+  deploy-storybook:
+    needs: [lint, test, build-storybook]
+    runs-on: ubuntu-latest
+
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
+
+    steps:
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 📥 Download Storybook artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: storybook-static
+          path: storybook-static
 
       - name: 🚀 Deploy to GitHub Pages (Release)
         if: github.ref == 'refs/heads/main'
@@ -95,7 +153,7 @@ jobs:
           keep_files: true
 
   publish-npm:
-    needs: build-test
+    needs: [lint, test, build-library]
     runs-on: ubuntu-latest
 
     if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
@@ -116,6 +174,12 @@ jobs:
       - name: 📦 Install dependencies
         run: npm ci
 
+      - name: 📥 Download library artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
+
       - name: 🔍 Check version changed (main only)
         if: github.ref == 'refs/heads/main'
         id: version-check
@@ -134,9 +198,6 @@ jobs:
             echo "❌ Version unchanged on main ($CURRENT_VERSION) — bump the version before merging to main"
             exit 1
           fi
-
-      - name: 🧱 Build package
-        run: npm run build
 
       - name: 🚀 Publish to npm (stable)
         if: github.ref == 'refs/heads/main'

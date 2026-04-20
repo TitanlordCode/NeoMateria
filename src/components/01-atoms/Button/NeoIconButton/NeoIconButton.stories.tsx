@@ -7,6 +7,7 @@ import NeoIconButton from '@/components/01-atoms/Button/NeoIconButton/NeoIconBut
 import { disabledArgType } from '../../../../../.storybook/utils/argTypes'
 import { AddIcon, DeleteIcon, HeartIcon, HeartFilledIcon } from '../../Icon/defaultIcons'
 import { createSimpleColorShowcase } from '../../../../../.storybook/utils/colorShowcase'
+import { createA11yPlay } from '../../../../../.storybook/utils/createA11yPlay'
 import { iconButtonSizes, iconButtonVariants } from './NeoIconButtonTypes'
 
 const meta = {
@@ -57,72 +58,90 @@ const meta = {
 		rounded: false,
 		ariaLabel: 'Add item',
 		onClick: fn(),
-		default: () => AddIcon,
+		default: AddIcon,
 	},
+	render: (args) =>
+		defineComponent({
+			name: 'NeoIconButtonRender',
+			render: () => <NeoIconButton {...args}>{args.default}</NeoIconButton>,
+		}),
 } satisfies Meta<typeof NeoIconButton>
 
 export default meta
 
 type Story = StoryObj<typeof meta>
 
-export const Default: Story = {}
+export const Default: Story = {
+	tags: ['snapshot'],
+}
 
 export const Small: Story = {
+	tags: ['snapshot'],
 	args: { size: 'small' },
 }
 
 export const Large: Story = {
+	tags: ['snapshot'],
 	args: { size: 'large' },
 }
 
 export const Rounded: Story = {
+	tags: ['snapshot'],
 	args: { rounded: true },
 }
 
 export const Disabled: Story = {
+	tags: ['snapshot'],
 	args: { disabled: true },
 }
 
 export const Secondary: Story = {
+	tags: ['snapshot'],
 	args: { variant: 'secondary' },
 }
 
 export const Tertiary: Story = {
+	tags: ['snapshot'],
 	args: { variant: 'tertiary' },
 }
 
 export const Ghost: Story = {
+	tags: ['snapshot'],
 	args: { variant: 'ghost' },
 }
 
 export const Delete: Story = {
+	tags: ['snapshot'],
 	args: {
 		ariaLabel: 'Delete item',
-		default: () => DeleteIcon,
+		default: DeleteIcon,
 	},
 }
 
 export const Favourite: Story = {
+	tags: ['snapshot'],
 	args: {
 		color: 'pink',
 		ariaLabel: 'Add to favourites',
-		default: () => HeartIcon,
+		default: HeartIcon,
 	},
 }
 
 export const FavouriteActive: Story = {
+	tags: ['snapshot'],
 	args: {
 		color: 'pink',
 		ariaLabel: 'Remove from favourites',
-		default: () => HeartFilledIcon,
+		default: HeartFilledIcon,
 	},
 }
 
 export const Pressed: Story = {
+	tags: ['snapshot'],
 	args: {
 		pressed: true,
 		ariaLabel: 'Favourite (active)',
-		default: () => HeartFilledIcon,
+		default: HeartFilledIcon,
 		color: 'pink',
 	},
 }
@@ -158,18 +177,21 @@ export const interaction: Story = {
 }
 
 export const OnDark: Story = {
+	tags: ['snapshot'],
 	globals: {
 		backgrounds: '#000',
 	},
 }
 
 export const RTL: Story = {
+	tags: ['snapshot'],
 	globals: {
 		direction: 'rtl',
 	},
 }
 
 export const AllColors: Story = {
+	tags: ['snapshot'],
 	render: createSimpleColorShowcase(
 		NeoIconButton,
 		iconButtonVariants.map((variant) => ({
@@ -184,6 +206,7 @@ export const AllColors: Story = {
 }
 
 export const AllColorsOnDark: Story = {
+	tags: ['snapshot'],
 	globals: {
 		backgrounds: '#000',
 	},
@@ -199,4 +222,16 @@ export const AllColorsOnDark: Story = {
 		})),
 		{ dark: true },
 	),
+}
+
+export const AllColorsA11y: Story = {
+	...AllColors,
+	tags: ['!dev', 'test-only'],
+	play: createA11yPlay(),
+}
+
+export const AllColorsOnDarkA11y: Story = {
+	...AllColorsOnDark,
+	tags: ['!dev', 'test-only'],
+	play: createA11yPlay(),
 }

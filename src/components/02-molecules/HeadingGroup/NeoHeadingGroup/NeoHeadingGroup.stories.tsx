@@ -53,6 +53,7 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
+	tags: ['snapshot'],
 	render: (args: NeoHeadingGroupProps) => {
 		return defineComponent({
 			name: 'DefaultRender',
@@ -71,6 +72,7 @@ export const Default: Story = {
 }
 
 export const WithOverline: Story = {
+	tags: ['snapshot'],
 	args: {
 		overline: 'Features',
 		title: 'Everything You Need',
@@ -100,6 +102,7 @@ export const WithOverline: Story = {
 }
 
 export const Centered: Story = {
+	tags: ['snapshot'],
 	args: {
 		overline: 'About Us',
 		title: 'Built for developers',
@@ -131,6 +134,7 @@ export const Centered: Story = {
 }
 
 export const AllVariants: Story = {
+	tags: ['no-test'],
 	render: () => {
 		return defineComponent({
 			name: 'AllVariantsRender',
@@ -160,6 +164,7 @@ export const AllVariants: Story = {
 }
 
 export const OnDark: Story = {
+	tags: ['snapshot'],
 	globals: { backgrounds: '#000' },
 	args: {
 		overline: 'Dark Mode',

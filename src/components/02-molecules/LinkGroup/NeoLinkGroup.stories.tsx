@@ -6,6 +6,7 @@ import type { NeoLinkGroupProps, NeoLinkGroupLink } from './NeoLinkGroupTypes'
 import { linkGroupSizes, linkGroupVariants } from './NeoLinkGroupTypes'
 import { ariaLabelArgType } from '../../../../.storybook/utils/argTypes'
 import { createSimpleColorShowcase } from '../../../../.storybook/utils/colorShowcase'
+import { createA11yPlay } from '../../../../.storybook/utils/createA11yPlay'
 
 const exampleLinks: NeoLinkGroupLink[] = [
 	{ text: 'Home', href: '/' },
@@ -48,6 +49,11 @@ const meta = {
 				'`vertical`: links are stacked in a column. `horizontal`: links are arranged in a row.',
 			table: { category: 'Appearance' },
 		},
+		default: {
+			control: false,
+			description: 'Additional content rendered after the link list (e.g. a description or CTA).',
+			table: { category: 'Slots' },
+		},
 	},
 	args: {
 		title: 'Navigation',
@@ -62,9 +68,12 @@ export default meta
 
 type Story = StoryObj<typeof meta>
 
-export const Default: Story = {}
+export const Default: Story = {
+	tags: ['snapshot'],
+}
 
 export const WithoutTitle: Story = {
+	tags: ['snapshot'],
 	args: {
 		title: undefined,
 		ariaLabel: 'Navigation',
@@ -72,24 +81,28 @@ export const WithoutTitle: Story = {
 }
 
 export const Horizontal: Story = {
+	tags: ['snapshot'],
 	args: {
 		variant: 'horizontal',
 	},
 }
 
 export const Small: Story = {
+	tags: ['snapshot'],
 	args: {
 		size: 'small',
 	},
 }
 
 export const Large: Story = {
+	tags: ['snapshot'],
 	args: {
 		size: 'large',
 	},
 }
 
 export const WithExternalLinks: Story = {
+	tags: ['snapshot'],
 	args: {
 		title: 'External Resources',
 		links: [
@@ -101,6 +114,7 @@ export const WithExternalLinks: Story = {
 }
 
 export const FooterExample: Story = {
+	tags: ['no-test'],
 	parameters: {
 		docs: {
 			source: {
@@ -187,12 +201,24 @@ export const FooterExample: Story = {
 }
 
 export const OnDark: Story = {
+	tags: ['snapshot'],
 	globals: {
 		backgrounds: '#000',
 	},
 }
 
+export const RTL: Story = {
+	tags: ['snapshot'],
+	globals: {
+		direction: 'rtl',
+	},
+	args: {
+		title: 'التنقل',
+	},
+}
+
 export const AllColors: Story = {
+	tags: ['snapshot'],
 	parameters: {
 		a11y: { config: { rules: [{ id: 'landmark-unique', enabled: false }] } },
 	},
@@ -200,6 +226,7 @@ export const AllColors: Story = {
 }
 
 export const AllColorsOnDark: Story = {
+	tags: ['snapshot'],
 	globals: {
 		backgrounds: '#000',
 	},
@@ -209,4 +236,16 @@ export const AllColorsOnDark: Story = {
 	render: createSimpleColorShowcase(NeoLinkGroup, ['vertical', 'horizontal'], {
 		dark: true,
 	}),
+}
+
+export const AllColorsA11y: Story = {
+	...AllColors,
+	tags: ['!dev', 'test-only'],
+	play: createA11yPlay(),
+}
+
+export const AllColorsOnDarkA11y: Story = {
+	...AllColorsOnDark,
+	tags: ['!dev', 'test-only'],
+	play: createA11yPlay(),
 }

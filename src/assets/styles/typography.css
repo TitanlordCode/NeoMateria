@@ -1,4 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 :root {
+	--neo-fontFamily-base: 'Inter', sans-serif;
+
 	--neo-lineHeight-tight: 1.1;
 	--neo-lineHeight-snug: 1.3;
 	--neo-lineHeight-normal: 1.5;
@@ -8,4 +12,6 @@
 	--neo-fontWeight-medium: 500;
 	--neo-fontWeight-semibold: 600;
 	--neo-fontWeight-bold: 700;
+
+	font-family: var(--neo-fontFamily-base);
 }

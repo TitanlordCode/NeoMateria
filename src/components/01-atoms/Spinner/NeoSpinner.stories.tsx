@@ -6,6 +6,7 @@ import type { NeoSpinnerProps } from './NeoSpinnerTypes'
 import type { SurfaceColor } from '@/assets/typescript/colorTypes'
 import { spinnerSizes } from './NeoSpinnerTypes'
 import { createSimpleColorShowcase } from '../../../../.storybook/utils/colorShowcase'
+import { createA11yPlay } from '../../../../.storybook/utils/createA11yPlay'
 
 const meta = {
 	title: 'Atoms/NeoSpinner',
@@ -41,35 +42,44 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const Default: Story = {}
+export const Default: Story = {
+	tags: ['snapshot'],
+}
 
 export const Small: Story = {
+	tags: ['snapshot'],
 	args: {
 		size: 'small',
 	},
 }
 
 export const Large: Story = {
+	tags: ['snapshot'],
 	args: {
 		size: 'large',
 	},
 }
 
 export const LabelRow: Story = {
+	tags: ['snapshot'],
 	args: {
 		label: 'Please wait...',
 		dir: 'row',
 	},
 }
 export const CustomLabel: Story = {
+	tags: ['snapshot'],
 	args: {
 		label: 'Please wait...',
 	},
 }
 
-export const WithoutLabel: Story = {}
+export const WithoutLabel: Story = {
+	tags: ['snapshot'],
+}
 
 export const InButton: Story = {
+	tags: ['snapshot'],
 	parameters: {
 		docs: {
 			source: {
@@ -101,12 +111,14 @@ export const InButton: Story = {
 }
 
 export const OnDark: Story = {
+	tags: ['snapshot'],
 	globals: {
 		backgrounds: '#000',
 	},
 }
 
 export const RTL: Story = {
+	tags: ['snapshot'],
 	globals: {
 		direction: 'rtl',
 	},
@@ -116,6 +128,7 @@ export const RTL: Story = {
 }
 
 export const AllColors: Story = {
+	tags: ['snapshot'],
 	render: createSimpleColorShowcase(NeoSpinner, [
 		{
 			variant: 'default',
@@ -136,6 +149,7 @@ export const AllColors: Story = {
 }
 
 export const AllColorsOnDark: Story = {
+	tags: ['snapshot'],
 	globals: {
 		backgrounds: '#000',
 	},
@@ -162,4 +176,16 @@ export const AllColorsOnDark: Story = {
 			dark: true,
 		},
 	),
+}
+
+export const AllColorsA11y: Story = {
+	...AllColors,
+	tags: ['!dev', 'test-only'],
+	play: createA11yPlay(),
+}
+
+export const AllColorsOnDarkA11y: Story = {
+	...AllColorsOnDark,
+	tags: ['!dev', 'test-only'],
+	play: createA11yPlay(),
 }

@@ -61,6 +61,7 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
+	tags: ['snapshot'],
 	render: (args: NeoFeatureLineProps) => {
 		return defineComponent({
 			name: 'DefaultRender',
@@ -90,6 +91,7 @@ export const Default: Story = {
 }
 
 export const Reversed: Story = {
+	tags: ['snapshot'],
 	args: { reverse: true, color: 'purple' },
 	render: (args: NeoFeatureLineProps) => {
 		return defineComponent({
@@ -119,6 +121,7 @@ export const Reversed: Story = {
 }
 
 export const WithCTA: Story = {
+	tags: ['snapshot'],
 	args: { color: 'blue', ctaText: 'Get started', ctaHref: '#' },
 	render: (args: NeoFeatureLineProps) => {
 		return defineComponent({
@@ -135,6 +138,7 @@ export const WithCTA: Story = {
 }
 
 export const Stacked: Story = {
+	tags: ['snapshot'],
 	render: () => {
 		return defineComponent({
 			name: 'StackedRender',

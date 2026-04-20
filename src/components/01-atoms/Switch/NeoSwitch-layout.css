@@ -1,0 +1,26 @@
+.NeoSwitch--small {
+	--NeoSwitch-sizing-trackHeight: 16px;
+	--NeoSwitch-sizing-trackWidth: 28px;
+	--NeoSwitch-sizing-thumbSize: 12px;
+	--NeoSwitch-sizing-thumbOffset: 2px;
+	--NeoSwitch-sizing-thumbTravel: 12px;
+	--NeoSwitch-sizing-labelFontSize: var(--neo-fontSize-textSm);
+}
+
+.NeoSwitch--medium {
+	--NeoSwitch-sizing-trackHeight: 20px;
+	--NeoSwitch-sizing-trackWidth: 36px;
+	--NeoSwitch-sizing-thumbSize: 16px;
+	--NeoSwitch-sizing-thumbOffset: 2px;
+	--NeoSwitch-sizing-thumbTravel: 16px;
+	--NeoSwitch-sizing-labelFontSize: var(--neo-fontSize-base);
+}
+
+.NeoSwitch--large {
+	--NeoSwitch-sizing-trackHeight: 24px;
+	--NeoSwitch-sizing-trackWidth: 44px;
+	--NeoSwitch-sizing-thumbSize: 20px;
+	--NeoSwitch-sizing-thumbOffset: 2px;
+	--NeoSwitch-sizing-thumbTravel: 20px;
+	--NeoSwitch-sizing-labelFontSize: var(--neo-fontSize-textLg);
+}

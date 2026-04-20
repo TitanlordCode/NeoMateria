@@ -168,7 +168,7 @@ onUnmounted(() => {
 			<div class="NeoNavigation-bar">
 				<div class="NeoNavigation-start">
 					<NeoButton
-						v-if="props.links && props.links.length > 0"
+						v-if="(props.links && props.links.length > 0) || $slots.links || $slots.mobileMenu"
 						v-bind="mobileToggleLabelProps"
 						:color="props.color"
 						size="medium"
@@ -221,7 +221,10 @@ onUnmounted(() => {
 					</div>
 				</div>
 
-				<div v-if="props.links && props.links.length > 0" class="NeoNavigation-desktopLinks">
+				<div
+					v-if="(props.links && props.links.length > 0) || $slots.links"
+					class="NeoNavigation-desktopLinks"
+				>
 					<slot name="links">
 						<template v-for="(link, index) in props.links" :key="link.text + index">
 							<div v-if="hasChildren(link)" class="NeoNavigation-dropdown">
@@ -319,7 +322,7 @@ onUnmounted(() => {
 						@update:open="isActionsDropdownOpen = $event"
 					>
 						<template #trigger="{ isOpen, toggle }">
-							<slot name="actionsMenuTrigger" :is-open="isOpen">
+							<slot name="actionsMenuTrigger" :is-open="isOpen" :toggle="toggle">
 								<NeoIconButton
 									:color="props.color"
 									variant="ghost"
@@ -474,6 +477,11 @@ onUnmounted(() => {
 	display: flex;
 	gap: var(--NeoNavigation-sizing-gap);
 	justify-content: space-between;
+	overflow: hidden;
+
+	@mixin bp-md {
+		overflow: visible;
+	}
 }
 
 .NeoNavigation-start {

@@ -1,0 +1,238 @@
+
+import { Meta, Title } from '@storybook/addon-docs/blocks'
+
+<Meta title="Contributing/Architecture" parameters={{ backgrounds: { disable: true }, direction: { disable: true } }} />
+
+<Title>Architecture</Title>
+
+An overview of how NeoMateria is structured — folder layout, component anatomy, CSS conventions, and TypeScript patterns.
+
+---
+
+## Atomic Design structure
+
+Components are organised by complexity level. Each folder prefix is a stable sort key in the Storybook sidebar.
+
+```
+src/components/
+├── 00-foundations/   Color palette, typography, theming, breakpoints, icons, scrollbar
+├── 01-atoms/         Single-purpose building blocks — Button, Input, Badge, Icon, Headline
+├── 02-molecules/     Combinations of atoms — Card, Callout, Select, Accordion, Sheet
+├── 03-organisms/     Complex compositions — Navigation, Footer, Hero, CoverPanelGrid
+├── 04-templates/     Page-level layout shells (reserved)
+├── 05-pages/         Full page examples — not exported from src/index.ts
+├── 06-contributing/  Contributor documentation (this section)
+└── 99-drafts/        Work in progress — not exported
+```
+
+Components in `05-pages/` and `99-drafts/` are never exported from `src/index.ts`.
+
+---
+
+## Component file anatomy
+
+Every component lives in its own folder with five files:
+
+```
+NeoButton/
+├── NeoButton.vue               Main component template + script
+├── NeoButtonTypes.ts           TypeScript types, prop constants
+├── NeoButton.stories.tsx       Storybook stories
+├── NeoButton-layout.css        Sizing, spacing, structural layout
+└── NeoButton-themed.css        Colors, theme variable overrides
+```
+
+Splitting layout from themed CSS keeps the two concerns separate: layout rules never depend on color tokens, and theme overrides never define dimensions.
+
+---
+
+## TypeScript pattern
+
+Types are derived from `const` arrays so the array and the type are always in sync:
+
+```ts
+// NeoButtonTypes.ts
+export const buttonSizes = ['small', 'medium', 'large'] as const
+export const buttonVariants = ['primary', 'secondary', 'tertiary', 'ghost'] as const
+
+export type NeoButtonSize = (typeof buttonSizes)[number]
+export type NeoButtonVariant = (typeof buttonVariants)[number]
+
+export interface NeoButtonProps {
+    color: SurfaceColor
+    size?: NeoButtonSize
+    variant?: NeoButtonVariant
+    disabled?: boolean
+    class?: string
+}
+```
+
+Slot types are defined with `defineSlots<T>()` and exported as `NeoButtonSlots` for library consumers.
+
+---
+
+## Script setup pattern
+
+```vue
+<script setup lang="ts">
+import { computed } from 'vue'
+import type { NeoButtonProps } from './NeoButtonTypes'
+import { getClassNames } from '@/utils/classNames'
+
+const props = defineProps<NeoButtonProps>()
+
+const classes = computed(() => {
+    const componentClasses = getClassNames({
+        component: 'NeoButton',
+        modifiers: [props.size ?? 'medium', props.variant ?? 'primary'],
+        additional: props.class,
+    })
+    const themedClasses = getClassNames({
+        component: 'Themed',
+        modifiers: [props.color],
+    })
+    return `${componentClasses} ${themedClasses}`
+})
+</script>
+```
+
+`getClassNames` produces BEM-style class strings: `NeoButton NeoButton--medium NeoButton--primary Themed Themed--blue`.
+
+---
+
+## CSS conventions
+
+### Logical properties (required)
+
+Stylelint enforces logical properties throughout. Physical properties (`width`, `height`, `margin-left`) are not allowed.
+
+```css
+/* ✗ physical */
+width: 100px;
+margin-left: 8px;
+padding-top: 12px;
+
+/* ✓ logical */
+inline-size: 100px;
+margin-inline-start: 8px;
+padding-block-start: 12px;
+```
+
+This ensures RTL support works automatically without extra overrides.
+
+### CSS variable naming
+
+Pattern: `--ComponentName-category-property`
+
+```css
+--NeoButton-color-background
+--NeoButton-color-text
+--NeoButton-sizing-padding
+--NeoCard-color-border
+--NeoCard-sizing-radius
+```
+
+Stylelint enforces the pattern `^(neo|[A-Z][a-zA-Z0-9]*)-(color|sizing|fontSize|fontWeight|lineHeight|border|theme|spacing|gap|radius)(-[a-zA-Z0-9]+)+$`. Custom categories like `zIndex` or `shadow` must nest under `sizing` or `color`.
+
+### BEM class naming
+
+- Block: `.NeoButton`
+- Element: `.NeoButton-label`, `.NeoButton-icon`
+- Modifier: `.NeoButton--primary`, `.NeoButton--large`
+
+### Property ordering
+
+Stylelint enforces alphabetical ordering within declaration blocks.
+
+### Dark mode
+
+Use `@mixin onDark` — never `@media (prefers-color-scheme: dark)`:
+
+```css
+.NeoCard {
+    --NeoCard-color-background: var(--neo-color-white);
+
+    @mixin onDark {
+        --NeoCard-color-background: var(--neo-color-grey900);
+    }
+}
+```
+
+`@mixin onDark` compiles to `@container on-dark style(--neo-is-dark: 1)`, which fires when any ancestor has `u-onDark` applied — including the Storybook toolbar toggle and the `AllColorsOnDark` story wrappers. See **Foundation/Theming** for the full dark mode system.
+
+### Responsive breakpoints
+
+Mobile-first. Apply the base style outside any mixin, override upward:
+
+```css
+.NeoCard {
+    flex-direction: column;
+
+    @mixin bp-md {
+        flex-direction: row;
+    }
+}
+```
+
+---
+
+## Theming system
+
+Each component adds both a component class and a `Themed--{color}` class:
+
+```html
+<button class="NeoButton NeoButton--primary NeoButton--medium Themed Themed--blue">
+```
+
+The `Themed--blue` class injects six CSS custom properties scoped to that element:
+
+| Variable | Purpose |
+|---|---|
+| `--neo-theme-color` | Main background/accent color |
+| `--neo-theme-colorText` | Text ON the main color (WCAG-safe white or black) |
+| `--neo-theme-colorAccent` | Subtle accent for focus rings (shade 200) |
+| `--neo-theme-colorAccessible` | Text/border ON page background (shade 700 light / 200 dark) |
+| `--neo-theme-colorFilledBg` | Subtle filled background (shade 100) |
+| `--neo-theme-colorFilledBgDark` | Dark filled background (shade 900) |
+
+Components only read these variables — they never reference a specific shade directly.
+
+### `setOnDark` — establishing a dark child context
+
+Components that use their **own** color as a background (solid/primary variants) establish a dark context for their children using `@mixin setOnDark`:
+
+```css
+/* NeoButton--primary uses color as background → children need dark context */
+.NeoButton--primary:not(.Themed--yellow, .Themed--amber, .Themed--orange, .Themed--white) {
+    @mixin setOnDark;
+}
+```
+
+Yellow, amber, orange, and white are excluded because `--neo-theme-colorText` is black for those colors (light surfaces), so children should remain in a light context.
+
+---
+
+## Event handling
+
+Event handlers use the `handle` prefix. Emit names use kebab-case:
+
+```ts
+const handleClick = (event: MouseEvent) => { ... }
+
+emit('action-click', event)
+emit('toggle-mobile-menu', isOpen)
+```
+
+---
+
+## Auto-generated files
+
+These files are regenerated by `npm run generate:files` (runs automatically before every build). **Do not edit them manually** — changes will be overwritten:
+
+- `src/assets/typescript/colors.ts`
+- `src/assets/styles/colors.css`
+- `src/components/00-foundations/colors.mdx`
+- `docs/colors.md`
+- Files in `src/components/docs/`
+
+The generation scripts live in `scripts/` and use a file-hash cache (`scripts/utils/cache-helper.ts`) to skip regeneration when inputs haven't changed.

@@ -150,6 +150,7 @@ const StarPennant = (
 )
 
 export const Default: Story = {
+	tags: ['snapshot'],
 	render: (args: NeoCoverPanelGridProps) => {
 		return defineComponent({
 			name: 'DefaultRender',
@@ -191,6 +192,7 @@ export const Default: Story = {
 }
 
 export const TwoColumns: Story = {
+	tags: ['snapshot'],
 	args: { columns: 2 },
 	render: (args: NeoCoverPanelGridProps) => {
 		return defineComponent({
@@ -233,6 +235,7 @@ export const TwoColumns: Story = {
 }
 
 export const SixColumns: Story = {
+	tags: ['snapshot'],
 	args: { columns: 6, minColumnWidth: 120 },
 	render: (args: NeoCoverPanelGridProps) => {
 		return defineComponent({
@@ -282,6 +285,7 @@ export const SixColumns: Story = {
  * Mix pennant colors and counts per item — up to 5 fit comfortably on a standard-width panel.
  */
 export const WithPennants: Story = {
+	tags: ['snapshot'],
 	render: (args: NeoCoverPanelGridProps) => {
 		const pennantConfigs: { rank: Color; platform: Color }[] = [
 			{ rank: 'yellow', platform: 'blue' },
@@ -358,6 +362,7 @@ export const WithPennants: Story = {
  * This story combines all optional props to show the full range of panel content.
  */
 export const MixedContent: Story = {
+	tags: ['no-test'],
 	render: (args: NeoCoverPanelGridProps) => {
 		type RichItem = {
 			imageSrc: string
@@ -608,6 +613,7 @@ export const MixedContent: Story = {
 }
 
 export const LargeGap: Story = {
+	tags: ['no-test'],
 	args: { gap: 'large' },
 	render: (args: NeoCoverPanelGridProps) => {
 		return defineComponent({
@@ -650,6 +656,7 @@ export const LargeGap: Story = {
 }
 
 export const OnDark: Story = {
+	tags: ['snapshot'],
 	globals: { backgrounds: '#000' },
 	render: (args: NeoCoverPanelGridProps) => {
 		return defineComponent({

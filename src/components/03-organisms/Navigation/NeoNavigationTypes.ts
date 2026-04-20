@@ -33,6 +33,12 @@ export type NeoNavigationProps = {
 	links?: NeoNavigationLink[]
 	mobileBreakpoint?: 'sm' | 'md' | 'lg'
 	ariaLabel: string
+	/**
+	 * Collapses action buttons into a `•••` dropdown. `'mobile'` shows them inline on
+	 * desktop and collapsed on mobile — required when combining a logo with multiple
+	 * action buttons to prevent overflow on narrow screens. `'always'` collapses at
+	 * all viewport sizes.
+	 */
 	collapseActions?: NeoNavigationCollapseActions
 	actionsMenuAriaLabel?: string
 } & (NeoNavigationToggleWithLabels | NeoNavigationToggleIconOnly)
@@ -46,8 +52,8 @@ export type NeoNavigationSlots = {
 	dropdownIcon?: (props: { isOpen: boolean }) => VNodeChild
 	/** Action buttons displayed in the navigation bar (e.g. login, search). */
 	actions?: () => VNodeChild
-	/** Custom trigger button for the collapsed actions dropdown. Receives `isOpen`. */
-	actionsMenuTrigger?: (props: { isOpen: boolean }) => VNodeChild
+	/** Custom trigger button for the collapsed actions dropdown. Receives `isOpen` and `toggle`. */
+	actionsMenuTrigger?: (props: { isOpen: boolean; toggle: () => void }) => VNodeChild
 	/** Custom icon for the mobile hamburger menu button. */
 	menuIcon?: () => VNodeChild
 	/** Custom content for the mobile menu panel, replacing auto-generated links. */

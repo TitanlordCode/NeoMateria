@@ -74,9 +74,12 @@ export default meta
 
 type Story = StoryObj<typeof meta>
 
-export const Default: Story = {}
+export const Default: Story = {
+	tags: ['snapshot'],
+}
 
 export const AsLink: Story = {
+	tags: ['snapshot'],
 	args: {
 		label: 'Go to Dashboard',
 		href: '/dashboard',
@@ -84,6 +87,7 @@ export const AsLink: Story = {
 }
 
 export const Active: Story = {
+	tags: ['snapshot'],
 	args: {
 		label: 'Current Page',
 		active: true,
@@ -91,6 +95,7 @@ export const Active: Story = {
 }
 
 export const Disabled: Story = {
+	tags: ['snapshot'],
 	args: {
 		label: 'Disabled Item',
 		disabled: true,
@@ -98,6 +103,7 @@ export const Disabled: Story = {
 }
 
 export const WithIcon: Story = {
+	tags: ['snapshot'],
 	parameters: {
 		docs: {
 			source: {
@@ -144,6 +150,7 @@ export const WithIcon: Story = {
 }
 
 export const WithChildren: Story = {
+	tags: ['snapshot'],
 	parameters: {
 		docs: {
 			source: {
@@ -216,6 +223,7 @@ const expanded = ref(false)
 }
 
 export const NestedLevels: Story = {
+	tags: ['snapshot'],
 	parameters: {
 		docs: {
 			source: {
@@ -261,6 +269,7 @@ export const NestedLevels: Story = {
 }
 
 export const WithConnectors: Story = {
+	tags: ['snapshot'],
 	parameters: {
 		docs: {
 			source: {
@@ -301,6 +310,7 @@ export const WithConnectors: Story = {
 }
 
 export const Sizes: Story = {
+	tags: ['snapshot'],
 	parameters: {
 		docs: {
 			source: {
@@ -329,6 +339,7 @@ export const Sizes: Story = {
 }
 
 export const CompleteNavigation: Story = {
+	tags: ['no-test'],
 	parameters: {
 		docs: {
 			source: {
@@ -483,6 +494,7 @@ const toggle = (id) => expanded.value[id] = !expanded.value[id]
 }
 
 export const DeepNavigation: Story = {
+	tags: ['no-test'],
 	parameters: {
 		docs: {
 			source: {
@@ -649,6 +661,7 @@ const toggle = (id) => expanded.value[id] = !expanded.value[id]
 }
 
 export const AllSizesWithLevels: Story = {
+	tags: ['no-test'],
 	parameters: {
 		docs: {
 			source: {
@@ -692,6 +705,7 @@ export const AllSizesWithLevels: Story = {
 }
 
 export const OnDark: Story = {
+	tags: ['snapshot'],
 	globals: {
 		backgrounds: '#000',
 	},

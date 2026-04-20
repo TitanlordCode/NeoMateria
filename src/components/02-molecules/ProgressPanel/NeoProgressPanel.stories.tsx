@@ -3,6 +3,7 @@ import { defineComponent } from 'vue'
 import { colors, type Color } from '@/assets/typescript/colors'
 import type { SurfaceColor } from '@/assets/typescript/colorTypes'
 import { getColorWrapper } from '../../../../.storybook/utils/colorShowcase'
+import { createA11yPlay } from '../../../../.storybook/utils/createA11yPlay'
 import { placeholder } from '../../../../.storybook/utils/placeholder'
 
 import NeoProgressPanel from './NeoProgressPanel.vue'
@@ -69,6 +70,12 @@ const meta = {
 				'Primary label for the item. Clamped to 2 lines — override via `--NeoProgressPanel-sizing-titleClamp`.',
 			table: { category: 'Content' },
 		},
+		pennant: {
+			control: false,
+			description:
+				'Optional single pennant overlaid on the top-right corner of the image. Automatically scaled to fit within 30% of the image width.',
+			table: { category: 'Slots' },
+		},
 	},
 	args: {
 		color: 'blue',
@@ -84,6 +91,7 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
+	tags: ['snapshot'],
 	render: (args: NeoProgressPanelProps) => {
 		return defineComponent({
 			name: 'DefaultRender',
@@ -113,6 +121,7 @@ export const Default: Story = {
 }
 
 export const WithSubtitle: Story = {
+	tags: ['snapshot'],
 	args: {
 		subtitle: 'Action · 2024',
 		imageSrc: placeholder(200, 300),
@@ -147,6 +156,7 @@ export const WithSubtitle: Story = {
 }
 
 export const WithPennant: Story = {
+	tags: ['snapshot'],
 	args: {
 		imageSrc: placeholder(200, 300),
 		title: 'First Place Entry',
@@ -198,6 +208,7 @@ export const WithPennant: Story = {
 }
 
 export const Clickable: Story = {
+	tags: ['snapshot'],
 	args: {
 		imageSrc: placeholder(200, 300),
 		href: '#item-details',
@@ -231,6 +242,7 @@ export const Clickable: Story = {
 }
 
 export const LongText: Story = {
+	tags: ['snapshot'],
 	args: {
 		imageSrc: placeholder(200, 300),
 		title: 'An Extraordinarily Long Title That Demonstrates How Line Clamping Works in Practice',
@@ -268,6 +280,7 @@ export const LongText: Story = {
 }
 
 export const TopThree: Story = {
+	tags: ['snapshot'],
 	render: () => {
 		return defineComponent({
 			name: 'TopThreeRender',
@@ -360,7 +373,19 @@ export const TopThree: Story = {
 	},
 }
 
+export const RTL: Story = {
+	tags: ['snapshot'],
+	globals: {
+		direction: 'rtl',
+	},
+	args: {
+		title: 'عنوان العنصر',
+		valueLabel: 'مكتمل',
+	},
+}
+
 export const AllColors: Story = {
+	tags: ['snapshot'],
 	render: (args: NeoProgressPanelProps) => {
 		return defineComponent({
 			name: 'AllColorsRender',
@@ -399,6 +424,7 @@ export const AllColors: Story = {
 }
 
 export const AllColorsOnDark: Story = {
+	tags: ['snapshot'],
 	globals: { backgrounds: '#000' },
 	render: (args: NeoProgressPanelProps) => {
 		return defineComponent({
@@ -436,4 +462,16 @@ export const AllColorsOnDark: Story = {
 			},
 		})
 	},
+}
+
+export const AllColorsA11y: Story = {
+	...AllColors,
+	tags: ['!dev', 'test-only'],
+	play: createA11yPlay(),
+}
+
+export const AllColorsOnDarkA11y: Story = {
+	...AllColorsOnDark,
+	tags: ['!dev', 'test-only'],
+	play: createA11yPlay(),
 }

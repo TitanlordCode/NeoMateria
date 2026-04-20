@@ -3,6 +3,7 @@ import NeoInput from './NeoInput.vue'
 import { inputSizes, inputVariants, inputTypes } from './NeoInputTypes'
 import { ariaLabelArgType, disabledArgType } from '../../../../.storybook/utils/argTypes'
 import { createSimpleColorShowcase } from '../../../../.storybook/utils/colorShowcase'
+import { createA11yPlay } from '../../../../.storybook/utils/createA11yPlay'
 
 const meta = {
 	title: 'Atoms/NeoInput',
@@ -87,10 +88,12 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
+	tags: ['snapshot'],
 	args: {},
 }
 
 export const WithoutLabel: Story = {
+	tags: ['snapshot'],
 	args: {
 		label: undefined,
 		ariaLabel: 'Search',
@@ -100,18 +103,21 @@ export const WithoutLabel: Story = {
 }
 
 export const WithHelpText: Story = {
+	tags: ['snapshot'],
 	args: {
 		helpText: 'This is a helpful hint',
 	},
 }
 
 export const WithError: Story = {
+	tags: ['snapshot'],
 	args: {
 		errorMessage: 'This field is required',
 	},
 }
 
 export const Required: Story = {
+	tags: ['snapshot'],
 	args: {
 		required: true,
 		requiredText: 'This field is required',
@@ -119,6 +125,7 @@ export const Required: Story = {
 }
 
 export const Disabled: Story = {
+	tags: ['snapshot'],
 	args: {
 		disabled: true,
 		value: 'Disabled input',
@@ -126,6 +133,7 @@ export const Disabled: Story = {
 }
 
 export const Readonly: Story = {
+	tags: ['snapshot'],
 	args: {
 		readonly: true,
 		value: 'Readonly input',
@@ -133,6 +141,7 @@ export const Readonly: Story = {
 }
 
 export const Email: Story = {
+	tags: ['no-test'],
 	args: {
 		type: 'email',
 		placeholder: 'email@example.com',
@@ -141,6 +150,7 @@ export const Email: Story = {
 }
 
 export const Password: Story = {
+	tags: ['snapshot'],
 	args: {
 		type: 'password',
 		placeholder: 'Enter password',
@@ -149,6 +159,7 @@ export const Password: Story = {
 }
 
 export const Number: Story = {
+	tags: ['no-test'],
 	args: {
 		type: 'number',
 		placeholder: '0',
@@ -159,42 +170,49 @@ export const Number: Story = {
 }
 
 export const Small: Story = {
+	tags: ['snapshot'],
 	args: {
 		size: 'small',
 	},
 }
 
 export const Large: Story = {
+	tags: ['snapshot'],
 	args: {
 		size: 'large',
 	},
 }
 
 export const Secondary: Story = {
+	tags: ['snapshot'],
 	args: {
 		variant: 'secondary',
 	},
 }
 
 export const Tertiary: Story = {
+	tags: ['snapshot'],
 	args: {
 		variant: 'tertiary',
 	},
 }
 
 export const Rounded: Story = {
+	tags: ['snapshot'],
 	args: {
 		rounded: true,
 	},
 }
 
 export const OnDark: Story = {
+	tags: ['snapshot'],
 	globals: {
 		backgrounds: '#000',
 	},
 }
 
 export const RTL: Story = {
+	tags: ['snapshot'],
 	globals: {
 		direction: 'rtl',
 	},
@@ -205,6 +223,7 @@ export const RTL: Story = {
 }
 
 export const AllColors: Story = {
+	tags: ['snapshot'],
 	render: createSimpleColorShowcase(
 		NeoInput,
 		[
@@ -236,6 +255,7 @@ export const AllColors: Story = {
 }
 
 export const AllColorsOnDark: Story = {
+	tags: ['snapshot'],
 	globals: {
 		backgrounds: '#000',
 	},
@@ -268,4 +288,16 @@ export const AllColorsOnDark: Story = {
 			dark: true,
 		},
 	),
+}
+
+export const AllColorsA11y: Story = {
+	...AllColors,
+	tags: ['!dev', 'test-only'],
+	play: createA11yPlay(),
+}
+
+export const AllColorsOnDarkA11y: Story = {
+	...AllColorsOnDark,
+	tags: ['!dev', 'test-only'],
+	play: createA11yPlay(),
 }

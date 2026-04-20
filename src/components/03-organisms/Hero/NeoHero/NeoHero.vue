@@ -103,5 +103,9 @@ const classes = computed(() =>
 	flex-shrink: 0;
 	inline-size: 100%;
 	max-inline-size: 560px;
+
+	@mixin bp-md {
+		inline-size: 45%;
+	}
 }
 </style>

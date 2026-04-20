@@ -3,6 +3,7 @@ import { defineComponent, h } from 'vue'
 import type { SurfaceColor } from '@/assets/typescript/colorTypes'
 import { colors } from '@/assets/typescript/colors'
 import { createAllColorsRender } from '../../../../../.storybook/utils/colorShowcase'
+import { createA11yPlay } from '../../../../../.storybook/utils/createA11yPlay'
 import NeoCallout from './NeoCallout.vue'
 import type { NeoCalloutProps } from './NeoCalloutTypes'
 import { calloutVariants } from './NeoCalloutTypes'
@@ -28,6 +29,12 @@ const meta = {
 			description: '`bordered` — outline box. `filled` — solid background.',
 			table: { category: 'Appearance' },
 		},
+		icon: {
+			control: false,
+			description: 'Optional icon displayed at the start of the callout.',
+			table: { category: 'Slots' },
+		},
+		default: { control: false, description: 'Main callout content.', table: { category: 'Slots' } },
 	},
 	args: {
 		color: 'blue',
@@ -39,6 +46,7 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
+	tags: ['snapshot'],
 	render: (args: NeoCalloutProps) => {
 		return defineComponent({
 			name: 'DefaultRender',
@@ -63,6 +71,7 @@ export const Default: Story = {
 }
 
 export const WithIcon: Story = {
+	tags: ['snapshot'],
 	args: { color: 'blue', variant: 'bordered' },
 	render: (args: NeoCalloutProps) => {
 		return defineComponent({
@@ -89,6 +98,7 @@ export const WithIcon: Story = {
 }
 
 export const Filled: Story = {
+	tags: ['snapshot'],
 	args: { color: 'blue', variant: 'filled' },
 	render: (args: NeoCalloutProps) => {
 		return defineComponent({
@@ -114,7 +124,23 @@ export const Filled: Story = {
 	},
 }
 
+export const RTL: Story = {
+	tags: ['snapshot'],
+	globals: {
+		direction: 'rtl',
+	},
+	render: (args: NeoCalloutProps) => {
+		return defineComponent({
+			name: 'RTLRender',
+			setup() {
+				return () => <NeoCallout {...args}>هذا إشعار مهم يحتاج إلى انتباهك.</NeoCallout>
+			},
+		})
+	},
+}
+
 export const AllColors: Story = {
+	tags: ['snapshot'],
 	render: createAllColorsRender<typeof NeoCallout>(NeoCallout, [
 		{
 			name: 'Bordered',
@@ -130,6 +156,7 @@ export const AllColors: Story = {
 }
 
 export const AllColorsFilled: Story = {
+	tags: ['snapshot'],
 	render: () => {
 		return defineComponent({
 			name: 'AllColorsFilledRender',
@@ -153,4 +180,16 @@ export const AllColorsFilled: Story = {
 			},
 		})
 	},
+}
+
+export const AllColorsA11y: Story = {
+	...AllColors,
+	tags: ['!dev', 'test-only'],
+	play: createA11yPlay(),
+}
+
+export const AllColorsFilledA11y: Story = {
+	...AllColorsFilled,
+	tags: ['!dev', 'test-only'],
+	play: createA11yPlay(),
 }

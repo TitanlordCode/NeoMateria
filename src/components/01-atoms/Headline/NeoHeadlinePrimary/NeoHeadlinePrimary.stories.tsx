@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import { defineComponent, h } from 'vue'
 import { colors } from '@/assets/typescript/colors'
 import { createAllColorsRender } from '../../../../../.storybook/utils/colorShowcase'
+import { createA11yPlay } from '../../../../../.storybook/utils/createA11yPlay'
 import NeoHeadlinePrimary from './NeoHeadlinePrimary.vue'
 import type { NeoHeadlineProps } from '../NeoHeadlineTypes'
 import { headlineTags, headlineAligns } from '../NeoHeadlineTypes'
@@ -39,6 +40,11 @@ const meta = {
 			description: 'Clamps text to the given number of lines with an ellipsis.',
 			table: { category: 'Appearance' },
 		},
+		default: {
+			control: false,
+			description: 'Headline text or rich content.',
+			table: { category: 'Slots' },
+		},
 	},
 	args: {
 		tag: 'h2',
@@ -49,6 +55,7 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
+	tags: ['snapshot'],
 	render: (args: NeoHeadlineProps) => {
 		return defineComponent({
 			name: 'DefaultRender',
@@ -67,6 +74,7 @@ export const Default: Story = {
 }
 
 export const Colored: Story = {
+	tags: ['snapshot'],
 	args: { color: 'blue' },
 	render: (args: NeoHeadlineProps) => {
 		return defineComponent({
@@ -86,6 +94,7 @@ export const Colored: Story = {
 }
 
 export const Centered: Story = {
+	tags: ['snapshot'],
 	args: { align: 'center' },
 	render: (args: NeoHeadlineProps) => {
 		return defineComponent({
@@ -105,6 +114,7 @@ export const Centered: Story = {
 }
 
 export const Truncated: Story = {
+	tags: ['snapshot'],
 	render: (args: NeoHeadlineProps) => {
 		return defineComponent({
 			name: 'TruncatedRender',
@@ -128,7 +138,23 @@ export const Truncated: Story = {
 	},
 }
 
+export const RTL: Story = {
+	tags: ['snapshot'],
+	globals: {
+		direction: 'rtl',
+	},
+	render: (args: NeoHeadlineProps) => {
+		return defineComponent({
+			name: 'RTLRender',
+			setup() {
+				return () => <NeoHeadlinePrimary {...args}>الثعلب البني السريع</NeoHeadlinePrimary>
+			},
+		})
+	},
+}
+
 export const AllColors: Story = {
+	tags: ['snapshot'],
 	render: createAllColorsRender<typeof NeoHeadlinePrimary>(NeoHeadlinePrimary, [
 		{
 			name: 'Default',
@@ -139,6 +165,7 @@ export const AllColors: Story = {
 }
 
 export const AllColorsOnDark: Story = {
+	tags: ['snapshot'],
 	globals: { backgrounds: '#000' },
 	render: createAllColorsRender<typeof NeoHeadlinePrimary>(
 		NeoHeadlinePrimary,
@@ -151,4 +178,16 @@ export const AllColorsOnDark: Story = {
 		],
 		true,
 	),
+}
+
+export const AllColorsA11y: Story = {
+	...AllColors,
+	tags: ['!dev', 'test-only'],
+	play: createA11yPlay(),
+}
+
+export const AllColorsOnDarkA11y: Story = {
+	...AllColorsOnDark,
+	tags: ['!dev', 'test-only'],
+	play: createA11yPlay(),
 }
