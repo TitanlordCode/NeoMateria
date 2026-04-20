@@ -28,6 +28,7 @@ let dirs: { snapshots: string; modified: string; diff: string }
 let commands: ReturnType<typeof createSnapshotCommands>
 
 beforeEach(() => {
+	delete process.env.CI
 	tmpDir = mkdtempSync(join(tmpdir(), 'neo-snap-test-'))
 	dirs = {
 		snapshots: join(tmpDir, 'snapshots'),
