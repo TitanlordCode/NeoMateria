@@ -93,6 +93,8 @@ export function createSnapshotCommands(dirs: SnapshotDirs, options: SnapshotComm
 
 	// ── compareSnapshot ─────────────────────────────────────────────────────
 
+	const HEADLESS_VIEWPORT_HEIGHT = 1080
+
 	const compareSnapshot = async (
 		_context: unknown,
 		storyId: string,
@@ -221,7 +223,6 @@ export function createSnapshotCommands(dirs: SnapshotDirs, options: SnapshotComm
 	//   3. Expand the outer Playwright page so Chrome rasterizes all content.
 	//   4. Screenshot — now at correct logical dimensions.
 	//   5. Restore the container style and page viewport.
-	const HEADLESS_VIEWPORT_HEIGHT = 720
 
 	const captureStoryScreenshot = async (
 		context: unknown,
@@ -237,7 +238,7 @@ export function createSnapshotCommands(dirs: SnapshotDirs, options: SnapshotComm
 		const needsScaleReset = effectiveHeight > HEADLESS_VIEWPORT_HEIGHT
 
 		const originalViewport = ctx.page?.viewportSize() ?? {
-			width: 1280,
+			width: 1920,
 			height: HEADLESS_VIEWPORT_HEIGHT,
 		}
 		let savedContainerStyle = ''

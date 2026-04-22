@@ -5,6 +5,7 @@ import { getClassNames } from '@/utils/classNames'
 import NeoImage from '@/components/01-atoms/Image/NeoImage.vue'
 import NeoHeadingGroup from '@/components/02-molecules/HeadingGroup/NeoHeadingGroup/NeoHeadingGroup.vue'
 import NeoLinkButton from '@/components/01-atoms/Button/NeoLinkButton/NeoLinkButton.vue'
+import NeoSection from '@/components/02-molecules/Section/NeoSection.vue'
 
 const props = defineProps<NeoFeatureLineProps>()
 
@@ -25,34 +26,36 @@ const classes = computed(() => {
 </script>
 
 <template>
-	<div :class="classes">
-		<div class="NeoFeatureLine-imageWrapper">
-			<NeoImage
-				:src="props.imageSrc"
-				:alt="props.imageAlt"
-				object-fit="cover"
-				class="NeoFeatureLine-image"
-			/>
-		</div>
-		<div class="NeoFeatureLine-content">
-			<NeoHeadingGroup
-				:title="props.title"
-				:subtitle="props.subtitle"
-				:heading-tag="props.headingTag ?? 'h2'"
-				:variant="props.headingVariant ?? 'secondary'"
-				:color="props.color"
-			/>
-			<p v-if="props.body" class="NeoFeatureLine-body">{{ props.body }}</p>
-			<div v-if="props.ctaText && props.ctaHref" class="NeoFeatureLine-actions">
-				<NeoLinkButton
-					:href="props.ctaHref"
-					:text="props.ctaText"
-					:color="props.color ?? 'blue'"
-					variant="primary"
+	<NeoSection v-bind="props.section">
+		<div :class="classes">
+			<div class="NeoFeatureLine-imageWrapper">
+				<NeoImage
+					:src="props.imageSrc"
+					:alt="props.imageAlt"
+					object-fit="cover"
+					class="NeoFeatureLine-image"
 				/>
 			</div>
+			<div class="NeoFeatureLine-content">
+				<NeoHeadingGroup
+					:title="props.title"
+					:subtitle="props.subtitle"
+					:heading-tag="props.headingTag ?? 'h2'"
+					:variant="props.headingVariant ?? 'secondary'"
+					:color="props.color"
+				/>
+				<p v-if="props.body" class="NeoFeatureLine-body">{{ props.body }}</p>
+				<div v-if="props.ctaText && props.ctaHref" class="NeoFeatureLine-actions">
+					<NeoLinkButton
+						:href="props.ctaHref"
+						:text="props.ctaText"
+						:color="props.color ?? 'blue'"
+						variant="primary"
+					/>
+				</div>
+			</div>
 		</div>
-	</div>
+	</NeoSection>
 </template>
 
 <style scoped>

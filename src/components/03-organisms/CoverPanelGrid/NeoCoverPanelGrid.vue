@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import type { NeoCoverPanelGridProps } from './NeoCoverPanelGridTypes'
+import NeoSection from '@/components/02-molecules/Section/NeoSection.vue'
 
 const gapTokens = {
 	small: 'var(--neo-gap-sm)',
@@ -18,9 +19,11 @@ const gridStyle = computed(() => ({
 </script>
 
 <template>
-	<div class="NeoCoverPanelGrid" :style="gridStyle">
-		<slot />
-	</div>
+	<NeoSection v-bind="props.section">
+		<div class="NeoCoverPanelGrid" :style="gridStyle">
+			<slot />
+		</div>
+	</NeoSection>
 </template>
 
 <style scoped>

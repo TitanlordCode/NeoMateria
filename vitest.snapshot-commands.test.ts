@@ -157,7 +157,7 @@ describe('captureStoryScreenshot', () => {
 	/** Build a minimal mock context. evaluate mock chains three one-shot returns. */
 	function makeCtx(
 		screenshotBuf: Buffer,
-		viewportSize = { width: 1280, height: 720 },
+		viewportSize = { width: 1920, height: 1080 },
 		savedStyle = 'width:375px;height:667px;transform:scale(1);transform-origin:left top;',
 	) {
 		const evaluate = vi
@@ -187,7 +187,7 @@ describe('captureStoryScreenshot', () => {
 		expect(result).toBe('')
 	})
 
-	// ── Mobile (viewport 375×667, effectiveHeight ≤ 720 → no scale reset) ──────
+	// ── Mobile (viewport 375×667, effectiveHeight ≤ 1080 → no scale reset) ──────
 
 	it('crops a short mobile story to its content height without touching the scale', async () => {
 		const buf = makePng(375, 667) // mock screenshot fills the full viewport
@@ -198,7 +198,7 @@ describe('captureStoryScreenshot', () => {
 
 		expect(img.width).toBe(375)
 		expect(img.height).toBe(36)
-		// effectiveHeight = max(36, 667) = 667 ≤ 720 → no scale reset
+		// effectiveHeight = max(36, 667) = 667 ≤ 1080 → no scale reset
 		expect(ctx.page.evaluate).not.toHaveBeenCalled()
 		expect(ctx.page.setViewportSize).not.toHaveBeenCalled()
 	})
@@ -215,9 +215,9 @@ describe('captureStoryScreenshot', () => {
 		expect(ctx.page.evaluate).not.toHaveBeenCalled()
 	})
 
-	// ── Mobile tall story (effectiveHeight > 720 → scale reset required) ────────
+	// ── Tall story (effectiveHeight > 1080 → scale reset required) ────────
 
-	it('resets the iframe container scale for a tall mobile story', async () => {
+	it('resets the iframe container scale for a tall story (> 1080px)', async () => {
 		const buf = makePng(375, 1500)
 		const ctx = makeCtx(buf)
 
@@ -238,8 +238,8 @@ describe('captureStoryScreenshot', () => {
 
 		await commands.captureStoryScreenshot(ctx, 375, 667, 1500)
 
-		expect(ctx.page.setViewportSize).toHaveBeenNthCalledWith(1, { width: 1280, height: 1500 })
-		expect(ctx.page.setViewportSize).toHaveBeenNthCalledWith(2, { width: 1280, height: 720 })
+		expect(ctx.page.setViewportSize).toHaveBeenNthCalledWith(1, { width: 1920, height: 1500 })
+		expect(ctx.page.setViewportSize).toHaveBeenNthCalledWith(2, { width: 1920, height: 1080 })
 	})
 
 	it('sets the container to scale(1) with logical viewport dimensions', async () => {
@@ -256,7 +256,7 @@ describe('captureStoryScreenshot', () => {
 	it('restores the saved container style after screenshotting', async () => {
 		const savedStyle = 'width:375px;height:667px;transform:scale(1);transform-origin:left top;'
 		const buf = makePng(375, 1500)
-		const ctx = makeCtx(buf, { width: 1280, height: 720 }, savedStyle)
+		const ctx = makeCtx(buf, { width: 1920, height: 1080 }, savedStyle)
 
 		await commands.captureStoryScreenshot(ctx, 375, 667, 1500)
 
@@ -265,32 +265,30 @@ describe('captureStoryScreenshot', () => {
 		expect(restoredStyle).toBe(savedStyle)
 	})
 
-	// ── Tablet (viewport 768×1024, effectiveHeight = 1024 > 720 → scale reset) ──
+	// ── Tablet (viewport 768×1024, effectiveHeight = 1024 ≤ 1080 → NO scale reset) ──
 
-	it('resets the scale for a short tablet story (base viewport > 720 px)', async () => {
+	it('does NOT reset the scale for a short tablet story (1024px is now <= 1080px)', async () => {
 		const buf = makePng(768, 50)
 		const ctx = makeCtx(
 			buf,
-			{ width: 1280, height: 720 },
+			{ width: 1920, height: 1080 },
 			'width:768px;height:1024px;transform:scale(0.703);transform-origin:left top;',
 		)
 
-		// effectiveHeight = max(50, 1024) = 1024 > 720 → scale reset applies
+		// effectiveHeight = max(50, 1024) = 1024 ≤ 1080 → scale reset NO LONGER applies
 		const result = await commands.captureStoryScreenshot(ctx, 768, 1024, 50)
 		const img = PNG.sync.read(Buffer.from(result, 'base64'))
 
-		// Content 50 px < viewport 1024 px → cropped
 		expect(img.width).toBe(768)
 		expect(img.height).toBe(50)
-		expect(ctx.page.evaluate).toHaveBeenCalledTimes(3)
-		expect(ctx.page.setViewportSize).toHaveBeenCalledWith({ width: 1280, height: 1024 })
+		expect(ctx.page.evaluate).not.toHaveBeenCalled()
 	})
 
-	it('resets the scale for a tall tablet story', async () => {
+	it('resets the scale for a very tall tablet story (> 1080px)', async () => {
 		const buf = makePng(768, 1800)
 		const ctx = makeCtx(
 			buf,
-			{ width: 1280, height: 720 },
+			{ width: 1920, height: 1080 },
 			'width:768px;height:1024px;transform:scale(0.703);transform-origin:left top;',
 		)
 
@@ -299,43 +297,26 @@ describe('captureStoryScreenshot', () => {
 
 		expect(img.width).toBe(768)
 		expect(img.height).toBe(1800)
-		expect(ctx.page.setViewportSize).toHaveBeenCalledWith({ width: 1280, height: 1800 })
+		expect(ctx.page.setViewportSize).toHaveBeenCalledWith({ width: 1920, height: 1800 })
 	})
 
-	// ── Desktop (viewport 1280×800, effectiveHeight = 800 > 720 → scale reset) ──
+	// ── Desktop (viewport 1920×1080, effectiveHeight = 1080 ≤ 1080 → NO scale reset) ──
 
-	it('resets the scale for a short desktop story (base viewport > 720 px)', async () => {
-		const buf = makePng(1280, 400)
+	it('does NOT reset the scale for a standard desktop story', async () => {
+		const buf = makePng(1920, 400)
 		const ctx = makeCtx(
 			buf,
-			{ width: 1280, height: 720 },
-			'width:1280px;height:800px;transform:scale(0.9);transform-origin:left top;',
+			{ width: 1920, height: 1080 },
+			'width:1920px;height:1080px;transform:scale(0.9);transform-origin:left top;',
 		)
 
-		// effectiveHeight = max(400, 800) = 800 > 720 → scale reset applies
-		const result = await commands.captureStoryScreenshot(ctx, 1280, 800, 400)
+		// effectiveHeight = max(400, 1080) = 1080 ≤ 1080 → scale reset DOES NOT apply
+		const result = await commands.captureStoryScreenshot(ctx, 1920, 1080, 400)
 		const img = PNG.sync.read(Buffer.from(result, 'base64'))
 
-		expect(img.width).toBe(1280)
+		expect(img.width).toBe(1920)
 		expect(img.height).toBe(400)
-		expect(ctx.page.evaluate).toHaveBeenCalledTimes(3)
-		expect(ctx.page.setViewportSize).toHaveBeenCalledWith({ width: 1280, height: 800 })
-	})
-
-	it('resets the scale for a tall desktop story', async () => {
-		const buf = makePng(1280, 2000)
-		const ctx = makeCtx(
-			buf,
-			{ width: 1280, height: 720 },
-			'width:1280px;height:800px;transform:scale(0.9);transform-origin:left top;',
-		)
-
-		const result = await commands.captureStoryScreenshot(ctx, 1280, 800, 2000)
-		const img = PNG.sync.read(Buffer.from(result, 'base64'))
-
-		expect(img.width).toBe(1280)
-		expect(img.height).toBe(2000)
-		expect(ctx.page.setViewportSize).toHaveBeenCalledWith({ width: 1280, height: 2000 })
+		expect(ctx.page.evaluate).not.toHaveBeenCalled()
 	})
 })
 

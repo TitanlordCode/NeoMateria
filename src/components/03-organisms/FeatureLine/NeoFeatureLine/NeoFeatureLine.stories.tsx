@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import { defineComponent } from 'vue'
 import { placeholder } from '../../../../../.storybook/utils/placeholder'
 import NeoFeatureLine from './NeoFeatureLine.vue'
-import type { NeoFeatureLineProps } from './NeoFeatureLineTypes'
 import { featureLineImageRatios } from './NeoFeatureLineTypes'
 import { headlineTags } from '@/components/01-atoms/Headline/NeoHeadlineTypes'
 import { headingGroupVariants } from '@/components/02-molecules/HeadingGroup/NeoHeadingGroup/NeoHeadingGroupTypes'
@@ -62,18 +61,6 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
 	tags: ['snapshot'],
-	render: (args: NeoFeatureLineProps) => {
-		return defineComponent({
-			name: 'DefaultRender',
-			setup() {
-				return () => (
-					<div style={{ maxInlineSize: '960px', padding: '24px' }}>
-						<NeoFeatureLine {...args} />
-					</div>
-				)
-			},
-		})
-	},
 	parameters: {
 		docs: {
 			source: {
@@ -93,18 +80,6 @@ export const Default: Story = {
 export const Reversed: Story = {
 	tags: ['snapshot'],
 	args: { reverse: true, color: 'purple' },
-	render: (args: NeoFeatureLineProps) => {
-		return defineComponent({
-			name: 'ReversedRender',
-			setup() {
-				return () => (
-					<div style={{ maxInlineSize: '960px', padding: '24px' }}>
-						<NeoFeatureLine {...args} />
-					</div>
-				)
-			},
-		})
-	},
 	parameters: {
 		docs: {
 			source: {
@@ -123,18 +98,6 @@ export const Reversed: Story = {
 export const WithCTA: Story = {
 	tags: ['snapshot'],
 	args: { color: 'blue', ctaText: 'Get started', ctaHref: '#' },
-	render: (args: NeoFeatureLineProps) => {
-		return defineComponent({
-			name: 'WithCTARender',
-			setup() {
-				return () => (
-					<div style={{ maxInlineSize: '960px', padding: '24px' }}>
-						<NeoFeatureLine {...args} />
-					</div>
-				)
-			},
-		})
-	},
 }
 
 export const Stacked: Story = {
@@ -149,7 +112,6 @@ export const Stacked: Story = {
 							display: 'flex',
 							flexDirection: 'column',
 							gap: '80px',
-							maxInlineSize: '960px',
 							padding: '24px',
 						}}
 					>
@@ -185,5 +147,14 @@ export const Stacked: Story = {
 				)
 			},
 		})
+	},
+}
+
+export const FullWidth: Story = {
+	tags: ['snapshot'],
+	args: {
+		section: {
+			fullWidth: true,
+		},
 	},
 }

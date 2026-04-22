@@ -79,7 +79,7 @@ const classes = computed(() => {
 	flex-direction: column;
 	gap: var(--NeoFooter-sizing-gap);
 	margin: 0 auto;
-	max-inline-size: 1280px;
+	max-inline-size: var(--neo-spacing-max-global-size);
 }
 
 .NeoFooter-logo {
