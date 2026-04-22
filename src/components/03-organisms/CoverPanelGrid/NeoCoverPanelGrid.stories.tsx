@@ -156,19 +156,17 @@ export const Default: Story = {
 			name: 'DefaultRender',
 			setup() {
 				return () => (
-					<div style={{ padding: '16px' }}>
-						<NeoCoverPanelGrid {...args}>
-							{sampleItems.map((item) => (
-								<NeoCoverPanel
-									key={item.imageSrc}
-									color={item.color}
-									imageSrc={item.imageSrc}
-									imageAlt={item.imageAlt}
-									title={item.title}
-								/>
-							))}
-						</NeoCoverPanelGrid>
-					</div>
+					<NeoCoverPanelGrid {...args}>
+						{sampleItems.map((item) => (
+							<NeoCoverPanel
+								key={item.imageSrc}
+								color={item.color}
+								imageSrc={item.imageSrc}
+								imageAlt={item.imageAlt}
+								title={item.title}
+							/>
+						))}
+					</NeoCoverPanelGrid>
 				)
 			},
 		})
@@ -301,31 +299,27 @@ export const WithPennants: Story = {
 			name: 'WithPennantsRender',
 			setup() {
 				return () => (
-					<div style={{ padding: '16px' }}>
-						<NeoCoverPanelGrid {...args}>
-							{sampleItems.slice(0, 8).map((item, index) => (
-								<NeoCoverPanel
-									key={item.imageSrc}
-									color="blue"
-									imageSrc={item.imageSrc}
-									imageAlt={item.imageAlt}
-									title={item.title}
-									rounded
-								>
-									{{
-										pennants: () => (
-											<>
-												<NeoPennant color={pennantConfigs[index].platform}>
-													{StarPennant}
-												</NeoPennant>
-												<NeoPennant color={pennantConfigs[index].rank}>{index + 1}</NeoPennant>
-											</>
-										),
-									}}
-								</NeoCoverPanel>
-							))}
-						</NeoCoverPanelGrid>
-					</div>
+					<NeoCoverPanelGrid {...args}>
+						{sampleItems.slice(0, 8).map((item, index) => (
+							<NeoCoverPanel
+								key={item.imageSrc}
+								color="blue"
+								imageSrc={item.imageSrc}
+								imageAlt={item.imageAlt}
+								title={item.title}
+								rounded
+							>
+								{{
+									pennants: () => (
+										<>
+											<NeoPennant color={pennantConfigs[index].platform}>{StarPennant}</NeoPennant>
+											<NeoPennant color={pennantConfigs[index].rank}>{index + 1}</NeoPennant>
+										</>
+									),
+								}}
+							</NeoCoverPanel>
+						))}
+					</NeoCoverPanelGrid>
 				)
 			},
 		})
@@ -494,45 +488,16 @@ export const MixedContent: Story = {
 				}
 
 				return () => (
-					<div style={{ padding: '16px' }}>
-						<NeoCoverPanelGrid {...args}>
-							{richItems.map((item, index) => {
-								if (item.action) {
-									const isFavorite = item.action === 'favorite'
-									const isActive = isFavorite
-										? favorites.value.has(index)
-										: bookmarks.value.has(index)
-									const handleClick = isFavorite
-										? () => toggleFavorite(index)
-										: () => toggleBookmark(index)
-									return (
-										<NeoCoverPanel
-											key={item.imageSrc}
-											color={item.color}
-											imageSrc={item.imageSrc}
-											imageAlt={item.imageAlt}
-											title={item.title}
-											rounded={item.rounded}
-											clickBehavior="action"
-											actionAriaLabel={isFavorite ? 'Add to favorites' : 'Bookmark'}
-											actionActive={isActive}
-											onAction-click={handleClick}
-										>
-											{{
-												...renderPennants(item.pennants),
-												'action-icon': ({ active }: { active: boolean }) =>
-													isFavorite
-														? active
-															? HeartFilledIcon
-															: HeartIcon
-														: active
-															? BookmarkFilledIcon
-															: BookmarkIcon,
-											}}
-										</NeoCoverPanel>
-									)
-								}
-
+					<NeoCoverPanelGrid {...args}>
+						{richItems.map((item, index) => {
+							if (item.action) {
+								const isFavorite = item.action === 'favorite'
+								const isActive = isFavorite
+									? favorites.value.has(index)
+									: bookmarks.value.has(index)
+								const handleClick = isFavorite
+									? () => toggleFavorite(index)
+									: () => toggleBookmark(index)
 								return (
 									<NeoCoverPanel
 										key={item.imageSrc}
@@ -541,14 +506,41 @@ export const MixedContent: Story = {
 										imageAlt={item.imageAlt}
 										title={item.title}
 										rounded={item.rounded}
-										clickBehavior="none"
+										clickBehavior="action"
+										actionAriaLabel={isFavorite ? 'Add to favorites' : 'Bookmark'}
+										actionActive={isActive}
+										onAction-click={handleClick}
 									>
-										{renderPennants(item.pennants)}
+										{{
+											...renderPennants(item.pennants),
+											'action-icon': ({ active }: { active: boolean }) =>
+												isFavorite
+													? active
+														? HeartFilledIcon
+														: HeartIcon
+													: active
+														? BookmarkFilledIcon
+														: BookmarkIcon,
+										}}
 									</NeoCoverPanel>
 								)
-							})}
-						</NeoCoverPanelGrid>
-					</div>
+							}
+
+							return (
+								<NeoCoverPanel
+									key={item.imageSrc}
+									color={item.color}
+									imageSrc={item.imageSrc}
+									imageAlt={item.imageAlt}
+									title={item.title}
+									rounded={item.rounded}
+									clickBehavior="none"
+								>
+									{renderPennants(item.pennants)}
+								</NeoCoverPanel>
+							)
+						})}
+					</NeoCoverPanelGrid>
 				)
 			},
 		})
@@ -620,19 +612,17 @@ export const LargeGap: Story = {
 			name: 'LargeGapRender',
 			setup() {
 				return () => (
-					<div style={{ padding: '16px' }}>
-						<NeoCoverPanelGrid {...args}>
-							{sampleItems.slice(0, 8).map((item) => (
-								<NeoCoverPanel
-									key={item.imageSrc}
-									color={item.color}
-									imageSrc={item.imageSrc}
-									imageAlt={item.imageAlt}
-									title={item.title}
-								/>
-							))}
-						</NeoCoverPanelGrid>
-					</div>
+					<NeoCoverPanelGrid {...args}>
+						{sampleItems.slice(0, 8).map((item) => (
+							<NeoCoverPanel
+								key={item.imageSrc}
+								color={item.color}
+								imageSrc={item.imageSrc}
+								imageAlt={item.imageAlt}
+								title={item.title}
+							/>
+						))}
+					</NeoCoverPanelGrid>
 				)
 			},
 		})
@@ -641,6 +631,51 @@ export const LargeGap: Story = {
 		docs: {
 			source: {
 				code: `<NeoCoverPanelGrid :columns="4" gap="large">
+  <NeoCoverPanel
+    v-for="item in items"
+    :key="item.id"
+    :color="item.color"
+    :image-src="item.imageSrc"
+    :image-alt="item.imageAlt"
+    :title="item.title"
+  />
+</NeoCoverPanelGrid>`,
+			},
+		},
+	},
+}
+
+export const FullWidth: Story = {
+	tags: ['snapshot'],
+	args: {
+		section: {
+			fullWidth: true,
+		},
+	},
+	render: (args: NeoCoverPanelGridProps) => {
+		return defineComponent({
+			name: 'FullWidthRender',
+			setup() {
+				return () => (
+					<NeoCoverPanelGrid {...args}>
+						{sampleItems.map((item) => (
+							<NeoCoverPanel
+								key={item.imageSrc}
+								color={item.color}
+								imageSrc={item.imageSrc}
+								imageAlt={item.imageAlt}
+								title={item.title}
+							/>
+						))}
+					</NeoCoverPanelGrid>
+				)
+			},
+		})
+	},
+	parameters: {
+		docs: {
+			source: {
+				code: `<NeoCoverPanelGrid :columns="4" gap="medium" :section="{fullWidth: true}">
   <NeoCoverPanel
     v-for="item in items"
     :key="item.id"

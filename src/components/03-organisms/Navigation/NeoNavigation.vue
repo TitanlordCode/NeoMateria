@@ -468,7 +468,7 @@ onUnmounted(() => {
 .NeoNavigation-container {
 	flex: 1;
 	margin: 0 auto;
-	max-inline-size: 1280px;
+	max-inline-size: var(--neo-spacing-max-global-size);
 	padding-inline: var(--NeoNavigation-sizing-paddingInline);
 }
 
@@ -674,7 +674,7 @@ onUnmounted(() => {
 	flex-wrap: wrap;
 	gap: var(--neo-gap-lg);
 	margin: 0 auto;
-	max-inline-size: 1280px;
+	max-inline-size: var(--neo-spacing-max-global-size);
 	padding-block: var(--neo-spacing-core-lg);
 	padding-inline: var(--NeoNavigation-sizing-paddingInline);
 }

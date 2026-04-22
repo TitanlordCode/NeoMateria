@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import type { NeoHeroProps, NeoHeroSlots } from './NeoHeroTypes'
 import { getClassNames } from '@/utils/classNames'
 import NeoHeadlinePrimary from '@/components/01-atoms/Headline/NeoHeadlinePrimary/NeoHeadlinePrimary.vue'
+import NeoSection from '@/components/02-molecules/Section/NeoSection.vue'
 
 const props = defineProps<NeoHeroProps>()
 defineSlots<NeoHeroSlots>()
@@ -21,24 +22,26 @@ const classes = computed(() =>
 </script>
 
 <template>
-	<section :class="classes">
-		<div class="NeoHero-content">
-			<NeoHeadlinePrimary
-				:tag="props.headingTag ?? 'h1'"
-				:color="props.color"
-				:align="headlineAlign"
-			>
-				{{ props.title }}
-			</NeoHeadlinePrimary>
-			<p v-if="props.subtitle" class="NeoHero-subtitle">{{ props.subtitle }}</p>
-			<div v-if="$slots.actions" class="NeoHero-actions">
-				<slot name="actions" />
+	<NeoSection v-bind="props.section">
+		<div :class="classes">
+			<div class="NeoHero-content">
+				<NeoHeadlinePrimary
+					:tag="props.headingTag ?? 'h1'"
+					:color="props.color"
+					:align="headlineAlign"
+				>
+					{{ props.title }}
+				</NeoHeadlinePrimary>
+				<p v-if="props.subtitle" class="NeoHero-subtitle">{{ props.subtitle }}</p>
+				<div v-if="$slots.actions" class="NeoHero-actions">
+					<slot name="actions" />
+				</div>
+			</div>
+			<div v-if="$slots.media" class="NeoHero-media">
+				<slot name="media" />
 			</div>
 		</div>
-		<div v-if="$slots.media" class="NeoHero-media">
-			<slot name="media" />
-		</div>
-	</section>
+	</NeoSection>
 </template>
 
 <style scoped>

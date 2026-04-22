@@ -6,7 +6,8 @@ import { page, commands } from '@vitest/browser/context'
 const viewports = [
 	{ name: 'mobile', width: 375, height: 667 },
 	{ name: 'tablet', width: 768, height: 1024 },
-	{ name: 'desktop', width: 1280, height: 800 },
+	{ name: 'desktop', width: 1920, height: 1080 },
+	{ name: 'desktop (QHD+)', width: 2592, height: 1440 },
 ] as const
 
 type SnapshotStatus =

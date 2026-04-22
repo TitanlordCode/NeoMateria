@@ -251,3 +251,12 @@ export const AllColorsA11y: Story = {
 	tags: ['!dev', 'test-only'],
 	play: createA11yPlay(),
 }
+
+export const FullWidth: Story = {
+	tags: ['snapshot'],
+	args: {
+		section: {
+			fullWidth: true,
+		},
+	},
+}

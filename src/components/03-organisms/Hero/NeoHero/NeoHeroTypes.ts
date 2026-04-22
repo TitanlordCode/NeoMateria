@@ -1,6 +1,7 @@
 import type { VNodeChild } from 'vue'
 import type { SurfaceColor } from '@/assets/typescript/colorTypes'
 import type { NeoHeadlineTag } from '@/components/01-atoms/Headline/NeoHeadlineTypes'
+import type { NeoSectionProps } from '@/components/02-molecules/Section/NeoSectionTypes'
 
 export const heroVariants = ['centered', 'split'] as const
 export type NeoHeroVariant = (typeof heroVariants)[number]
@@ -16,6 +17,7 @@ export interface NeoHeroProps {
 	variant?: NeoHeroVariant
 	size?: NeoHeroSize
 	class?: string
+	section?: NeoSectionProps
 }
 
 export interface NeoHeroSlots {

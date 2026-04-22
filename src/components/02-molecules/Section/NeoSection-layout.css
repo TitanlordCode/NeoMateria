@@ -1,0 +1,4 @@
+.NeoSection {
+	--NeoSection-sizing-gap: var(--neo-gap-md);
+	--NeoSection-sizing-inlinePadding: 0;
+}
