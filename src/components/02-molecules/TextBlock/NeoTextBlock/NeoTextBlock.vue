@@ -60,14 +60,14 @@ const classes = computed(() => {
 
 .NeoTextBlock-body {
 	color: var(--NeoTextBlock-color-body);
-	font-size: var(--neo-fontSize-textLg);
-	line-height: var(--neo-lineHeight-relaxed);
+	font-size: var(--NeoTextBlock-sizing-bodyFontSize);
+	line-height: var(--NeoTextBlock-lineHeight-body);
 	margin: 0;
 	overflow-wrap: break-word;
 }
 
 .NeoTextBlock-actions {
 	display: flex;
-	gap: var(--neo-gap-md);
+	gap: var(--NeoTextBlock-sizing-actionsGap);
 }
 </style>

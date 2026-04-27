@@ -22,9 +22,9 @@ const { classes, style } = useHeadline('NeoHeadlinePrimary', props)
 .NeoHeadlinePrimary {
 	color: var(--NeoHeadlinePrimary-color-text);
 	font-size: var(--NeoHeadlinePrimary-sizing-fontSize);
-	font-weight: var(--neo-fontWeight-bold);
+	font-weight: var(--NeoHeadlinePrimary-fontWeight-value);
 	letter-spacing: -0.02em;
-	line-height: var(--neo-lineHeight-tight);
+	line-height: var(--NeoHeadlinePrimary-lineHeight-value);
 	margin: 0;
 	overflow-wrap: break-word;
 }

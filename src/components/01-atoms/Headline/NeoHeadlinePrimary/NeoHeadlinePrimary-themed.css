@@ -1,7 +1,7 @@
 .NeoHeadlinePrimary {
-	--NeoHeadlinePrimary-color-text: currentColor;
+	--NeoHeadlinePrimary-color-text: currentcolor;
 
 	@mixin onDark {
-		--NeoHeadlinePrimary-color-text: currentColor;
+		--NeoHeadlinePrimary-color-text: currentcolor;
 	}
 }

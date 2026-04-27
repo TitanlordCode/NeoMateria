@@ -39,6 +39,9 @@ coverage
 __snapshots_diff__/
 __snapshots_modified__/
 
+# Snapshot run manifest (generated during test runs for cleanup script)
+.snapshot-run-manifest
+
 # Claude Code CLI settings
 .claude/
 CLAUDE.md

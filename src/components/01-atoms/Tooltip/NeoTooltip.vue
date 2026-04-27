@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, nextTick, onMounted, onUnmounted, watch } from 'vue'
 import type { NeoTooltipProps, NeoTooltipSlots } from './NeoTooltipTypes'
 
 const props = withDefaults(defineProps<NeoTooltipProps>(), {
@@ -10,47 +10,145 @@ const props = withDefaults(defineProps<NeoTooltipProps>(), {
 
 defineSlots<NeoTooltipSlots>()
 
-const isVisible = ref(false)
-let timer: ReturnType<typeof setTimeout> | null = null
+const wrapperElement = ref<HTMLElement | null>(null)
+const tooltipElement = ref<HTMLElement | null>(null)
 
-const handleEnter = () => {
-	if (props.visible) return
-	if (props.openDelay > 0) {
-		timer = setTimeout(() => {
-			isVisible.value = true
-		}, props.openDelay)
+// 'hidden': display:none via v-show
+// 'measuring': display:block + visibility:hidden — measurable but invisible
+// 'visible': fully shown
+type Phase = 'hidden' | 'measuring' | 'visible'
+const phase = ref<Phase>('hidden')
+const position = ref({ top: 0, left: 0 })
+
+let delayTimer: ReturnType<typeof setTimeout> | null = null
+
+// Must match --NeoTooltip-sizing-gap in NeoTooltip-layout.css
+const TOOLTIP_GAP = 6
+
+const calculatePosition = () => {
+	if (!wrapperElement.value || !tooltipElement.value) return
+
+	const activator = wrapperElement.value.getBoundingClientRect()
+	const tooltip = tooltipElement.value.getBoundingClientRect()
+	const viewportWidth = window.innerWidth
+	const viewportHeight = window.innerHeight
+
+	let resolvedPlacement = props.placement
+
+	// Flip to the opposite side if the preferred side has insufficient room
+	if (resolvedPlacement === 'top' && activator.top < tooltip.height + TOOLTIP_GAP) {
+		resolvedPlacement = 'bottom'
+	} else if (
+		resolvedPlacement === 'bottom' &&
+		activator.bottom + tooltip.height + TOOLTIP_GAP > viewportHeight
+	) {
+		resolvedPlacement = 'top'
+	} else if (resolvedPlacement === 'left' && activator.left < tooltip.width + TOOLTIP_GAP) {
+		resolvedPlacement = 'right'
+	} else if (
+		resolvedPlacement === 'right' &&
+		activator.right + tooltip.width + TOOLTIP_GAP > viewportWidth
+	) {
+		resolvedPlacement = 'left'
+	}
+
+	let top = 0
+	let left = 0
+
+	if (resolvedPlacement === 'top') {
+		top = activator.top - tooltip.height - TOOLTIP_GAP
+		left = activator.left + activator.width / 2 - tooltip.width / 2
+	} else if (resolvedPlacement === 'bottom') {
+		top = activator.bottom + TOOLTIP_GAP
+		left = activator.left + activator.width / 2 - tooltip.width / 2
+	} else if (resolvedPlacement === 'left') {
+		top = activator.top + activator.height / 2 - tooltip.height / 2
+		left = activator.left - tooltip.width - TOOLTIP_GAP
 	} else {
-		isVisible.value = true
+		top = activator.top + activator.height / 2 - tooltip.height / 2
+		left = activator.right + TOOLTIP_GAP
 	}
+
+	// Clamp to viewport so the panel never overflows any edge
+	left = Math.max(TOOLTIP_GAP, Math.min(left, viewportWidth - tooltip.width - TOOLTIP_GAP))
+	top = Math.max(TOOLTIP_GAP, Math.min(top, viewportHeight - tooltip.height - TOOLTIP_GAP))
+
+	position.value = { top, left }
 }
 
-const handleLeave = () => {
+const showTooltip = async () => {
+	phase.value = 'measuring'
+	await nextTick()
+	calculatePosition()
+	phase.value = 'visible'
+}
+
+const hideTooltip = () => {
+	phase.value = 'hidden'
+}
+
+const startShow = () => {
 	if (props.visible) return
-	if (timer) {
-		clearTimeout(timer)
-		timer = null
+	if (delayTimer) clearTimeout(delayTimer)
+	if (props.openDelay > 0) {
+		delayTimer = setTimeout(showTooltip, props.openDelay)
+	} else {
+		showTooltip()
 	}
-	isVisible.value = false
 }
 
-const show = () => (isVisible.value = true)
-const hide = () => (isVisible.value = false)
+const startHide = () => {
+	if (props.visible) return
+	if (delayTimer) {
+		clearTimeout(delayTimer)
+		delayTimer = null
+	}
+	hideTooltip()
+}
+
+const handleResize = () => {
+	if (phase.value === 'visible') calculatePosition()
+}
+
+onMounted(async () => {
+	window.addEventListener('resize', handleResize)
+	if (props.visible) await showTooltip()
+})
+
+onUnmounted(() => {
+	window.removeEventListener('resize', handleResize)
+	if (delayTimer) clearTimeout(delayTimer)
+})
+
+watch(
+	() => props.visible,
+	async (value) => {
+		if (value) await showTooltip()
+		else hideTooltip()
+	},
+)
 </script>
 
 <template>
 	<div
+		ref="wrapperElement"
 		class="NeoTooltip-wrapper"
-		@mouseenter="handleEnter"
-		@mouseleave="handleLeave"
-		@focusin="show"
-		@focusout="hide"
+		@mouseenter="startShow"
+		@mouseleave="startHide"
+		@focusin="startShow"
+		@focusout="startHide"
 	>
 		<slot name="activator" />
 		<div
-			v-show="visible || isVisible"
+			v-show="phase !== 'hidden'"
+			ref="tooltipElement"
 			class="NeoTooltip"
-			:class="`NeoTooltip--${placement}`"
 			role="tooltip"
+			:style="{
+				top: `${position.top}px`,
+				left: `${position.left}px`,
+				visibility: phase === 'measuring' ? 'hidden' : undefined,
+			}"
 		>
 			{{ text }}
 		</div>
@@ -58,56 +156,22 @@ const hide = () => (isVisible.value = false)
 </template>
 
 <style scoped>
+@import url('./NeoTooltip-layout.css');
+@import url('./NeoTooltip-themed.css');
+
 .NeoTooltip-wrapper {
 	display: inline-flex;
-	position: relative;
 }
 
 .NeoTooltip {
-	--NeoTooltip-color-bg: var(--neo-color-grey900);
-	--NeoTooltip-color-text: var(--neo-color-white);
-	--NeoTooltip-spacing-padding: var(--neo-spacing-core-xs) var(--neo-spacing-core-sm);
-	--NeoTooltip-sizing-radius: var(--neo-radius-sm);
-	--NeoTooltip-sizing-gap: 6px;
-	--NeoTooltip-sizing-fontSize: var(--neo-fontSize-textSm);
-
-	@mixin onDark {
-		--NeoTooltip-color-bg: var(--neo-color-grey700);
-		--NeoTooltip-color-text: var(--neo-color-white);
-	}
-
 	background-color: var(--NeoTooltip-color-bg);
 	border-radius: var(--NeoTooltip-sizing-radius);
 	color: var(--NeoTooltip-color-text);
 	font-size: var(--NeoTooltip-sizing-fontSize);
 	padding: var(--NeoTooltip-spacing-padding);
 	pointer-events: none;
-	position: absolute;
+	position: fixed;
 	white-space: nowrap;
 	z-index: 9999;
-}
-
-.NeoTooltip--top {
-	inset-block-end: calc(100% + var(--NeoTooltip-sizing-gap));
-	inset-inline-start: 50%;
-	transform: translateX(-50%);
-}
-
-.NeoTooltip--bottom {
-	inset-block-start: calc(100% + var(--NeoTooltip-sizing-gap));
-	inset-inline-start: 50%;
-	transform: translateX(-50%);
-}
-
-.NeoTooltip--left {
-	inset-block-start: 50%;
-	inset-inline-end: calc(100% + var(--NeoTooltip-sizing-gap));
-	transform: translateY(-50%);
-}
-
-.NeoTooltip--right {
-	inset-block-start: 50%;
-	inset-inline-start: calc(100% + var(--NeoTooltip-sizing-gap));
-	transform: translateY(-50%);
 }
 </style>

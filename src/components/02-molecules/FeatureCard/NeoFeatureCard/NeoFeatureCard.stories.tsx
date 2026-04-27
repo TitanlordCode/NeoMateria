@@ -46,6 +46,9 @@ const meta = {
 			'A practical guide to structuring Vue components for long-term maintainability and consistency.',
 		color: 'blue',
 	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'md', 'lg', 'xl'] },
+	},
 } satisfies Meta<typeof NeoFeatureCard>
 
 export default meta

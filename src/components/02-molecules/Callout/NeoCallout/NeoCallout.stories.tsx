@@ -40,6 +40,9 @@ const meta = {
 		color: 'blue',
 		variant: 'bordered',
 	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'md', 'lg', 'xl'] },
+	},
 } satisfies Meta<typeof NeoCallout>
 
 export default meta
@@ -129,6 +132,9 @@ export const RTL: Story = {
 	globals: {
 		direction: 'rtl',
 	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
+	},
 	render: (args: NeoCalloutProps) => {
 		return defineComponent({
 			name: 'RTLRender',
@@ -141,6 +147,9 @@ export const RTL: Story = {
 
 export const AllColors: Story = {
 	tags: ['snapshot'],
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
+	},
 	render: createAllColorsRender<typeof NeoCallout>(NeoCallout, [
 		{
 			name: 'Bordered',

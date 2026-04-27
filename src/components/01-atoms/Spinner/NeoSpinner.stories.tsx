@@ -37,6 +37,9 @@ const meta = {
 		color: 'blue',
 		ariaLabel: 'Loading',
 	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'lg', 'xl'] },
+	},
 } satisfies Meta<typeof NeoSpinner>
 
 export default meta
@@ -115,6 +118,9 @@ export const OnDark: Story = {
 	globals: {
 		backgrounds: '#000',
 	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
+	},
 }
 
 export const RTL: Story = {
@@ -125,10 +131,16 @@ export const RTL: Story = {
 	args: {
 		label: 'جاري التحميل...',
 	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
+	},
 }
 
 export const AllColors: Story = {
 	tags: ['snapshot'],
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
+	},
 	render: createSimpleColorShowcase(NeoSpinner, [
 		{
 			variant: 'default',
@@ -152,6 +164,9 @@ export const AllColorsOnDark: Story = {
 	tags: ['snapshot'],
 	globals: {
 		backgrounds: '#000',
+	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
 	},
 	render: createSimpleColorShowcase(
 		NeoSpinner,

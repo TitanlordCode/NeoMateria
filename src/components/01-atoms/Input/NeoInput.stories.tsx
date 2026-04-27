@@ -82,6 +82,9 @@ const meta = {
 		color: 'blue',
 		type: 'text',
 	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'lg', 'xl'] },
+	},
 } satisfies Meta<typeof NeoInput>
 
 export default meta
@@ -209,6 +212,9 @@ export const OnDark: Story = {
 	globals: {
 		backgrounds: '#000',
 	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
+	},
 }
 
 export const RTL: Story = {
@@ -220,10 +226,16 @@ export const RTL: Story = {
 		label: 'الاسم الكامل',
 		placeholder: 'أدخل اسمك...',
 	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
+	},
 }
 
 export const AllColors: Story = {
 	tags: ['snapshot'],
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
+	},
 	render: createSimpleColorShowcase(
 		NeoInput,
 		[
@@ -258,6 +270,9 @@ export const AllColorsOnDark: Story = {
 	tags: ['snapshot'],
 	globals: {
 		backgrounds: '#000',
+	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
 	},
 	render: createSimpleColorShowcase(
 		NeoInput,

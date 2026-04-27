@@ -69,7 +69,7 @@ const classes = computed(() => {
 	align-items: center;
 	display: flex;
 	font-family: inherit;
-	gap: var(--neo-gap-sm);
+	gap: var(--NeoRadio-sizing-gap);
 }
 
 .NeoRadio-input {
@@ -99,7 +99,7 @@ const classes = computed(() => {
 
 .NeoRadio-required {
 	color: var(--NeoRadio-color-required);
-	margin-inline-start: var(--neo-spacing-core-xs);
+	margin-inline-start: var(--NeoRadio-sizing-requiredMarginInlineStart);
 }
 
 .NeoRadio-input:disabled + .NeoRadio-label {

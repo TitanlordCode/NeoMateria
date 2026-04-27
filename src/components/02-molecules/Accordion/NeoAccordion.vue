@@ -105,7 +105,7 @@ const handleKeydown = (event: KeyboardEvent) => {
 .NeoAccordion-trigger {
 	color: var(--NeoAccordion-color-trigger);
 	font-size: var(--NeoAccordion-sizing-fontSize);
-	gap: var(--neo-gap-xs);
+	gap: var(--NeoAccordion-sizing-triggerGap);
 	justify-content: space-between;
 	text-align: start;
 }
@@ -127,13 +127,13 @@ const handleKeydown = (event: KeyboardEvent) => {
 
 .NeoAccordion--bordered {
 	border: 1px solid var(--NeoAccordion-color-border);
-	border-radius: var(--neo-radius-md);
-	padding: var(--neo-spacing-core-md);
+	border-radius: var(--NeoAccordion-sizing-containerBorderRadius);
+	padding: var(--NeoAccordion-sizing-containerPadding);
 }
 
 .NeoAccordion--filled {
 	background-color: var(--NeoAccordion-color-background);
-	border-radius: var(--neo-radius-md);
-	padding: var(--neo-spacing-core-md);
+	border-radius: var(--NeoAccordion-sizing-containerBorderRadius);
+	padding: var(--NeoAccordion-sizing-containerPadding);
 }
 </style>

@@ -14,7 +14,6 @@
 	--neo-spacing-core-md: 12px;
 	--neo-spacing-core-lg: 16px;
 	--neo-spacing-core-xl: 20px;
-
 	--neo-spacing-input-sm: 32px;
 	--neo-spacing-input-md: 36px;
 	--neo-spacing-input-lg: 40px;
@@ -36,14 +35,13 @@
 	--neo-spacing-sm: var(--neo-spacing-core-sm);
 	--neo-spacing-md: var(--neo-spacing-core-md);
 	--neo-spacing-lg: var(--neo-spacing-core-lg);
-
 	--neo-gap-xs: var(--neo-spacing-core-xs);
 	--neo-gap-sm: var(--neo-spacing-core-sm);
 	--neo-gap-md: var(--neo-spacing-core-md);
 	--neo-gap-lg: var(--neo-spacing-core-lg);
 
 	/* Border radius tokens */
-	--neo-radius-none: 0px;
+	--neo-radius-none: 0;
 	--neo-radius-sm: 2px;
 	--neo-radius-md: 4px;
 	--neo-radius-lg: 6px;

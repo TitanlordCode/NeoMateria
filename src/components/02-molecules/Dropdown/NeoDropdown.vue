@@ -89,10 +89,10 @@ onUnmounted(() => {
 	color: var(--NeoDropdown-color-panelText);
 	display: flex;
 	flex-direction: column;
-	gap: var(--neo-gap-xs);
+	gap: var(--NeoDropdown-sizing-panelGap);
 	inline-size: max-content;
 	max-inline-size: var(--NeoDropdown-sizing-panelMaxInlineSize);
-	padding: var(--neo-spacing-core-sm);
+	padding: var(--NeoDropdown-sizing-panelPadding);
 	position: absolute;
 	z-index: 200;
 }

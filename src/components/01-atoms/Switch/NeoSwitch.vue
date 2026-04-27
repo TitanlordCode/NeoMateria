@@ -56,7 +56,7 @@ const handleChange = (event: Event) => {
 	cursor: pointer;
 	display: inline-flex;
 	font-family: inherit;
-	gap: var(--neo-gap-sm);
+	gap: var(--NeoSwitch-sizing-gap);
 	user-select: none;
 }
 

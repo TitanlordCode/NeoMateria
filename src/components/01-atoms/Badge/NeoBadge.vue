@@ -75,8 +75,8 @@ const classes = computed(() => {
 }
 
 .NeoBadge--dismissible {
-	gap: var(--neo-gap-sm);
-	padding-inline-end: var(--neo-spacing-core-sm);
+	gap: var(--NeoBadge-sizing-dismissGap);
+	padding-inline-end: var(--NeoBadge-sizing-dismissPaddingInlineEnd);
 }
 
 .NeoBadge-dismiss {

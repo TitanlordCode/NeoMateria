@@ -224,7 +224,7 @@ onUnmounted(() => {
 @import url('./NeoSheet-layout.css');
 
 .NeoSheet--filled {
-	color: var(--neo-theme-colorText);
+	color: var(--NeoSheet-color-text);
 }
 
 .NeoSheet-overlay {

@@ -8,6 +8,7 @@ import NeoPennant from '@/components/01-atoms/Pennant/NeoPennant.vue'
 import type { NeoCoverPanelGridProps } from './NeoCoverPanelGridTypes'
 import { coverPanelGridGaps } from './NeoCoverPanelGridTypes'
 import type { Color } from '@/assets/typescript/colors'
+import { StarIcon } from '@/components/01-atoms/Icon/defaultIcons'
 
 const meta = {
 	title: 'Organisms/NeoCoverPanelGrid',
@@ -135,17 +136,6 @@ const BookmarkFilledIcon = (
 		style={{ blockSize: '18px', inlineSize: '18px' }}
 	>
 		<path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
-	</svg>
-)
-
-const StarPennant = (
-	<svg
-		xmlns="http://www.w3.org/2000/svg"
-		viewBox="0 0 24 24"
-		fill="currentColor"
-		aria-hidden="true"
-	>
-		<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
 	</svg>
 )
 
@@ -312,7 +302,7 @@ export const WithPennants: Story = {
 								{{
 									pennants: () => (
 										<>
-											<NeoPennant color={pennantConfigs[index].platform}>{StarPennant}</NeoPennant>
+											<NeoPennant color={pennantConfigs[index].platform}>{StarIcon}</NeoPennant>
 											<NeoPennant color={pennantConfigs[index].rank}>{index + 1}</NeoPennant>
 										</>
 									),
@@ -479,7 +469,7 @@ export const MixedContent: Story = {
 							<>
 								{pennants.map((pennant, pennantIndex) => (
 									<NeoPennant key={pennantIndex} color={pennant.color}>
-										{pennant.content === 'star' ? StarPennant : pennant.rank}
+										{pennant.content === 'star' ? StarIcon : pennant.rank}
 									</NeoPennant>
 								))}
 							</>
@@ -693,6 +683,26 @@ export const FullWidth: Story = {
 export const OnDark: Story = {
 	tags: ['snapshot'],
 	globals: { backgrounds: '#000' },
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
+		docs: {
+			source: {
+				code: `<div class="u-onDark">
+  <NeoCoverPanelGrid :columns="4" gap="medium">
+    <NeoCoverPanel
+      v-for="item in items"
+      :key="item.id"
+      :color="item.color"
+      :image-src="item.imageSrc"
+      :image-alt="item.imageAlt"
+      :title="item.title"
+      rounded
+    />
+  </NeoCoverPanelGrid>
+</div>`,
+			},
+		},
+	},
 	render: (args: NeoCoverPanelGridProps) => {
 		return defineComponent({
 			name: 'OnDarkRender',
@@ -715,24 +725,5 @@ export const OnDark: Story = {
 				)
 			},
 		})
-	},
-	parameters: {
-		docs: {
-			source: {
-				code: `<div class="u-onDark">
-  <NeoCoverPanelGrid :columns="4" gap="medium">
-    <NeoCoverPanel
-      v-for="item in items"
-      :key="item.id"
-      :color="item.color"
-      :image-src="item.imageSrc"
-      :image-alt="item.imageAlt"
-      :title="item.title"
-      rounded
-    />
-  </NeoCoverPanelGrid>
-</div>`,
-			},
-		},
 	},
 }

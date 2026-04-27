@@ -43,9 +43,9 @@ const style = computed(() => {
 .NeoStat-value {
 	color: var(--NeoStat-color-value);
 	font-size: var(--NeoStat-sizing-valueSize);
-	font-weight: var(--neo-fontWeight-bold);
+	font-weight: var(--NeoStat-fontWeight-value);
 	letter-spacing: -0.02em;
-	line-height: var(--neo-lineHeight-tight);
+	line-height: var(--NeoStat-lineHeight-value);
 	margin: 0;
 	overflow-wrap: break-word;
 }
@@ -53,7 +53,7 @@ const style = computed(() => {
 .NeoStat-label {
 	color: var(--NeoStat-color-label);
 	font-size: var(--NeoStat-sizing-labelSize);
-	line-height: var(--neo-lineHeight-normal);
+	line-height: var(--NeoStat-lineHeight-label);
 	margin: 0;
 	overflow-wrap: break-word;
 }

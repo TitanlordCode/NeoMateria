@@ -12,3 +12,11 @@
 	--NeoCheckbox-sizing-size: var(--neo-sizing-control-lg);
 	--NeoCheckbox-sizing-labelFontSize: var(--neo-fontSize-textLg);
 }
+
+.NeoCheckbox {
+	--NeoCheckbox-sizing-gap: var(--neo-gap-sm);
+}
+
+.NeoCheckbox-required {
+	--NeoCheckbox-sizing-requiredMarginInlineStart: var(--neo-spacing-core-xs);
+}

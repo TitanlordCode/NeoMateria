@@ -64,6 +64,88 @@ const mediaQueryList = window.matchMedia(mediaQueries.md)
 
 ---
 
+## Snapshot testing viewports
+
+Visual regression tests run against five fixed viewports. The set was chosen to cover every CSS breakpoint transition — no two adjacent viewports share the same active breakpoint set.
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Width</th>
+      <th>Height</th>
+      <th>Active breakpoints</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>sm</code></td>
+      <td>375px</td>
+      <td>667px</td>
+      <td>none — below bp-sm (640px)</td>
+    </tr>
+    <tr>
+      <td><code>md</code></td>
+      <td>768px</td>
+      <td>1024px</td>
+      <td>bp-sm, bp-md</td>
+    </tr>
+    <tr>
+      <td><code>lg</code></td>
+      <td>1024px</td>
+      <td>768px</td>
+      <td>bp-sm, bp-md, bp-lg</td>
+    </tr>
+    <tr>
+      <td><code>xl</code></td>
+      <td>1920px</td>
+      <td>1080px</td>
+      <td>all (bp-sm through bp-xl)</td>
+    </tr>
+    <tr>
+      <td><code>2xl</code></td>
+      <td>2592px</td>
+      <td>1440px</td>
+      <td>all — extra-wide overflow test</td>
+    </tr>
+  </tbody>
+</table>
+
+By default, every snapshot story runs at all five viewports. Use `parameters.snapshot.viewports` in a story's `meta` or individual story object to restrict which viewports run for that story group:
+
+```ts
+// In meta — applies to all stories in the file
+parameters: {
+  snapshot: { viewports: ['sm', 'xl'] },
+}
+
+// In a single story — overrides the meta default
+export const AllColors: Story = {
+  parameters: {
+    snapshot: { viewports: ['sm', 'xl'] },
+  },
+}
+```
+
+Use `diffThreshold` to allow a small percentage of pixels to differ — useful for stories whose snapshots contain text rendered with system fonts, where sub-pixel hinting can vary slightly between Chromium instances. The value is a ratio (e.g. `0.001` = 0.1% of total pixels). Omit it entirely for strict pixel-exact comparison, which is the default for all stories.
+
+```ts
+parameters: {
+  snapshot: { viewports: ['sm', 'xl'], diffThreshold: 0.001 },
+}
+```
+
+**Default viewport sets by component tier:**
+
+| Tier | Default viewports | Reason |
+|---|---|---|
+| Atoms | `sm`, `lg`, `xl` | Font and padding scale at bp-sm and bp-lg; no grid changes |
+| Molecules | `sm`, `md`, `lg`, `xl` | Responsive layout changes; 2xl adds no new information |
+| Organisms | all 5 | Genuine layout changes at every breakpoint + overflow check |
+| AllColors / OnDark / RTL (atoms & molecules) | `sm`, `xl` | Only color/theme or direction differs — no layout change |
+
+---
+
 ## CSS mixin — for library contributors only
 
 ```css

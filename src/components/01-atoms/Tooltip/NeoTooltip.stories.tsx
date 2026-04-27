@@ -18,6 +18,7 @@ const meta = {
 	tags: ['autodocs'],
 	parameters: {
 		layout: 'centered',
+		snapshot: { viewports: ['sm', 'lg', 'xl'] },
 	},
 	argTypes: {
 		text: { control: 'text', table: { category: 'Content' } },
@@ -111,6 +112,9 @@ export const OnDark: Story = {
 	},
 	args: {
 		visible: true,
+	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
 	},
 }
 

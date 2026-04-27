@@ -85,6 +85,9 @@ const meta = {
 		value: 68,
 		valueLabel: 'completed',
 	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'md', 'lg', 'xl'] },
+	},
 } satisfies Meta<typeof NeoProgressPanel>
 
 export default meta
@@ -378,6 +381,9 @@ export const RTL: Story = {
 	globals: {
 		direction: 'rtl',
 	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
+	},
 	args: {
 		title: 'عنوان العنصر',
 		valueLabel: 'مكتمل',
@@ -386,6 +392,9 @@ export const RTL: Story = {
 
 export const AllColors: Story = {
 	tags: ['snapshot'],
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
+	},
 	render: (args: NeoProgressPanelProps) => {
 		return defineComponent({
 			name: 'AllColorsRender',
@@ -426,6 +435,9 @@ export const AllColors: Story = {
 export const AllColorsOnDark: Story = {
 	tags: ['snapshot'],
 	globals: { backgrounds: '#000' },
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
+	},
 	render: (args: NeoProgressPanelProps) => {
 		return defineComponent({
 			name: 'AllColorsOnDarkRender',

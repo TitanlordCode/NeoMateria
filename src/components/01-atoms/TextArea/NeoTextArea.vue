@@ -103,7 +103,7 @@ const classes = computed(() => {
 	display: flex;
 	flex-direction: column;
 	font-family: inherit;
-	gap: var(--neo-gap-xs);
+	gap: var(--NeoTextArea-sizing-gap);
 	inline-size: 100%;
 }
 
@@ -115,7 +115,7 @@ const classes = computed(() => {
 
 .NeoTextArea-required {
 	color: var(--NeoTextArea-color-required);
-	margin-inline-start: var(--neo-spacing-core-xs);
+	margin-inline-start: var(--NeoTextArea-sizing-requiredMarginInlineStart);
 }
 
 .NeoTextArea-field {

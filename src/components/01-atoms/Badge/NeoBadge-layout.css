@@ -35,3 +35,8 @@
 .NeoBadge--rounded {
 	--NeoBadge-sizing-borderRadius: var(--neo-radius-full);
 }
+
+.NeoBadge--dismissible {
+	--NeoBadge-sizing-dismissGap: var(--neo-gap-sm);
+	--NeoBadge-sizing-dismissPaddingInlineEnd: var(--neo-spacing-core-sm);
+}

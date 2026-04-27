@@ -40,3 +40,20 @@
 .NeoSelect--rounded {
 	--NeoSelect-sizing-borderRadius: var(--neo-border-input-radius);
 }
+
+.NeoSelect-options {
+	--NeoSelect-sizing-optionsBorderRadius: var(--neo-radius-md);
+	--NeoSelect-sizing-optionsMarginBlockStart: var(--neo-spacing-core-xs);
+	--NeoSelect-sizing-optionsPaddingBlock: var(--neo-spacing-core-xs);
+	--NeoSelect-sizing-optionItemGap: var(--neo-gap-sm);
+	--NeoSelect-sizing-optionItemPaddingBlock: var(--neo-spacing-core-sm);
+	--NeoSelect-sizing-optionItemPaddingInline: var(--neo-spacing-core-md);
+	--NeoSelect-sizing-optionsShadowOffsetBlock: var(--neo-spacing-core-xs);
+	--NeoSelect-sizing-optionsShadowBlur: var(--neo-spacing-core-md);
+}
+
+.NeoSelect-selectedTags {
+	--NeoSelect-sizing-tagGap: var(--neo-gap-sm);
+	--NeoSelect-sizing-tagPaddingBlock: var(--neo-spacing-core-xs);
+	--NeoSelect-sizing-tagPaddingInline: var(--neo-spacing-core-sm);
+}

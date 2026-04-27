@@ -68,6 +68,9 @@ const meta: Meta<typeof NeoNavItem> = {
 		onClick: fn(),
 		onToggle: fn(),
 	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'lg', 'xl'] },
+	},
 }
 
 export default meta
@@ -710,6 +713,7 @@ export const OnDark: Story = {
 		backgrounds: '#000',
 	},
 	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
 		docs: {
 			source: {
 				code: `<!-- Wrap in .u-onDark to activate dark-mode token overrides -->

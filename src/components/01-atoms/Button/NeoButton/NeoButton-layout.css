@@ -34,3 +34,7 @@
 .NeoButton--ghost {
 	--NeoButton-sizing-padding: 0;
 }
+
+.NeoButton {
+	--NeoButton-sizing-gap: var(--neo-gap-xs);
+}

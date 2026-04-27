@@ -36,6 +36,7 @@ const classes = computed(() => {
 						:title="section.title"
 						:links="section.links"
 						:color="props.color"
+						heading-tag="h2"
 						size="small"
 						variant="vertical"
 						class="NeoFooter-section"
@@ -79,11 +80,11 @@ const classes = computed(() => {
 	flex-direction: column;
 	gap: var(--NeoFooter-sizing-gap);
 	margin: 0 auto;
-	max-inline-size: var(--neo-spacing-max-global-size);
+	max-inline-size: var(--NeoFooter-sizing-maxInlineSize);
 }
 
 .NeoFooter-logo {
-	margin-block-end: var(--neo-spacing-core-md);
+	margin-block-end: var(--NeoFooter-sizing-logoMarginBlockEnd);
 }
 
 .NeoFooter-sections {
@@ -99,16 +100,16 @@ const classes = computed(() => {
 .NeoFooter-social {
 	border-block-start: 1px solid var(--NeoFooter-color-border);
 	display: flex;
-	gap: var(--neo-gap-md);
-	padding-block-start: var(--neo-spacing-core-lg);
+	gap: var(--NeoFooter-sizing-columnsGap);
+	padding-block-start: var(--NeoFooter-sizing-columnsPaddingBlockStart);
 }
 
 .NeoFooter-bottom {
 	border-block-start: 1px solid var(--NeoFooter-color-border);
 	display: flex;
 	flex-direction: column;
-	gap: var(--neo-gap-sm);
-	padding-block-start: var(--neo-spacing-core-lg);
+	gap: var(--NeoFooter-sizing-columnGap);
+	padding-block-start: var(--NeoFooter-sizing-columnPaddingBlockStart);
 
 	@mixin bp-md {
 		align-items: center;
@@ -120,7 +121,7 @@ const classes = computed(() => {
 .NeoFooter-legal {
 	display: flex;
 	flex-wrap: wrap;
-	gap: var(--neo-gap-md);
+	gap: var(--NeoFooter-sizing-bottomGap);
 }
 
 .NeoFooter-copyright {
@@ -131,7 +132,7 @@ const classes = computed(() => {
 
 .NeoFooter-bottomSlot {
 	border-block-start: 1px solid var(--NeoFooter-color-border);
-	padding-block-start: var(--neo-spacing-core-lg);
+	padding-block-start: var(--NeoFooter-sizing-bottomPaddingBlockStart);
 }
 
 .NeoFooter--simple {

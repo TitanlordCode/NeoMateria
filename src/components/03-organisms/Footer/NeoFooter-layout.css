@@ -5,6 +5,14 @@
 	--NeoFooter-sizing-sectionTitleFont: var(--neo-fontSize-textMd);
 	--NeoFooter-sizing-linkFont: var(--neo-fontSize-textSm);
 	--NeoFooter-sizing-copyrightFont: var(--neo-fontSize-textSm);
+	--NeoFooter-sizing-maxInlineSize: var(--neo-spacing-max-global-size);
+	--NeoFooter-sizing-logoMarginBlockEnd: var(--neo-spacing-core-md);
+	--NeoFooter-sizing-columnsGap: var(--neo-gap-md);
+	--NeoFooter-sizing-columnsPaddingBlockStart: var(--neo-spacing-core-lg);
+	--NeoFooter-sizing-columnGap: var(--neo-gap-sm);
+	--NeoFooter-sizing-columnPaddingBlockStart: var(--neo-spacing-core-lg);
+	--NeoFooter-sizing-bottomGap: var(--neo-gap-md);
+	--NeoFooter-sizing-bottomPaddingBlockStart: var(--neo-spacing-core-lg);
 
 	@mixin bp-md {
 		--NeoFooter-sizing-padding: var(--neo-spacing-layout-lg) var(--neo-spacing-layout-md);

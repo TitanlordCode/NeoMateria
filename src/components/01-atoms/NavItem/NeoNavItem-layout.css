@@ -33,3 +33,8 @@
 	--NeoNavItem-sizing-indent: var(--neo-spacing-core-xl);
 	--NeoNavItem-sizing-connectorOffset: var(--neo-spacing-core-lg);
 }
+
+.NeoNavItem {
+	--NeoNavItem-sizing-borderRadius: var(--neo-radius-sm);
+	--NeoNavItem-sizing-connectorThickness: var(--neo-border-width);
+}

@@ -3,13 +3,13 @@
 }
 
 .NeoFeatureCard-category {
-	--NeoFeatureCard-color-category: var(--neo-theme-colorAccessible, currentColor);
+	--NeoFeatureCard-color-category: var(--neo-theme-colorAccessible);
 }
 
 .NeoFeatureCard-excerpt {
-	--NeoFeatureCard-color-excerpt: currentColor;
+	--NeoFeatureCard-color-excerpt: currentcolor;
 
 	@mixin onDark {
-		--NeoFeatureCard-color-excerpt: currentColor;
+		--NeoFeatureCard-color-excerpt: currentcolor;
 	}
 }

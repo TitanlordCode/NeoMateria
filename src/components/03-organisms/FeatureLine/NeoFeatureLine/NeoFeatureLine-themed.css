@@ -1,7 +1,7 @@
 .NeoFeatureLine-body {
-	--NeoFeatureLine-color-body: currentColor;
+	--NeoFeatureLine-color-body: currentcolor;
 
 	@mixin onDark {
-		--NeoFeatureLine-color-body: currentColor;
+		--NeoFeatureLine-color-body: currentcolor;
 	}
 }

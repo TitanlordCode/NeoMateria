@@ -5,6 +5,21 @@
 	--NeoNavigation-sizing-linkGap: var(--neo-gap-md);
 	--NeoNavigation-sizing-fontSize: var(--neo-fontSize-textMd);
 	--NeoNavigation-sizing-mobilePanelPadding: var(--neo-spacing-core-lg);
+	--NeoNavigation-sizing-maxInlineSize: var(--neo-spacing-max-global-size);
+	--NeoNavigation-sizing-linksGap: var(--neo-gap-sm);
+	--NeoNavigation-sizing-dropdownListGap: var(--neo-gap-xs);
+	--NeoNavigation-sizing-dropdownListPaddingBlock: var(--neo-spacing-core-xs);
+	--NeoNavigation-sizing-dropdownItemBorderRadius: var(--neo-radius-md);
+	--NeoNavigation-sizing-dropdownItemPaddingBlock: var(--neo-spacing-core-xs);
+	--NeoNavigation-sizing-dropdownItemPaddingInline: var(--neo-spacing-core-sm)
+		var(--neo-spacing-core-md);
+	--NeoNavigation-sizing-actionsGap: var(--neo-spacing-core-lg);
+	--NeoNavigation-sizing-mobileToggleGap: var(--neo-spacing-core-xs);
+	--NeoNavigation-sizing-mobileLinksPaddingBlockStart: var(--neo-spacing-core-lg);
+	--NeoNavigation-sizing-mobileLinksGap: var(--neo-gap-sm);
+	--NeoNavigation-sizing-mobileActionsGap: var(--neo-spacing-core-xs);
+	--NeoNavigation-sizing-desktopDropdownGap: var(--neo-gap-lg);
+	--NeoNavigation-sizing-desktopDropdownPaddingBlock: var(--neo-spacing-core-lg);
 
 	@mixin bp-md {
 		--NeoNavigation-sizing-height: 72px;

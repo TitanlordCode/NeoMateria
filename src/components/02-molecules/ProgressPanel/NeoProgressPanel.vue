@@ -94,7 +94,7 @@ const handleImageError = () => {
 
 .NeoProgressPanel {
 	background-color: var(--NeoProgressPanel-color-background);
-	border: 2px solid var(--neo-theme-color);
+	border: 2px solid var(--NeoProgressPanel-color-border);
 	border-radius: var(--NeoProgressPanel-sizing-borderRadius);
 	display: flex;
 	flex-direction: row;
@@ -109,11 +109,11 @@ const handleImageError = () => {
 	text-decoration: none;
 
 	&:hover {
-		box-shadow: 0 0 0 3px var(--neo-theme-color);
+		box-shadow: 0 0 0 3px var(--NeoProgressPanel-color-hoverShadow);
 	}
 
 	&:focus-visible {
-		outline: 2px solid var(--neo-theme-color);
+		outline: 2px solid var(--NeoProgressPanel-color-outline);
 		outline-offset: 2px;
 	}
 }
@@ -133,13 +133,13 @@ const handleImageError = () => {
 
 .NeoProgressPanel-imageFallback {
 	align-items: center;
-	background-color: var(--neo-theme-color);
+	background-color: var(--NeoProgressPanel-color-imageFallbackBg);
 	block-size: 100%;
-	color: var(--neo-theme-colorText);
+	color: var(--NeoProgressPanel-color-imageFallbackText);
 	display: flex;
 	inline-size: 100%;
 	justify-content: center;
-	padding: var(--neo-spacing-core-xs);
+	padding: var(--NeoProgressPanel-sizing-imageFallbackPadding);
 }
 
 .NeoProgressPanel-imageFallbackText {
@@ -173,14 +173,14 @@ const handleImageError = () => {
 	display: flex;
 	flex: 1;
 	flex-direction: column;
-	gap: var(--neo-gap-xs);
+	gap: var(--NeoProgressPanel-sizing-headerGap);
 }
 
 .NeoProgressPanel-title {
 	-webkit-box-orient: vertical;
 	color: var(--NeoProgressPanel-color-title);
 	display: -webkit-box;
-	font-size: var(--neo-fontSize-textMd, 0.875rem);
+	font-size: var(--NeoProgressPanel-sizing-titleFontSize);
 	font-weight: 600;
 	hyphens: auto;
 	-webkit-line-clamp: var(--NeoProgressPanel-sizing-titleClamp);
@@ -193,7 +193,7 @@ const handleImageError = () => {
 
 .NeoProgressPanel-subtitle {
 	color: var(--NeoProgressPanel-color-subtitle);
-	font-size: var(--neo-fontSize-textSm, 0.75rem);
+	font-size: var(--NeoProgressPanel-sizing-subtitleFontSize);
 	hyphens: auto;
 	line-height: 1.3;
 	margin: 0;
@@ -206,15 +206,15 @@ const handleImageError = () => {
 .NeoProgressPanel-footer {
 	display: flex;
 	flex-direction: column;
-	gap: var(--neo-gap-xs);
+	gap: var(--NeoProgressPanel-sizing-footerGap);
 	margin-block-start: auto;
-	padding-block-start: var(--neo-spacing-core-sm);
+	padding-block-start: var(--NeoProgressPanel-sizing-footerPaddingBlockStart);
 }
 
 .NeoProgressPanel-progressRow {
 	align-items: center;
 	display: flex;
-	gap: var(--neo-gap-sm);
+	gap: var(--NeoProgressPanel-sizing-progressRowGap);
 }
 
 .NeoProgressPanel-bar {
@@ -222,16 +222,16 @@ const handleImageError = () => {
 }
 
 .NeoProgressPanel-value {
-	color: var(--neo-theme-colorAccessible);
+	color: var(--NeoProgressPanel-color-value);
 	flex-shrink: 0;
-	font-size: var(--neo-fontSize-textSm, 0.75rem);
+	font-size: var(--NeoProgressPanel-sizing-valueFontSize);
 	font-weight: 700;
 	line-height: 1;
 }
 
 .NeoProgressPanel-valueLabel {
 	color: var(--NeoProgressPanel-color-valueLabel);
-	font-size: var(--neo-fontSize-textSm, 0.75rem);
+	font-size: var(--NeoProgressPanel-sizing-valueLabelFontSize);
 	overflow: hidden;
 	overflow-wrap: break-word;
 	text-overflow: ellipsis;

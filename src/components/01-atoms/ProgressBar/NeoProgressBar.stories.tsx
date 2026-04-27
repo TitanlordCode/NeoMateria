@@ -49,6 +49,9 @@ const meta = {
 		size: 'small',
 		rounded: false,
 	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'lg', 'xl'] },
+	},
 } satisfies Meta<typeof NeoProgressBar>
 
 export default meta
@@ -152,10 +155,16 @@ export const RTL: Story = {
 	globals: {
 		direction: 'rtl',
 	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
+	},
 }
 
 export const AllColors: Story = {
 	tags: ['snapshot'],
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
+	},
 	render: (args: NeoProgressBarProps) => {
 		return defineComponent({
 			name: 'AllColorsRender',
@@ -194,6 +203,9 @@ export const AllColors: Story = {
 export const AllColorsOnDark: Story = {
 	tags: ['snapshot'],
 	globals: { backgrounds: '#000' },
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
+	},
 	render: (args: NeoProgressBarProps) => {
 		return defineComponent({
 			name: 'AllColorsOnDarkRender',

@@ -108,7 +108,7 @@ const classes = computed(() => {
 	display: flex;
 	flex-direction: column;
 	font-family: inherit;
-	gap: var(--neo-gap-xs);
+	gap: var(--NeoInput-sizing-gap);
 	inline-size: 100%;
 }
 
@@ -120,7 +120,7 @@ const classes = computed(() => {
 
 .NeoInput-required {
 	color: var(--NeoInput-color-required);
-	margin-inline-start: var(--neo-spacing-core-xs);
+	margin-inline-start: var(--NeoInput-sizing-requiredMarginInlineStart);
 }
 
 .NeoInput-field {

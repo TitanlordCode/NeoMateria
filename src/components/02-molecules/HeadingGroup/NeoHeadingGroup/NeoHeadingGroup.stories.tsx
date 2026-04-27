@@ -47,6 +47,9 @@ const meta = {
 		title: 'Section Heading',
 		variant: 'primary',
 	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'md', 'lg', 'xl'] },
+	},
 } satisfies Meta<typeof NeoHeadingGroup>
 
 export default meta
@@ -166,6 +169,9 @@ export const AllVariants: Story = {
 export const OnDark: Story = {
 	tags: ['snapshot'],
 	globals: { backgrounds: '#000' },
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
+	},
 	args: {
 		overline: 'Dark Mode',
 		title: 'Looks Great in the Dark',

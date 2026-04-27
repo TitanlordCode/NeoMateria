@@ -1,3 +1,12 @@
 .NeoTextBlock {
 	--NeoTextBlock-sizing-gap: var(--neo-gap-lg);
 }
+
+.NeoTextBlock-body {
+	--NeoTextBlock-sizing-bodyFontSize: var(--neo-fontSize-textLg);
+	--NeoTextBlock-lineHeight-body: var(--neo-lineHeight-relaxed);
+}
+
+.NeoTextBlock-actions {
+	--NeoTextBlock-sizing-actionsGap: var(--neo-gap-md);
+}

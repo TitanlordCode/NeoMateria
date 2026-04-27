@@ -37,6 +37,14 @@ pnpm add neo-materia
 bun add neo-materia
 ```
 
+## Setup
+
+After installing, import the stylesheet once in your application entry file (e.g. `main.ts`):
+
+```ts
+import 'neo-materia/dist/neo-materia.css'
+```
+
 ## Quick Start
 
 ```vue

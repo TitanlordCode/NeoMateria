@@ -51,6 +51,9 @@ const meta = {
 		body: bodyText,
 		headingVariant: 'secondary',
 	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'md', 'lg', 'xl'] },
+	},
 } satisfies Meta<typeof NeoTextBlock>
 
 export default meta

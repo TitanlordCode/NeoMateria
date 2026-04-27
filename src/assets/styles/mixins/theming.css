@@ -1,10 +1,12 @@
 @define-mixin setOnDark {
 	--neo-is-dark: 1;
+
 	container: on-dark / normal;
 }
 
 @define-mixin unsetOnDark {
 	--neo-is-dark: 0;
+
 	container: on-dark / normal;
 }
 

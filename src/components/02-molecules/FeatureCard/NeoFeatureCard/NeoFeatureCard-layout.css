@@ -2,3 +2,17 @@
 	--NeoFeatureCard-sizing-borderRadius: 12px;
 	--NeoFeatureCard-sizing-gap: var(--neo-gap-md);
 }
+
+.NeoFeatureCard-content {
+	--NeoFeatureCard-sizing-contentGap: var(--neo-gap-xs);
+}
+
+.NeoFeatureCard-category {
+	--NeoFeatureCard-sizing-categoryFontSize: var(--neo-fontSize-textXs);
+	--NeoFeatureCard-fontWeight-category: var(--neo-fontWeight-semibold);
+}
+
+.NeoFeatureCard-excerpt {
+	--NeoFeatureCard-sizing-excerptFontSize: var(--neo-fontSize-textMd);
+	--NeoFeatureCard-lineHeight-excerpt: var(--neo-lineHeight-normal);
+}

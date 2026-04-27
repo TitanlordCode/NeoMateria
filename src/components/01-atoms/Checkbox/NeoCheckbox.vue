@@ -73,7 +73,7 @@ const classes = computed(() => {
 	align-items: center;
 	display: flex;
 	font-family: inherit;
-	gap: var(--neo-gap-sm);
+	gap: var(--NeoCheckbox-sizing-gap);
 }
 
 .NeoCheckbox-input {
@@ -103,7 +103,7 @@ const classes = computed(() => {
 
 .NeoCheckbox-required {
 	color: var(--NeoCheckbox-color-required);
-	margin-inline-start: var(--neo-spacing-core-xs);
+	margin-inline-start: var(--NeoCheckbox-sizing-requiredMarginInlineStart);
 }
 
 .NeoCheckbox-input:disabled + .NeoCheckbox-label {
