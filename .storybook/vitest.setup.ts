@@ -1,14 +1,6 @@
 import { afterEach } from 'vitest'
 import { page, commands } from '@vitest/browser/context'
-
-// Three viewports: page.viewport() resizes the Storybook preview iframe so
-// components respond to breakpoint mixins just as they would in a real browser.
-const viewports = [
-	{ name: 'mobile', width: 375, height: 667 },
-	{ name: 'tablet', width: 768, height: 1024 },
-	{ name: 'desktop', width: 1920, height: 1080 },
-	{ name: 'desktop (QHD+)', width: 2592, height: 1440 },
-] as const
+import { snapshotViewports } from './viewports'
 
 type SnapshotStatus =
 	| { status: 'created' }
@@ -29,17 +21,29 @@ const snapshotCommands = commands as typeof commands & {
 		storyId: string,
 		viewportName: string,
 		base64: string,
+		diffThreshold?: number,
 	) => Promise<SnapshotStatus>
 }
 
 afterEach(async (context) => {
-	const storyContext = context as typeof context & { story?: { tags?: string[] } }
+	const storyContext = context as typeof context & {
+		story?: { tags?: string[]; parameters?: Record<string, unknown> }
+	}
 	if (!storyContext.story?.tags?.includes('snapshot')) return
 
 	const storyId = (context.task.meta as { storyId?: string })?.storyId
 	if (!storyId) return
 
-	for (const viewport of viewports) {
+	const snapshotParams = storyContext.story?.parameters?.snapshot as
+		| { viewports?: string[]; diffThreshold?: number }
+		| undefined
+	const storyViewports = snapshotParams?.viewports
+	const diffThreshold = snapshotParams?.diffThreshold
+	const activeViewports = storyViewports
+		? snapshotViewports.filter((viewport) => storyViewports.includes(viewport.name))
+		: snapshotViewports
+
+	for (const viewport of activeViewports) {
 		// Resize the preview iframe so responsive breakpoints fire correctly.
 		await page.viewport(viewport.width, viewport.height)
 
@@ -75,7 +79,12 @@ afterEach(async (context) => {
 			await page.viewport(viewport.width, viewport.height)
 		}
 
-		const result = await snapshotCommands.compareSnapshot(storyId, viewport.name, base64)
+		const result = await snapshotCommands.compareSnapshot(
+			storyId,
+			viewport.name,
+			base64,
+			diffThreshold,
+		)
 
 		if (result.status === 'missing') {
 			throw new Error(

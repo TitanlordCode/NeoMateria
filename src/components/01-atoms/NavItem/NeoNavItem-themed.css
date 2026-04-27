@@ -1,11 +1,12 @@
 .NeoNavItem {
-	--NeoNavItem-color-text: currentColor;
+	--NeoNavItem-color-text: currentcolor;
 	--NeoNavItem-color-textHover: var(--neo-theme-color);
 	--NeoNavItem-color-textActive: var(--neo-theme-color);
 	--NeoNavItem-color-textDisabled: var(--neo-color-grey400);
 	--NeoNavItem-color-backgroundHover: var(--neo-color-grey100);
 	--NeoNavItem-color-backgroundActive: var(--neo-theme-colorBg);
 	--NeoNavItem-color-connector: var(--neo-color-grey300);
+	--NeoNavItem-color-outline: var(--neo-theme-color);
 
 	@mixin onDark {
 		--NeoNavItem-color-textDisabled: var(--neo-color-grey600);

@@ -1,5 +1,6 @@
 export interface NeoSectionProps {
 	fullWidth?: boolean
-	gap?: string
+	columnGap?: string
+	rowGap?: string
 	padding?: string
 }

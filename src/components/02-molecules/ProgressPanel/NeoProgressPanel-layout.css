@@ -8,3 +8,36 @@
 .NeoProgressPanel--rounded {
 	--NeoProgressPanel-sizing-borderRadius: var(--neo-radius-2xl);
 }
+
+.NeoProgressPanel-imageFallback {
+	--NeoProgressPanel-sizing-imageFallbackPadding: var(--neo-spacing-core-xs);
+}
+
+.NeoProgressPanel-header {
+	--NeoProgressPanel-sizing-headerGap: var(--neo-gap-xs);
+}
+
+.NeoProgressPanel-title {
+	--NeoProgressPanel-sizing-titleFontSize: var(--neo-fontSize-textMd);
+}
+
+.NeoProgressPanel-subtitle {
+	--NeoProgressPanel-sizing-subtitleFontSize: var(--neo-fontSize-textSm);
+}
+
+.NeoProgressPanel-footer {
+	--NeoProgressPanel-sizing-footerGap: var(--neo-gap-xs);
+	--NeoProgressPanel-sizing-footerPaddingBlockStart: var(--neo-spacing-core-sm);
+}
+
+.NeoProgressPanel-progressRow {
+	--NeoProgressPanel-sizing-progressRowGap: var(--neo-gap-sm);
+}
+
+.NeoProgressPanel-value {
+	--NeoProgressPanel-sizing-valueFontSize: var(--neo-fontSize-textSm);
+}
+
+.NeoProgressPanel-valueLabel {
+	--NeoProgressPanel-sizing-valueLabelFontSize: var(--neo-fontSize-textSm);
+}

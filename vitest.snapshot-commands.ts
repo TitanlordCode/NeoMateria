@@ -3,8 +3,8 @@
  * Extracted from vitest.config.mts so they can be unit-tested independently.
  */
 import { createRequire } from 'node:module'
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
-import { join } from 'node:path'
+import { appendFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { join, resolve } from 'node:path'
 
 const _require = createRequire(import.meta.url)
 
@@ -91,6 +91,9 @@ type BrowserCtx = {
 export function createSnapshotCommands(dirs: SnapshotDirs, options: SnapshotCommandOptions = {}) {
 	const { rasterizationDelay = 100 } = options
 
+	const MANIFEST_PATH = resolve(process.cwd(), '.snapshot-run-manifest')
+	writeFileSync(MANIFEST_PATH, '')
+
 	// ── compareSnapshot ─────────────────────────────────────────────────────
 
 	const HEADLESS_VIEWPORT_HEIGHT = 1080
@@ -100,8 +103,10 @@ export function createSnapshotCommands(dirs: SnapshotDirs, options: SnapshotComm
 		storyId: string,
 		viewportName: string,
 		base64: string,
+		diffThreshold: number = 0,
 	): Promise<SnapshotStatus> => {
 		const snapshotPath = join(dirs.snapshots, `${storyId}--${viewportName}.png`)
+		appendFileSync(MANIFEST_PATH, `${storyId}--${viewportName}.png\n`)
 		const modifiedPath = join(dirs.modified, `${storyId}--${viewportName}.png`)
 		const diffPath = join(dirs.diff, `${storyId}--${viewportName}--diff.png`)
 		const currentBuffer = Buffer.from(base64, 'base64')
@@ -143,6 +148,13 @@ export function createSnapshotCommands(dirs: SnapshotDirs, options: SnapshotComm
 		)
 
 		if (diffPixels === 0) return { status: 'match' }
+
+		if (
+			diffThreshold !== undefined &&
+			diffPixels / (baselinePng.width * baselinePng.height) <= diffThreshold
+		) {
+			return { status: 'match' }
+		}
 
 		if (shouldUpdate) {
 			writeFileSync(snapshotPath, currentBuffer)

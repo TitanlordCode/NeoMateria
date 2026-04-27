@@ -1,9 +1,12 @@
 .NeoCoverPanel {
-	--NeoCoverPanel-color-border: var(--neo-color-grey200);
 	--NeoCoverPanel-color-actionBackground: rgb(0 0 0 / 45%);
 	--NeoCoverPanel-color-actionIcon: var(--neo-theme-color);
 	--NeoCoverPanel-color-actionIconActive: var(--neo-color-white);
+	--NeoCoverPanel-color-border: var(--neo-color-grey200);
 	--NeoCoverPanel-color-imageFallback: var(--neo-theme-color);
+	--NeoCoverPanel-color-imageFallbackText: var(--neo-theme-colorText);
+	--NeoCoverPanel-color-outline: var(--neo-theme-color);
+
 	@mixin onDark {
 		--NeoCoverPanel-color-border: var(--neo-color-grey700);
 	}

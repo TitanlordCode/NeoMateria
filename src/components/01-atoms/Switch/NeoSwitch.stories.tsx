@@ -34,6 +34,9 @@ const meta = {
 		color: 'blue',
 		size: 'medium',
 	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'lg', 'xl'] },
+	},
 } satisfies Meta<typeof NeoSwitch>
 
 export default meta
@@ -106,6 +109,9 @@ export const OnDark: Story = {
 	args: {
 		modelValue: true,
 	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
+	},
 }
 
 export const Interactive: Story = {
@@ -141,6 +147,9 @@ const switchColorVariant = {
 
 export const AllColors: Story = {
 	tags: ['snapshot'],
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
+	},
 	render: createSimpleColorShowcase(NeoSwitch, [switchColorVariant]),
 }
 
@@ -148,6 +157,9 @@ export const AllColorsOnDark: Story = {
 	tags: ['snapshot'],
 	globals: {
 		backgrounds: '#000',
+	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
 	},
 	render: createSimpleColorShowcase(NeoSwitch, [switchColorVariant], { dark: true }),
 }

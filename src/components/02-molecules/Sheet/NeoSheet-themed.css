@@ -13,6 +13,7 @@
 /* Filled variant: sheet background uses the theme color */
 .NeoSheet--filled {
 	--NeoSheet-color-background: var(--neo-theme-color);
+	--NeoSheet-color-text: var(--neo-theme-colorText);
 }
 
 /* Dark-background colors establish an on-dark context for nested components.

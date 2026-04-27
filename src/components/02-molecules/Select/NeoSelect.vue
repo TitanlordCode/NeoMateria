@@ -318,15 +318,16 @@ const classes = computed(() => {
 	& .NeoSelect-options {
 		background: var(--NeoSelect-color-input);
 		border: 1px solid var(--NeoSelect-color-border);
-		border-radius: var(--NeoSelect-sizing-borderRadius, var(--neo-radius-md));
-		box-shadow: 0 var(--neo-spacing-core-xs) var(--neo-spacing-core-md) rgb(0 0 0 / 15%);
+		border-radius: var(--NeoSelect-sizing-optionsBorderRadius);
+		box-shadow: 0 var(--NeoSelect-sizing-optionsShadowOffsetBlock)
+			var(--NeoSelect-sizing-optionsShadowBlur) rgb(0 0 0 / 15%);
 		inset-block-start: 100%;
 		inset-inline: 0;
 		list-style: none;
-		margin: var(--neo-spacing-core-xs) 0 0;
+		margin: var(--NeoSelect-sizing-optionsMarginBlockStart) 0 0;
 		max-block-size: 240px;
 		overflow-y: auto;
-		padding: var(--neo-spacing-core-xs) 0;
+		padding: var(--NeoSelect-sizing-optionsPaddingBlock) 0;
 		position: absolute;
 		z-index: 1000;
 	}
@@ -337,8 +338,9 @@ const classes = computed(() => {
 		cursor: pointer;
 		display: flex;
 		font-size: var(--NeoSelect-sizing-fontSize);
-		gap: var(--neo-gap-sm);
-		padding: var(--neo-spacing-core-sm) var(--neo-spacing-core-md);
+		gap: var(--NeoSelect-sizing-optionItemGap);
+		padding: var(--NeoSelect-sizing-optionItemPaddingBlock)
+			var(--NeoSelect-sizing-optionItemPaddingInline);
 
 		&:hover,
 		&.focused {
@@ -364,8 +366,8 @@ const classes = computed(() => {
 		align-items: center;
 		display: flex;
 		flex-wrap: wrap;
-		gap: var(--neo-gap-sm);
-		padding: var(--neo-spacing-core-xs) var(--neo-spacing-core-sm);
+		gap: var(--NeoSelect-sizing-tagGap);
+		padding: var(--NeoSelect-sizing-tagPaddingBlock) var(--NeoSelect-sizing-tagPaddingInline);
 	}
 }
 </style>

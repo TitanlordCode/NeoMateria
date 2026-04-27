@@ -1,9 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
+import { expect, userEvent, within } from 'storybook/test'
 import { defineComponent } from 'vue'
 import { colors, type Color } from '@/assets/typescript/colors'
 
 import NeoPennant from './NeoPennant.vue'
+import NeoTooltip from '@/components/01-atoms/Tooltip/NeoTooltip.vue'
 import type { NeoPennantProps } from './NeoPennantTypes'
+import { starIconSvg } from '../../../../.storybook/utils/iconSnippets'
+import { StarIcon } from '@/components/01-atoms/Icon/defaultIcons'
 
 const meta = {
 	title: 'Atoms/NeoPennant',
@@ -18,23 +22,13 @@ const meta = {
 	args: {
 		color: 'blue',
 	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'lg', 'xl'] },
+	},
 } satisfies Meta<typeof NeoPennant>
 
 export default meta
 type Story = StoryObj<typeof meta>
-
-const StarIcon = (
-	<svg
-		xmlns="http://www.w3.org/2000/svg"
-		width="16"
-		height="16"
-		viewBox="0 0 24 24"
-		fill="currentColor"
-		aria-hidden="true"
-	>
-		<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-	</svg>
-)
 
 /* Platform brand icons — paths from Simple Icons (simpleicons.org), CC0 license.
    Logos are trademarks of their respective owners; used here for platform identification. */
@@ -89,9 +83,7 @@ export const Default: Story = {
 		docs: {
 			source: {
 				code: `<NeoPennant color="blue">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-  </svg>
+  ${starIconSvg}
 </NeoPennant>`,
 			},
 		},
@@ -121,9 +113,7 @@ export const Link: Story = {
 			source: {
 				code: `<!-- Provide href to render an <a> wrapper around the pennant -->
 <NeoPennant color="blue" href="#platform" aria-label="View platform details">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-  </svg>
+  ${starIconSvg}
 </NeoPennant>`,
 			},
 		},
@@ -139,6 +129,49 @@ export const Link: Story = {
 				)
 			},
 		})
+	},
+}
+
+export const LinkWithTooltip: Story = {
+	tags: ['snapshot'],
+	args: {
+		href: '#platform',
+		ariaLabel: 'View platform details',
+	},
+	parameters: {
+		docs: {
+			source: {
+				code: `<!-- Wrap a linked pennant in NeoTooltip to surface the ariaLabel as a visible hint -->
+<NeoTooltip text="View platform details" placement="top">
+  <template #activator>
+    <NeoPennant color="blue" href="#platform" aria-label="View platform details">
+      ${starIconSvg}
+    </NeoPennant>
+  </template>
+</NeoTooltip>`,
+			},
+		},
+	},
+	render: (args: NeoPennantProps) => {
+		return defineComponent({
+			name: 'LinkWithTooltipRender',
+			setup() {
+				return () => (
+					<div style={{ padding: '48px', display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
+						<NeoTooltip text={args.ariaLabel ?? ''} placement="top">
+							{{
+								activator: () => <NeoPennant {...args}>{StarIcon}</NeoPennant>,
+							}}
+						</NeoTooltip>
+					</div>
+				)
+			},
+		})
+	},
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement)
+		await userEvent.hover(canvas.getByRole('link', { name: 'View platform details' }))
+		await expect(canvas.getByRole('tooltip')).toBeVisible()
 	},
 }
 
@@ -166,9 +199,7 @@ export const Colors: Story = {
 				code: `<!-- NeoPennant supports all theme colors. Pass any SVG as the default slot. -->
 <template v-for="color in colors" :key="color">
   <NeoPennant :color="color">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-    </svg>
+    ${starIconSvg}
   </NeoPennant>
 </template>`,
 			},
@@ -188,9 +219,7 @@ export const ColorsOnDark: Story = {
 				code: `<div class="u-onDark">
   <template v-for="color in colors" :key="color">
     <NeoPennant :color="color">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-      </svg>
+      ${starIconSvg}
     </NeoPennant>
   </template>
 </div>`,

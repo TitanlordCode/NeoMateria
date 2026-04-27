@@ -1,13 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import { defineComponent } from 'vue'
 import NeoSection from './NeoSection.vue'
-
-// Interface to match your prop definition
-interface NeoSectionProps {
-	fullWidth?: boolean
-	gap?: string
-	padding?: string
-}
+import type { NeoSectionProps } from './NeoSectionTypes'
 
 const meta = {
 	title: 'Molecules/NeoSection',
@@ -17,33 +11,38 @@ const meta = {
 		fullWidth: {
 			control: 'boolean',
 			description:
-				'If true, ignores the 1280px max-width but maintains the 12-column grid and outer padding.',
+				'Removes the global max-width cap, stretching the 12 columns across the full viewport (minus padding).',
 			table: { category: 'Appearance' },
 		},
-		gap: {
+		columnGap: {
 			control: 'text',
-			description:
-				'Sets the column-gap. Use CSS variables like `var(--neo-gap-lg)` or a string like "8px"',
+			description: 'Sets the column-gap between grid columns. Use a CSS variable or a pixel value.',
+			table: { category: 'Appearance' },
+		},
+		rowGap: {
+			control: 'text',
+			description: 'Sets the row-gap between wrapped rows. Defaults to 0.',
 			table: { category: 'Appearance' },
 		},
 	},
 	args: {
 		fullWidth: false,
-		gap: 'var(--neo-gap-md)',
+		columnGap: 'var(--neo-gap-md)',
+		rowGap: '0',
+	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'md', 'lg', 'xl'] },
 	},
 } satisfies Meta<typeof NeoSection>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
-/**
- * Internal helper to render colored blocks to visualize the 12-column grid
- */
 const GridVisualizer = () => (
 	<>
 		<div
 			style={{
-				background: 'var(--neo-color-blue-500, #3b82f6)',
+				background: 'var(--neo-color-blue500)',
 				color: 'white',
 				padding: '16px',
 				textAlign: 'center',
@@ -53,7 +52,7 @@ const GridVisualizer = () => (
 		</div>
 		<div
 			style={{
-				background: 'var(--neo-color-green-500, #10b981)',
+				background: 'var(--neo-color-green500)',
 				color: 'white',
 				padding: '16px',
 				textAlign: 'center',
@@ -64,7 +63,7 @@ const GridVisualizer = () => (
 		</div>
 		<div
 			style={{
-				background: 'var(--neo-color-orange-500, #f59e0b)',
+				background: 'var(--neo-color-orange500)',
 				color: 'white',
 				padding: '16px',
 				textAlign: 'center',
@@ -106,7 +105,7 @@ export const FullWidth: Story = {
 					<NeoSection {...args}>
 						<div
 							style={{
-								background: 'var(--neo-color-purple-500, #8b5cf6)',
+								background: 'var(--neo-color-purple500)',
 								color: 'white',
 								padding: '16px',
 								textAlign: 'center',
@@ -125,7 +124,8 @@ export const FullWidth: Story = {
 export const CustomGap: Story = {
 	tags: ['snapshot'],
 	args: {
-		gap: 'var(--neo-gap-xl)',
+		columnGap: '32px',
+		rowGap: '16px',
 	},
 	render: (args: NeoSectionProps) => {
 		return defineComponent({
@@ -133,13 +133,31 @@ export const CustomGap: Story = {
 			setup() {
 				return () => (
 					<NeoSection {...args}>
-						<div style={{ gridColumn: 'span 4', background: '#eee', padding: '10px' }}>
+						<div
+							style={{
+								gridColumn: 'span 4',
+								background: 'var(--neo-color-grey200)',
+								padding: '10px',
+							}}
+						>
 							Column 1
 						</div>
-						<div style={{ gridColumn: 'span 4', background: '#eee', padding: '10px' }}>
+						<div
+							style={{
+								gridColumn: 'span 4',
+								background: 'var(--neo-color-grey200)',
+								padding: '10px',
+							}}
+						>
 							Column 2
 						</div>
-						<div style={{ gridColumn: 'span 4', background: '#eee', padding: '10px' }}>
+						<div
+							style={{
+								gridColumn: 'span 4',
+								background: 'var(--neo-color-grey200)',
+								padding: '10px',
+							}}
+						>
 							Column 3
 						</div>
 					</NeoSection>
@@ -158,19 +176,21 @@ export const FullBleedChild: Story = {
 			setup() {
 				return () => (
 					<NeoSection {...args}>
-						<div style={{ background: '#333', color: 'white', padding: '16px' }}>
+						<div
+							style={{ background: 'var(--neo-color-grey800)', color: 'white', padding: '16px' }}
+						>
 							Standard Container
 						</div>
 						<div
 							style={{
 								gridColumn: 'full-start / full-end',
-								background: 'var(--neo-color-red-500, #ef4444)',
+								background: 'var(--neo-color-red500)',
 								color: 'white',
 								padding: '16px',
 								textAlign: 'center',
 							}}
 						>
-							Full Bleed (Ignores 1280px and Padding)
+							Full Bleed (Ignores Max-Width and Padding)
 						</div>
 					</NeoSection>
 				)

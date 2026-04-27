@@ -1,4 +1,6 @@
 .NeoSection {
-	--NeoSection-sizing-gap: var(--neo-gap-md);
+	--NeoSection-sizing-columnGap: var(--neo-gap-md);
+	--NeoSection-sizing-rowGap: 0;
 	--NeoSection-sizing-inlinePadding: 0;
+	--NeoSection-sizing-maxGlobalSize: var(--neo-spacing-max-global-size);
 }

@@ -11,7 +11,6 @@
 	--neo-fontSize-headlineLg: 44px;
 	--neo-fontSize-headlineXl: 54px;
 	--neo-fontSize-headlineXxl: 64px;
-
 	--neo-fontSize-base: var(--neo-fontSize-textMd);
 
 	@mixin bp-sm {
@@ -28,6 +27,7 @@
 		--neo-fontSize-headlineXl: 62px;
 		--neo-fontSize-headlineXxl: 74px;
 	}
+
 	@mixin bp-md {
 		--neo-fontSize-textXs: 13px;
 		--neo-fontSize-textSm: 16px;
@@ -42,6 +42,7 @@
 		--neo-fontSize-headlineXl: 72px;
 		--neo-fontSize-headlineXxl: 86px;
 	}
+
 	@mixin bp-lg {
 		--neo-fontSize-textXs: 13px;
 		--neo-fontSize-textSm: 16px;
@@ -56,6 +57,7 @@
 		--neo-fontSize-headlineXl: 82px;
 		--neo-fontSize-headlineXxl: 96px;
 	}
+
 	@mixin bp-xl {
 		--neo-fontSize-textXs: 13px;
 		--neo-fontSize-textSm: 18px;

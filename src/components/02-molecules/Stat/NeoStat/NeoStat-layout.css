@@ -13,3 +13,12 @@
 	--NeoStat-sizing-labelSize: var(--neo-fontSize-textMd);
 	--NeoStat-sizing-valueSize: var(--neo-fontSize-headlineMd);
 }
+
+.NeoStat-value {
+	--NeoStat-fontWeight-value: var(--neo-fontWeight-bold);
+	--NeoStat-lineHeight-value: var(--neo-lineHeight-tight);
+}
+
+.NeoStat-label {
+	--NeoStat-lineHeight-label: var(--neo-lineHeight-normal);
+}

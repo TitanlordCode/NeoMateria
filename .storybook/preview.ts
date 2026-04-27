@@ -3,6 +3,7 @@ import { computed, defineComponent, onUnmounted, ref } from 'vue'
 import { addons } from 'storybook/preview-api'
 import { create } from 'storybook/theming'
 import { colors } from '../src/assets/typescript/colors'
+import { snapshotViewports } from './viewports'
 
 import '../src/assets/styles/globals.css'
 import './preview.css'
@@ -32,7 +33,9 @@ const withTheme: Decorator = (story, context) => {
 		setup() {
 			const bg = ref(resolveColor(context.globals?.backgrounds, '#fff'))
 			const isDark = computed(() => bg.value === '#000')
-			const direction = ref(resolveColor(context.globals?.direction, 'ltr'))
+			const direction = ref(
+				typeof context.globals?.direction === 'string' ? context.globals.direction : 'ltr',
+			)
 
 			const channel = addons.getChannel()
 			const handleGlobalsUpdate = (event: { globals?: Record<string, unknown> }) => {
@@ -40,7 +43,8 @@ const withTheme: Decorator = (story, context) => {
 					bg.value = resolveColor(event.globals.backgrounds, '#fff')
 				}
 				if (event?.globals && 'direction' in event.globals) {
-					direction.value = resolveColor(event.globals.direction, 'ltr')
+					direction.value =
+						typeof event.globals.direction === 'string' ? event.globals.direction : 'ltr'
 				}
 			}
 			channel.on('globalsUpdated', handleGlobalsUpdate)
@@ -82,6 +86,17 @@ const preview: Preview = {
 		a11y: {
 			// Exclude certain elements from the accessibility checks
 			context: '#storybook-root', // only test inside the Storybook root
+		},
+		viewport: {
+			viewports: Object.fromEntries(
+				snapshotViewports.map((viewport) => [
+					viewport.name,
+					{
+						name: `${viewport.name} (${viewport.width}px)`,
+						styles: { width: `${viewport.width}px`, height: `${viewport.height}px` },
+					},
+				]),
+			),
 		},
 	},
 

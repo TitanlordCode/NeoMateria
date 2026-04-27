@@ -2,9 +2,11 @@
 	/* Small */
 	--neo-sizing-input-padding-sm: var(--neo-spacing-core-xs) var(--neo-spacing-core-sm);
 	--neo-sizing-input-height-sm: var(--neo-spacing-input-sm);
+
 	/* Medium */
 	--neo-sizing-input-padding-md: var(--neo-spacing-core-sm) var(--neo-spacing-core-md);
 	--neo-sizing-input-height-md: var(--neo-spacing-input-md);
+
 	/* Large */
 	--neo-sizing-input-padding-lg: var(--neo-spacing-core-sm) var(--neo-spacing-core-lg);
 	--neo-sizing-input-height-lg: var(--neo-spacing-input-lg);

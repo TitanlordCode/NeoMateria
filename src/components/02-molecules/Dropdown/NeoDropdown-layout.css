@@ -3,3 +3,8 @@
 	--NeoDropdown-sizing-panelOffset: 4px;
 	--NeoDropdown-sizing-borderRadius: var(--neo-radius-md);
 }
+
+.NeoDropdown-panel {
+	--NeoDropdown-sizing-panelGap: var(--neo-gap-xs);
+	--NeoDropdown-sizing-panelPadding: var(--neo-spacing-core-sm);
+}

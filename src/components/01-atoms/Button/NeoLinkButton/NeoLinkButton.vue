@@ -58,7 +58,7 @@ const { classes } = useButton(props)
 	font-family: inherit;
 	font-size: var(--NeoButton-sizing-fontSize);
 	font-weight: 600;
-	gap: var(--neo-gap-xs);
+	gap: var(--NeoButton-sizing-gap);
 	justify-content: center;
 	min-block-size: var(--NeoButton-sizing-inline);
 	min-inline-size: var(--NeoButton-sizing-inline);
@@ -96,12 +96,12 @@ const { classes } = useButton(props)
 
 .NeoButton--secondary {
 	&:hover {
-		box-shadow: 0 0 0 2px var(--neo-theme-color);
+		box-shadow: 0 0 0 2px var(--NeoButton-color-focus);
 	}
 }
 
 .NeoButton--secondary.NeoButton--pressed {
-	box-shadow: 0 0 0 2px var(--neo-theme-color);
+	box-shadow: 0 0 0 2px var(--NeoButton-color-focus);
 }
 
 .NeoButton--tertiary {

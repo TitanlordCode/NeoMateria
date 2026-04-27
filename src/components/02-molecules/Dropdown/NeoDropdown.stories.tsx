@@ -6,6 +6,7 @@ import NeoDropdown from '@/components/02-molecules/Dropdown/NeoDropdown.vue'
 import NeoIconButton from '@/components/01-atoms/Button/NeoIconButton/NeoIconButton.vue'
 import NeoButton from '@/components/01-atoms/Button/NeoButton/NeoButton.vue'
 import NeoNavItem from '@/components/01-atoms/NavItem/NeoNavItem.vue'
+import NeoTooltip from '@/components/01-atoms/Tooltip/NeoTooltip.vue'
 import type { NeoDropdownProps } from './NeoDropdownTypes'
 import { dropdownPlacements } from './NeoDropdownTypes'
 import { MoreHorizontalIcon } from '../../01-atoms/Icon/defaultIcons'
@@ -53,6 +54,9 @@ const meta = {
 		closeOnEscape: true,
 		closeOnClickOutside: true,
 		'onUpdate:open': fn(),
+	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'md', 'lg', 'xl'] },
 	},
 } satisfies Meta<typeof NeoDropdown>
 
@@ -371,18 +375,22 @@ export const WithIconTrigger: Story = {
 	parameters: {
 		docs: {
 			source: {
-				code: `<!-- Use an icon-only button as the trigger for compact contexts -->
+				code: `<!-- Wrap the icon-only trigger in NeoTooltip to surface the label as a visible hint -->
 <NeoDropdown placement="bottom-end">
   <template #trigger="{ isOpen, toggle }">
-    <NeoIconButton
-      color="blue"
-      variant="ghost"
-      aria-label="More options"
-      :aria-expanded="isOpen"
-      @click="toggle"
-    >
-      ${moreHorizontalIconSvg}
-    </NeoIconButton>
+    <NeoTooltip text="More options" placement="bottom">
+      <template #activator>
+        <NeoIconButton
+          color="blue"
+          variant="ghost"
+          aria-label="More options"
+          :aria-expanded="isOpen"
+          @click="toggle"
+        >
+          ${moreHorizontalIconSvg}
+        </NeoIconButton>
+      </template>
+    </NeoTooltip>
   </template>
   <NeoNavItem color="grey" size="small" label="Profile" href="#" />
   <NeoNavItem color="grey" size="small" label="Settings" href="#" />
@@ -415,15 +423,21 @@ export const WithIconTrigger: Story = {
 							onUpdate:open={handleUpdate}
 							v-slots={{
 								trigger: () => (
-									<NeoIconButton
-										color="blue"
-										variant="ghost"
-										ariaLabel="More options"
-										aria-expanded={isOpen.value}
-										onClick={handleToggle}
-									>
-										{MoreHorizontalIcon}
-									</NeoIconButton>
+									<NeoTooltip text="More options" placement="bottom">
+										{{
+											activator: () => (
+												<NeoIconButton
+													color="blue"
+													variant="ghost"
+													ariaLabel="More options"
+													aria-expanded={isOpen.value}
+													onClick={handleToggle}
+												>
+													{MoreHorizontalIcon}
+												</NeoIconButton>
+											),
+										}}
+									</NeoTooltip>
 								),
 								default: renderDropdownItems,
 							}}
@@ -529,6 +543,9 @@ export const OnDark: Story = {
 	tags: ['snapshot'],
 	globals: {
 		backgrounds: '#000',
+	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
 	},
 	args: {
 		defaultOpen: true,

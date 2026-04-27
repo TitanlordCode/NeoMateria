@@ -27,6 +27,8 @@
 		"test:storybook": "vitest run --project=storybook",
 		"test:storybook:snapshots": "node docker/run-snapshots.mjs",
 		"test:storybook:snapshots:run": "vitest run --project=storybook-snapshots",
+		"test:storybook:update": "docker compose run --rm snapshots npx vitest run --project=storybook-snapshots --update",
+		"test:storybook:snapshots:cleanup": "node scripts/cleanup-snapshots.mjs",
 		"test:storybook:a11y": "vitest run --project=storybook",
 		"build-only": "npm run generate:files && vite build",
 		"type-check": "vue-tsc --build",

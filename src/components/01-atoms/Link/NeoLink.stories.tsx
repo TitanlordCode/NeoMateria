@@ -47,6 +47,9 @@ const meta = {
 		variant: 'default',
 		color: 'blue',
 	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'lg', 'xl'] },
+	},
 } satisfies Meta<typeof NeoLink>
 
 export default meta
@@ -131,6 +134,9 @@ export const OnDark: Story = {
 	globals: {
 		backgrounds: '#000',
 	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
+	},
 }
 
 export const RTL: Story = {
@@ -141,10 +147,16 @@ export const RTL: Story = {
 	args: {
 		text: 'انقر هنا',
 	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
+	},
 }
 
 export const AllColors: Story = {
 	tags: ['snapshot'],
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
+	},
 	render: createSimpleColorShowcase(NeoLink, ['default', 'underline', 'button'], {
 		defaultProps: {
 			href: '#',
@@ -156,6 +168,9 @@ export const AllColorsOnDark: Story = {
 	tags: ['snapshot'],
 	globals: {
 		backgrounds: '#000',
+	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
 	},
 	render: createSimpleColorShowcase(NeoLink, ['default', 'underline', 'button'], {
 		defaultProps: {

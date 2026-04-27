@@ -52,7 +52,7 @@ const classes = computed(() =>
 	align-items: center;
 	display: flex;
 	flex-direction: column;
-	gap: var(--neo-gap-xl, 48px);
+	gap: var(--NeoHero-sizing-gap);
 	padding-block: var(--NeoHero-sizing-paddingBlock);
 	padding-inline: var(--NeoHero-sizing-paddingInline);
 
@@ -75,7 +75,7 @@ const classes = computed(() =>
 	display: flex;
 	flex: 1;
 	flex-direction: column;
-	gap: var(--neo-gap-lg);
+	gap: var(--NeoHero-sizing-contentGap);
 	min-inline-size: 0;
 }
 
@@ -86,8 +86,8 @@ const classes = computed(() =>
 
 .NeoHero-subtitle {
 	color: var(--NeoHero-color-subtitle);
-	font-size: var(--neo-fontSize-textXl);
-	line-height: var(--neo-lineHeight-relaxed);
+	font-size: var(--NeoHero-sizing-subtitleFontSize);
+	line-height: var(--NeoHero-sizing-subtitleLineHeight);
 	margin: 0;
 	overflow-wrap: break-word;
 }
@@ -95,7 +95,7 @@ const classes = computed(() =>
 .NeoHero-actions {
 	display: flex;
 	flex-wrap: wrap;
-	gap: var(--neo-gap-md);
+	gap: var(--NeoHero-sizing-actionsGap);
 }
 
 .NeoHero--centered .NeoHero-actions {

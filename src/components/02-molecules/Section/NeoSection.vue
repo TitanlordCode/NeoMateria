@@ -2,25 +2,25 @@
 import { getClassNames } from '@/utils/classNames'
 import { computed } from 'vue'
 import type { NeoSectionProps } from './NeoSectionTypes'
-const props = withDefaults(defineProps<NeoSectionProps>(), {
-	fullWidth: false,
-	gap: 'var(--neo-gap-md)',
-	padding: '0',
-})
 
-const classes = computed(() => {
-	const sectionClasses = getClassNames({
+const props = defineProps<NeoSectionProps>()
+
+const classes = computed(() =>
+	getClassNames({
 		component: 'NeoSection',
 		modifiers: [props.fullWidth ? 'full-width' : ''],
-	})
-	return `${sectionClasses}`
-})
+	}),
+)
 </script>
 
 <template>
 	<section
 		:class="classes"
-		:style="{ '--NeoSection-sizing-gap': gap, '--NeoSection-sizing-inlinePadding': padding }"
+		:style="{
+			'--NeoSection-sizing-columnGap': columnGap,
+			'--NeoSection-sizing-rowGap': rowGap,
+			'--NeoSection-sizing-inlinePadding': padding,
+		}"
 	>
 		<slot />
 	</section>
@@ -30,14 +30,15 @@ const classes = computed(() => {
 @import url('./NeoSection-layout.css');
 
 .NeoSection {
-	column-gap: var(--NeoSection-sizing-gap);
+	column-gap: var(--NeoSection-sizing-columnGap);
 	display: grid;
 	grid-template-columns:
 		[full-start] minmax(var(--NeoSection-sizing-inlinePadding), 1fr)
-		[content-start] repeat(12, minmax(0, calc(var(--neo-spacing-max-global-size) / 12)))
+		[content-start] repeat(12, minmax(0, calc(var(--NeoSection-sizing-maxGlobalSize) / 12)))
 		[content-end] minmax(var(--NeoSection-sizing-inlinePadding), 1fr)
 		[full-end];
 	inline-size: 100%;
+	row-gap: var(--NeoSection-sizing-rowGap);
 }
 
 .NeoSection > :deep(*) {

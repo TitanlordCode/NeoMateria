@@ -1,0 +1,9 @@
+.NeoTooltip {
+	--NeoTooltip-color-bg: var(--neo-color-grey900);
+	--NeoTooltip-color-text: var(--neo-color-white);
+
+	@mixin onDark {
+		--NeoTooltip-color-bg: var(--neo-color-grey700);
+		--NeoTooltip-color-text: var(--neo-color-white);
+	}
+}

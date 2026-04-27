@@ -1,3 +1,5 @@
 .NeoHeadlinePrimary {
 	--NeoHeadlinePrimary-sizing-fontSize: var(--neo-fontSize-headlineXl);
+	--NeoHeadlinePrimary-fontWeight-value: var(--neo-fontWeight-bold);
+	--NeoHeadlinePrimary-lineHeight-value: var(--neo-lineHeight-tight);
 }

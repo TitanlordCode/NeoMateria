@@ -30,7 +30,7 @@
 /* Black flips to white in dark mode — reset the on-dark context so children are not affected */
 .NeoButton--primary.Themed--black {
 	@mixin onDark {
-		--neo-is-dark: 0;
+		@mixin unsetOnDark;
 	}
 }
 
@@ -53,7 +53,7 @@
 }
 
 .NeoButton--ghost {
-	--NeoButton-color-text: currentColor;
+	--NeoButton-color-text: currentcolor;
 	--NeoButton-color-background: transparent;
 	--NeoButton-color-border: unset;
 

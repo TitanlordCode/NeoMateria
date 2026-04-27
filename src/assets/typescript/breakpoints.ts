@@ -1,3 +1,11 @@
+/**
+ * Breakpoint thresholds — aligned with Tailwind CSS defaults.
+ * https://tailwindcss.com/docs/responsive-design
+ *
+ * Authoritative source for:
+ *  - CSS:   src/assets/styles/mixins/breakpoints.css  (@mixin bp-sm/md/lg/xl)
+ *  - Tests: .storybook/viewports.ts  (snapshot viewport widths for md and lg)
+ */
 export const breakpoints = {
 	sm: 640,
 	md: 768,

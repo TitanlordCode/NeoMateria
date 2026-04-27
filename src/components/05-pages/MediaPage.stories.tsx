@@ -23,11 +23,6 @@ const meta: Meta<MediaPageStoryArgs> = {
 	tags: [],
 	parameters: {
 		layout: 'fullscreen',
-		a11y: {
-			config: {
-				rules: [{ id: 'heading-order', enabled: false }],
-			},
-		},
 	},
 }
 

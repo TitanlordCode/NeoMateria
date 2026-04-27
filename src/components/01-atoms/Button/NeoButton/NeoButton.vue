@@ -61,7 +61,7 @@ const handleClick = (event: MouseEvent) => {
 	font-family: inherit;
 	font-size: var(--NeoButton-sizing-fontSize);
 	font-weight: 600;
-	gap: var(--neo-gap-xs);
+	gap: var(--NeoButton-sizing-gap);
 	hyphens: auto;
 	justify-content: center;
 	min-block-size: var(--NeoButton-sizing-inline);
@@ -110,7 +110,7 @@ const handleClick = (event: MouseEvent) => {
 
 .NeoButton--secondary {
 	&:hover {
-		box-shadow: 0 0 0 2px var(--neo-theme-color);
+		box-shadow: 0 0 0 2px var(--NeoButton-color-focus);
 
 		&:disabled {
 			box-shadow: none;
@@ -119,7 +119,7 @@ const handleClick = (event: MouseEvent) => {
 }
 
 .NeoButton--secondary.NeoButton--pressed {
-	box-shadow: 0 0 0 2px var(--neo-theme-color);
+	box-shadow: 0 0 0 2px var(--NeoButton-color-focus);
 }
 
 .NeoButton--tertiary {

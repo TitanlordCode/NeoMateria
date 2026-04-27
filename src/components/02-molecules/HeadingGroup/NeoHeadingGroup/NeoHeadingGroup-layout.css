@@ -1,3 +1,13 @@
 .NeoHeadingGroup {
 	--NeoHeadingGroup-sizing-gap: var(--neo-gap-sm);
 }
+
+.NeoHeadingGroup-overline {
+	--NeoHeadingGroup-sizing-overlineFontSize: var(--neo-fontSize-textSm);
+	--NeoHeadingGroup-fontWeight-overline: var(--neo-fontWeight-semibold);
+}
+
+.NeoHeadingGroup-subtitle {
+	--NeoHeadingGroup-sizing-subtitleFontSize: var(--neo-fontSize-textLg);
+	--NeoHeadingGroup-lineHeight-subtitle: var(--neo-lineHeight-normal);
+}

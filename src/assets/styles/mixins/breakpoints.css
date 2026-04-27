@@ -1,3 +1,6 @@
+/* Tailwind CSS defaults — https://tailwindcss.com/docs/responsive-design
+   Values must match src/assets/typescript/breakpoints.ts */
+
 @define-mixin bp-sm {
 	@media (width >= 640px) {
 		@mixin-content;

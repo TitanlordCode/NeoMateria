@@ -4,7 +4,9 @@ import { expect, fn, userEvent, within } from 'storybook/test'
 import { defineComponent, ref } from 'vue'
 
 import NeoIconButton from '@/components/01-atoms/Button/NeoIconButton/NeoIconButton.vue'
+import NeoTooltip from '@/components/01-atoms/Tooltip/NeoTooltip.vue'
 import { disabledArgType } from '../../../../../.storybook/utils/argTypes'
+import { addIconSvg } from '../../../../../.storybook/utils/iconSnippets'
 import { AddIcon, DeleteIcon, HeartIcon, HeartFilledIcon } from '../../Icon/defaultIcons'
 import { createSimpleColorShowcase } from '../../../../../.storybook/utils/colorShowcase'
 import { createA11yPlay } from '../../../../../.storybook/utils/createA11yPlay'
@@ -65,6 +67,9 @@ const meta = {
 			name: 'NeoIconButtonRender',
 			render: () => <NeoIconButton {...args}>{args.default}</NeoIconButton>,
 		}),
+	parameters: {
+		snapshot: { viewports: ['sm', 'lg', 'xl'] },
+	},
 } satisfies Meta<typeof NeoIconButton>
 
 export default meta
@@ -146,6 +151,53 @@ export const Pressed: Story = {
 	},
 }
 
+export const WithTooltip: Story = {
+	tags: ['snapshot'],
+	parameters: {
+		docs: {
+			source: {
+				code: `<NeoTooltip text="Add item" placement="bottom">
+  <template #activator>
+    <NeoIconButton color="blue" variant="primary" ariaLabel="Add item">
+      ${addIconSvg}
+    </NeoIconButton>
+  </template>
+</NeoTooltip>`,
+			},
+		},
+	},
+	render: () =>
+		defineComponent({
+			name: 'WithTooltipRender',
+			render: () => (
+				<div
+					style={{
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+						minBlockSize: '120px',
+						padding: '40px 80px',
+					}}
+				>
+					<NeoTooltip text="Add item" placement="bottom">
+						{{
+							activator: () => (
+								<NeoIconButton color="blue" variant="primary" ariaLabel="Add item">
+									{AddIcon}
+								</NeoIconButton>
+							),
+						}}
+					</NeoTooltip>
+				</div>
+			),
+		}),
+	play: async ({ canvasElement }) => {
+		const canvas = within(canvasElement)
+		await userEvent.hover(canvas.getByRole('button', { name: 'Add item' }))
+		await expect(canvas.getByRole('tooltip')).toBeVisible()
+	},
+}
+
 export const interaction: Story = {
 	tags: ['!dev'],
 	render: () =>
@@ -181,6 +233,9 @@ export const OnDark: Story = {
 	globals: {
 		backgrounds: '#000',
 	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
+	},
 }
 
 export const RTL: Story = {
@@ -188,10 +243,16 @@ export const RTL: Story = {
 	globals: {
 		direction: 'rtl',
 	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
+	},
 }
 
 export const AllColors: Story = {
 	tags: ['snapshot'],
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
+	},
 	render: createSimpleColorShowcase(
 		NeoIconButton,
 		iconButtonVariants.map((variant) => ({
@@ -209,6 +270,9 @@ export const AllColorsOnDark: Story = {
 	tags: ['snapshot'],
 	globals: {
 		backgrounds: '#000',
+	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
 	},
 	render: createSimpleColorShowcase(
 		NeoIconButton,

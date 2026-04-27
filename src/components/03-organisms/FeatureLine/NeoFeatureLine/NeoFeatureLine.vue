@@ -100,20 +100,20 @@ const classes = computed(() => {
 	display: flex;
 	flex: 1;
 	flex-direction: column;
-	gap: var(--neo-gap-lg);
+	gap: var(--NeoFeatureLine-sizing-contentGap);
 	min-inline-size: 0;
 }
 
 .NeoFeatureLine-body {
 	color: var(--NeoFeatureLine-color-body);
-	font-size: var(--neo-fontSize-textLg);
-	line-height: var(--neo-lineHeight-relaxed);
+	font-size: var(--NeoFeatureLine-sizing-bodyFontSize);
+	line-height: var(--NeoFeatureLine-sizing-bodyLineHeight);
 	margin: 0;
 	overflow-wrap: break-word;
 }
 
 .NeoFeatureLine-actions {
 	display: flex;
-	gap: var(--neo-gap-md);
+	gap: var(--NeoFeatureLine-sizing-actionsGap);
 }
 </style>

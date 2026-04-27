@@ -1,10 +1,11 @@
 .NeoInput {
 	--NeoInput-sizing-borderRadius: unset;
 	--NeoInput-sizing-borderWidth: var(--neo-border-width);
-	--NeoInput-sizing-padding: var(--neo-sizing-input-padding-md);
-	--NeoInput-sizing-minHeight: var(--neo-sizing-input-height-md);
 	--NeoInput-sizing-fontSize: var(--neo-fontSize-base);
+	--NeoInput-sizing-gap: var(--neo-gap-xs);
 	--NeoInput-sizing-labelFontSize: var(--neo-fontSize-textSm);
+	--NeoInput-sizing-minHeight: var(--neo-sizing-input-height-md);
+	--NeoInput-sizing-padding: var(--neo-sizing-input-padding-md);
 }
 
 .NeoInput--primary {
@@ -43,4 +44,8 @@
 
 .NeoInput--rounded {
 	--NeoInput-sizing-borderRadius: var(--neo-border-input-radius);
+}
+
+.NeoInput-required {
+	--NeoInput-sizing-requiredMarginInlineStart: var(--neo-spacing-core-xs);
 }

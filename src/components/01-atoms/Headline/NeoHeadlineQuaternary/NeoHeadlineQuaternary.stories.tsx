@@ -50,6 +50,9 @@ const meta = {
 	args: {
 		tag: 'h4',
 	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'lg', 'xl'] },
+	},
 } satisfies Meta<typeof NeoHeadlineQuaternary>
 
 export default meta
@@ -99,6 +102,9 @@ export const RTL: Story = {
 	globals: {
 		direction: 'rtl',
 	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
+	},
 	render: (args: NeoHeadlineProps) => {
 		return defineComponent({
 			name: 'RTLRender',
@@ -111,6 +117,9 @@ export const RTL: Story = {
 
 export const AllColors: Story = {
 	tags: ['snapshot'],
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
+	},
 	render: () => {
 		return defineComponent({
 			name: 'AllColorsRender',
@@ -138,6 +147,9 @@ export const AllColors: Story = {
 export const AllColorsOnDark: Story = {
 	tags: ['snapshot'],
 	globals: { backgrounds: '#000' },
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
+	},
 	render: () => {
 		return defineComponent({
 			name: 'AllColorsOnDarkRender',

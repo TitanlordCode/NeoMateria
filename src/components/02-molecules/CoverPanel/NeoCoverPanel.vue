@@ -138,7 +138,7 @@ const handleImageError = () => {
 	display: block;
 	font-family: inherit;
 	overflow: clip;
-	overflow-clip-margin: var(--neo-gap-sm);
+	overflow-clip-margin: var(--NeoCoverPanel-sizing-overflowClipMargin);
 	position: relative;
 }
 
@@ -164,7 +164,7 @@ const handleImageError = () => {
 	transition: none;
 
 	&:focus-visible {
-		outline: 2px solid var(--neo-theme-color);
+		outline: 2px solid var(--NeoCoverPanel-color-outline);
 		outline-offset: -2px;
 	}
 
@@ -181,11 +181,11 @@ const handleImageError = () => {
 	align-items: center;
 	background-color: var(--NeoCoverPanel-color-imageFallback);
 	block-size: 100%;
-	color: var(--neo-theme-colorText);
+	color: var(--NeoCoverPanel-color-imageFallbackText);
 	display: flex;
 	inline-size: 100%;
 	justify-content: center;
-	padding: var(--neo-spacing-core-md);
+	padding: var(--NeoCoverPanel-sizing-imageFallbackPadding);
 }
 
 .NeoCoverPanel-imageFallbackText {
@@ -197,7 +197,7 @@ const handleImageError = () => {
 .NeoCoverPanel-pennants {
 	direction: rtl;
 	display: flex;
-	gap: var(--neo-gap-xs);
+	gap: var(--NeoCoverPanel-sizing-pennantGap);
 	inset-block-start: 0;
 	inset-inline-start: var(--NeoCoverPanel-sizing-borderRadius);
 	position: absolute;
@@ -229,8 +229,8 @@ const handleImageError = () => {
 	display: inline-flex;
 	font-family: inherit;
 	inline-size: var(--NeoCoverPanel-sizing-actionSize);
-	inset-block-end: var(--neo-spacing-sm);
-	inset-inline-end: var(--neo-spacing-sm);
+	inset-block-end: var(--NeoCoverPanel-sizing-actionInsetEnd);
+	inset-inline-end: var(--NeoCoverPanel-sizing-actionInsetEnd);
 	justify-content: center;
 	padding: 0;
 	position: absolute;
@@ -244,7 +244,7 @@ const handleImageError = () => {
 	}
 
 	&:focus-visible {
-		outline: 2px solid var(--neo-theme-color);
+		outline: 2px solid var(--NeoCoverPanel-color-outline);
 		outline-offset: 2px;
 	}
 }

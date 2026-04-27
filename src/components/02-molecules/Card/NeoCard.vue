@@ -181,7 +181,7 @@ const classes = computed(() => {
 	align-items: center;
 	display: flex;
 	flex-wrap: wrap;
-	gap: var(--neo-gap-sm);
+	gap: var(--NeoCard-sizing-actionsGap);
 	margin-block-start: auto;
 }
 
@@ -202,7 +202,7 @@ const classes = computed(() => {
 
 .NeoCard--featured {
 	& .NeoCard-title {
-		font-size: var(--neo-fontSize-headlineSm);
+		font-size: var(--NeoCard-sizing-featuredTitleFontSize);
 		font-weight: 700;
 	}
 }
@@ -220,7 +220,7 @@ const classes = computed(() => {
 	}
 
 	&:focus-visible {
-		outline: 2px solid var(--neo-theme-color);
+		outline: 2px solid var(--NeoCard-color-outline);
 		outline-offset: 2px;
 	}
 

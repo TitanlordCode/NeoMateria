@@ -28,3 +28,29 @@ import { InfoIcon, ChevronDownIcon, CloseIcon } from 'neomateria'
 <Canvas of={IconStories.AllIcons} withToolbar={false} />
 
 All icons render with `currentColor`, so they automatically adapt to their context — including dark mode and colored backgrounds.
+
+---
+
+## Adding icons (contributors)
+
+The single source of truth for all icon SVG markup is `src/components/01-atoms/Icon/iconStrings.ts`. Each icon is defined there as a plain string export, for example `addIconSvg`.
+
+`defaultIcons.tsx` derives VNodes from those strings via Vue's `createStaticVNode` — so adding an icon means adding the string once, and the VNode is created automatically.
+
+`parameters.docs.source.code` in story files always requires a plain string. Import the string export from `.storybook/utils/iconSnippets` (which re-exports from `iconStrings.ts`) and interpolate it into the template literal:
+
+```ts
+import { addIconSvg } from '../../../../.storybook/utils/iconSnippets'
+
+parameters: {
+  docs: { source: { code: `<NeoIconButton ariaLabel="Add">\n  ${addIconSvg}\n</NeoIconButton>` } }
+}
+```
+
+For the VNode used in the render function, import from `defaultIcons`:
+
+```ts
+import { AddIcon } from '@/components/01-atoms/Icon/defaultIcons'
+
+render: () => <NeoIconButton ariaLabel="Add">{AddIcon}</NeoIconButton>
+```
