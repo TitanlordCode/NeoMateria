@@ -77,6 +77,7 @@ export {
 	InfoIcon,
 	MenuIcon,
 	MoreHorizontalIcon,
+	StarIcon,
 } from '@/components/01-atoms/Icon/defaultIcons'
 
 export { default as NeoNavItem } from '@/components/01-atoms/NavItem/NeoNavItem.vue'
@@ -190,6 +191,9 @@ export { type NeoTextBlockProps } from '@/components/02-molecules/TextBlock/NeoT
 
 export { default as NeoFeatureCard } from '@/components/02-molecules/FeatureCard/NeoFeatureCard/NeoFeatureCard.vue'
 export { type NeoFeatureCardProps } from '@/components/02-molecules/FeatureCard/NeoFeatureCard/NeoFeatureCardTypes'
+
+export { default as NeoSection } from '@/components/02-molecules/Section/NeoSection.vue'
+export { type NeoSectionProps } from '@/components/02-molecules/Section/NeoSectionTypes'
 
 // Organisms
 export { default as NeoNavigation } from '@/components/03-organisms/Navigation/NeoNavigation.vue'

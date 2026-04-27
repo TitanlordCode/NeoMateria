@@ -22,9 +22,9 @@ const { classes, style } = useHeadline('NeoHeadlineQuaternary', props)
 .NeoHeadlineQuaternary {
 	color: var(--NeoHeadlineQuaternary-color-text);
 	font-size: var(--NeoHeadlineQuaternary-sizing-fontSize);
-	font-weight: var(--neo-fontWeight-semibold);
+	font-weight: var(--NeoHeadlineQuaternary-fontWeight-value);
 	letter-spacing: 0;
-	line-height: var(--neo-lineHeight-snug);
+	line-height: var(--NeoHeadlineQuaternary-lineHeight-value);
 	margin: 0;
 	overflow-wrap: break-word;
 }

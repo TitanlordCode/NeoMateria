@@ -338,6 +338,9 @@ export const OnDark: Story = {
 	globals: {
 		backgrounds: '#000',
 	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
+	},
 }
 
 export const RTL: Story = {
@@ -353,6 +356,7 @@ export const RTL: Story = {
 export const AllColors: Story = {
 	tags: ['snapshot'],
 	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
 		a11y: {
 			config: {
 				rules: [
@@ -371,6 +375,7 @@ export const AllColorsOnDark: Story = {
 		backgrounds: '#000',
 	},
 	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
 		a11y: {
 			config: {
 				rules: [

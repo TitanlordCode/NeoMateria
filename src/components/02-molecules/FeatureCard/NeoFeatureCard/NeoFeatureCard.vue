@@ -94,13 +94,13 @@ const categoryStyle = computed(() => {
 .NeoFeatureCard-content {
 	display: flex;
 	flex-direction: column;
-	gap: var(--neo-gap-xs);
+	gap: var(--NeoFeatureCard-sizing-contentGap);
 }
 
 .NeoFeatureCard-category {
 	color: var(--NeoFeatureCard-color-category);
-	font-size: var(--neo-fontSize-textXs);
-	font-weight: var(--neo-fontWeight-semibold);
+	font-size: var(--NeoFeatureCard-sizing-categoryFontSize);
+	font-weight: var(--NeoFeatureCard-fontWeight-category);
 	letter-spacing: 0.06em;
 	margin: 0;
 	overflow-wrap: break-word;
@@ -109,8 +109,8 @@ const categoryStyle = computed(() => {
 
 .NeoFeatureCard-excerpt {
 	color: var(--NeoFeatureCard-color-excerpt);
-	font-size: var(--neo-fontSize-textMd);
-	line-height: var(--neo-lineHeight-normal);
+	font-size: var(--NeoFeatureCard-sizing-excerptFontSize);
+	line-height: var(--NeoFeatureCard-lineHeight-excerpt);
 	margin: 0;
 	overflow-wrap: break-word;
 }

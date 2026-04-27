@@ -124,7 +124,7 @@ const handleKeydown = (event: KeyboardEvent) => {
 	align-items: center;
 	background: transparent;
 	border: none;
-	border-radius: var(--neo-radius-sm);
+	border-radius: var(--NeoNavItem-sizing-borderRadius);
 	box-sizing: border-box;
 	color: var(--NeoNavItem-color-text);
 	cursor: pointer;
@@ -146,7 +146,7 @@ const handleKeydown = (event: KeyboardEvent) => {
 		color 0.2s ease;
 
 	&:focus-visible {
-		outline: 2px solid var(--neo-theme-color);
+		outline: 2px solid var(--NeoNavItem-color-outline);
 		outline-offset: -2px;
 	}
 
@@ -217,10 +217,10 @@ const handleKeydown = (event: KeyboardEvent) => {
 	position: relative;
 
 	&::before {
-		background-color: var(--NeoNavItem-color-connector, var(--neo-color-grey300));
+		background-color: var(--NeoNavItem-color-connector);
 		block-size: 100%;
 		content: '';
-		inline-size: var(--neo-border-width);
+		inline-size: var(--NeoNavItem-sizing-connectorThickness);
 		inset-block-start: 0;
 		inset-inline-start: calc(
 			var(--NeoNavItem-sizing-connectorOffset) +
@@ -230,8 +230,8 @@ const handleKeydown = (event: KeyboardEvent) => {
 	}
 
 	&::after {
-		background-color: var(--NeoNavItem-color-connector, var(--neo-color-grey300));
-		block-size: var(--neo-border-width);
+		background-color: var(--NeoNavItem-color-connector);
+		block-size: var(--NeoNavItem-sizing-connectorThickness);
 		content: '';
 		inline-size: calc(var(--NeoNavItem-sizing-indent) / 2);
 		inset-block-start: 50%;

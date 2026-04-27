@@ -1,7 +1,7 @@
 .NeoHeadlineTertiary {
-	--NeoHeadlineTertiary-color-text: currentColor;
+	--NeoHeadlineTertiary-color-text: currentcolor;
 
 	@mixin onDark {
-		--NeoHeadlineTertiary-color-text: currentColor;
+		--NeoHeadlineTertiary-color-text: currentcolor;
 	}
 }

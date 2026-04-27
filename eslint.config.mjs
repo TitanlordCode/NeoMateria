@@ -39,6 +39,7 @@ export default defineConfigWithVueTs(
 			'**/storybook-static/**',
 			'**/node_modules/**',
 			'**/*.d.ts',
+			'stylelint-plugins/**',
 			'**/src/**/05-pages/**/*.stories.{ts,tsx}',
 			'**/src/**/06-contributing/**/*.stories.{ts,tsx}',
 		],

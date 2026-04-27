@@ -1,194 +1,122 @@
-# Project Setup
+# Getting Started
 
-## System Requirements
+NeoMateria is a Vue 3 component library built with Atomic Design principles and automatic WCAG AA accessibility compliance. All components are fully typed and theme-able via a single `color` prop.
 
-- **Node.js**: v22 or higher
-- **npm**: v9 or higher
-- **Docker**: Required for running Storybook in containerized environment
+## Prerequisites
 
-## Getting Started
+- Vue 3.3 or higher
+- A modern bundler (Vite, webpack, Nuxt, etc.)
 
-### 1. Install Dependencies
-
-```sh
-npm install
-```
-
-### 2. Start Development
-
-To start Storybook with hot-reload in Docker:
+## Installation
 
 ```sh
-npm run dev
+npm install neo-materia
 ```
 
-This command will:
-- Generate all auto-generated files (colors, docs)
-- Build and start Storybook in a Docker container
-- Open at `http://localhost:3000`
+## Setup
 
-Alternatively, run Storybook locally without Docker:
+Import the stylesheet once in your application's entry file (e.g. `main.ts`):
 
-```sh
-npm run storybook
+```ts
+import 'neo-materia/dist/neo-materia.css'
 ```
 
-## Development Commands
+## Quick Start
 
-### File Generation
+```vue
+<script setup lang="ts">
+import { NeoButton, NeoInput } from 'neo-materia'
+</script>
 
-The project uses auto-generated files for colors and documentation. After making changes to:
-- Material color configurations
-- Documentation files in `/docs` folder
+<template>
+  <NeoButton
+    text="Get started"
+    color="blue"
+    variant="primary"
+  />
 
-Run the generation script:
-
-```sh
-npm run generate:files
+  <NeoInput
+    name="email"
+    label="Email address"
+    placeholder="you@example.com"
+    color="blue"
+  />
+</template>
 ```
 
-This generates:
-- `src/assets/typescript/colors.ts` - TypeScript color definitions
-- `src/assets/styles/colors.css` - CSS color variables
-- `docs/colors.md` - Color reference table
-- `src/components/00-foundations/colors.mdx` - Storybook color showcase
-- `src/components/docs/*.mdx` - Storybook documentation pages
+## Color System
 
-### Building
+Every component accepts a `color` prop that drives the entire visual theme — background, border, focus ring, and interactive states. The library automatically selects the correct shade to meet WCAG AA contrast requirements in both light and dark mode.
 
-Build the library for production:
-
-```sh
-npm run build
+```vue
+<NeoButton color="blue"       variant="primary" text="Blue" />
+<NeoButton color="purple"     variant="primary" text="Purple" />
+<NeoButton color="green"      variant="secondary" text="Green" />
+<NeoCheckbox color="indigo"   label="Indigo checkbox" />
+<NeoInput    color="teal"     label="Teal input" />
 ```
 
-This command:
-- Runs file generation
-- Compiles TypeScript
-- Bundles components with Vite
-- Outputs to `/dist` directory
+### Available Colors
 
-### Testing
+All Material Design colors are supported:
 
-Run all quality checks (type checking, linting, formatting):
+`red` · `pink` · `purple` · `deepPurple` · `indigo` · `blue` · `lightBlue` · `cyan` · `teal` · `green` · `lightGreen` · `lime` · `yellow` · `amber` · `orange` · `deepOrange` · `brown` · `grey` · `blueGrey` · `black`
 
-```sh
-npm run test
+> **Note:** `white` is intentionally excluded from surface components — interactive states (hover, active) rely on a darker shade of the component color, which is invisible on a white canvas. Use `color="black"` with a dark-mode wrapper instead.
+
+## Dark Mode
+
+Wrap any section in `u-onDark` to switch it to dark mode. The color system adapts automatically — no extra props needed.
+
+```vue
+<div class="u-onDark" style="background: #111; padding: 24px;">
+  <NeoButton color="blue" variant="primary" text="Dark mode button" />
+</div>
 ```
 
-Run unit tests with Vitest:
+## TypeScript
 
-```sh
-npm run test:unit
+All components are fully typed. Import prop types alongside the components:
+
+```ts
+import { NeoButton, type NeoButtonProps } from 'neo-materia'
+import { NeoCard,   type NeoCardProps   } from 'neo-materia'
+import { NeoInput,  type NeoInputProps  } from 'neo-materia'
 ```
 
-Run Storybook interaction tests:
+The `Color` and `SurfaceColor` types are also exported for use in your own components:
 
-```sh
-npm run test:storybook
+```ts
+import type { Color, SurfaceColor } from 'neo-materia'
 ```
 
-### Code Quality
+## Layout
 
-Type checking with TypeScript:
+`NeoSection` provides a 12-column CSS grid layout with a configurable max-width cap. Wrap organisms in it to get a consistent page grid:
 
-```sh
-npm run type-check
+```vue
+<NeoSection padding="var(--neo-spacing-layout-md)">
+  <NeoHero title="Welcome" color="blue" />
+</NeoSection>
+
+<NeoSection :full-width="true" padding="var(--neo-spacing-layout-sm)">
+  <!-- stretches to full viewport width -->
+</NeoSection>
 ```
 
-Lint JavaScript/TypeScript:
+Children span all 12 columns by default. Override with `gridColumn` to place them manually:
 
-```sh
-npm run lint:check        # Check only
-npm run lint:fix          # Fix issues
+```vue
+<NeoSection>
+  <div style="grid-column: span 6">Left half</div>
+  <div style="grid-column: span 6">Right half</div>
+  <div style="grid-column: full-start / full-end">Full bleed</div>
+</NeoSection>
 ```
 
-Lint CSS:
+## Explore the Components
 
-```sh
-npm run stylelint:css     # Check only
-npm run stylelint:css:fix # Fix issues
-```
+The full interactive component library is available in Storybook:
 
-Format code with Prettier:
-
-```sh
-npm run prettier:check    # Check only
-npm run prettier:fix      # Format files
-```
-
-## Docker Commands
-
-Build Docker images:
-
-```sh
-npm run docker:build
-```
-
-Or use Docker Compose directly:
-
-```sh
-docker-compose up --build storybook
-```
-
-## Project Structure
-
-```
-src/
-├── assets/
-│   ├── icons/              # SVG icons
-│   ├── styles/             # Global CSS and mixins
-│   └── typescript/         # Generated TypeScript files
-├── components/
-│   ├── 00-foundations/     # Design system foundations
-│   ├── 01-atoms/           # Atomic components
-│   ├── 02-molecules/       # Molecular components
-│   ├── 03-organisms/       # Organism components
-│   └── docs/               # Auto-generated Storybook docs
-├── pages/                  # Full-page Storybook examples (not exported)
-├── utils/                  # Utility functions
-└── index.ts                # Library entry point
-
-scripts/
-├── generate-colors.ts      # Color generation script
-├── generate-globals.ts     # Global CSS generation
-├── generate-docs.ts        # Documentation generation
-└── pre-flight.ts           # Orchestrates all generation
-
-docs/
-├── getting_started.md      # This file
-├── color-accessibility.md  # Color system documentation
-└── colors.md               # Auto-generated color reference
-```
-
-## Component Development
-
-Each component follows this structure:
-
-```
-ComponentName/
-├── NeoComponentName.vue            # Main component
-├── NeoComponentNameTypes.ts        # TypeScript types
-├── NeoComponentName.stories.tsx    # Storybook stories
-├── NeoComponentName-layout.css     # Layout styles
-└── NeoComponentName-themed.css     # Color theme styles
-```
-
-### Creating a New Component
-
-1. Create component folder in appropriate atomic level
-2. Add component files following the naming convention
-3. Define TypeScript types in `*Types.ts`
-4. Create Storybook stories for all variants
-5. Export component in `/src/index.ts`
-6. Test accessibility and responsiveness
-
-## Development Guidelines
-
-- Follow the existing code style and conventions
-- Use TypeScript for type safety
-- Write Storybook stories for all components
-- Ensure WCAG AA accessibility compliance
-- Test in both light and dark modes
-- Run `npm run test` before committing
-- Use BEM naming convention for CSS classes
+- **Stable release**: [titanlordcode.github.io/NeoMateria](https://titanlordcode.github.io/NeoMateria/)
+- **Dev builds**: [titanlordcode.github.io/NeoMateria/dev](https://titanlordcode.github.io/NeoMateria/dev)

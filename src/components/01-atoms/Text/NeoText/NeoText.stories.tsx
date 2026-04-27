@@ -52,6 +52,9 @@ const meta = {
 	args: {
 		size: 'base',
 	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'lg', 'xl'] },
+	},
 } satisfies Meta<typeof NeoText>
 
 export default meta
@@ -133,6 +136,9 @@ export const RTL: Story = {
 	globals: {
 		direction: 'rtl',
 	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
+	},
 	render: (args: NeoTextProps) => {
 		return defineComponent({
 			name: 'RTLRender',
@@ -145,6 +151,9 @@ export const RTL: Story = {
 
 export const AllColors: Story = {
 	tags: ['snapshot'],
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
+	},
 	render: createAllColorsRender<typeof NeoText>(NeoText, [
 		{
 			name: 'Default',
@@ -157,6 +166,9 @@ export const AllColors: Story = {
 export const AllColorsOnDark: Story = {
 	tags: ['snapshot'],
 	globals: { backgrounds: '#000' },
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
+	},
 	render: createAllColorsRender<typeof NeoText>(
 		NeoText,
 		[

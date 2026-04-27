@@ -188,6 +188,9 @@ export const Small: Story = {
 export const OnDark: Story = {
 	tags: ['snapshot'],
 	globals: { backgrounds: '#000' },
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
+	},
 	args: { variant: 'centered', color: 'blue' },
 	render: (args: NeoHeroProps) => {
 		return defineComponent({
@@ -230,6 +233,9 @@ export const RTL: Story = {
 
 export const AllColors: Story = {
 	tags: ['snapshot'],
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
+	},
 	render: createAllColorsRender<typeof NeoHero>(NeoHero, [
 		{
 			name: 'Centered',

@@ -15,3 +15,15 @@
 .NeoText--caption {
 	--NeoText-sizing-fontSize: var(--neo-fontSize-textXs);
 }
+
+.NeoText--weight-medium {
+	--NeoText-fontWeight-value: var(--neo-fontWeight-medium);
+}
+
+.NeoText--weight-semibold {
+	--NeoText-fontWeight-value: var(--neo-fontWeight-semibold);
+}
+
+.NeoText--weight-bold {
+	--NeoText-fontWeight-value: var(--neo-fontWeight-bold);
+}

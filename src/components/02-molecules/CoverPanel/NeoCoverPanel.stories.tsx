@@ -7,7 +7,7 @@ import NeoCoverPanel from './NeoCoverPanel.vue'
 import type { NeoCoverPanelProps } from './NeoCoverPanelTypes'
 import { coverPanelClickBehaviors } from './NeoCoverPanelTypes'
 import NeoPennant from '@/components/01-atoms/Pennant/NeoPennant.vue'
-import { HeartIcon, HeartFilledIcon } from '@/components/01-atoms/Icon/defaultIcons'
+import { HeartIcon, HeartFilledIcon, StarIcon } from '@/components/01-atoms/Icon/defaultIcons'
 import { placeholder } from '../../../../.storybook/utils/placeholder'
 import { createA11yPlay } from '../../../../.storybook/utils/createA11yPlay'
 import { starIconSvg } from '../../../../.storybook/utils/iconSnippets'
@@ -77,6 +77,9 @@ const meta = {
 		'onImage-click': fn(),
 		'onAction-click': fn(),
 	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'md', 'lg', 'xl'] },
+	},
 } satisfies Meta<typeof NeoCoverPanel>
 
 export default meta
@@ -90,19 +93,6 @@ const baseProps = (args: NeoCoverPanelProps) => ({
 	imageAriaLabel: args.imageAriaLabel,
 	rounded: args.rounded,
 })
-
-const StarPennant = (
-	<svg
-		xmlns="http://www.w3.org/2000/svg"
-		width="14"
-		height="14"
-		viewBox="0 0 24 24"
-		fill="currentColor"
-		aria-hidden="true"
-	>
-		<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-	</svg>
-)
 
 export const Default: Story = {
 	tags: ['snapshot'],
@@ -318,9 +308,9 @@ export const WithPennants: Story = {
 							v-slots={{
 								pennants: () => (
 									<>
-										<NeoPennant color="yellow">{StarPennant}</NeoPennant>
-										<NeoPennant color="blue">{StarPennant}</NeoPennant>
-										<NeoPennant color="red">{StarPennant}</NeoPennant>
+										<NeoPennant color="yellow">{StarIcon}</NeoPennant>
+										<NeoPennant color="blue">{StarIcon}</NeoPennant>
+										<NeoPennant color="red">{StarIcon}</NeoPennant>
 									</>
 								),
 								'action-icon': ({ active }: { active: boolean }) =>
@@ -374,11 +364,11 @@ export const WithManyPennants: Story = {
 							v-slots={{
 								pennants: () => (
 									<>
-										<NeoPennant color="yellow">{StarPennant}</NeoPennant>
-										<NeoPennant color="blue">{StarPennant}</NeoPennant>
-										<NeoPennant color="green">{StarPennant}</NeoPennant>
-										<NeoPennant color="purple">{StarPennant}</NeoPennant>
-										<NeoPennant color="red">{StarPennant}</NeoPennant>
+										<NeoPennant color="yellow">{StarIcon}</NeoPennant>
+										<NeoPennant color="blue">{StarIcon}</NeoPennant>
+										<NeoPennant color="green">{StarIcon}</NeoPennant>
+										<NeoPennant color="purple">{StarIcon}</NeoPennant>
+										<NeoPennant color="red">{StarIcon}</NeoPennant>
 									</>
 								),
 							}}
@@ -534,6 +524,9 @@ export const RTL: Story = {
 	globals: {
 		direction: 'rtl',
 	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
+	},
 	args: {
 		title: 'عنوان لوحة الغلاف',
 	},
@@ -541,6 +534,9 @@ export const RTL: Story = {
 
 export const AllColors: Story = {
 	tags: ['snapshot'],
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
+	},
 	render: (args: NeoCoverPanelProps) => {
 		return defineComponent({
 			name: 'AllColorsRender',
@@ -574,6 +570,9 @@ export const AllColorsOnDark: Story = {
 	tags: ['snapshot'],
 	globals: {
 		backgrounds: '#000',
+	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
 	},
 	render: (args: NeoCoverPanelProps) => {
 		return defineComponent({

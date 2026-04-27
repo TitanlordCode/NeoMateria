@@ -24,3 +24,7 @@
 	--NeoSwitch-sizing-thumbTravel: 20px;
 	--NeoSwitch-sizing-labelFontSize: var(--neo-fontSize-textLg);
 }
+
+.NeoSwitch {
+	--NeoSwitch-sizing-gap: var(--neo-gap-sm);
+}

@@ -62,6 +62,9 @@ const meta = {
 		size: 'medium',
 		variant: 'vertical',
 	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'md', 'lg', 'xl'] },
+	},
 } satisfies Meta<typeof NeoLinkGroup>
 
 export default meta
@@ -205,12 +208,18 @@ export const OnDark: Story = {
 	globals: {
 		backgrounds: '#000',
 	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
+	},
 }
 
 export const RTL: Story = {
 	tags: ['snapshot'],
 	globals: {
 		direction: 'rtl',
+	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
 	},
 	args: {
 		title: 'التنقل',
@@ -220,6 +229,7 @@ export const RTL: Story = {
 export const AllColors: Story = {
 	tags: ['snapshot'],
 	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
 		a11y: { config: { rules: [{ id: 'landmark-unique', enabled: false }] } },
 	},
 	render: createSimpleColorShowcase(NeoLinkGroup, ['vertical', 'horizontal']),
@@ -231,6 +241,7 @@ export const AllColorsOnDark: Story = {
 		backgrounds: '#000',
 	},
 	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
 		a11y: { config: { rules: [{ id: 'landmark-unique', enabled: false }] } },
 	},
 	render: createSimpleColorShowcase(NeoLinkGroup, ['vertical', 'horizontal'], {

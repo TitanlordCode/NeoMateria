@@ -8,6 +8,7 @@
 	--NeoNavigation-color-mobileMenuBorder: var(--neo-color-grey300);
 	--NeoNavigation-color-dropdownHover: var(--neo-color-grey100);
 	--NeoNavigation-color-dropdownShadow: var(--neo-color-shadow-xs);
+	--NeoNavigation-color-outline: var(--neo-theme-color);
 
 	@mixin onDark {
 		--NeoNavigation-color-background: var(--neo-color-grey900);
@@ -19,5 +20,6 @@
 		--NeoNavigation-color-mobileMenuBorder: var(--neo-color-grey700);
 		--NeoNavigation-color-dropdownHover: var(--neo-color-grey700);
 		--NeoNavigation-color-dropdownShadow: var(--neo-color-shadow-md);
+		--NeoNavigation-color-outline: var(--neo-theme-color);
 	}
 }

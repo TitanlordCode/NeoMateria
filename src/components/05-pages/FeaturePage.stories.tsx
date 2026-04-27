@@ -24,11 +24,6 @@ const meta: Meta<FeaturePageStoryArgs> = {
 	tags: [],
 	parameters: {
 		layout: 'fullscreen',
-		a11y: {
-			config: {
-				rules: [{ id: 'heading-order', enabled: false }],
-			},
-		},
 	},
 }
 

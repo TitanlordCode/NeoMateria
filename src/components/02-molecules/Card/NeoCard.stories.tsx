@@ -101,6 +101,9 @@ const meta = {
 		'onAction-click': fn(),
 		'onSecondary-action-click': fn(),
 	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'md', 'lg', 'xl'] },
+	},
 } satisfies Meta<typeof NeoCard>
 
 export default meta
@@ -391,12 +394,18 @@ export const OnDark: Story = {
 	globals: {
 		backgrounds: '#000',
 	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
+	},
 }
 
 export const RTL: Story = {
 	tags: ['snapshot'],
 	globals: {
 		direction: 'rtl',
+	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
 	},
 	args: {
 		title: 'عنوان المحتوى المميز',
@@ -408,6 +417,9 @@ export const RTL: Story = {
 
 export const AllColors: Story = {
 	tags: ['snapshot'],
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
+	},
 	render: createSimpleColorShowcase(NeoCard, ['default', 'compact', 'featured'], {
 		defaultProps: { imageSrc: placeholder(400, 300) },
 	}),
@@ -417,6 +429,9 @@ export const AllColorsOnDark: Story = {
 	tags: ['snapshot'],
 	globals: {
 		backgrounds: '#000',
+	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
 	},
 	render: createSimpleColorShowcase(NeoCard, ['default', 'compact', 'featured'], {
 		dark: true,

@@ -30,6 +30,9 @@ const meta = {
 		label: 'Active users',
 		size: 'md',
 	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'md', 'lg', 'xl'] },
+	},
 } satisfies Meta<typeof NeoStat>
 
 export default meta

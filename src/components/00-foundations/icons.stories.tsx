@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
 import { defineComponent, h } from 'vue'
+import NeoIcon from '@/components/01-atoms/Icon/NeoIcon.vue'
 import {
 	AddIcon,
 	ChevronDownIcon,
@@ -10,6 +11,7 @@ import {
 	InfoIcon,
 	MenuIcon,
 	MoreHorizontalIcon,
+	StarIcon,
 } from '@/components/01-atoms/Icon/defaultIcons'
 
 const meta = {
@@ -17,6 +19,7 @@ const meta = {
 	parameters: {
 		backgrounds: { disable: true },
 		direction: { disable: true },
+		snapshot: { viewports: ['sm', 'xl'] },
 	},
 } satisfies Meta
 
@@ -33,10 +36,11 @@ const allIcons: { name: string; icon: ReturnType<typeof h> }[] = [
 	{ name: 'InfoIcon', icon: InfoIcon },
 	{ name: 'MenuIcon', icon: MenuIcon },
 	{ name: 'MoreHorizontalIcon', icon: MoreHorizontalIcon },
+	{ name: 'StarIcon', icon: StarIcon },
 ]
 
 export const AllIcons: Story = {
-	tags: ['!dev'],
+	tags: ['!dev', 'snapshot'],
 	render: () =>
 		defineComponent({
 			name: 'AllIconsRender',
@@ -66,7 +70,10 @@ export const AllIcons: Story = {
 										borderRadius: '8px',
 									},
 								},
-								[icon, h('code', { style: { fontSize: '11px' } }, name)],
+								[
+									h(NeoIcon, { colorVariant: 'text', ariaHidden: true }, { default: () => icon }),
+									h('code', { style: { fontSize: '11px' } }, name),
+								],
 							),
 						),
 					)
@@ -75,7 +82,7 @@ export const AllIcons: Story = {
 	parameters: {
 		docs: {
 			source: {
-				code: `import { AddIcon, ChevronDownIcon, CloseIcon, DeleteIcon, HeartFilledIcon, HeartIcon, InfoIcon, MenuIcon, MoreHorizontalIcon } from 'neomateria'`,
+				code: `import { AddIcon, ChevronDownIcon, CloseIcon, DeleteIcon, HeartFilledIcon, HeartIcon, InfoIcon, MenuIcon, MoreHorizontalIcon, StarIcon } from 'neomateria'`,
 			},
 		},
 	},

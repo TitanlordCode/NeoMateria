@@ -47,3 +47,11 @@
 		--NeoCard-sizing-imageHeight: 380px;
 	}
 }
+
+.NeoCard-actions {
+	--NeoCard-sizing-actionsGap: var(--neo-gap-sm);
+}
+
+.NeoCard--featured .NeoCard-title {
+	--NeoCard-sizing-featuredTitleFontSize: var(--neo-fontSize-headlineSm);
+}

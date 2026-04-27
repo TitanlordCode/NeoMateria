@@ -90,6 +90,9 @@ const meta: Meta<typeof NeoSheet> = {
 		modal: true,
 		'onUpdate:open': fn(),
 	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'md', 'lg', 'xl'] },
+	},
 }
 
 export default meta
@@ -1512,6 +1515,7 @@ export const OnDark: Story = {
 		closeAriaLabel: 'Close',
 	},
 	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
 		docs: {
 			source: {
 				code: `<script setup>

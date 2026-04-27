@@ -15,3 +15,13 @@
 	--NeoAccordion-sizing-contentFontSize: var(--neo-fontSize-base);
 	--NeoAccordion-sizing-contentPadding: var(--neo-spacing-core-md);
 }
+
+.NeoAccordion-trigger {
+	--NeoAccordion-sizing-triggerGap: var(--neo-gap-xs);
+}
+
+.NeoAccordion--bordered,
+.NeoAccordion--filled {
+	--NeoAccordion-sizing-containerBorderRadius: var(--neo-radius-md);
+	--NeoAccordion-sizing-containerPadding: var(--neo-spacing-core-md);
+}

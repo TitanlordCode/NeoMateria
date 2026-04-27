@@ -1,10 +1,19 @@
-/* Default sizing */
 .NeoCoverPanel {
-	--NeoCoverPanel-sizing-borderRadius: var(--neo-radius-md);
-	--NeoCoverPanel-sizing-actionSize: var(--neo-sizing-input-height-lg);
 	--NeoCoverPanel-sizing-actionIconSize: 20px;
+	--NeoCoverPanel-sizing-actionInsetEnd: var(--neo-spacing-sm);
+	--NeoCoverPanel-sizing-actionSize: var(--neo-sizing-input-height-lg);
+	--NeoCoverPanel-sizing-borderRadius: var(--neo-radius-md);
+	--NeoCoverPanel-sizing-overflowClipMargin: var(--neo-gap-sm);
 }
 
 .NeoCoverPanel--rounded {
 	--NeoCoverPanel-sizing-borderRadius: var(--neo-radius-2xl);
+}
+
+.NeoCoverPanel-imageFallback {
+	--NeoCoverPanel-sizing-imageFallbackPadding: var(--neo-spacing-core-md);
+}
+
+.NeoCoverPanel-pennants {
+	--NeoCoverPanel-sizing-pennantGap: var(--neo-gap-xs);
 }

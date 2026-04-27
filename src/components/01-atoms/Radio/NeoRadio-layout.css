@@ -12,3 +12,11 @@
 	--NeoRadio-sizing-size: var(--neo-sizing-control-lg);
 	--NeoRadio-sizing-labelFontSize: var(--neo-fontSize-textLg);
 }
+
+.NeoRadio {
+	--NeoRadio-sizing-gap: var(--neo-gap-sm);
+}
+
+.NeoRadio-required {
+	--NeoRadio-sizing-requiredMarginInlineStart: var(--neo-spacing-core-xs);
+}

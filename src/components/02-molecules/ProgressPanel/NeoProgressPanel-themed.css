@@ -1,13 +1,28 @@
 .NeoProgressPanel {
 	--NeoProgressPanel-color-background: var(--neo-color-white);
-	--NeoProgressPanel-color-title: var(--neo-color-grey900);
+	--NeoProgressPanel-color-border: var(--neo-theme-color);
+	--NeoProgressPanel-color-hoverShadow: var(--neo-theme-color);
+	--NeoProgressPanel-color-outline: var(--neo-theme-color);
 	--NeoProgressPanel-color-subtitle: var(--neo-color-grey700);
+	--NeoProgressPanel-color-title: var(--neo-color-grey900);
 	--NeoProgressPanel-color-valueLabel: var(--neo-color-grey700);
 
 	@mixin onDark {
 		--NeoProgressPanel-color-background: var(--neo-color-grey900);
-		--NeoProgressPanel-color-title: var(--neo-color-white);
+		--NeoProgressPanel-color-border: var(--neo-theme-color);
+		--NeoProgressPanel-color-hoverShadow: var(--neo-theme-color);
+		--NeoProgressPanel-color-outline: var(--neo-theme-color);
 		--NeoProgressPanel-color-subtitle: var(--neo-color-grey400);
+		--NeoProgressPanel-color-title: var(--neo-color-white);
 		--NeoProgressPanel-color-valueLabel: var(--neo-color-grey400);
 	}
+}
+
+.NeoProgressPanel-imageFallback {
+	--NeoProgressPanel-color-imageFallbackBg: var(--neo-theme-color);
+	--NeoProgressPanel-color-imageFallbackText: var(--neo-theme-colorText);
+}
+
+.NeoProgressPanel-value {
+	--NeoProgressPanel-color-value: var(--neo-theme-colorAccessible);
 }

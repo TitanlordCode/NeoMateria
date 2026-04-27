@@ -78,6 +78,9 @@ const meta = {
 		variant: 'primary',
 		color: 'blue',
 	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'lg', 'xl'] },
+	},
 } satisfies Meta<typeof NeoTextArea>
 
 export default meta
@@ -194,10 +197,16 @@ export const RTL: Story = {
 		ariaLabel: 'تسمية',
 		placeholder: 'أدخل النص هنا...',
 	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
+	},
 }
 
 export const AllColors: Story = {
 	tags: ['snapshot'],
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
+	},
 	render: createSimpleColorShowcase(
 		NeoTextArea,
 		[
@@ -232,6 +241,9 @@ export const AllColorsOnDark: Story = {
 	tags: ['snapshot'],
 	globals: {
 		backgrounds: '#000',
+	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
 	},
 	render: createSimpleColorShowcase(
 		NeoTextArea,

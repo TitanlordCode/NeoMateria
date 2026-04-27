@@ -1,7 +1,7 @@
 .NeoTextBlock-body {
-	--NeoTextBlock-color-body: currentColor;
+	--NeoTextBlock-color-body: currentcolor;
 
 	@mixin onDark {
-		--NeoTextBlock-color-body: currentColor;
+		--NeoTextBlock-color-body: currentcolor;
 	}
 }

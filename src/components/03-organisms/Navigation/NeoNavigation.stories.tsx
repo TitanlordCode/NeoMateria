@@ -817,6 +817,7 @@ export const OnDark: Story = {
 		backgrounds: '#000',
 	},
 	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
 		docs: {
 			source: {
 				code: `<!-- Wrap in .u-onDark to activate dark-mode token overrides -->
@@ -871,6 +872,7 @@ export const RTL: Story = {
 export const AllColors: Story = {
 	tags: ['snapshot'],
 	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
 		a11y: { config: { rules: [{ id: 'landmark-unique', enabled: false }] } },
 	},
 	render: createSimpleColorShowcase(NeoNavigation, ['default']),
@@ -882,6 +884,7 @@ export const AllColorsOnDark: Story = {
 		backgrounds: '#000',
 	},
 	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
 		a11y: { config: { rules: [{ id: 'landmark-unique', enabled: false }] } },
 	},
 	render: createSimpleColorShowcase(NeoNavigation, ['default'], {

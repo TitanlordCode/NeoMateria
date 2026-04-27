@@ -468,7 +468,7 @@ onUnmounted(() => {
 .NeoNavigation-container {
 	flex: 1;
 	margin: 0 auto;
-	max-inline-size: var(--neo-spacing-max-global-size);
+	max-inline-size: var(--NeoNavigation-sizing-maxInlineSize);
 	padding-inline: var(--NeoNavigation-sizing-paddingInline);
 }
 
@@ -536,7 +536,7 @@ onUnmounted(() => {
 	align-items: center;
 	display: flex;
 	flex-shrink: 0;
-	gap: var(--neo-gap-sm);
+	gap: var(--NeoNavigation-sizing-actionsGap);
 }
 
 .NeoNavigation-dropdown {
@@ -546,8 +546,8 @@ onUnmounted(() => {
 .NeoNavigation-dropdownTrigger {
 	color: var(--NeoNavigation-color-link);
 	font-size: var(--NeoNavigation-sizing-fontSize);
-	gap: var(--neo-gap-xs);
-	padding: var(--neo-spacing-core-xs) 0;
+	gap: var(--NeoNavigation-sizing-dropdownListGap);
+	padding: var(--NeoNavigation-sizing-dropdownListPaddingBlock) 0;
 }
 
 .NeoNavigation-dropdownIcon {
@@ -561,14 +561,14 @@ onUnmounted(() => {
 .NeoNavigation-dropdownMenu {
 	background-color: var(--NeoNavigation-color-background);
 	border: 1px solid var(--NeoNavigation-color-border);
-	border-radius: var(--neo-radius-md);
+	border-radius: var(--NeoNavigation-sizing-dropdownItemBorderRadius);
 	box-shadow: 0 4px 12px var(--NeoNavigation-color-dropdownShadow);
 	inset-block-start: 100%;
 	inset-inline-start: 0;
 	list-style: none;
 	margin: 0;
 	min-inline-size: 200px;
-	padding: var(--neo-spacing-core-xs) 0;
+	padding: var(--NeoNavigation-sizing-dropdownListPaddingBlock) 0;
 	position: absolute;
 	z-index: 100;
 }
@@ -577,7 +577,7 @@ onUnmounted(() => {
 	color: var(--NeoNavigation-color-link);
 	display: block;
 	font-size: var(--NeoNavigation-sizing-fontSize);
-	padding: var(--neo-spacing-core-sm) var(--neo-spacing-core-md);
+	padding: var(--NeoNavigation-sizing-dropdownItemPaddingInline);
 	text-decoration: none;
 	transition:
 		background-color 0.2s ease,
@@ -590,7 +590,7 @@ onUnmounted(() => {
 	}
 
 	&:focus-visible {
-		outline: 2px solid var(--neo-theme-color);
+		outline: 2px solid var(--NeoNavigation-color-outline);
 		outline-offset: -2px;
 	}
 }
@@ -598,25 +598,25 @@ onUnmounted(() => {
 .NeoNavigation-mobilePanelContent {
 	display: flex;
 	flex-direction: column;
-	gap: var(--neo-spacing-core-lg);
+	gap: var(--NeoNavigation-sizing-mobileToggleGap);
 	padding: var(--NeoNavigation-sizing-mobilePanelPadding);
 }
 
 .NeoNavigation-mobileMenuNav {
 	display: flex;
 	flex-direction: column;
-	gap: var(--neo-spacing-core-xs);
+	gap: var(--NeoNavigation-sizing-mobileLinksGap);
 }
 
 .NeoNavigation-mobileSubmenu {
 	display: flex;
 	flex-direction: column;
-	gap: var(--neo-spacing-core-xs);
+	gap: var(--NeoNavigation-sizing-mobileLinksGap);
 }
 
 .NeoNavigation-mobileMenuActions {
 	border-block-start: 1px solid var(--NeoNavigation-color-border);
-	padding-block-start: var(--neo-spacing-core-lg);
+	padding-block-start: var(--NeoNavigation-sizing-mobileLinksPaddingBlockStart);
 }
 
 /* collapseActions=mobile: dropdown visible on mobile, expanded actions visible on desktop */
@@ -633,7 +633,7 @@ onUnmounted(() => {
 		@mixin bp-md {
 			align-items: center;
 			display: flex;
-			gap: var(--neo-gap-sm);
+			gap: var(--NeoNavigation-sizing-actionsGap);
 		}
 	}
 }
@@ -672,10 +672,10 @@ onUnmounted(() => {
 .NeoNavigation-flyoutContent {
 	display: flex;
 	flex-wrap: wrap;
-	gap: var(--neo-gap-lg);
+	gap: var(--NeoNavigation-sizing-desktopDropdownGap);
 	margin: 0 auto;
-	max-inline-size: var(--neo-spacing-max-global-size);
-	padding-block: var(--neo-spacing-core-lg);
+	max-inline-size: var(--NeoNavigation-sizing-maxInlineSize);
+	padding-block: var(--NeoNavigation-sizing-desktopDropdownPaddingBlock);
 	padding-inline: var(--NeoNavigation-sizing-paddingInline);
 }
 

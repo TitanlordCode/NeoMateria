@@ -50,15 +50,15 @@ const style = computed(() => {
 }
 
 .NeoText--weight-medium {
-	font-weight: var(--neo-fontWeight-medium);
+	font-weight: var(--NeoText-fontWeight-value);
 }
 
 .NeoText--weight-semibold {
-	font-weight: var(--neo-fontWeight-semibold);
+	font-weight: var(--NeoText-fontWeight-value);
 }
 
 .NeoText--weight-bold {
-	font-weight: var(--neo-fontWeight-bold);
+	font-weight: var(--NeoText-fontWeight-value);
 }
 
 .NeoText--truncate {

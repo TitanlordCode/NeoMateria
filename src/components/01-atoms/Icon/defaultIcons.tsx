@@ -10,127 +10,27 @@
  * <NeoIcon>{ChevronDownIcon}</NeoIcon>
  * ```
  */
+import { createStaticVNode } from 'vue'
+import {
+	chevronDownIconSvg,
+	menuIconSvg,
+	closeIconSvg,
+	addIconSvg,
+	deleteIconSvg,
+	heartIconSvg,
+	heartFilledIconSvg,
+	moreHorizontalIconSvg,
+	infoIconSvg,
+	starIconSvg,
+} from './iconStrings'
 
-export const ChevronDownIcon = (
-	<svg
-		xmlns="http://www.w3.org/2000/svg"
-		width="16"
-		height="16"
-		viewBox="0 0 24 24"
-		fill="none"
-		stroke="currentColor"
-		stroke-width="2"
-		stroke-linecap="round"
-		stroke-linejoin="round"
-		aria-hidden="true"
-	>
-		<polyline points="6 9 12 15 18 9"></polyline>
-	</svg>
-)
-
-export const MenuIcon = (
-	<svg
-		xmlns="http://www.w3.org/2000/svg"
-		width="24"
-		height="24"
-		viewBox="0 0 24 24"
-		fill="none"
-		stroke="currentColor"
-		stroke-width="2"
-		stroke-linecap="round"
-		stroke-linejoin="round"
-		aria-hidden="true"
-	>
-		<line x1="3" y1="12" x2="21" y2="12"></line>
-		<line x1="3" y1="6" x2="21" y2="6"></line>
-		<line x1="3" y1="18" x2="21" y2="18"></line>
-	</svg>
-)
-
-export const CloseIcon = (
-	<svg
-		xmlns="http://www.w3.org/2000/svg"
-		width="20"
-		height="20"
-		viewBox="0 0 24 24"
-		fill="none"
-		stroke="currentColor"
-		stroke-width="2"
-		stroke-linecap="round"
-		stroke-linejoin="round"
-		aria-hidden="true"
-	>
-		<line x1="18" y1="6" x2="6" y2="18"></line>
-		<line x1="6" y1="6" x2="18" y2="18"></line>
-	</svg>
-)
-
-export const AddIcon = (
-	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentcolor">
-		<path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z" />
-	</svg>
-)
-
-export const DeleteIcon = (
-	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="currentcolor">
-		<path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z" />
-	</svg>
-)
-
-export const HeartIcon = (
-	<svg
-		xmlns="http://www.w3.org/2000/svg"
-		width="20"
-		height="20"
-		viewBox="0 0 24 24"
-		fill="none"
-		stroke="currentColor"
-		stroke-width="2"
-		stroke-linecap="round"
-		stroke-linejoin="round"
-		aria-hidden="true"
-	>
-		<path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-	</svg>
-)
-
-export const MoreHorizontalIcon = (
-	<svg
-		xmlns="http://www.w3.org/2000/svg"
-		width="20"
-		height="20"
-		viewBox="0 0 24 24"
-		fill="currentColor"
-		aria-hidden="true"
-	>
-		<circle cx="5" cy="12" r="2"></circle>
-		<circle cx="12" cy="12" r="2"></circle>
-		<circle cx="19" cy="12" r="2"></circle>
-	</svg>
-)
-
-export const InfoIcon = (
-	<svg
-		xmlns="http://www.w3.org/2000/svg"
-		width="20"
-		height="20"
-		viewBox="0 0 24 24"
-		fill="currentColor"
-		aria-hidden="true"
-	>
-		<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
-	</svg>
-)
-
-export const HeartFilledIcon = (
-	<svg
-		xmlns="http://www.w3.org/2000/svg"
-		width="20"
-		height="20"
-		viewBox="0 0 24 24"
-		fill="currentColor"
-		aria-hidden="true"
-	>
-		<path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-	</svg>
-)
+export const ChevronDownIcon = createStaticVNode(chevronDownIconSvg, 1)
+export const MenuIcon = createStaticVNode(menuIconSvg, 1)
+export const CloseIcon = createStaticVNode(closeIconSvg, 1)
+export const AddIcon = createStaticVNode(addIconSvg, 1)
+export const DeleteIcon = createStaticVNode(deleteIconSvg, 1)
+export const HeartIcon = createStaticVNode(heartIconSvg, 1)
+export const HeartFilledIcon = createStaticVNode(heartFilledIconSvg, 1)
+export const MoreHorizontalIcon = createStaticVNode(moreHorizontalIconSvg, 1)
+export const InfoIcon = createStaticVNode(infoIconSvg, 1)
+export const StarIcon = createStaticVNode(starIconSvg, 1)

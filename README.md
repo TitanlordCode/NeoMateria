@@ -33,9 +33,7 @@ This README is for developers working on the NeoMateria library itself. For usag
 
 ## Getting Started
 
-For complete development setup instructions, available commands, and workflows, see:
-
-**[Getting Started Guide](./docs/getting_started.md)**
+For complete development setup instructions, available commands, and workflows, see the **Contributing/Project Setup** page in Storybook, or the source at [`src/components/06-contributing/setup.mdx`](./src/components/06-contributing/setup.mdx).
 
 ### Quick Setup
 
@@ -50,23 +48,20 @@ npm run dev  # Start Storybook in Docker
 src/
 ├── assets/
 │   ├── icons/              # SVG icons
-│   ├── styles/             # Global CSS, colors, mixins
-│   │   ├── colors.css      # Auto-generated color variables
-│   │   ├── globals.css     # Auto-generated global styles
-│   │   └── mixins/         # CSS mixins (breakpoints, theming, etc.)
-│   └── typescript/
-│       └── colors.ts       # Auto-generated TypeScript color types
+│   ├── styles/             # Global CSS, tokens, mixins (colors.css + globals.css auto-generated)
+│   └── typescript/         # Auto-generated TypeScript color types
 ├── components/
-│   ├── 00-foundations/     # Design system foundations
-│   ├── 01-atoms/           # Atomic components
-│   ├── 02-molecules/       # Molecular components
-│   ├── 03-organisms/       # Organism components
-│   └── docs/               # Auto-generated Storybook docs
-├── utils/                  # Utility functions
-│   ├── classNames.ts       # BEM class name generation
-│   ├── id.ts               # Unique ID generation
-│   ├── stringManipulation.ts
-│   └── wcag.ts             # WCAG color contrast utilities
+│   ├── 00-foundations/     # Design system foundations (Typography, Colors, Breakpoints, Icons)
+│   ├── 01-atoms/           # Basic building blocks (Button, Input, Badge, Icon…)
+│   ├── 02-molecules/       # Combinations of atoms (Card, Accordion, Dropdown, Select…)
+│   ├── 03-organisms/       # Complex compositions (Navigation, Footer, Hero, FeatureLine…)
+│   ├── 04-templates/       # Page-level layout shells (reserved for future use)
+│   ├── 05-pages/           # Full-page Storybook examples — not exported from the library
+│   ├── 06-contributing/    # Contributor documentation stories
+│   ├── 99-drafts/          # Work in progress — not exported
+│   └── docs/               # Auto-generated Storybook MDX docs (do not edit manually)
+├── stores/                 # Shared Vue state (e.g. sheet stacking)
+├── utils/                  # Utility functions (classNames, WCAG contrast, ID generation…)
 └── index.ts                # Library entry point
 
 scripts/
@@ -76,9 +71,9 @@ scripts/
 └── pre-flight.ts           # Orchestrates all generation scripts
 
 docs/
-├── getting_started.md      # Development guide
-├── color-accessibility.md  # Color system documentation
-└── colors.md               # Auto-generated color reference
+├── getting_started.md      # User-facing getting started guide
+├── color-accessibility.md  # Color system and WCAG strategy
+└── colors.md               # Auto-generated color reference table
 ```
 
 ## Architecture
@@ -145,7 +140,8 @@ See [docs/color-accessibility.md](./docs/color-accessibility.md) for details.
 
 - **User Documentation**: [Storybook](https://titanlordcode.github.io/NeoMateria/)
 - **Color Strategy**: [docs/color-accessibility.md](./docs/color-accessibility.md)
-- **Development Guide**: [docs/getting_started.md](./docs/getting_started.md)
+- **User Getting Started**: [docs/getting_started.md](./docs/getting_started.md)
+- **Development Setup**: [Contributing/Project Setup](./src/components/06-contributing/setup.mdx) (Storybook)
 
 ## License
 

@@ -113,6 +113,7 @@ const meta = {
 				rules: [{ id: 'aria-valid-attr-value', enabled: false }],
 			},
 		},
+		snapshot: { viewports: ['sm', 'md', 'lg', 'xl'] },
 	},
 } satisfies Meta<typeof NeoSelect>
 
@@ -205,12 +206,18 @@ export const OnDark: Story = {
 	globals: {
 		backgrounds: '#000',
 	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
+	},
 }
 
 export const RTL: Story = {
 	tags: ['snapshot'],
 	globals: {
 		direction: 'rtl',
+	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
 	},
 	args: {
 		label: 'اختر فاكهة',
@@ -226,6 +233,9 @@ export const RTL: Story = {
 
 export const AllColors: Story = {
 	tags: ['snapshot'],
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
+	},
 	render: createSimpleColorShowcase(NeoSelect, ['primary', 'secondary', 'tertiary'], {
 		defaultProps: {
 			name: 'color-select',
@@ -238,6 +248,9 @@ export const AllColorsOnDark: Story = {
 	tags: ['snapshot'],
 	globals: {
 		backgrounds: '#000',
+	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
 	},
 	render: createSimpleColorShowcase(NeoSelect, ['primary', 'secondary', 'tertiary'], {
 		defaultProps: {

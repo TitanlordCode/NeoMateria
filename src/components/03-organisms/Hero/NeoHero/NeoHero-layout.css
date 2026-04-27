@@ -1,13 +1,18 @@
 .NeoHero {
+	--NeoHero-sizing-gap: 48px;
 	--NeoHero-sizing-paddingBlock: var(--neo-spacing-layout-lg);
 	--NeoHero-sizing-paddingInline: var(--neo-spacing-layout-sm);
+	--NeoHero-sizing-contentGap: var(--neo-gap-lg);
+	--NeoHero-sizing-actionsGap: var(--neo-gap-md);
+	--NeoHero-sizing-subtitleFontSize: var(--neo-fontSize-textXl);
+	--NeoHero-sizing-subtitleLineHeight: var(--neo-lineHeight-relaxed);
 
 	@mixin bp-md {
 		--NeoHero-sizing-paddingInline: var(--neo-spacing-layout-md);
 	}
 
 	@mixin bp-lg {
-		--NeoHero-sizing-paddingBlock: var(--neo-spacing-layout-xl, 80px);
+		--NeoHero-sizing-paddingBlock: var(--neo-spacing-layout-xl);
 		--NeoHero-sizing-paddingInline: var(--neo-spacing-layout-lg);
 	}
 }
@@ -17,7 +22,7 @@
 }
 
 .NeoHero--lg {
-	--NeoHero-sizing-paddingBlock: var(--neo-spacing-layout-xl, 80px);
+	--NeoHero-sizing-paddingBlock: var(--neo-spacing-layout-xl);
 
 	@mixin bp-lg {
 		--NeoHero-sizing-paddingBlock: 120px;

@@ -14,6 +14,7 @@ const meta = {
 	tags: ['autodocs'],
 	parameters: {
 		controls: { exclude: ['color'] },
+		snapshot: { viewports: ['sm', 'md', 'lg', 'xl'] },
 	},
 	argTypes: {
 		...ariaLabelArgType,
@@ -327,6 +328,9 @@ export const OnDark: Story = {
 	tags: ['snapshot'],
 	globals: {
 		backgrounds: '#000',
+	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
 	},
 	render: Default.render,
 }

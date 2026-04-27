@@ -35,6 +35,7 @@ const meta = {
 				component: 'This is a Wrapper to unify svg Icons with colors and font sizes.',
 			},
 		},
+		snapshot: { viewports: ['sm', 'lg', 'xl'] },
 	},
 } satisfies Meta<typeof NeoIcon>
 
@@ -191,6 +192,9 @@ export const OnDark: Story = {
 	globals: {
 		backgrounds: '#000',
 	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
+	},
 }
 
 export const RTL: Story = {
@@ -198,10 +202,16 @@ export const RTL: Story = {
 	globals: {
 		direction: 'rtl',
 	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
+	},
 }
 
 export const AllColors: Story = {
 	tags: ['snapshot'],
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
+	},
 	render: createSimpleColorShowcase(NeoIcon, [
 		{
 			variant: 'theme',
@@ -228,6 +238,9 @@ export const AllColorsOnDark: Story = {
 	tags: ['snapshot'],
 	globals: {
 		backgrounds: '#000',
+	},
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
 	},
 	render: createSimpleColorShowcase(
 		NeoIcon,
