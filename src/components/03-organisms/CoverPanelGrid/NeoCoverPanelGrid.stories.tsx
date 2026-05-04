@@ -31,8 +31,7 @@ Set \`minColumnWidth\` based on the minimum readable size of your content. Lower
 	},
 	argTypes: {
 		columns: {
-			control: { type: 'select' },
-			options: [2, 3, 4, 5, 6],
+			control: { type: 'number', min: 2, max: 8, step: 1 },
 			description:
 				'Maximum number of columns at full container width. Works with `minColumnWidth` — see component docs for full explanation.',
 			table: { category: 'Layout' },
