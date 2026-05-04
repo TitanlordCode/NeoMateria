@@ -34,7 +34,7 @@ const classes = computed(() =>
 	display: grid;
 	grid-template-columns:
 		[full-start] minmax(var(--NeoSection-sizing-inlinePadding), 1fr)
-		[content-start] repeat(12, minmax(0, calc(var(--NeoSection-sizing-maxGlobalSize) / 12)))
+		[content-start] repeat(12, minmax(0, var(--NeoSection-sizing-columnWidth)))
 		[content-end] minmax(var(--NeoSection-sizing-inlinePadding), 1fr)
 		[full-end];
 	inline-size: 100%;
