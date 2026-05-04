@@ -1,6 +1,9 @@
 .NeoSection {
 	--NeoSection-sizing-columnGap: var(--neo-gap-md);
-	--NeoSection-sizing-rowGap: 0;
+	--NeoSection-sizing-columnWidth: calc(
+		(var(--NeoSection-sizing-maxGlobalSize) - 11 * var(--NeoSection-sizing-columnGap)) / 12
+	);
 	--NeoSection-sizing-inlinePadding: 0;
 	--NeoSection-sizing-maxGlobalSize: var(--neo-spacing-max-global-size);
+	--NeoSection-sizing-rowGap: 0;
 }
