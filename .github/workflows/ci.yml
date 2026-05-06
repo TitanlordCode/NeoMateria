@@ -201,24 +201,16 @@ jobs:
             exit 1
           fi
 
-      - name: 🔑 Get OIDC token for npm
-        id: oidc
-        run: |
-          TOKEN=$(curl -sH "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
-            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=npm" | jq -r '.value')
-          echo "::add-mask::$TOKEN"
-          echo "token=$TOKEN" >> $GITHUB_OUTPUT
-
       - name: 🚀 Publish to npm (stable)
         if: github.ref == 'refs/heads/main'
         run: npm publish --provenance
         env:
-          NODE_AUTH_TOKEN: ${{ steps.oidc.outputs.token }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: 🚀 Publish to npm (dev)
         if: github.ref == 'refs/heads/develop'
         env:
-          NODE_AUTH_TOKEN: ${{ steps.oidc.outputs.token }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           CURRENT_VERSION=$(node -p "require('./package.json').version")
           DEV_VERSION="${CURRENT_VERSION}-dev.$(git rev-parse --short HEAD)"
