@@ -201,7 +201,7 @@ jobs:
 
       - name: 🚀 Publish to npm (stable)
         if: github.ref == 'refs/heads/main'
-        run: npm publish
+        run: npm publish --provenance
 
       - name: 🧹 Deprecate old dev versions
         if: github.ref == 'refs/heads/develop'
@@ -228,4 +228,4 @@ jobs:
           CURRENT_VERSION=$(node -p "require('./package.json').version")
           DEV_VERSION="${CURRENT_VERSION}-dev.$(git rev-parse --short HEAD)"
           npm version $DEV_VERSION --no-git-tag-version
-          npm publish --tag dev
+          npm publish --tag dev --provenance
