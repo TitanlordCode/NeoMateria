@@ -72,7 +72,7 @@ export const AllIcons: Story = {
 								},
 								[
 									h(NeoIcon, { colorVariant: 'text', ariaHidden: true }, { default: () => icon }),
-									h('code', { style: { fontSize: '11px' } }, name),
+									h('code', { style: { fontSize: '11px', lineHeight: '1' } }, name),
 								],
 							),
 						),

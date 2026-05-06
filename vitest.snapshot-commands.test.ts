@@ -78,7 +78,7 @@ describe('compareSnapshot', () => {
 		expect(result.status).toBe('match')
 	})
 
-	it('returns mismatch with modifiedPath (no diffPath) for a size difference', async () => {
+	it('returns mismatch with both modifiedPath and diffPath for a size difference', async () => {
 		const tallPng = makePng(375, 100)
 		mkdirSync(dirs.snapshots, { recursive: true })
 		writeFileSync(join(dirs.snapshots, `${storyId}--${viewport}.png`), tallPng)
@@ -88,8 +88,9 @@ describe('compareSnapshot', () => {
 		expect(result.status).toBe('mismatch')
 		if (result.status === 'mismatch') {
 			expect(result.modifiedPath).toContain(storyId)
-			expect(result.diffPath).toBeUndefined()
+			expect(result.diffPath).toBeDefined()
 			expect(existsSync(result.modifiedPath)).toBe(true)
+			expect(existsSync(result.diffPath!)).toBe(true)
 		}
 	})
 

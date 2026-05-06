@@ -135,7 +135,31 @@ export function createSnapshotCommands(dirs: SnapshotDirs, options: SnapshotComm
 			}
 			mkdirSync(dirs.modified, { recursive: true })
 			writeFileSync(modifiedPath, currentBuffer)
-			return { status: 'mismatch', modifiedPath }
+
+			// Pad both images to the same dimensions so a diff can still be produced.
+			const diffWidth = Math.max(baselinePng.width, currentPng.width)
+			const diffHeight = Math.max(baselinePng.height, currentPng.height)
+			const padded = (src: { data: Buffer; width: number; height: number }) => {
+				const out = new PNG({ width: diffWidth, height: diffHeight })
+				// Fill with white
+				out.data.fill(0xff)
+				for (let row = 0; row < src.height; row++) {
+					src.data.copy(
+						out.data,
+						row * diffWidth * 4,
+						row * src.width * 4,
+						row * src.width * 4 + src.width * 4,
+					)
+				}
+				return out
+			}
+			const paddedBaseline = padded(baselinePng)
+			const paddedCurrent = padded(currentPng)
+			const diffPng = new PNG({ width: diffWidth, height: diffHeight })
+			compare(paddedCurrent.data, paddedBaseline.data, diffPng.data, diffWidth, diffHeight)
+			mkdirSync(dirs.diff, { recursive: true })
+			writeFileSync(diffPath, PNG.sync.write(diffPng))
+			return { status: 'mismatch', modifiedPath, diffPath }
 		}
 
 		const diffPng = new PNG({ width: baselinePng.width, height: baselinePng.height })

@@ -13,7 +13,7 @@ const bodyText =
 	'Build faster with a complete set of accessible, production-ready Vue components that follow your design tokens automatically.'
 
 const meta = {
-	title: 'Molecules/NeoTextBlock',
+	title: 'Organisms/NeoTextBlock',
 	component: NeoTextBlock,
 	tags: ['autodocs'],
 	argTypes: {

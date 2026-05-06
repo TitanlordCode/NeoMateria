@@ -13,7 +13,7 @@ import type { NeoProgressPanelProps } from './NeoProgressPanelTypes'
 const surfaceColors = colors.filter((color): color is SurfaceColor => color !== 'white')
 
 const meta = {
-	title: 'Molecules/NeoProgressPanel',
+	title: 'Organisms/NeoProgressPanel',
 	component: NeoProgressPanel,
 	tags: ['autodocs'],
 	argTypes: {

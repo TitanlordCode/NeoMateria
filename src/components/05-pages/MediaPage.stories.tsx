@@ -6,7 +6,7 @@ import NeoNavigation from '@/components/03-organisms/Navigation/NeoNavigation.vu
 import NeoFooter from '@/components/03-organisms/Footer/NeoFooter.vue'
 import NeoCoverPanelGrid from '@/components/03-organisms/CoverPanelGrid/NeoCoverPanelGrid.vue'
 import NeoCoverPanel from '@/components/02-molecules/CoverPanel/NeoCoverPanel.vue'
-import NeoProgressPanel from '@/components/02-molecules/ProgressPanel/NeoProgressPanel.vue'
+import NeoProgressPanel from '@/components/03-organisms/ProgressPanel/NeoProgressPanel.vue'
 import NeoPennant from '@/components/01-atoms/Pennant/NeoPennant.vue'
 import NeoLink from '@/components/01-atoms/Link/NeoLink.vue'
 import NeoButton from '@/components/01-atoms/Button/NeoButton/NeoButton.vue'
