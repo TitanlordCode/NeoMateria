@@ -202,8 +202,6 @@ jobs:
       - name: 🚀 Publish to npm (stable)
         if: github.ref == 'refs/heads/main'
         run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: 🧹 Deprecate old dev versions
         if: github.ref == 'refs/heads/develop'
@@ -223,8 +221,6 @@ jobs:
               npm deprecate "neo-materia@$version" "Outdated dev build. Use neo-materia@dev for the latest development version." || true
             fi
           done <<< "$VERSIONS"
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: 🚀 Publish to npm (dev)
         if: github.ref == 'refs/heads/develop'
@@ -233,5 +229,3 @@ jobs:
           DEV_VERSION="${CURRENT_VERSION}-dev.$(git rev-parse --short HEAD)"
           npm version $DEV_VERSION --no-git-tag-version
           npm publish --tag dev
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

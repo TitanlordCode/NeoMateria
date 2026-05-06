@@ -150,11 +150,11 @@ export {
 	type NeoCoverPanelSlots,
 } from '@/components/02-molecules/CoverPanel/NeoCoverPanelTypes'
 
-export { default as NeoProgressPanel } from '@/components/02-molecules/ProgressPanel/NeoProgressPanel.vue'
+export { default as NeoProgressPanel } from '@/components/03-organisms/ProgressPanel/NeoProgressPanel.vue'
 export {
 	type NeoProgressPanelProps,
 	type NeoProgressPanelSlots,
-} from '@/components/02-molecules/ProgressPanel/NeoProgressPanelTypes'
+} from '@/components/03-organisms/ProgressPanel/NeoProgressPanelTypes'
 
 export { default as NeoDropdown } from '@/components/02-molecules/Dropdown/NeoDropdown.vue'
 export {
@@ -186,8 +186,8 @@ export {
 	calloutVariants,
 } from '@/components/02-molecules/Callout/NeoCallout/NeoCalloutTypes'
 
-export { default as NeoTextBlock } from '@/components/02-molecules/TextBlock/NeoTextBlock/NeoTextBlock.vue'
-export { type NeoTextBlockProps } from '@/components/02-molecules/TextBlock/NeoTextBlock/NeoTextBlockTypes'
+export { default as NeoTextBlock } from '@/components/03-organisms/TextBlock/NeoTextBlock.vue'
+export { type NeoTextBlockProps } from '@/components/03-organisms/TextBlock/NeoTextBlockTypes'
 
 export { default as NeoFeatureCard } from '@/components/02-molecules/FeatureCard/NeoFeatureCard/NeoFeatureCard.vue'
 export { type NeoFeatureCardProps } from '@/components/02-molecules/FeatureCard/NeoFeatureCard/NeoFeatureCardTypes'
