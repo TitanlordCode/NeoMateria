@@ -167,8 +167,12 @@ jobs:
       - name: 🧱 Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: 📦 Upgrade npm
+        run: npm install -g npm@latest
 
       - name: 📦 Install dependencies
         run: npm ci
@@ -201,9 +205,24 @@ jobs:
       - name: 🚀 Publish to npm (stable)
         if: github.ref == 'refs/heads/main'
         run: npm publish --provenance
+        env:
+          NODE_AUTH_TOKEN: ''
+
+      - name: 🚀 Publish to npm (dev)
+        if: github.ref == 'refs/heads/develop'
+        run: |
+          CURRENT_VERSION=$(node -p "require('./package.json').version")
+          DEV_VERSION="${CURRENT_VERSION}-dev.$(git rev-parse --short HEAD)"
+          npm version $DEV_VERSION --no-git-tag-version
+          npm publish --tag dev --provenance
+        env:
+          NODE_AUTH_TOKEN: ''
 
       - name: 🧹 Deprecate old dev versions
         if: github.ref == 'refs/heads/develop'
+        continue-on-error: true
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           VERSIONS=$(node -e "
             const { execSync } = require('child_process');
@@ -217,14 +236,6 @@ jobs:
           while IFS= read -r version; do
             if [ -n "$version" ]; then
               echo "Deprecating neo-materia@$version"
-              npm deprecate "neo-materia@$version" "Outdated dev build. Use neo-materia@dev for the latest development version." || true
+              npm deprecate "neo-materia@$version" "Outdated dev build. Use neo-materia@dev for the latest development version."
             fi
           done <<< "$VERSIONS"
-
-      - name: 🚀 Publish to npm (dev)
-        if: github.ref == 'refs/heads/develop'
-        run: |
-          CURRENT_VERSION=$(node -p "require('./package.json').version")
-          DEV_VERSION="${CURRENT_VERSION}-dev.$(git rev-parse --short HEAD)"
-          npm version $DEV_VERSION --no-git-tag-version
-          npm publish --tag dev --provenance
