@@ -99,6 +99,8 @@ const handleImageError = () => {
 				v-else
 				:src="props.imageSrc"
 				:alt="props.imageAlt"
+				:width="props.imageWidth"
+				:height="props.imageHeight"
 				object-fit="cover"
 				class="NeoCoverPanel-image"
 				@error="handleImageError"

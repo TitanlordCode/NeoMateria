@@ -19,7 +19,7 @@ const classes = computed(() =>
 		:style="{
 			'--NeoSection-sizing-columnGap': columnGap,
 			'--NeoSection-sizing-rowGap': rowGap,
-			'--NeoSection-sizing-inlinePadding': padding,
+			...(padding !== undefined && { '--NeoSection-sizing-inlinePadding': padding }),
 		}"
 	>
 		<slot />

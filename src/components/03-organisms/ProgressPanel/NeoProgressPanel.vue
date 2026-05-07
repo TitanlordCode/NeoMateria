@@ -63,7 +63,7 @@ const handleImageError = () => {
 
 		<div class="NeoProgressPanel-content">
 			<div class="NeoProgressPanel-header">
-				<NeoHeadlineTertiary :tag="props.headingTag ?? 'h3'" class="NeoProgressPanel-title">{{
+				<NeoHeadlineTertiary :tag="props.headingTag ?? 'h2'" class="NeoProgressPanel-title">{{
 					props.title
 				}}</NeoHeadlineTertiary>
 				<p v-if="props.subtitle" class="NeoProgressPanel-subtitle">{{ props.subtitle }}</p>

@@ -38,11 +38,6 @@ const classes = computed(() => {
 		],
 	})
 })
-
-const imageStyle = computed(() => ({
-	width: typeof props.width === 'number' ? `${props.width}px` : props.width,
-	height: typeof props.height === 'number' ? `${props.height}px` : props.height,
-}))
 </script>
 
 <template>
@@ -50,8 +45,9 @@ const imageStyle = computed(() => ({
 		<img
 			:src="props.src"
 			:alt="props.alt"
+			:width="props.width"
+			:height="props.height"
 			:loading="props.loading ?? 'lazy'"
-			:style="imageStyle"
 			class="NeoImage-img"
 			@load="handleLoad"
 			@error="handleError"

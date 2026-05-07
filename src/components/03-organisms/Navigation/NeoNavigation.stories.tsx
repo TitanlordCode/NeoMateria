@@ -61,6 +61,12 @@ const meta = {
 	tags: ['autodocs'],
 	parameters: {
 		layout: 'fullscreen',
+		docs: {
+			description: {
+				component:
+					'**Exposed method:** `close()` — programmatically closes the mobile menu via a template ref. Usage: `const navRef = ref<NeoNavigationExpose>(); navRef.value?.close()`.',
+			},
+		},
 	},
 	decorators: [
 		() => ({

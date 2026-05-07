@@ -2,13 +2,13 @@ import { fileURLToPath, URL } from 'node:url'
 import { copyFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 
-import { defineConfig } from 'vite'
+import { defineConfig, type UserConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vite.dev/config/
-export default defineConfig(async ({ mode }) => {
+export default defineConfig(async ({ mode }): Promise<UserConfig> => {
 	const plugins = [vue(), vueJsx(), vueDevTools()]
 
 	// Only add dts plugin for library builds, not for Storybook
@@ -44,13 +44,16 @@ export default defineConfig(async ({ mode }) => {
 		},
 		build: {
 			lib: {
-				entry: 'src/index.ts', // Ensure this points to your main export file
+				entry: 'src/index.ts',
 				name: 'NeoMateria',
-				fileName: (format: string) => `neo-materia.${format}.js`,
+				formats: ['es'] as const,
 			},
 			rollupOptions: {
-				external: ['vue'], // Mark Vue as external to prevent bundling it
+				external: ['vue'],
 				output: {
+					preserveModules: true,
+					preserveModulesRoot: 'src',
+					entryFileNames: '[name].js',
 					globals: {
 						vue: 'Vue',
 					},

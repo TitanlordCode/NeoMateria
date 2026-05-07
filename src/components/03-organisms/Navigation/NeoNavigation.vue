@@ -4,6 +4,7 @@ import type {
 	NeoNavigationProps,
 	NeoNavigationLink,
 	NeoNavigationSlots,
+	NeoNavigationExpose,
 } from './NeoNavigationTypes'
 import { getClassNames } from '@/utils/classNames'
 import NeoLink from '../../01-atoms/Link/NeoLink.vue'
@@ -160,6 +161,8 @@ onUnmounted(() => {
 	document.documentElement.style.removeProperty('--NeoNavigation-sizing-blockSize')
 	document.removeEventListener('click', handleClickOutside)
 })
+
+defineExpose<NeoNavigationExpose>({ close: () => toggleMobileMenu(false) })
 </script>
 
 <template>

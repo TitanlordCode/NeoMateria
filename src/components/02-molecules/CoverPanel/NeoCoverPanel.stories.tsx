@@ -37,6 +37,18 @@ const meta = {
 		},
 		imageSrc: { control: 'text', table: { category: 'Content' } },
 		imageAlt: { control: 'text', table: { category: 'Content' } },
+		imageWidth: {
+			control: 'number',
+			description:
+				'Intrinsic width of the image in pixels. Set alongside `imageHeight` to prevent layout shift (CLS) before the image loads.',
+			table: { category: 'Content' },
+		},
+		imageHeight: {
+			control: 'number',
+			description:
+				'Intrinsic height of the image in pixels. Set alongside `imageWidth` to prevent layout shift (CLS) before the image loads.',
+			table: { category: 'Content' },
+		},
 		title: { control: 'text', table: { category: 'Content' } },
 		imageAriaLabel: {
 			control: 'text',

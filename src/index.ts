@@ -201,6 +201,7 @@ export {
 	type NeoNavigationProps,
 	type NeoNavigationLink,
 	type NeoNavigationSlots,
+	type NeoNavigationExpose,
 	type NeoNavigationCollapseActions,
 	navigationCollapseActions,
 } from '@/components/03-organisms/Navigation/NeoNavigationTypes'
