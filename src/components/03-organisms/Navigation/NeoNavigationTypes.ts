@@ -43,6 +43,11 @@ export type NeoNavigationProps = {
 	actionsMenuAriaLabel?: string
 } & (NeoNavigationToggleWithLabels | NeoNavigationToggleIconOnly)
 
+export type NeoNavigationExpose = {
+	/** Programmatically close the mobile menu. */
+	close: () => void
+}
+
 export type NeoNavigationSlots = {
 	/** Brand logo displayed in the navigation bar. */
 	logo?: () => VNodeChild

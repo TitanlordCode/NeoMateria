@@ -45,6 +45,35 @@ After installing, import the stylesheet once in your application entry file (e.g
 import 'neo-materia/dist/neo-materia.css'
 ```
 
+NeoMateria uses the **Inter** font. Load it in your HTML before your app renders — the recommended way is via Google Fonts:
+
+```html
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+```
+
+Or self-host Inter via [Fontsource](https://fontsource.org/fonts/inter):
+
+```sh
+npm install @fontsource/inter
+```
+
+```ts
+import '@fontsource/inter/400.css'
+import '@fontsource/inter/500.css'
+import '@fontsource/inter/600.css'
+import '@fontsource/inter/700.css'
+```
+
+To use a different font entirely, override the CSS variable in your global stylesheet after importing `neo-materia.css`:
+
+```css
+:root {
+  --neo-fontFamily-base: 'Your Font', sans-serif;
+}
+```
+
 ## Quick Start
 
 ```vue

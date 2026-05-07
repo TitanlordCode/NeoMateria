@@ -8,6 +8,8 @@ type NeoCoverPanelBase = {
 	color?: Color
 	imageSrc: string
 	imageAlt: string
+	imageWidth?: number
+	imageHeight?: number
 	title: string
 	imageAriaLabel?: string
 	rounded?: boolean

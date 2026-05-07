@@ -9,6 +9,7 @@ import { placeholder } from '../../../../.storybook/utils/placeholder'
 import NeoProgressPanel from './NeoProgressPanel.vue'
 import NeoPennant from '@/components/01-atoms/Pennant/NeoPennant.vue'
 import type { NeoProgressPanelProps } from './NeoProgressPanelTypes'
+import { headlineTags } from '@/components/01-atoms/Headline/NeoHeadlineTypes'
 
 const surfaceColors = colors.filter((color): color is SurfaceColor => color !== 'white')
 
@@ -68,6 +69,13 @@ const meta = {
 			control: 'text',
 			description:
 				'Primary label for the item. Clamped to 2 lines — override via `--NeoProgressPanel-sizing-titleClamp`.',
+			table: { category: 'Content' },
+		},
+		headingTag: {
+			control: 'select',
+			options: headlineTags,
+			description:
+				'HTML element used for the title. Defaults to `h2`. Adjust to match your page heading hierarchy — e.g. `h3` when the panel is inside a section that already has an `h2`.',
 			table: { category: 'Content' },
 		},
 		pennant: {
