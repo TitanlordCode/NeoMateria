@@ -124,6 +124,7 @@ const classes = computed(() => {
 	border-radius: var(--NeoTextArea-sizing-borderRadius);
 	border-style: solid;
 	border-width: var(--NeoTextArea-sizing-borderWidth);
+	box-sizing: border-box;
 	color: var(--NeoTextArea-color-text);
 	font-family: inherit;
 	font-size: var(--NeoTextArea-sizing-fontSize);

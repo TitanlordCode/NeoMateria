@@ -129,6 +129,7 @@ const classes = computed(() => {
 	border-radius: var(--NeoInput-sizing-borderRadius);
 	border-style: solid;
 	border-width: var(--NeoInput-sizing-borderWidth);
+	box-sizing: border-box;
 	color: var(--NeoInput-color-text);
 	font-size: var(--NeoInput-sizing-fontSize);
 	min-block-size: var(--NeoInput-sizing-minHeight);
