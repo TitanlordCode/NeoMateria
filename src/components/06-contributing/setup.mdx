@@ -151,3 +151,60 @@ Steps:
 - Declare component CSS variable defaults in `*-layout.css` / `*-themed.css`; use them in scoped styles — never reference `--neo-*` tokens directly in property declarations
 - Run `npm run test` before committing
 - See **Contributing/Architecture** for the full component API and CSS conventions
+
+---
+
+## Release Process
+
+Releases are fully automated via **semantic-release**. You never manually change the `version` field in `package.json` — the CI does it for you based on commit messages.
+
+### Branch → Release flow
+
+```mermaid
+flowchart TD
+    FB[Feature branch] -->|PR merged| DEV[develop]
+    DEV -->|push| DEVCI{CI on develop}
+    DEVCI -->|semantic-release| DEVPKG["Publishes pre-release\ne.g. 0.1.0-dev.1\nnpm tag: dev"]
+    DEVPKG --> DEVRE["GitHub pre-release created\nCHANGELOG not updated"]
+
+    DEV -->|PR merged to main| MAIN[main]
+    MAIN -->|push| MAINCI{CI on main}
+    MAINCI -->|semantic-release| STABLE["Determines version from commits\nPublishes stable to npm\nnpm tag: latest"]
+    STABLE --> MAINOUT["CHANGELOG.md updated\ngit tag created e.g. v0.1.0\nGitHub Release created\npackage.json committed back"]
+```
+
+### Commit type → version bump
+
+| Commit type | Example | Version bump |
+|---|---|---|
+| `fix` | `fix(button): correct focus ring color` | Patch — `0.1.0` → `0.1.1` |
+| `feat` | `feat(table): add sortable columns` | Minor — `0.1.0` → `0.2.0` |
+| Breaking change | `feat!: remove deprecated prop` | Minor — `0.1.0` → `0.2.0` ¹ |
+| `chore`, `build`, `docs`, `style`, `refactor`, `test` | — | No release |
+
+> ¹ Breaking changes bump the **minor** (not major) until the library reaches production-stable `1.0.0`. When the library is ready for its first stable release, update `.releaserc.json` to change `"breaking": true → "release": "major"`.
+
+### Marking a breaking change
+
+Two equivalent ways — both trigger a minor version bump:
+
+```bash
+# Option A: exclamation mark after the type
+feat!: remove deprecated `text` prop from NeoButton
+
+# Option B: BREAKING CHANGE footer (allows a longer description)
+feat(button): remove deprecated prop
+
+BREAKING CHANGE: The `text` prop is removed. Use the default slot instead:
+<NeoButton color="blue" variant="primary">Label text</NeoButton>
+```
+
+### Dev pre-releases
+
+Every push to `develop` publishes a pre-release to npm tagged `dev`:
+
+```bash
+npm install neo-materia@dev   # always gets the latest dev build
+```
+
+Old dev builds are deprecated automatically by CI after each new publish.
