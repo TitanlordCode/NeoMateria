@@ -6,7 +6,6 @@ export type NeoTooltipProps = {
 	text: string
 	placement?: NeoTooltipPlacement
 	openDelay?: number
-	/** Force the tooltip to stay visible — useful for testing and docs. */
 	visible?: boolean
 }
 
