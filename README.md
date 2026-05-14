@@ -143,6 +143,17 @@ See [docs/color-accessibility.md](./docs/color-accessibility.md) for details.
 - **User Getting Started**: [docs/getting_started.md](./docs/getting_started.md)
 - **Development Setup**: [Contributing/Project Setup](./src/components/06-contributing/setup.mdx) (Storybook)
 
+## Release Process
+
+Releases are automated via **semantic-release**. Version numbers are determined by commit message types — you never manually bump `package.json`.
+
+| Branch | What happens |
+|---|---|
+| `develop` push | Pre-release published to npm (`neo-materia@dev`) |
+| `main` push | Stable release: version bumped, `CHANGELOG.md` updated, GitHub Release created, npm `latest` updated |
+
+See the **Contributing/Project Setup** page in Storybook for the full release workflow, commit conventions, and how to mark breaking changes.
+
 ## License
 
 Proprietary — free to use, no modification or redistribution. See [LICENSE](./LICENSE) for details.

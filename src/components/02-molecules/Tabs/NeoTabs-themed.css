@@ -1,0 +1,26 @@
+.NeoTabs {
+	--NeoTabs-color-accent: var(--neo-theme-color);
+	--NeoTabs-color-border: var(--neo-color-grey200);
+	--NeoTabs-color-filledActiveBackground: var(--neo-color-white);
+	--NeoTabs-color-filledActiveText: var(--neo-theme-color);
+	--NeoTabs-color-filledBackground: var(--neo-color-grey100);
+	--NeoTabs-color-focus: var(--neo-theme-color);
+	--NeoTabs-color-overflowItemActiveText: var(--neo-theme-color);
+	--NeoTabs-color-overflowItemBackgroundHover: var(--neo-color-grey100);
+	--NeoTabs-color-overflowItemText: var(--neo-color-grey700);
+	--NeoTabs-color-overflowItemTextHover: var(--neo-color-grey900);
+	--NeoTabs-color-pillsActiveBackground: var(--neo-theme-color);
+	--NeoTabs-color-pillsActiveText: var(--neo-theme-colorText);
+	--NeoTabs-color-surfaceHover: var(--neo-color-grey100);
+	--NeoTabs-color-tabText: var(--neo-color-grey600);
+	--NeoTabs-color-tabTextHover: var(--neo-color-grey900);
+
+	@mixin onDark {
+		--NeoTabs-color-border: var(--neo-color-grey700);
+		--NeoTabs-color-filledActiveBackground: var(--neo-color-grey900);
+		--NeoTabs-color-filledBackground: var(--neo-color-grey800);
+		--NeoTabs-color-surfaceHover: var(--neo-color-grey800);
+		--NeoTabs-color-tabText: var(--neo-color-grey400);
+		--NeoTabs-color-tabTextHover: var(--neo-color-grey100);
+	}
+}

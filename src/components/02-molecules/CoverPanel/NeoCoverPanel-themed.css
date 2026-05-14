@@ -1,7 +1,7 @@
 .NeoCoverPanel {
 	--NeoCoverPanel-color-actionBackground: rgb(0 0 0 / 45%);
-	--NeoCoverPanel-color-actionIcon: var(--neo-theme-color);
-	--NeoCoverPanel-color-actionIconActive: var(--neo-color-white);
+	--NeoCoverPanel-color-actionIcon: var(--neo-color-white);
+	--NeoCoverPanel-color-actionIconActive: var(--neo-theme-color);
 	--NeoCoverPanel-color-border: var(--neo-color-grey200);
 	--NeoCoverPanel-color-imageFallback: var(--neo-theme-color);
 	--NeoCoverPanel-color-imageFallbackText: var(--neo-theme-colorText);

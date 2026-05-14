@@ -254,4 +254,9 @@ const handleImageError = () => {
 .NeoCoverPanel-action--active {
 	color: var(--NeoCoverPanel-color-actionIconActive);
 }
+
+.NeoCoverPanel-action :deep(svg) {
+	block-size: var(--NeoCoverPanel-sizing-actionIconSize);
+	inline-size: var(--NeoCoverPanel-sizing-actionIconSize);
+}
 </style>

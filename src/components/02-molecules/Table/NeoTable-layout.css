@@ -1,0 +1,31 @@
+.NeoTable-wrapper {
+	--NeoTable-sizing-captionFontSize: var(--neo-fontSize-textSm);
+	--NeoTable-sizing-captionPaddingBlockEnd: var(--neo-spacing-core-md);
+	--NeoTable-sizing-cardCellGap: var(--neo-gap-sm);
+	--NeoTable-sizing-cardCellPaddingBlock: var(--neo-spacing-core-xs);
+	--NeoTable-sizing-cardRowBorderRadius: var(--neo-radius-xl);
+	--NeoTable-sizing-cardRowHeaderMarginBlockEnd: var(--neo-spacing-core-xs);
+	--NeoTable-sizing-cardRowMarginBlockEnd: var(--neo-spacing-core-md);
+	--NeoTable-sizing-cardRowPadding: var(--neo-spacing-core-md);
+	--NeoTable-sizing-emptyFontSize: var(--neo-fontSize-textSm);
+	--NeoTable-sizing-emptyPaddingBlock: var(--neo-spacing-core-xl);
+	--NeoTable-sizing-headerContentGap: var(--neo-gap-xs);
+}
+
+.NeoTable--compact {
+	--NeoTable-sizing-cellPaddingBlock: var(--neo-spacing-core-xs);
+	--NeoTable-sizing-cellPaddingInline: var(--neo-spacing-core-sm);
+	--NeoTable-sizing-fontSize: var(--neo-fontSize-textXs);
+}
+
+.NeoTable--default {
+	--NeoTable-sizing-cellPaddingBlock: var(--neo-spacing-core-sm);
+	--NeoTable-sizing-cellPaddingInline: var(--neo-spacing-core-md);
+	--NeoTable-sizing-fontSize: var(--neo-fontSize-textSm);
+}
+
+.NeoTable--spacious {
+	--NeoTable-sizing-cellPaddingBlock: var(--neo-spacing-core-md);
+	--NeoTable-sizing-cellPaddingInline: var(--neo-spacing-core-lg);
+	--NeoTable-sizing-fontSize: var(--neo-fontSize-textMd);
+}

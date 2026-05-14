@@ -1,0 +1,31 @@
+.NeoTable-wrapper {
+	--NeoTable-color-cardLabel: var(--neo-color-grey600);
+	--NeoTable-color-captionText: var(--neo-color-grey800);
+	--NeoTable-color-cellText: var(--neo-color-grey700);
+	--NeoTable-color-emptyText: var(--neo-color-grey500);
+	--NeoTable-color-focus: var(--neo-theme-color);
+	--NeoTable-color-headerBackground: var(--neo-color-white);
+	--NeoTable-color-headerBorder: var(--neo-color-grey300);
+	--NeoTable-color-headerHover: var(--neo-color-grey50);
+	--NeoTable-color-headerText: var(--neo-color-grey800);
+	--NeoTable-color-highlightBackground: color-mix(in srgb, var(--neo-theme-color) 10%, transparent);
+	--NeoTable-color-rowBorder: var(--neo-color-grey200);
+	--NeoTable-color-rowHover: var(--neo-color-grey100);
+	--NeoTable-color-sortIcon: var(--neo-color-grey500);
+	--NeoTable-color-stripeBackground: var(--neo-color-grey50);
+
+	@mixin onDark {
+		--NeoTable-color-cardLabel: var(--neo-color-grey400);
+		--NeoTable-color-captionText: var(--neo-color-grey100);
+		--NeoTable-color-cellText: var(--neo-color-grey300);
+		--NeoTable-color-emptyText: var(--neo-color-grey500);
+		--NeoTable-color-headerBackground: var(--neo-color-grey900);
+		--NeoTable-color-headerBorder: var(--neo-color-grey600);
+		--NeoTable-color-headerHover: var(--neo-color-grey800);
+		--NeoTable-color-headerText: var(--neo-color-grey100);
+		--NeoTable-color-rowBorder: var(--neo-color-grey700);
+		--NeoTable-color-rowHover: var(--neo-color-grey700);
+		--NeoTable-color-sortIcon: var(--neo-color-grey400);
+		--NeoTable-color-stripeBackground: var(--neo-color-grey800);
+	}
+}

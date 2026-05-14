@@ -5,6 +5,7 @@ import type { NeoSelectProps } from './NeoSelectTypes'
 import { getClassNames } from '@/utils/classNames'
 import NeoCheckbox from '@/components/01-atoms/Checkbox/NeoCheckbox.vue'
 import NeoBadge from '@/components/01-atoms/Badge/NeoBadge.vue'
+import { chevronDownIconSvg } from '@/components/01-atoms/Icon/iconStrings'
 
 const props = defineProps<NeoSelectProps>()
 
@@ -205,6 +206,13 @@ const classes = computed(() => {
 					@dismiss="selectOption(props.options.find((option) => option.value === value)!)"
 				/>
 			</div>
+			<span
+				class="NeoSelect-chevron"
+				:class="{ 'is-open': isOpen }"
+				aria-hidden="true"
+				v-html="chevronDownIconSvg"
+			></span>
+
 			<input
 				ref="inputRef"
 				class="NeoSelect-input"
@@ -291,7 +299,10 @@ const classes = computed(() => {
 @import url('./NeoSelect-themed.css');
 
 .NeoSelect {
+	display: flex;
+	flex-direction: column;
 	font-family: inherit;
+	gap: var(--NeoSelect-sizing-gap);
 	position: relative;
 
 	& .NeoSelect-input {
@@ -300,14 +311,37 @@ const classes = computed(() => {
 		border-radius: var(--NeoSelect-sizing-borderRadius);
 		border-style: solid;
 		border-width: var(--NeoSelect-sizing-borderWidth);
+		box-sizing: border-box;
 		color: var(--NeoSelect-color-inputText);
 		font-size: var(--NeoSelect-sizing-fontSize);
-		inline-size: calc(100% - (var(--NeoSelect-sizing-padding) * 2));
+		inline-size: 100%;
 		min-block-size: var(--NeoSelect-sizing-inline);
 		padding: var(--NeoSelect-sizing-padding);
+		padding-inline-end: calc(var(--NeoSelect-sizing-paddingInline) + 1.5rem);
 
 		&:focus-visible {
 			outline-color: var(--NeoSelect-color-focus);
+		}
+	}
+
+	& .NeoSelect-chevron {
+		block-size: 1.25rem;
+		color: var(--NeoSelect-color-label);
+		display: flex;
+		inline-size: 1.25rem;
+		inset-block-end: calc((var(--NeoSelect-sizing-inline) - 1.25rem) / 2);
+		inset-inline-end: var(--NeoSelect-sizing-paddingInline);
+		pointer-events: none;
+		position: absolute;
+		transition: transform 0.2s ease;
+
+		:deep(svg) {
+			block-size: 100%;
+			inline-size: 100%;
+		}
+
+		&.is-open {
+			transform: rotate(180deg);
 		}
 	}
 
@@ -355,6 +389,8 @@ const classes = computed(() => {
 
 	& .NeoSelect-label {
 		color: var(--NeoSelect-color-label);
+		font-size: var(--NeoSelect-sizing-labelFontSize);
+		font-weight: 600;
 	}
 
 	& .NeoSelect-checkbox {

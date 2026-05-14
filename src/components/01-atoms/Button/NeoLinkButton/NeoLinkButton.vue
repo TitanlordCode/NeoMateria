@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import type { NeoLinkButtonProps, NeoLinkButtonSlots } from './NeoLinkButtonTypes'
 import { useButton } from '../useButton'
 import NeoIcon from '../../Icon/NeoIcon.vue'
@@ -8,13 +9,18 @@ const props = defineProps<NeoLinkButtonProps>()
 defineSlots<NeoLinkButtonSlots>()
 
 const { classes } = useButton(props)
+
+const linkClasses = computed(
+	() => `${classes.value}${props.disabled ? ' NeoButton--disabled' : ''}`,
+)
 </script>
 
 <template>
 	<a
+		:aria-disabled="props.disabled ? 'true' : undefined"
 		:aria-label="props.ariaLabel"
-		:class="classes"
-		:href="props.href"
+		:class="linkClasses"
+		:href="props.disabled ? undefined : props.href"
 		:rel="props.external ? 'noopener noreferrer' : undefined"
 		:target="props.external ? '_blank' : undefined"
 	>
@@ -69,9 +75,14 @@ const { classes } = useButton(props)
 		outline-color: var(--NeoButton-color-focus);
 	}
 
-	&:hover {
+	&:hover:not(.NeoButton--disabled) {
 		cursor: pointer;
 	}
+}
+
+.NeoButton--disabled {
+	cursor: not-allowed;
+	opacity: 0.6;
 }
 
 .NeoButton--fullWidth {
@@ -85,7 +96,7 @@ const { classes } = useButton(props)
 }
 
 .NeoButton--primary {
-	&:hover {
+	&:hover:not(.NeoButton--disabled) {
 		transform: scale(1.05);
 	}
 }
@@ -95,7 +106,7 @@ const { classes } = useButton(props)
 }
 
 .NeoButton--secondary {
-	&:hover {
+	&:hover:not(.NeoButton--disabled) {
 		box-shadow: 0 0 0 2px var(--NeoButton-color-focus);
 	}
 }
@@ -105,7 +116,7 @@ const { classes } = useButton(props)
 }
 
 .NeoButton--tertiary {
-	&:hover {
+	&:hover:not(.NeoButton--disabled) {
 		text-decoration: 2px underline;
 		text-underline-offset: 4px;
 	}

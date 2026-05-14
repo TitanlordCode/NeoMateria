@@ -8,6 +8,8 @@ on:
 permissions:
   contents: write
   pages: write
+  issues: write
+  pull-requests: write
   id-token: write
 
 jobs:
@@ -152,7 +154,7 @@ jobs:
           destination_dir: dev
           keep_files: true
 
-  publish-npm:
+  release:
     needs: [lint, test, build-library]
     runs-on: ubuntu-latest
 
@@ -168,67 +170,29 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          registry-url: 'https://registry.npmjs.org'
-
-      - name: 📦 Upgrade npm
-        run: corepack enable && corepack prepare npm@latest --activate
 
       - name: 📦 Install dependencies
         run: npm ci
 
-      - name: 📥 Download library artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: dist
-          path: dist
-
-      - name: 🔍 Check version changed (main only)
-        if: github.ref == 'refs/heads/main'
-        id: version-check
-        run: |
-          CURRENT_VERSION=$(node -p "require('./package.json').version")
-          echo "current_version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
-
-          PUBLISHED_VERSION=$(npm view neo-materia version 2>/dev/null || echo "0.0.0")
-          echo "published_version=$PUBLISHED_VERSION" >> $GITHUB_OUTPUT
-
-          if [ "$CURRENT_VERSION" != "$PUBLISHED_VERSION" ]; then
-            echo "version_changed=true" >> $GITHUB_OUTPUT
-            echo "✅ Version changed from $PUBLISHED_VERSION to $CURRENT_VERSION"
-          else
-            echo "version_changed=false" >> $GITHUB_OUTPUT
-            echo "❌ Version unchanged on main ($CURRENT_VERSION) — bump the version before merging to main"
-            exit 1
-          fi
-
-      - name: 🚀 Publish to npm (stable)
-        if: github.ref == 'refs/heads/main'
-        run: npm publish --provenance
+      - name: 🚀 Release
+        run: npx semantic-release
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: 🚀 Publish to npm (dev)
-        if: github.ref == 'refs/heads/develop'
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |
-          CURRENT_VERSION=$(node -p "require('./package.json').version")
-          DEV_VERSION="${CURRENT_VERSION}-dev.$(git rev-parse --short HEAD)"
-          npm version $DEV_VERSION --no-git-tag-version
-          npm publish --tag dev --provenance
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_CONFIG_PROVENANCE: 'true'
 
       - name: 🧹 Deprecate old dev versions
         if: github.ref == 'refs/heads/develop'
         continue-on-error: true
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
+          npm config set //registry.npmjs.org/:_authToken=$NPM_TOKEN
           VERSIONS=$(node -e "
             const { execSync } = require('child_process');
-            const currentVersion = require('./package.json').version;
             try {
               const all = JSON.parse(execSync('npm view neo-materia versions --json').toString());
-              const devVersions = all.filter(v => v.startsWith(currentVersion + '-dev.'));
+              const devVersions = all.filter(v => v.includes('-dev.'));
               console.log(devVersions.join('\n'));
             } catch(e) { process.exit(0); }
           ")

@@ -26,6 +26,7 @@ type NeoLinkButtonWithSlot = { text?: never; ariaLabel?: never }
 export type NeoLinkButtonProps = {
 	href: string
 	external?: boolean
+	disabled?: boolean
 	color?: SurfaceColor
 	size?: NeoLinkButtonSize
 	variant?: NeoLinkButtonVariant

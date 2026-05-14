@@ -18,6 +18,12 @@ const meta = {
 		text: { control: 'text', table: { category: 'Content' } },
 		href: { control: 'text', table: { category: 'Content' } },
 		external: { control: 'boolean', table: { category: 'Behavior' } },
+		disabled: {
+			control: 'boolean',
+			description:
+				'Visually and functionally disables the link. Sets `aria-disabled="true"` and removes the `href` to prevent navigation.',
+			table: { category: 'Behavior' },
+		},
 		color: {
 			description:
 				'Theme color. Determines the button\'s background, text, and border colors. `white` is excluded from `SurfaceColor` — use `color="black"` with `u-onDark` for dark-surface white buttons.',
@@ -168,6 +174,21 @@ export const FullWidth: Story = {
 		text: 'Full Width Link',
 		fullWidth: true,
 		iconEnd: AddIcon,
+	},
+}
+
+export const Disabled: Story = {
+	tags: ['snapshot'],
+	args: {
+		disabled: true,
+		text: 'Disabled Link',
+	},
+	parameters: {
+		docs: {
+			source: {
+				code: `<NeoLinkButton href="/page" color="blue" :disabled="true" text="Disabled Link" />`,
+			},
+		},
 	},
 }
 

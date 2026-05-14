@@ -237,3 +237,32 @@ export {
 	heroVariants,
 	heroSizes,
 } from '@/components/03-organisms/Hero/NeoHero/NeoHeroTypes'
+
+export { default as NeoTabs } from '@/components/02-molecules/Tabs/NeoTabs.vue'
+export { default as NeoTabPanel } from '@/components/02-molecules/Tabs/NeoTabPanel.vue'
+export {
+	type NeoTabsProps,
+	type NeoTabPanelProps,
+	type NeoTabVariant,
+	type NeoTabSize,
+	type NeoTabOrientation,
+	tabVariants,
+	tabSizes,
+	tabOrientations,
+} from '@/components/02-molecules/Tabs/NeoTabsTypes'
+
+export { default as NeoTable } from '@/components/02-molecules/Table/NeoTable.vue'
+export {
+	type NeoTableProps,
+	type NeoTableColumn,
+	type NeoTableAlign,
+	type NeoTableSize,
+	type NeoTableSortDirection,
+	type NeoTableMobileLayout,
+	type NeoTableHeaderAxis,
+	tableColumnAligns,
+	tableSizes,
+	tableSortDirections,
+	tableMobileLayouts,
+	tableHeaderAxes,
+} from '@/components/02-molecules/Table/NeoTableTypes'
