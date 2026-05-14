@@ -1,7 +1,7 @@
 {
 	"branches": [
 		"main",
-		{ "name": "develop", "prerelease": "dev" }
+		{ "name": "develop", "channel": "dev", "prerelease": "dev" }
 	],
 	"plugins": [
 		[
