@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, nextTick, watch } from 'vue'
+import { ref, computed, nextTick, watch, onUnmounted, type CSSProperties } from 'vue'
 import { generateUniqueId } from '@/utils/id'
 import type { NeoSelectProps } from './NeoSelectTypes'
 import { getClassNames } from '@/utils/classNames'
@@ -19,6 +19,8 @@ const isOpen = ref(false)
 const focusedIndex = ref(-1)
 const inputRef = ref<HTMLInputElement | null>(null)
 const listRef = ref<HTMLUListElement | null>(null)
+const wrapperRef = ref<HTMLDivElement | null>(null)
+const dropdownStyle = ref<CSSProperties>({})
 const searchQuery = ref('')
 const selectedValues = ref<string[]>(
 	Array.isArray(props.selectValue)
@@ -27,6 +29,16 @@ const selectedValues = ref<string[]>(
 			? [props.selectValue]
 			: [],
 )
+
+const updateDropdownPosition = () => {
+	if (!wrapperRef.value) return
+	const rect = wrapperRef.value.getBoundingClientRect()
+	dropdownStyle.value = {
+		insetBlockStart: `${rect.bottom}px`,
+		insetInlineStart: `${rect.left}px`,
+		inlineSize: `${rect.width}px`,
+	}
+}
 
 const mode = computed(() => props.mode ?? 'single')
 
@@ -59,22 +71,35 @@ watch(
 	},
 )
 
-const openOptions = () => {
-	isOpen.value = true
+const handleViewportChange = () => updateDropdownPosition()
+
+const openOptions = async () => {
 	searchQuery.value = ''
-	nextTick(() => {
-		const selectedIndex = props.options.findIndex(
-			(option) => option.value === selectedValues.value[0],
-		)
-		focusedIndex.value = selectedIndex >= 0 ? selectedIndex : 0
-	})
+	updateDropdownPosition()
+	isOpen.value = true
+	window.addEventListener('scroll', handleViewportChange, true)
+	window.addEventListener('resize', handleViewportChange)
+	await nextTick()
+	await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()))
+	updateDropdownPosition()
+	const selectedIndex = props.options.findIndex(
+		(option) => option.value === selectedValues.value[0],
+	)
+	focusedIndex.value = selectedIndex >= 0 ? selectedIndex : 0
 }
 
 const closeOptions = () => {
 	isOpen.value = false
 	focusedIndex.value = -1
 	searchQuery.value = ''
+	window.removeEventListener('scroll', handleViewportChange, true)
+	window.removeEventListener('resize', handleViewportChange)
 }
+
+onUnmounted(() => {
+	window.removeEventListener('scroll', handleViewportChange, true)
+	window.removeEventListener('resize', handleViewportChange)
+})
 
 const toggleOptions = () => (isOpen.value ? closeOptions() : openOptions())
 
@@ -192,7 +217,7 @@ const classes = computed(() => {
 			</label>
 		</div>
 
-		<div class="NeoSelect-inputWrapper">
+		<div ref="wrapperRef" class="NeoSelect-inputWrapper">
 			<div v-if="mode === 'multi' && selectedValues.length > 0" class="NeoSelect-selectedTags">
 				<NeoBadge
 					v-for="value in selectedValues"
@@ -241,44 +266,48 @@ const classes = computed(() => {
 				@click.prevent.stop="toggleOptions"
 			/>
 
-			<ul
-				v-show="isOpen"
-				ref="listRef"
-				class="NeoSelect-options"
-				role="listbox"
-				:id="`${instanceId}-popup_listbox`"
-				:aria-labelledby="`${instanceId}-${props.name}`"
-				:aria-multiselectable="mode === 'multi'"
-			>
-				<li
-					v-for="(option, index) in filteredOptions"
-					:key="option.value"
-					role="option"
-					:id="`option-${instanceId}-${index}`"
-					:aria-selected="isSelected(option.value)"
-					:tabindex="focusedIndex === index ? 0 : -1"
-					:class="[
-						'NeoSelect-option',
-						{ selected: isSelected(option.value), focused: focusedIndex === index },
-					]"
-					@click="selectOption(option)"
-					@mousedown.prevent
-					@mouseenter="focusedIndex = index"
+			<Teleport to="body">
+				<ul
+					v-show="isOpen"
+					ref="listRef"
+					class="NeoSelect-options"
+					:class="classes"
+					role="listbox"
+					:id="`${instanceId}-popup_listbox`"
+					:aria-labelledby="`${instanceId}-${props.name}`"
+					:aria-multiselectable="mode === 'multi'"
+					:style="dropdownStyle"
 				>
-					<NeoCheckbox
-						v-if="mode === 'multi'"
-						:name="`${instanceId}-option-${option.value}`"
-						:value="option.value"
-						:checked="isSelected(option.value)"
-						:color="props.color"
-						:ariaLabel="option.label"
-						size="small"
-						class="NeoSelect-checkbox"
-						@click.stop
-					/>
-					<span aria-hidden="true">{{ option.label }}</span>
-				</li>
-			</ul>
+					<li
+						v-for="(option, index) in filteredOptions"
+						:key="option.value"
+						role="option"
+						:id="`option-${instanceId}-${index}`"
+						:aria-selected="isSelected(option.value)"
+						:tabindex="focusedIndex === index ? 0 : -1"
+						:class="[
+							'NeoSelect-option',
+							{ selected: isSelected(option.value), focused: focusedIndex === index },
+						]"
+						@click="selectOption(option)"
+						@mousedown.prevent
+						@mouseenter="focusedIndex = index"
+					>
+						<NeoCheckbox
+							v-if="mode === 'multi'"
+							:name="`${instanceId}-option-${option.value}`"
+							:value="option.value"
+							:checked="isSelected(option.value)"
+							:color="props.color"
+							:ariaLabel="option.label"
+							size="small"
+							class="NeoSelect-checkbox"
+							@click.stop
+						/>
+						<span aria-hidden="true">{{ option.label }}</span>
+					</li>
+				</ul>
+			</Teleport>
 		</div>
 
 		<div v-if="props.helpText || props.errorMessage" class="NeoSelect-messageWrapper">
@@ -349,53 +378,10 @@ const classes = computed(() => {
 		position: relative;
 	}
 
-	& .NeoSelect-options {
-		background: var(--NeoSelect-color-input);
-		border: 1px solid var(--NeoSelect-color-border);
-		border-radius: var(--NeoSelect-sizing-optionsBorderRadius);
-		box-shadow: 0 var(--NeoSelect-sizing-optionsShadowOffsetBlock)
-			var(--NeoSelect-sizing-optionsShadowBlur) rgb(0 0 0 / 15%);
-		inset-block-start: 100%;
-		inset-inline: 0;
-		list-style: none;
-		margin: var(--NeoSelect-sizing-optionsMarginBlockStart) 0 0;
-		max-block-size: 240px;
-		overflow-y: auto;
-		padding: var(--NeoSelect-sizing-optionsPaddingBlock) 0;
-		position: absolute;
-		z-index: 1000;
-	}
-
-	& .NeoSelect-option {
-		align-items: center;
-		color: var(--NeoSelect-color-inputText);
-		cursor: pointer;
-		display: flex;
-		font-size: var(--NeoSelect-sizing-fontSize);
-		gap: var(--NeoSelect-sizing-optionItemGap);
-		padding: var(--NeoSelect-sizing-optionItemPaddingBlock)
-			var(--NeoSelect-sizing-optionItemPaddingInline);
-
-		&:hover,
-		&.focused {
-			background-color: var(--NeoSelect-color-backgroundSelected);
-			color: var(--NeoSelect-color-textSelected);
-		}
-
-		&.selected {
-			font-weight: 600;
-		}
-	}
-
 	& .NeoSelect-label {
 		color: var(--NeoSelect-color-label);
 		font-size: var(--NeoSelect-sizing-labelFontSize);
 		font-weight: 600;
-	}
-
-	& .NeoSelect-checkbox {
-		flex-shrink: 0;
-		pointer-events: none;
 	}
 
 	& .NeoSelect-selectedTags {
@@ -405,5 +391,47 @@ const classes = computed(() => {
 		gap: var(--NeoSelect-sizing-tagGap);
 		padding: var(--NeoSelect-sizing-tagPaddingBlock) var(--NeoSelect-sizing-tagPaddingInline);
 	}
+}
+
+/* Teleported to body — not nested under .NeoSelect */
+.NeoSelect-options {
+	background: var(--NeoSelect-color-input);
+	border: 1px solid var(--NeoSelect-color-border);
+	border-radius: var(--NeoSelect-sizing-optionsBorderRadius);
+	box-shadow: 0 var(--NeoSelect-sizing-optionsShadowOffsetBlock)
+		var(--NeoSelect-sizing-optionsShadowBlur) rgb(0 0 0 / 15%);
+	list-style: none;
+	margin: var(--NeoSelect-sizing-optionsMarginBlockStart) 0 0;
+	max-block-size: 240px;
+	overflow-y: auto;
+	padding: var(--NeoSelect-sizing-optionsPaddingBlock) 0;
+	position: fixed;
+	z-index: 1000;
+}
+
+.NeoSelect-option {
+	align-items: center;
+	color: var(--NeoSelect-color-inputText);
+	cursor: pointer;
+	display: flex;
+	font-size: var(--NeoSelect-sizing-fontSize);
+	gap: var(--NeoSelect-sizing-optionItemGap);
+	padding: var(--NeoSelect-sizing-optionItemPaddingBlock)
+		var(--NeoSelect-sizing-optionItemPaddingInline);
+
+	&:hover,
+	&.focused {
+		background-color: var(--NeoSelect-color-backgroundSelected);
+		color: var(--NeoSelect-color-textSelected);
+	}
+
+	&.selected {
+		font-weight: 600;
+	}
+}
+
+.NeoSelect-checkbox {
+	flex-shrink: 0;
+	pointer-events: none;
 }
 </style>
