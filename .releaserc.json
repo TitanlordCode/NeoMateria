@@ -1,24 +1,28 @@
 {
-	"branches": [
-		"main",
-		{ "name": "develop", "channel": "dev", "prerelease": "dev" }
-	],
+	"branches": ["main", { "name": "develop", "channel": "dev", "prerelease": "dev" }],
 	"plugins": [
 		[
 			"@semantic-release/commit-analyzer",
 			{
 				"preset": "angular",
-				"releaseRules": [
-					{ "breaking": true, "release": "minor" }
-				]
+				"releaseRules": [{ "breaking": true, "release": "minor" }]
 			}
 		],
 		"@semantic-release/release-notes-generator",
+		["@semantic-release/changelog", { "changelogFile": "CHANGELOG.md" }],
 		[
-			"@semantic-release/changelog",
-			{ "changelogFile": "CHANGELOG.md" }
+			"@semantic-release/npm",
+			{
+				"pkgRoot": "."
+			}
 		],
-		"@semantic-release/npm",
+		[
+			"@semantic-release/git",
+			{
+				"assets": ["package.json", "package-lock.json", "CHANGELOG.md"],
+				"message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+			}
+		],
 		"@semantic-release/github"
 	]
 }
