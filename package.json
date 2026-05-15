@@ -113,6 +113,9 @@
 	"publishConfig": {
 		"access": "public"
 	},
+	"overrides": {
+		"@semantic-release/npm": "^13.1.5"
+	},
 	"lint-staged": {
 		"*.{ts,tsx,vue}": [
 			"eslint --fix",

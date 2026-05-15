@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3-vite'
+import { defineComponent } from 'vue'
 import { userEvent, within } from 'storybook/test'
 
 import NeoSelect from './NeoSelect.vue'
@@ -140,6 +141,29 @@ export const MultiSelectOpen: Story = {
 		selectValue: ['apple'],
 	},
 	play: openSelectPlay,
+}
+
+export const OpenInClippingContainer: Story = {
+	tags: ['snapshot'],
+	play: openSelectPlay,
+	render: (args: NeoSelectProps) =>
+		defineComponent({
+			name: 'OpenInClippingContainerRender',
+			setup() {
+				return () => (
+					<div
+						style={{
+							border: '1px dashed grey',
+							maxBlockSize: '80px',
+							overflow: 'hidden',
+							padding: '8px',
+						}}
+					>
+						<NeoSelect {...args} />
+					</div>
+				)
+			},
+		}),
 }
 
 export const WithLabel: Story = {
