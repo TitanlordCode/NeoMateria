@@ -167,7 +167,8 @@ jobs:
           fetch-depth: 0
 
       - name: 🏷️ Fetch all tags
-        run: git fetch --tags --force
+        run: |
+          git fetch --tags --force --prune-tags origin
 
       - name: 🧱 Setup Node.js
         uses: actions/setup-node@v4
