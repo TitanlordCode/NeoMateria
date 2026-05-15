@@ -1,3 +1,10 @@
+# [0.1.0-dev.3](https://github.com/TitanlordCode/NeoMateria/compare/v0.1.0-dev.2...v0.1.0-dev.3) (2026-05-15)
+
+
+### Bug Fixes
+
+* **Select:** teleport dropdown to body to escape overflow:hidden ancestors ([#32](https://github.com/TitanlordCode/NeoMateria/issues/32)) ([51a8160](https://github.com/TitanlordCode/NeoMateria/commit/51a8160f631428afce0c75fa20ae931a4f13ab0b))
+
 # [0.1.0-dev.2](https://github.com/TitanlordCode/NeoMateria/compare/v0.1.0-dev.1...v0.1.0-dev.2) (2026-05-15)
 
 
