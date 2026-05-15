@@ -1,3 +1,10 @@
+# [0.1.0-dev.2](https://github.com/TitanlordCode/NeoMateria/compare/v0.1.0-dev.1...v0.1.0-dev.2) (2026-05-15)
+
+
+### Bug Fixes
+
+* **ci:** copilot possible fix ([806ae85](https://github.com/TitanlordCode/NeoMateria/commit/806ae85383ce62be91314d98e160b2295e24ef99))
+
 # [0.1.0-dev.1](https://github.com/TitanlordCode/NeoMateria/compare/v0.0.2...v0.1.0-dev.1) (2026-05-14)
 
 
