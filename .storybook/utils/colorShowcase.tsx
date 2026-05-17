@@ -61,6 +61,11 @@ const NonWCAGCompliantEntries: NonWCAGCompliantEntry[] = [
 		themes: ['light'],
 	},
 	{
+		component: 'NeoProgressBar',
+		variants: ['default'],
+		themes: ['light'],
+	},
+	{
 		component: 'NeoText',
 		variants: [],
 		themes: ['light'],
