@@ -2,10 +2,15 @@
 import { computed } from 'vue'
 import type { NeoProgressBarProps } from './NeoProgressBarTypes'
 import { getClassNames } from '@/utils/classNames'
+import { formatPercent } from '@/utils/formatPercent'
 
 const props = defineProps<NeoProgressBarProps>()
 
 const clampedValue = computed(() => Math.min(100, Math.max(0, props.value)))
+
+const formattedValue = computed(() =>
+	formatPercent(clampedValue.value, { decimals: props.decimals, locale: props.locale }),
+)
 
 const classes = computed(() => {
 	const barClasses = getClassNames({
@@ -27,6 +32,7 @@ const classes = computed(() => {
 		:aria-valuenow="clampedValue"
 		aria-valuemin="0"
 		aria-valuemax="100"
+		:aria-valuetext="`${formattedValue}%`"
 		:aria-label="props.ariaLabel"
 	>
 		<div class="NeoProgressBar-fill" :style="{ inlineSize: `${clampedValue}%` }" />
