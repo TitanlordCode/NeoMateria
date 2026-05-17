@@ -126,33 +126,45 @@ jobs:
     if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
 
     steps:
-      - name: ⬇️ Checkout repo
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
       - name: 📥 Download Storybook artifact
         uses: actions/download-artifact@v4
         with:
           name: storybook-static
           path: storybook-static
 
-      - name: 🚀 Deploy to GitHub Pages (Release)
-        if: github.ref == 'refs/heads/main'
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: storybook-static
-          destination_dir: .
+      - name: 🚀 Deploy to GitHub Pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DEPLOY_REF: ${{ github.ref }}
+          DEPLOY_SHA: ${{ github.sha }}
+          DEPLOY_REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
 
-      - name: 🚀 Deploy to GitHub Pages (Dev)
-        if: github.ref == 'refs/heads/develop'
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: storybook-static
-          destination_dir: dev
-          keep_files: true
+          git clone --branch gh-pages --depth 1 \
+            "https://x-access-token:${GITHUB_TOKEN}@github.com/${DEPLOY_REPO}.git" gh-pages-deploy
+
+          cd gh-pages-deploy
+
+          if [ "$DEPLOY_REF" = "refs/heads/main" ]; then
+            find . -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +
+            cp -a ../storybook-static/. .
+          else
+            rm -rf dev
+            mkdir -p dev
+            cp -a ../storybook-static/. dev/
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add -A
+          if git diff --staged --quiet; then
+            echo "No changes to deploy"
+          else
+            git commit -m "Deploy Storybook (${DEPLOY_SHA})"
+            git push origin gh-pages
+          fi
 
   release:
     needs: [lint, test, build-library]
