@@ -1,3 +1,10 @@
+# [0.1.0-dev.6](https://github.com/TitanlordCode/NeoMateria/compare/v0.1.0-dev.5...v0.1.0-dev.6) (2026-05-17)
+
+
+### Features
+
+* **theming:** add --neo-theme-colorGraphic for WCAG 1.4.11 ([#37](https://github.com/TitanlordCode/NeoMateria/issues/37)) ([d8df355](https://github.com/TitanlordCode/NeoMateria/commit/d8df355657977a124503264bd9986de178fd6a9a))
+
 # [0.1.0-dev.5](https://github.com/TitanlordCode/NeoMateria/compare/v0.1.0-dev.4...v0.1.0-dev.5) (2026-05-17)
 
 
