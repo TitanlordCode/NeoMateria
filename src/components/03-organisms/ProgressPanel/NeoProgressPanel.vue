@@ -2,6 +2,7 @@
 import { computed, ref } from 'vue'
 import type { NeoProgressPanelProps, NeoProgressPanelSlots } from './NeoProgressPanelTypes'
 import { getClassNames } from '@/utils/classNames'
+import { formatPercent } from '@/utils/formatPercent'
 import NeoImage from '@/components/01-atoms/Image/NeoImage.vue'
 import NeoProgressBar from '@/components/01-atoms/ProgressBar/NeoProgressBar.vue'
 import NeoHeadlineTertiary from '@/components/01-atoms/Headline/NeoHeadlineTertiary/NeoHeadlineTertiary.vue'
@@ -26,8 +27,12 @@ const classes = computed(() => {
 	return `${panelClasses} ${themedClasses}`
 })
 
+const formattedValue = computed(() =>
+	formatPercent(props.value, { decimals: props.decimals, locale: props.locale }),
+)
+
 const progressAriaLabel = computed(() => {
-	const base = `${props.value}%`
+	const base = `${formattedValue.value}%`
 	return props.valueLabel ? `${base} ${props.valueLabel}` : base
 })
 
@@ -74,11 +79,13 @@ const handleImageError = () => {
 						:value="props.value"
 						:color="props.color"
 						:ariaLabel="progressAriaLabel"
+						:decimals="props.decimals"
+						:locale="props.locale"
 						size="small"
 						rounded
 						class="NeoProgressPanel-bar"
 					/>
-					<span class="NeoProgressPanel-value">{{ props.value }}%</span>
+					<span class="NeoProgressPanel-value">{{ formattedValue }}%</span>
 				</div>
 				<span v-if="props.valueLabel" class="NeoProgressPanel-valueLabel">{{
 					props.valueLabel

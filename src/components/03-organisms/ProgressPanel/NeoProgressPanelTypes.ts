@@ -22,4 +22,8 @@ export interface NeoProgressPanelProps {
 	href?: string
 	external?: boolean
 	rounded?: boolean
+	/** Maximum number of fraction digits to display for the percent value. Trailing zeros are stripped. Defaults to 2. */
+	decimals?: number
+	/** BCP 47 locale used to format the percent value (e.g. `de-DE` → `75,12 %`). Falls back to `<html lang>` then runtime default. */
+	locale?: string
 }

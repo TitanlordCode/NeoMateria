@@ -84,6 +84,18 @@ const meta = {
 				'Optional single pennant overlaid on the top-right corner of the image. Automatically scaled to fit within 30% of the image width.',
 			table: { category: 'Slots' },
 		},
+		decimals: {
+			control: { type: 'number', min: 0, max: 6, step: 1 },
+			description:
+				'Maximum number of fraction digits to display for the percent value. Trailing zeros are stripped. Defaults to `2`.',
+			table: { category: 'Content' },
+		},
+		locale: {
+			control: 'text',
+			description:
+				'BCP 47 locale (e.g. `de-DE`) controlling the decimal separator. Defaults to `<html lang>`, then the runtime default.',
+			table: { category: 'Content' },
+		},
 	},
 	args: {
 		color: 'blue',
@@ -379,6 +391,80 @@ export const TopThree: Story = {
     </NeoPennant>
   </template>
 </NeoProgressPanel>`,
+			},
+		},
+	},
+}
+
+export const WithDecimals: Story = {
+	tags: ['snapshot'],
+	args: {
+		value: 73.456,
+		decimals: 2,
+		valueLabel: 'completed',
+	},
+	render: (args: NeoProgressPanelProps) => {
+		return defineComponent({
+			name: 'WithDecimalsRender',
+			setup() {
+				return () => (
+					<div style={{ inlineSize: '320px', padding: '16px' }}>
+						<NeoProgressPanel {...args} />
+					</div>
+				)
+			},
+		})
+	},
+	parameters: {
+		docs: {
+			source: {
+				code: `<NeoProgressPanel
+  color="blue"
+  image-src="..."
+  image-alt="Cover image"
+  title="Item Title"
+  :value="73.456"
+  :decimals="2"
+  value-label="completed"
+/>`,
+			},
+		},
+	},
+}
+
+export const GermanLocale: Story = {
+	tags: ['snapshot'],
+	args: {
+		value: 73.456,
+		decimals: 2,
+		locale: 'de-DE',
+		valueLabel: 'erledigt',
+	},
+	render: (args: NeoProgressPanelProps) => {
+		return defineComponent({
+			name: 'GermanLocaleRender',
+			setup() {
+				return () => (
+					<div style={{ inlineSize: '320px', padding: '16px' }}>
+						<NeoProgressPanel {...args} />
+					</div>
+				)
+			},
+		})
+	},
+	parameters: {
+		docs: {
+			source: {
+				code: `<NeoProgressPanel
+  color="blue"
+  image-src="..."
+  image-alt="Cover image"
+  title="Item Title"
+  :value="73.456"
+  :decimals="2"
+  locale="de-DE"
+  value-label="erledigt"
+/>`,
 			},
 		},
 	},
