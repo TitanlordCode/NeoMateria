@@ -13,6 +13,7 @@
 	--NeoNavigation-sizing-dropdownItemPaddingBlock: var(--neo-spacing-core-xs);
 	--NeoNavigation-sizing-dropdownItemPaddingInline: var(--neo-spacing-core-sm)
 		var(--neo-spacing-core-md);
+	--NeoNavigation-sizing-flyoutSlideOffset: var(--neo-spacing-core-sm);
 	--NeoNavigation-sizing-actionsGap: var(--neo-spacing-core-lg);
 	--NeoNavigation-sizing-mobileToggleGap: var(--neo-spacing-core-xs);
 	--NeoNavigation-sizing-mobileLinksPaddingBlockStart: var(--neo-spacing-core-lg);

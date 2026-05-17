@@ -63,6 +63,8 @@ const classes = computed(() => {
 
 <style scoped>
 .NeoImage {
+	--NeoImage-sizing-errorPadding: var(--neo-spacing-core-lg);
+
 	display: inline-block;
 	font-family: inherit;
 	overflow: hidden;
@@ -148,7 +150,7 @@ const classes = computed(() => {
 	inline-size: 100%;
 	inset: 0;
 	justify-content: center;
-	padding: 16px;
+	padding: var(--NeoImage-sizing-errorPadding);
 	position: absolute;
 	text-align: center;
 }

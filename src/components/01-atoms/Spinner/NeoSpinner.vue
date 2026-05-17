@@ -39,7 +39,7 @@ const classes = computed(() => {
 	display: inline-flex;
 	flex-direction: column;
 	font-family: inherit;
-	gap: 8px;
+	gap: var(--NeoSpinner-sizing-gap);
 }
 
 .NeoSpinner--row {
