@@ -1,3 +1,10 @@
+# [0.1.0-dev.7](https://github.com/TitanlordCode/NeoMateria/compare/v0.1.0-dev.6...v0.1.0-dev.7) (2026-05-17)
+
+
+### Features
+
+* **NeoToast:** add transient notification component with useToast composable ([#38](https://github.com/TitanlordCode/NeoMateria/issues/38)) ([5b6d9ec](https://github.com/TitanlordCode/NeoMateria/commit/5b6d9ec2209bd066c4fd7acaefc04eff431c41c8))
+
 # [0.1.0-dev.6](https://github.com/TitanlordCode/NeoMateria/compare/v0.1.0-dev.5...v0.1.0-dev.6) (2026-05-17)
 
 
