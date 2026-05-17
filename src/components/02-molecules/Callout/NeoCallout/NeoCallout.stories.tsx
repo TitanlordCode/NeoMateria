@@ -7,6 +7,7 @@ import { createA11yPlay } from '../../../../../.storybook/utils/createA11yPlay'
 import NeoCallout from './NeoCallout.vue'
 import type { NeoCalloutProps } from './NeoCalloutTypes'
 import { calloutVariants } from './NeoCalloutTypes'
+import NeoLink from '@/components/01-atoms/Link/NeoLink.vue'
 import { InfoIcon } from '@/components/01-atoms/Icon/defaultIcons'
 import { infoIconSvg } from '../../../../../.storybook/utils/iconSnippets'
 
@@ -125,6 +126,130 @@ export const Filled: Story = {
 			},
 		},
 	},
+}
+
+export const WithLink: Story = {
+	tags: ['snapshot'],
+	args: { color: 'blue', variant: 'bordered' },
+	render: (args: NeoCalloutProps) => {
+		return defineComponent({
+			name: 'WithLinkRender',
+			setup() {
+				return () => (
+					<NeoCallout {...args} v-slots={{ icon: () => InfoIcon }}>
+						This feature is currently in beta.{' '}
+						<NeoLink href="https://example.com/changelog" size="medium" color="blue">
+							Read the changelog
+						</NeoLink>{' '}
+						for the latest updates.
+					</NeoCallout>
+				)
+			},
+		})
+	},
+	parameters: {
+		docs: {
+			source: {
+				code: `<NeoCallout color="blue" variant="bordered">
+  <template #icon>${infoIconSvg}</template>
+  This feature is currently in beta.
+  <NeoLink href="https://example.com/changelog" size="medium" color="blue">
+    Read the changelog
+  </NeoLink>
+  for the latest updates.
+</NeoCallout>`,
+			},
+		},
+	},
+}
+
+export const FilledWithLink: Story = {
+	tags: ['snapshot'],
+	args: { color: 'green', variant: 'filled' },
+	render: (args: NeoCalloutProps) => {
+		return defineComponent({
+			name: 'FilledWithLinkRender',
+			setup() {
+				return () => (
+					<NeoCallout {...args} v-slots={{ icon: () => InfoIcon }}>
+						Your changes were saved successfully.{' '}
+						<NeoLink href="https://example.com/details" size="medium" color="blue">
+							View details
+						</NeoLink>
+						.
+					</NeoCallout>
+				)
+			},
+		})
+	},
+	parameters: {
+		docs: {
+			source: {
+				code: `<NeoCallout color="green" variant="filled">
+  <template #icon>${infoIconSvg}</template>
+  Your changes were saved successfully.
+  <NeoLink href="https://example.com/details" size="medium" color="blue">
+    View details
+  </NeoLink>.
+</NeoCallout>`,
+			},
+		},
+	},
+}
+
+export const AllColorsWithLink: Story = {
+	tags: ['snapshot'],
+	parameters: {
+		snapshot: { viewports: ['sm', 'xl'] },
+	},
+	render: createAllColorsRender<typeof NeoCallout>(NeoCallout, [
+		{
+			name: 'Bordered with link',
+			variant: 'bordered',
+			renderComponent: (color, Component) =>
+				h(
+					Component,
+					{ color, variant: 'bordered' },
+					{
+						default: () => [
+							`${color} bordered — `,
+							h(
+								NeoLink,
+								{ href: 'https://example.com', size: 'medium', color: 'blue' },
+								{ default: () => 'nested link' },
+							),
+						],
+						icon: () => InfoIcon,
+					},
+				),
+		},
+		{
+			name: 'Filled with link',
+			variant: 'filled',
+			renderComponent: (color, Component) =>
+				h(
+					Component,
+					{ color, variant: 'filled' },
+					{
+						default: () => [
+							`${color} filled — `,
+							h(
+								NeoLink,
+								{ href: 'https://example.com', size: 'medium', color: 'blue' },
+								{ default: () => 'nested link' },
+							),
+						],
+						icon: () => InfoIcon,
+					},
+				),
+		},
+	]),
+}
+
+export const AllColorsWithLinkA11y: Story = {
+	...AllColorsWithLink,
+	tags: ['!dev', 'test-only'],
+	play: createA11yPlay(),
 }
 
 export const RTL: Story = {
