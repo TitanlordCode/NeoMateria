@@ -1,3 +1,10 @@
+# [0.1.0-dev.4](https://github.com/TitanlordCode/NeoMateria/compare/v0.1.0-dev.3...v0.1.0-dev.4) (2026-05-17)
+
+
+### Features
+
+* **Callout:** support nested NeoLink with WCAG-safe contrast ([#33](https://github.com/TitanlordCode/NeoMateria/issues/33)) ([c41e4bf](https://github.com/TitanlordCode/NeoMateria/commit/c41e4bf1cadd5a6938b7c9ecf0f5a1ee88cfa5bb))
+
 # [0.1.0-dev.3](https://github.com/TitanlordCode/NeoMateria/compare/v0.1.0-dev.2...v0.1.0-dev.3) (2026-05-15)
 
 
