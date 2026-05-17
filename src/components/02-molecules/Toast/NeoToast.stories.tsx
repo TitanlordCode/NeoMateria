@@ -168,6 +168,13 @@ export const LongMessage: Story = {
 				'Your subscription will renew automatically in 7 days. Update your payment method now to avoid any interruption to your access — this can be done from the billing settings page.',
 		}),
 	},
+	parameters: {
+		docs: {
+			source: {
+				code: `toast.warning('Your subscription will renew automatically in 7 days. Update your payment method now to avoid any interruption to your access — this can be done from the billing settings page.')`,
+			},
+		},
+	},
 }
 
 export const NoIcon: Story = {
@@ -175,12 +182,25 @@ export const NoIcon: Story = {
 	args: {
 		entry: buildEntry({ severity: 'success', message: 'Done.', showIcon: false }),
 	},
+	parameters: {
+		docs: {
+			source: {
+				code: `toast.success('Done.', { icon: false })`,
+			},
+		},
+	},
 }
 
 export const AllColors: Story = {
 	tags: ['snapshot'],
 	parameters: {
 		snapshot: { viewports: ['sm', 'xl'] },
+		docs: {
+			source: {
+				code: `// Override the severity → color mapping with any brand color.
+toast.info('Themed in purple.', { color: 'purple' })`,
+			},
+		},
 	},
 	render: () => {
 		return defineComponent({
@@ -211,6 +231,12 @@ export const AllColorsOnDark: Story = {
 	globals: { backgrounds: '#000' },
 	parameters: {
 		snapshot: { viewports: ['sm', 'xl'] },
+		docs: {
+			source: {
+				code: `// Toasts adapt to dark surfaces automatically when nested in u-onDark.
+toast.info('Themed in purple.', { color: 'purple' })`,
+			},
+		},
 	},
 	render: () => {
 		return defineComponent({
