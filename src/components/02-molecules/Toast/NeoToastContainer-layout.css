@@ -1,0 +1,5 @@
+.NeoToastContainer {
+	--NeoToastContainer-sizing-edgeOffset: var(--neo-spacing-core-lg);
+	--NeoToastContainer-sizing-gap: var(--neo-gap-sm);
+	--NeoToastContainer-sizing-slideOffset: var(--neo-spacing-core-lg);
+}

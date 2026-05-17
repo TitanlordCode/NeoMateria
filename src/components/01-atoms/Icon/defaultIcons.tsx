@@ -22,6 +22,9 @@ import {
 	moreHorizontalIconSvg,
 	infoIconSvg,
 	starIconSvg,
+	checkIconSvg,
+	warningIconSvg,
+	errorIconSvg,
 } from './iconStrings'
 
 export const ChevronDownIcon = createStaticVNode(chevronDownIconSvg, 1)
@@ -34,3 +37,6 @@ export const HeartFilledIcon = createStaticVNode(heartFilledIconSvg, 1)
 export const MoreHorizontalIcon = createStaticVNode(moreHorizontalIconSvg, 1)
 export const InfoIcon = createStaticVNode(infoIconSvg, 1)
 export const StarIcon = createStaticVNode(starIconSvg, 1)
+export const CheckIcon = createStaticVNode(checkIconSvg, 1)
+export const WarningIcon = createStaticVNode(warningIconSvg, 1)
+export const ErrorIcon = createStaticVNode(errorIconSvg, 1)

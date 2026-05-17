@@ -1,0 +1,15 @@
+.NeoToast {
+	--NeoToast-color-background: var(--neo-color-white);
+	--NeoToast-color-border: var(--neo-theme-colorAccessible);
+	--NeoToast-color-icon: var(--neo-theme-colorAccessible);
+	--NeoToast-color-text: var(--neo-color-grey900);
+	--NeoToast-color-shadow: 0 8px 24px rgb(0 0 0 / 12%);
+
+	@mixin onDark {
+		--NeoToast-color-background: var(--neo-color-grey900);
+		--NeoToast-color-border: var(--neo-theme-colorAccessible);
+		--NeoToast-color-icon: var(--neo-theme-colorAccessible);
+		--NeoToast-color-text: var(--neo-color-white);
+		--NeoToast-color-shadow: 0 8px 24px rgb(0 0 0 / 40%);
+	}
+}

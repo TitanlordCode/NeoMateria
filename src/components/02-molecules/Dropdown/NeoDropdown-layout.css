@@ -1,6 +1,7 @@
 .NeoDropdown {
 	--NeoDropdown-sizing-panelMaxInlineSize: 320px;
 	--NeoDropdown-sizing-panelOffset: 4px;
+	--NeoDropdown-sizing-panelSlideOffset: var(--neo-spacing-core-xs);
 	--NeoDropdown-sizing-borderRadius: var(--neo-radius-md);
 }
 

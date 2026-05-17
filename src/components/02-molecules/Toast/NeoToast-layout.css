@@ -1,0 +1,8 @@
+.NeoToast {
+	--NeoToast-sizing-borderWidth: 1px;
+	--NeoToast-sizing-borderRadius: var(--neo-radius-lg);
+	--NeoToast-sizing-padding: var(--neo-spacing-core-md);
+	--NeoToast-sizing-gap: var(--neo-spacing-core-md);
+	--NeoToast-sizing-minWidth: 280px;
+	--NeoToast-sizing-maxWidth: 420px;
+}

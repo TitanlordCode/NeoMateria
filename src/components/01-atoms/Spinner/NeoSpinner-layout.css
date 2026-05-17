@@ -1,3 +1,7 @@
+.NeoSpinner {
+	--NeoSpinner-sizing-gap: var(--neo-gap-sm);
+}
+
 .NeoSpinner--small {
 	--NeoSpinner-sizing-size: 24px;
 	--NeoSpinner-sizing-borderWidth: 2px;

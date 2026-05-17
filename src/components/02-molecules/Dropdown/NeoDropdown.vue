@@ -127,13 +127,13 @@ onUnmounted(() => {
 .NeoDropdown-panel-enter-from,
 .NeoDropdown-panel-leave-to {
 	opacity: 0;
-	transform: translateY(-4px);
+	transform: translateY(calc(var(--NeoDropdown-sizing-panelSlideOffset) * -1));
 }
 
 .NeoDropdown-panel--top-start.NeoDropdown-panel-enter-from,
 .NeoDropdown-panel--top-start.NeoDropdown-panel-leave-to,
 .NeoDropdown-panel--top-end.NeoDropdown-panel-enter-from,
 .NeoDropdown-panel--top-end.NeoDropdown-panel-leave-to {
-	transform: translateY(4px);
+	transform: translateY(var(--NeoDropdown-sizing-panelSlideOffset));
 }
 </style>

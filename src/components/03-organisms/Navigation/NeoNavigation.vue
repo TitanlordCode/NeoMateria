@@ -697,6 +697,6 @@ defineExpose<NeoNavigationExpose>({ close: () => toggleMobileMenu(false) })
 .NeoNavigation-flyout-enter-from,
 .NeoNavigation-flyout-leave-to {
 	opacity: 0;
-	transform: translateY(-8px);
+	transform: translateY(calc(var(--NeoNavigation-sizing-flyoutSlideOffset) * -1));
 }
 </style>

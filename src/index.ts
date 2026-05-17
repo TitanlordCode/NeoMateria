@@ -69,15 +69,18 @@ export { default as NeoIcon } from '@/components/01-atoms/Icon/NeoIcon.vue'
 export { type NeoIconProps, type NeoIconSlots } from '@/components/01-atoms/Icon/NeoIconTypes'
 export {
 	AddIcon,
+	CheckIcon,
 	ChevronDownIcon,
 	CloseIcon,
 	DeleteIcon,
+	ErrorIcon,
 	HeartFilledIcon,
 	HeartIcon,
 	InfoIcon,
 	MenuIcon,
 	MoreHorizontalIcon,
 	StarIcon,
+	WarningIcon,
 } from '@/components/01-atoms/Icon/defaultIcons'
 
 export { default as NeoNavItem } from '@/components/01-atoms/NavItem/NeoNavItem.vue'
@@ -143,6 +146,23 @@ export {
 	type NeoSheetProps,
 	type NeoSheetVariant,
 } from '@/components/02-molecules/Sheet/NeoSheetTypes'
+
+export { default as NeoToast } from '@/components/02-molecules/Toast/NeoToast.vue'
+export { default as NeoToastContainer } from '@/components/02-molecules/Toast/NeoToastContainer.vue'
+export { useToast } from '@/components/02-molecules/Toast/useToast'
+export {
+	toastSeverities,
+	toastPositions,
+	type NeoToastSeverity,
+	type NeoToastPosition,
+	type NeoToastOptions,
+	type NeoToastAction,
+	type NeoToastApi,
+	type NeoToastEntry,
+	type NeoToastProps,
+	type NeoToastSlots,
+	type NeoToastContainerProps,
+} from '@/components/02-molecules/Toast/NeoToastTypes'
 
 export { default as NeoCoverPanel } from '@/components/02-molecules/CoverPanel/NeoCoverPanel.vue'
 export {
