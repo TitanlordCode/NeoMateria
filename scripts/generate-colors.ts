@@ -283,11 +283,78 @@ Object.entries(flatColors).forEach(([colorName]) => {
 		}
 	}
 
+	// LIGHT MODE: --neo-theme-colorGraphic (graphical element on grey200 default track)
+	// WCAG 1.4.11 requires 3:1 between adjacent graphical colors. The default NeoProgressBar
+	// track is grey200 (#eee), so the fill needs to be dark enough to pass 3:1 against it.
+	// Try 700, 800, 900 first (darkest), fall back to lighter shades — yellow/amber cannot pass.
+	const graphicLightTrack = '#eeeeee'
+	const graphicLightShades = ['700', '800', '900', '600', '500']
+	let graphicLightColorVar = accessibleLightColorVar
+	let graphicLightAccessible = false
+
+	for (const testShade of graphicLightShades) {
+		const testKey = `${family}-${testShade}`
+		if (flatColors[testKey]) {
+			const testColor = toShortHex(flatColors[testKey])
+			if (isAccessible(graphicLightTrack, testColor, 3)) {
+				graphicLightColorVar = `${family}${testShade}`
+				graphicLightAccessible = true
+				break
+			}
+		}
+	}
+
+	if (!graphicLightAccessible) {
+		// Fall back to the darkest shade — best effort. Yellow and amber cannot reach 3:1
+		// against grey200 at any shade because their darkest variants are still too bright.
+		const darkestShade = ['900', '800', '700'].find(
+			(testShade) => flatColors[`${family}-${testShade}`],
+		)
+		if (darkestShade) {
+			graphicLightColorVar = `${family}${darkestShade}`
+			console.warn(
+				`⚠️  Warning: ${family} cannot achieve 3:1 graphical contrast on grey200 track. Using ${family}${darkestShade} as best effort.`,
+			)
+		}
+	}
+
+	// DARK MODE: --neo-theme-colorGraphic (graphical element on grey700 default track)
+	// Try 200, 100, 300 first (lightest), fall back to darker shades.
+	const graphicDarkTrack = '#616161'
+	const graphicDarkShades = ['200', '100', '300', '400', '500']
+	let graphicDarkColorVar = accessibleDarkColorVar
+	let graphicDarkAccessible = false
+
+	for (const testShade of graphicDarkShades) {
+		const testKey = `${family}-${testShade}`
+		if (flatColors[testKey]) {
+			const testColor = toShortHex(flatColors[testKey])
+			if (isAccessible(graphicDarkTrack, testColor, 3)) {
+				graphicDarkColorVar = `${family}${testShade}`
+				graphicDarkAccessible = true
+				break
+			}
+		}
+	}
+
+	if (!graphicDarkAccessible) {
+		const lightestShade = ['100', '200', '300'].find(
+			(testShade) => flatColors[`${family}-${testShade}`],
+		)
+		if (lightestShade) {
+			graphicDarkColorVar = `${family}${lightestShade}`
+			console.warn(
+				`⚠️  Warning: ${family} cannot achieve 3:1 graphical contrast on grey700 track. Using ${family}${lightestShade} as best effort.`,
+			)
+		}
+	}
+
 	// Special case: black inverts in dark mode (black background → white background)
 	// This allows black-colored components to gracefully flip to white when inside a dark context
 	if (family === 'black') {
 		darkModeColorVar = 'white'
 		accessibleDarkColorVar = 'white'
+		graphicDarkColorVar = 'white'
 	}
 
 	// Text colors: white for most colors, black for exceptions
@@ -321,6 +388,7 @@ Object.entries(flatColors).forEach(([colorName]) => {
 	--neo-theme-colorText: var(--neo-color-${textColor});
 	--neo-theme-colorAccent: var(--neo-color-${accentColorVar});
 	--neo-theme-colorAccessible: var(--neo-color-${accessibleLightColorVar});
+	--neo-theme-colorGraphic: var(--neo-color-${graphicLightColorVar});
 	--neo-theme-colorFilledBg: var(--neo-color-${fillLightColorVar});
 	--neo-theme-colorFilledBgDark: var(--neo-color-${fillDarkColorVar});
 
@@ -329,6 +397,7 @@ Object.entries(flatColors).forEach(([colorName]) => {
 		--neo-theme-colorText: var(--neo-color-black);
 		--neo-theme-colorAccent: var(--neo-color-${accentColorVar});
 		--neo-theme-colorAccessible: var(--neo-color-${accessibleDarkColorVar});
+		--neo-theme-colorGraphic: var(--neo-color-${graphicDarkColorVar});
 		--neo-theme-colorFilledBg: var(--neo-color-${fillLightColorVar});
 		--neo-theme-colorFilledBgDark: var(--neo-color-${fillDarkColorVar});
 	}
@@ -363,6 +432,7 @@ ${cssVars}
 /*   --neo-theme-colorText: Text color for use ON the main color (black/white based on WCAG) */
 /*   --neo-theme-colorAccent: Subtle accent color (shade 200) for focus states */
 /*   --neo-theme-colorAccessible: Accessible color for text/borders ON page background (shade 700 on light, 200 on dark) */
+/*   --neo-theme-colorGraphic: Graphical-contrast color for elements like progress bar fills (3:1 vs grey200 in light / grey700 in dark) */
 /*   --neo-theme-colorFilledBg: Subtle filled background color (shade 100) for filled/primary variant components */
 /*   --neo-theme-colorFilledBgDark: Dark filled background color (shade 900) for filled/primary variant in dark mode */
 ${themedClasses.join('\n\n')}
@@ -500,6 +570,7 @@ When you apply a color to a component (e.g., \`color="blue"\`), the theme system
 - **\`--neo-theme-colorText\`**: Text color for use ON the main color (auto-selected for WCAG AA compliance)
 - **\`--neo-theme-colorAccent\`**: Subtle accent color (shade 200) for focus states
 - **\`--neo-theme-colorAccessible\`**: Accessible color for text/borders ON page backgrounds
+- **\`--neo-theme-colorGraphic\`**: Graphical-contrast color tuned to pass WCAG 1.4.11 (3:1) against \`grey200\` (light) and \`grey700\` (dark) tracks. Use for progress bar fills, chart accents, and other non-text graphical elements.
 
 ### Accessibility Strategy
 

@@ -8,7 +8,13 @@ import type { VNode, Component as VueComponent } from 'vue'
 const surfaceColors = colors.filter((color): color is SurfaceColor => color !== 'white')
 
 import './colorShowcase.css'
-type NonWCAGCompliantEntry = { component: string; variants: string[]; themes: ('light' | 'dark')[] }
+type NonWCAGCompliantEntry = {
+	component: string
+	variants: string[]
+	themes: ('light' | 'dark')[]
+	/** Restrict the entry to specific colors. Omit to apply to all `blackTextColors`. */
+	colors?: Color[]
+}
 const NonWCAGCompliantEntries: NonWCAGCompliantEntry[] = [
 	{
 		component: 'NeoBadge',
@@ -64,6 +70,7 @@ const NonWCAGCompliantEntries: NonWCAGCompliantEntry[] = [
 		component: 'NeoProgressBar',
 		variants: ['default'],
 		themes: ['light'],
+		colors: ['yellow', 'amber'],
 	},
 	{
 		component: 'NeoText',
@@ -133,6 +140,13 @@ export const getColorWrapper = (
 	}
 
 	const nonWCAGEntry = NonWCAGCompliantEntries.find((entry) => entry.component === componentName)
+
+	// When the entry restricts to specific colors, skip components whose color isn't listed —
+	// they should render unwrapped (e.g. NeoProgressBar with orange now passes graphical contrast).
+	if (nonWCAGEntry?.colors && !nonWCAGEntry.colors.includes(color)) {
+		return children
+	}
+
 	const isNonWCAGVariant =
 		nonWCAGEntry &&
 		(nonWCAGEntry.variants.includes(variant) || nonWCAGEntry?.variants.length === 0) &&
