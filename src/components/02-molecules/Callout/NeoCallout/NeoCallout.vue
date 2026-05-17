@@ -62,4 +62,28 @@ const classes = computed(() => {
 	border: var(--NeoCallout-sizing-borderWidth) solid transparent;
 	color: var(--NeoCallout-color-text);
 }
+
+/* Nested NeoLink: inherit the callout's accessible text color so contrast is
+   guaranteed against any callout background. The link's own theme is ignored
+   in this context; an underline is added so the link remains identifiable
+   when it shares its color with surrounding callout text (WCAG G183). */
+.NeoCallout :deep(.NeoLink) {
+	--NeoLink-color-text: currentcolor;
+	--NeoLink-color-textHover: currentcolor;
+	--NeoLink-color-focus: currentcolor;
+
+	border-radius: 2px;
+	margin-inline: -2px;
+	padding-inline: 2px;
+	text-decoration: underline;
+	text-underline-offset: 3px;
+	transition:
+		background-color 0.15s ease,
+		text-decoration-thickness 0.15s ease;
+
+	&:hover {
+		background-color: color-mix(in srgb, currentcolor 15%, transparent);
+		text-decoration-thickness: 2px;
+	}
+}
 </style>
