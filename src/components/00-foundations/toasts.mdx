@@ -1,0 +1,171 @@
+
+import { Meta, Title } from '@storybook/addon-docs/blocks'
+
+<Meta title="Foundation/Toasts" parameters={{ backgrounds: { disable: true }, direction: { disable: true } }} />
+
+<Title>Toasts</Title>
+
+Transient notifications for the moments after an async action — saved, failed, dismissed, retrying. NeoMateria ships a first-class toast system so you don't have to roll your own with `v-if` and an inline `NeoCallout`.
+
+The design is **imperative**: trigger toasts from anywhere via `useToast()`, no state management library required. A single `<NeoToastContainer />` lives in your app shell and renders whatever's queued.
+
+---
+
+## Quick start
+
+```vue
+<!-- App.vue — mount once in your app shell -->
+<script setup lang="ts">
+import { NeoToastContainer } from 'neo-materia'
+</script>
+
+<template>
+  <RouterView />
+  <NeoToastContainer />
+</template>
+```
+
+```ts
+// any component, composable, store, or callback
+import { useToast } from 'neo-materia'
+
+const toast = useToast()
+toast.success('Settings saved.')
+```
+
+That's it. The composable is pure JavaScript — call it during setup, in event handlers, in stores, in router guards. Toasts triggered before the container mounts are queued and flushed once it appears.
+
+---
+
+## Severities and defaults
+
+| Severity | Default color | Default duration | ARIA live region |
+|----------|---------------|------------------|------------------|
+| `success` | `green`  | 5 s              | `polite` (`role="status"`) |
+| `info`    | `blue`   | 5 s              | `polite` (`role="status"`) |
+| `warning` | `amber`  | 8 s              | `assertive` (`role="alert"`) |
+| `error`   | `red`    | 0 (persistent)   | `assertive` (`role="alert"`) |
+
+Errors persist by design — the user should acknowledge them. All defaults are overridable per call (see *Options* below).
+
+---
+
+## Options
+
+Every severity method accepts a second argument:
+
+```ts
+toast.info('Project archived.', {
+  duration: 10000,                    // ms; 0 = persistent
+  closable: true,                     // show the × button (default)
+  color: 'purple',                    // override the severity → color mapping
+  icon: false,                        // hide the leading severity icon
+  ariaLive: 'assertive',              // override the ARIA live mode
+  action: {                           // optional action button
+    label: 'Undo',
+    onClick: (id) => unarchive(id),
+  },
+})
+```
+
+### Action buttons
+
+A single action lives alongside the message — typically `Undo`, `Retry`, or `View`. The callback receives the toast id and the action button is automatically dismissed when clicked.
+
+```ts
+toast.info('Email moved to trash.', {
+  action: { label: 'Undo', onClick: () => restore() },
+})
+```
+
+### `toast.promise()`
+
+For async flows, `toast.promise` shows a `loading` toast tied to the promise lifecycle, then replaces it in-place with the success or error result. The original promise is returned so you can `await` it normally.
+
+```ts
+const data = await toast.promise(saveDocument(payload), {
+  loading: 'Saving…',
+  success: (saved) => `Saved as ${saved.title}`,
+  error: (reason) => `Failed: ${(reason as Error).message}`,
+})
+```
+
+The replacement preserves the toast's position in the stack — no mount/unmount flicker.
+
+### Manual dismissal
+
+```ts
+const id = toast.error('Connection lost…', { duration: 0 })
+// later, when reconnected
+toast.dismiss(id)
+// or wipe everything
+toast.dismiss()
+```
+
+---
+
+## Container props
+
+`<NeoToastContainer>` is configured once at mount; per-toast options stay on the trigger call.
+
+| Prop       | Type                                                                                   | Default      | Notes |
+|------------|----------------------------------------------------------------------------------------|--------------|-------|
+| `position` | `'top-start' \| 'top-center' \| 'top-end' \| 'bottom-start' \| 'bottom-center' \| 'bottom-end'` | `'top-end'`  | Anchor edge in the viewport (logical, RTL-aware). |
+| `max`      | `number`                                                                               | `5`          | Concurrent toast cap. When exceeded, the oldest is evicted (FIFO). |
+| `zIndex`   | `number`                                                                               | `9999`       | Inline `z-index` on the floating container. |
+
+```vue
+<NeoToastContainer position="bottom-end" :max="3" />
+```
+
+Multiple containers in the same app are not supported — keep one mount point. If you need different positions for different toast types, wrap `useToast` with your own helper that picks the right configuration.
+
+---
+
+## Accessibility
+
+The component handles the standard ARIA wiring so you don't have to think about it:
+
+- `role="status"` + `aria-live="polite"` for success/info — announced after the current speech finishes
+- `role="alert"` + `aria-live="assertive"` for warning/error — announced immediately
+- The container is `role="region"` with `aria-label="Notifications"` so assistive tech can navigate to it
+- Auto-dismiss timers **pause on hover and focus-within** — screen-reader and keyboard users aren't rushed
+- Toasts never steal focus by default. If you include an `action`, it joins the normal tab order
+
+If your app needs a different aria-label or per-toast announcement priority, override `ariaLive` per call.
+
+---
+
+## SSR / Nuxt
+
+`<NeoToastContainer>` is SSR-safe: it guards `<Teleport to="body">` behind a client-only `mounted` ref. The render output during SSR is empty, and hydration kicks in cleanly. Toasts queued before hydration (e.g. from a Pinia store hydration step) appear once the container mounts.
+
+`useToast()` itself is pure JS and safe to import anywhere — there's no `document` reference until something is actually pushed to the DOM.
+
+---
+
+## Customizing visuals
+
+Toast colors map through the standard theme tokens (`--neo-theme-color`, `--neo-theme-colorAccessible`), so any theme override your app applies will flow through automatically. For finer control, override component variables in your own CSS:
+
+```css
+.NeoToast {
+  --NeoToast-sizing-padding: var(--neo-spacing-core-lg);
+  --NeoToast-sizing-maxWidth: 500px;
+  --NeoToast-color-shadow: 0 12px 32px rgb(0 0 0 / 18%);
+}
+
+.NeoToastContainer {
+  --NeoToastContainer-sizing-edgeOffset: var(--neo-spacing-core-xl);
+}
+```
+
+---
+
+## When *not* to use a toast
+
+- **Form validation errors** — show them inline next to the failing field (`NeoInput` / `NeoTextArea` have error states for this)
+- **Persistent informational banners** — use `NeoCallout` directly with `variant="bordered"` or `"filled"`
+- **Confirmation dialogs** — toasts auto-dismiss; if the user must confirm, render a modal or `NeoSheet`
+
+Toasts are best for **completed actions** and **transient status updates** the user can read in passing.
