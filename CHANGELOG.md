@@ -1,3 +1,10 @@
+# [0.1.0-dev.5](https://github.com/TitanlordCode/NeoMateria/compare/v0.1.0-dev.4...v0.1.0-dev.5) (2026-05-17)
+
+
+### Features
+
+* **NeoProgressPanel:** configurable decimals + locale for percent ([#34](https://github.com/TitanlordCode/NeoMateria/issues/34)) ([4b6f93f](https://github.com/TitanlordCode/NeoMateria/commit/4b6f93fd70457f058ce701f36add820986e3d2be))
+
 # [0.1.0-dev.4](https://github.com/TitanlordCode/NeoMateria/compare/v0.1.0-dev.3...v0.1.0-dev.4) (2026-05-17)
 
 
