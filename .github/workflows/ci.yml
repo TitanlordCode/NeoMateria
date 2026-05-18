@@ -85,6 +85,9 @@ jobs:
       - name: 🧱 Build library
         run: npm run build
 
+      - name: 📏 Bundle size check
+        run: npm run size
+
       - name: 📤 Upload library artifact
         uses: actions/upload-artifact@v4
         with:
