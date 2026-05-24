@@ -1,3 +1,10 @@
+# [0.1.0-dev.8](https://github.com/TitanlordCode/NeoMateria/compare/v0.1.0-dev.7...v0.1.0-dev.8) (2026-05-24)
+
+
+### Features
+
+* consumer quirks, and Storybook DX cleanup ([#42](https://github.com/TitanlordCode/NeoMateria/issues/42)) ([31e5af4](https://github.com/TitanlordCode/NeoMateria/commit/31e5af440225251b7d5e2d4a9c6a5881127092a0))
+
 # [0.1.0-dev.7](https://github.com/TitanlordCode/NeoMateria/compare/v0.1.0-dev.6...v0.1.0-dev.7) (2026-05-17)
 
 
