@@ -1,24 +1,37 @@
 .NeoFooter {
 	--NeoFooter-sizing-padding: var(--neo-spacing-layout-md) var(--neo-spacing-layout-sm);
-	--NeoFooter-sizing-gap: var(--neo-spacing-layout-sm);
+	--NeoFooter-sizing-gap: var(--neo-spacing-core-xl);
 	--NeoFooter-sizing-sectionGap: var(--neo-spacing-core-lg);
 	--NeoFooter-sizing-sectionTitleFont: var(--neo-fontSize-textMd);
 	--NeoFooter-sizing-linkFont: var(--neo-fontSize-textSm);
 	--NeoFooter-sizing-copyrightFont: var(--neo-fontSize-textSm);
 	--NeoFooter-sizing-maxInlineSize: var(--neo-spacing-max-global-size);
+
+	/* CLS guard: reserve a typical filled-footer height; override to 0 for short footers. */
+	--NeoFooter-sizing-minBlockSize: 600px;
 	--NeoFooter-sizing-logoMarginBlockEnd: var(--neo-spacing-core-md);
 	--NeoFooter-sizing-columnsGap: var(--neo-gap-md);
-	--NeoFooter-sizing-columnsPaddingBlockStart: var(--neo-spacing-core-lg);
+
+	/* Section padding-block-start matches --NeoFooter-sizing-gap (parent flex gap)
+	   so bordered-section content sits visually centered between its top border
+	   and the following sibling, instead of hugging the top border. */
+	--NeoFooter-sizing-columnsPaddingBlockStart: var(--NeoFooter-sizing-gap);
 	--NeoFooter-sizing-columnGap: var(--neo-gap-sm);
-	--NeoFooter-sizing-columnPaddingBlockStart: var(--neo-spacing-core-lg);
+	--NeoFooter-sizing-columnPaddingBlockStart: var(--NeoFooter-sizing-gap);
 	--NeoFooter-sizing-bottomGap: var(--neo-gap-md);
-	--NeoFooter-sizing-bottomPaddingBlockStart: var(--neo-spacing-core-lg);
+	--NeoFooter-sizing-bottomPaddingBlockStart: var(--NeoFooter-sizing-gap);
+
+	@mixin bp-sm {
+		--NeoFooter-sizing-minBlockSize: 480px;
+	}
 
 	@mixin bp-md {
 		--NeoFooter-sizing-padding: var(--neo-spacing-layout-lg) var(--neo-spacing-layout-md);
+		--NeoFooter-sizing-minBlockSize: 400px;
 	}
 
 	@mixin bp-lg {
 		--NeoFooter-sizing-padding: var(--neo-spacing-layout-lg) var(--neo-spacing-layout-lg);
+		--NeoFooter-sizing-minBlockSize: 360px;
 	}
 }

@@ -7,3 +7,11 @@
 	--NeoSection-sizing-maxGlobalSize: var(--neo-spacing-max-global-size);
 	--NeoSection-sizing-rowGap: 0;
 }
+
+/* 120rem mirrors --neo-spacing-max-global-size (NeoNavigation's centered
+   container width). Above it, the 1fr gutter must track the nav offset. */
+@media (width >= 120rem) {
+	.NeoSection {
+		--NeoSection-sizing-inlinePadding: calc((100vw - 120rem) / 2 + var(--neo-spacing-layout-lg));
+	}
+}

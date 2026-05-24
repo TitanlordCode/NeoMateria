@@ -144,6 +144,7 @@ export {
 export { default as NeoSheet } from '@/components/02-molecules/Sheet/NeoSheet.vue'
 export {
 	type NeoSheetProps,
+	type NeoSheetSlots,
 	type NeoSheetVariant,
 } from '@/components/02-molecules/Sheet/NeoSheetTypes'
 
@@ -266,9 +267,11 @@ export {
 	type NeoTabVariant,
 	type NeoTabSize,
 	type NeoTabOrientation,
+	type NeoTabOverflow,
 	tabVariants,
 	tabSizes,
 	tabOrientations,
+	tabOverflows,
 } from '@/components/02-molecules/Tabs/NeoTabsTypes'
 
 export { default as NeoTable } from '@/components/02-molecules/Table/NeoTable.vue'

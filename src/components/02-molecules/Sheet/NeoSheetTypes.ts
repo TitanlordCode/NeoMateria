@@ -19,7 +19,15 @@ export interface NeoSheetProps {
 	modal?: boolean
 	ariaLabel?: string
 	ariaLabelledby?: string
+	showCloseButton?: boolean
 	closeAriaLabel?: string
 	zIndex?: number
-	teleportTo?: string // CSS selector for Teleport target; defaults to 'body'
+	teleportTo?: string
+}
+
+export interface NeoSheetSlots {
+	/** Sheet body content. */
+	default?: () => unknown
+	/** Custom icon for the built-in close button. Defaults to the `×` multiplication-sign character. */
+	closeIcon?: () => unknown
 }

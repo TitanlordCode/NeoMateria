@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, nextTick, ref, watch, onMounted, onUnmounted } from 'vue'
-import type { NeoSheetProps } from './NeoSheetTypes'
+import type { NeoSheetProps, NeoSheetSlots } from './NeoSheetTypes'
 import { getClassNames } from '@/utils/classNames'
 import { useSheetStack } from './useSheetStack'
 import NeoButton from '@/components/01-atoms/Button/NeoButton/NeoButton.vue'
@@ -13,7 +13,12 @@ const props = withDefaults(defineProps<NeoSheetProps>(), {
 	closeOnOverlayClick: true,
 	closeOnEscape: true,
 	modal: true,
+	// Must be undefined (not false) — Vue auto-defaults boolean props to false,
+	// which would break the closeAriaLabel back-compat fallback below.
+	showCloseButton: undefined,
 })
+
+defineSlots<NeoSheetSlots>()
 
 const emit = defineEmits<{
 	/** Emitted when the sheet should open or close. Receives the new boolean value. Must be handled to support overlay-click and Escape closing. */
@@ -26,7 +31,6 @@ const portalTarget = ref<string>('body')
 
 const { register, unregister, updateSize, stackOffset, isTopSheet, stackIndex } = useSheetStack()
 
-// Known pixel dimensions matching NeoSheet-layout.css
 const SHEET_WIDTHS: Record<string, number> = { small: 280, medium: 380, large: 500, full: 9999 }
 const SHEET_HEIGHTS: Record<string, number> = { small: 300, medium: 400, large: 500, full: 9999 }
 
@@ -201,15 +205,17 @@ onUnmounted(() => {
 				:aria-labelledby="props.ariaLabelledby"
 				tabindex="-1"
 			>
-				<div v-if="props.closeAriaLabel" class="NeoSheet-header">
+				<div v-if="props.showCloseButton ?? Boolean(props.closeAriaLabel)" class="NeoSheet-header">
 					<NeoButton
 						:color="props.color ?? 'blue'"
 						size="small"
 						variant="ghost"
-						:ariaLabel="props.closeAriaLabel"
+						:ariaLabel="props.closeAriaLabel ?? 'Close'"
 						@click="close"
-						>×</NeoButton
 					>
+						<slot v-if="!!$slots.closeIcon" name="closeIcon" />
+						<template v-else>×</template>
+					</NeoButton>
 				</div>
 				<div class="NeoSheet-content" tabindex="0">
 					<slot />

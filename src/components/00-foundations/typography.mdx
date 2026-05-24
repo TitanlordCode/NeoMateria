@@ -22,12 +22,32 @@ The variable is applied to `:root` in the delivered CSS, so every NeoMateria com
 
 ### Using a custom font
 
-Import your font (Google Fonts, self-hosted, or system), then override `--neo-fontFamily-base`:
+Load your font, then override `--neo-fontFamily-base`. **Don't use CSS `@import` for the font file** — it's always render-blocking and shows up in Lighthouse as a FCP regression. Use HTML `<link>` with `preconnect` instead:
+
+```html
+<!-- index.html — loaded before NeoMateria components render -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+/>
+```
+
+For zero render-blocking, swap the third `<link>` for the print-media trick that flips back to `all` after the stylesheet loads:
+
+```html
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+  media="print"
+  onload="this.media='all'"
+/>
+```
+
+Then override the token in your CSS:
 
 ```css
-/* main.css — loaded before NeoMateria components render */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
 :root {
   --neo-fontFamily-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -35,6 +55,8 @@ Import your font (Google Fonts, self-hosted, or system), then override `--neo-fo
 ```
 
 Set it on `:root` to apply document-wide, or on any container element — paired with `font-family: var(--neo-fontFamily-base)` — to scope it to a subtree.
+
+For the lowest possible FCP cost, self-host the font files and serve them with long cache headers from the same origin as your app.
 
 ---
 

@@ -14,6 +14,18 @@ const meta: Meta<typeof NeoSheet> = {
 	title: 'Molecules/NeoSheet',
 	component: NeoSheet,
 	tags: ['autodocs'],
+	parameters: {
+		docs: {
+			description: {
+				component: [
+					'Slide-in panel teleported to `<body>` (or a custom `teleportTo` selector) so it always sits above the page.',
+					'',
+					"**Styling from consumer scoped CSS:** because the sheet content is teleported outside the consumer component's DOM subtree, Vue's `:deep()` selector cannot reach it (the `data-v-*` scope hash never matches). Override sheet internals via the documented `--NeoSheet-*` CSS custom properties on `:root` or on a parent of `<NeoSheet>`, not through scoped CSS.",
+				].join('\n'),
+			},
+		},
+		snapshot: { viewports: ['sm', 'md', 'lg', 'xl'] },
+	},
 	argTypes: {
 		...ariaLabelArgType,
 		color: {
@@ -54,7 +66,7 @@ const meta: Meta<typeof NeoSheet> = {
 		closeOnOverlayClick: {
 			control: 'boolean',
 			description:
-				'Clicking the overlay emits `update:open(false)`. Only applies when `modal` is true.',
+				'Clicking the overlay emits `update:open(false)`. **No effect when `modal: false`** — non-modal sheets render no overlay, so there is no element to capture an outside-click.',
 			table: { category: 'Behavior' },
 		},
 		closeOnEscape: {
@@ -76,8 +88,21 @@ const meta: Meta<typeof NeoSheet> = {
 		},
 		closeAriaLabel: {
 			control: 'text',
-			description: 'Accessible label for the close button rendered in the sheet header.',
+			description:
+				'Accessible label for the close button rendered in the sheet header. Setting this implicitly opts in to the built-in close button (back-compat); use `showCloseButton` explicitly for clarity.',
 			table: { category: 'Accessibility' },
+		},
+		showCloseButton: {
+			control: 'boolean',
+			description:
+				'Explicitly opt in to the built-in close button. Defaults to `true` when `closeAriaLabel` is set, `false` otherwise. Customize the icon via the `closeIcon` slot.',
+			table: { category: 'Behavior' },
+		},
+		teleportTo: {
+			control: 'text',
+			description:
+				"CSS selector for the Teleport target. Defaults to `'body'` — set to a different selector when the page has a stacking-context wrapper that should host the sheet instead.",
+			table: { category: 'Behavior' },
 		},
 	},
 	args: {
@@ -89,9 +114,6 @@ const meta: Meta<typeof NeoSheet> = {
 		closeOnEscape: true,
 		modal: true,
 		'onUpdate:open': fn(),
-	},
-	parameters: {
-		snapshot: { viewports: ['sm', 'md', 'lg', 'xl'] },
 	},
 }
 

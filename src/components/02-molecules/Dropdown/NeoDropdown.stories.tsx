@@ -48,6 +48,12 @@ const meta = {
 				'Close the panel when the user clicks anywhere outside the trigger and panel. Uses a transparent full-screen backdrop to capture the click.',
 			table: { category: 'Behavior' },
 		},
+		teleportTo: {
+			control: 'text',
+			description:
+				"CSS selector for a Teleport target. When set, the panel renders under the target (typically `'body'`) and is positioned via JS from the trigger's bounding rect — escapes any ancestor `overflow: hidden` clipping (e.g. inside a navigation bar). Leave undefined for the default in-place panel.",
+			table: { category: 'Behavior' },
+		},
 	},
 	args: {
 		placement: 'bottom-start',

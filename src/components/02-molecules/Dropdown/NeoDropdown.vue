@@ -1,5 +1,14 @@
 <script setup lang="ts">
-import { computed, ref, onMounted, onUnmounted, useId } from 'vue'
+import {
+	computed,
+	nextTick,
+	onMounted,
+	onUnmounted,
+	ref,
+	useId,
+	watch,
+	type CSSProperties,
+} from 'vue'
 import type { NeoDropdownProps, NeoDropdownSlots } from './NeoDropdownTypes'
 
 const props = withDefaults(defineProps<NeoDropdownProps>(), {
@@ -17,8 +26,12 @@ const emit = defineEmits<{
 
 const internalOpen = ref(props.defaultOpen ?? false)
 const panelId = useId()
+const wrapperRef = ref<HTMLElement | null>(null)
+const panelRef = ref<HTMLElement | null>(null)
+const teleportedPanelStyles = ref<CSSProperties>({})
 
 const isOpen = computed(() => props.open ?? internalOpen.value)
+const isTeleported = computed(() => Boolean(props.teleportTo))
 
 const toggle = () => {
 	const nextValue = !isOpen.value
@@ -39,29 +52,91 @@ const handleKeydown = (event: KeyboardEvent) => {
 	}
 }
 
+const PANEL_OFFSET = 4
+const updateTeleportedPosition = () => {
+	if (!isTeleported.value || !isOpen.value || !wrapperRef.value) return
+	const triggerRect = wrapperRef.value.getBoundingClientRect()
+	const panelHeight = panelRef.value?.offsetHeight ?? 0
+	const styles: CSSProperties = { position: 'fixed' }
+	switch (props.placement) {
+		case 'bottom-start':
+			styles.top = `${triggerRect.bottom + PANEL_OFFSET}px`
+			styles.left = `${triggerRect.left}px`
+			break
+		case 'bottom-end':
+			styles.top = `${triggerRect.bottom + PANEL_OFFSET}px`
+			styles.right = `${window.innerWidth - triggerRect.right}px`
+			break
+		case 'top-start':
+			styles.top = `${triggerRect.top - panelHeight - PANEL_OFFSET}px`
+			styles.left = `${triggerRect.left}px`
+			break
+		case 'top-end':
+			styles.top = `${triggerRect.top - panelHeight - PANEL_OFFSET}px`
+			styles.right = `${window.innerWidth - triggerRect.right}px`
+			break
+	}
+	teleportedPanelStyles.value = styles
+}
+
+watch(isOpen, async (open) => {
+	if (!isTeleported.value) return
+	if (open) {
+		await nextTick()
+		updateTeleportedPosition()
+		// Second tick: panelHeight is only measurable after the first render, needed for top-* placements.
+		await nextTick()
+		updateTeleportedPosition()
+		window.addEventListener('scroll', updateTeleportedPosition, true)
+		window.addEventListener('resize', updateTeleportedPosition)
+	} else {
+		window.removeEventListener('scroll', updateTeleportedPosition, true)
+		window.removeEventListener('resize', updateTeleportedPosition)
+	}
+})
+
 onMounted(() => {
 	document.addEventListener('keydown', handleKeydown)
 })
 
 onUnmounted(() => {
 	document.removeEventListener('keydown', handleKeydown)
+	window.removeEventListener('scroll', updateTeleportedPosition, true)
+	window.removeEventListener('resize', updateTeleportedPosition)
 })
 </script>
 
 <template>
-	<div class="NeoDropdown">
+	<div ref="wrapperRef" class="NeoDropdown">
 		<slot name="trigger" :is-open="isOpen" :toggle="toggle" />
-		<div v-if="isOpen && props.closeOnClickOutside" class="NeoDropdown-backdrop" @click="close" />
-		<Transition name="NeoDropdown-panel">
-			<div
-				v-if="isOpen"
-				:id="panelId"
-				class="NeoDropdown-panel"
-				:class="`NeoDropdown-panel--${props.placement}`"
-			>
-				<slot />
-			</div>
-		</Transition>
+		<template v-if="!isTeleported">
+			<div v-if="isOpen && props.closeOnClickOutside" class="NeoDropdown-backdrop" @click="close" />
+			<Transition name="NeoDropdown-panel">
+				<div
+					v-if="isOpen"
+					:id="panelId"
+					class="NeoDropdown-panel"
+					:class="`NeoDropdown-panel--${props.placement}`"
+				>
+					<slot />
+				</div>
+			</Transition>
+		</template>
+		<Teleport v-else :to="props.teleportTo">
+			<div v-if="isOpen && props.closeOnClickOutside" class="NeoDropdown-backdrop" @click="close" />
+			<Transition name="NeoDropdown-panel">
+				<div
+					v-if="isOpen"
+					:id="panelId"
+					ref="panelRef"
+					class="NeoDropdown-panel NeoDropdown-panel--teleported"
+					:class="`NeoDropdown-panel--${props.placement}`"
+					:style="teleportedPanelStyles"
+				>
+					<slot />
+				</div>
+			</Transition>
+		</Teleport>
 	</div>
 </template>
 
@@ -95,6 +170,12 @@ onUnmounted(() => {
 	padding: var(--NeoDropdown-sizing-panelPadding);
 	position: absolute;
 	z-index: 200;
+}
+
+/* Teleported panel uses inline `position: fixed` styles; neutralize the
+   wrapper-anchored placement classes below. */
+.NeoDropdown-panel--teleported {
+	inset: auto;
 }
 
 .NeoDropdown-panel--bottom-start {
