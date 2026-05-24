@@ -72,6 +72,7 @@ const classes = computed(() => {
 	background-color: var(--NeoFooter-color-background);
 	border-block-start: 1px solid var(--NeoFooter-color-border);
 	font-family: inherit;
+	min-block-size: var(--NeoFooter-sizing-minBlockSize);
 	padding: var(--NeoFooter-sizing-padding);
 }
 
@@ -165,11 +166,6 @@ const classes = computed(() => {
 
 .NeoFooter--centered {
 	& .NeoFooter-content {
-		align-items: center;
-		text-align: center;
-	}
-
-	& .NeoFooter-section {
 		align-items: center;
 	}
 

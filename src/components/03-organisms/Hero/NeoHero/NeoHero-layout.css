@@ -7,6 +7,9 @@
 	--NeoHero-sizing-subtitleFontSize: var(--neo-fontSize-textXl);
 	--NeoHero-sizing-subtitleLineHeight: var(--neo-lineHeight-relaxed);
 
+	/* CLS guard: reserve a typical filled-hero height; override to 0 for short heroes. */
+	--NeoHero-sizing-minBlockSize: 400px;
+
 	@mixin bp-md {
 		--NeoHero-sizing-paddingInline: var(--neo-spacing-layout-md);
 	}
@@ -14,17 +17,21 @@
 	@mixin bp-lg {
 		--NeoHero-sizing-paddingBlock: var(--neo-spacing-layout-xl);
 		--NeoHero-sizing-paddingInline: var(--neo-spacing-layout-lg);
+		--NeoHero-sizing-minBlockSize: 480px;
 	}
 }
 
 .NeoHero--sm {
 	--NeoHero-sizing-paddingBlock: var(--neo-spacing-layout-md);
+	--NeoHero-sizing-minBlockSize: 320px;
 }
 
 .NeoHero--lg {
 	--NeoHero-sizing-paddingBlock: var(--neo-spacing-layout-xl);
+	--NeoHero-sizing-minBlockSize: 480px;
 
 	@mixin bp-lg {
 		--NeoHero-sizing-paddingBlock: 120px;
+		--NeoHero-sizing-minBlockSize: 600px;
 	}
 }

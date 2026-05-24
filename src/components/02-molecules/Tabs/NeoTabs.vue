@@ -11,7 +11,10 @@ const props = withDefaults(defineProps<NeoTabsProps>(), {
 	color: 'blue',
 	orientation: 'horizontal',
 	fullWidth: false,
+	overflow: 'menu',
 })
+
+const isScrollOverflow = computed(() => props.overflow === 'scroll')
 
 const emit = defineEmits<{
 	/** Emitted when the active tab changes. Receives the new tab id. */
@@ -29,12 +32,10 @@ let resizeObserver: ResizeObserver | null = null
 
 const MORE_BTN_WIDTH = 92
 
-// Internal state drives uncontrolled mode; synced with prop in controlled mode.
 const internalActiveTab = ref<string>('')
 
 const effectiveActiveTab = computed(() => props.activeTab ?? internalActiveTab.value)
 
-// Sync controlled prop into internal state so the context always reflects the right tab.
 watch(
 	() => props.activeTab,
 	(id) => {
@@ -43,7 +44,6 @@ watch(
 	{ immediate: true },
 )
 
-// Set initial uncontrolled tab from defaultActiveTab before panels register.
 watch(
 	() => props.defaultActiveTab,
 	(id) => {
@@ -61,7 +61,6 @@ const setActiveTab = (id: string) => {
 const registerTab = (tab: NeoTabPanelProps) => {
 	if (registeredTabs.value.find((registeredTab) => registeredTab.id === tab.id)) return
 	registeredTabs.value.push(tab)
-	// Auto-select first non-disabled tab when nothing is active yet.
 	if (!effectiveActiveTab.value && !tab.disabled) {
 		internalActiveTab.value = tab.id
 	}
@@ -82,6 +81,10 @@ provide(neoTabsContextKey, {
 // -- Overflow calculation
 
 const recalcOverflow = () => {
+	if (isScrollOverflow.value) {
+		overflowIndex.value = Infinity
+		return
+	}
 	if (!tablistRef.value || naturalWidths.value.length === 0) return
 	const containerWidth = tablistRef.value.clientWidth
 	let total = 0
@@ -103,6 +106,10 @@ const recalcOverflow = () => {
 }
 
 const measureAndRecalc = () => {
+	if (isScrollOverflow.value) {
+		overflowIndex.value = Infinity
+		return
+	}
 	nextTick(() => {
 		naturalWidths.value = tabButtonRefs.value.map((el) => el?.offsetWidth ?? 0)
 		recalcOverflow()
@@ -111,7 +118,7 @@ const measureAndRecalc = () => {
 
 onMounted(() => {
 	measureAndRecalc()
-	if (tablistRef.value) {
+	if (tablistRef.value && !isScrollOverflow.value) {
 		resizeObserver = new ResizeObserver(recalcOverflow)
 		resizeObserver.observe(tablistRef.value)
 	}
@@ -195,6 +202,7 @@ const classes = computed(() => {
 			props.size ?? 'medium',
 			props.orientation ?? 'horizontal',
 			props.fullWidth ? 'fullWidth' : '',
+			isScrollOverflow.value ? 'overflow-scroll' : '',
 		],
 		additional: props.class,
 	})
@@ -241,7 +249,7 @@ const classes = computed(() => {
 				{{ tab.label }}
 			</button>
 
-			<div v-if="overflowTabs.length > 0" class="NeoTabs-overflow">
+			<div v-if="!isScrollOverflow && overflowTabs.length > 0" class="NeoTabs-overflow">
 				<NeoDropdown :open="isMoreOpen" placement="bottom-end" @update:open="isMoreOpen = $event">
 					<template #trigger="{ isOpen, toggle }">
 						<button
@@ -324,6 +332,20 @@ const classes = computed(() => {
 	flex-direction: column;
 	inline-size: fit-content;
 	overflow: visible;
+}
+
+/* Scroll-overflow mode: render a horizontally scrollable tablist instead of
+   collapsing overflow into a `More` dropdown. Scrollbar hidden but scrolling
+   still works (drag/swipe/wheel). */
+.NeoTabs--overflow-scroll .NeoTabs-tablist {
+	flex-wrap: nowrap;
+	overflow-x: auto;
+	overflow-y: hidden;
+	scrollbar-width: none;
+}
+
+.NeoTabs--overflow-scroll .NeoTabs-tablist::-webkit-scrollbar {
+	display: none;
 }
 
 /* Higher specificity (3 classes) — must come after all 2-class tablist rules */

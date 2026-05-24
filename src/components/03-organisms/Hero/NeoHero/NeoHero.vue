@@ -53,6 +53,7 @@ const classes = computed(() =>
 	display: flex;
 	flex-direction: column;
 	gap: var(--NeoHero-sizing-gap);
+	min-block-size: var(--NeoHero-sizing-minBlockSize);
 	padding-block: var(--NeoHero-sizing-paddingBlock);
 	padding-inline: var(--NeoHero-sizing-paddingInline);
 

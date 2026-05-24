@@ -9,6 +9,7 @@ export interface NeoDropdownProps {
 	placement?: NeoDropdownPlacement
 	closeOnEscape?: boolean
 	closeOnClickOutside?: boolean
+	teleportTo?: string
 }
 
 export type NeoDropdownSlots = {

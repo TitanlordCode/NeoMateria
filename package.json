@@ -15,6 +15,7 @@
 			"import": "./dist/*.js",
 			"types": "./dist/*.d.ts"
 		},
+		"./styles/foundations.css": "./dist/assets/styles/globals.css",
 		"./dist/neo-materia.css": "./dist/neo-materia.css"
 	},
 	"sideEffects": [
@@ -31,7 +32,8 @@
 	"author": "TitanlordCode",
 	"license": "SEE LICENSE IN LICENSE",
 	"scripts": {
-		"dev": "npm run generate:files && docker-compose up --build storybook",
+		"dev": "npm run generate:files && npm run storybook",
+		"dev:docker": "npm run generate:files && docker-compose up --build storybook",
 		"docker:build": "docker-compose build",
 		"build": "npm run generate:files && vite build",
 		"prepublishOnly": "npm run build",

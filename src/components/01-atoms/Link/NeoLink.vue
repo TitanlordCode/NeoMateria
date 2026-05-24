@@ -26,6 +26,12 @@ const computedRel = computed(() => {
 	return undefined
 })
 
+const computedTarget = computed(() => {
+	if (props.target) return props.target
+	if (props.external) return '_blank'
+	return undefined
+})
+
 const classes = computed(() => {
 	const linkClasses = getClassNames({
 		component: 'NeoLink',
@@ -47,7 +53,7 @@ const classes = computed(() => {
 	<a
 		:class="classes"
 		:href="props.disabled ? undefined : props.href"
-		:target="props.target"
+		:target="computedTarget"
 		:rel="computedRel"
 		:aria-disabled="props.disabled ? 'true' : undefined"
 		@click="handleClick"

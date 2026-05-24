@@ -39,7 +39,8 @@ For complete development setup instructions, available commands, and workflows, 
 
 ```sh
 npm install
-npm run dev  # Start Storybook in Docker
+npm run dev         # Native Storybook (recommended on Windows)
+npm run dev:docker  # Containerised Storybook (matches snapshot env)
 ```
 
 ## Project Structure

@@ -8,7 +8,7 @@ import NeoHeadlineTertiary from '@/components/01-atoms/Headline/NeoHeadlineTerti
 import NeoText from '@/components/01-atoms/Text/NeoText/NeoText.vue'
 import NeoCard from '@/components/02-molecules/Card/NeoCard.vue'
 import type { NeoTabsProps } from './NeoTabsTypes'
-import { tabOrientations, tabSizes, tabVariants } from './NeoTabsTypes'
+import { tabOrientations, tabOverflows, tabSizes, tabVariants } from './NeoTabsTypes'
 
 const meta = {
 	title: 'Molecules/NeoTabs',
@@ -56,6 +56,13 @@ const meta = {
 			description:
 				'Uncontrolled mode: the id of the tab to activate on first render. Has no effect once mounted. Omit to default to the first non-disabled tab.',
 			table: { category: 'State' },
+		},
+		overflow: {
+			control: 'select',
+			options: tabOverflows,
+			description:
+				"Overflow strategy when tabs don't fit horizontally. `'menu'` (default) moves overflowing tabs into a `…` dropdown; `'scroll'` renders a horizontally scrollable tablist instead. Prefer `'scroll'` for variable-count tab strips.",
+			table: { category: 'Behavior' },
 		},
 	},
 	args: {

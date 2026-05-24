@@ -47,6 +47,10 @@ type NeoInputWithAriaLabel = { label?: never; ariaLabel: string }
 type NeoInputRequired = { required: true; requiredText: string }
 type NeoInputOptional = { required?: never; requiredText?: never }
 
+/**
+ * Either a visible `label` or an `ariaLabel`, never both.
+ * Use camelCase `:ariaLabel="..."` in templates — vue-tsc rejects kebab-case on discriminated-union props.
+ */
 export type NeoInputProps = NeoInputBase &
 	(NeoInputWithLabel | NeoInputWithAriaLabel) &
 	(NeoInputRequired | NeoInputOptional)

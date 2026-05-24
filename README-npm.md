@@ -39,11 +39,36 @@ bun add neo-materia
 
 ## Setup
 
-After installing, import the stylesheet once in your application entry file (e.g. `main.ts`):
+### CSS imports — recommended (tree-shaken)
+
+NeoMateria splits its CSS per component. If your bundler honors ESM side-effects (Vite, Webpack 5, Rollup, esbuild), **you don't need to import any stylesheet manually** — importing a component pulls only its own CSS:
+
+```ts
+import { NeoButton } from 'neo-materia'
+// ↑ side-effect import auto-pulls NeoButton.css + foundations
+```
+
+The library entry imports the foundation tokens (`globals.css`) once, and each component imports its own scoped CSS chunk. Importing `{ NeoButton }` ships ~5 KB of component CSS instead of the full ~17 KB bundle.
+
+### CSS imports — explicit (cherry-picking or strict-mode bundlers)
+
+If your bundler ignores ESM CSS side-effects, or you import components from deep paths and skip the entry, import foundations manually once at app entry:
+
+```ts
+import 'neo-materia/styles/foundations.css'
+```
+
+### CSS imports — back-compat (everything in one file)
+
+The classic monolithic stylesheet still ships and works exactly like before:
 
 ```ts
 import 'neo-materia/dist/neo-materia.css'
 ```
+
+This pulls the full ~17 KB stylesheet whether you use one component or all of them — no tree-shaking. Prefer the recommended approach above for new projects.
+
+### Font loading
 
 NeoMateria uses the **Inter** font. Load it in your HTML before your app renders — the recommended way is via Google Fonts:
 

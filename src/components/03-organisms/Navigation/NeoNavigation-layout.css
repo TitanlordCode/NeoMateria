@@ -1,6 +1,6 @@
 .NeoNavigation {
 	--NeoNavigation-sizing-height: 64px;
-	--NeoNavigation-sizing-paddingInline: var(--neo-spacing-core-lg);
+	--NeoNavigation-sizing-paddingInline: var(--neo-spacing-layout-sm);
 	--NeoNavigation-sizing-gap: var(--neo-gap-lg);
 	--NeoNavigation-sizing-linkGap: var(--neo-gap-md);
 	--NeoNavigation-sizing-fontSize: var(--neo-fontSize-textMd);
@@ -24,10 +24,10 @@
 
 	@mixin bp-md {
 		--NeoNavigation-sizing-height: 72px;
-		--NeoNavigation-sizing-paddingInline: var(--neo-spacing-layout-sm);
+		--NeoNavigation-sizing-paddingInline: var(--neo-spacing-layout-md);
 	}
 
 	@mixin bp-lg {
-		--NeoNavigation-sizing-paddingInline: var(--neo-spacing-layout-md);
+		--NeoNavigation-sizing-paddingInline: var(--neo-spacing-layout-lg);
 	}
 }

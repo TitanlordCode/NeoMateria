@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { generateUniqueId } from '@/utils/id'
 import type { NeoInputProps } from './NeoInputTypes'
 import { getClassNames } from '@/utils/classNames'
@@ -17,6 +17,13 @@ const emit = defineEmits<{
 
 const instanceId = generateUniqueId('input')
 const internalValue = ref(props.value ?? '')
+
+watch(
+	() => props.value,
+	(next) => {
+		internalValue.value = next ?? ''
+	},
+)
 
 const handleInput = (event: Event) => {
 	const target = event.target as HTMLInputElement

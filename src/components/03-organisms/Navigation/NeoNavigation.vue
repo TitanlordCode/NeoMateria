@@ -480,11 +480,12 @@ defineExpose<NeoNavigationExpose>({ close: () => toggleMobileMenu(false) })
 	display: flex;
 	gap: var(--NeoNavigation-sizing-gap);
 	justify-content: space-between;
-	overflow: hidden;
 
-	@mixin bp-md {
-		overflow: visible;
-	}
+	/* Visible across all breakpoints so dropdown panels inside the actions slot
+	   can extend below the bar on mobile (previously `hidden` < 768px clipped
+	   them). Oversized logos/labels can still overflow horizontally — that's
+	   the consumer's choice and matches the existing desktop behavior. */
+	overflow: visible;
 }
 
 .NeoNavigation-start {

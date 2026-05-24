@@ -10,6 +10,9 @@ export type NeoTabSize = (typeof tabSizes)[number]
 export const tabOrientations = ['horizontal', 'vertical'] as const
 export type NeoTabOrientation = (typeof tabOrientations)[number]
 
+export const tabOverflows = ['menu', 'scroll'] as const
+export type NeoTabOverflow = (typeof tabOverflows)[number]
+
 export interface NeoTabsProps {
 	class?: string
 	activeTab?: string
@@ -19,6 +22,7 @@ export interface NeoTabsProps {
 	color?: SurfaceColor
 	orientation?: NeoTabOrientation
 	fullWidth?: boolean
+	overflow?: NeoTabOverflow
 }
 
 export interface NeoTabPanelProps {

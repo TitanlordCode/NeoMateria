@@ -13,7 +13,7 @@ Everything you need to set up a local development environment and run the full t
 
 - **Node.js** v22 or higher
 - **npm** v9 or higher
-- **Docker** — required for snapshot tests and the containerised Storybook dev server
+- **Docker** — required for snapshot tests (deterministic Linux rendering) and optional for the containerised Storybook dev server
 
 ---
 
@@ -21,14 +21,16 @@ Everything you need to set up a local development environment and run the full t
 
 ```bash
 npm install
-npm run dev        # generates files, then starts Storybook in Docker at http://localhost:3000
+npm run dev          # native Storybook on http://localhost:3000 — fastest on Windows
 ```
 
-To run Storybook locally without Docker:
+If you need the Docker-containerised dev server (matches the snapshot env):
 
 ```bash
-npm run storybook  # http://localhost:3000
+npm run dev:docker   # rebuilds the image, then runs Storybook in the container
 ```
+
+Day-to-day iteration should use `npm run dev`. On Windows, bind-mount I/O makes the Docker dev server 50–100× slower than native; only use `dev:docker` when you specifically need environment parity with snapshot tests.
 
 ---
 

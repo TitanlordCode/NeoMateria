@@ -71,7 +71,7 @@ const meta = {
 			control: 'select',
 			options: footerLayouts,
 			description:
-				'`multi-column`: sections displayed in a responsive grid. `simple`: single-row layout with sections collapsed. `centered`: all content centred horizontally.',
+				'`multi-column`: sections displayed in a responsive grid. `simple`: single-row layout with sections collapsed. `centered`: column group centred horizontally; column titles and link items centre-aligned within each column, body text stays left-aligned (no `text-align` cascade).',
 			table: { category: 'Appearance' },
 		},
 		logo: {
@@ -330,6 +330,21 @@ export const MinimalWithCopyright: Story = {
 	args: {
 		sections: [],
 		layout: 'centered',
+	},
+}
+
+/**
+ * Visualises the CLS-reservation: no sections, no copyright, no slots.
+ * The footer still occupies its `--NeoFooter-sizing-minBlockSize` reservation
+ * (600/480/400/360 px from mobile → ≥1024px) so consumer pages don't shift when
+ * async footer content paints in. Consumers with intentionally shorter footers
+ * should override `--NeoFooter-sizing-minBlockSize`.
+ */
+export const EmptySkeleton: Story = {
+	tags: ['snapshot'],
+	args: {
+		sections: [],
+		copyrightText: undefined,
 	},
 }
 

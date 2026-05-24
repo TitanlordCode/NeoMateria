@@ -3,7 +3,8 @@ import type { StorybookConfig } from '@storybook/vue3-vite'
 const config: StorybookConfig = {
 	stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
 	disableWhatsNewNotifications: true,
-	addons: ['@storybook/addon-a11y', '@storybook/addon-docs', '@storybook/addon-vitest'],
+	disableTelemetry: true,
+	addons: ['@storybook/addon-a11y', '@storybook/addon-docs'],
 	staticDirs: ['../public'],
 	framework: {
 		name: '@storybook/vue3-vite',
@@ -12,16 +13,23 @@ const config: StorybookConfig = {
 		},
 	},
 	viteFinal: async (config) => {
-		// Enable HMR for Docker environments
 		if (config.server) {
 			config.server.watch = {
 				...config.server.watch,
 				usePolling: true,
-				interval: 1000,
+				interval: 2000,
+				ignored: [
+					'**/node_modules/**',
+					'**/.git/**',
+					'**/dist/**',
+					'**/__snapshots__/**',
+					'**/__snapshots_diff__/**',
+					'**/__snapshots_modified__/**',
+				],
 			}
 			config.server.hmr = {
 				...config.server.hmr,
-				host: '0.0.0.0',
+				host: 'localhost',
 				port: 3000,
 			}
 		}
