@@ -10,8 +10,16 @@ const meta = {
 	component: NeoStat,
 	tags: ['autodocs'],
 	argTypes: {
-		value: { control: 'text', table: { category: 'Content' } },
-		label: { control: 'text', table: { category: 'Content' } },
+		value: {
+			control: 'text',
+			table: { category: 'Content' },
+			description: 'The headline statistic, displayed prominently.',
+		},
+		label: {
+			control: 'text',
+			table: { category: 'Content' },
+			description: 'Descriptive caption shown beneath the value.',
+		},
 		color: {
 			control: 'select',
 			options: colors,

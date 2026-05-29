@@ -31,6 +31,18 @@ const meta = {
 			description:
 				"Screen-reader label when no visible label is shown. Defaults to 'Loading' if omitted.",
 		},
+		ariaHidden: {
+			control: 'boolean',
+			table: { category: 'Accessibility' },
+			description:
+				'Hides the spinner from assistive tech. Use when a surrounding region already announces loading.',
+		},
+		dir: {
+			control: 'select',
+			options: ['column', 'row'],
+			table: { category: 'Layout' },
+			description: 'Stacks the spinner and label vertically (`column`) or inline (`row`).',
+		},
 	},
 	args: {
 		size: 'medium',

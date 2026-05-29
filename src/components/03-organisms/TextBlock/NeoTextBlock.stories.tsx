@@ -17,10 +17,26 @@ const meta = {
 	component: NeoTextBlock,
 	tags: ['autodocs'],
 	argTypes: {
-		heading: { control: 'text', table: { category: 'Content' } },
-		body: { control: 'text', table: { category: 'Content' } },
-		ctaText: { control: 'text', table: { category: 'Content' } },
-		ctaHref: { control: 'text', table: { category: 'Content' } },
+		heading: {
+			control: 'text',
+			table: { category: 'Content' },
+			description: 'Heading text for the block.',
+		},
+		body: {
+			control: 'text',
+			table: { category: 'Content' },
+			description: 'Body copy rendered below the heading.',
+		},
+		ctaText: {
+			control: 'text',
+			table: { category: 'Content' },
+			description: 'Label for the call-to-action link. Requires `ctaHref` to render.',
+		},
+		ctaHref: {
+			control: 'text',
+			table: { category: 'Content' },
+			description: 'Destination URL for the call-to-action link. Requires `ctaText` to render.',
+		},
 		headingVariant: {
 			control: 'select',
 			options: headingGroupVariants,

@@ -11,8 +11,16 @@ const meta = {
 	component: NeoHeadingGroup,
 	tags: ['autodocs'],
 	argTypes: {
-		title: { control: 'text', table: { category: 'Content' } },
-		subtitle: { control: 'text', table: { category: 'Content' } },
+		title: {
+			control: 'text',
+			table: { category: 'Content' },
+			description: 'The main title text of the group.',
+		},
+		subtitle: {
+			control: 'text',
+			table: { category: 'Content' },
+			description: 'Supporting text rendered below the title.',
+		},
 		overline: {
 			control: 'text',
 			description: 'Small uppercase label rendered above the title.',

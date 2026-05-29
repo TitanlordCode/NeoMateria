@@ -12,10 +12,26 @@ const meta = {
 	argTypes: {
 		...ariaLabelArgType,
 		...disabledArgType,
-		name: { control: 'text', table: { category: 'Content' } },
-		label: { control: 'text', table: { category: 'Content' } },
-		placeholder: { control: 'text', table: { category: 'Content' } },
-		value: { control: 'text', table: { category: 'Content' } },
+		name: {
+			control: 'text',
+			table: { category: 'Content' },
+			description: 'The `name` attribute submitted with the form.',
+		},
+		label: {
+			control: 'text',
+			table: { category: 'Content' },
+			description: 'Visible label text. Mutually exclusive with `ariaLabel`.',
+		},
+		placeholder: {
+			control: 'text',
+			table: { category: 'Content' },
+			description: 'Placeholder shown when the field is empty.',
+		},
+		value: {
+			control: 'text',
+			table: { category: 'Content' },
+			description: 'The input value (controlled).',
+		},
 		color: { description: 'Theme color for focus ring, labels, and accents.' },
 		size: {
 			control: 'select',
@@ -47,7 +63,16 @@ const meta = {
 			description:
 				'Makes the field non-editable but still focusable and selectable. Unlike `disabled`, the value is still submitted with forms.',
 		},
-		required: { control: 'boolean', table: { category: 'State' } },
+		required: {
+			control: 'boolean',
+			table: { category: 'State' },
+			description: 'Marks the field as required. Requires `requiredText` to be set.',
+		},
+		requiredText: {
+			control: 'text',
+			table: { category: 'State' },
+			description: 'Assistive text describing the requirement, surfaced when `required` is set.',
+		},
 		helpText: {
 			control: 'text',
 			table: { category: 'Validation' },
@@ -66,12 +91,36 @@ const meta = {
 			description:
 				'HTML `autocomplete` attribute. Hint to the browser for autofill (e.g. `email`, `current-password`, `off`).',
 		},
-		maxlength: { control: 'number', table: { category: 'Validation' } },
-		minlength: { control: 'number', table: { category: 'Validation' } },
-		min: { control: 'number', table: { category: 'Validation' } },
-		max: { control: 'number', table: { category: 'Validation' } },
-		step: { control: 'number', table: { category: 'Validation' } },
-		pattern: { control: 'text', table: { category: 'Validation' } },
+		maxlength: {
+			control: 'number',
+			table: { category: 'Validation' },
+			description: 'Maximum number of characters allowed.',
+		},
+		minlength: {
+			control: 'number',
+			table: { category: 'Validation' },
+			description: 'Minimum number of characters required.',
+		},
+		min: {
+			control: 'number',
+			table: { category: 'Validation' },
+			description: 'Minimum value (for `number`/`date`-style types).',
+		},
+		max: {
+			control: 'number',
+			table: { category: 'Validation' },
+			description: 'Maximum value (for `number`/`date`-style types).',
+		},
+		step: {
+			control: 'number',
+			table: { category: 'Validation' },
+			description: 'Step increment for `number`-style types.',
+		},
+		pattern: {
+			control: 'text',
+			table: { category: 'Validation' },
+			description: 'Regex the value must match for native validation.',
+		},
 	},
 	args: {
 		name: 'example-input',

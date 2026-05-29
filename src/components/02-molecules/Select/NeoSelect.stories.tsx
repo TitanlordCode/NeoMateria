@@ -96,6 +96,21 @@ const meta = {
 				'Text displayed beside the label when `required` is true (e.g. `"required"` or `"*"`). Only available when `required` is set.',
 			table: { category: 'Content' },
 		},
+		name: {
+			control: 'text',
+			description: 'The `name` attribute submitted with the form.',
+			table: { category: 'Content' },
+		},
+		label: {
+			control: 'text',
+			description: 'Visible label text. Mutually exclusive with `ariaLabel`.',
+			table: { category: 'Content' },
+		},
+		ariaLabel: {
+			control: 'text',
+			description: 'Accessible label when no visible `label` is shown.',
+			table: { category: 'Accessibility' },
+		},
 	},
 	args: {
 		name: 'fruit',

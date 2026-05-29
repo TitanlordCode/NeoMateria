@@ -12,7 +12,11 @@ const meta = {
 	component: NeoBadge,
 	tags: ['autodocs'],
 	argTypes: {
-		text: { control: 'text', table: { category: 'Content' } },
+		text: {
+			control: 'text',
+			table: { category: 'Content' },
+			description: 'Badge label text. Hidden when `variant` is `dot`.',
+		},
 		color: {
 			description: 'Theme color for the badge.',
 			table: { category: 'Appearance' },

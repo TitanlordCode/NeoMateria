@@ -12,6 +12,30 @@ const meta = {
 	component: NeoIcon,
 	tags: ['autodocs'],
 	argTypes: {
+		size: {
+			control: 'select',
+			options: ['small', 'medium', 'large'],
+			description: 'Icon box size, mapped to a font-size scale.',
+			table: { category: 'Appearance' },
+		},
+		color: { description: 'Icon color. Accepts the full `Color` palette (including white).' },
+		colorVariant: {
+			control: 'select',
+			options: ['theme', 'text'],
+			description:
+				'`theme` uses the accessible theme color; `text` inherits the surrounding text color.',
+			table: { category: 'Appearance' },
+		},
+		ariaLabel: {
+			control: 'text',
+			description: 'Accessible label. When set, the icon is exposed to assistive tech as an image.',
+			table: { category: 'Accessibility' },
+		},
+		ariaHidden: {
+			control: 'boolean',
+			description: 'Hides the icon from assistive tech. Use for purely decorative icons.',
+			table: { category: 'Accessibility' },
+		},
 		default: {
 			control: false,
 			description: 'The icon SVG content. Pass a raw SVG element or a Vue component.',

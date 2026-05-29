@@ -90,6 +90,7 @@ export default defineConfig({
 		projects: [
 			{
 				// Composable unit tests in jsdom
+				plugins: [vue(), vueJsx()],
 				resolve: {
 					alias: {
 						'@': fileURLToPath(new URL('./src', import.meta.url)),

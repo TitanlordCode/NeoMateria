@@ -24,6 +24,12 @@ const meta = {
 			description: 'Sets the row-gap between wrapped rows. Defaults to 0.',
 			table: { category: 'Appearance' },
 		},
+		padding: {
+			control: 'text',
+			description:
+				'Overrides the inline padding (gutter) of the section. Accepts a CSS length or variable.',
+			table: { category: 'Appearance' },
+		},
 	},
 	args: {
 		fullWidth: false,

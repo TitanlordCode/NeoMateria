@@ -15,9 +15,21 @@ const meta = {
 	tags: ['autodocs'],
 	argTypes: {
 		...ariaLabelArgType,
-		text: { control: 'text', table: { category: 'Content' } },
-		href: { control: 'text', table: { category: 'Content' } },
-		external: { control: 'boolean', table: { category: 'Behavior' } },
+		text: {
+			control: 'text',
+			table: { category: 'Content' },
+			description: 'Link label text. Falls back to the default slot if omitted.',
+		},
+		href: {
+			control: 'text',
+			table: { category: 'Content' },
+			description: 'Destination URL the link points to.',
+		},
+		external: {
+			control: 'boolean',
+			table: { category: 'Behavior' },
+			description: 'Opens in a new tab with `rel="noopener noreferrer"`.',
+		},
 		disabled: {
 			control: 'boolean',
 			description:
@@ -73,6 +85,11 @@ const meta = {
 			control: false,
 			description:
 				'Icon rendered at the trailing edge of the link. Pass a raw SVG element or a Vue component.',
+			table: { category: 'Slots' },
+		},
+		suffix: {
+			control: false,
+			description: 'Content rendered after the label and end icon.',
 			table: { category: 'Slots' },
 		},
 	},

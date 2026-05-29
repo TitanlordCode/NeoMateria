@@ -5,6 +5,7 @@ import { expect, fn, userEvent, waitFor, within } from 'storybook/test'
 import NeoCard from '@/components/02-molecules/Card/NeoCard.vue'
 import type { NeoCardProps } from './NeoCardTypes'
 import { cardSizes, cardVariants } from './NeoCardTypes'
+import { headlineTags } from '@/components/01-atoms/Headline/NeoHeadlineTypes'
 import { createSimpleColorShowcase } from '../../../../.storybook/utils/colorShowcase'
 import { createA11yPlay } from '../../../../.storybook/utils/createA11yPlay'
 import { placeholder } from '../../../../.storybook/utils/placeholder'
@@ -36,8 +37,16 @@ const meta = {
 			description: 'Applies rounded corners to the card.',
 			table: { category: 'Appearance' },
 		},
-		imageSrc: { control: 'text', table: { category: 'Content' } },
-		imageAlt: { control: 'text', table: { category: 'Content' } },
+		imageSrc: {
+			control: 'text',
+			table: { category: 'Content' },
+			description: 'Source URL of the card image.',
+		},
+		imageAlt: {
+			control: 'text',
+			table: { category: 'Content' },
+			description: 'Alt text for the card image.',
+		},
 		imageObjectFit: {
 			control: 'select',
 			options: ['contain', 'cover', 'fill', 'none', 'scale-down'],
@@ -45,8 +54,16 @@ const meta = {
 				'CSS `object-fit` value for the card image. `cover` fills the image area by cropping; `contain` shows the full image with letterboxing.',
 			table: { category: 'Appearance' },
 		},
-		title: { control: 'text', table: { category: 'Content' } },
-		description: { control: 'text', table: { category: 'Content' } },
+		title: {
+			control: 'text',
+			table: { category: 'Content' },
+			description: 'Card title text.',
+		},
+		description: {
+			control: 'text',
+			table: { category: 'Content' },
+			description: 'Body copy shown beneath the title.',
+		},
 		tags: {
 			control: 'object',
 			description:
@@ -79,7 +96,18 @@ const meta = {
 				'Makes the entire card a clickable link. When set, `actionText`/`actionHref`/`secondaryActionText`/`secondaryActionHref` are not available (discriminated union).',
 			table: { category: 'Behavior' },
 		},
-		external: { control: 'boolean', table: { category: 'Behavior' } },
+		external: {
+			control: 'boolean',
+			table: { category: 'Behavior' },
+			description:
+				'Opens the card link in a new tab with a safe `rel`. Only applies when `href` is set.',
+		},
+		headingTag: {
+			control: 'select',
+			options: headlineTags,
+			table: { category: 'Appearance' },
+			description: 'HTML element used for the card title.',
+		},
 	},
 	args: {
 		title: 'Featured Content Title',

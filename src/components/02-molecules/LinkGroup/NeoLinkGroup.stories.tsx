@@ -4,6 +4,7 @@ import { defineComponent } from 'vue'
 import NeoLinkGroup from '@/components/02-molecules/LinkGroup/NeoLinkGroup.vue'
 import type { NeoLinkGroupProps, NeoLinkGroupLink } from './NeoLinkGroupTypes'
 import { linkGroupSizes, linkGroupVariants } from './NeoLinkGroupTypes'
+import { headlineTags } from '@/components/01-atoms/Headline/NeoHeadlineTypes'
 import { ariaLabelArgType } from '../../../../.storybook/utils/argTypes'
 import { createSimpleColorShowcase } from '../../../../.storybook/utils/colorShowcase'
 import { createA11yPlay } from '../../../../.storybook/utils/createA11yPlay'
@@ -47,6 +48,12 @@ const meta = {
 			options: linkGroupVariants,
 			description:
 				'`vertical`: links are stacked in a column. `horizontal`: links are arranged in a row.',
+			table: { category: 'Appearance' },
+		},
+		headingTag: {
+			control: 'select',
+			options: headlineTags,
+			description: 'HTML element used for the group title.',
 			table: { category: 'Appearance' },
 		},
 		default: {

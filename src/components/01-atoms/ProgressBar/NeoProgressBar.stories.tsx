@@ -41,6 +41,17 @@ const meta = {
 			description: 'Applies fully rounded caps to the track and fill.',
 			table: { category: 'Appearance' },
 		},
+		decimals: {
+			control: 'number',
+			description:
+				'Max fraction digits when announcing the value via `aria-valuetext`. Defaults to 2.',
+			table: { category: 'Accessibility' },
+		},
+		locale: {
+			control: 'text',
+			description: 'BCP 47 locale for `aria-valuetext` formatting. Falls back to `<html lang>`.',
+			table: { category: 'Accessibility' },
+		},
 	},
 	args: {
 		value: 68,

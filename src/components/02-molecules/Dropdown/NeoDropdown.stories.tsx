@@ -54,6 +54,23 @@ const meta = {
 				"CSS selector for a Teleport target. When set, the panel renders under the target (typically `'body'`) and is positioned via JS from the trigger's bounding rect — escapes any ancestor `overflow: hidden` clipping (e.g. inside a navigation bar). Leave undefined for the default in-place panel.",
 			table: { category: 'Behavior' },
 		},
+		trigger: {
+			control: false,
+			description:
+				'The element that opens and closes the panel. Receives `isOpen` (current state) and `toggle` (function to flip state) as slot props.',
+			table: { category: 'Slots' },
+		},
+		default: {
+			control: false,
+			description:
+				'Content rendered inside the panel. Typically a list of `NeoNavItem` links or action buttons.',
+			table: { category: 'Slots' },
+		},
+		'onUpdate:open': {
+			control: false,
+			description: 'Emitted when the open state changes. Required to drive controlled mode.',
+			table: { category: 'Events' },
+		},
 	},
 	args: {
 		placement: 'bottom-start',

@@ -19,7 +19,11 @@ const meta = {
 	argTypes: {
 		...ariaLabelArgType,
 		...disabledArgType,
-		title: { control: 'text', table: { category: 'Content' } },
+		title: {
+			control: 'text',
+			table: { category: 'Content' },
+			description: 'Header text shown on the accordion trigger.',
+		},
 		size: {
 			control: 'select',
 			options: accordionSizes,

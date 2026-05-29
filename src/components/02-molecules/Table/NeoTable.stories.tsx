@@ -79,6 +79,21 @@ const meta = {
 				'`column` (default): first row is the column header. `row`: first column of each data row becomes `<th scope="row">` — use when rows represent named entities (countries, products, people).',
 			table: { category: 'Behavior' },
 		},
+		columns: {
+			control: false,
+			description: 'Column definitions. Each: `{ key, label, sortable?, align?, ... }`.',
+			table: { category: 'Content' },
+		},
+		rows: {
+			control: false,
+			description: 'Array of row data objects, keyed by column `key`.',
+			table: { category: 'Content' },
+		},
+		caption: {
+			control: 'text',
+			description: 'Accessible table caption describing the data.',
+			table: { category: 'Content' },
+		},
 	},
 	args: {
 		color: 'blue',

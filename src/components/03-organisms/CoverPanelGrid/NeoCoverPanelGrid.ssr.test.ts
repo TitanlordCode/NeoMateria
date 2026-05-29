@@ -6,14 +6,6 @@ import NeoHero from '../Hero/NeoHero/NeoHero.vue'
 import NeoFeatureLine from '../FeatureLine/NeoFeatureLine/NeoFeatureLine.vue'
 import NeoSection from '@/components/02-molecules/Section/NeoSection.vue'
 
-/**
- * Guards the nested-NeoSection fix. By default an organism wraps its content
- * in `<section class="NeoSection">`. It must skip that wrapper when either
- * (a) `noSection` is set, or (b) it is already nested inside a `NeoSection`
- * (auto-detected via inject) — otherwise the doubled section breaks the inner
- * grid's percentage track sizing at wide viewports.
- */
-
 const countSections = (html: string) => (html.match(/class="NeoSection/g) ?? []).length
 
 const heroProps = { title: 'Title' }
