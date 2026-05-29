@@ -3,8 +3,8 @@
 	--NeoFeatureLine-sizing-imageRatio: 4 / 3;
 	--NeoFeatureLine-sizing-contentGap: var(--neo-gap-lg);
 	--NeoFeatureLine-sizing-actionsGap: var(--neo-gap-md);
-	--NeoFeatureLine-sizing-bodyFontSize: var(--neo-fontSize-textLg);
-	--NeoFeatureLine-sizing-bodyLineHeight: var(--neo-lineHeight-relaxed);
+	--NeoFeatureLine-fontSize-body: var(--neo-fontSize-textLg);
+	--NeoFeatureLine-lineHeight-body: var(--neo-lineHeight-relaxed);
 }
 
 .NeoFeatureLine--ratio-16-9 {

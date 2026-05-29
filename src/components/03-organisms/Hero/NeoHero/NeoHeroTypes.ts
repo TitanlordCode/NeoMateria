@@ -18,6 +18,7 @@ export interface NeoHeroProps {
 	size?: NeoHeroSize
 	class?: string
 	section?: NeoSectionProps
+	noSection?: boolean
 }
 
 export interface NeoHeroSlots {

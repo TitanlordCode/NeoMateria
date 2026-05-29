@@ -4,8 +4,8 @@
 	--NeoHero-sizing-paddingInline: var(--neo-spacing-layout-sm);
 	--NeoHero-sizing-contentGap: var(--neo-gap-lg);
 	--NeoHero-sizing-actionsGap: var(--neo-gap-md);
-	--NeoHero-sizing-subtitleFontSize: var(--neo-fontSize-textXl);
-	--NeoHero-sizing-subtitleLineHeight: var(--neo-lineHeight-relaxed);
+	--NeoHero-fontSize-subtitle: var(--neo-fontSize-textXl);
+	--NeoHero-lineHeight-subtitle: var(--neo-lineHeight-relaxed);
 
 	/* CLS guard: reserve a typical filled-hero height; override to 0 for short heroes. */
 	--NeoHero-sizing-minBlockSize: 400px;
