@@ -1,5 +1,5 @@
 .NeoHeadlineQuaternary {
-	--NeoHeadlineQuaternary-sizing-fontSize: var(--neo-fontSize-headlineXs);
+	--NeoHeadlineQuaternary-fontSize-value: var(--neo-fontSize-headlineXs);
 	--NeoHeadlineQuaternary-fontWeight-value: var(--neo-fontWeight-semibold);
 	--NeoHeadlineQuaternary-lineHeight-value: var(--neo-lineHeight-snug);
 }

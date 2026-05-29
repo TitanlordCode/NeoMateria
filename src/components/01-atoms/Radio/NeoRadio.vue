@@ -93,7 +93,7 @@ const classes = computed(() => {
 .NeoRadio-label {
 	color: var(--NeoRadio-color-label);
 	cursor: pointer;
-	font-size: var(--NeoRadio-sizing-labelFontSize);
+	font-size: var(--NeoRadio-fontSize-label);
 	user-select: none;
 }
 

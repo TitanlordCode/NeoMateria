@@ -152,7 +152,7 @@ const classes = computed(() => {
 	-webkit-box-orient: vertical;
 	color: var(--NeoCard-color-title);
 	display: -webkit-box;
-	font-size: var(--NeoCard-sizing-titleFont);
+	font-size: var(--NeoCard-fontSize-title);
 	font-weight: 600;
 	hyphens: auto;
 	-webkit-line-clamp: var(--NeoCard-sizing-titleClamp);
@@ -167,7 +167,7 @@ const classes = computed(() => {
 	-webkit-box-orient: vertical;
 	color: var(--NeoCard-color-description);
 	display: -webkit-box;
-	font-size: var(--NeoCard-sizing-descriptionFont);
+	font-size: var(--NeoCard-fontSize-description);
 	hyphens: auto;
 	-webkit-line-clamp: var(--NeoCard-sizing-descriptionClamp);
 	line-clamp: var(--NeoCard-sizing-descriptionClamp);
@@ -202,7 +202,7 @@ const classes = computed(() => {
 
 .NeoCard--featured {
 	& .NeoCard-title {
-		font-size: var(--NeoCard-sizing-featuredTitleFontSize);
+		font-size: var(--NeoCard-fontSize-featuredTitle);
 		font-weight: 700;
 	}
 }

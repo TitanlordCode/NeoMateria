@@ -116,7 +116,7 @@ const classes = computed(() => {
 
 .NeoTextArea-label {
 	color: var(--NeoTextArea-color-label);
-	font-size: var(--NeoTextArea-sizing-labelFontSize);
+	font-size: var(--NeoTextArea-fontSize-label);
 	font-weight: 600;
 }
 
@@ -134,7 +134,7 @@ const classes = computed(() => {
 	box-sizing: border-box;
 	color: var(--NeoTextArea-color-text);
 	font-family: inherit;
-	font-size: var(--NeoTextArea-sizing-fontSize);
+	font-size: var(--NeoTextArea-fontSize-value);
 	line-height: 1.5;
 	min-block-size: var(--NeoTextArea-sizing-minHeight);
 	padding: var(--NeoTextArea-sizing-padding);

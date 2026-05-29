@@ -62,7 +62,7 @@ const linkClasses = computed(
 	color: var(--NeoButton-color-text);
 	display: inline-flex;
 	font-family: inherit;
-	font-size: var(--NeoButton-sizing-fontSize);
+	font-size: var(--NeoButton-fontSize-value);
 	font-weight: 600;
 	gap: var(--NeoButton-sizing-gap);
 	justify-content: center;

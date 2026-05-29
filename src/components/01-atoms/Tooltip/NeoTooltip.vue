@@ -167,7 +167,7 @@ watch(
 	background-color: var(--NeoTooltip-color-bg);
 	border-radius: var(--NeoTooltip-sizing-radius);
 	color: var(--NeoTooltip-color-text);
-	font-size: var(--NeoTooltip-sizing-fontSize);
+	font-size: var(--NeoTooltip-fontSize-value);
 	padding: var(--NeoTooltip-spacing-padding);
 	pointer-events: none;
 	position: fixed;

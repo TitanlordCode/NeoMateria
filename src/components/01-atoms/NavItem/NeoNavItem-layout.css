@@ -1,8 +1,8 @@
 .NeoNavItem--small {
-	--NeoNavItem-sizing-fontSize: var(--neo-fontSize-textSm);
-	--NeoNavItem-sizing-fontSizeLevel1: var(--neo-fontSize-textSm);
-	--NeoNavItem-sizing-fontSizeLevel2: var(--neo-fontSize-textXs);
-	--NeoNavItem-sizing-fontSizeLevel3: var(--neo-fontSize-textXs);
+	--NeoNavItem-fontSize-value: var(--neo-fontSize-textSm);
+	--NeoNavItem-fontSize-level1: var(--neo-fontSize-textSm);
+	--NeoNavItem-fontSize-level2: var(--neo-fontSize-textXs);
+	--NeoNavItem-fontSize-level3: var(--neo-fontSize-textXs);
 	--NeoNavItem-sizing-paddingBlock: var(--neo-spacing-core-xs);
 	--NeoNavItem-sizing-paddingInline: var(--neo-spacing-core-sm);
 	--NeoNavItem-sizing-gap: var(--neo-gap-xs);
@@ -11,10 +11,10 @@
 }
 
 .NeoNavItem--medium {
-	--NeoNavItem-sizing-fontSize: var(--neo-fontSize-base);
-	--NeoNavItem-sizing-fontSizeLevel1: var(--neo-fontSize-textSm);
-	--NeoNavItem-sizing-fontSizeLevel2: var(--neo-fontSize-textSm);
-	--NeoNavItem-sizing-fontSizeLevel3: var(--neo-fontSize-textXs);
+	--NeoNavItem-fontSize-value: var(--neo-fontSize-base);
+	--NeoNavItem-fontSize-level1: var(--neo-fontSize-textSm);
+	--NeoNavItem-fontSize-level2: var(--neo-fontSize-textSm);
+	--NeoNavItem-fontSize-level3: var(--neo-fontSize-textXs);
 	--NeoNavItem-sizing-paddingBlock: var(--neo-spacing-core-sm);
 	--NeoNavItem-sizing-paddingInline: var(--neo-spacing-core-md);
 	--NeoNavItem-sizing-gap: var(--neo-gap-sm);
@@ -23,10 +23,10 @@
 }
 
 .NeoNavItem--large {
-	--NeoNavItem-sizing-fontSize: var(--neo-fontSize-textLg);
-	--NeoNavItem-sizing-fontSizeLevel1: var(--neo-fontSize-base);
-	--NeoNavItem-sizing-fontSizeLevel2: var(--neo-fontSize-textSm);
-	--NeoNavItem-sizing-fontSizeLevel3: var(--neo-fontSize-textSm);
+	--NeoNavItem-fontSize-value: var(--neo-fontSize-textLg);
+	--NeoNavItem-fontSize-level1: var(--neo-fontSize-base);
+	--NeoNavItem-fontSize-level2: var(--neo-fontSize-textSm);
+	--NeoNavItem-fontSize-level3: var(--neo-fontSize-textSm);
 	--NeoNavItem-sizing-paddingBlock: var(--neo-spacing-core-md);
 	--NeoNavItem-sizing-paddingInline: var(--neo-spacing-core-lg);
 	--NeoNavItem-sizing-gap: var(--neo-gap-md);

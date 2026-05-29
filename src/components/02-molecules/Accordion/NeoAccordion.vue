@@ -104,7 +104,7 @@ const handleKeydown = (event: KeyboardEvent) => {
 
 .NeoAccordion-trigger {
 	color: var(--NeoAccordion-color-trigger);
-	font-size: var(--NeoAccordion-sizing-fontSize);
+	font-size: var(--NeoAccordion-fontSize-value);
 	gap: var(--NeoAccordion-sizing-triggerGap);
 	justify-content: space-between;
 	text-align: start;
@@ -121,7 +121,7 @@ const handleKeydown = (event: KeyboardEvent) => {
 
 .NeoAccordion-content {
 	color: var(--NeoAccordion-color-content);
-	font-size: var(--NeoAccordion-sizing-contentFontSize);
+	font-size: var(--NeoAccordion-fontSize-content);
 	padding-block-start: var(--NeoAccordion-sizing-contentPadding);
 }
 

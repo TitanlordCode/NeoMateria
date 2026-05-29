@@ -57,7 +57,7 @@ const classes = computed(() => {
 
 .NeoSpinner-label {
 	color: var(--NeoSpinner-color-label);
-	font-size: var(--NeoSpinner-sizing-labelFontSize);
+	font-size: var(--NeoSpinner-fontSize-label);
 }
 
 @keyframes spin {

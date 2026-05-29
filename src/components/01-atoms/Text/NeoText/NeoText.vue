@@ -43,8 +43,8 @@ const style = computed(() => {
 
 .NeoText {
 	color: var(--NeoText-color-text);
-	font-size: var(--NeoText-sizing-fontSize);
-	line-height: var(--NeoText-sizing-lineHeight);
+	font-size: var(--NeoText-fontSize-value);
+	line-height: var(--NeoText-lineHeight-value);
 	margin: 0;
 	overflow-wrap: break-word;
 }

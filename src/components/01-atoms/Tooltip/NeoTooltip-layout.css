@@ -1,6 +1,6 @@
 .NeoTooltip {
 	--NeoTooltip-sizing-radius: var(--neo-radius-sm);
 	--NeoTooltip-sizing-gap: 6px;
-	--NeoTooltip-sizing-fontSize: var(--neo-fontSize-textSm);
+	--NeoTooltip-fontSize-value: var(--neo-fontSize-textSm);
 	--NeoTooltip-spacing-padding: var(--neo-spacing-core-xs) var(--neo-spacing-core-sm);
 }

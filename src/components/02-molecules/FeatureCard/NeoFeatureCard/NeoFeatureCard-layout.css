@@ -8,11 +8,11 @@
 }
 
 .NeoFeatureCard-category {
-	--NeoFeatureCard-sizing-categoryFontSize: var(--neo-fontSize-textXs);
+	--NeoFeatureCard-fontSize-category: var(--neo-fontSize-textXs);
 	--NeoFeatureCard-fontWeight-category: var(--neo-fontWeight-semibold);
 }
 
 .NeoFeatureCard-excerpt {
-	--NeoFeatureCard-sizing-excerptFontSize: var(--neo-fontSize-textMd);
+	--NeoFeatureCard-fontSize-excerpt: var(--neo-fontSize-textMd);
 	--NeoFeatureCard-lineHeight-excerpt: var(--neo-lineHeight-normal);
 }

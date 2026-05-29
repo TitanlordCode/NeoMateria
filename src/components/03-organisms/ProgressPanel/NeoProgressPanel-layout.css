@@ -18,11 +18,11 @@
 }
 
 .NeoProgressPanel-title {
-	--NeoProgressPanel-sizing-titleFontSize: var(--neo-fontSize-textMd);
+	--NeoProgressPanel-fontSize-title: var(--neo-fontSize-textMd);
 }
 
 .NeoProgressPanel-subtitle {
-	--NeoProgressPanel-sizing-subtitleFontSize: var(--neo-fontSize-textSm);
+	--NeoProgressPanel-fontSize-subtitle: var(--neo-fontSize-textSm);
 }
 
 .NeoProgressPanel-footer {
@@ -35,9 +35,9 @@
 }
 
 .NeoProgressPanel-value {
-	--NeoProgressPanel-sizing-valueFontSize: var(--neo-fontSize-textSm);
+	--NeoProgressPanel-fontSize-value: var(--neo-fontSize-textSm);
 }
 
 .NeoProgressPanel-valueLabel {
-	--NeoProgressPanel-sizing-valueLabelFontSize: var(--neo-fontSize-textSm);
+	--NeoProgressPanel-fontSize-valueLabel: var(--neo-fontSize-textSm);
 }

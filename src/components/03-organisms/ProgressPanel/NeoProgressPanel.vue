@@ -187,7 +187,7 @@ const handleImageError = () => {
 	-webkit-box-orient: vertical;
 	color: var(--NeoProgressPanel-color-title);
 	display: -webkit-box;
-	font-size: var(--NeoProgressPanel-sizing-titleFontSize);
+	font-size: var(--NeoProgressPanel-fontSize-title);
 	font-weight: 600;
 	hyphens: auto;
 	-webkit-line-clamp: var(--NeoProgressPanel-sizing-titleClamp);
@@ -200,7 +200,7 @@ const handleImageError = () => {
 
 .NeoProgressPanel-subtitle {
 	color: var(--NeoProgressPanel-color-subtitle);
-	font-size: var(--NeoProgressPanel-sizing-subtitleFontSize);
+	font-size: var(--NeoProgressPanel-fontSize-subtitle);
 	hyphens: auto;
 	line-height: 1.3;
 	margin: 0;
@@ -231,14 +231,14 @@ const handleImageError = () => {
 .NeoProgressPanel-value {
 	color: var(--NeoProgressPanel-color-value);
 	flex-shrink: 0;
-	font-size: var(--NeoProgressPanel-sizing-valueFontSize);
+	font-size: var(--NeoProgressPanel-fontSize-value);
 	font-weight: 700;
 	line-height: 1;
 }
 
 .NeoProgressPanel-valueLabel {
 	color: var(--NeoProgressPanel-color-valueLabel);
-	font-size: var(--NeoProgressPanel-sizing-valueLabelFontSize);
+	font-size: var(--NeoProgressPanel-fontSize-valueLabel);
 	overflow: hidden;
 	overflow-wrap: break-word;
 	text-overflow: ellipsis;

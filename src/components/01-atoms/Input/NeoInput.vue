@@ -121,7 +121,7 @@ const classes = computed(() => {
 
 .NeoInput-label {
 	color: var(--NeoInput-color-label);
-	font-size: var(--NeoInput-sizing-labelFontSize);
+	font-size: var(--NeoInput-fontSize-label);
 	font-weight: 600;
 }
 
@@ -138,7 +138,7 @@ const classes = computed(() => {
 	border-width: var(--NeoInput-sizing-borderWidth);
 	box-sizing: border-box;
 	color: var(--NeoInput-color-text);
-	font-size: var(--NeoInput-sizing-fontSize);
+	font-size: var(--NeoInput-fontSize-value);
 	min-block-size: var(--NeoInput-sizing-minHeight);
 	padding: var(--NeoInput-sizing-padding);
 	transition: border-color 0.2s;

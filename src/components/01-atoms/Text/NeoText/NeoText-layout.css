@@ -1,19 +1,19 @@
 .NeoText {
-	--NeoText-sizing-fontSize: var(--neo-fontSize-textMd);
-	--NeoText-sizing-lineHeight: var(--neo-lineHeight-normal);
+	--NeoText-fontSize-value: var(--neo-fontSize-textMd);
+	--NeoText-lineHeight-value: var(--neo-lineHeight-normal);
 }
 
 .NeoText--lead {
-	--NeoText-sizing-fontSize: var(--neo-fontSize-textXl);
-	--NeoText-sizing-lineHeight: var(--neo-lineHeight-relaxed);
+	--NeoText-fontSize-value: var(--neo-fontSize-textXl);
+	--NeoText-lineHeight-value: var(--neo-lineHeight-relaxed);
 }
 
 .NeoText--small {
-	--NeoText-sizing-fontSize: var(--neo-fontSize-textSm);
+	--NeoText-fontSize-value: var(--neo-fontSize-textSm);
 }
 
 .NeoText--caption {
-	--NeoText-sizing-fontSize: var(--neo-fontSize-textXs);
+	--NeoText-fontSize-value: var(--neo-fontSize-textXs);
 }
 
 .NeoText--weight-medium {

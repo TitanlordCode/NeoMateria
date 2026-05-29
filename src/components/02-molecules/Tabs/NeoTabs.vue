@@ -365,7 +365,7 @@ const classes = computed(() => {
 	display: inline-flex;
 	flex-shrink: 0;
 	font-family: inherit;
-	font-size: var(--NeoTabs-sizing-fontSize);
+	font-size: var(--NeoTabs-fontSize-value);
 	font-weight: 500;
 	gap: var(--NeoTabs-sizing-gap);
 	padding-block: var(--NeoTabs-sizing-paddingBlock);
@@ -492,7 +492,7 @@ const classes = computed(() => {
 	cursor: pointer;
 	display: inline-flex;
 	font-family: inherit;
-	font-size: var(--NeoTabs-sizing-fontSize);
+	font-size: var(--NeoTabs-fontSize-value);
 	font-weight: 500;
 	gap: var(--NeoTabs-sizing-gap);
 	padding-block: var(--NeoTabs-sizing-paddingBlock);
@@ -522,7 +522,7 @@ const classes = computed(() => {
 	cursor: pointer;
 	display: flex;
 	font-family: inherit;
-	font-size: var(--NeoTabs-sizing-fontSize);
+	font-size: var(--NeoTabs-fontSize-value);
 	inline-size: 100%;
 	padding-block: var(--NeoTabs-sizing-overflowItemPaddingBlock);
 	padding-inline: var(--NeoTabs-sizing-overflowItemPaddingInline);

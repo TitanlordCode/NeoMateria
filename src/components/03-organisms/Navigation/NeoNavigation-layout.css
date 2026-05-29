@@ -3,7 +3,7 @@
 	--NeoNavigation-sizing-paddingInline: var(--neo-spacing-layout-sm);
 	--NeoNavigation-sizing-gap: var(--neo-gap-lg);
 	--NeoNavigation-sizing-linkGap: var(--neo-gap-md);
-	--NeoNavigation-sizing-fontSize: var(--neo-fontSize-textMd);
+	--NeoNavigation-fontSize-value: var(--neo-fontSize-textMd);
 	--NeoNavigation-sizing-mobilePanelPadding: var(--neo-spacing-core-lg);
 	--NeoNavigation-sizing-maxInlineSize: var(--neo-spacing-max-global-size);
 	--NeoNavigation-sizing-linksGap: var(--neo-gap-sm);

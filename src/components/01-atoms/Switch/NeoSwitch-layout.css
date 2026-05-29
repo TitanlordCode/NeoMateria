@@ -4,7 +4,7 @@
 	--NeoSwitch-sizing-thumbSize: 12px;
 	--NeoSwitch-sizing-thumbOffset: 2px;
 	--NeoSwitch-sizing-thumbTravel: 12px;
-	--NeoSwitch-sizing-labelFontSize: var(--neo-fontSize-textSm);
+	--NeoSwitch-fontSize-label: var(--neo-fontSize-textSm);
 }
 
 .NeoSwitch--medium {
@@ -13,7 +13,7 @@
 	--NeoSwitch-sizing-thumbSize: 16px;
 	--NeoSwitch-sizing-thumbOffset: 2px;
 	--NeoSwitch-sizing-thumbTravel: 16px;
-	--NeoSwitch-sizing-labelFontSize: var(--neo-fontSize-base);
+	--NeoSwitch-fontSize-label: var(--neo-fontSize-base);
 }
 
 .NeoSwitch--large {
@@ -22,7 +22,7 @@
 	--NeoSwitch-sizing-thumbSize: 20px;
 	--NeoSwitch-sizing-thumbOffset: 2px;
 	--NeoSwitch-sizing-thumbTravel: 20px;
-	--NeoSwitch-sizing-labelFontSize: var(--neo-fontSize-textLg);
+	--NeoSwitch-fontSize-label: var(--neo-fontSize-textLg);
 }
 
 .NeoSwitch {

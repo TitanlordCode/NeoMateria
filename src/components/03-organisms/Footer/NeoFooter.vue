@@ -127,7 +127,7 @@ const classes = computed(() => {
 
 .NeoFooter-copyright {
 	color: var(--NeoFooter-color-copyright);
-	font-size: var(--NeoFooter-sizing-copyrightFont);
+	font-size: var(--NeoFooter-fontSize-copyright);
 	margin: 0;
 }
 

@@ -81,7 +81,7 @@ const overlineStyle = computed(() => {
 
 .NeoHeadingGroup-overline {
 	color: var(--NeoHeadingGroup-color-overline);
-	font-size: var(--NeoHeadingGroup-sizing-overlineFontSize);
+	font-size: var(--NeoHeadingGroup-fontSize-overline);
 	font-weight: var(--NeoHeadingGroup-fontWeight-overline);
 	letter-spacing: 0.08em;
 	margin: 0;
@@ -91,7 +91,7 @@ const overlineStyle = computed(() => {
 
 .NeoHeadingGroup-subtitle {
 	color: var(--NeoHeadingGroup-color-subtitle);
-	font-size: var(--NeoHeadingGroup-sizing-subtitleFontSize);
+	font-size: var(--NeoHeadingGroup-fontSize-subtitle);
 	line-height: var(--NeoHeadingGroup-lineHeight-subtitle);
 	margin: 0;
 	overflow-wrap: break-word;

@@ -97,7 +97,7 @@ const classes = computed(() => {
 .NeoCheckbox-label {
 	color: var(--NeoCheckbox-color-label);
 	cursor: pointer;
-	font-size: var(--NeoCheckbox-sizing-labelFontSize);
+	font-size: var(--NeoCheckbox-fontSize-label);
 	user-select: none;
 }
 
