@@ -1,6 +1,18 @@
 .NeoCallout {
-	--NeoCallout-sizing-borderRadius: 8px;
+	--NeoCallout-sizing-borderRadius: 0;
 	--NeoCallout-sizing-borderWidth: 2px;
+	--NeoCallout-sizing-accentBorderWidth: 4px;
 	--NeoCallout-sizing-gap: var(--neo-gap-md);
 	--NeoCallout-sizing-padding: var(--neo-spacing-core-lg);
+	--NeoCallout-fontSize-value: var(--neo-fontSize-base);
+}
+
+.NeoCallout--rounded {
+	--NeoCallout-sizing-borderRadius: 8px;
+}
+
+.NeoCallout--small {
+	--NeoCallout-sizing-gap: var(--neo-gap-sm);
+	--NeoCallout-sizing-padding: var(--neo-spacing-core-sm) var(--neo-spacing-core-md);
+	--NeoCallout-fontSize-value: var(--neo-fontSize-textSm);
 }
