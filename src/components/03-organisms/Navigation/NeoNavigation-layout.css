@@ -22,6 +22,11 @@
 	--NeoNavigation-sizing-desktopDropdownGap: var(--neo-gap-lg);
 	--NeoNavigation-sizing-desktopDropdownPaddingBlock: var(--neo-spacing-core-lg);
 
+	/* Caps slotted logos so they can't stretch the bar past --sizing-height. */
+	--NeoNavigation-sizing-logoMaxBlockSize: calc(
+		var(--NeoNavigation-sizing-height) - 2 * var(--neo-spacing-core-sm)
+	);
+
 	@mixin bp-md {
 		--NeoNavigation-sizing-height: 72px;
 		--NeoNavigation-sizing-paddingInline: var(--neo-spacing-layout-md);

@@ -498,6 +498,13 @@ defineExpose<NeoNavigationExpose>({ close: () => toggleMobileMenu(false) })
 .NeoNavigation-logo {
 	align-items: center;
 	display: flex;
+	max-block-size: var(--NeoNavigation-sizing-logoMaxBlockSize);
+}
+
+.NeoNavigation-logo :deep(img),
+.NeoNavigation-logo :deep(svg),
+.NeoNavigation-logo :deep(picture) {
+	max-block-size: var(--NeoNavigation-sizing-logoMaxBlockSize);
 }
 
 .NeoNavigation-desktopLinks {
