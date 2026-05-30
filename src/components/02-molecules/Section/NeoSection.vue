@@ -33,27 +33,27 @@ const classes = computed(() =>
 @import url('./NeoSection-layout.css');
 
 .NeoSection {
-	column-gap: var(--NeoSection-sizing-columnGap);
+	/* Gaps live as explicit tracks (column-gap: 0) so they don't bleed into the padding tracks. */
+	column-gap: 0;
 	display: grid;
 	grid-template-columns:
 		[full-start] minmax(var(--NeoSection-sizing-inlinePadding), 1fr)
-		[content-start] repeat(12, minmax(0, var(--NeoSection-sizing-columnWidth)))
-		[content-end] minmax(var(--NeoSection-sizing-inlinePadding), 1fr)
-		[full-end];
+		[content-start] minmax(0, var(--NeoSection-sizing-columnWidth))
+		repeat(11, var(--NeoSection-sizing-columnGap) minmax(0, var(--NeoSection-sizing-columnWidth)))
+		[content-end] minmax(var(--NeoSection-sizing-inlinePadding), 1fr) [full-end];
 	inline-size: 100%;
 	row-gap: var(--NeoSection-sizing-rowGap);
 }
 
 .NeoSection > :deep(*) {
-	/* same as span 12 */
 	grid-column: content-start / content-end;
 }
 
 .NeoSection--full-width {
 	grid-template-columns:
 		[full-start] var(--NeoSection-sizing-inlinePadding)
-		[content-start] repeat(12, 1fr)
-		[content-end] var(--NeoSection-sizing-inlinePadding)
-		[full-end];
+		[content-start] minmax(0, var(--NeoSection-sizing-columnWidth))
+		repeat(11, var(--NeoSection-sizing-columnGap) minmax(0, var(--NeoSection-sizing-columnWidth)))
+		[content-end] var(--NeoSection-sizing-inlinePadding) [full-end];
 }
 </style>

@@ -3,15 +3,27 @@
 	--NeoSection-sizing-columnWidth: calc(
 		(var(--NeoSection-sizing-maxGlobalSize) - 11 * var(--NeoSection-sizing-columnGap)) / 12
 	);
-	--NeoSection-sizing-inlinePadding: 0;
 	--NeoSection-sizing-maxGlobalSize: var(--neo-spacing-max-global-size);
 	--NeoSection-sizing-rowGap: 0;
-}
 
-/* 120rem mirrors --neo-spacing-max-global-size (NeoNavigation's centered
-   container width). Above it, the 1fr gutter must track the nav offset. */
-@media (width >= 120rem) {
-	.NeoSection {
-		--NeoSection-sizing-inlinePadding: calc((100vw - 120rem) / 2 + var(--neo-spacing-layout-lg));
+	/* Uses 100% (not 100vw) so docs / narrow-container contexts resolve
+	   against the section's own width rather than the viewport. */
+	--NeoSection-sizing-inlinePadding: max(
+		var(--neo-spacing-layout-sm),
+		calc((100% - var(--NeoSection-sizing-maxGlobalSize)) / 2)
+	);
+
+	@mixin bp-md {
+		--NeoSection-sizing-inlinePadding: max(
+			var(--neo-spacing-layout-md),
+			calc((100% - var(--NeoSection-sizing-maxGlobalSize)) / 2)
+		);
+	}
+
+	@mixin bp-lg {
+		--NeoSection-sizing-inlinePadding: max(
+			var(--neo-spacing-layout-lg),
+			calc((100% - var(--NeoSection-sizing-maxGlobalSize)) / 2)
+		);
 	}
 }
