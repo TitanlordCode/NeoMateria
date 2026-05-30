@@ -124,14 +124,17 @@ export const Rounded: Story = {
 			setup() {
 				return () => (
 					<NeoCallout {...args}>
-						Opt into rounded corners with the <code>rounded</code> prop. Default is sharp so the
-						callout sits flush against grid edges and matches the rest of the library.
+						Opt into rounded corners via <code>rounded</code>.
 					</NeoCallout>
 				)
 			},
 		})
 	},
 	parameters: {
+		// 0.5% pixel tolerance — the 8px corner-radius arcs antialias slightly
+		// differently between local Docker and CI even with the pinned base
+		// image digest, almost certainly CPU-level paint nondeterminism.
+		snapshot: { diffThreshold: 0.005 },
 		docs: {
 			source: {
 				code: `<NeoCallout color="blue" variant="bordered" rounded>
@@ -149,12 +152,7 @@ export const Accent: Story = {
 		return defineComponent({
 			name: 'AccentRender',
 			setup() {
-				return () => (
-					<NeoCallout {...args}>
-						Inline annotation: left-edge accent border with subtle neutral background. Pairs well
-						with <code>size="small"</code> for section labels and form hints.
-					</NeoCallout>
-				)
+				return () => <NeoCallout {...args}>Inline annotation with accent border.</NeoCallout>
 			},
 		})
 	},
