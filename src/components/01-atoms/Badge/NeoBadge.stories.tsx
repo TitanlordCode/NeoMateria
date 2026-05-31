@@ -337,7 +337,7 @@ export const AllColorsOnDark: Story = {
 				render: (color, _, args) => (
 					<div key={color} style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
 						<NeoBadge {...args} variant="dot" color={color} />
-						<span class="NeoBadge__dot-label">{color}</span>
+						<span class="NeoBadge-dotLabel">{color}</span>
 					</div>
 				),
 			},

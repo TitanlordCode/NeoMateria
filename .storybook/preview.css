@@ -1,25 +1,29 @@
 /* Import color showcase utilities */
 @import url('./utils/colorShowcase.css');
 
+code {
+	font-family: inherit;
+}
+
 /* Docs showcase chrome — semantic tokens that adapt to OS dark/light preference.
    Used in MDX inline styles and the generate-colors output. */
 :root {
-	--docs-color-text-secondary: var(--neo-color-grey600);
-	--docs-color-text-label: var(--neo-color-grey700);
-	--docs-color-border: var(--neo-color-grey200);
-	--docs-color-bg-subtle: var(--neo-color-grey50);
-	--docs-color-bg-warning: #fff3cd;
-	--docs-color-border-warning: var(--neo-color-amber500);
+	--Docs-color-textSecondary: var(--neo-color-grey600);
+	--Docs-color-textLabel: var(--neo-color-grey700);
+	--Docs-color-border: var(--neo-color-grey200);
+	--Docs-color-bgSubtle: var(--neo-color-grey50);
+	--Docs-color-bgWarning: #fff3cd;
+	--Docs-color-borderWarning: var(--neo-color-amber500);
 }
 
 @media (prefers-color-scheme: dark) {
 	:root {
-		--docs-color-text-secondary: var(--neo-color-grey400);
-		--docs-color-text-label: var(--neo-color-grey300);
-		--docs-color-border: var(--neo-color-grey700);
-		--docs-color-bg-subtle: var(--neo-color-grey800);
-		--docs-color-bg-warning: rgba(255, 193, 7, 0.12);
-		--docs-color-border-warning: var(--neo-color-amber400);
+		--Docs-color-textSecondary: var(--neo-color-grey400);
+		--Docs-color-textLabel: var(--neo-color-grey300);
+		--Docs-color-border: var(--neo-color-grey700);
+		--Docs-color-bgSubtle: var(--neo-color-grey800);
+		--Docs-color-bgWarning: rgb(255 193 7 / 12%);
+		--Docs-color-borderWarning: var(--neo-color-amber400);
 	}
 }
 
@@ -27,14 +31,16 @@
 .docs-story:has(.sb-story [id^='story--'][id*='-inner'] > .u-onLight) {
 	background: white !important;
 }
+
 .docs-story:has(.sb-story [id^='story--'][id*='-inner'] > .u-onDark) {
 	background: black !important;
 }
 
-/* Set background colors for story containers directly*/
+/* Set background colors for story containers directly */
 html:has(#storybook-root > .u-onLight) {
 	background: white !important;
 }
+
 html:has(#storybook-root > .u-onDark) {
 	background: black !important;
 }

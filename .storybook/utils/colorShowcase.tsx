@@ -157,7 +157,7 @@ export const getColorWrapper = (
 	if (nonWCAGEntry && !isNonWCAGVariant) {
 		return (
 			<div
-				class="color-showcase__light-bg-wrapper"
+				class="ColorShowcase-lightBgWrapper"
 				title="Uses black text - optimized for light backgrounds"
 			>
 				{children}
@@ -170,7 +170,7 @@ export const getColorWrapper = (
 	if (nonWCAGEntry && isNonWCAGVariant) {
 		return (
 			<div
-				class="color-showcase__light-bg-wrapper"
+				class="ColorShowcase-lightBgWrapper"
 				title="Uses colored text - not optimized for light backgrounds"
 			>
 				{dark ? children : `${color} not WCAG compliant`}
@@ -261,7 +261,7 @@ export const createAllColorsRender = <TComponent, TArgs = Record<string, unknown
 					>
 						{variants.map((variantConfig) => (
 							<div key={variantConfig.name}>
-								<h3 class="color-showcase__variant-title">{variantConfig.name}</h3>
+								<h3 class="ColorShowcase-variantTitle">{variantConfig.name}</h3>
 								<div
 									style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', alignItems: 'center' }}
 								>
