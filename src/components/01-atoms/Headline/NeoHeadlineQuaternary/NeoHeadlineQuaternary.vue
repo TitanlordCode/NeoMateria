@@ -21,7 +21,7 @@ const { classes, style } = useHeadline('NeoHeadlineQuaternary', props)
 
 .NeoHeadlineQuaternary {
 	color: var(--NeoHeadlineQuaternary-color-text);
-	font-size: var(--NeoHeadlineQuaternary-sizing-fontSize);
+	font-size: var(--NeoHeadlineQuaternary-fontSize-value);
 	font-weight: var(--NeoHeadlineQuaternary-fontWeight-value);
 	letter-spacing: 0;
 	line-height: var(--NeoHeadlineQuaternary-lineHeight-value);

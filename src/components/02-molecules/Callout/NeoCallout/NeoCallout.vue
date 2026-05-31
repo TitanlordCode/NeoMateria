@@ -9,7 +9,11 @@ defineSlots<NeoCalloutSlots>()
 const classes = computed(() => {
 	const calloutClasses = getClassNames({
 		component: 'NeoCallout',
-		modifiers: [props.variant ?? 'bordered'],
+		modifiers: [
+			props.variant ?? 'bordered',
+			props.size ?? 'medium',
+			props.rounded ? 'rounded' : '',
+		],
 		additional: props.class,
 	})
 	const themedClasses = getClassNames({
@@ -38,6 +42,7 @@ const classes = computed(() => {
 .NeoCallout {
 	border-radius: var(--NeoCallout-sizing-borderRadius);
 	display: flex;
+	font-size: var(--NeoCallout-fontSize-value);
 	gap: var(--NeoCallout-sizing-gap);
 	padding: var(--NeoCallout-sizing-padding);
 }
@@ -60,6 +65,15 @@ const classes = computed(() => {
 .NeoCallout--filled {
 	background-color: var(--NeoCallout-color-background);
 	border: var(--NeoCallout-sizing-borderWidth) solid transparent;
+	color: var(--NeoCallout-color-text);
+}
+
+.NeoCallout--accent {
+	background-color: var(--NeoCallout-color-background);
+	border-end-start-radius: 0;
+	border-inline-start: var(--NeoCallout-sizing-accentBorderWidth) solid
+		var(--NeoCallout-color-accent);
+	border-start-start-radius: 0;
 	color: var(--NeoCallout-color-text);
 }
 

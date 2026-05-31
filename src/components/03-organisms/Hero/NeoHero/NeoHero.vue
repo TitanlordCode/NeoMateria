@@ -1,12 +1,16 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, inject } from 'vue'
 import type { NeoHeroProps, NeoHeroSlots } from './NeoHeroTypes'
 import { getClassNames } from '@/utils/classNames'
 import NeoHeadlinePrimary from '@/components/01-atoms/Headline/NeoHeadlinePrimary/NeoHeadlinePrimary.vue'
 import NeoSection from '@/components/02-molecules/Section/NeoSection.vue'
+import { neoSectionInjectionKey } from '@/components/02-molecules/Section/sectionContext'
 
 const props = defineProps<NeoHeroProps>()
 defineSlots<NeoHeroSlots>()
+
+const isInsideSection = inject(neoSectionInjectionKey, false)
+const shouldWrap = computed(() => !props.noSection && !isInsideSection)
 
 const headlineAlign = computed(() =>
 	(props.variant ?? 'centered') === 'centered' ? 'center' : 'start',
@@ -22,7 +26,7 @@ const classes = computed(() =>
 </script>
 
 <template>
-	<NeoSection v-bind="props.section">
+	<NeoSection v-if="shouldWrap" v-bind="props.section ?? {}">
 		<div :class="classes">
 			<div class="NeoHero-content">
 				<NeoHeadlinePrimary
@@ -42,6 +46,24 @@ const classes = computed(() =>
 			</div>
 		</div>
 	</NeoSection>
+	<div v-else :class="classes">
+		<div class="NeoHero-content">
+			<NeoHeadlinePrimary
+				:tag="props.headingTag ?? 'h1'"
+				:color="props.color"
+				:align="headlineAlign"
+			>
+				{{ props.title }}
+			</NeoHeadlinePrimary>
+			<p v-if="props.subtitle" class="NeoHero-subtitle">{{ props.subtitle }}</p>
+			<div v-if="$slots.actions" class="NeoHero-actions">
+				<slot name="actions" />
+			</div>
+		</div>
+		<div v-if="$slots.media" class="NeoHero-media">
+			<slot name="media" />
+		</div>
+	</div>
 </template>
 
 <style scoped>
@@ -87,8 +109,8 @@ const classes = computed(() =>
 
 .NeoHero-subtitle {
 	color: var(--NeoHero-color-subtitle);
-	font-size: var(--NeoHero-sizing-subtitleFontSize);
-	line-height: var(--NeoHero-sizing-subtitleLineHeight);
+	font-size: var(--NeoHero-fontSize-subtitle);
+	line-height: var(--NeoHero-lineHeight-subtitle);
 	margin: 0;
 	overflow-wrap: break-word;
 }

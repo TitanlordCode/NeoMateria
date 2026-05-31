@@ -21,7 +21,11 @@ const meta = {
 		snapshot: { viewports: ['sm', 'lg', 'xl'] },
 	},
 	argTypes: {
-		text: { control: 'text', table: { category: 'Content' } },
+		text: {
+			control: 'text',
+			table: { category: 'Content' },
+			description: 'Tooltip text shown on hover/focus of the trigger.',
+		},
 		placement: {
 			control: 'select',
 			options: tooltipPlacements,

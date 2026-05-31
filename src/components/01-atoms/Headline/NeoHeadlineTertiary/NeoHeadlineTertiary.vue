@@ -21,7 +21,7 @@ const { classes, style } = useHeadline('NeoHeadlineTertiary', props)
 
 .NeoHeadlineTertiary {
 	color: var(--NeoHeadlineTertiary-color-text);
-	font-size: var(--NeoHeadlineTertiary-sizing-fontSize);
+	font-size: var(--NeoHeadlineTertiary-fontSize-value);
 	font-weight: var(--NeoHeadlineTertiary-fontWeight-value);
 	letter-spacing: 0;
 	line-height: var(--NeoHeadlineTertiary-lineHeight-value);

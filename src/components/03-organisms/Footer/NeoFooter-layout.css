@@ -2,9 +2,9 @@
 	--NeoFooter-sizing-padding: var(--neo-spacing-layout-md) var(--neo-spacing-layout-sm);
 	--NeoFooter-sizing-gap: var(--neo-spacing-core-xl);
 	--NeoFooter-sizing-sectionGap: var(--neo-spacing-core-lg);
-	--NeoFooter-sizing-sectionTitleFont: var(--neo-fontSize-textMd);
-	--NeoFooter-sizing-linkFont: var(--neo-fontSize-textSm);
-	--NeoFooter-sizing-copyrightFont: var(--neo-fontSize-textSm);
+	--NeoFooter-fontSize-sectionTitle: var(--neo-fontSize-textMd);
+	--NeoFooter-fontSize-link: var(--neo-fontSize-textSm);
+	--NeoFooter-fontSize-copyright: var(--neo-fontSize-textSm);
 	--NeoFooter-sizing-maxInlineSize: var(--neo-spacing-max-global-size);
 
 	/* CLS guard: reserve a typical filled-footer height; override to 0 for short footers. */

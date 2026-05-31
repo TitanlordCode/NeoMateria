@@ -3,9 +3,9 @@
 	--NeoCard-sizing-imageHeight: 220px;
 	--NeoCard-sizing-padding: var(--neo-spacing-core-md);
 	--NeoCard-sizing-gap: var(--neo-gap-md);
-	--NeoCard-sizing-titleFont: var(--neo-fontSize-textLg);
+	--NeoCard-fontSize-title: var(--neo-fontSize-textLg);
 	--NeoCard-sizing-titleClamp: 2;
-	--NeoCard-sizing-descriptionFont: var(--neo-fontSize-base);
+	--NeoCard-fontSize-description: var(--neo-fontSize-base);
 	--NeoCard-sizing-descriptionClamp: 3;
 	--NeoCard-sizing-borderRadius: var(--neo-radius-md);
 	--NeoCard-sizing-borderWidth: 1px;
@@ -16,16 +16,16 @@
 	--NeoCard-sizing-imageHeight: 160px;
 	--NeoCard-sizing-padding: var(--neo-spacing-core-sm);
 	--NeoCard-sizing-gap: var(--neo-gap-sm);
-	--NeoCard-sizing-titleFont: var(--neo-fontSize-textMd);
-	--NeoCard-sizing-descriptionFont: var(--neo-fontSize-textSm);
+	--NeoCard-fontSize-title: var(--neo-fontSize-textMd);
+	--NeoCard-fontSize-description: var(--neo-fontSize-textSm);
 }
 
 .NeoCard--large {
 	--NeoCard-sizing-imageHeight: 280px;
 	--NeoCard-sizing-padding: var(--neo-spacing-core-lg);
 	--NeoCard-sizing-gap: var(--neo-gap-lg);
-	--NeoCard-sizing-titleFont: var(--neo-fontSize-textXl);
-	--NeoCard-sizing-descriptionFont: var(--neo-fontSize-textMd);
+	--NeoCard-fontSize-title: var(--neo-fontSize-textXl);
+	--NeoCard-fontSize-description: var(--neo-fontSize-textMd);
 }
 
 .NeoCard--rounded {
@@ -53,5 +53,5 @@
 }
 
 .NeoCard--featured .NeoCard-title {
-	--NeoCard-sizing-featuredTitleFontSize: var(--neo-fontSize-headlineSm);
+	--NeoCard-fontSize-featuredTitle: var(--neo-fontSize-headlineSm);
 }

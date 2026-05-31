@@ -10,14 +10,53 @@ const meta = {
 	title: 'Organisms/NeoFeatureLine',
 	component: NeoFeatureLine,
 	tags: ['autodocs'],
+	parameters: {
+		docs: {
+			description: {
+				component: `
+A media-and-text row organism for feature sections. Image sits on one side, heading group + body + CTA on the other; the \`reverse\` prop flips the order at \`bp-md\` and above.
+
+This component wraps itself in a \`NeoSection\`. If you place it **inside another \`NeoSection\`**, it auto-detects the ancestor and skips its own wrapper — so you never get a doubled section. To force-skip the wrapper in any other container, set \`no-section\`.
+				`,
+			},
+		},
+	},
 	argTypes: {
-		imageSrc: { control: 'text', table: { category: 'Content' } },
-		imageAlt: { control: 'text', table: { category: 'Content' } },
-		title: { control: 'text', table: { category: 'Content' } },
-		subtitle: { control: 'text', table: { category: 'Content' } },
-		body: { control: 'text', table: { category: 'Content' } },
-		ctaText: { control: 'text', table: { category: 'Content' } },
-		ctaHref: { control: 'text', table: { category: 'Content' } },
+		imageSrc: {
+			control: 'text',
+			table: { category: 'Content' },
+			description: 'Source URL of the feature image.',
+		},
+		imageAlt: {
+			control: 'text',
+			table: { category: 'Content' },
+			description: 'Alt text for the feature image.',
+		},
+		title: {
+			control: 'text',
+			table: { category: 'Content' },
+			description: 'Heading text for the feature line.',
+		},
+		subtitle: {
+			control: 'text',
+			table: { category: 'Content' },
+			description: 'Overline/eyebrow text shown above the title.',
+		},
+		body: {
+			control: 'text',
+			table: { category: 'Content' },
+			description: 'Body copy describing the feature.',
+		},
+		ctaText: {
+			control: 'text',
+			table: { category: 'Content' },
+			description: 'Label for the call-to-action link. Requires `ctaHref` to render.',
+		},
+		ctaHref: {
+			control: 'text',
+			table: { category: 'Content' },
+			description: 'Destination URL for the call-to-action link. Requires `ctaText` to render.',
+		},
 		reverse: {
 			control: 'boolean',
 			description: 'Swaps image and content order at `bp-md` and above.',
@@ -44,6 +83,17 @@ const meta = {
 		color: {
 			description: 'Accent color applied to the heading and CTA.',
 			table: { category: 'Appearance' },
+		},
+		section: {
+			control: false,
+			description: 'Props forwarded to the internal `NeoSection` wrapper (e.g. `fullWidth`).',
+			table: { category: 'Layout' },
+		},
+		noSection: {
+			control: 'boolean',
+			description:
+				'Force-skip the internal `NeoSection` wrapper. A `NeoSection` ancestor is auto-detected and skipped already; use this to opt out inside non-`NeoSection` containers.',
+			table: { category: 'Layout' },
 		},
 	},
 	args: {

@@ -241,7 +241,7 @@ const handleRowKeyDown = (event: KeyboardEvent, row: Record<string, unknown>) =>
 .NeoTable-caption {
 	caption-side: top;
 	color: var(--NeoTable-color-captionText);
-	font-size: var(--NeoTable-sizing-captionFontSize);
+	font-size: var(--NeoTable-fontSize-caption);
 	font-weight: 600;
 	padding-block-end: var(--NeoTable-sizing-captionPaddingBlockEnd);
 	text-align: start;
@@ -254,7 +254,7 @@ const handleRowKeyDown = (event: KeyboardEvent, row: Record<string, unknown>) =>
 .NeoTable-header {
 	background-color: var(--NeoTable-color-headerBackground);
 	color: var(--NeoTable-color-headerText);
-	font-size: var(--NeoTable-sizing-fontSize);
+	font-size: var(--NeoTable-fontSize-value);
 	font-weight: 600;
 	padding-block: var(--NeoTable-sizing-cellPaddingBlock);
 	padding-inline: var(--NeoTable-sizing-cellPaddingInline);
@@ -344,7 +344,7 @@ const handleRowKeyDown = (event: KeyboardEvent, row: Record<string, unknown>) =>
 
 .NeoTable-cell {
 	color: var(--NeoTable-color-cellText);
-	font-size: var(--NeoTable-sizing-fontSize);
+	font-size: var(--NeoTable-fontSize-value);
 	padding-block: var(--NeoTable-sizing-cellPaddingBlock);
 	padding-inline: var(--NeoTable-sizing-cellPaddingInline);
 	vertical-align: middle;
@@ -403,7 +403,7 @@ const handleRowKeyDown = (event: KeyboardEvent, row: Record<string, unknown>) =>
 
 .NeoTable-empty-message {
 	color: var(--NeoTable-color-emptyText);
-	font-size: var(--NeoTable-sizing-emptyFontSize);
+	font-size: var(--NeoTable-fontSize-empty);
 }
 
 .NeoTable-wrapper--cards .NeoTable-head {
@@ -436,7 +436,7 @@ const handleRowKeyDown = (event: KeyboardEvent, row: Record<string, unknown>) =>
 	color: var(--NeoTable-color-cardLabel);
 	content: attr(data-label);
 	flex-shrink: 0;
-	font-size: var(--NeoTable-sizing-fontSize);
+	font-size: var(--NeoTable-fontSize-value);
 	font-weight: 600;
 	inline-size: 40%;
 	max-inline-size: 140px;

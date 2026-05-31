@@ -21,4 +21,5 @@ export interface NeoFeatureLineProps {
 	color?: SurfaceColor
 	class?: string
 	section?: NeoSectionProps
+	noSection?: boolean
 }

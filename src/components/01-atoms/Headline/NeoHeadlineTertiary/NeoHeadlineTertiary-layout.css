@@ -1,5 +1,5 @@
 .NeoHeadlineTertiary {
-	--NeoHeadlineTertiary-sizing-fontSize: var(--neo-fontSize-headlineSm);
+	--NeoHeadlineTertiary-fontSize-value: var(--neo-fontSize-headlineSm);
 	--NeoHeadlineTertiary-fontWeight-value: var(--neo-fontWeight-semibold);
 	--NeoHeadlineTertiary-lineHeight-value: var(--neo-lineHeight-snug);
 }

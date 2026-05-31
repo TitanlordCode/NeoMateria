@@ -342,7 +342,7 @@ const classes = computed(() => {
 		border-width: var(--NeoSelect-sizing-borderWidth);
 		box-sizing: border-box;
 		color: var(--NeoSelect-color-inputText);
-		font-size: var(--NeoSelect-sizing-fontSize);
+		font-size: var(--NeoSelect-fontSize-value);
 		inline-size: 100%;
 		min-block-size: var(--NeoSelect-sizing-inline);
 		padding: var(--NeoSelect-sizing-padding);
@@ -380,7 +380,7 @@ const classes = computed(() => {
 
 	& .NeoSelect-label {
 		color: var(--NeoSelect-color-label);
-		font-size: var(--NeoSelect-sizing-labelFontSize);
+		font-size: var(--NeoSelect-fontSize-label);
 		font-weight: 600;
 	}
 
@@ -414,7 +414,7 @@ const classes = computed(() => {
 	color: var(--NeoSelect-color-inputText);
 	cursor: pointer;
 	display: flex;
-	font-size: var(--NeoSelect-sizing-fontSize);
+	font-size: var(--NeoSelect-fontSize-value);
 	gap: var(--NeoSelect-sizing-optionItemGap);
 	padding: var(--NeoSelect-sizing-optionItemPaddingBlock)
 		var(--NeoSelect-sizing-optionItemPaddingInline);

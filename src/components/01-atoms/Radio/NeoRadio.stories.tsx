@@ -14,9 +14,21 @@ const meta = {
 	argTypes: {
 		...ariaLabelArgType,
 		...disabledArgType,
-		name: { control: 'text', table: { category: 'Content' } },
-		label: { control: 'text', table: { category: 'Content' } },
-		value: { control: 'text', table: { category: 'Content' } },
+		name: {
+			control: 'text',
+			table: { category: 'Content' },
+			description: 'The `name` attribute that groups radios into one set.',
+		},
+		label: {
+			control: 'text',
+			table: { category: 'Content' },
+			description: 'Visible label text. Mutually exclusive with `ariaLabel`.',
+		},
+		value: {
+			control: 'text',
+			table: { category: 'Content' },
+			description: 'The `value` submitted when this radio is selected.',
+		},
 		color: { description: 'Theme color for the radio fill and focus ring.' },
 		size: {
 			control: 'select',
@@ -24,8 +36,21 @@ const meta = {
 			table: { category: 'Appearance' },
 			description: 'Controls the radio button size and label font size.',
 		},
-		checked: { control: 'boolean', table: { category: 'State' } },
-		required: { control: 'boolean', table: { category: 'State' } },
+		checked: {
+			control: 'boolean',
+			table: { category: 'State' },
+			description: 'Whether this radio is selected.',
+		},
+		required: {
+			control: 'boolean',
+			table: { category: 'State' },
+			description: 'Marks the field as required. Requires `requiredText` to be set.',
+		},
+		requiredText: {
+			control: 'text',
+			table: { category: 'State' },
+			description: 'Assistive text describing the requirement, surfaced when `required` is set.',
+		},
 	},
 	args: {
 		name: 'example-radio',

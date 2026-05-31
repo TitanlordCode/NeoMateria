@@ -12,9 +12,21 @@ const meta = {
 	argTypes: {
 		...ariaLabelArgType,
 		...disabledArgType,
-		name: { control: 'text', table: { category: 'Content' } },
-		label: { control: 'text', table: { category: 'Content' } },
-		value: { control: 'text', table: { category: 'Content' } },
+		name: {
+			control: 'text',
+			table: { category: 'Content' },
+			description: 'The `name` attribute submitted with the form.',
+		},
+		label: {
+			control: 'text',
+			table: { category: 'Content' },
+			description: 'Visible label text. Mutually exclusive with `ariaLabel`.',
+		},
+		value: {
+			control: 'text',
+			table: { category: 'Content' },
+			description: 'The `value` attribute submitted when checked.',
+		},
 		color: { description: 'Theme color for the checkbox fill and focus ring.' },
 		size: {
 			control: 'select',
@@ -22,8 +34,21 @@ const meta = {
 			table: { category: 'Appearance' },
 			description: 'Controls the checkbox size and label font size.',
 		},
-		checked: { control: 'boolean', table: { category: 'State' } },
-		required: { control: 'boolean', table: { category: 'State' } },
+		checked: {
+			control: 'boolean',
+			table: { category: 'State' },
+			description: 'Whether the checkbox is checked.',
+		},
+		required: {
+			control: 'boolean',
+			table: { category: 'State' },
+			description: 'Marks the field as required. Requires `requiredText` to be set.',
+		},
+		requiredText: {
+			control: 'text',
+			table: { category: 'State' },
+			description: 'Assistive text describing the requirement, surfaced when `required` is set.',
+		},
 		indeterminate: {
 			control: 'boolean',
 			table: { category: 'State' },

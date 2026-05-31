@@ -99,7 +99,7 @@ const categoryStyle = computed(() => {
 
 .NeoFeatureCard-category {
 	color: var(--NeoFeatureCard-color-category);
-	font-size: var(--NeoFeatureCard-sizing-categoryFontSize);
+	font-size: var(--NeoFeatureCard-fontSize-category);
 	font-weight: var(--NeoFeatureCard-fontWeight-category);
 	letter-spacing: 0.06em;
 	margin: 0;
@@ -109,7 +109,7 @@ const categoryStyle = computed(() => {
 
 .NeoFeatureCard-excerpt {
 	color: var(--NeoFeatureCard-color-excerpt);
-	font-size: var(--NeoFeatureCard-sizing-excerptFontSize);
+	font-size: var(--NeoFeatureCard-fontSize-excerpt);
 	line-height: var(--NeoFeatureCard-lineHeight-excerpt);
 	margin: 0;
 	overflow-wrap: break-word;

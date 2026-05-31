@@ -12,21 +12,21 @@
 }
 
 .NeoTabs--small {
-	--NeoTabs-sizing-fontSize: var(--neo-fontSize-textXs);
+	--NeoTabs-fontSize-value: var(--neo-fontSize-textXs);
 	--NeoTabs-sizing-paddingBlock: var(--neo-spacing-core-xs);
 	--NeoTabs-sizing-paddingInline: var(--neo-spacing-core-sm);
 	--NeoTabs-sizing-panelPadding: var(--neo-spacing-core-sm);
 }
 
 .NeoTabs--medium {
-	--NeoTabs-sizing-fontSize: var(--neo-fontSize-textSm);
+	--NeoTabs-fontSize-value: var(--neo-fontSize-textSm);
 	--NeoTabs-sizing-paddingBlock: var(--neo-spacing-core-sm);
 	--NeoTabs-sizing-paddingInline: var(--neo-spacing-core-md);
 	--NeoTabs-sizing-panelPadding: var(--neo-spacing-core-md);
 }
 
 .NeoTabs--large {
-	--NeoTabs-sizing-fontSize: var(--neo-fontSize-textMd);
+	--NeoTabs-fontSize-value: var(--neo-fontSize-textMd);
 	--NeoTabs-sizing-paddingBlock: var(--neo-spacing-core-md);
 	--NeoTabs-sizing-paddingInline: var(--neo-spacing-core-lg);
 	--NeoTabs-sizing-panelPadding: var(--neo-spacing-core-lg);

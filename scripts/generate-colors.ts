@@ -513,7 +513,7 @@ rows.forEach((line) => {
 						margin: 'auto',
 
 						backgroundColor: \`var(${value.replace(/`/g, '')})\`,
-						border: '1px solid var(--docs-color-border)'
+						border: '1px solid var(--Docs-color-border)'
 					}}/>
 				</td>
 			</tr>
@@ -586,8 +586,8 @@ All color combinations are tested to meet **WCAG AA** contrast requirements (4.5
 <div style={{
 	padding: '16px',
 	marginBlock: '24px',
-	backgroundColor: 'var(--docs-color-bg-warning)',
-	border: '1px solid var(--docs-color-border-warning)',
+	backgroundColor: 'var(--Docs-color-bgWarning)',
+	border: '1px solid var(--Docs-color-borderWarning)',
 	borderRadius: '4px'
 }}>
 	<strong>⚠️ Special Colors:</strong> Yellow, Amber, and Orange use black text on their colored surface (buttons, badges) because they are too bright for white text. Avoid using them as text or link colors on light page backgrounds — they do not meet WCAG AA contrast against white.

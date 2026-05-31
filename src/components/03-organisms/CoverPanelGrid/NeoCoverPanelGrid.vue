@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, inject } from 'vue'
 import type { NeoCoverPanelGridProps } from './NeoCoverPanelGridTypes'
 import NeoSection from '@/components/02-molecules/Section/NeoSection.vue'
+import { neoSectionInjectionKey } from '@/components/02-molecules/Section/sectionContext'
 
 const gapTokens = {
 	small: 'var(--neo-gap-sm)',
@@ -11,6 +12,9 @@ const gapTokens = {
 
 const props = defineProps<NeoCoverPanelGridProps>()
 
+const isInsideSection = inject(neoSectionInjectionKey, false)
+const shouldWrap = computed(() => !props.noSection && !isInsideSection)
+
 const gridStyle = computed(() => ({
 	'--NeoCoverPanelGrid-sizing-columns': props.columns ?? 4,
 	'--NeoCoverPanelGrid-sizing-columnMinWidth': `${props.minColumnWidth ?? 160}px`,
@@ -19,11 +23,14 @@ const gridStyle = computed(() => ({
 </script>
 
 <template>
-	<NeoSection v-bind="props.section">
+	<NeoSection v-if="shouldWrap" v-bind="props.section ?? {}">
 		<div class="NeoCoverPanelGrid" :style="gridStyle">
 			<slot />
 		</div>
 	</NeoSection>
+	<div v-else class="NeoCoverPanelGrid" :style="gridStyle">
+		<slot />
+	</div>
 </template>
 
 <style scoped>

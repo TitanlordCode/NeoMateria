@@ -86,7 +86,7 @@ const handleChange = (event: Event) => {
 
 .NeoSwitch-label {
 	color: var(--NeoSwitch-color-label);
-	font-size: var(--NeoSwitch-sizing-labelFontSize);
+	font-size: var(--NeoSwitch-fontSize-label);
 }
 
 .NeoSwitch-input {

@@ -12,7 +12,11 @@ const meta = {
 	component: NeoBadge,
 	tags: ['autodocs'],
 	argTypes: {
-		text: { control: 'text', table: { category: 'Content' } },
+		text: {
+			control: 'text',
+			table: { category: 'Content' },
+			description: 'Badge label text. Hidden when `variant` is `dot`.',
+		},
 		color: {
 			description: 'Theme color for the badge.',
 			table: { category: 'Appearance' },
@@ -333,7 +337,7 @@ export const AllColorsOnDark: Story = {
 				render: (color, _, args) => (
 					<div key={color} style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
 						<NeoBadge {...args} variant="dot" color={color} />
-						<span class="NeoBadge__dot-label">{color}</span>
+						<span class="NeoBadge-dotLabel">{color}</span>
 					</div>
 				),
 			},

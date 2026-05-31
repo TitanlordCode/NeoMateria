@@ -59,7 +59,7 @@ const classes = computed(() => {
 	color: var(--NeoBadge-color-text);
 	display: inline-flex;
 	font-family: inherit;
-	font-size: var(--NeoBadge-sizing-fontSize);
+	font-size: var(--NeoBadge-fontSize-value);
 	font-weight: 600;
 	justify-content: center;
 	line-height: 1;

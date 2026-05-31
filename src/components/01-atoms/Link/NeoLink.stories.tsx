@@ -13,8 +13,16 @@ const meta = {
 	tags: ['autodocs'],
 	argTypes: {
 		...disabledArgType,
-		href: { control: 'text', table: { category: 'Content' } },
-		text: { control: 'text', table: { category: 'Content' } },
+		href: {
+			control: 'text',
+			table: { category: 'Content' },
+			description: 'Destination URL the link points to.',
+		},
+		text: {
+			control: 'text',
+			table: { category: 'Content' },
+			description: 'Link label text. Falls back to the default slot if omitted.',
+		},
 		color: {
 			description: 'Theme color applied to the link text and underline.',
 			table: { category: 'Appearance' },
@@ -32,13 +40,22 @@ const meta = {
 				'`default`: colored text, no underline at rest. `underline`: always underlined. `button`: renders the link styled as a button for call-to-action usage.',
 			table: { category: 'Appearance' },
 		},
-		external: { control: 'boolean', table: { category: 'Behavior' } },
+		external: {
+			control: 'boolean',
+			table: { category: 'Behavior' },
+			description: 'Opens in a new tab and applies a safe `rel`. Sets sensible defaults.',
+		},
 		target: {
 			control: 'select',
 			options: ['_blank', '_self', '_parent', '_top'],
 			table: { category: 'Behavior' },
+			description: 'The anchor `target` attribute. Overrides the `external` default.',
 		},
-		rel: { control: 'text', table: { category: 'Behavior' } },
+		rel: {
+			control: 'text',
+			table: { category: 'Behavior' },
+			description: 'The anchor `rel` attribute. Overrides the `external` default.',
+		},
 	},
 	args: {
 		href: 'https://example.com',

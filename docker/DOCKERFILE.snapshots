@@ -1,4 +1,8 @@
-FROM mcr.microsoft.com/playwright:v1.59.1-jammy
+# Pin the digest so local and CI always pull byte-identical bytes regardless
+# of when they pulled — without this, Microsoft re-tagging `v1.59.1-jammy`
+# (security patches, font updates) silently drifts snapshot rendering between
+# environments and breaks pixel comparison.
+FROM mcr.microsoft.com/playwright:v1.59.1-jammy@sha256:8a0360d39d1973be506dd59002904a774f6d697d4946c94063b3fd006461c8ff
 
 WORKDIR /app
 

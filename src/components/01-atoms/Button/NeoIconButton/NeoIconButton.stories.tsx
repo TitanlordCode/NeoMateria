@@ -46,10 +46,15 @@ const meta = {
 			description: 'Marks the button as toggled on. Sets `aria-pressed="true"`.',
 			table: { category: 'State' },
 		},
-		ariaLabel: { control: 'text', table: { category: 'Accessibility' } },
+		ariaLabel: {
+			control: 'text',
+			table: { category: 'Accessibility' },
+			description: 'Accessible name for the icon-only button. Required for screen readers.',
+		},
 		default: {
 			control: false,
 			table: { category: 'Slots' },
+			description: 'The icon content. Pass a raw SVG element or a Vue component.',
 		},
 	},
 	args: {

@@ -24,6 +24,8 @@ A responsive grid layout for \`NeoCoverPanel\` items. Uses CSS \`auto-fill\` wit
 The grid tries to fill as many columns as possible. \`minColumnWidth\` is the floor — a column will never be narrower than this value. \`columns\` is the ceiling — the grid will never add more columns than this even when space allows.
 
 Set \`minColumnWidth\` based on the minimum readable size of your content. Lower values produce more columns at medium widths.
+
+This component wraps itself in a \`NeoSection\`. If you place it **inside another \`NeoSection\`**, it auto-detects the ancestor and skips its own wrapper — so you never get a doubled section (which would break the inner grid's percentage track sizing at wide viewports). To force-skip the wrapper in any other container, set \`no-section\`.
 				`,
 			},
 		},
@@ -47,6 +49,17 @@ Set \`minColumnWidth\` based on the minimum readable size of your content. Lower
 			options: coverPanelGridGaps,
 			description:
 				'Gap between grid items. `small` = `--neo-gap-sm`, `medium` = `--neo-gap-md`, `large` = `--neo-gap-lg`.',
+			table: { category: 'Layout' },
+		},
+		section: {
+			control: false,
+			description: 'Props forwarded to the internal `NeoSection` wrapper (e.g. `fullWidth`).',
+			table: { category: 'Layout' },
+		},
+		noSection: {
+			control: 'boolean',
+			description:
+				'Force-skip the internal `NeoSection` wrapper. A `NeoSection` ancestor is auto-detected and skipped already; use this to opt out inside non-`NeoSection` containers.',
 			table: { category: 'Layout' },
 		},
 	},

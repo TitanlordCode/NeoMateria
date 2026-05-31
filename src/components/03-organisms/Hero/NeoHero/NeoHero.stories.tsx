@@ -19,9 +19,28 @@ const meta = {
 	title: 'Organisms/NeoHero',
 	component: NeoHero,
 	tags: ['autodocs'],
+	parameters: {
+		docs: {
+			description: {
+				component: `
+A page-level hero region with a headline, optional subtitle, actions, and media. Two variants: \`centered\` stacks content centered; \`split\` puts text on one side and media on the other.
+
+This component wraps itself in a \`NeoSection\`. If you place it **inside another \`NeoSection\`**, it auto-detects the ancestor and skips its own wrapper — so you never get a doubled section. To force-skip the wrapper in any other container, set \`no-section\`.
+				`,
+			},
+		},
+	},
 	argTypes: {
-		title: { control: 'text', table: { category: 'Content' } },
-		subtitle: { control: 'text', table: { category: 'Content' } },
+		title: {
+			control: 'text',
+			table: { category: 'Content' },
+			description: 'Main hero headline, rendered as the primary heading.',
+		},
+		subtitle: {
+			control: 'text',
+			table: { category: 'Content' },
+			description: 'Supporting copy shown beneath the title.',
+		},
 		variant: {
 			control: 'select',
 			options: heroVariants,
@@ -56,6 +75,17 @@ const meta = {
 			control: false,
 			description: 'Media content (image, video) displayed beside the text in `split` variant.',
 			table: { category: 'Slots' },
+		},
+		section: {
+			control: false,
+			description: 'Props forwarded to the internal `NeoSection` wrapper (e.g. `fullWidth`).',
+			table: { category: 'Layout' },
+		},
+		noSection: {
+			control: 'boolean',
+			description:
+				'Force-skip the internal `NeoSection` wrapper. A `NeoSection` ancestor is auto-detected and skipped already; use this to opt out inside non-`NeoSection` containers.',
+			table: { category: 'Layout' },
 		},
 	},
 	args: {

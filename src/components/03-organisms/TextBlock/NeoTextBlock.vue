@@ -60,7 +60,7 @@ const classes = computed(() => {
 
 .NeoTextBlock-body {
 	color: var(--NeoTextBlock-color-body);
-	font-size: var(--NeoTextBlock-sizing-bodyFontSize);
+	font-size: var(--NeoTextBlock-fontSize-body);
 	line-height: var(--NeoTextBlock-lineHeight-body);
 	margin: 0;
 	overflow-wrap: break-word;

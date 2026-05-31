@@ -17,3 +17,14 @@
 .NeoCallout--filled:not(.Themed--yellow, .Themed--amber, .Themed--orange, .Themed--white) {
 	@mixin setOnDark;
 }
+
+.NeoCallout--accent {
+	--NeoCallout-color-background: var(--neo-color-grey50);
+	--NeoCallout-color-accent: var(--neo-theme-colorAccessible);
+	--NeoCallout-color-text: var(--neo-color-grey700);
+
+	@mixin onDark {
+		--NeoCallout-color-background: var(--neo-color-grey800);
+		--NeoCallout-color-text: var(--neo-color-grey300);
+	}
+}

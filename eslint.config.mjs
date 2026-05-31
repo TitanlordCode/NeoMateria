@@ -147,5 +147,54 @@ export default defineConfigWithVueTs(
 		},
 	},
 
+	{
+		name: 'app/no-boolean-prop-union',
+		files: ['**/*Types.ts'],
+		plugins: {
+			local: {
+				rules: {
+					'no-boolean-prop-union': {
+						meta: {
+							type: 'problem',
+							messages: {
+								booleanUnion:
+									'Avoid mixing a boolean ({{ kind }}) with other types in a prop union. Vue infers `Boolean` as a runtime prop type, so an absent prop silently defaults to `false` instead of `undefined`. Use a separate boolean prop (defaulting to false) instead — e.g. `noSection?: boolean` rather than `section?: T | false`.',
+							},
+						},
+						create(context) {
+							const isBooleanish = (type) =>
+								type.type === 'TSBooleanKeyword' ||
+								(type.type === 'TSLiteralType' &&
+									type.literal?.type === 'Literal' &&
+									typeof type.literal.value === 'boolean')
+
+							return {
+								TSUnionType(node) {
+									const booleanMember = node.types.find(isBooleanish)
+									const hasNonBoolean = node.types.some((type) => !isBooleanish(type))
+									if (booleanMember && hasNonBoolean) {
+										context.report({
+											node: booleanMember,
+											messageId: 'booleanUnion',
+											data: {
+												kind:
+													booleanMember.type === 'TSBooleanKeyword'
+														? 'boolean'
+														: String(booleanMember.literal.value),
+											},
+										})
+									}
+								},
+							}
+						},
+					},
+				},
+			},
+		},
+		rules: {
+			'local/no-boolean-prop-union': 'error',
+		},
+	},
+
 	skipFormatting,
 )

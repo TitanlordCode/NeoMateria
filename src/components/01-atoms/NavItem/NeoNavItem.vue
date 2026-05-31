@@ -130,7 +130,7 @@ const handleKeydown = (event: KeyboardEvent) => {
 	cursor: pointer;
 	display: flex;
 	font-family: inherit;
-	font-size: var(--NeoNavItem-sizing-fontSize);
+	font-size: var(--NeoNavItem-fontSize-value);
 	font-weight: 500;
 	inline-size: 100%;
 	padding-block: var(--NeoNavItem-sizing-paddingBlock);
@@ -201,15 +201,15 @@ const handleKeydown = (event: KeyboardEvent) => {
 
 /* Level-based font size reduction */
 .NeoNavItem.is-level-1 {
-	font-size: var(--NeoNavItem-sizing-fontSizeLevel1);
+	font-size: var(--NeoNavItem-fontSize-level1);
 }
 
 .NeoNavItem.is-level-2 {
-	font-size: var(--NeoNavItem-sizing-fontSizeLevel2);
+	font-size: var(--NeoNavItem-fontSize-level2);
 }
 
 .NeoNavItem.is-level-3 {
-	font-size: var(--NeoNavItem-sizing-fontSizeLevel3);
+	font-size: var(--NeoNavItem-fontSize-level3);
 }
 
 /* Connector line for hierarchy visualization */

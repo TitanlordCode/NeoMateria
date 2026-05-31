@@ -3,7 +3,7 @@
 	--NeoNavigation-sizing-paddingInline: var(--neo-spacing-layout-sm);
 	--NeoNavigation-sizing-gap: var(--neo-gap-lg);
 	--NeoNavigation-sizing-linkGap: var(--neo-gap-md);
-	--NeoNavigation-sizing-fontSize: var(--neo-fontSize-textMd);
+	--NeoNavigation-fontSize-value: var(--neo-fontSize-textMd);
 	--NeoNavigation-sizing-mobilePanelPadding: var(--neo-spacing-core-lg);
 	--NeoNavigation-sizing-maxInlineSize: var(--neo-spacing-max-global-size);
 	--NeoNavigation-sizing-linksGap: var(--neo-gap-sm);
@@ -21,6 +21,11 @@
 	--NeoNavigation-sizing-mobileActionsGap: var(--neo-spacing-core-xs);
 	--NeoNavigation-sizing-desktopDropdownGap: var(--neo-gap-lg);
 	--NeoNavigation-sizing-desktopDropdownPaddingBlock: var(--neo-spacing-core-lg);
+
+	/* Caps slotted logos so they can't stretch the bar past --sizing-height. */
+	--NeoNavigation-sizing-logoMaxBlockSize: calc(
+		var(--NeoNavigation-sizing-height) - 2 * var(--neo-spacing-core-sm)
+	);
 
 	@mixin bp-md {
 		--NeoNavigation-sizing-height: 72px;

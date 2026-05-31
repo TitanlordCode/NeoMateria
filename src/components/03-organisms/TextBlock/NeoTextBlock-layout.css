@@ -3,7 +3,7 @@
 }
 
 .NeoTextBlock-body {
-	--NeoTextBlock-sizing-bodyFontSize: var(--neo-fontSize-textLg);
+	--NeoTextBlock-fontSize-body: var(--neo-fontSize-textLg);
 	--NeoTextBlock-lineHeight-body: var(--neo-lineHeight-relaxed);
 }
 

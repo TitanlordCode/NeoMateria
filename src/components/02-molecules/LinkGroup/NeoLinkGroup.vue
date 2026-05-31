@@ -65,7 +65,7 @@ const classes = computed(() => {
 
 .NeoLinkGroup-title {
 	color: var(--NeoLinkGroup-color-title);
-	font-size: var(--NeoLinkGroup-sizing-titleFontSize);
+	font-size: var(--NeoLinkGroup-fontSize-title);
 	font-weight: 600;
 	margin: 0;
 }
@@ -86,7 +86,7 @@ const classes = computed(() => {
 
 .NeoLinkGroup-link {
 	color: var(--NeoLinkGroup-color-link);
-	font-size: var(--NeoLinkGroup-sizing-linkFontSize);
+	font-size: var(--NeoLinkGroup-fontSize-link);
 	text-decoration: none;
 	transition: color 0.2s ease;
 

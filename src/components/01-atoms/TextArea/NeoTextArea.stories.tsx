@@ -12,10 +12,26 @@ const meta = {
 	argTypes: {
 		...ariaLabelArgType,
 		...disabledArgType,
-		name: { control: 'text', table: { category: 'Content' } },
-		label: { control: 'text', table: { category: 'Content' } },
-		placeholder: { control: 'text', table: { category: 'Content' } },
-		value: { control: 'text', table: { category: 'Content' } },
+		name: {
+			control: 'text',
+			table: { category: 'Content' },
+			description: 'The `name` attribute submitted with the form.',
+		},
+		label: {
+			control: 'text',
+			table: { category: 'Content' },
+			description: 'Visible label text. Mutually exclusive with `ariaLabel`.',
+		},
+		placeholder: {
+			control: 'text',
+			table: { category: 'Content' },
+			description: 'Placeholder shown when the field is empty.',
+		},
+		value: {
+			control: 'text',
+			table: { category: 'Content' },
+			description: 'The textarea value (controlled).',
+		},
 		color: { description: 'Theme color for focus ring, labels, and accents.' },
 		size: {
 			control: 'select',
@@ -52,7 +68,16 @@ const meta = {
 			table: { category: 'State' },
 			description: 'Non-editable but focusable. Value is still submitted.',
 		},
-		required: { control: 'boolean', table: { category: 'State' } },
+		required: {
+			control: 'boolean',
+			table: { category: 'State' },
+			description: 'Marks the field as required. Requires `requiredText` to be set.',
+		},
+		requiredText: {
+			control: 'text',
+			table: { category: 'State' },
+			description: 'Assistive text describing the requirement, surfaced when `required` is set.',
+		},
 		helpText: {
 			control: 'text',
 			table: { category: 'Validation' },
@@ -68,7 +93,11 @@ const meta = {
 			table: { category: 'Validation' },
 			description: 'Hard character limit. A character counter is shown below the field.',
 		},
-		minLength: { control: 'number', table: { category: 'Validation' } },
+		minLength: {
+			control: 'number',
+			table: { category: 'Validation' },
+			description: 'Minimum character count required for the field to be valid.',
+		},
 	},
 	args: {
 		name: 'example-textarea',

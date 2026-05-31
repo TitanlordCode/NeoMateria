@@ -18,7 +18,11 @@ const meta = {
 	argTypes: {
 		...ariaLabelArgType,
 		...disabledArgType,
-		text: { control: 'text', table: { category: 'Content' } },
+		text: {
+			control: 'text',
+			table: { category: 'Content' },
+			description: 'Button label text. Falls back to the default slot if omitted.',
+		},
 		color: {
 			description:
 				'Theme color. Determines the button\'s background, text, and border colors. `white` is excluded from `SurfaceColor` — use `color="black"` with `u-onDark` for dark-surface white buttons.',

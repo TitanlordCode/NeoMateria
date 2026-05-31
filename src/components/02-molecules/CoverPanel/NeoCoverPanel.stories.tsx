@@ -35,8 +35,16 @@ const meta = {
 			description: 'Applies rounded corners to the panel.',
 			table: { category: 'Appearance' },
 		},
-		imageSrc: { control: 'text', table: { category: 'Content' } },
-		imageAlt: { control: 'text', table: { category: 'Content' } },
+		imageSrc: {
+			control: 'text',
+			table: { category: 'Content' },
+			description: 'Source URL of the cover image.',
+		},
+		imageAlt: {
+			control: 'text',
+			table: { category: 'Content' },
+			description: 'Alt text for the cover image.',
+		},
 		imageWidth: {
 			control: 'number',
 			description:
@@ -49,7 +57,22 @@ const meta = {
 				'Intrinsic height of the image in pixels. Set alongside `imageWidth` to prevent layout shift (CLS) before the image loads.',
 			table: { category: 'Content' },
 		},
-		title: { control: 'text', table: { category: 'Content' } },
+		title: {
+			control: 'text',
+			table: { category: 'Content' },
+			description: 'Title shown on the panel overlay.',
+		},
+		href: {
+			control: 'text',
+			table: { category: 'Behavior' },
+			description: 'Destination URL used when `clickBehavior` is `link`.',
+		},
+		external: {
+			control: 'boolean',
+			table: { category: 'Behavior' },
+			description:
+				'Opens the link in a new tab with a safe `rel`. Only applies when `href` is set.',
+		},
 		imageAriaLabel: {
 			control: 'text',
 			description:

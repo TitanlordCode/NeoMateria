@@ -8,4 +8,5 @@ export interface NeoCoverPanelGridProps {
 	minColumnWidth?: number
 	gap?: NeoCoverPanelGridGap
 	section?: NeoSectionProps
+	noSection?: boolean
 }

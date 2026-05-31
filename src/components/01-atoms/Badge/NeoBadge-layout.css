@@ -1,19 +1,19 @@
 .NeoBadge--small {
-	--NeoBadge-sizing-fontSize: var(--neo-fontSize-xs);
+	--NeoBadge-fontSize-value: var(--neo-fontSize-xs);
 	--NeoBadge-sizing-padding: var(--neo-spacing-core-xs) var(--neo-spacing-core-sm);
 	--NeoBadge-sizing-borderRadius: var(--neo-radius-md);
 	--NeoBadge-sizing-dotSize: var(--neo-spacing-core-sm);
 }
 
 .NeoBadge--medium {
-	--NeoBadge-sizing-fontSize: var(--neo-fontSize-textSm);
+	--NeoBadge-fontSize-value: var(--neo-fontSize-textSm);
 	--NeoBadge-sizing-padding: var(--neo-spacing-core-sm) var(--neo-spacing-core-md);
 	--NeoBadge-sizing-borderRadius: var(--neo-radius-lg);
 	--NeoBadge-sizing-dotSize: var(--neo-spacing-core-md);
 }
 
 .NeoBadge--large {
-	--NeoBadge-sizing-fontSize: var(--neo-fontSize-base);
+	--NeoBadge-fontSize-value: var(--neo-fontSize-base);
 	--NeoBadge-sizing-padding: var(--neo-spacing-core-sm) var(--neo-spacing-core-lg);
 	--NeoBadge-sizing-borderRadius: var(--neo-radius-xl);
 	--NeoBadge-sizing-dotSize: var(--neo-spacing-core-lg);

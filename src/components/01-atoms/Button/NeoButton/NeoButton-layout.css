@@ -12,19 +12,19 @@
 .NeoButton--small {
 	--NeoButton-sizing-padding: var(--neo-sizing-input-padding-sm);
 	--NeoButton-sizing-inline: var(--neo-sizing-input-height-sm);
-	--NeoButton-sizing-fontSize: var(--neo-fontSize-textSm);
+	--NeoButton-fontSize-value: var(--neo-fontSize-textSm);
 }
 
 .NeoButton--medium {
 	--NeoButton-sizing-padding: var(--neo-sizing-input-padding-md);
 	--NeoButton-sizing-inline: var(--neo-sizing-input-height-md);
-	--NeoButton-sizing-fontSize: var(--neo-fontSize-base);
+	--NeoButton-fontSize-value: var(--neo-fontSize-base);
 }
 
 .NeoButton--large {
 	--NeoButton-sizing-padding: var(--neo-sizing-input-padding-lg);
 	--NeoButton-sizing-inline: var(--neo-sizing-input-height-lg);
-	--NeoButton-sizing-fontSize: var(--neo-fontSize-textLg);
+	--NeoButton-fontSize-value: var(--neo-fontSize-textLg);
 }
 
 .NeoButton--rounded {

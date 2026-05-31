@@ -14,11 +14,31 @@ const meta = {
 	component: NeoFeatureCard,
 	tags: ['autodocs'],
 	argTypes: {
-		imageSrc: { control: 'text', table: { category: 'Content' } },
-		imageAlt: { control: 'text', table: { category: 'Content' } },
-		category: { control: 'text', table: { category: 'Content' } },
-		title: { control: 'text', table: { category: 'Content' } },
-		excerpt: { control: 'text', table: { category: 'Content' } },
+		imageSrc: {
+			control: 'text',
+			table: { category: 'Content' },
+			description: 'Source URL of the card image.',
+		},
+		imageAlt: {
+			control: 'text',
+			table: { category: 'Content' },
+			description: 'Alt text for the card image.',
+		},
+		category: {
+			control: 'text',
+			table: { category: 'Content' },
+			description: 'Small category/eyebrow label shown above the title.',
+		},
+		title: {
+			control: 'text',
+			table: { category: 'Content' },
+			description: 'Card title text.',
+		},
+		excerpt: {
+			control: 'text',
+			table: { category: 'Content' },
+			description: 'Short summary copy shown beneath the title.',
+		},
 		href: {
 			control: 'text',
 			description: 'Makes the entire card a link.',

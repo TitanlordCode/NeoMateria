@@ -1,13 +1,17 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, inject } from 'vue'
 import type { NeoFeatureLineProps } from './NeoFeatureLineTypes'
 import { getClassNames } from '@/utils/classNames'
 import NeoImage from '@/components/01-atoms/Image/NeoImage.vue'
 import NeoHeadingGroup from '@/components/02-molecules/HeadingGroup/NeoHeadingGroup/NeoHeadingGroup.vue'
 import NeoLinkButton from '@/components/01-atoms/Button/NeoLinkButton/NeoLinkButton.vue'
 import NeoSection from '@/components/02-molecules/Section/NeoSection.vue'
+import { neoSectionInjectionKey } from '@/components/02-molecules/Section/sectionContext'
 
 const props = defineProps<NeoFeatureLineProps>()
+
+const isInsideSection = inject(neoSectionInjectionKey, false)
+const shouldWrap = computed(() => !props.noSection && !isInsideSection)
 
 const ratioModifier = computed(() => {
 	if (props.imageRatio === '16/9') return 'ratio-16-9'
@@ -26,7 +30,7 @@ const classes = computed(() => {
 </script>
 
 <template>
-	<NeoSection v-bind="props.section">
+	<NeoSection v-if="shouldWrap" v-bind="props.section ?? {}">
 		<div :class="classes">
 			<div class="NeoFeatureLine-imageWrapper">
 				<NeoImage
@@ -56,6 +60,34 @@ const classes = computed(() => {
 			</div>
 		</div>
 	</NeoSection>
+	<div v-else :class="classes">
+		<div class="NeoFeatureLine-imageWrapper">
+			<NeoImage
+				:src="props.imageSrc"
+				:alt="props.imageAlt"
+				object-fit="cover"
+				class="NeoFeatureLine-image"
+			/>
+		</div>
+		<div class="NeoFeatureLine-content">
+			<NeoHeadingGroup
+				:title="props.title"
+				:subtitle="props.subtitle"
+				:heading-tag="props.headingTag ?? 'h2'"
+				:variant="props.headingVariant ?? 'secondary'"
+				:color="props.color"
+			/>
+			<p v-if="props.body" class="NeoFeatureLine-body">{{ props.body }}</p>
+			<div v-if="props.ctaText && props.ctaHref" class="NeoFeatureLine-actions">
+				<NeoLinkButton
+					:href="props.ctaHref"
+					:text="props.ctaText"
+					:color="props.color ?? 'blue'"
+					variant="primary"
+				/>
+			</div>
+		</div>
+	</div>
 </template>
 
 <style scoped>
@@ -106,8 +138,8 @@ const classes = computed(() => {
 
 .NeoFeatureLine-body {
 	color: var(--NeoFeatureLine-color-body);
-	font-size: var(--NeoFeatureLine-sizing-bodyFontSize);
-	line-height: var(--NeoFeatureLine-sizing-bodyLineHeight);
+	font-size: var(--NeoFeatureLine-fontSize-body);
+	line-height: var(--NeoFeatureLine-lineHeight-body);
 	margin: 0;
 	overflow-wrap: break-word;
 }

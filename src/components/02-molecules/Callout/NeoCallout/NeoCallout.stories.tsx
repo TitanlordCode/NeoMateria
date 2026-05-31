@@ -6,7 +6,7 @@ import { createAllColorsRender } from '../../../../../.storybook/utils/colorShow
 import { createA11yPlay } from '../../../../../.storybook/utils/createA11yPlay'
 import NeoCallout from './NeoCallout.vue'
 import type { NeoCalloutProps } from './NeoCalloutTypes'
-import { calloutVariants } from './NeoCalloutTypes'
+import { calloutVariants, calloutSizes } from './NeoCalloutTypes'
 import NeoLink from '@/components/01-atoms/Link/NeoLink.vue'
 import { InfoIcon } from '@/components/01-atoms/Icon/defaultIcons'
 import { infoIconSvg } from '../../../../../.storybook/utils/iconSnippets'
@@ -27,7 +27,21 @@ const meta = {
 		variant: {
 			control: 'select',
 			options: calloutVariants,
-			description: '`bordered` — outline box. `filled` — solid background.',
+			description:
+				'`bordered` — outline box. `filled` — solid background. `accent` — left-edge accent border with subtle neutral background, typical for inline annotations.',
+			table: { category: 'Appearance' },
+		},
+		size: {
+			control: 'select',
+			options: calloutSizes,
+			description:
+				'Controls padding and font size. `small` is intended for inline annotations / section labels; `medium` is the default for prominent callouts.',
+			table: { category: 'Appearance' },
+		},
+		rounded: {
+			control: 'boolean',
+			description:
+				'Applies rounded corners. Default is sharp corners. On the `accent` variant the start-side corners stay sharp regardless so the accent edge reads as a single straight line.',
 			table: { category: 'Appearance' },
 		},
 		icon: {
@@ -95,6 +109,54 @@ export const WithIcon: Story = {
 				code: `<NeoCallout color="blue" variant="bordered">
   <template #icon>${infoIconSvg}</template>
   This feature is currently in beta. Behaviour may change in future releases.
+</NeoCallout>`,
+			},
+		},
+	},
+}
+
+export const Rounded: Story = {
+	tags: ['snapshot'],
+	args: { color: 'blue', variant: 'bordered', rounded: true },
+	render: (args: NeoCalloutProps) => {
+		return defineComponent({
+			name: 'RoundedRender',
+			setup() {
+				return () => (
+					<NeoCallout {...args}>
+						Opt into rounded corners via <code>rounded</code>.
+					</NeoCallout>
+				)
+			},
+		})
+	},
+	parameters: {
+		docs: {
+			source: {
+				code: `<NeoCallout color="blue" variant="bordered" rounded>
+  Opt into rounded corners with the rounded prop.
+</NeoCallout>`,
+			},
+		},
+	},
+}
+
+export const Accent: Story = {
+	tags: ['snapshot'],
+	args: { color: 'blue', variant: 'accent', size: 'small' },
+	render: (args: NeoCalloutProps) => {
+		return defineComponent({
+			name: 'AccentRender',
+			setup() {
+				return () => <NeoCallout {...args}>Inline annotation with accent border.</NeoCallout>
+			},
+		})
+	},
+	parameters: {
+		docs: {
+			source: {
+				code: `<NeoCallout color="blue" variant="accent" size="small">
+  Inline annotation: left-edge accent border with subtle neutral background.
 </NeoCallout>`,
 			},
 		},

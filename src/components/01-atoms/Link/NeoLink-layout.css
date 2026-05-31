@@ -1,14 +1,14 @@
 .NeoLink--small {
-	--NeoLink-sizing-fontSize: var(--neo-fontSize-textSm);
+	--NeoLink-fontSize-value: var(--neo-fontSize-textSm);
 	--NeoLink-sizing-buttonPadding: 4px 8px;
 }
 
 .NeoLink--medium {
-	--NeoLink-sizing-fontSize: var(--neo-fontSize-base);
+	--NeoLink-fontSize-value: var(--neo-fontSize-base);
 	--NeoLink-sizing-buttonPadding: 8px 16px;
 }
 
 .NeoLink--large {
-	--NeoLink-sizing-fontSize: var(--neo-fontSize-textLg);
+	--NeoLink-fontSize-value: var(--neo-fontSize-textLg);
 	--NeoLink-sizing-buttonPadding: 12px 24px;
 }

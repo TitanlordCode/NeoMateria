@@ -14,7 +14,11 @@ const meta: Meta<typeof NeoNavItem> = {
 	argTypes: {
 		...ariaLabelArgType,
 		...disabledArgType,
-		label: { control: 'text', table: { category: 'Content' } },
+		label: {
+			control: 'text',
+			table: { category: 'Content' },
+			description: 'Nav item text. Falls back to the default slot if omitted.',
+		},
 		color: { description: 'Theme color used for hover/active text and background states.' },
 		size: {
 			control: 'select',
@@ -40,8 +44,16 @@ const meta: Meta<typeof NeoNavItem> = {
 			description:
 				"Whether the item's children are visible. Only meaningful when `hasChildren` is true. Rotates the chevron icon.",
 		},
-		href: { control: 'text', table: { category: 'Behavior' } },
-		external: { control: 'boolean', table: { category: 'Behavior' } },
+		href: {
+			control: 'text',
+			table: { category: 'Behavior' },
+			description: 'Destination URL. When omitted the item renders as a button.',
+		},
+		external: {
+			control: 'boolean',
+			table: { category: 'Behavior' },
+			description: 'Opens the link in a new tab with a safe `rel`.',
+		},
 		level: {
 			control: { type: 'number', min: 0, max: 10 },
 			table: { category: 'Behavior' },

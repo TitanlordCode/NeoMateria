@@ -1,5 +1,5 @@
 .NeoHeadlineSecondary {
-	--NeoHeadlineSecondary-sizing-fontSize: var(--neo-fontSize-headlineMd);
+	--NeoHeadlineSecondary-fontSize-value: var(--neo-fontSize-headlineMd);
 	--NeoHeadlineSecondary-fontWeight-value: var(--neo-fontWeight-bold);
 	--NeoHeadlineSecondary-lineHeight-value: var(--neo-lineHeight-tight);
 }

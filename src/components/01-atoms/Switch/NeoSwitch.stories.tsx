@@ -14,7 +14,11 @@ const meta = {
 	argTypes: {
 		...ariaLabelArgType,
 		...disabledArgType,
-		label: { control: 'text', table: { category: 'Content' } },
+		label: {
+			control: 'text',
+			table: { category: 'Content' },
+			description: 'Visible label text. Mutually exclusive with `ariaLabel`.',
+		},
 		color: { description: 'Theme color for the switch track when on.' },
 		size: {
 			control: 'select',

@@ -15,9 +15,22 @@ const meta = {
 	tags: ['autodocs'],
 	argTypes: {
 		color: { description: 'Theme color of the pennant shape.' },
-		href: { control: 'text', table: { category: 'Behavior' } },
-		ariaLabel: { control: 'text', table: { category: 'Accessibility' } },
-		external: { control: 'boolean', table: { category: 'Behavior' } },
+		href: {
+			control: 'text',
+			table: { category: 'Behavior' },
+			description: 'Optional destination URL. When set the pennant renders as a link.',
+		},
+		ariaLabel: {
+			control: 'text',
+			table: { category: 'Accessibility' },
+			description: 'Accessible name for the pennant when its content is not descriptive.',
+		},
+		external: {
+			control: 'boolean',
+			table: { category: 'Behavior' },
+			description:
+				'Opens the link in a new tab with a safe `rel`. Only applies when `href` is set.',
+		},
 	},
 	args: {
 		color: 'blue',

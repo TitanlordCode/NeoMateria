@@ -498,6 +498,13 @@ defineExpose<NeoNavigationExpose>({ close: () => toggleMobileMenu(false) })
 .NeoNavigation-logo {
 	align-items: center;
 	display: flex;
+	max-block-size: var(--NeoNavigation-sizing-logoMaxBlockSize);
+}
+
+.NeoNavigation-logo :deep(img),
+.NeoNavigation-logo :deep(svg),
+.NeoNavigation-logo :deep(picture) {
+	max-block-size: var(--NeoNavigation-sizing-logoMaxBlockSize);
 }
 
 .NeoNavigation-desktopLinks {
@@ -513,7 +520,7 @@ defineExpose<NeoNavigationExpose>({ close: () => toggleMobileMenu(false) })
 
 .NeoNavigation-link {
 	color: var(--NeoNavigation-color-link);
-	font-size: var(--NeoNavigation-sizing-fontSize);
+	font-size: var(--NeoNavigation-fontSize-value);
 	font-weight: 500;
 	text-decoration: none;
 	transition: color 0.2s ease;
@@ -549,7 +556,7 @@ defineExpose<NeoNavigationExpose>({ close: () => toggleMobileMenu(false) })
 
 .NeoNavigation-dropdownTrigger {
 	color: var(--NeoNavigation-color-link);
-	font-size: var(--NeoNavigation-sizing-fontSize);
+	font-size: var(--NeoNavigation-fontSize-value);
 	gap: var(--NeoNavigation-sizing-dropdownListGap);
 	padding: var(--NeoNavigation-sizing-dropdownListPaddingBlock) 0;
 }
@@ -580,7 +587,7 @@ defineExpose<NeoNavigationExpose>({ close: () => toggleMobileMenu(false) })
 .NeoNavigation-dropdownItem {
 	color: var(--NeoNavigation-color-link);
 	display: block;
-	font-size: var(--NeoNavigation-sizing-fontSize);
+	font-size: var(--NeoNavigation-fontSize-value);
 	padding: var(--NeoNavigation-sizing-dropdownItemPaddingInline);
 	text-decoration: none;
 	transition:
@@ -684,7 +691,7 @@ defineExpose<NeoNavigationExpose>({ close: () => toggleMobileMenu(false) })
 }
 
 .NeoNavigation-flyoutItem {
-	font-size: var(--NeoNavigation-sizing-fontSize);
+	font-size: var(--NeoNavigation-fontSize-value);
 	font-weight: 500;
 }
 

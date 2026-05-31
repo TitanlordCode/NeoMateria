@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import { getClassNames } from '@/utils/classNames'
-import { computed } from 'vue'
+import { computed, provide } from 'vue'
 import type { NeoSectionProps } from './NeoSectionTypes'
+import { neoSectionInjectionKey } from './sectionContext'
 
 const props = defineProps<NeoSectionProps>()
+
+provide(neoSectionInjectionKey, true)
 
 const classes = computed(() =>
 	getClassNames({
@@ -42,7 +45,6 @@ const classes = computed(() =>
 }
 
 .NeoSection > :deep(*) {
-	/* same as span 12 */
 	grid-column: content-start / content-end;
 }
 
