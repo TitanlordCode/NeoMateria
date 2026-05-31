@@ -131,10 +131,6 @@ export const Rounded: Story = {
 		})
 	},
 	parameters: {
-		// 0.5% pixel tolerance — the 8px corner-radius arcs antialias slightly
-		// differently between local Docker and CI even with the pinned base
-		// image digest, almost certainly CPU-level paint nondeterminism.
-		snapshot: { diffThreshold: 0.005 },
 		docs: {
 			source: {
 				code: `<NeoCallout color="blue" variant="bordered" rounded>
