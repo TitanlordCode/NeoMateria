@@ -1,5 +1,5 @@
 import { afterEach } from 'vitest'
-import { page, commands } from '@vitest/browser/context'
+import { page, commands } from 'vitest/browser'
 import { snapshotViewports } from './viewports'
 
 type SnapshotStatus =

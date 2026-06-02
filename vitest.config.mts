@@ -9,6 +9,7 @@ process.env.VITEST_STORYBOOK = 'true'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import { storybookTest } from '@storybook/addon-vitest/vitest-plugin'
+import { playwright } from '@vitest/browser-playwright'
 import type { Plugin } from 'vite'
 import { existsSync, rmSync } from 'node:fs'
 import { join } from 'node:path'
@@ -62,17 +63,19 @@ const snapshotBrowserCommands = { compareSnapshot, prepareForSnapshot, captureSt
 //   --disable-lcd-text                  no ClearType sub-pixel antialiasing
 //   --disable-font-subpixel-positioning  no sub-pixel font placement
 //   --force-device-scale-factor=1        hard DPR=1 (overrides HiDPI displays)
-const chromiumInstance = {
-	browser: 'chromium',
-	launch: {
+// In Vitest v4 these moved from per-instance to provider-level options.
+const playwrightProvider = playwright({
+	launchOptions: {
 		args: [
 			'--disable-lcd-text',
 			'--disable-font-subpixel-positioning',
 			'--force-device-scale-factor=1',
 		],
 	},
-	context: { deviceScaleFactor: 1 },
-}
+	contextOptions: { deviceScaleFactor: 1 },
+})
+
+const chromiumInstance = { browser: 'chromium' } as const
 
 export default defineConfig({
 	plugins: [vue(), vueJsx()],
@@ -145,7 +148,7 @@ export default defineConfig({
 					browser: {
 						enabled: true,
 						headless: true,
-						provider: 'playwright',
+						provider: playwrightProvider,
 
 						instances: [chromiumInstance],
 						commands: snapshotBrowserCommands,
@@ -173,7 +176,7 @@ export default defineConfig({
 					browser: {
 						enabled: true,
 						headless: true,
-						provider: 'playwright',
+						provider: playwrightProvider,
 
 						instances: [chromiumInstance],
 						commands: snapshotBrowserCommands,
