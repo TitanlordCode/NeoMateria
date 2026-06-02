@@ -1,3 +1,10 @@
+# [0.1.0-dev.9](https://github.com/TitanlordCode/NeoMateria/compare/v0.1.0-dev.8...v0.1.0-dev.9) (2026-06-02)
+
+
+### Features
+
+* **grimeria:** add tags of usage ([#44](https://github.com/TitanlordCode/NeoMateria/issues/44)) ([0d6a13f](https://github.com/TitanlordCode/NeoMateria/commit/0d6a13f8622acbd32f0f9a05106c59e72e1d22c1))
+
 # [0.1.0-dev.8](https://github.com/TitanlordCode/NeoMateria/compare/v0.1.0-dev.7...v0.1.0-dev.8) (2026-05-24)
 
 
