@@ -14,7 +14,7 @@ import { tableSizes, tableHeaderAxes } from './NeoTableTypes'
 const meta = {
 	title: 'Molecules/NeoTable',
 	component: NeoTable,
-	tags: ['autodocs'],
+	tags: ['autodocs', 'grimeria'],
 	argTypes: {
 		size: {
 			control: 'select',

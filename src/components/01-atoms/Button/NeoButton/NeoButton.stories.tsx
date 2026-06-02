@@ -14,7 +14,7 @@ import { createA11yPlay } from '../../../../../.storybook/utils/createA11yPlay'
 const meta = {
 	title: 'Atoms/Button/NeoButton',
 	component: NeoButton,
-	tags: ['autodocs'],
+	tags: ['autodocs', 'grimeria'],
 	argTypes: {
 		...ariaLabelArgType,
 		...disabledArgType,

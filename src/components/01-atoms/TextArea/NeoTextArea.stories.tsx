@@ -8,7 +8,7 @@ import { createA11yPlay } from '../../../../.storybook/utils/createA11yPlay'
 const meta = {
 	title: 'Atoms/NeoTextArea',
 	component: NeoTextArea,
-	tags: ['autodocs'],
+	tags: ['autodocs', 'grimeria'],
 	argTypes: {
 		...ariaLabelArgType,
 		...disabledArgType,

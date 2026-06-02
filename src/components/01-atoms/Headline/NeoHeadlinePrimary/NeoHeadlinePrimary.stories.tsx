@@ -10,7 +10,7 @@ import { headlineTags, headlineAligns } from '../NeoHeadlineTypes'
 const meta = {
 	title: 'Atoms/Headline/NeoHeadlinePrimary',
 	component: NeoHeadlinePrimary,
-	tags: ['autodocs'],
+	tags: ['autodocs', 'grimeria'],
 	argTypes: {
 		tag: {
 			control: 'select',

@@ -10,7 +10,7 @@ import { createA11yPlay } from '../../../../.storybook/utils/createA11yPlay'
 const meta = {
 	title: 'Atoms/NeoBadge',
 	component: NeoBadge,
-	tags: ['autodocs'],
+	tags: ['autodocs', 'grimeria'],
 	argTypes: {
 		text: {
 			control: 'text',

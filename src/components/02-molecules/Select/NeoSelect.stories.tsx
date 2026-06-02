@@ -22,7 +22,7 @@ const exampleOptions = [
 const meta = {
 	title: 'Molecules/NeoSelect',
 	component: NeoSelect,
-	tags: ['autodocs'],
+	tags: ['autodocs', 'grimeria'],
 	argTypes: {
 		color: {
 			description: 'Theme color for focus ring and selected state accents.',

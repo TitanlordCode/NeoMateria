@@ -11,7 +11,7 @@ import { createA11yPlay } from '../../../../../.storybook/utils/createA11yPlay'
 const meta = {
 	title: 'Atoms/Headline/NeoHeadlineSecondary',
 	component: NeoHeadlineSecondary,
-	tags: ['autodocs'],
+	tags: ['autodocs', 'grimeria'],
 	argTypes: {
 		tag: {
 			control: 'select',
