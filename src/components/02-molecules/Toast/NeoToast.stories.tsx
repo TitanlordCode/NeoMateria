@@ -42,7 +42,7 @@ const DEFAULT_ENTRY: NeoToastEntry = buildEntry({ severity: 'success', message: 
 const meta = {
 	title: 'Molecules/NeoToast',
 	component: NeoToast,
-	tags: ['autodocs'],
+	tags: ['autodocs', 'grimeria'],
 	args: {
 		entry: DEFAULT_ENTRY,
 	},

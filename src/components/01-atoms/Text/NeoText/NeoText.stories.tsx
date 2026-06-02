@@ -10,7 +10,7 @@ import { textSizes, textTags, textWeights } from './NeoTextTypes'
 const meta = {
 	title: 'Atoms/NeoText',
 	component: NeoText,
-	tags: ['autodocs'],
+	tags: ['autodocs', 'grimeria'],
 	argTypes: {
 		size: {
 			control: 'select',

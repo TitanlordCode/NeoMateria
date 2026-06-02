@@ -10,7 +10,7 @@ import { createA11yPlay } from '../../../../.storybook/utils/createA11yPlay'
 const meta = {
 	title: 'Atoms/NeoSwitch',
 	component: NeoSwitch,
-	tags: ['autodocs'],
+	tags: ['autodocs', 'grimeria'],
 	argTypes: {
 		...ariaLabelArgType,
 		...disabledArgType,

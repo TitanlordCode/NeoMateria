@@ -10,7 +10,7 @@ import { ariaLabelArgType, disabledArgType } from '../../../../.storybook/utils/
 const meta: Meta<typeof NeoNavItem> = {
 	title: 'Atoms/NeoNavItem',
 	component: NeoNavItem,
-	tags: ['autodocs'],
+	tags: ['autodocs', 'grimeria'],
 	argTypes: {
 		...ariaLabelArgType,
 		...disabledArgType,
